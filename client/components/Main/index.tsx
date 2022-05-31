@@ -1,8 +1,21 @@
-import { Box } from "@mui/material";
-import * as styles from "./styles";
-
 const Main = () => {
-  return <Box> ok </Box>;
+  return (
+    <MainSection>
+      <MainContainer>
+        {slides.map((slides, index) => {
+          <MainSlide key={index}>
+            <MainSlider>
+              <MainImage />
+
+              <MainContent>
+                <h1>{slide.tilte}</h1>
+              </MainContent>
+            </MainSlider>
+          </MainSlide>;
+        })}
+      </MainContainer>
+    </MainSection>
+  );
 };
 
 export default Main;
