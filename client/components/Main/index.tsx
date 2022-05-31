@@ -1,9 +1,8 @@
-import { Styles } from "./styles";
+import { Box } from "@mui/material";
+import * as styles from "./styles";
 
 const Main = () => {
-  return <Styles>
-      ok
-  </Styles>;
+  return <Box> ok </Box>;
 };
 
 export default Main;
