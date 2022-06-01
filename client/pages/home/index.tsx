@@ -1,9 +1,8 @@
 import { Fragment } from "react";
-import React, { Component } from "react";
+import React from "react";
 import Main from "../../components/Main";
 import Menu from "../../components/Menu";
 import { SliderData } from "../../data/SliderData";
-
 
 const Home = () => {
   return (

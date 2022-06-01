@@ -2,6 +2,7 @@ import { Box, IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Fragment } from "react";
 import {
+  AccountIcon,
   Logo,
   MenuContainer,
   MenuContent,
@@ -20,7 +21,7 @@ const Menu = () => {
             <Box sx={MenuItem}>Novedades</Box>
             <Box sx={MenuItem}>Inversores</Box>
             <Box sx={MenuItem}>
-              <IconButton>
+              <IconButton sx={AccountIcon}>
                 <AccountCircleIcon />
               </IconButton>
             </Box>
