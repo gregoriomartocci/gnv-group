@@ -1,4 +1,6 @@
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Fragment } from "react";
 import {
   Logo,
   MenuContainer,
@@ -6,26 +8,26 @@ import {
   MenuItem,
   MenuItems,
 } from "./Styles";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Menu = () => {
   return (
-    <MenuContainer>
-      <MenuContent>
-        <Logo>Consultatio</Logo>
-
-        <MenuItems>
-          <MenuItem>Proyectos</MenuItem>
-          <MenuItem>Novedades</MenuItem>
-          <MenuItem>Inversores</MenuItem>
-          <MenuItem>
-            <IconButton>
-              <AccountCircleIcon />
-            </IconButton>
-          </MenuItem>
-        </MenuItems>
-      </MenuContent>
-    </MenuContainer>
+    <Fragment>
+      <Box sx={MenuContainer}>
+        <Box sx={MenuContent}>
+          <Box sx={Logo}>Consultatio</Box>
+          <Box sx={MenuItems}>
+            <Box sx={MenuItem}>Proyectos</Box>
+            <Box sx={MenuItem}>Novedades</Box>
+            <Box sx={MenuItem}>Inversores</Box>
+            <Box sx={MenuItem}>
+              <IconButton>
+                <AccountCircleIcon />
+              </IconButton>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Fragment>
   );
 };
 

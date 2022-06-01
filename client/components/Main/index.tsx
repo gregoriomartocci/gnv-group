@@ -1,17 +1,8 @@
 import { StaticImageData } from "next/image";
-
-import {
-  Arrow,
-  MainContainer,
-  MainContent,
-  MainImage,
-  MainSection,
-  MainSlide,
-  MainSlider,
-  NextArrow,
-  PrevArrow,
-  SliderButtons,
-} from "./Styles";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { Box } from "@mui/material";
+import { MainContainer, MainSection, SliderButtons } from "./Styles";
 
 export interface ISlide {
   title: string;
@@ -28,29 +19,28 @@ export interface ISlidesProps {
 
 const Main = ({ slides }: ISlidesProps) => {
   return (
-    <MainSection>
-      <MainContainer>
+    <Box sx={MainSection}>
+      <Box sx={MainContainer}>
         {slides.map((slide, index) => {
           return (
-            <MainSlide key={index}>
-              <MainSlider>
-                <MainImage />
-                <MainContent>
+            <Box sx={{}} key={index}>
+              <Box sx={{}}>
+                <Box sx={{}}>
                   <h1>{slide.title}</h1>
                   <p>{slide.price}</p>
 
                   {/* <Button to={{slide.path}}></Button> */}
-                </MainContent>
-              </MainSlider>
-            </MainSlide>
+                </Box>
+              </Box >
+            </Box>
           );
         })}
-        <SliderButtons>
-          <PrevArrow />
-          <NextArrow />
-        </SliderButtons>
-      </MainContainer>
-    </MainSection>
+        <Box sx={SliderButtons}>
+          <ArrowCircleLeftIcon />
+          <ArrowCircleRightIcon />
+        </Box>
+      </Box >
+    </Box>
   );
 };
 
