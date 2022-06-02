@@ -1,18 +1,28 @@
 import { Box, IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Fragment } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Fragment, useState } from "react";
 import {
   AccountIcon,
+  CloseIcon,
   Logo,
   MenuContainer,
   MenuContent,
   MenuItem,
   MenuItems,
 } from "./Styles";
+import Dropdown from "../Dropdown";
 
 const Menu = () => {
+  const [Open, setOpen] = useState(false);
+
+  const Toggle = () => {
+    setOpen(!Open);
+  };
+
   return (
     <Fragment>
+      <Dropdown Open={Open} Toggle={Toggle} />
       <Box sx={MenuContainer}>
         <Box sx={MenuContent}>
           <Box sx={Logo}>Consultatio</Box>
@@ -25,6 +35,9 @@ const Menu = () => {
                 <AccountCircleIcon />
               </IconButton>
             </Box>
+            <IconButton sx={CloseIcon} onClick={Toggle} aria-label="delete">
+              <MenuIcon fontSize="inherit" />
+            </IconButton>
           </Box>
         </Box>
       </Box>

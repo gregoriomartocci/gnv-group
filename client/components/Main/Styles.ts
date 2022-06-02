@@ -106,7 +106,7 @@ export const MainContent: SxProps<Theme> = {
   h1: {
     fontSize: "clamp(1rem, 8vw, 2rem);",
     fontWeight: 400,
-    textTransform: "uppercase",
+    
     textShadow: "0px 0px 20px rgba(0, 0, 0, 0.4);",
     textAlign: "left",
     marginBottom: "10px",

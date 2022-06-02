@@ -37,3 +37,8 @@ export const MenuItem: SxProps<Theme> = {
 export const AccountIcon: SxProps<Theme> = {
   color: "#fff",
 };
+
+export const CloseIcon: SxProps<Theme> = {
+  color: "#fff",
+};
+
