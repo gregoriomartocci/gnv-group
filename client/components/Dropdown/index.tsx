@@ -35,18 +35,16 @@ const Dropdown = ({ Open, Toggle }: IDropdownProps) => {
           <IconButton sx={Button} onClick={Toggle} aria-label="delete">
             <CloseIcon fontSize="inherit" />
           </IconButton>
-          <Box sx={{}}>
-            <Box sx={DropdownMenu}>
-              {menuData?.map((item: ImenuData, index: number): any => {
-                return (
-                  <Box sx={DropdownLink}>
-                    {/* <Link to={item?.link} key={index}> */}
-                      {item?.title}
-                    {/* </Link> */}
-                  </Box>
-                );
-              })}
-            </Box>
+          <Box sx={DropdownMenu}>
+            {menuData?.map((item: ImenuData, index: number): any => {
+              return (
+                <Box sx={DropdownLink}>
+                  {/* <Link to={item?.link} key={index}> */}
+                  {item?.title}
+                  {/* </Link> */}
+                </Box>
+              );
+            })}
           </Box>
         </Box>
       )}
