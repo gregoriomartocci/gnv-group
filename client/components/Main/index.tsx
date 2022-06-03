@@ -32,14 +32,15 @@ const Main = ({ slides }: ISlidesProps) => {
   const [current, setCurrent] = useState(0);
   const lenght = slides.length;
   const timeout = useRef(0);
+  const slideTime = 5000;
 
   useEffect(() => {
     const nextSlide = () => {
       setCurrent((current) => (current === lenght - 1 ? 0 : current + 1));
     };
 
-    timeout.current = window.setTimeout(nextSlide, 4000);
-    
+    timeout.current = window.setTimeout(nextSlide, slideTime);
+
     return () => {
       timeout.current && clearTimeout(timeout.current);
     };

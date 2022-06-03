@@ -12,17 +12,33 @@ import {
   MenuItems,
 } from "./Styles";
 import Dropdown from "../Dropdown";
+import UseModal from "../Modal";
+import Auth from "../Auth";
+import AuthImage from "../../assets/images/Image-1.jpg";
 
 const Menu = () => {
-  const [Open, setOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [auth, setAuth] = useState("login");
 
-  const Toggle = () => {
-    setOpen(!Open);
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const toggleDropdown = () => {
+    setOpenDropdown(!openDropdown);
   };
 
   return (
     <Fragment>
-      <Dropdown Open={Open} Toggle={Toggle} />
+      <UseModal open={openModal} handleClose={handleCloseModal}>
+        <Auth auth={auth} img={AuthImage}/>
+      </UseModal>
+      <Dropdown Open={openDropdown} Toggle={toggleDropdown} />
       <Box sx={MenuContainer}>
         <Box sx={MenuContent}>
           <Box sx={Logo}>Consultatio</Box>
@@ -31,11 +47,15 @@ const Menu = () => {
             <Box sx={MenuItem}>Novedades</Box>
             <Box sx={MenuItem}>Inversores</Box>
             <Box sx={MenuItem}>
-              <IconButton sx={AccountIcon}>
+              <IconButton sx={AccountIcon} onClick={handleOpen}>
                 <AccountCircleIcon />
               </IconButton>
             </Box>
-            <IconButton sx={CloseIcon} onClick={Toggle} aria-label="delete">
+            <IconButton
+              sx={CloseIcon}
+              onClick={toggleDropdown}
+              aria-label="delete"
+            >
               <MenuIcon fontSize="inherit" />
             </IconButton>
           </Box>
