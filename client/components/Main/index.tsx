@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import { Box, ImageListItem } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   ArrowButtons,
   MainContainer,
