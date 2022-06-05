@@ -12,10 +12,7 @@ export const SelectorWrapper: SxProps<Theme> = {
   display: "grid",
   gridTemplateRows: "repeat(2, auto)",
   width: "100%",
-  backgroundColor: "#fff",
   fontFamily: "Poppins",
-  boxShadow:
-    "rgba(0, 0, 0, 0.1) 0px 0px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;",
 };
 
 export const SelectorTabs: SxProps<Theme> = {
@@ -27,12 +24,16 @@ export const SelectorTab: SxProps<Theme> = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "#F6F6F6",
+  backgroundColor: "#fafafa",
   color: "#1A2D4E",
   padding: "20px",
   fontWeight: 600,
   fontSize: "13px",
   cursor: "pointer",
+  borderTop: "1px solid #eeeeee",
+  borderLeft: "1px solid #eeeeee",
+  borderRight: "1px solid #eeeeee",
+  borderRadius: "7px 7px 0 0",
 };
 
 export const SelectorTabActive: SxProps<Theme> = {
@@ -45,18 +46,24 @@ export const SelectorTabActive: SxProps<Theme> = {
   fontWeight: 600,
   color: "#425CCD",
   fontSize: "13px",
+  zIndex: 100,
+  borderTop: "1px solid #eeeeee",
+  borderLeft: "1px solid #eeeeee",
+  borderRight: "1px solid #eeeeee",
+  borderRadius: "7px 7px 0 0",
 };
 
 export const SelectorFilters: SxProps<Theme> = {
   display: "grid",
-  gridTemplateColumns: "repeat(3, auto) 15%",
+  gridTemplateColumns: "repeat(3, 1fr) 20%",
   gridColumnGap: "20px",
   gridTemplateRows: "repeat(2, auto)",
   gridRowsGap: 0,
   width: "100%",
   backgroundColor: "#fff",
-  padding: "25px",
+  padding: "20px",
   fontFamily: "Poppins",
+  border: "1px solid #eeeeee",
 };
 
 export const SelectorFilter: SxProps<Theme> = {

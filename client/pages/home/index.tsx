@@ -7,8 +7,7 @@ import { SliderData } from "../../data/SliderData";
 import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
 import { projectsData } from "../../data/SliderData";
 import Selector from "../../components/Selector";
-import Projects from "../../components/Projects/Index";
-
+import Projects from "../../components/Projects";
 
 const Home = () => {
   return (

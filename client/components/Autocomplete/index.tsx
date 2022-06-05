@@ -8,8 +8,8 @@ export default function ComboBox() {
       disablePortal
       id="combo-box-demo"
       options={top100Films}
-      sx={{ width: "100%" }}
-      renderInput={(params) => <TextField {...params} />}
+      sx={{ width: "100%", border: "none", outline:"none", focus:"none" }}
+      renderInput={(params) => <TextField {...params} size="small"/>}
     />
   );
 }

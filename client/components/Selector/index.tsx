@@ -58,28 +58,28 @@ const Selector = () => {
         </Box>
         <Box sx={SelectorFilters}>
           <Box
-            sx={SelectorFilter}
             style={{
               display: "flex",
               justifyContent: "flex-start",
+              fontSize: "14px",
             }}
           >
             <span>Location</span>
           </Box>
           <Box
-            sx={SelectorFilter}
             style={{
               display: "flex",
               justifyContent: "flex-start",
+              fontSize: "14px",
             }}
           >
             <span>Type</span>
           </Box>
           <Box
-            sx={SelectorFilter}
             style={{
               display: "flex",
               justifyContent: "flex-start",
+              fontSize: "14px",
             }}
           >
             <span>Price</span>
@@ -92,7 +92,7 @@ const Selector = () => {
             <ComboBox />
           </Box>
           <Box sx={SelectorFilter}>
-            <ComboBox/>
+            <ComboBox />
           </Box>
           <Box sx={SelectorFilter}>
             <Button type="Blue"> Search</Button>
