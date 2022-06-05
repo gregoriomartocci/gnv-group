@@ -6,6 +6,7 @@ export interface ButtonOptions {
   Auth: string;
   Primary: string;
   Secondary: string;
+  Blue: string;
 }
 
 export interface ButtonProps {

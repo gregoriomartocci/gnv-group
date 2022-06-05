@@ -3,7 +3,7 @@ import { SxProps, Theme } from "@mui/material";
 export const SectionStyle: SxProps<Theme> = {
   width: "100%",
   height: "100%",
-  padding: "35px 0",
+  padding: "35px",
 };
 
 export const Container: SxProps<Theme> = {

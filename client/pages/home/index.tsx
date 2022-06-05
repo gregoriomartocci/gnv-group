@@ -5,19 +5,20 @@ import Menu from "../../components/Menu";
 
 import { SliderData } from "../../data/SliderData";
 import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
-import Projects from "../../components/Dashboard/Components/Projects/Index";
 import { projectsData } from "../../data/SliderData";
+import Selector from "../../components/Selector";
+import Projects from "../../components/Projects/Index";
+
 
 const Home = () => {
-
   return (
     <Fragment>
       <Menu />
       <Main slides={SliderData} />
       <Section {...InfoDataOne} />
       <Section {...InfoDataTwo} />
-      <Projects projects={projectsData} ></Projects>
-      
+      <Selector />
+      <Projects projects={projectsData}></Projects>
     </Fragment>
   );
 };

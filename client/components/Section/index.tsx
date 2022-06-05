@@ -56,7 +56,6 @@ const Section = ({
           <p>{paragraphOne}</p>
           <p>{paragraphOTwo}</p>
         </Box>
-        {/* <Button>{buttonLabel}</Button> */}
         <Box sx={ColumRight}>
           <img src={image?.src} alt="home" />
         </Box>
