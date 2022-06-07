@@ -10,9 +10,9 @@ export const SliderButtons: SxProps<Theme> = {
   marginRight: "15px",
   userSelect: "none",
   transition: "0.3s",
+  color: "#b2b2b2",
 
   "&:hover": {
-    backgroundColor: "#cd853f",
     transform: "scale(1.05)",
   },
 };
@@ -39,17 +39,11 @@ export const ArrowButtons: SxProps<Theme> = {
   height: "50px",
   color: "#fff",
   cursor: "pointer",
-  background: "#000d1a",
   borderRadius: "50px",
   padding: "10px",
   marginRight: "1rem",
   userSelect: "none",
   transition: "0.3s",
-
-  "&:hover": {
-    backgroundColor: "#cd853f",
-    transform: "scale(1.05)",
-  },
 };
 
 export const MainSlide: SxProps<Theme> = {
@@ -106,7 +100,7 @@ export const MainContent: SxProps<Theme> = {
   h1: {
     fontSize: "clamp(1rem, 8vw, 2rem);",
     fontWeight: 400,
-    
+    textTransform: "uppercase",
     textShadow: "0px 0px 20px rgba(0, 0, 0, 0.4);",
     textAlign: "left",
     marginBottom: "10px",

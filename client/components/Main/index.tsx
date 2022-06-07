@@ -14,6 +14,7 @@ import {
 } from "./Styles";
 import { useEffect, useRef, useState } from "react";
 import { time } from "console";
+import Button from "../Button";
 
 export interface ISlide {
   title: string;
@@ -77,7 +78,9 @@ const Main = ({ slides }: ISlidesProps) => {
                   <Box sx={MainContent}>
                     <h1>{slide?.title}</h1>
                     <p>{slide?.price}</p>
-                    {/* <Button to={{slide.path}}></Button> */}
+                    <Box style={{ width: "150px" }}>
+                      <Button type={"Primary"}>View Home</Button>
+                    </Box>
                   </Box>
                 </Box>
               )}

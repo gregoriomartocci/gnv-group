@@ -3,7 +3,9 @@ import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
 import { AuthContainer, AuthImage, Login } from "./Styles";
 import InputGroup from "../Input";
-import Button from "../Button/Index";
+import Button from "../Button";
+import { Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 export interface IAuthProps {
   auth: string;
@@ -11,6 +13,12 @@ export interface IAuthProps {
 }
 
 const Auth = ({ auth, img }: IAuthProps) => {
+  const history = createBrowserHistory();
+
+  const toDashboard = () => {
+    return history.push("/profile");
+  };
+
   return (
     <Box sx={AuthContainer}>
       <Box sx={AuthImage}>
@@ -41,7 +49,9 @@ const Auth = ({ auth, img }: IAuthProps) => {
             type="password"
           />
 
-          <Button type="Auth">Sign In</Button>
+          <Box onClick={toDashboard}>
+            <Button type="Auth">Sign In</Button>
+          </Box>
 
           {/* Already have an account? <span>Sign in</span> */}
         </Box>

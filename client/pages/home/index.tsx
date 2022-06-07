@@ -15,7 +15,7 @@ const Home = () => {
       <Menu />
       <Main slides={SliderData} />
       <Section {...InfoDataOne} />
-      <Section {...InfoDataTwo} />
+      <Section {...InfoDataTwo} reverse/>
       <Selector />
       <Projects projects={projectsData}></Projects>
     </Fragment>

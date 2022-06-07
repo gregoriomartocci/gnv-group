@@ -12,7 +12,7 @@ import {
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import HomeIcon from "@mui/icons-material/Home";
 import ComboBox from "../Autocomplete";
-import Button from "../Button/Index";
+import Button from "../Button";
 
 const Selector = () => {
   const [active, setActive] = useState(1);

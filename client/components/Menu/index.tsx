@@ -41,7 +41,7 @@ const Menu = () => {
       <Dropdown Open={openDropdown} Toggle={toggleDropdown} />
       <Box sx={MenuContainer}>
         <Box sx={MenuContent}>
-          <Box sx={Logo}>Consultatio</Box>
+          <Box sx={Logo}>GNV Group</Box>
           <Box sx={MenuItems}>
             <Box sx={MenuItem}>Proyectos</Box>
             <Box sx={MenuItem}>Novedades</Box>
