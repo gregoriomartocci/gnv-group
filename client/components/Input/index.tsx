@@ -6,13 +6,28 @@ export interface InputProps {
   description: string;
   label: string;
   type: string;
+  value: string;
+  onChangeHandler: any;
 }
 
-const InputGroup = ({ name, description, label, type }: InputProps) => {
+const InputGroup = ({
+  name,
+  description,
+  label,
+  type,
+  value,
+  onChangeHandler,
+}: InputProps) => {
   return (
     <Box sx={InputContainer}>
       <span>{label}</span>
-      <input placeholder={description} type={type}></input>
+      <input
+        name={name}
+        placeholder={description}
+        type={type}
+        value={value}
+        onChange={onChangeHandler}
+      ></input>
     </Box>
   );
 };

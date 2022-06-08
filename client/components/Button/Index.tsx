@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
-import { Fragment } from "react";
+import { Button } from "@mui/material";
+
 import * as Styles from "./Styles";
 
 export interface ButtonOptions {
@@ -12,9 +12,15 @@ export interface ButtonOptions {
 export interface ButtonProps {
   type: keyof ButtonOptions;
   children: any;
+  onClickHandler?: any;
 }
 
-const Button = ({ type, children }: ButtonProps) => (
-  <Box sx={Styles[type]}>{children}</Box>
-);
-export default Button;
+const UseButton = ({ type, children, onClickHandler }: ButtonProps) =>
+  onClickHandler ? (
+    <Button sx={Styles[type]} onClick={onClickHandler}>
+      {children}
+    </Button>
+  ) : (
+    <Button sx={Styles[type]}>{children}</Button>
+  );
+export default UseButton;

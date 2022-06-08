@@ -2,6 +2,9 @@ import { SxProps, Theme } from "@mui/material";
 
 const magenta = "#e91e63";
 const naranja = "#ff3d00";
+const white = "#ffffff";
+const black = "#212121";
+const blue = "#425CCD";
 const linearGradient = `linear-gradient(45deg, ${magenta}, ${naranja})`;
 
 export const Primary: SxProps<Theme> = {
@@ -11,12 +14,16 @@ export const Primary: SxProps<Theme> = {
   width: "100%",
   margin: "15px 0",
   fontSize: "12px",
-  background: "#212121",
+  backgroundColor: black,
   borderRadius: "7.5px",
   padding: "15px",
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
+  fontFamily: "'Montserrat', sans-serif",
+  "&:hover": {
+    backgroundColor: black,
+  },
 };
 
 export const Secondary: SxProps<Theme> = {
@@ -26,12 +33,16 @@ export const Secondary: SxProps<Theme> = {
   width: "100%",
   margin: "15px 0",
   fontSize: "12px",
-  background: "#fff",
+  backgroundColor: white,
   borderRadius: "7.5px",
   padding: "15px",
   color: "#212121",
   cursor: "pointer",
   fontWeight: 500,
+  fontFamily: "'Montserrat', sans-serif",
+  "&:hover": {
+    backgroundColor: white,
+  },
 };
 
 export const Auth: SxProps<Theme> = {
@@ -47,6 +58,10 @@ export const Auth: SxProps<Theme> = {
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
+  fontFamily: "'Montserrat', sans-serif",
+  "&:hover": {
+    backgroundColor: magenta,
+  },
 };
 
 export const Blue: SxProps<Theme> = {
@@ -56,10 +71,15 @@ export const Blue: SxProps<Theme> = {
   width: "100%",
   margin: "15px 0",
   fontSize: "12px",
-  background: "#425CCD",
+  backgroundColor: blue,
   borderRadius: "7.5px",
   padding: "15px",
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
+  fontFamily: "'Montserrat', sans-serif",
+
+  "&:hover": {
+    backgroundColor: blue,
+  },
 };

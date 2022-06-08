@@ -21,6 +21,6 @@ app.use(morgan("dev"));
 // route middlewares
 app.use("/api", authRoutes);
 
-const port = 3001;
+const port = process.env.SERVER || 8000;
 
-app.listen(3001, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));

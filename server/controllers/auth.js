@@ -1,4 +1,3 @@
-
 import User from "../models/user";
 import jwt from "jsonwebtoken";
 import { hashPassword, comparePassword } from "../helpers/auth";
@@ -10,7 +9,6 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
 export const signup = async (req, res) => {
-  console.log("HIT SIGNUP");
   try {
     // validation
     const { name, email, password } = req.body;
@@ -117,7 +115,7 @@ export const forgotPassword = async (req, res) => {
     from: process.env.EMAIL_FROM,
     to: user.email,
     subject: "Password reset code",
-    html: "<h1>Your password  reset code is: {resetCode}</h1>"
+    html: "<h1>Your password  reset code is: {resetCode}</h1>",
   };
   // send email
   try {

@@ -11,8 +11,8 @@ const Projects = ({ projects }: IProjects) => {
   console.log(projects, "PROJECTS");
   return (
     <Box sx={ProjectsContainer}>
-      {projects?.map((project: IProject) => (
-        <Project {...project} />
+      {projects?.map((project: IProject, index: number) => (
+        <Project key={project.title + index} {...project} />
       ))}
     </Box>
   );
