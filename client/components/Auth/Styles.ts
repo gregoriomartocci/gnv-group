@@ -24,3 +24,11 @@ export const Login: SxProps<Theme> = {
   padding: "40px 20%",
   fontFamily: "'Poppins', sans-serif",
 };
+
+export const Toast: SxProps<Theme> = {
+  position: "fixed",
+  left: "40%",
+  width: "400px",
+  top: "100px",
+  fontFamily: "'Poppins', sans-serif",
+};

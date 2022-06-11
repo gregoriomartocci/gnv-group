@@ -1,7 +1,9 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { store } from "../redux/store";
+import { useEffect } from "react";
+import { setAuth } from "../redux/slices/auth";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

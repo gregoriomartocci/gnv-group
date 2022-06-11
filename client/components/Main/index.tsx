@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 import {
   ArrowButtons,
   MainContainer,
@@ -15,6 +15,8 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { time } from "console";
 import Button from "../Button";
+import { setAuth } from "../../redux/slices/auth";
+import { useDispatch } from "react-redux";
 
 export interface ISlide {
   title: string;
@@ -30,10 +32,20 @@ export interface ISlidesProps {
 }
 
 const Main = ({ slides }: ISlidesProps) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState<number>(0);
   const lenght = slides.length;
   const timeout = useRef(0);
   const slideTime = 5000;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("auth");
+    if (auth) {
+      const parse = JSON.parse(auth);
+      dispatch(setAuth({ ...parse }));
+    }
+  }, []);
 
   useEffect(() => {
     const nextSlide = () => {
