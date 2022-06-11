@@ -1,55 +1,35 @@
-import React, { Fragment, ReactNode, useState } from "react";
-import { Box, IconButton } from "@mui/material";
-import {
-  Button,
-  DropdownContainer,
-  DropdownLink,
-  DropdownMenu,
-} from "./Styles";
-import CloseIcon from "@mui/icons-material/Close";
-import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Box } from "@mui/material";
+import { DropdownContainer, Ok } from "./Styles";
 
-export const menuData = [
-  { title: "Proyectos", link: "/projects" },
-  { title: "Novedades", link: "/news" },
-  { title: "Inversores", link: "/investors" },
-  { title: "Ingesar", link: "/log-in" },
-];
-
-export interface ImenuData {
-  title: string;
-  link: string;
+export interface IBasicMenu {
+  children: any;
+  open: any;
+  handleClose: any;
+  anchorEl: any;
 }
 
-export interface IDropdownProps {
-  Open: boolean;
-  Toggle: any;
-}
-
-const Dropdown = ({ Open, Toggle }: IDropdownProps) => {
+export default function Dropdown({
+  children,
+  open,
+  anchorEl,
+  handleClose,
+}: IBasicMenu) {
   return (
-    <Fragment>
-      {Open && (
-        <Box sx={DropdownContainer}>
-          <IconButton sx={Button} onClick={Toggle} aria-label="delete">
-            <CloseIcon fontSize="inherit" />
-          </IconButton>
-          <Box sx={DropdownMenu}>
-            {menuData?.map((item: ImenuData, index: number): any => {
-              return (
-                <Box sx={DropdownLink}>
-                  {/* <Link to={item?.link} key={index}> */}
-                  {item?.title}
-                  {/* </Link> */}
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-      )}
-    </Fragment>
+    <Box sx={DropdownContainer}>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        {children}
+      </Menu>
+    </Box>
   );
-};
-
-export default Dropdown;
+}

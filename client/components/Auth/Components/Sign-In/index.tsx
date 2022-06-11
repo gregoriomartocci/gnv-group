@@ -9,6 +9,7 @@ import Toast from "../../../Alert";
 import { AuthContainer, AuthImage, Login } from "../../Styles";
 import { setAuth } from "../../../../redux/slices/auth";
 import api from "../../../../hooks/Api";
+import { useRouter } from "next/router";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -31,6 +32,7 @@ const SignIn = ({ img }: IAuthProps) => {
     email: "",
     password: "",
   });
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const onChangeHandler = (e: any) => {
@@ -49,6 +51,7 @@ const SignIn = ({ img }: IAuthProps) => {
         path: "/signin",
         payload: input,
       });
+      console.log("Dateushh", data);
       setLoading(false);
       if (data?.error) {
         setError({ auth: "failed", message: data?.error });
@@ -56,6 +59,7 @@ const SignIn = ({ img }: IAuthProps) => {
         setError({ ...error, auth: "success" });
         localStorage.setItem("auth", JSON.stringify(data));
         dispatch(setAuth(data));
+        router.push("/profile");
       }
     } catch (err) {
       setError({ auth: "failed", message: "Something went wrong" });
@@ -66,7 +70,7 @@ const SignIn = ({ img }: IAuthProps) => {
   return (
     <Fragment>
       {error?.auth === "success" && (
-        <Toast message="Account successfully created" type="success" />
+        <Toast message="Successfully signed in" type="success" />
       )}
       {error?.auth === "failed" && (
         <Toast message={error.message} type="error" />

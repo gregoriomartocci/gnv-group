@@ -11,15 +11,45 @@ import {
   MenuItem,
   MenuItems,
 } from "./Styles";
-import Dropdown from "../Dropdown";
 import UseModal from "../Modal";
 import Auth from "../Auth";
 import AuthImage from "../../assets/images/Image-1.jpg";
+import ResponsiveMenu from "../ResponsiveMenu";
+import Dropdown from "../Dropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { IAuth } from "../../redux/slices/auth";
+import { setAuth } from "../../redux/slices/auth";
+import Account from "../Account";
+
+export interface IState {
+  articles: {};
+  projects: {};
+  users: {};
+  auth: IAuth;
+}
 
 const Menu = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [auth, setAuth] = useState("sign-up");
+  const [selectAuth, setSelectAuth] = useState("sign-up");
+  const dispatch = useDispatch();
+  // const { data } = useSelector<IState>((state) => state?.auth);
+
+  const SignOut = () => {
+    localStorage.removeItem("auth");
+    dispatch(setAuth({ user: "", token: "" }));
+  };
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const openBasicMenu = Boolean(anchorEl);
+
+  const handleClickBasicMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseBasicMenu = () => {
+    setAnchorEl(null);
+  };
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -36,9 +66,9 @@ const Menu = () => {
   return (
     <Fragment>
       <UseModal open={openModal} handleClose={handleCloseModal}>
-        <Auth auth={auth} img={AuthImage} />
+        <Auth auth={selectAuth} img={AuthImage} />
       </UseModal>
-      <Dropdown Open={openDropdown} Toggle={toggleDropdown} />
+      <ResponsiveMenu Open={openDropdown} Toggle={toggleDropdown} />
       <Box sx={MenuContainer}>
         <Box sx={MenuContent}>
           <Box sx={Logo}>GNV Group</Box>
@@ -46,11 +76,28 @@ const Menu = () => {
             <Box sx={MenuItem}>Proyectos</Box>
             <Box sx={MenuItem}>Novedades</Box>
             <Box sx={MenuItem}>Inversores</Box>
+
             <Box sx={MenuItem}>
-              <IconButton sx={AccountIcon} onClick={handleOpen}>
+              <Dropdown
+                open={openBasicMenu}
+                handleClose={handleCloseBasicMenu}
+                anchorEl={anchorEl}
+              >
+                <Account />
+              </Dropdown>
+              <IconButton
+                sx={AccountIcon}
+                id="basic-button"
+                aria-controls={openBasicMenu ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={openBasicMenu ? "true" : undefined}
+                onClick={handleClickBasicMenu}
+                // onClick={handleOpen}
+              >
                 <AccountCircleIcon />
               </IconButton>
             </Box>
+
             <IconButton
               sx={CloseIcon}
               onClick={toggleDropdown}
