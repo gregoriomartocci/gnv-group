@@ -23,10 +23,15 @@ export default function Toast({ message, type }: IToast) {
   const [open, setOpen] = React.useState(true);
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={ToastContainer}>
       <Collapse in={open}>
         <Alert
-          sx={ToastContainer}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontFamily: "'Poppins', sans-serif",
+          }}
           variant="filled"
           severity={type}
           action={

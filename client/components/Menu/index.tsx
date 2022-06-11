@@ -19,7 +19,7 @@ import AuthImage from "../../assets/images/Image-1.jpg";
 const Menu = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [auth, setAuth] = useState("login");
+  const [auth, setAuth] = useState("sign-up");
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -36,7 +36,7 @@ const Menu = () => {
   return (
     <Fragment>
       <UseModal open={openModal} handleClose={handleCloseModal}>
-        <Auth auth={auth} img={AuthImage}/>
+        <Auth auth={auth} img={AuthImage} />
       </UseModal>
       <Dropdown Open={openDropdown} Toggle={toggleDropdown} />
       <Box sx={MenuContainer}>
