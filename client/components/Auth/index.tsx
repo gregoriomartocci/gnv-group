@@ -9,7 +9,7 @@ import axios from "axios";
 import Toast from "../Alert";
 import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
-
+import Post from "../../hooks";
 export interface IAuthProps {
   auth: string;
   img: StaticImageData;
@@ -47,10 +47,7 @@ const Auth = ({ auth, img }: IAuthProps) => {
     setError({ auth: "", message: "" });
     setLoading(true);
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/api/signup",
-        input
-      );
+      const data = await Post({ path: "/signup", payload: input });
       setLoading(false);
       if (data?.error) {
         setError({ auth: "failed", message: data?.error });
