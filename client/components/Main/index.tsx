@@ -62,13 +62,11 @@ const Main = ({ slides }: ISlidesProps) => {
   const nextSlide = () => {
     timeout.current && clearTimeout(timeout.current);
     setCurrent(current === lenght - 1 ? 0 : current + 1);
-    console.log(current);
   };
 
   const prevSlide = () => {
     timeout.current && clearTimeout(timeout.current);
     setCurrent(current === 0 ? lenght - 1 : current - 1);
-    console.log(current);
   };
 
   return (

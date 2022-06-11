@@ -8,7 +8,6 @@ export interface IProjects {
 }
 
 const Projects = ({ projects }: IProjects) => {
-  console.log(projects, "PROJECTS");
   return (
     <Box sx={ProjectsContainer}>
       {projects?.map((project: IProject, index: number) => (

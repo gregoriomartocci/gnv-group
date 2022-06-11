@@ -9,7 +9,7 @@ import axios from "axios";
 import Toast from "../Alert";
 import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
-import Post from "../../hooks";
+import Post from "../../hooks/Api";
 import SignUp from "./Components/Sign-Up";
 import SignIn from "./Components/Sign-In";
 export interface IAuthProps {

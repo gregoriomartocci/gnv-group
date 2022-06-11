@@ -6,9 +6,9 @@ import { useDispatch } from "react-redux";
 import UseButton from "../../../Button";
 import InputGroup from "../../../Input";
 import Toast from "../../../Alert";
-import { AuthContainer, AuthImage, Login } from "../../Styles";
+import { Login } from "../../Styles";
 import { setAuth } from "../../../../redux/slices/auth";
-import Post from "../../../../hooks";
+import api from "../../../../hooks/Api";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -46,7 +46,11 @@ const SignUp = ({ img }: IAuthProps) => {
     setError({ auth: "", message: "" });
     setLoading(true);
     try {
-      const data = await Post({ path: "/signup", payload: input });
+      const data = await api({
+        method: "post",
+        path: "/signup",
+        payload: input,
+      });
       setLoading(false);
       if (data?.error) {
         setError({ auth: "failed", message: data?.error });
@@ -59,7 +63,6 @@ const SignUp = ({ img }: IAuthProps) => {
       setError({ auth: "failed", message: "Something went wrong" });
       setLoading(false);
     }
-    console.log(input, "input");
   };
 
   return (

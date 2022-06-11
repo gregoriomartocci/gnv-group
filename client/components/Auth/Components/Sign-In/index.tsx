@@ -8,7 +8,7 @@ import InputGroup from "../../../Input";
 import Toast from "../../../Alert";
 import { AuthContainer, AuthImage, Login } from "../../Styles";
 import { setAuth } from "../../../../redux/slices/auth";
-import Post from "../../../../hooks";
+import api from "../../../../hooks/Api";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -44,7 +44,11 @@ const SignIn = ({ img }: IAuthProps) => {
     setError({ auth: "", message: "" });
     setLoading(true);
     try {
-      const data = await Post({ path: "/signin", payload: input });
+      const data = await api({
+        method: "post",
+        path: "/signin",
+        payload: input,
+      });
       setLoading(false);
       if (data?.error) {
         setError({ auth: "failed", message: data?.error });
@@ -67,7 +71,7 @@ const SignIn = ({ img }: IAuthProps) => {
       {error?.auth === "failed" && (
         <Toast message={error.message} type="error" />
       )}
-      
+
       <Box sx={Login}>
         <Fragment>
           <span
