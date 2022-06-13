@@ -14,16 +14,7 @@ export const AccountContainer: SxProps<Theme> = {
 export const AccountTop: SxProps<Theme> = {
   display: "grid",
   gridTemplateColumns: "repeat(2, 1fr)",
-  justifyContent: "center",
-  alignItems: "center",
   color: "#212121",
-};
-
-export const AccountMid: SxProps<Theme> = {
-  display: "grid",
-  gridTemplateRows: "repeat(3, 1fr)",
-  justifyContent: "center",
-  alignItems: "center",
 };
 
 export const AccountBottom: SxProps<Theme> = {

@@ -1,61 +1,71 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import HelpIcon from "@mui/icons-material/Help";
-import {
-  AccountBottom,
-  AccountContainer,
-  AccountMid,
-  AccountTop,
-} from "./Styles";
+import { AccountBottom, AccountContainer, AccountTop } from "./Styles";
 import AccountMenuItem from "./Components/AccountMenuItems";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../redux/slices/auth";
 
 const menuItems = {
   mid: [
     {
       icon: <AccountCircleIcon />,
-      text: "Profile",
+      text: "Perfil",
+      route: "/profile",
     },
-
     {
       icon: <SettingsIcon />,
-      text: "Settings",
-    },
-
-    {
-      icon: <DashboardIcon />,
-      text: "Profile",
-    },
-
-    {
-      icon: <HelpIcon />,
-      text: "Help & Support",
+      text: "Ajustes",
+      route: "/settings",
     },
   ],
-  logout: {
-    icon: <LogoutIcon />,
-    text: "Logout",
-  },
+  logout: [
+    {
+      icon: <LogoutIcon />,
+      text: "Cerrar Sesión",
+      route: "",
+    },
+  ],
 };
 
-const Account = () => {
+interface IAccount {
+  handleClose: any;
+}
+
+const Account = ({ handleClose }: IAccount) => {
+  const dispatch = useDispatch();
+
+  const SignOut = () => {
+    localStorage.removeItem("auth");
+    dispatch(setAuth({ user: "", token: "" }));
+    handleClose();
+    console.log("LOGOUT");
+  };
+
   return (
     <Box sx={AccountContainer}>
-      <Box sx={AccountTop}>
-        <Box></Box>
-        <Box></Box>
-      </Box>
-      <Box sx={AccountMid}>
-        {menuItems?.mid?.map(({ icon, text }, index) => (
-          <AccountMenuItem key={index} icon={icon} text={text} />
+      <Box sx={AccountTop}></Box>
+      <Divider sx={{ my: 0.5 }} />
+      <Box>
+        {menuItems?.mid?.map(({ icon, text, route }, index) => (
+          <AccountMenuItem key={index} icon={icon} text={text} route={route} />
         ))}
       </Box>
+      <Divider sx={{ my: 0.5 }} />
       <Box sx={AccountBottom}>
-        <Box></Box>
-        <Box></Box>
+        {menuItems?.logout?.map(({ icon, text, route }, index) => (
+          <AccountMenuItem
+            key={index}
+            icon={icon}
+            text={text}
+            route={route}
+            action={SignOut}
+          />
+        ))}
       </Box>
     </Box>
   );

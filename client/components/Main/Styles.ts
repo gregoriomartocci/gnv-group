@@ -19,6 +19,7 @@ export const SliderButtons: SxProps<Theme> = {
 
 export const MainSection: SxProps<Theme> = {
   height: "100vh",
+  width: "100%",
   maxHeight: "1100px",
   position: "relative",
   overflow: "hidden",

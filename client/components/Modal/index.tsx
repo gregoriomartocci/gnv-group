@@ -12,7 +12,12 @@ export interface IUseModalProps {
 
 const UseModal = ({ open, handleClose, children }: IUseModalProps) => {
   return (
-    <Modal sx={ModalContainer} open={open} onClose={handleClose}>
+    <Modal
+      sx={ModalContainer}
+      open={open}
+      onClose={handleClose}
+      disableScrollLock
+    >
       <Box sx={ModalWrapper}>{children}</Box>
     </Modal>
   );

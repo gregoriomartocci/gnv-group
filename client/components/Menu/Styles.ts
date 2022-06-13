@@ -1,21 +1,22 @@
 import { SxProps, Theme } from "@mui/material";
 
 export const MenuContainer: SxProps<Theme> = {
-  position: "absolute",
+  position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   padding: "0 10%",
   height: "80px",
-  zIndex: 10,
+  zIndex: 50,
   color: "#fff",
 };
 
 export const MenuContent: SxProps<Theme> = {
   display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
+  gridTemplateColumns: "1fr auto",
   alignItems: "center",
   height: "100%",
+  width: "100%",
 };
 
 export const Logo: SxProps<Theme> = {
@@ -25,9 +26,9 @@ export const Logo: SxProps<Theme> = {
 
 export const MenuItems: SxProps<Theme> = {
   display: "flex",
-  flexDirection: "row",
   justifyContent: "flex-end",
   alignItems: "center",
+  width: "100%",
 };
 
 export const MenuItem: SxProps<Theme> = {
@@ -41,4 +42,3 @@ export const AccountIcon: SxProps<Theme> = {
 export const CloseIcon: SxProps<Theme> = {
   color: "#fff",
 };
-

@@ -1,15 +1,10 @@
-import React, { Fragment, useState } from "react";
-import { Alert, Box, CircularProgress } from "@mui/material";
+import React from "react";
+import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
 import { AuthContainer, AuthImage, Login } from "./Styles";
-import InputGroup from "../Input";
+
 import Link from "next/link";
-import UseButton from "../Button";
-import axios from "axios";
-import Toast from "../Alert";
-import { setAuth } from "../../redux/slices/auth";
-import { useDispatch } from "react-redux";
-import Post from "../../hooks/Api";
+
 import SignUp from "./Components/Sign-Up";
 import SignIn from "./Components/Sign-In";
 export interface IAuthProps {

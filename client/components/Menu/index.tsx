@@ -16,11 +16,9 @@ import Auth from "../Auth";
 import AuthImage from "../../assets/images/Image-1.jpg";
 import ResponsiveMenu from "../ResponsiveMenu";
 import Dropdown from "../Dropdown";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { IAuth } from "../../redux/slices/auth";
-import { setAuth } from "../../redux/slices/auth";
 import Account from "../Account";
-
 export interface IState {
   articles: {};
   projects: {};
@@ -32,14 +30,7 @@ const Menu = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectAuth, setSelectAuth] = useState("sign-up");
-  const dispatch = useDispatch();
-  // const { data } = useSelector<IState>((state) => state?.auth);
-
-  const SignOut = () => {
-    localStorage.removeItem("auth");
-    dispatch(setAuth({ user: "", token: "" }));
-  };
-
+  const { data } = useSelector((state: IState) => state?.auth);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openBasicMenu = Boolean(anchorEl);
 
@@ -76,23 +67,16 @@ const Menu = () => {
             <Box sx={MenuItem}>Proyectos</Box>
             <Box sx={MenuItem}>Novedades</Box>
             <Box sx={MenuItem}>Inversores</Box>
-
             <Box sx={MenuItem}>
-              <Dropdown
-                open={openBasicMenu}
-                handleClose={handleCloseBasicMenu}
-                anchorEl={anchorEl}
-              >
-                <Account />
-              </Dropdown>
               <IconButton
                 sx={AccountIcon}
                 id="basic-button"
                 aria-controls={openBasicMenu ? "basic-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={openBasicMenu ? "true" : undefined}
-                onClick={handleClickBasicMenu}
-                // onClick={handleOpen}
+                onClick={
+                  data && data.user !== "" ? handleClickBasicMenu : handleOpen
+                }
               >
                 <AccountCircleIcon />
               </IconButton>
@@ -108,6 +92,13 @@ const Menu = () => {
           </Box>
         </Box>
       </Box>
+      <Dropdown
+        open={data && data?.user !== "" && openBasicMenu}
+        handleClose={handleCloseBasicMenu}
+        anchorEl={anchorEl}
+      >
+        <Account handleClose={handleCloseBasicMenu} />
+      </Dropdown>
     </Fragment>
   );
 };
