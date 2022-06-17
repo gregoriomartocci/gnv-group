@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Box } from "@mui/material";
-import { DropdownContainer, Ok } from "./Styles";
+import { DropdownContainer } from "./Styles";
 
 export interface IBasicMenu {
   children: any;

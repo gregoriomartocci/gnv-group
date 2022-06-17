@@ -74,9 +74,7 @@ const Menu = () => {
                 aria-controls={openBasicMenu ? "basic-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={openBasicMenu ? "true" : undefined}
-                onClick={
-                  data && data.user !== "" ? handleClickBasicMenu : handleOpen
-                }
+                onClick={data?.user !== "" ? handleClickBasicMenu : handleOpen}
               >
                 <AccountCircleIcon />
               </IconButton>
@@ -93,7 +91,7 @@ const Menu = () => {
         </Box>
       </Box>
       <Dropdown
-        open={data && data?.user !== "" && openBasicMenu}
+        open={data?.user !== "" && openBasicMenu}
         handleClose={handleCloseBasicMenu}
         anchorEl={anchorEl}
       >

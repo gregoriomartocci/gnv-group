@@ -43,7 +43,6 @@ const Account = ({ handleClose }: IAccount) => {
     localStorage.removeItem("auth");
     dispatch(setAuth({ user: "", token: "" }));
     handleClose();
-    console.log("LOGOUT");
   };
 
   return (

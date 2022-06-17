@@ -1,14 +1,13 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { MainContainer } from "./Styles";
-import Table from "../Table";
 
-const Main = () => {
-  return (
-    <Box sx={MainContainer}>
-      <Table />
-    </Box>
-  );
+interface Main {
+  children: any;
+}
+
+const Main = ({ children }: Main) => {
+  return <Box sx={MainContainer}>{children}</Box>;
 };
 
 export default Main;

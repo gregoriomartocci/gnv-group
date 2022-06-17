@@ -5,7 +5,11 @@ import Sidebar from "./Components/Sidebar";
 import Menu from "./Components/Menu";
 import Main from "./Components/Main";
 
-const Dashboard = () => {
+interface IDahboard {
+  children: any;
+}
+
+const Dashboard = ({ children }: IDahboard) => {
   return (
     <Box sx={DashboardContainer}>
       <Box>
@@ -13,7 +17,7 @@ const Dashboard = () => {
       </Box>
       <Box>
         <Menu />
-        <Main />
+        <Main>{children}</Main>
       </Box>
     </Box>
   );

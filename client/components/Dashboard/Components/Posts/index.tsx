@@ -37,7 +37,6 @@ const Table = () => {
     { field: "country" },
     { field: "year" },
     { field: "date" },
-
     { field: "total" },
   ]);
 

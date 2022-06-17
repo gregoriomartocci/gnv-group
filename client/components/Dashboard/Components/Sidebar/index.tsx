@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { MenuItem, MenuItems, SidebarContainer } from "./Styles";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import GroupIcon from "@mui/icons-material/Group";
+import Link from "next/link";
 
 const Sidebar = () => {
   return (
@@ -12,17 +13,27 @@ const Sidebar = () => {
         <Box sx={MenuItems}>
           <span> ADMINISTRAR CONTENIDO</span>
 
-          <Box sx={MenuItem}>
-            <ApartmentIcon
-              sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
-            />
-            <span>Proyectos</span>
-          </Box>
+          <Link href={"/profile/projects"}>
+            <a>
+              <Box sx={MenuItem}>
+                <ApartmentIcon
+                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
+                />
+                <span>Proyectos</span>
+              </Box>
+            </a>
+          </Link>
 
-          <Box sx={MenuItem}>
-            <GroupIcon sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }} />
-            <span>Usuarios</span>
-          </Box>
+          <Link href={"/profile/users"}>
+            <a>
+              <Box sx={MenuItem}>
+                <GroupIcon
+                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
+                />
+                <span>Usuarios</span>
+              </Box>
+            </a>
+          </Link>
 
           <Box sx={MenuItem}></Box>
           <Box sx={MenuItem}></Box>

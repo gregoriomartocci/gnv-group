@@ -1,10 +1,27 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Avatar, Box, IconButton } from "@mui/material";
 import { MenuContainer } from "./Styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useSelector } from "react-redux";
+import { IState } from "../../../Menu";
+import Dropdown from "../../../Dropdown";
+import Account from "../../../Account";
 
 const Menu = () => {
+  const { data } = useSelector((state: IState) => state?.auth);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const openBasicMenu = Boolean(anchorEl);
+
+  const handleClickBasicMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseBasicMenu = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box sx={MenuContainer}>
       <Box>
@@ -19,9 +36,17 @@ const Menu = () => {
           src="/static/images/avatar/1.jpg"
         />
 
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={handleClickBasicMenu}>
           <KeyboardArrowDownIcon />
         </IconButton>
+        
+        <Dropdown
+          open={data?.user !== "" && openBasicMenu}
+          handleClose={handleCloseBasicMenu}
+          anchorEl={anchorEl}
+        >
+          <Account handleClose={handleCloseBasicMenu} />
+        </Dropdown>
       </Box>
     </Box>
   );
