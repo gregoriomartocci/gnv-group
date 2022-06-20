@@ -15,14 +15,15 @@ import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import { rows } from "../../data";
 import { CellTable } from "../../Styles";
 import { GrayBackground } from "../../data/Styles";
+import UseButton from "../../../../../components/Button";
+import UseModal from "../../../../../components/Modal";
+import CreateUser from "../../../users/components/Create";
 
 interface Data {
   id: number;
@@ -184,63 +185,21 @@ interface EnhancedTableToolbarProps {
   numSelected: number;
 }
 
-const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
-  const { numSelected } = props;
-
-  return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity
-            ),
-        }),
-      }}
-    >
-      {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: "1 1 100%" }}
-          color="inherit"
-          variant="subtitle1"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography
-          sx={{ flex: "1 1 100%", fontFamily: "Montserrat" }}
-          variant="h6"
-          id="tableTitle"
-        >
-          Users
-        </Typography>
-      )}
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
-    </Toolbar>
-  );
-};
-
-export default function EnhancedTable() {
+export default function UseTable() {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof Data>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(9);
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -297,11 +256,67 @@ export default function EnhancedTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+  const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
+    const { numSelected } = props;
+
+    return (
+      <Toolbar
+        sx={{
+          pl: { sm: 2 },
+          pr: { xs: 1, sm: 1 },
+          ...(numSelected > 0 && {
+            bgcolor: (theme) =>
+              alpha(
+                theme.palette.primary.main,
+                theme.palette.action.activatedOpacity
+              ),
+          }),
+        }}
+      >
+        {numSelected > 0 ? (
+          <Typography
+            sx={{ flex: "1 1 100%" }}
+            color="inherit"
+            variant="subtitle1"
+          >
+            {numSelected} selected
+          </Typography>
+        ) : (
+          <Typography
+            sx={{ flex: "1 1 100%", fontFamily: "Montserrat" }}
+            variant="h6"
+            id="tableTitle"
+          >
+            Users
+          </Typography>
+        )}
+        {numSelected > 0 ? (
+          <Tooltip title="Delete">
+            <IconButton>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <React.Fragment>
+            <UseButton type="Primary" onClickHandler={handleOpen}>
+              Add User
+            </UseButton>
+
+            <UseModal open={openModal} handleClose={handleCloseModal}>
+              <CreateUser />
+            </UseModal>
+          </React.Fragment>
+        )}
+      </Toolbar>
+    );
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Paper
         sx={{
           width: "100%",
+          height: "100%",
           borderRadius: "10px",
           padding: "15px",
           fontFamily: "Montserrat",
@@ -400,7 +415,6 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
           component="span"
           count={rows.length}
           rowsPerPage={rowsPerPage}

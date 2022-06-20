@@ -17,11 +17,11 @@
     "axios": "^0.27.2",
     "nanoid": "^3.3.4",
     "next": "12.1.6",
-    "primereact": "^8.1.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "rich-markdown-editor": "^11.21.3"
   },
   "devDependencies": {
     "@types/node": "17.0.36",

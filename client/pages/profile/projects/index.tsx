@@ -1,9 +1,13 @@
 import React, { Fragment as Box } from "react";
 import Dashboard from "../../../components/Dashboard";
-import EnhancedTable from "./components/Table";
+import UseTable from "./components/Table";
 
 const Posts = () => {
-  return <Dashboard><EnhancedTable/></Dashboard>;
+  return (
+    <Dashboard>
+      <UseTable />
+    </Dashboard>
+  );
 };
 
 export default Posts;

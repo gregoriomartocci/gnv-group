@@ -4,9 +4,9 @@ import { StaticImageData } from "next/image";
 import { AuthContainer, AuthImage, Login } from "./Styles";
 
 import Link from "next/link";
-
 import SignUp from "./Components/Sign-Up";
 import SignIn from "./Components/Sign-In";
+
 export interface IAuthProps {
   auth: string;
   img: StaticImageData;

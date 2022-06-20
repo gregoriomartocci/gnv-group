@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Fragment as Box } from "react";
 import Dashboard from "../../../components/Dashboard";
-import DataTable from "./components/Table";
+import UseTable from "../projects/components/Table";
 
-const Users = () => {
+const Posts = () => {
   return (
     <Dashboard>
-      <DataTable />
+      <UseTable />
     </Dashboard>
   );
 };
 
-export default Users;
+export default Posts;

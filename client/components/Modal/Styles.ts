@@ -14,7 +14,6 @@ export const ModalContainer: SxProps<Theme> = {
 
 export const ModalWrapper: SxProps<Theme> = {
   position: "absolute",
-  height: "60vh",
   maxWidth: "60vw",
   borderRadius: "25px",
   backgroundColor: "#fff",

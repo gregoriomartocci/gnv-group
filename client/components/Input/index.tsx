@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { Fragment } from "react";
 import { InputContainer } from "./Styles";
 
 export interface InputProps {
@@ -8,6 +9,7 @@ export interface InputProps {
   type: string;
   value: string;
   onChangeHandler: any;
+  children?: React.ReactNode;
 }
 
 const InputGroup = ({
@@ -16,18 +18,30 @@ const InputGroup = ({
   label,
   type,
   value,
+  children,
   onChangeHandler,
 }: InputProps) => {
   return (
     <Box sx={InputContainer}>
-      <span>{label}</span>
-      <input
-        name={name}
-        placeholder={description}
-        type={type}
-        value={value}
-        onChange={onChangeHandler}
-      ></input>
+      <Fragment>
+        {children ? (
+          <Fragment>
+            <span>{label}</span>
+            {children}
+          </Fragment>
+        ) : (
+          <Box>
+            <span>{label}</span>
+            <input
+              name={name}
+              placeholder={description}
+              type={type}
+              value={value}
+              onChange={onChangeHandler}
+            />
+          </Box>
+        )}
+      </Fragment>
     </Box>
   );
 };
