@@ -185,7 +185,11 @@ interface EnhancedTableToolbarProps {
   numSelected: number;
 }
 
-export default function UseTable() {
+interface IUseTable {
+  children: React.ReactNode;
+}
+
+export default function UseTable({ children }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof Data>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -303,7 +307,7 @@ export default function UseTable() {
             </UseButton>
 
             <UseModal open={openModal} handleClose={handleCloseModal}>
-              <CreateUser />
+              {children}
             </UseModal>
           </React.Fragment>
         )}

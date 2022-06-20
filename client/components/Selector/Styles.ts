@@ -1,6 +1,6 @@
-import { SxProps, Theme } from "@mui/material";
+import { SxProps } from "@mui/material";
 
-export const SelectorContainer: SxProps<Theme> = {
+export const SelectorContainer: SxProps= {
   display: "grid",
   gridTemplateColumns: "1fr",
   width: "100%",
@@ -8,19 +8,19 @@ export const SelectorContainer: SxProps<Theme> = {
   margin: "10px, 0px",
 };
 
-export const SelectorWrapper: SxProps<Theme> = {
+export const SelectorWrapper: SxProps = {
   display: "grid",
   gridTemplateRows: "repeat(2, auto)",
   width: "100%",
   fontFamily: "Poppins",
 };
 
-export const SelectorTabs: SxProps<Theme> = {
+export const SelectorTabs: SxProps = {
   display: "flex",
   fontFamily: "Poppins",
 };
 
-export const SelectorTab: SxProps<Theme> = {
+export const SelectorTab: SxProps = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -36,7 +36,7 @@ export const SelectorTab: SxProps<Theme> = {
   borderRadius: "7px 7px 0 0",
 };
 
-export const SelectorTabActive: SxProps<Theme> = {
+export const SelectorTabActive: SxProps = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -53,7 +53,7 @@ export const SelectorTabActive: SxProps<Theme> = {
   borderRadius: "7px 7px 0 0",
 };
 
-export const SelectorFilters: SxProps<Theme> = {
+export const SelectorFilters: SxProps = {
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr) 20%",
   gridColumnGap: "20px",
@@ -66,7 +66,7 @@ export const SelectorFilters: SxProps<Theme> = {
   border: "1px solid #eeeeee",
 };
 
-export const SelectorFilter: SxProps<Theme> = {
+export const SelectorFilter: SxProps = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
