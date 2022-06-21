@@ -5,9 +5,10 @@ import Autocomplete from "@mui/material/Autocomplete";
 interface IUseAutocomplete {
   items: any;
   label?: string;
+  placeholder: string;
 }
 
-export default function UseAutocomplete({ items, label }: IUseAutocomplete) {
+export default function UseAutocomplete({ items, label, placeholder }: IUseAutocomplete) {
   return (
     <React.Fragment>
       {label ? (
@@ -28,6 +29,7 @@ export default function UseAutocomplete({ items, label }: IUseAutocomplete) {
         options={items}
         sx={{ width: "100%", border: "none", outline: "none", focus: "none" }}
         renderInput={(params) => <TextField {...params} size="small" />}
+        placeholder={placeholder}
       />
     </React.Fragment>
   );

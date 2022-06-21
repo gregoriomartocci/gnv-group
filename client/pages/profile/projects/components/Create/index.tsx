@@ -73,7 +73,8 @@ const CreateProject = () => {
     }
   };
 
-  const options = ["En construcción", "Finalizado"];
+  const status = ["En construcción", "Finalizado"];
+  const type = ["Casa", "Departamento"];
 
   const steps = [
     <Fragment>
@@ -94,7 +95,8 @@ const CreateProject = () => {
         onChangeHandler={onChangeHandler}
       />
 
-      <UseAutocomplete items={options} label="Estado" />
+      <UseAutocomplete items={status} label="Estado" placeholder="sad" />
+      <UseAutocomplete items={type} label="Tipo" placeholder="sad" />
 
       <UseButton type="Blue" onClickHandler={onSubmitHandler}>
         {loading ? (
@@ -117,11 +119,11 @@ const CreateProject = () => {
           color: "#424242",
         }}
       >
-        Create Project
+        Agregar Proyecto
       </span>
 
       <UseTabs value={value} setValue={setValue}></UseTabs>
-      <React.Fragment>{steps[value]}</React.Fragment>
+      <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[value]}</Box>
     </Box>
   );
 };
