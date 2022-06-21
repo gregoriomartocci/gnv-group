@@ -16,6 +16,12 @@ import { Login } from "./Styles";
 import UseAutocomplete from "../../../../../components/Autocomplete";
 import ImageUploader from "../../../../../components/ImageUploader";
 import UseTabs from "../../../../../components/Tabs";
+import dynamic from "next/dynamic";
+
+const Editor = dynamic(
+  () => import("../../../../../components/Editor"),
+  { ssr: false }
+);
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -36,6 +42,7 @@ const CreateProject = () => {
   const [error, setError] = useState<errorType>({ auth: "", message: "" });
   const [input, setInput] = useState<inputType>({ name: "", price: 0 });
   const [value, setValue] = useState<number>(0);
+  const [text, setText] = useState<string>("");
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -107,6 +114,7 @@ const CreateProject = () => {
       </UseButton>
     </Fragment>,
     <ImageUploader />,
+    <Editor value={text} setValue={setText} />,
   ];
 
   return (
@@ -121,8 +129,7 @@ const CreateProject = () => {
       >
         Agregar Proyecto
       </span>
-
-      <UseTabs value={value} setValue={setValue}></UseTabs>
+      <UseTabs value={value} setValue={setValue} />
       <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[value]}</Box>
     </Box>
   );

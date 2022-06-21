@@ -8,7 +8,11 @@ interface IUseAutocomplete {
   placeholder: string;
 }
 
-export default function UseAutocomplete({ items, label, placeholder }: IUseAutocomplete) {
+export default function UseAutocomplete({
+  items,
+  label,
+  placeholder,
+}: IUseAutocomplete) {
   return (
     <React.Fragment>
       {label ? (
@@ -27,7 +31,14 @@ export default function UseAutocomplete({ items, label, placeholder }: IUseAutoc
         disablePortal
         id="combo-box-demo"
         options={items}
-        sx={{ width: "100%", border: "none", outline: "none", focus: "none" }}
+        sx={{
+          width: "100%",
+          p: "5px 0",
+          m: "5px 0px",
+          border: "none",
+          outline: "none",
+          focus: "none",
+        }}
         renderInput={(params) => <TextField {...params} size="small" />}
         placeholder={placeholder}
       />

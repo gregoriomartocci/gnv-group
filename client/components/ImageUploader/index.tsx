@@ -151,9 +151,7 @@ const ImageUploader = () => {
               <CloudUploadIcon sx={dropFileInputIcon} />
             </Box>
             <Box>
-              <Typography>
-                Arrastre o seleccione su imagen desde aquí
-              </Typography>
+              <Typography>Arrastre o seleccione su imágenes aquí</Typography>
               <Box>
                 <input
                   type="file"
@@ -174,10 +172,12 @@ const ImageUploader = () => {
             variant="outlined"
             severity="info"
           >
-            <Box>
+            <Box sx={{ margin: "0 15px", fontFamily: "'Poppins' sans-serif" }}>
               <Typography sx={{ margin: "2.5px 0", fontSize: "14px" }}>
-                La imagen no puede ser superior a 5KB y su resolución debe ser
-                menor a 1920x1080 px
+                La imagen no puede ser superior a 5KB
+              </Typography>
+              <Typography sx={{ margin: "2.5px 0", fontSize: "14px" }}>
+                y su resolución debe ser menor a 1920x1080 px
               </Typography>
               <Typography sx={{ margin: "2.5px 0", fontSize: "14px" }}>
                 Sólo se admiten imágenes con formato png, jpg, jpeg, svg.
