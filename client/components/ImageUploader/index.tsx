@@ -34,11 +34,12 @@ export interface IImagetoUpload {
 // Create Image Object for getting the width ad height
 const ImageFormater = async (newFile: IImagetoUpload) => {
   const img = new Image();
-  const max_size = 500;
+  const max_width = 2500;
+  const max_height = 2000;
   const encoded = (await convertBase64(newFile)) as string;
   img.src = encoded;
   await img.decode();
-  return img.naturalWidth < max_size && img.naturalHeight < max_size;
+  return img.naturalWidth < max_width && img.naturalHeight < max_height;
 };
 
 // Convert to Base64
@@ -67,7 +68,7 @@ const ImageUploader = () => {
         "fileSize",
         "La imagen supera los 5 MB. Intente con otra",
         (value: IImagetoUpload) => {
-          return value?.size <= 5000;
+          return value?.size <= 50000000;
         }
       )
       .test(
@@ -82,7 +83,7 @@ const ImageUploader = () => {
       )
       .test(
         "fileResolution",
-        "La resolución de la imagen es mayor a 1920x1080. Pruebe con otra imagen",
+        "La resolución de la imagen es mayor a 2400x2000. Pruebe con otra imagen",
         (value: IImagetoUpload): any => {
           // const maxSize = 250;
           // return !value || (value && value.size <= maxSize * maxSize);
