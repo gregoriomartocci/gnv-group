@@ -128,7 +128,6 @@ const CreateUser = () => {
           )}
         </UseButton>
       </Fragment>
-      {/* Es tu primera vez? Create una cuenta <span>Sign in</span> */}
     </Box>
   );
 };

@@ -18,6 +18,7 @@ import {
   imageContainer,
 } from "./Styles";
 import * as yup from "yup";
+import UseButton from "../Button";
 
 export interface IImagetoUpload {
   lastModified: number;
@@ -65,20 +66,24 @@ const ImageUploader = () => {
       .test(
         "fileSize",
         "La imagen supera los 5 MB. Intente con otra",
-        (value) => {
+        (value: IImagetoUpload) => {
           return value?.size <= 5000;
         }
       )
-      .test("fileFormat", "El formato de la imagen no es válido", (value) => {
-        const format = value?.type.split("/")[1];
-        console.log("Format", format);
-        const isValid = ["png", "jpg", "svg", "jpeg"].includes(format);
-        return isValid;
-      })
+      .test(
+        "fileFormat",
+        "El formato de la imagen no es válido",
+        (value: IImagetoUpload) => {
+          const format = value?.type.split("/")[1];
+          console.log("Format", format);
+          const isValid = ["png", "jpg", "svg", "jpeg"].includes(format);
+          return isValid;
+        }
+      )
       .test(
         "fileResolution",
         "La resolución de la imagen es mayor a 1920x1080. Pruebe con otra imagen",
-        (value): any => {
+        (value: IImagetoUpload): any => {
           // const maxSize = 250;
           // return !value || (value && value.size <= maxSize * maxSize);
           return ImageFormater(value);
@@ -115,7 +120,7 @@ const ImageUploader = () => {
         setFile(newFile);
         uploadImage(newFile);
       })
-      .catch(({ errors }) => {
+      .catch(({ errors }: any) => {
         return setErrors(errors);
       });
   };
@@ -217,13 +222,7 @@ const ImageUploader = () => {
               </IconButton>
             </Box>
 
-            <Button
-              style={{ width: "100%" }}
-              variant="contained"
-              color="primary"
-            >
-              Subir Imágenes
-            </Button>
+            <UseButton type="Blue">Subir Imágenes</UseButton>
           </Fragment>
         ) : null}
       </Box>
