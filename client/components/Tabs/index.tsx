@@ -10,39 +10,15 @@ interface ITabPanel {
   value: number;
 }
 
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 interface IChildren {
-  children: React.ReactNode[];
+  value: number;
+  setValue: any;
 }
 
-export default function UseTabs({ children }: IChildren) {
-  const [value, setValue] = React.useState(0);
-
+export default function UseTabs({ value, setValue }: IChildren) {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
-  function TabPanel({ children, index }: ITabPanel) {
-    return (
-      <React.Fragment>
-        {value === index && (
-          <Box aria-labelledby={`simple-tab-${index}`}>
-            {value === index && (
-              <Box sx={{ p: "25px 0px" }}>
-                <Typography>{children}</Typography>
-              </Box>
-            )}
-          </Box>
-        )}
-      </React.Fragment>
-    );
-  }
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -50,24 +26,23 @@ export default function UseTabs({ children }: IChildren) {
         <Tabs
           value={value}
           variant="fullWidth"
+          sx={{
+            outline: "none",
+            "&:active": {
+              outline: "none",
+            },
+            "&:focus": {
+              outline: "none",
+            },
+          }}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Información Básica" {...a11yProps(0)} />
-          <Tab label="Multimedia" {...a11yProps(1)} />
-          <Tab label="Descripción" {...a11yProps(2)} />
+          <Tab label="Información Básica" />
+          <Tab label="Multimedia" />
+          <Tab label="Descripción" />
         </Tabs>
       </Box>
-
-      <TabPanel value={value} index={0}>
-        {children[value]}
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        {children[value]}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        {children[value]}
-      </TabPanel>
     </Box>
   );
 }

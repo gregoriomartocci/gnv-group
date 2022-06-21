@@ -14,6 +14,7 @@ import api from "../../../../../hooks/Api";
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
 import UseAutocomplete from "../../../../../components/Autocomplete";
+import ImageUploader from "../../../../../components/ImageUploader";
 import UseTabs from "../../../../../components/Tabs";
 
 export interface IAuthProps {
@@ -21,8 +22,8 @@ export interface IAuthProps {
 }
 
 export type inputType = {
-  email: string;
-  password: string;
+  name: string;
+  price: number;
 };
 
 export type errorType = {
@@ -33,15 +34,14 @@ export type errorType = {
 const CreateProject = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ auth: "", message: "" });
-  const [input, setInput] = useState<inputType>({
-    email: "",
-    password: "",
-  });
+  const [input, setInput] = useState<inputType>({ name: "", price: 0 });
+  const [value, setValue] = useState<number>(0);
 
   const dispatch = useDispatch();
   const router = useRouter();
 
   const onChangeHandler = (e: any) => {
+    console.log(input);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -82,15 +82,15 @@ const CreateProject = () => {
         description="Ingrese el nombre de la propiedad"
         label="Nombre"
         type="text"
-        value={input.email}
+        value={input.name}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
         name="price"
         description="Ingrese el precio de la propiedad"
         label="Precio"
-        type="text"
-        value={input.email}
+        type="number"
+        value={input.price}
         onChangeHandler={onChangeHandler}
       />
 
@@ -104,34 +104,7 @@ const CreateProject = () => {
         )}
       </UseButton>
     </Fragment>,
-    <Fragment>
-      <InputGroup
-        name="name"
-        description="Ingrese el nombre de la propiedad"
-        label="Nombre"
-        type="text"
-        value={input.email}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="price"
-        description="Ingrese el precio de la propiedad"
-        label="Precio"
-        type="text"
-        value={input.email}
-        onChangeHandler={onChangeHandler}
-      />
-
-      <UseAutocomplete items={options} label="Estado" />
-
-      <UseButton type="Blue" onClickHandler={onSubmitHandler}>
-        {loading ? (
-          <CircularProgress style={{ color: "#fff" }} />
-        ) : (
-          "Agregar Proyecto"
-        )}
-      </UseButton>
-    </Fragment>,
+    <ImageUploader />,
   ];
 
   return (
@@ -146,7 +119,9 @@ const CreateProject = () => {
       >
         Create Project
       </span>
-      <UseTabs>{steps}</UseTabs>
+
+      <UseTabs value={value} setValue={setValue}></UseTabs>
+      <React.Fragment>{steps[value]}</React.Fragment>
     </Box>
   );
 };

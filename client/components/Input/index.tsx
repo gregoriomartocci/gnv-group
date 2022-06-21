@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { Fragment } from "react";
 import { InputContainer } from "./Styles";
 
@@ -7,7 +7,7 @@ export interface InputProps {
   description: string;
   label: string;
   type: string;
-  value: string;
+  value: any;
   onChangeHandler: any;
   children?: React.ReactNode;
 }
