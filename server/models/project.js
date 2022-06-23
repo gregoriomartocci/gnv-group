@@ -1,50 +1,27 @@
-import mongoose, { SchemaTypes } from "mongoose";
+import mongoose from "mongoose";
 import nanoid from "nanoid";
 const { Schema } = mongoose;
 
-//    id: 7,
-//     title: "Luxury Villa",
-//     price: "$4.280.000",
-//     details: {
-//       location: "Bali, Indonesia",
-//       bathrooms: 2,
-//       bedrooms: 4,
-//       surface: 100,
-//     },
-//     image: ImageOne,
-//     label: "View Home",
-//     path: "/homes",
-//     alt: "House",
-
 const userSchema = new Schema(
   {
-    id: {
-      type: nanoid,
-      trim: true,
-      required: true,
-    },
-    title: {
+    name: {
       type: String,
       trim: true,
       required: true,
     },
-    image: {
-      type: String,
-      trim: true,
-      required: true,
-      unique: true,
-    },
-    label: {
+    description: {},
+    images: [],
+    type: {
       type: String,
       required: true,
     },
+    published: { type: Boolean, default: true },
     status: {
       type: String,
-      default: "Subscriber",
+      required: true,
     },
-    resetCode: "",
   },
   { timestamps: true }
 );
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model("Project", userSchema);

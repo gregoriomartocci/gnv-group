@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth";
+import projectRoutes from "./routes/project";
+
 const morgan = require("morgan");
 const app = express();
 
@@ -20,6 +22,7 @@ app.use(morgan("dev"));
 
 // route middlewares
 app.use("/api", authRoutes);
+app.use("/api", projectRoutes);
 
 const port = process.env.SERVER || 8000;
 

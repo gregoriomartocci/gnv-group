@@ -38,6 +38,7 @@ export type errorType = {
 };
 
 const CreateProject = () => {
+  
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ auth: "", message: "" });
   const [input, setInput] = useState<inputType>({ name: "", price: 0 });
@@ -53,31 +54,6 @@ const CreateProject = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const onSubmitHandler = async () => {
-    setError({ auth: "", message: "" });
-    setLoading(true);
-    try {
-      const data = await api({
-        method: "post",
-        path: "/signin",
-        payload: input,
-      });
-      console.log("Dateushh", data);
-      setLoading(false);
-      if (data?.error) {
-        setError({ auth: "failed", message: data?.error });
-      } else {
-        setError({ ...error, auth: "success" });
-        localStorage.setItem("auth", JSON.stringify(data));
-        // dispatch();
-        router.push("/profile");
-      }
-    } catch (err) {
-      setError({ auth: "failed", message: "Something went wrong" });
-      setLoading(false);
-    }
   };
 
   const status = ["En construcción", "Finalizado"];
@@ -105,13 +81,6 @@ const CreateProject = () => {
       <UseAutocomplete items={status} label="Estado" placeholder="sad" />
       <UseAutocomplete items={type} label="Tipo" placeholder="sad" />
 
-      <UseButton type="Blue" onClickHandler={onSubmitHandler}>
-        {loading ? (
-          <CircularProgress style={{ color: "#fff" }} />
-        ) : (
-          "Agregar Proyecto"
-        )}
-      </UseButton>
     </Fragment>,
     <ImageUploader />,
     <Editor value={text} setValue={setText} />,
@@ -127,7 +96,7 @@ const CreateProject = () => {
           color: "#424242",
         }}
       >
-        Agregar Proyecto
+        Agregar Emprendimiento
       </span>
       <UseTabs value={value} setValue={setValue} />
       <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[value]}</Box>
