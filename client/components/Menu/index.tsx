@@ -21,7 +21,7 @@ import { IAuth } from "../../redux/slices/auth";
 import Account from "../Account";
 export interface IState {
   articles: {};
-  projects: {};
+  projects: { projects: any; project: any };
   users: {};
   auth: IAuth;
 }

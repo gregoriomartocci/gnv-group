@@ -16,22 +16,11 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
-import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
-import { rows } from "../../data";
-import { CellTable } from "../../Styles";
-import { GrayBackground } from "../../data/Styles";
 import UseButton from "../../../../../components/Button";
 import UseModal from "../../../../../components/Modal";
 import CreateUser from "../../../users/components/Create";
-
-interface Data {
-  id: number;
-  name: string;
-  username: number;
-  property: number;
-  created: string;
-}
+import { CellTable, GrayBackground } from "./Styles";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -72,130 +61,98 @@ function stableSort<T>(
   return stabilizedThis.map((el) => el[0]);
 }
 
-interface HeadCell {
-  disablePadding: boolean;
-  id: keyof Data;
-  label: string;
-  numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-  {
-    id: "id",
-    numeric: false,
-    disablePadding: true,
-    label: "ID",
-  },
-  {
-    id: "name",
-    numeric: true,
-    disablePadding: false,
-    label: "Name",
-  },
-  {
-    id: "username",
-    numeric: true,
-    disablePadding: false,
-    label: "Username",
-  },
-  {
-    id: "property",
-    numeric: true,
-    disablePadding: false,
-    label: "Property",
-  },
-  {
-    id: "created",
-    numeric: true,
-    disablePadding: false,
-    label: "Created",
-  },
-];
-
 interface EnhancedTableProps {
   numSelected: number;
-  onRequestSort: (
-    event: React.MouseEvent<unknown>,
-    property: keyof Data
-  ) => void;
+  onRequestSort: (event: React.MouseEvent<unknown>, property: any) => void;
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
   order: Order;
   orderBy: string;
   rowCount: number;
 }
 
-function EnhancedTableHead(props: EnhancedTableProps) {
-  const {
-    onSelectAllClick,
-    order,
-    orderBy,
-    numSelected,
-    rowCount,
-    onRequestSort,
-  } = props;
-  const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
-      onRequestSort(event, property);
-    };
-
-  return (
-    <TableHead>
-      <TableRow style={{ borderRadius: "15px" }}>
-        <TableCell padding="checkbox" sx={GrayBackground}>
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              "aria-label": "select all desserts",
-            }}
-          />
-        </TableCell>
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align="left"
-            padding={headCell.disablePadding ? "none" : "normal"}
-            sortDirection={orderBy === headCell.id ? order : false}
-            sx={GrayBackground}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
-            >
-              <Typography style={{ fontFamily: "Montserrat" }}>
-                {headCell.label}
-              </Typography>
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
-}
-
 interface EnhancedTableToolbarProps {
   numSelected: number;
+  title: string;
 }
 
 interface IUseTable {
   children: React.ReactNode;
+  title: string;
+  headCells: any;
+  rows: any;
 }
 
-export default function UseTable({ children }: IUseTable) {
+export default function UseTable({
+  title,
+  headCells,
+  rows,
+  children,
+}: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
-  const [orderBy, setOrderBy] = React.useState<keyof Data>("name");
-  const [selected, setSelected] = React.useState<readonly number[]>([]);
+  const [orderBy, setOrderBy] = React.useState<any>("name");
+  const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(9);
   const [openModal, setOpenModal] = React.useState(false);
+
+  function EnhancedTableHead(props: EnhancedTableProps) {
+    const {
+      onSelectAllClick,
+      order,
+      orderBy,
+      numSelected,
+      rowCount,
+      onRequestSort,
+    } = props;
+    const createSortHandler =
+      (property: keyof any) => (event: React.MouseEvent<unknown>) => {
+        onRequestSort(event, property);
+      };
+
+    return (
+      <TableHead>
+        <TableRow style={{ borderRadius: "15px" }}>
+          <TableCell padding="checkbox" sx={GrayBackground}>
+            <Checkbox
+              color="primary"
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={rowCount > 0 && numSelected === rowCount}
+              onChange={onSelectAllClick}
+              inputProps={{
+                "aria-label": "select all desserts",
+              }}
+            />
+          </TableCell>
+          {headCells.map((headCell: any) => (
+            <TableCell
+              key={headCell.id}
+              align="left"
+              padding={headCell.disablePadding ? "none" : "normal"}
+              sortDirection={orderBy === headCell.id ? order : false}
+              sx={GrayBackground}
+            >
+              <TableSortLabel
+                active={orderBy === headCell.id}
+                direction={orderBy === headCell.id ? order : "asc"}
+                onClick={createSortHandler(headCell.id)}
+              >
+                <Typography style={{ fontFamily: "Montserrat" }}>
+                  {headCell.label}
+                </Typography>
+                {orderBy === headCell.id ? (
+                  <Box component="span" sx={visuallyHidden}>
+                    {order === "desc"
+                      ? "sorted descending"
+                      : "sorted ascending"}
+                  </Box>
+                ) : null}
+              </TableSortLabel>
+            </TableCell>
+          ))}
+        </TableRow>
+      </TableHead>
+    );
+  }
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -207,7 +164,7 @@ export default function UseTable({ children }: IUseTable) {
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
-    property: keyof Data
+    property: keyof any
   ) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -216,16 +173,16 @@ export default function UseTable({ children }: IUseTable) {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.id);
+      const newSelecteds = rows.map((n: any) => n._id);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, id: number) => {
+  const handleClick = (event: React.MouseEvent<unknown>, id: string) => {
     const selectedIndex = selected.indexOf(id);
-    let newSelected: readonly number[] = [];
+    let newSelected: readonly string[] = [];
 
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
@@ -254,7 +211,7 @@ export default function UseTable({ children }: IUseTable) {
     setPage(0);
   };
 
-  const isSelected = (id: number) => selected.indexOf(id) !== -1;
+  const isSelected = (id: string) => selected.indexOf(id) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -291,7 +248,7 @@ export default function UseTable({ children }: IUseTable) {
             variant="h6"
             id="tableTitle"
           >
-            Users
+            {title}
           </Typography>
         )}
         {numSelected > 0 ? (
@@ -303,7 +260,7 @@ export default function UseTable({ children }: IUseTable) {
         ) : (
           <React.Fragment>
             <UseButton type="Primary" onClickHandler={handleOpen}>
-              Add User
+              agregar
             </UseButton>
 
             <UseModal open={openModal} handleClose={handleCloseModal}>
@@ -328,104 +285,123 @@ export default function UseTable({ children }: IUseTable) {
           border: "1px solid #e0e0e0",
         }}
       >
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
-          <Table
-            sx={{ minWidth: 750, fontFamily: "Montserrat" }}
-            aria-labelledby="tableTitle"
-            size={"medium"}
-          >
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.id);
-                  const labelId = `enhanced-table-checkbox-${index}`;
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event: any) => handleClick(event, row.id)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.name}
-                      selected={isItemSelected}
-                      // sx={index % 2 === 0 ? GrayBackground : null}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          color="primary"
-                          checked={isItemSelected}
-                          inputProps={{
-                            "aria-labelledby": labelId,
-                          }}
-                        />
-                      </TableCell>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
+        <EnhancedTableToolbar title={title} numSelected={selected.length} />
+        <TableContainer
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            height: "100%",
+            position: "relative",
+          }}
+        >
+          <Box>
+            <Table
+              sx={{ minWidth: 750, fontFamily: "Montserrat" }}
+              aria-labelledby="tableTitle"
+              size={"medium"}
+            >
+              <EnhancedTableHead
+                numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                onSelectAllClick={handleSelectAllClick}
+                onRequestSort={handleRequestSort}
+                rowCount={rows?.length}
+              />
+              <TableBody>
+                {stableSort(rows, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row?._id);
+                    const labelId = `enhanced-table-checkbox-${index}`;
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event: any) => handleClick(event, row?._id)}
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.name}
+                        selected={isItemSelected}
+                        // sx={index % 2 === 0 ? GrayBackground : null}
                       >
-                        <Typography style={{ fontFamily: "Montserrat" }}>
-                          {row.id}
-                        </Typography>
-                      </TableCell>
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                            color="primary"
+                            checked={isItemSelected}
+                            inputProps={{
+                              "aria-labelledby": labelId,
+                            }}
+                          />
+                        </TableCell>
 
-                      <TableCell align="left">
-                        <Box sx={CellTable}>
-                          <img src={row.img} alt="avatar" />
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="none"
+                        >
                           <Typography style={{ fontFamily: "Montserrat" }}>
-                            {row.name}
+                            {row._id}
                           </Typography>
-                        </Box>
-                      </TableCell>
-                      <TableCell align="left">
-                        <Typography style={{ fontFamily: "Montserrat" }}>
-                          {row.username}
-                        </Typography>
-                      </TableCell>
-                      <TableCell align="left">
-                        <Typography style={{ fontFamily: "Montserrat" }}>
-                          {row.property}
-                        </Typography>
-                      </TableCell>
-                      <TableCell align="left">
-                        <Typography style={{ fontFamily: "Montserrat" }}>
-                          {row.created}
-                        </Typography>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: 53 * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
+                        </TableCell>
+
+                        <TableCell align="left">
+                          <Box sx={CellTable}>
+                            <img src={row?.images[0]} />
+                            <Typography style={{ fontFamily: "Montserrat" }}>
+                              {row.name}
+                            </Typography>
+                          </Box>
+                        </TableCell>
+
+                        <TableCell align="left">
+                          <Typography style={{ fontFamily: "Montserrat" }}>
+                            {row?.description}
+                          </Typography>
+                        </TableCell>
+                        <TableCell align="left">
+                          <Typography style={{ fontFamily: "Montserrat" }}>
+                            {row?.type}
+                          </Typography>
+                        </TableCell>
+                        <TableCell align="left">
+                          <Typography style={{ fontFamily: "Montserrat" }}>
+                            {row?.status}
+                          </Typography>
+                        </TableCell>
+                        <TableCell align="left">
+                          <Typography style={{ fontFamily: "Montserrat" }}>
+                            {row?.published}
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: 53 * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </Box>
+          <Box>
+            <TablePagination
+              component="span"
+              count={rows?.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </Box>
         </TableContainer>
-        <TablePagination
-          component="span"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
       </Paper>
     </Box>
   );

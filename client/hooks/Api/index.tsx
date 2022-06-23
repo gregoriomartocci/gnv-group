@@ -9,20 +9,30 @@ type HTTPMethods = {
 
 interface IFetch {
   path: string;
-  payload: any;
+  payload?: any;
   method: keyof HTTPMethods;
 }
 
 const api = async ({ path, payload, method }: IFetch) => {
-
+  
   if (typeof window) {
     axios.defaults.baseURL = process.env.NEXT_PUBLIC_API;
   } else {
     axios.defaults.baseURL = process.env.API;
   }
-  
-  const { data } = await axios[method](path, payload);
-  return data;
+
+  try {
+    if (payload) {
+      const { data } = await axios[method](path, payload);
+      return data;
+    }
+    const { data } = await axios[method](path);
+    return data;
+
+  } catch (err) {
+    return err;
+  }
+
 };
 
 export default api;
