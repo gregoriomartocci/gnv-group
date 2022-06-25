@@ -142,9 +142,8 @@ export const items = [
   { label: "Monty Python and the Holy Grail", year: 1975 },
 ];
 
-const Selector = () => {
+const SelectorA = () => {
   const [active, setActive] = useState(1);
-
   const selectTab = (number: number): void => {
     setActive(number);
   };
@@ -167,7 +166,7 @@ const Selector = () => {
                 margin: "0 8px",
               }}
             >
-              House
+              Casas
             </span>
           </Box>
           <Box
@@ -180,7 +179,7 @@ const Selector = () => {
                 margin: "0 8px",
               }}
             >
-              Appartments
+              Departamentos
             </span>
           </Box>
         </Box>
@@ -192,7 +191,7 @@ const Selector = () => {
               fontSize: "14px",
             }}
           >
-            <span>Location</span>
+            <span>Ubicación</span>
           </Box>
           <Box
             style={{
@@ -201,7 +200,7 @@ const Selector = () => {
               fontSize: "14px",
             }}
           >
-            <span>Type</span>
+            <span>Tipo</span>
           </Box>
           <Box
             style={{
@@ -210,20 +209,20 @@ const Selector = () => {
               fontSize: "14px",
             }}
           >
-            <span>Price</span>
+            <span>Precio</span>
           </Box>
           <Box sx={SelectorFilter}></Box>
           <Box sx={SelectorFilter}>
-            <UseAutocomplete items={items} />
+            <UseAutocomplete items={items} placeholder="ok" />
           </Box>
           <Box sx={SelectorFilter}>
-            <UseAutocomplete items={items} />
+            <UseAutocomplete items={items} placeholder="ok" />
           </Box>
           <Box sx={SelectorFilter}>
-            <UseAutocomplete items={items} />
+            <UseAutocomplete items={items} placeholder="ok" />
           </Box>
           <Box sx={SelectorFilter}>
-            <Button type="Blue"> Search</Button>
+            <Button type="Blue"> Buscar</Button>
           </Box>
         </Box>
       </Box>
@@ -231,4 +230,4 @@ const Selector = () => {
   );
 };
 
-export default Selector;
+export default SelectorA;

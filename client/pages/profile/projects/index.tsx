@@ -1,3 +1,4 @@
+import { TableCell, Typography } from "@mui/material";
 import React, { Fragment as Box, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
@@ -6,6 +7,7 @@ import api from "../../../hooks/Api";
 import { setProjects } from "../../../redux/slices/projects";
 import CreateProject from "./components/Create";
 import UseTable from "./components/Table";
+import { CellTable } from "./Styles";
 
 export interface Data {
   _id: string;
@@ -103,7 +105,40 @@ const Posts = () => {
     onSubmitHandler();
   }, []);
 
-  console.log(projects, "OKKK");
+  const ok = ["description", "type", "status", "published"];
+
+  // const content = [
+
+  //   <TableCell align="left">
+  //     <Box sx={CellTable}>
+  //       <img src={row?.images[0]} />
+  //       <Typography style={{ fontFamily: "Montserrat" }}>{row.name}</Typography>
+  //     </Box>
+  //   </TableCell>,
+
+  //   <TableCell align="left">
+  //     <Typography style={{ fontFamily: "Montserrat" }}>
+  //       {row?.description}
+  //     </Typography>
+  //   </TableCell>,
+
+  //   <TableCell align="left">
+  //     <Typography style={{ fontFamily: "Montserrat" }}>{row?.type}</Typography>
+  //   </TableCell>,
+
+  //   <TableCell align="left">
+  //     <Typography style={{ fontFamily: "Montserrat" }}>
+  //       {row?.status}
+  //     </Typography>
+  //   </TableCell>,
+
+  //   <TableCell align="left">
+  //     <Typography style={{ fontFamily: "Montserrat" }}>
+  //       {row?.published}
+  //     </Typography>
+  //   </TableCell>,
+
+  // ];
 
   return (
     <Dashboard>

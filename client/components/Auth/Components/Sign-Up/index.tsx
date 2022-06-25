@@ -84,12 +84,12 @@ const SignUp = ({ img }: IAuthProps) => {
               color: "#424242",
             }}
           >
-            Sign up
+            Registro
           </span>
           <InputGroup
             name="name"
             description="Enter your name"
-            label="Name"
+            label="Nombre"
             type="text"
             value={input.name}
             onChangeHandler={onChangeHandler}
@@ -97,7 +97,7 @@ const SignUp = ({ img }: IAuthProps) => {
           <InputGroup
             name="email"
             description="Enter your email"
-            label="Email address"
+            label="Correo electrónico"
             type="text"
             value={input.email}
             onChangeHandler={onChangeHandler}
@@ -105,7 +105,7 @@ const SignUp = ({ img }: IAuthProps) => {
           <InputGroup
             name="password"
             description="Enter your password"
-            label="Password"
+            label="Contraseña"
             type="password"
             value={input.password}
             onChangeHandler={onChangeHandler}
@@ -115,7 +115,7 @@ const SignUp = ({ img }: IAuthProps) => {
             {loading ? (
               <CircularProgress style={{ color: "#fff" }} />
             ) : (
-              "Sign Up"
+              "Registrarse"
             )}
           </UseButton>
         </Fragment>

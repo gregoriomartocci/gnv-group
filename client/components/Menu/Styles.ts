@@ -9,6 +9,7 @@ export const MenuContainer: SxProps<Theme> = {
   height: "80px",
   zIndex: 50,
   color: "#fff",
+  fontFamily: "'Montserrat', sans-serif",
 };
 
 export const MenuContent: SxProps<Theme> = {

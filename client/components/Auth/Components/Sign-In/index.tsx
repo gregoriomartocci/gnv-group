@@ -86,7 +86,7 @@ const SignIn = ({ img }: IAuthProps) => {
               color: "#424242",
             }}
           >
-            Sign in
+            Loguearse
           </span>
           <InputGroup
             name="email"
@@ -109,7 +109,7 @@ const SignIn = ({ img }: IAuthProps) => {
             {loading ? (
               <CircularProgress style={{ color: "#fff" }} />
             ) : (
-              "Sign in"
+              "Ingresar"
             )}
           </UseButton>
         </Fragment>

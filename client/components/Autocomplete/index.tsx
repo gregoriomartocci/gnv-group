@@ -31,16 +31,14 @@ export default function UseAutocomplete({
         disablePortal
         id="combo-box-demo"
         options={items}
-        sx={{
-          width: "100%",
-          p: "5px 0",
-          m: "5px 0px",
-          border: "none",
-          outline: "none",
-          focus: "none",
-        }}
-        renderInput={(params) => <TextField {...params} size="small" />}
-        placeholder={placeholder}
+        fullWidth
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            sx={{ width: "100%", color: "#eeeeee" }}
+            placeholder={placeholder}
+          />
+        )}
       />
     </React.Fragment>
   );

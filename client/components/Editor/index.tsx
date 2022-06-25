@@ -51,11 +51,11 @@ const Editor = ({ value, setValue }: IEditor) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState({ publish: "", message: "" });
   const [project, setProject] = useState({
-    name: "okss",
-    description: "oks",
-    type: "Viviendaa",
+    name: "Osten Tower",
+    description: "descripcion de prueba",
+    type: "Edificio",
     published: true,
-    status: "construcciona",
+    status: "En construcción",
   });
   const onChangeHandler = (e: string) => {
     setValue(e);

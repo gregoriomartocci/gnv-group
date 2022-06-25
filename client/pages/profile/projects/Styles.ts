@@ -13,3 +13,4 @@ export const CellTable: SxProps<Theme> = {
     margin: "0px 10px",
   },
 };
+

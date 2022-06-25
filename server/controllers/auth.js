@@ -14,23 +14,23 @@ export const signup = async (req, res) => {
     const { name, email, password } = req.body;
     if (!name) {
       return res.json({
-        error: "Name is required",
+        error: "el nombre es requerido",
       });
     }
     if (!email) {
       return res.json({
-        error: "Email is required",
+        error: "el email es requerido",
       });
     }
     if (!password || password.length < 6) {
       return res.json({
-        error: "Password is required and should be 6 characters long",
+        error: "La contraseña es requerida y necesita tener al menos 6 caracteres",
       });
     }
     const exist = await User.findOne({ email });
     if (exist) {
       return res.json({
-        error: "Email is taken",
+        error: "El email ya se encuentra en uso",
       });
     }
     // hash password
@@ -68,14 +68,14 @@ export const signin = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.json({
-        error: "No user found",
+        error: "No se encontró el usuario",
       });
     }
     // check password
     const match = await comparePassword(password, user.password);
     if (!match) {
       return res.json({
-        error: "Wrong password",
+        error: "Contraseña incorrecta",
       });
     }
     // create signed token
@@ -91,7 +91,7 @@ export const signin = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).send("Error. Try again.");
+    return res.status(400).send("Algo salió mal, por favor intente de nuevo más tarde.");
   }
 };
 
@@ -101,7 +101,7 @@ export const forgotPassword = async (req, res) => {
   const user = await User.findOne({ email });
   console.log("USER ===> ", user);
   if (!user) {
-    return res.json({ error: "User not found" });
+    return res.json({ error: "No se encontró un usuario con el mail ingresado." });
   }
   // generate code
   const resetCode = nanoid(5).toUpperCase();

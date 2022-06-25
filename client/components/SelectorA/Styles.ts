@@ -4,8 +4,7 @@ export const SelectorContainer: SxProps= {
   display: "grid",
   gridTemplateColumns: "1fr",
   width: "100%",
-  padding: "0 10%",
-  margin: "10px, 0px",
+  margin: "40px 0",
 };
 
 export const SelectorWrapper: SxProps = {

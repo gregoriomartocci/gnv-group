@@ -5,9 +5,7 @@ import Menu from "../../components/Menu";
 
 import { SliderData } from "../../data/SliderData";
 import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
-import { projectsData } from "../../data/SliderData";
-import Selector from "../../components/Selector";
-import Projects from "../../components/Projects";
+
 
 const Home = () => {
   return (
@@ -16,8 +14,6 @@ const Home = () => {
       <Main slides={SliderData} />
       <Section {...InfoDataOne} />
       <Section {...InfoDataTwo} reverse/>
-      <Selector />
-      <Projects projects={projectsData}></Projects>
     </Fragment>
   );
 };

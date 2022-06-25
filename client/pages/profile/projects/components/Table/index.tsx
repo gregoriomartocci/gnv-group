@@ -313,12 +313,14 @@ export default function UseTable({
                 {stableSort(rows, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row?._id);
+                    const isItemSelected = isSelected(row?._id.toString());
                     const labelId = `enhanced-table-checkbox-${index}`;
                     return (
                       <TableRow
                         hover
-                        onClick={(event: any) => handleClick(event, row?._id)}
+                        onClick={(event: any) =>
+                          handleClick(event, row?._id.toString())
+                        }
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -355,7 +357,6 @@ export default function UseTable({
                             </Typography>
                           </Box>
                         </TableCell>
-
                         <TableCell align="left">
                           <Typography style={{ fontFamily: "Montserrat" }}>
                             {row?.description}

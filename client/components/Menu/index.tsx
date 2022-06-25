@@ -64,9 +64,10 @@ const Menu = () => {
         <Box sx={MenuContent}>
           <Box sx={Logo}>GNV Group</Box>
           <Box sx={MenuItems}>
-            <Box sx={MenuItem}>Proyectos</Box>
-            <Box sx={MenuItem}>Novedades</Box>
-            <Box sx={MenuItem}>Inversores</Box>
+            <Box sx={MenuItem}>Campaña</Box>
+            <Box sx={MenuItem}>Emprendimientos</Box>
+            <Box sx={MenuItem}>Prensa</Box>
+            <Box sx={MenuItem}>Contacto</Box>
             <Box sx={MenuItem}>
               <IconButton
                 sx={AccountIcon}

@@ -32,73 +32,41 @@ const Project = ({
     <Box sx={ProjectContainer}>
       <img src={image.src} alt={alt} />
       <Box sx={ProjectHeader}>
-        <span style={{ color: "#445CB8", fontWeight: 600, fontSize: "20px" }}>
-          {price}
-        </span>
-        <span style={{ color: "#1C2B40", fontWeight: 600, fontSize: "16px" }}>
+        <span
+          style={{
+            color: "#212121",
+            fontWeight: 600,
+            fontSize: "25px",
+            margin: "10px 0",
+          }}
+        >
           {title}
         </span>
       </Box>
-      <span
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "1px",
-          padding: "0 10px",
-          backgroundColor: "#eeeeee",
-        }}
-      ></span>
+
       <Box sx={ProjectBody}>
         <Box style={{ display: "flex", alignItems: "center" }}>
-          <LocationOnIcon
-            style={{
-              color: "#3F5EE1",
-              alignItems: "center",
-              fontSize: "14px",
-              margin: "0 5px",
-            }}
-          />
-          <span style={{ color: "#B1B8C1", fontWeight: 600, fontSize: "12px" }}>
-            {details?.location}
+          <span style={{ color: "#212121", fontWeight: 600, fontSize: "12px" }}>
+            En construcción
           </span>
         </Box>
-        <Box style={{ display: "flex", alignItems: "center" }}>
-          <LocationOnIcon
-            style={{
-              color: "#3F5EE1",
-              alignItems: "center",
-              fontSize: "14px",
-              margin: "0 5px",
-            }}
-          />
-          <span style={{ color: "#B1B8C1", fontWeight: 600, fontSize: "12px" }}>
-            {details?.surface} m²
-          </span>
+
+        <Box
+          style={{
+            color: "#424242",
+            fontWeight: 600,
+            fontSize: "12px",
+            margin: "10px 0",
+          }}
+        >
+          Lideraron, a partir del desarrollo integral de Madero Harbour, la
+          nueva urbanización de Puerto Madero.
         </Box>
-        <Box style={{ display: "flex", alignItems: "center" }}>
-          <LocationOnIcon
-            style={{
-              color: "#3F5EE1",
-              alignItems: "center",
-              fontSize: "14px",
-              margin: "0 5px",
-            }}
-          />
-          <span style={{ color: "#B1B8C1", fontWeight: 600, fontSize: "12px" }}>
-            {details?.bathrooms} bathrooms
-          </span>
-        </Box>
-        <Box style={{ display: "flex", alignItems: "center" }}>
-          <LocationOnIcon
-            style={{
-              color: "#3F5EE1",
-              alignItems: "center",
-              fontSize: "14px",
-              margin: "0 5px",
-            }}
-          />
-          <span style={{ color: "#B1B8C1", fontWeight: 600, fontSize: "12px" }}>
-            {details?.bedrooms} bedrooms
+        <Box
+          style={{ display: "flex", alignItems: "center", margin: "10px 0" }}
+        >
+          <span style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}>
+            20 de abril - 2022
           </span>
         </Box>
       </Box>
