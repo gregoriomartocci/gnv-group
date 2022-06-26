@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 interface IHeaderTitle {
   title: string;
-  description: string;
+  description?: string;
 }
 
 const HeaderTitle = ({ title, description }: IHeaderTitle) => {
@@ -13,9 +13,8 @@ const HeaderTitle = ({ title, description }: IHeaderTitle) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
         flexDirection: "column",
-        padding: "10% 20% 0 20%",
+        padding: "5% 20%",
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
       }}
@@ -30,15 +29,17 @@ const HeaderTitle = ({ title, description }: IHeaderTitle) => {
       >
         {title}
       </Typography>
-      <Typography
-        sx={{
-          fontSize: "20px",
-          margin: "15px 0",
-          fontFamily: "'Poppins', sans-serif",
-        }}
-      >
-        {description}
-      </Typography>
+      {description && (
+        <Typography
+          sx={{
+            fontSize: "20px",
+            margin: "15px 0",
+            fontFamily: "'Poppins', sans-serif",
+          }}
+        >
+          {description}
+        </Typography>
+      )}
     </Box>
   );
 };

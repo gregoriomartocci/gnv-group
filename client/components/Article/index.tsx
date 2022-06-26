@@ -1,9 +1,9 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
-import { ProjectBody, ProjectContainer, ProjectHeader } from "./Styles";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-export interface IProject {
+import { ProjectBody, ProjectContainer } from "./Styles";
+
+export interface ICard {
   id: number;
   title: string;
   price: string;
@@ -19,19 +19,14 @@ export interface IProject {
   alt: string;
 }
 
-const Project = ({
-  title,
-  price,
-  details,
-  image,
-  label,
-  path,
-  alt,
-}: IProject) => {
+const Article = ({ title, price, details, image, label, path, alt }: ICard) => {
   return (
     <Box sx={ProjectContainer}>
-      <img src={image.src} alt={alt} />
-      <Box sx={ProjectHeader}>
+      <Box>
+        <img src={image.src} alt={alt} />
+      </Box>
+
+      <Box sx={ProjectBody}>
         <span
           style={{
             color: "#212121",
@@ -40,16 +35,8 @@ const Project = ({
             margin: "10px 0",
           }}
         >
-          {title}
+          MH / Info Negocios
         </span>
-      </Box>
-
-      <Box sx={ProjectBody}>
-        <Box style={{ display: "flex", alignItems: "center" }}>
-          <span style={{ color: "#212121", fontWeight: 600, fontSize: "12px" }}>
-            En construcción
-          </span>
-        </Box>
 
         <Box
           style={{
@@ -69,9 +56,16 @@ const Project = ({
             20 de abril - 2022
           </span>
         </Box>
+        <Box
+          style={{ display: "flex", alignItems: "center", margin: "10px 0" }}
+        >
+          <span style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}>
+            20 de abril - 2022
+          </span>
+        </Box>
       </Box>
     </Box>
   );
 };
 
-export default Project;
+export default Article;
