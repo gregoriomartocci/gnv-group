@@ -7,6 +7,7 @@ import {
   CloseIcon,
   Logo,
   MenuContainer,
+  MenuContainerOnScroll,
   MenuContent,
   MenuItem,
   MenuItems,
@@ -19,6 +20,7 @@ import Dropdown from "../Dropdown";
 import { useSelector } from "react-redux";
 import { IAuth } from "../../redux/slices/auth";
 import Account from "../Account";
+import Link from "next/link";
 export interface IState {
   articles: {};
   projects: { projects: any; project: any };
@@ -26,13 +28,19 @@ export interface IState {
   auth: IAuth;
 }
 
-const Menu = () => {
+export interface IMenu {
+  onScroll: boolean;
+  theme?: string;
+}
+
+const Menu = ({ onScroll, theme }: IMenu) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectAuth, setSelectAuth] = useState("sign-up");
   const { data } = useSelector((state: IState) => state?.auth);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openBasicMenu = Boolean(anchorEl);
+  const [navbar, setNavbar] = useState(false);
 
   const handleClickBasicMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -54,19 +62,55 @@ const Menu = () => {
     setOpenDropdown(!openDropdown);
   };
 
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  if (typeof window !== "undefined") {
+    // Client-side-only code
+    window.addEventListener("scroll", changeBackground);
+  }
+
   return (
     <Fragment>
       <UseModal open={openModal} handleClose={handleCloseModal}>
         <Auth auth={selectAuth} img={AuthImage} />
       </UseModal>
       <ResponsiveMenu Open={openDropdown} Toggle={toggleDropdown} />
-      <Box sx={MenuContainer}>
+      <Box
+        sx={
+          onScroll
+            ? navbar
+              ? MenuContainerOnScroll
+              : MenuContainer
+            : theme === "light"
+            ? MenuContainer
+            : MenuContainerOnScroll
+        }
+      >
         <Box sx={MenuContent}>
-          <Box sx={Logo}>GNV Group</Box>
+          <Link href={"/"}>
+            <a>
+              <Box sx={Logo}>GNV Group</Box>
+            </a>
+          </Link>
           <Box sx={MenuItems}>
             <Box sx={MenuItem}>Campaña</Box>
-            <Box sx={MenuItem}>Emprendimientos</Box>
-            <Box sx={MenuItem}>Prensa</Box>
+            <Link href={"/ventures"}>
+              <a>
+                <Box sx={MenuItem}>Emprendimientos</Box>
+              </a>
+            </Link>
+
+            <Link href={"/news"}>
+              <a>
+                <Box sx={MenuItem}>Prensa</Box>
+              </a>
+            </Link>
             <Box sx={MenuItem}>Contacto</Box>
             <Box sx={MenuItem}>
               <IconButton

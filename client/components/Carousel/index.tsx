@@ -1,17 +1,17 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-// import "./styles.css";
+// import "./styles.css";ls
+
 
 // import required modules
 import { FreeMode, Pagination } from "swiper";
-import Card, { ICard } from "../Card";
-import { Box } from "@mui/material";
 
 export interface ICarousel {
   children: any;
@@ -24,8 +24,13 @@ export const Carousel = ({ children }: any) => {
         slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
-        modules={[FreeMode, Pagination]}
+        modules={[FreeMode, Pagination, Autoplay]}
         className="mySwiper"
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
       >
         {children}
       </Swiper>

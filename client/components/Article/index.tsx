@@ -56,13 +56,6 @@ const Article = ({ title, price, details, image, label, path, alt }: ICard) => {
             20 de abril - 2022
           </span>
         </Box>
-        <Box
-          style={{ display: "flex", alignItems: "center", margin: "10px 0" }}
-        >
-          <span style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}>
-            20 de abril - 2022
-          </span>
-        </Box>
       </Box>
     </Box>
   );

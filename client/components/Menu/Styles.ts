@@ -10,6 +10,23 @@ export const MenuContainer: SxProps<Theme> = {
   zIndex: 50,
   color: "#fff",
   fontFamily: "'Montserrat', sans-serif",
+  transition:"all 0.3s ease",
+  fontWeight:600,
+};
+
+export const MenuContainerOnScroll: SxProps<Theme> = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  padding: "0 10%",
+  height: "80px",
+  zIndex: 50,
+  color: "#212121",
+  backgroundColor: "#fff",
+  fontFamily: "'Montserrat', sans-serif",
+  transition:"all 0.3s ease",
+  fontWeight:600,
 };
 
 export const MenuContent: SxProps<Theme> = {

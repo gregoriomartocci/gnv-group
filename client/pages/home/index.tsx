@@ -10,7 +10,7 @@ import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
 const Home = () => {
   return (
     <Fragment>
-      <Menu />
+      <Menu onScroll />
       <Main slides={SliderData} />
       <Section {...InfoDataOne} />
       <Section {...InfoDataTwo} reverse/>

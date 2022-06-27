@@ -16,7 +16,7 @@ import Card from "../../components/Card";
 const News = () => {
   return (
     <Box>
-      <Menu />
+      <Menu onScroll={false} />
       <Box sx={{ margin: "40px 0" }}>
         <HeaderTitle title="Noticias destacadas" />
       </Box>

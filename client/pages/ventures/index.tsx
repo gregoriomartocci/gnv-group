@@ -11,7 +11,7 @@ import Footer from "../../components/Footer";
 const News = () => {
   return (
     <Box>
-      <Menu />
+      <Menu onScroll/>
       <Main slides={SliderData}></Main>
       <HeaderTitle
         title="Emprendimientos"
