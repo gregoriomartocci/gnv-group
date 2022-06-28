@@ -5,6 +5,7 @@ import Menu from "../../components/Menu";
 
 import { SliderData } from "../../data/SliderData";
 import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
+import Footer from "../../components/Footer";
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Main slides={SliderData} />
       <Section {...InfoDataOne} />
       <Section {...InfoDataTwo} reverse/>
+      <Footer></Footer>
     </Fragment>
   );
 };

@@ -89,7 +89,7 @@ const Main = ({ slides }: ISlidesProps) => {
                     <h1>{slide?.title}</h1>
                     <p>{slide?.price}</p>
                     <Box style={{ width: "150px" }}>
-                      <Button type={"Primary"}>View Home</Button>
+                      <Button type={"Primary"}>Contactanos</Button>
                     </Box>
                   </Box>
                 </Box>
