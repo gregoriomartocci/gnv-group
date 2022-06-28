@@ -1,16 +1,16 @@
 import { SxProps, Theme } from "@mui/material";
 
-const darkBlue = "#0B2559";
+const black = "#212121";
 
 export const SidebarContainer: SxProps<Theme> = {
   height: "100%",
   width: "250px",
-  backgroundColor: darkBlue,
+  backgroundColor: black,
 };
 
 export const MenuItems: SxProps<Theme> = {
   width: "100%",
-  backgroundColor: darkBlue,
+  backgroundColor: black,
   padding: "0px 15px",
 
   span: {
@@ -27,15 +27,12 @@ export const MenuItem: SxProps<Theme> = {
   alignItems: "center",
   margin: "15px 5px",
   color: "#eeeeee",
-  backgroundColor: "#0B2559",
   cursor: "pointer",
-  borderRadius: "7.5px",
   padding: "0px 10px",
 
-
-  "&:hover": {
-    backgroundColor: "#0C2E6E",
-  },
+  // "&:hover": {
+  //   backgroundColor: "#616161",
+  // },
 
   span: {
     fontSize: "12px",

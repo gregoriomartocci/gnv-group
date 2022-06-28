@@ -1,13 +1,15 @@
-import { TableCell, Typography } from "@mui/material";
-import React, { Fragment as Box, useEffect, useState } from "react";
+import { SxProps, TableCell, Typography } from "@mui/material";
+import { Theme } from "@mui/system";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
 import { IState } from "../../../components/Menu";
 import api from "../../../hooks/Api";
 import { setProjects } from "../../../redux/slices/projects";
 import CreateProject from "./components/Create";
-import UseTable from "./components/Table";
+import UseTable from "../../../components/Table";
 import { CellTable } from "./Styles";
+import Box from "@mui/material/Box";
 
 export interface Data {
   _id: string;
@@ -28,6 +30,59 @@ interface HeadCell {
   label: string;
   numeric: boolean;
 }
+
+interface ITableContent {
+  project: any;
+}
+
+export const ProjectsContent = ({ project }: ITableContent) => {
+  const CellTable: SxProps<Theme> = {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+
+    img: {
+      width: "32px",
+      height: "32px",
+      borderRadius: "50%",
+      objectFit: "cover",
+      margin: "0px 10px",
+    },
+  };
+
+  return (
+    <Fragment>
+      <TableCell align="left">
+        <Box sx={CellTable}>
+          <img src={project?.images[0]} />
+          <Typography style={{ fontFamily: "Montserrat" }}>
+            {project?.name}
+          </Typography>
+        </Box>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
+          {project?.description}
+        </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
+          {project?.type}
+        </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
+          {project?.status}
+        </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
+          {project?.published}
+        </Typography>
+      </TableCell>
+    </Fragment>
+  );
+};
 
 const headCells: readonly HeadCell[] = [
   {
@@ -104,41 +159,6 @@ const Posts = () => {
 
     onSubmitHandler();
   }, []);
-
-  const ok = ["description", "type", "status", "published"];
-
-  // const content = [
-
-  //   <TableCell align="left">
-  //     <Box sx={CellTable}>
-  //       <img src={row?.images[0]} />
-  //       <Typography style={{ fontFamily: "Montserrat" }}>{row.name}</Typography>
-  //     </Box>
-  //   </TableCell>,
-
-  //   <TableCell align="left">
-  //     <Typography style={{ fontFamily: "Montserrat" }}>
-  //       {row?.description}
-  //     </Typography>
-  //   </TableCell>,
-
-  //   <TableCell align="left">
-  //     <Typography style={{ fontFamily: "Montserrat" }}>{row?.type}</Typography>
-  //   </TableCell>,
-
-  //   <TableCell align="left">
-  //     <Typography style={{ fontFamily: "Montserrat" }}>
-  //       {row?.status}
-  //     </Typography>
-  //   </TableCell>,
-
-  //   <TableCell align="left">
-  //     <Typography style={{ fontFamily: "Montserrat" }}>
-  //       {row?.published}
-  //     </Typography>
-  //   </TableCell>,
-
-  // ];
 
   return (
     <Dashboard>

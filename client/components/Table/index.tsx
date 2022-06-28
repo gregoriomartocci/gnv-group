@@ -17,10 +17,11 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { visuallyHidden } from "@mui/utils";
-import UseButton from "../../../../../components/Button";
-import UseModal from "../../../../../components/Modal";
-import CreateUser from "../../../users/components/Create";
+import UseButton from "../Button";
+import UseModal from "../Modal";
+import CreateUser from "../../pages/profile/users/components/Create";
 import { CellTable, GrayBackground } from "./Styles";
+import { ProjectsContent } from "../../pages/profile/projects";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -76,10 +77,10 @@ interface EnhancedTableToolbarProps {
 }
 
 interface IUseTable {
-  children: React.ReactNode;
-  title: string;
+  title: string; 
   headCells: any;
   rows: any;
+  children: React.ReactNode;
 }
 
 export default function UseTable({
@@ -349,34 +350,15 @@ export default function UseTable({
                           </Typography>
                         </TableCell>
 
-                        <TableCell align="left">
-                          <Box sx={CellTable}>
-                            <img src={row?.images[0]} />
-                            <Typography style={{ fontFamily: "Montserrat" }}>
-                              {row.name}
-                            </Typography>
-                          </Box>
-                        </TableCell>
-                        <TableCell align="left">
-                          <Typography style={{ fontFamily: "Montserrat" }}>
-                            {row?.description}
-                          </Typography>
-                        </TableCell>
-                        <TableCell align="left">
-                          <Typography style={{ fontFamily: "Montserrat" }}>
-                            {row?.type}
-                          </Typography>
-                        </TableCell>
-                        <TableCell align="left">
-                          <Typography style={{ fontFamily: "Montserrat" }}>
-                            {row?.status}
-                          </Typography>
-                        </TableCell>
-                        <TableCell align="left">
-                          <Typography style={{ fontFamily: "Montserrat" }}>
-                            {row?.published}
-                          </Typography>
-                        </TableCell>
+                        {title === "Emprendimientos" ? (
+                          <ProjectsContent project={row} />
+                        ) : title === "Usuarios" ? (
+                          <span>usuarios</span>
+                        ) : // <UsersContent />
+                        title === "Noticias" ? (
+                          <span>noticias</span>
+                        ) : // <NewsContent />
+                        null}
                       </TableRow>
                     );
                   })}

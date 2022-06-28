@@ -1,5 +1,6 @@
 import { SxProps, Theme } from "@mui/material";
 
+
 export const AuthContainer: SxProps<Theme> = {
   display: "grid",
   gridTemplateColumns: "40% auto",
