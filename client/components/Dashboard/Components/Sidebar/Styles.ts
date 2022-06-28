@@ -41,3 +41,9 @@ export const MenuItem: SxProps<Theme> = {
     margin: "10px 5px",
   },
 };
+
+export const Logo: SxProps<Theme> = {
+  // fontFamily: "Poppins, sans-serif",
+  fontFamily: "'Montserrat', sans-serif",
+  color: "#fff",
+};

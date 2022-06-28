@@ -84,7 +84,7 @@ const CreateUser = () => {
             color: "#424242",
           }}
         >
-          Agregar Usuario
+          Agregar Noticia
         </span>
         <InputGroup
           name="email"
@@ -124,7 +124,7 @@ const CreateUser = () => {
           {loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
-            "Agregar Usuario"
+            "Agregar Noticia"
           )}
         </UseButton>
       </Fragment>

@@ -162,7 +162,7 @@ const Posts = () => {
     <Dashboard>
       {projects.length && (
         <UseTable
-          title="Usuarios"
+          title="Noticias"
           headCells={headCells}
           rows={projects && projects}
         >
