@@ -1,9 +1,15 @@
 import mongoose from "mongoose";
-import nanoid from "nanoid";
+import auto_increment from 'mongoose-auto-increment' 
+
 const { Schema } = mongoose;
 
-const userSchema = new Schema(
+const projectSchema = new Schema(
   {
+    id: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
     name: {
       type: String,
       trim: true,
@@ -24,4 +30,13 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Project", userSchema);
+auto_increment.initialize(mongoose.connection);
+
+projectSchema.plugin(auto_increment.plugin, {
+  model: "Project",
+  field: "id",
+  startAt: 1,
+  incrementBy: 1
+});
+
+export default mongoose.model("Project", projectSchema);
