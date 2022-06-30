@@ -16,6 +16,7 @@ interface IChildren {
 }
 
 export default function UseTabs({ value, setValue }: IChildren) {
+  
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };

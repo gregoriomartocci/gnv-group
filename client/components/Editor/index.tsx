@@ -43,60 +43,17 @@ const formats = [
 ];
 
 export interface IEditor {
-  value: string;
+  value: any;
   setValue: any;
 }
 
 const Editor = ({ value, setValue }: IEditor) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState({ publish: "", message: "" });
-  const [project, setProject] = useState({
-    name: "Osten Tosweraa",
-    description: "descripcion de prueba",
-    type: "Edificio",
-    published: true,
-    status: "En construcción",
-  });
   const onChangeHandler = (e: string) => {
-    setValue(e);
-  };
-
-  const handlePublish = async () => {
-    setError({ publish: "", message: "" });
-    setLoading(true);
-    try {
-      const data = await api({
-        method: "post",
-        path: "/project",
-        payload: project,
-      });
-      console.log("Dateushh", data);
-      setLoading(false);
-
-      if (data?.error) {
-        setError({ publish: "failed", message: data?.error });
-      } else {
-        setError({ ...error, publish: "success" });
-        localStorage.setItem("auth", JSON.stringify(data));
-        // dispatch(setAuth(data));
-        // router.push("/profile");
-      }
-    } catch (err) {
-      setError({ publish: "failed", message: "Something went wrong" });
-      setLoading(false);
-    }
+    setValue({ ...value, description: e });
   };
 
   return (
     <Box style={{ height: "auto" }}>
-
-      {error?.publish === "success" && (
-        <Toast message="El emprendimiento se agregó con éxito" type="success" />
-      )}
-      {error?.publish === "failed" && (
-        <Toast message={error.message} type="error" />
-      )}
-
       <Box style={{ height: "350px" }}>
         {typeof window !== "undefined" ? (
           <ReactQuill
@@ -104,22 +61,12 @@ const Editor = ({ value, setValue }: IEditor) => {
             style={{ height: "300px" }}
             placeholder="Introduzca una descripción del proyecto.."
             theme="snow"
-            value={value}
+            value={value.description}
             scrollingContainer="body"
             modules={modules}
             onChange={onChangeHandler}
           />
         ) : null}
-      </Box>
-
-      <Box style={{ margin: "40px 0 0 0" }}>
-        <UseButton type="Blue" onClickHandler={handlePublish}>
-          {loading ? (
-            <CircularProgress style={{ color: "#fff" }} />
-          ) : (
-            "Agregar Proyecto"
-          )}
-        </UseButton>
       </Box>
     </Box>
   );
