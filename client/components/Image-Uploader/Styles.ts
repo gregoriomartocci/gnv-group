@@ -22,7 +22,7 @@ export const dropFileInput: SxProps = {
   borderRadius: "20px",
   backgroundColor: secondary,
   color: "#9e9e9e",
-  margin: "25px 0px",
+  margin: "5px 0px",
   fontFamily: "Poppins",
   textAlign: "center",
 
@@ -55,6 +55,8 @@ export const dropFileInputLabel: SxProps = {
 
 export const dropFilePreview: SxProps = {
   marginTop: "30px",
+  maxHeight: "150px",
+  overflowY: "scroll",
   p: {
     fontWeight: 500,
   },
@@ -128,3 +130,4 @@ export const imageContainer: SxProps = {
     objectFit: "cover",
   },
 };
+

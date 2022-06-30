@@ -21,6 +21,7 @@ import {
 import * as yup from "yup";
 import UseButton from "../Button";
 
+
 export interface IImagetoUpload {
   lastModified: number;
   lastModifiedDate: Date;
@@ -75,7 +76,7 @@ const ImageUploader = () => {
         "fileSize",
         "La imagen supera los 5 MB. Intente con otra",
         (value: IImagetoUpload) => {
-          return value?.size <= 500;
+          return value?.size <= 50000000;
         }
       )
       .test(
@@ -108,9 +109,6 @@ const ImageUploader = () => {
   const onDragEnter = () => wrapperRef.current.classList.add("dragover");
   const onDragLeave = () => wrapperRef.current.classList.remove("dragover");
   const onDrop = () => wrapperRef.current.classList.remove("dragover");
-
-  // console.log(file !== [], file.length, "OKKK")
-  // file !== [] && ImageFormater(file[file.length - 1]);
 
   const onFileDrop = async (e: any) => {
     setErrors([]);
@@ -190,42 +188,46 @@ const ImageUploader = () => {
             </Typography>
           </Box>
         </Alert>
+        <Box>
+          {errors?.length >= 1 && (
+            <Alert variant="filled" severity="error">
+              {errors[0]}
+            </Alert>
+          )}
+        </Box>
       </Fragment>
 
       <Box sx={dropFilePreview}>
-        <Fragment>
-
-          {file?.map((file, index) => {
-          {console.log(errors, "errors")}
-            return (
-              <Box sx={dropFilePreviewItem}>
-                <Box sx={dropFilePreviewTitleItemInfo}>
-                  <Box sx={imageContainer}>
-                    <img src={base64[index]} alt="" />
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      padding: " 0px 20px",
-                    }}
-                  >
-                    <Typography>{file?.name}</Typography>
-                    <Typography style={{ fontSize: "14px", fontWeight: 500 }}>
-                      {Convert(file?.size)} KB
-                    </Typography>
-                  </Box>
+        {file?.map((file, index) => {
+          return (
+            <Box sx={dropFilePreviewItem}>
+              <Box sx={dropFilePreviewTitleItemInfo}>
+                <Box sx={imageContainer}>
+                  <img src={base64[index]} alt="" />
                 </Box>
-                <IconButton onClick={() => fileRemove(file?.name)}>
-                  <CloseIcon />
-                </IconButton>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    padding: " 0px 20px",
+                  }}
+                >
+                  <Typography>{file?.name}</Typography>
+                  <Typography style={{ fontSize: "14px", fontWeight: 500 }}>
+                    {Convert(file?.size)} KB
+                  </Typography>
+                </Box>
               </Box>
-            );
-          }) ?? null}
-        </Fragment>
-        <UseButton type="Blue">Subir Imágenes</UseButton>
+              <IconButton onClick={() => fileRemove(file?.name)}>
+                <CloseIcon />
+              </IconButton>
+            </Box>
+          );
+        }) ?? null}
       </Box>
+
+      {file?.length >= 1 && <UseButton type="Blue">Subir Imágenes</UseButton>}
     </Fragment>
   );
 };
