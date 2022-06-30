@@ -23,7 +23,7 @@ export const dropFileInput: SxProps = {
   backgroundColor: secondary,
   color: "#9e9e9e",
   margin: "25px 0px",
-  fontFamily: "`Montserrat`, sans-serif",
+  fontFamily: "Poppins",
   textAlign: "center",
 
   input: {
@@ -108,6 +108,13 @@ export const dropFilePreviewTitleItemInfo: SxProps = {
     opacity: 0,
     transition: "opacity 0.3s ease",
   },
+};
+
+export const InfoMessage: SxProps = {
+  margin: "2.5px 0",
+  fontSize: "12px",
+  fontFamily: "Poppins",
+  fontWeight: "500",
 };
 
 export const imageContainer: SxProps = {

@@ -14,7 +14,7 @@ import api from "../../../../../hooks/Api";
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
 import UseAutocomplete from "../../../../../components/Autocomplete";
-import ImageUploader from "../../../../../components/ImageUploader";
+import ImageUploader from "../../../../../components/Image-Uploader";
 import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 

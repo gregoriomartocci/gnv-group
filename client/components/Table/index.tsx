@@ -320,7 +320,7 @@ export default function UseTable({
                       <TableRow
                         hover
                         onClick={(event: any) =>
-                          handleClick(event, row?._id.toString())
+                          handleClick(event, row?.id.toString())
                         }
                         role="checkbox"
                         aria-checked={isItemSelected}
@@ -346,7 +346,7 @@ export default function UseTable({
                           padding="none"
                         >
                           <Typography style={{ fontFamily: "Montserrat" }}>
-                            {row._id}
+                            {row.id}
                           </Typography>
                         </TableCell>
 

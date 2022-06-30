@@ -51,7 +51,7 @@ const Editor = ({ value, setValue }: IEditor) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState({ publish: "", message: "" });
   const [project, setProject] = useState({
-    name: "Osten Tower",
+    name: "Osten Tosweraa",
     description: "descripcion de prueba",
     type: "Edificio",
     published: true,
