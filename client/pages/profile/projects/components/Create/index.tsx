@@ -137,11 +137,9 @@ const CreateProject = () => {
         name="type"
       />
     </Fragment>,
-    <ImageUploader setValue={setInput}/>,
+    <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
-
-  console.log(input, "input");
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -167,6 +165,8 @@ const CreateProject = () => {
         <UseTabs value={tab} setValue={setTab} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
+
+        {console.log(input, "INPUT")}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {loading ? (

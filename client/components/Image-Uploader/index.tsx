@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -20,7 +20,6 @@ import {
 } from "./Styles";
 import * as yup from "yup";
 import UseButton from "../Button";
-
 
 export interface IImagetoUpload {
   lastModified: number;
@@ -45,7 +44,7 @@ const ImageFormater = async (newFile: IImagetoUpload) => {
 };
 
 // Convert to Base64
-const convertBase64 = (file: any) => {
+export const convertBase64 = (file: any) => {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
 
@@ -62,11 +61,24 @@ const convertBase64 = (file: any) => {
   });
 };
 
-const ImageUploader = () => {
+interface IImageUploader {
+  value: string[];
+  setValue: any;
+}
+
+const ImageUploader = ({ value, setValue }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [file, setFile] = useState<IImagetoUpload[] | []>([]);
   const [errors, setErrors] = useState<string[] | []>([]);
   const [base64, setBase64] = useState<string[] | []>([]);
+
+  useEffect(() => {
+    const set = async () => {
+      const images = file
+      return await setValue({ ...value, images });
+    };
+    set();
+  }, [file]);
 
   const schema = yup.object().shape({
     attachment: yup
@@ -84,7 +96,6 @@ const ImageUploader = () => {
         "El formato de la imagen no es válido",
         (value: IImagetoUpload) => {
           const format = value?.type.split("/")[1];
-          console.log("Format", format);
           const isValid = ["png", "jpg", "svg", "jpeg"].includes(format);
           return isValid;
         }
@@ -129,7 +140,7 @@ const ImageUploader = () => {
 
   // Remove Image
   const fileRemove = (name: string) => {
-    const update = file.filter((f) => f.name !== name);
+    const update = file?.filter((f) => f.name !== name);
     setFile(update);
   };
 
@@ -227,7 +238,7 @@ const ImageUploader = () => {
         }) ?? null}
       </Box>
 
-      {file?.length >= 1 && <UseButton type="Blue">Subir Imágenes</UseButton>}
+      {/* {file?.length >= 1 && <UseButton type="Blue">Subir Imágenes</UseButton>} */}
     </Fragment>
   );
 };
