@@ -14,7 +14,9 @@ import api from "../../../../../hooks/Api";
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
 import UseAutocomplete from "../../../../../components/Autocomplete";
-import ImageUploader from "../../../../../components/Image-Uploader";
+import ImageUploader, {
+  IImagetoUpload,
+} from "../../../../../components/Image-Uploader";
 import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
@@ -45,9 +47,8 @@ export type errorType = {
 const CreateProject = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-
+  const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
   const [error, setError] = useState<errorType>({
     publish: "",
     message: "",
@@ -61,6 +62,8 @@ const CreateProject = () => {
     status: "",
     type: "",
   });
+
+  console.log(input.images, "que pasa aca che");
 
   const [tab, setTab] = useState<number>(0);
 
@@ -137,7 +140,12 @@ const CreateProject = () => {
         name="type"
       />
     </Fragment>,
-    <ImageUploader value={input} setValue={setInput} />,
+    <ImageUploader
+      value={value}
+      setValue={setValue}
+      base64={input}
+      setBase64={setInput}
+    />,
     <Editor value={input} setValue={setInput} />,
   ];
 
@@ -166,7 +174,7 @@ const CreateProject = () => {
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 
-        {console.log(input, "INPUT")}
+        {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {loading ? (

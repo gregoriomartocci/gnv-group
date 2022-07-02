@@ -174,7 +174,7 @@ export default function UseTable({
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n: any) => n._id);
+      const newSelecteds = rows.map((n: any) => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -314,7 +314,7 @@ export default function UseTable({
                 {stableSort(rows, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row?._id.toString());
+                    const isItemSelected = isSelected(row?.id.toString());
                     const labelId = `enhanced-table-checkbox-${index}`;
                     return (
                       <TableRow

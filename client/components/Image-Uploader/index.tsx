@@ -19,7 +19,7 @@ import {
   InfoMessage,
 } from "./Styles";
 import * as yup from "yup";
-import UseButton from "../Button";
+import { inputType } from "../../pages/profile/projects/components/Create";
 
 export interface IImagetoUpload {
   lastModified: number;
@@ -47,7 +47,6 @@ const ImageFormater = async (newFile: IImagetoUpload) => {
 export const convertBase64 = (file: any) => {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
-
     fileReader.readAsDataURL(file);
 
     if (file) {
@@ -62,23 +61,29 @@ export const convertBase64 = (file: any) => {
 };
 
 interface IImageUploader {
-  value: string[];
+  value: IImagetoUpload[];
   setValue: any;
+  base64: inputType;
+  setBase64: any;
 }
 
-const ImageUploader = ({ value, setValue }: IImageUploader) => {
+const ImageUploader = ({
+  value,
+  setValue,
+  base64,
+  setBase64,
+}: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
-  const [file, setFile] = useState<IImagetoUpload[] | []>([]);
   const [errors, setErrors] = useState<string[] | []>([]);
-  const [base64, setBase64] = useState<string[] | []>([]);
 
-  useEffect(() => {
-    const set = async () => {
-      const images = file
-      return await setValue({ ...value, images });
-    };
-    set();
-  }, [file]);
+  console.log(base64);
+
+  // useEffect(() => {
+  //   const set = async () => {
+  //     return await setValue({ ...value, images: file });
+  //   };
+  //   set();
+  // }, [file]);
 
   const schema = yup.object().shape({
     attachment: yup
@@ -114,7 +119,8 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
   // Upload Image
   const uploadImage = async (file: IImagetoUpload) => {
     const result = await convertBase64(file);
-    typeof result === "string" && setBase64([...base64, result]);
+    typeof result === "string" &&
+      setBase64({ ...base64, images: [...base64.images, result] });
   };
 
   const onDragEnter = () => wrapperRef.current.classList.add("dragover");
@@ -123,14 +129,13 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
 
   const onFileDrop = async (e: any) => {
     setErrors([]);
-    setFile([]);
 
     const newFile = e.target.files[0];
 
     await schema
       .validate({ attachment: newFile })
       .then(() => {
-        setFile([...file, newFile]);
+        setValue([...value, newFile]);
         uploadImage(newFile);
       })
       .catch(({ errors }: any) => {
@@ -139,9 +144,13 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
   };
 
   // Remove Image
-  const fileRemove = (name: string) => {
-    const update = file?.filter((f) => f.name !== name);
-    setFile(update);
+  const fileRemove = (number: number) => {
+    const update = value?.filter((_, index) => index !== number);
+    setValue(update);
+    const update64 = base64?.images?.filter(
+      (_, index: number) => index !== number
+    );
+    setBase64({ ...base64, images: update64 });
   };
 
   // Conver KB Format
@@ -209,12 +218,12 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
       </Fragment>
 
       <Box sx={dropFilePreview}>
-        {file?.map((file, index) => {
+        {value?.map((file, index) => {
           return (
             <Box sx={dropFilePreviewItem}>
               <Box sx={dropFilePreviewTitleItemInfo}>
                 <Box sx={imageContainer}>
-                  <img src={base64[index]} alt="" />
+                  <img src={base64?.images[index]} alt="" />
                 </Box>
                 <Box
                   sx={{
@@ -230,7 +239,7 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
                   </Typography>
                 </Box>
               </Box>
-              <IconButton onClick={() => fileRemove(file?.name)}>
+              <IconButton onClick={() => fileRemove(index)}>
                 <CloseIcon />
               </IconButton>
             </Box>

@@ -12,7 +12,7 @@ import { CellTable } from "./Styles";
 import Box from "@mui/material/Box";
 
 export interface Data {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   images: string[];
@@ -86,7 +86,7 @@ export const ProjectsContent = ({ project }: ITableContent) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "_id",
+    id: "id",
     numeric: false,
     disablePadding: true,
     label: "ID",
