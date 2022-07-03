@@ -32,7 +32,7 @@ const BasicSelect = ({
         <span
           style={{
             fontSize: "13px",
-            color: "#212121",
+            color: "#9e9e9e",
             fontWeight: "700",
             margin: "10px 0",
           }}

@@ -8,8 +8,8 @@ export const InputContainer: SxProps<Theme> = {
 
   span: {
     fontSize: "13px",
-    color: "#212121",
-    fontWeight: "700",
+    color: "#9e9e9e",
+    fontWeight: "600",
     margin: "10px 0",
   },
   input: {

@@ -260,6 +260,7 @@ export default function UseTable({
           </Tooltip>
         ) : (
           <React.Fragment>
+            
             <UseButton type="Primary" onClickHandler={handleOpen}>
               agregar
             </UseButton>

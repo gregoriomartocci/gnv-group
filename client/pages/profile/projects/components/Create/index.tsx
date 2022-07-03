@@ -161,9 +161,9 @@ const CreateProject = () => {
       <Box sx={Login}>
         <span
           style={{
-            fontSize: "35px",
+            fontSize: "20px",
             fontWeight: 600,
-            margin: "10px 0",
+            margin: "0 0 15px 0",
             color: "#424242",
           }}
         >
