@@ -12,18 +12,20 @@ export const createProject = async (req, res) => {
 
     const upload = images.map((i) => uploadImage(i));
 
-    console.log(upload, "que pasa che");
-
+    const img_links = await Promise.all(upload).then();
+    
     const project = await new Project({
       name,
       description,
       type,
       published,
       status,
+      images: img_links,
     }).save();
 
     return res.json(project);
   } catch (err) {
+    console.log(err.message, "HUBO UN PROBLEMITA");
     return res.json(err.message);
   }
 };

@@ -54,7 +54,9 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={project?.images[0]} />
+
+          {console.log(project?.name === "TUCO" && project, "IMAGENES")}
+          <img src={project?.images[0]} alt="" />
           <Typography style={{ fontFamily: "Montserrat" }}>
             {project?.name}
           </Typography>

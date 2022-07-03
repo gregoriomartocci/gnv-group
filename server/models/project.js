@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import auto_increment from 'mongoose-auto-increment' 
+import auto_increment from "mongoose-auto-increment";
 
 const { Schema } = mongoose;
 
@@ -16,7 +16,11 @@ const projectSchema = new Schema(
       required: true,
     },
     description: {},
-    images: [],
+    images: [
+      {
+        type: String,
+      },
+    ],
     type: {
       type: String,
       required: true,
@@ -36,7 +40,7 @@ projectSchema.plugin(auto_increment.plugin, {
   model: "Project",
   field: "id",
   startAt: 1,
-  incrementBy: 1
+  incrementBy: 1,
 });
 
 export default mongoose.model("Project", projectSchema);
