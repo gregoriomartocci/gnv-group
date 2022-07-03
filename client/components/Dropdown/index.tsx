@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Box } from "@mui/material";
+import { Box, Popover } from "@mui/material";
 import { DropdownContainer } from "./Styles";
 
 export interface IBasicMenu {
@@ -20,7 +20,7 @@ export default function Dropdown({
 }: IBasicMenu) {
   return (
     <Box sx={DropdownContainer}>
-      <Menu
+      <Popover
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -29,33 +29,14 @@ export default function Dropdown({
           elevation: 0,
           sx: {
             overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            "&:before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "background.paper",
-              transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-            },
+            boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         {children}
-      </Menu>
+      </Popover>
     </Box>
   );
 }

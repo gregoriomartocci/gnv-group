@@ -1,4 +1,4 @@
-import { SxProps, TableCell, Typography } from "@mui/material";
+import { IconButton, SxProps, TableCell, Typography } from "@mui/material";
 import { Theme } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,10 @@ import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import { CellTable } from "./Styles";
 import Box from "@mui/material/Box";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import Actions from "./components/Actions";
+import Dropdown from "../../../components/Dropdown";
 
 export interface Data {
   id: string;
@@ -26,7 +30,7 @@ export interface Data {
 
 interface HeadCell {
   disablePadding: boolean;
-  id: keyof Data;
+  id: keyof Data | "actions";
   label: string;
   numeric: boolean;
 }
@@ -36,6 +40,9 @@ interface ITableContent {
 }
 
 export const ProjectsContent = ({ project }: ITableContent) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const openBasicMenu = Boolean(anchorEl);
+
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
@@ -50,12 +57,18 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     },
   };
 
+  const handleClickBasicMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseBasicMenu = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-
-          {console.log(project?.name === "TUCO" && project, "IMAGENES")}
           <img src={project?.images[0]} alt="" />
           <Typography style={{ fontFamily: "Montserrat" }}>
             {project?.name}
@@ -79,8 +92,45 @@ export const ProjectsContent = ({ project }: ITableContent) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published}
+          {project?.published ? (
+            <Box
+              sx={{
+                width: "min-content",
+                display: "flex",
+                alignItems: "center",
+                padding: "10px",
+                borderRadius: "10px",
+                border: "1px solid #E0E0E0",
+              }}
+            >
+              <FiberManualRecordIcon
+                sx={{
+                  margin: "0px 6px",
+                  color: "#30D18D",
+                  fontSize: "12.5px",
+                  fontWeight: "600",
+                }}
+              />
+              Activa
+            </Box>
+          ) : (
+            <Box>
+              <FiberManualRecordIcon /> Pausada
+            </Box>
+          )}
         </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Dropdown
+          open={openBasicMenu}
+          handleClose={handleCloseBasicMenu}
+          anchorEl={anchorEl}
+        >
+          <Actions />
+        </Dropdown>
+        <IconButton onClick={handleClickBasicMenu}>
+          <MoreVertIcon />
+        </IconButton>
       </TableCell>
     </Fragment>
   );
@@ -121,7 +171,13 @@ const headCells: readonly HeadCell[] = [
     id: "published",
     numeric: true,
     disablePadding: false,
-    label: "Publicado",
+    label: "Publicación",
+  },
+  {
+    id: "actions",
+    numeric: true,
+    disablePadding: false,
+    label: "Acciones",
   },
 ];
 

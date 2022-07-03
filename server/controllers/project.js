@@ -7,12 +7,27 @@ export const createProject = async (req, res) => {
 
     const alreadyExist = await Project.findOne({ name });
 
+    if (!name) return res.json({ error: "Por favor ingrese un nombre" });
+
+    if (!description)
+      return res.json({ error: "Por favor ingrese una descripción" });
+
+    if (!type)
+      return res.json({
+        error: "Por favor seleccione un tipo de emprendimiento",
+      });
+
+    if (!status)
+      return res.json({
+        error: "Por favor indique en que estado se encuentra el emprendimiento",
+      });
+
     if (alreadyExist)
       return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
 
     const upload = images.map((i) => uploadImage(i));
 
-    const img_links = await Promise.all(upload).then();
+    const img_links = await Promise.all(upload);
     
     const project = await new Project({
       name,
@@ -25,7 +40,7 @@ export const createProject = async (req, res) => {
 
     return res.json(project);
   } catch (err) {
-    console.log(err.message, "HUBO UN PROBLEMITA");
+    console.log(err.message, "Algo salió mal");
     return res.json(err.message);
   }
 };

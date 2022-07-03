@@ -77,7 +77,7 @@ interface EnhancedTableToolbarProps {
 }
 
 interface IUseTable {
-  title: string; 
+  title: string;
   headCells: any;
   rows: any;
   children: React.ReactNode;
@@ -319,9 +319,6 @@ export default function UseTable({
                     return (
                       <TableRow
                         hover
-                        onClick={(event: any) =>
-                          handleClick(event, row?.id.toString())
-                        }
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -336,6 +333,9 @@ export default function UseTable({
                             inputProps={{
                               "aria-labelledby": labelId,
                             }}
+                            onClick={(event: any) =>
+                              handleClick(event, row?.id.toString())
+                            }
                           />
                         </TableCell>
 

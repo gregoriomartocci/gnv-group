@@ -47,23 +47,30 @@ const Account = ({ handleClose }: IAccount) => {
 
   return (
     <Box sx={AccountContainer}>
-      <Box sx={AccountTop}></Box>
-      <Divider sx={{ my: 0.5 }} />
       <Box>
         {menuItems?.mid?.map(({ icon, text, route }, index) => (
-          <AccountMenuItem key={index} icon={icon} text={text} route={route} />
+          <Box sx={{ padding: "5px 0" }}>
+            <AccountMenuItem
+              key={index}
+              icon={icon}
+              text={text}
+              route={route}
+            />
+          </Box>
         ))}
       </Box>
       <Divider sx={{ my: 0.5 }} />
       <Box sx={AccountBottom}>
         {menuItems?.logout?.map(({ icon, text, route }, index) => (
-          <AccountMenuItem
-            key={index}
-            icon={icon}
-            text={text}
-            route={route}
-            action={SignOut}
-          />
+          <Box sx={{ padding: "5px 0" }}>
+            <AccountMenuItem
+              key={index}
+              icon={icon}
+              text={text}
+              route={route}
+              action={SignOut}
+            />
+          </Box>
         ))}
       </Box>
     </Box>
