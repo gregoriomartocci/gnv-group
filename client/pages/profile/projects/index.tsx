@@ -16,7 +16,7 @@ import Actions from "./components/Actions";
 import Dropdown from "../../../components/Dropdown";
 
 export interface Data {
-  id: string;
+  id: number;
   name: string;
   description: string;
   images: string[];
@@ -139,7 +139,7 @@ export const ProjectsContent = ({ project }: ITableContent) => {
 const headCells: readonly HeadCell[] = [
   {
     id: "id",
-    numeric: false,
+    numeric: true,
     disablePadding: true,
     label: "ID",
   },

@@ -91,7 +91,7 @@ export default function UseTable({
 }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
-  const [selected, setSelected] = React.useState<readonly string[]>([]);
+  const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(9);
   const [openModal, setOpenModal] = React.useState(false);
@@ -181,9 +181,10 @@ export default function UseTable({
     setSelected([]);
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, id: string) => {
+  const handleClick = (event: React.MouseEvent<unknown>, id: number) => {
+
     const selectedIndex = selected.indexOf(id);
-    let newSelected: readonly string[] = [];
+    let newSelected: readonly number[] = [];
 
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
@@ -212,7 +213,7 @@ export default function UseTable({
     setPage(0);
   };
 
-  const isSelected = (id: string) => selected.indexOf(id) !== -1;
+  const isSelected = (id: number ) => selected.indexOf(id) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -315,7 +316,7 @@ export default function UseTable({
                 {stableSort(rows, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row?.id.toString());
+                    const isItemSelected = isSelected(Number(row?.id));
                     const labelId = `enhanced-table-checkbox-${index}`;
                     return (
                       <TableRow
@@ -335,7 +336,7 @@ export default function UseTable({
                               "aria-labelledby": labelId,
                             }}
                             onClick={(event: any) =>
-                              handleClick(event, row?.id.toString())
+                              handleClick(event, Number(row?.id))
                             }
                           />
                         </TableCell>
