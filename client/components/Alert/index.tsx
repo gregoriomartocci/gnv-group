@@ -20,6 +20,7 @@ export interface IToast {
 }
 
 export default function Toast({ message, type }: IToast) {
+
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -43,7 +44,7 @@ export default function Toast({ message, type }: IToast) {
                 setOpen(false);
               }}
             >
-              <CloseIcon fontSize="inherit" />
+              <CloseIcon fontSize="inherit"/>
             </IconButton>
           }
         >

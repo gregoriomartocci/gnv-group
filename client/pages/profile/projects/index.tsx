@@ -20,6 +20,7 @@ import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
 import Delete from "../../../components/Table/Components/Delete";
+import Toast from "../../../components/Alert";
 
 export interface Data {
   id: number;
@@ -222,6 +223,18 @@ const Posts = () => {
 
   return (
     <Dashboard>
+      
+      {state?.delete?.status === "success" && (
+        <Toast
+          message="El emprendimiento se eliminó con éxito"
+          type="success"
+        />
+      )}
+
+      {state?.delete?.status === "failed" && (
+        <Toast message={state?.delete.message} type="error" />
+      )}
+
       <UseTable
         title="Emprendimientos"
         api="project"
@@ -236,7 +249,6 @@ const Posts = () => {
       <UseModal open={create?.modal} handleClose={closeCreateModal}>
         <CreateProject projects={projects} />
       </UseModal>
-
     </Dashboard>
   );
 };

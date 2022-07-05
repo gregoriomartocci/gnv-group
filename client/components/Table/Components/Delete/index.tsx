@@ -77,6 +77,7 @@ const Delete = ({ path, id }: IDelete) => {
           setDelete({
             ...state?.delete,
             status: "success",
+            modal: false,
           })
         );
         const updateProjects = state.projects.filter(
@@ -99,80 +100,66 @@ const Delete = ({ path, id }: IDelete) => {
 
   return (
     <Fragment>
-
-      {state?.delete?.status === "success" && (
-        <Toast
-          message="El emprendimiento se eliminó con éxito"
-          type="success"
-        />
-      )}
-
-      {state?.delete?.status === "failed" && (
-        <Toast message={state?.delete.message} type="error" />
-      )}
-
-      {state?.delete?.status !== "success" && (
-        <Box
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "25px",
+          fontFamily: "'Poppins'",
+        }}
+      >
+        <DeleteIcon
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "25px",
-            fontFamily: "'Poppins'",
+            color: "#e0e0e0",
+          }}
+        />
+
+        <span
+          style={{
+            fontSize: "17px",
+            margin: "15px 0 0 0",
+            fontWeight: "600",
+            color: "#1D2D3E",
           }}
         >
-          <DeleteIcon
-            sx={{
-              color: "#e0e0e0",
-            }}
-          />
+          Eliminar emprendimiento
+        </span>
+        <span
+          style={{
+            fontSize: "13px",
+            margin: "5px 0",
+            fontWeight: "500",
+            color: "#A1A7A9",
+          }}
+        >
+          Esta acción no se puede revertir
+        </span>
 
-          <span
+        <Box sx={{ display: "flex", margin: "15px 0 0 0" }}>
+          <Box
             style={{
-              fontSize: "17px",
-              margin: "15px 0 0 0",
-              fontWeight: "600",
-              color: "#1D2D3E",
+              margin: "0 7.5px 0 0",
             }}
           >
-            Eliminar emprendimiento
-          </span>
-          <span
+            <UseButton type="Paper" onClickHandler={closeModal}>
+              Cancelar
+            </UseButton>
+          </Box>
+          <Box
             style={{
-              fontSize: "13px",
-              margin: "5px 0",
-              fontWeight: "500",
-              color: "#A1A7A9",
+              margin: "0 0 0 7.5px",
             }}
           >
-            Esta acción no se puede revertir
-          </span>
-
-          <Box sx={{ display: "flex", margin: "15px 0 0 0" }}>
-            <Box
-              style={{
-                margin: "0 7.5px 0 0",
-              }}
-            >
-              <UseButton type="Paper" onClickHandler={closeModal}>
-                Cancelar
-              </UseButton>
-            </Box>
-            <Box
-              style={{
-                margin: "0 0 0 7.5px",
-              }}
-            >
-              <UseButton type="Delete" onClickHandler={remove}>
-                {state?.delete.loading ? (
-                  <CircularProgress style={{ color: "#fff" }} />
-                ) : (
-                  "Eliminar"
-                )}
-              </UseButton>
-            </Box>
+            <UseButton type="Delete" onClickHandler={remove}>
+              {state?.delete.loading ? (
+                <CircularProgress style={{ color: "#fff" }} />
+              ) : (
+                "Eliminar"
+              )}
+            </UseButton>
           </Box>
         </Box>
-      )}
+      </Box>
     </Fragment>
   );
 };
