@@ -21,9 +21,15 @@ import { useSelector } from "react-redux";
 import { IAuth } from "../../redux/slices/auth";
 import Account from "../Account";
 import Link from "next/link";
+import { IProject } from "../../pages/profile/news";
 export interface IState {
   articles: {};
-  projects: { projects: any; project: any };
+  projects: {
+    projects: IProject[];
+    project: IProject;
+    created: string;
+    deleted: string;
+  };
   users: {};
   auth: IAuth;
 }

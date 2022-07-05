@@ -40,8 +40,6 @@ interface ITableContent {
 }
 
 export const ProjectsContent = ({ project }: ITableContent) => {
-
-
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
@@ -55,7 +53,6 @@ export const ProjectsContent = ({ project }: ITableContent) => {
       margin: "0px 10px",
     },
   };
-
 
   return (
     <Fragment>
@@ -170,10 +167,10 @@ const Posts = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
-  const { projects } = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.projects);
+  const { projects } = state;
 
   useEffect(() => {
-
     const getProjects = async () => {
       setError({ projects: "", message: "" });
       setLoading(true);
@@ -201,14 +198,14 @@ const Posts = () => {
 
   return (
     <Dashboard>
-      {projects.length && (
+      {projects?.length && (
         <UseTable
           title="Emprendimientos"
           api="project"
           headCells={headCells}
           rows={projects && projects}
         >
-          <CreateProject />
+          <CreateProject projects={projects} />
         </UseTable>
       )}
     </Dashboard>

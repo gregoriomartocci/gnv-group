@@ -25,7 +25,7 @@ export interface IProject {
 
 interface HeadCell {
   disablePadding: boolean;
-  id: keyof Data;
+  id: keyof IProject;
   label: string;
   numeric: boolean;
 }
@@ -163,6 +163,7 @@ const Posts = () => {
       {projects.length && (
         <UseTable
           title="Noticias"
+          api="new"
           headCells={headCells}
           rows={projects && projects}
         >

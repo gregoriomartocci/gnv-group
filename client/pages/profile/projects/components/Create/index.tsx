@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import InputGroup from "../../../../../components/Input";
 import UseButton from "../../../../../components/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
 import api from "../../../../../hooks/Api";
 import { useRouter } from "next/router";
@@ -21,6 +21,9 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
+import { IProject } from "../../../news";
+import { setCreated, setProjects } from "../../../../../redux/slices/projects";
+import { IState } from "../../../../../components/Menu";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -44,15 +47,23 @@ export type errorType = {
   message: any;
 };
 
-const CreateProject = () => {
+export interface ICreateProject {
+  projects: IProject[];
+}
+
+const CreateProject = ({ projects }: ICreateProject) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const state = useSelector((state: IState) => state?.projects);
+
   const [error, setError] = useState<errorType>({
     publish: "",
     message: "",
   });
+
+  const { created } = state;
 
   const [input, setInput] = useState<inputType>({
     name: "",
@@ -63,23 +74,16 @@ const CreateProject = () => {
     type: "",
   });
 
-  useEffect(() => {
-
-    
-    return () => {
-      console.log("Ok");
-    };
-
-  }, []);
-
   console.log(input.images, "que pasa aca che");
 
   const [tab, setTab] = useState<number>(0);
 
   // Publish Project
   const handlePublish = async () => {
+    dispatch(setCreated(""));
     setError({ publish: "", message: "" });
     setLoading(true);
+
     try {
       const data = await api({
         method: "post",
@@ -88,17 +92,23 @@ const CreateProject = () => {
       });
       console.log("Dateushh", data);
       setLoading(false);
-
-      if (data?.error) {
-        setError({ publish: "failed", message: data?.error });
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+      if (error) {
+        setError({ publish: "failed", message: error });
       } else {
         setError({ ...error, publish: "success" });
-        localStorage.setItem("auth", JSON.stringify(data));
-        // dispatch(setAuth(data));
+        // localStorage.setItem("auth", JSON.stringify(data));
+        const updateProjects = [...projects, data];
+        dispatch(setProjects(updateProjects));
+        dispatch(setCreated("success"));
         // router.push("/profile");
       }
     } catch (err) {
-      setError({ publish: "failed", message: "Something went wrong" });
+      setError({
+        publish: "failed",
+        message: "Algo salió mal, intente nuevamente!",
+      });
       setLoading(false);
     }
   };
@@ -160,7 +170,11 @@ const CreateProject = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {error?.publish === "success" && (
+      
+      {console.log(created, "CREATED")}
+      {console.log(error?.publish, "ERROR")}
+
+      {created === "success" && (
         <Toast message="El emprendimiento se agregó con éxito" type="success" />
       )}
       {error?.publish === "failed" && (
