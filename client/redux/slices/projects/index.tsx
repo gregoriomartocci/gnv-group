@@ -1,24 +1,39 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IProject } from "../../../pages/profile/news";
 
-export type TResult = {
+export type TCreate = {
   status: string;
   message: string;
   loading: boolean;
+  modal: boolean;
+};
+
+export type TDelete = {
+  status: string;
+  message: string;
+  loading: boolean;
+  modal: boolean;
+  api: { path: string; id: number };
 };
 
 export interface initialState {
   projects: IProject[];
   project: IProject | {};
-  created: TResult;
-  deleted: TResult;
+  create: TCreate;
+  delete: TDelete;
 }
 
 const initialState: initialState = {
   projects: [],
   project: {},
-  created: { status: "", message: "", loading: false },
-  deleted: { status: "", message: "", loading: false },
+  create: { status: "", message: "", loading: false, modal: false },
+  delete: {
+    status: "",
+    message: "",
+    loading: false,
+    modal: false,
+    api: { path: "", id: 0 },
+  },
 };
 
 export const projectsSlice = createSlice({
@@ -31,15 +46,16 @@ export const projectsSlice = createSlice({
     setProject: (state, action: PayloadAction<IProject>) => {
       state.project = { ...action.payload };
     },
-    setCreated: (state, action: PayloadAction<TResult>) => {
-      state.created = action.payload;
+    setCreate: (state, action: PayloadAction<TCreate>) => {
+      state.create = action.payload;
     },
-    setDeleted: (state, action: PayloadAction<TResult>) => {
-      state.deleted = action.payload;
+    setDelete: (state, action: PayloadAction<TDelete>) => {
+      state.delete = action.payload;
     },
   },
 });
 
-export const { setProjects, setProject, setCreated } = projectsSlice.actions;
+export const { setProjects, setProject, setCreate, setDelete } =
+  projectsSlice.actions;
 
 export default projectsSlice.reducer;

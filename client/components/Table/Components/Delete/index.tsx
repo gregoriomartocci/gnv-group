@@ -1,53 +1,107 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UseButton from "../../../Button";
 import api from "../../../../hooks/Api";
 import Toast from "../../../Alert";
+import { setDelete, setProjects } from "../../../../redux/slices/projects";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../../../Menu";
 
 interface IDelete {
   path: string;
-  id: string;
+  id: number;
 }
 
 const Delete = ({ path, id }: IDelete) => {
   const [error, setError] = useState({ process: "", message: "" });
   const [loading, setLoading] = useState<boolean>(false);
+  const state = useSelector((state: IState) => state?.projects);
+  const dispatch = useDispatch();
 
-  console.log(path, id, "BUENOOOO");
+  useEffect(() => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        api: { path, id },
+      })
+    );
+  }, []);
+
+  const closeModal = () => {
+    dispatch(
+      setDelete({
+        status: "",
+        message: "",
+        loading: false,
+        modal: false,
+        api: { path: "", id: 0 },
+      })
+    );
+  };
 
   const remove = async () => {
-    setError({ process: "", message: "" });
-    setLoading(true);
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        loading: true,
+      })
+    );
     try {
       const data = await api({
         method: "delete",
-        path: `/${path}/${id}`,
+        path: `/${state?.delete?.api?.path}/${state?.delete?.api?.id}`,
       });
       console.log("Dateushh", data);
-      setLoading(false);
+      dispatch(
+        setDelete({
+          ...state?.delete,
+          loading: false,
+        })
+      );
       if (data?.error) {
-        setError({ process: "failed", message: data?.error });
+        dispatch(
+          setDelete({
+            ...state?.delete,
+            status: "failed",
+            message: data?.error,
+          })
+        );
       } else {
-        setError({ ...error, process: "success" });
-        // dispatch(setProjects(data));
+        dispatch(
+          setDelete({
+            ...state?.delete,
+            status: "success",
+          })
+        );
+
+        const updateProjects = state.projects.filter(
+          (p) => p._id.toString() !== id.toString()
+        );
+        dispatch(setProjects(updateProjects));
       }
     } catch (err) {
-      setError({ process: "failed", message: "Something went wrong" });
-      setLoading(false);
+      dispatch(
+        setDelete({
+          ...state?.delete,
+          status: "failed",
+          message: "Something went wrong",
+          loading: false,
+        })
+      );
     }
   };
 
   return (
     <Fragment>
-      {error?.process === "success" && (
+      {state?.delete?.status === "success" && (
         <Toast
           message="El emprendimiento se eliminó con éxito"
           type="success"
         />
       )}
-      {error?.process === "failed" && (
-        <Toast message={error.message} type="error" />
+      {state?.delete?.status === "failed" && (
+        <Toast message={state?.delete.message} type="error" />
       )}
 
       <Box
@@ -91,7 +145,9 @@ const Delete = ({ path, id }: IDelete) => {
               margin: "0 7.5px 0 0",
             }}
           >
-            <UseButton type="Paper"> Cancelar </UseButton>
+            <UseButton type="Paper" onClickHandler={closeModal}>
+              Cancelar
+            </UseButton>
           </Box>
           <Box
             style={{
@@ -99,7 +155,7 @@ const Delete = ({ path, id }: IDelete) => {
             }}
           >
             <UseButton type="Delete" onClickHandler={remove}>
-              {loading ? (
+              {state?.delete.loading ? (
                 <CircularProgress style={{ color: "#fff" }} />
               ) : (
                 "Eliminar"

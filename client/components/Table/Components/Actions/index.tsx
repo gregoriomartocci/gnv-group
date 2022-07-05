@@ -5,33 +5,37 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import UseModal from "../../../Modal";
 import Delete from "../Delete";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../../../Menu";
+import { setDelete } from "../../../../redux/slices/projects";
 
 interface IActions {
-  api: string;
+  path: string;
   id: string;
 }
 
-const Actions = ({ api, id }: IActions) => {
+const Actions = ({ path, id }: IActions) => {
+  const dispatch = useDispatch();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const state = useSelector((state: IState) => state?.projects);
 
-  const handleCloseDeleteModal = () => {
-    setOpenDeleteModal(false);
-  };
-
-  const handleOpenDeleteModal = () => {
-    setOpenDeleteModal(true);
+  const OpenDeleteModal = () => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        modal: true,
+        api: { path, id },
+      })
+    );
   };
 
   return (
     <Box sx={MenuContainer}>
-      <UseModal open={openDeleteModal} handleClose={handleCloseDeleteModal}>
-        <Delete path={api} id={id} />
-      </UseModal>
       <Box sx={MenuItem}>
         <EditIcon sx={{ fontSize: "18px", margin: "0 5px" }} />
         <span style={{ fontSize: "14px", margin: "0 5px" }}>Editar</span>
       </Box>
-      <Box sx={MenuItem} component="span" onClick={handleOpenDeleteModal}>
+      <Box sx={MenuItem} component="span" onClick={OpenDeleteModal}>
         <DeleteIcon
           sx={{ fontSize: "18px", margin: "0 5px", color: "#E77F8B" }}
         />

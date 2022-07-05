@@ -26,6 +26,10 @@ import Delete from "./Components/Delete";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Actions from "./Components/Actions";
+import { create } from "domain";
+import { useDispatch, useSelector } from "react-redux";
+import { setCreate } from "../../redux/slices/projects";
+import { IState } from "../Menu";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -85,31 +89,21 @@ interface IUseTable {
   api: string;
   headCells: any;
   rows: any;
-  children: React.ReactNode;
 }
 
-export default function UseTable({
-  title,
-  api,
-  headCells,
-  rows,
-  children,
-}: IUseTable) {
+export default function UseTable({ title, api, headCells, rows }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [openModal, setOpenModal] = React.useState(false);
-  const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
   const [actual, setActual] = React.useState<string>("");
+  const state = useSelector((state: IState) => state?.projects);
+  const { create } = state;
+  const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openBasicMenu = Boolean(anchorEl);
-
-  React.useEffect(() => {
-    console.log("ME ACTUALIZO");
-  }, []);
 
   const handleClickBasicMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -183,11 +177,7 @@ export default function UseTable({
   }
 
   const handleOpen = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
+    dispatch(setCreate({ ...create, modal: true }));
   };
 
   const handleRequestSort = (
@@ -290,11 +280,6 @@ export default function UseTable({
             <UseButton type="Primary" onClickHandler={handleOpen}>
               agregar
             </UseButton>
-
-            <UseModal open={openModal} handleClose={handleCloseModal}>
-              {children}
-            </UseModal>
-            
           </React.Fragment>
         )}
       </Toolbar>
@@ -348,11 +333,6 @@ export default function UseTable({
                   .map((row, index) => {
                     const isItemSelected = isSelected(Number(row?.id));
                     const labelId = `enhanced-table-checkbox-${index}`;
-                    const { id } = row;
-
-                    const sendId = (id: number) => {
-                      return id;
-                    };
 
                     return (
                       <TableRow
@@ -411,7 +391,7 @@ export default function UseTable({
                             handleClose={handleCloseBasicMenu}
                             anchorEl={anchorEl}
                           >
-                            <Actions api={api} id={actual} />
+                            <Actions path={api} id={actual} />
                           </Dropdown>
                         </TableCell>
                       </TableRow>

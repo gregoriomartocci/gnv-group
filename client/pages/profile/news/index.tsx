@@ -160,7 +160,7 @@ const Posts = () => {
 
   return (
     <Dashboard>
-      {projects.length && (
+      {/* {projects.length && (
         <UseTable
           title="Noticias"
           api="new"
@@ -169,7 +169,7 @@ const Posts = () => {
         >
           <CreateProject />
         </UseTable>
-      )}
+      )} */}
     </Dashboard>
   );
 };

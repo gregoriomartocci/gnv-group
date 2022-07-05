@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
 import { IState } from "../../../components/Menu";
 import api from "../../../hooks/Api";
-import { setProjects } from "../../../redux/slices/projects";
+import {
+  setCreate,
+  setDelete,
+  setProjects,
+} from "../../../redux/slices/projects";
 import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import { CellTable } from "./Styles";
@@ -14,6 +18,8 @@ import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
+import UseModal from "../../../components/Modal";
+import Delete from "../../../components/Table/Components/Delete";
 
 export interface Data {
   id: number;
@@ -169,7 +175,26 @@ const Posts = () => {
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
   const state = useSelector((state: IState) => state?.projects);
 
+  const { create } = state;
   const projects = state?.projects;
+
+  const closeCreateModal = () => {
+    dispatch(
+      setCreate({ loading: false, status: "", message: "", modal: false })
+    );
+  };
+
+  const closeDeleteModal = () => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        loading: false,
+        status: "",
+        message: "",
+        modal: false,
+      })
+    );
+  };
 
   useEffect(() => {
     const getProjects = async () => {
@@ -195,8 +220,6 @@ const Posts = () => {
     };
 
     getProjects();
-
-
   }, []);
 
   return (
@@ -206,9 +229,15 @@ const Posts = () => {
         api="project"
         headCells={headCells}
         rows={projects}
-      >
+      />
+
+      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
+        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
+      </UseModal>
+
+      <UseModal open={create?.modal} handleClose={closeCreateModal}>
         <CreateProject projects={projects} />
-      </UseTable>
+      </UseModal>
     </Dashboard>
   );
 };

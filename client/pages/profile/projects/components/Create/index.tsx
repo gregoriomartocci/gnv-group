@@ -22,7 +22,7 @@ import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
 import { IProject } from "../../../news";
-import { setCreated, setProjects } from "../../../../../redux/slices/projects";
+import { setCreate, setProjects } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
@@ -56,8 +56,7 @@ const CreateProject = ({ projects }: ICreateProject) => {
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.projects);
-
-  const { created } = state;
+  const { create } = state;
 
   const [input, setInput] = useState<inputType>({
     name: "",
@@ -74,8 +73,7 @@ const CreateProject = ({ projects }: ICreateProject) => {
 
   // Publish Project
   const handlePublish = async () => {
-
-    dispatch(setCreated({ status: "", message: "", loading: true }));
+    dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
 
     try {
       const data = await api({
@@ -84,24 +82,25 @@ const CreateProject = ({ projects }: ICreateProject) => {
         payload: input,
       });
 
-      dispatch(setCreated({ ...created, loading: false }));
+      dispatch(setCreate({ ...create, loading: false }));
       const { error } = data;
       console.log(error, "<== mensaje error");
       if (error) {
-        dispatch(setCreated({ ...created, status: "failed", message: error }));
+        dispatch(setCreate({ ...create, status: "failed", message: error }));
       } else {
         const updateProjects = [...projects, data];
         dispatch(setProjects(updateProjects));
         dispatch(
-          setCreated({
-            ...created,
+          setCreate({
+            ...create,
             status: "success",
             message: "El emprendimiento se agregó con éxito",
           })
         );
       }
     } catch (err) {
-      setCreated({
+      setCreate({
+        ...create,
         status: "failed",
         message: "Algo salió mal, intente nuevamente!",
         loading: false,
@@ -166,11 +165,11 @@ const CreateProject = ({ projects }: ICreateProject) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {created?.status === "success" && (
-        <Toast message={created?.message} type="success" />
+      {create?.status === "success" && (
+        <Toast message={create?.message} type="success" />
       )}
-      {created?.status === "failed" && (
-        <Toast message={created?.message} type="error" />
+      {create?.status === "failed" && (
+        <Toast message={create?.message} type="error" />
       )}
 
       <Box sx={Login}>
@@ -192,7 +191,7 @@ const CreateProject = ({ projects }: ICreateProject) => {
         {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {created?.loading ? (
+          {create?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : tab === 2 ? (
             "Agregar Proyecto"
