@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   Alert,
   Autocomplete,
@@ -62,6 +62,15 @@ const CreateProject = () => {
     status: "",
     type: "",
   });
+
+  useEffect(() => {
+
+    
+    return () => {
+      console.log("Ok");
+    };
+
+  }, []);
 
   console.log(input.images, "que pasa aca che");
 
@@ -185,7 +194,6 @@ const CreateProject = () => {
             "Siguiente"
           )}
         </UseButton>
-        
       </Box>
     </Box>
   );

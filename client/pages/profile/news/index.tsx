@@ -10,7 +10,7 @@ import CreateProject from "./components/Create";
 import Box from "@mui/material/Box";
 import UseTable from "../../../components/Table";
 
-export interface Data {
+export interface IProject {
   _id: string;
   name: string;
   description: string;

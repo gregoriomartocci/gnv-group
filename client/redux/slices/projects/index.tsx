@@ -1,30 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export type Project = {
-  id: string;
-  name: string;
-  description: string;
-  date: string;
-};
+import { IProject } from "../../../pages/profile/news";
 
 export interface initialState {
-  projects: Project[];
-  project: Project;
+  projects: IProject[];
+  project: IProject | {};
 }
 
 const initialState: initialState = {
   projects: [],
-  project: { id: "", date: "", name: "", description: "" },
+  project: {},
 };
 
 export const projectsSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
-    setProjects: (state, action: PayloadAction<Project[]>) => {
+    setProjects: (state, action: PayloadAction<IProject[]>) => {
       state.projects = [...action.payload];
     },
-    setProject: (state, action: PayloadAction<Project>) => {
+    setProject: (state, action: PayloadAction<IProject>) => {
       state.project = { ...action.payload };
     },
   },
