@@ -99,13 +99,17 @@ export default function UseTable({
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(9);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [openModal, setOpenModal] = React.useState(false);
   const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
   const [actual, setActual] = React.useState<string>("");
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openBasicMenu = Boolean(anchorEl);
+
+  React.useEffect(() => {
+    console.log("ME ACTUALIZO");
+  }, []);
 
   const handleClickBasicMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -290,6 +294,7 @@ export default function UseTable({
             <UseModal open={openModal} handleClose={handleCloseModal}>
               {children}
             </UseModal>
+            
           </React.Fragment>
         )}
       </Toolbar>

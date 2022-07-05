@@ -168,7 +168,8 @@ const Posts = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
   const state = useSelector((state: IState) => state?.projects);
-  const { projects } = state;
+
+  const projects = state?.projects;
 
   useEffect(() => {
     const getProjects = async () => {
@@ -194,20 +195,20 @@ const Posts = () => {
     };
 
     getProjects();
+
+
   }, []);
 
   return (
     <Dashboard>
-      {projects?.length && (
-        <UseTable
-          title="Emprendimientos"
-          api="project"
-          headCells={headCells}
-          rows={projects && projects}
-        >
-          <CreateProject projects={projects} />
-        </UseTable>
-      )}
+      <UseTable
+        title="Emprendimientos"
+        api="project"
+        headCells={headCells}
+        rows={projects}
+      >
+        <CreateProject projects={projects} />
+      </UseTable>
     </Dashboard>
   );
 };

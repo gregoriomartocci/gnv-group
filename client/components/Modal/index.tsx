@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalContainer, ModalWrapper } from "./Styles";
 
 export interface IUseModalProps {
@@ -11,6 +11,11 @@ export interface IUseModalProps {
 }
 
 const UseModal = ({ open, handleClose, children }: IUseModalProps) => {
+
+  useEffect(() => {
+    console.log("ME ACTUALIZO");
+  }, []);
+  
   return (
     <Modal
       sx={ModalContainer}

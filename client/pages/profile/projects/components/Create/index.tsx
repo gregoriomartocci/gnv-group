@@ -55,13 +55,7 @@ const CreateProject = ({ projects }: ICreateProject) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-  const [loading, setLoading] = useState<boolean>(false);
   const state = useSelector((state: IState) => state?.projects);
-
-  const [error, setError] = useState<errorType>({
-    publish: "",
-    message: "",
-  });
 
   const { created } = state;
 
@@ -80,9 +74,8 @@ const CreateProject = ({ projects }: ICreateProject) => {
 
   // Publish Project
   const handlePublish = async () => {
-    dispatch(setCreated(""));
-    setError({ publish: "", message: "" });
-    setLoading(true);
+
+    dispatch(setCreated({ status: "", message: "", loading: true }));
 
     try {
       const data = await api({
@@ -90,26 +83,29 @@ const CreateProject = ({ projects }: ICreateProject) => {
         path: "/project",
         payload: input,
       });
-      console.log("Dateushh", data);
-      setLoading(false);
+
+      dispatch(setCreated({ ...created, loading: false }));
       const { error } = data;
       console.log(error, "<== mensaje error");
       if (error) {
-        setError({ publish: "failed", message: error });
+        dispatch(setCreated({ ...created, status: "failed", message: error }));
       } else {
-        setError({ ...error, publish: "success" });
-        // localStorage.setItem("auth", JSON.stringify(data));
         const updateProjects = [...projects, data];
         dispatch(setProjects(updateProjects));
-        dispatch(setCreated("success"));
-        // router.push("/profile");
+        dispatch(
+          setCreated({
+            ...created,
+            status: "success",
+            message: "El emprendimiento se agregó con éxito",
+          })
+        );
       }
     } catch (err) {
-      setError({
-        publish: "failed",
+      setCreated({
+        status: "failed",
         message: "Algo salió mal, intente nuevamente!",
+        loading: false,
       });
-      setLoading(false);
     }
   };
 
@@ -170,15 +166,11 @@ const CreateProject = ({ projects }: ICreateProject) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      
-      {console.log(created, "CREATED")}
-      {console.log(error?.publish, "ERROR")}
-
-      {created === "success" && (
-        <Toast message="El emprendimiento se agregó con éxito" type="success" />
+      {created?.status === "success" && (
+        <Toast message={created?.message} type="success" />
       )}
-      {error?.publish === "failed" && (
-        <Toast message={error.message} type="error" />
+      {created?.status === "failed" && (
+        <Toast message={created?.message} type="error" />
       )}
 
       <Box sx={Login}>
@@ -200,7 +192,7 @@ const CreateProject = ({ projects }: ICreateProject) => {
         {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {loading ? (
+          {created?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : tab === 2 ? (
             "Agregar Proyecto"

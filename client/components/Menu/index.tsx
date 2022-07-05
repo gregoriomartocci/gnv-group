@@ -22,12 +22,13 @@ import { IAuth } from "../../redux/slices/auth";
 import Account from "../Account";
 import Link from "next/link";
 import { IProject } from "../../pages/profile/news";
+import { TResult } from "../../redux/slices/projects";
 export interface IState {
   articles: {};
   projects: {
     projects: IProject[];
     project: IProject;
-    created: string;
+    created: TResult;
     deleted: string;
   };
   users: {};

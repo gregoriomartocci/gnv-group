@@ -1,18 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IProject } from "../../../pages/profile/news";
 
+export type TResult = {
+  status: string;
+  message: string;
+  loading: boolean;
+};
+
 export interface initialState {
   projects: IProject[];
   project: IProject | {};
-  created: string;
-  deleted: string;
+  created: TResult;
+  deleted: TResult;
 }
 
 const initialState: initialState = {
   projects: [],
   project: {},
-  created: "",
-  deleted: "",
+  created: { status: "", message: "", loading: false },
+  deleted: { status: "", message: "", loading: false },
 };
 
 export const projectsSlice = createSlice({
@@ -25,10 +31,10 @@ export const projectsSlice = createSlice({
     setProject: (state, action: PayloadAction<IProject>) => {
       state.project = { ...action.payload };
     },
-    setCreated: (state, action: PayloadAction<string>) => {
+    setCreated: (state, action: PayloadAction<TResult>) => {
       state.created = action.payload;
     },
-    setDeleted: (state, action: PayloadAction<string>) => {
+    setDeleted: (state, action: PayloadAction<TResult>) => {
       state.deleted = action.payload;
     },
   },
