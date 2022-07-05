@@ -29,7 +29,7 @@ export default function Dropdown({
           elevation: 0,
           sx: {
             overflow: "visible",
-            boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+            boxShadow: "rgba(0, 0, 0, 0.05) 0px 1.5px 3px",
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}

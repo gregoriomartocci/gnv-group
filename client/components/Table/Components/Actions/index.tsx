@@ -6,7 +6,12 @@ import UseModal from "../../../Modal";
 import Delete from "../Delete";
 import { useState } from "react";
 
-const Actions = () => {
+interface IActions {
+  api: string;
+  id: string;
+}
+
+const Actions = ({ api, id }: IActions) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const handleCloseDeleteModal = () => {
@@ -20,7 +25,7 @@ const Actions = () => {
   return (
     <Box sx={MenuContainer}>
       <UseModal open={openDeleteModal} handleClose={handleCloseDeleteModal}>
-        <Delete />
+        <Delete path={api} id={id} />
       </UseModal>
       <Box sx={MenuItem}>
         <EditIcon sx={{ fontSize: "18px", margin: "0 5px" }} />

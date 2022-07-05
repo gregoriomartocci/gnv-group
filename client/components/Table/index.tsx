@@ -23,6 +23,9 @@ import CreateUser from "../../pages/profile/users/components/Create";
 import { CellTable, GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
 import Delete from "./Components/Delete";
+import Dropdown from "../Dropdown";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Actions from "./Components/Actions";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -79,6 +82,7 @@ interface EnhancedTableToolbarProps {
 
 interface IUseTable {
   title: string;
+  api: string;
   headCells: any;
   rows: any;
   children: React.ReactNode;
@@ -86,6 +90,7 @@ interface IUseTable {
 
 export default function UseTable({
   title,
+  api,
   headCells,
   rows,
   children,
@@ -97,7 +102,22 @@ export default function UseTable({
   const [rowsPerPage, setRowsPerPage] = React.useState(9);
   const [openModal, setOpenModal] = React.useState(false);
   const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
+  const [actual, setActual] = React.useState<string>("");
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openBasicMenu = Boolean(anchorEl);
+
+  const handleClickBasicMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ) => {
+    setActual(id);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseBasicMenu = () => {
+    setAnchorEl(null);
+  };
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {
@@ -278,9 +298,6 @@ export default function UseTable({
 
   return (
     <Box sx={{ width: "100%" }}>
-
-
-
       {/* <UseModal open={openModal} handleClose={handleCloseModal}>
         <Auth auth={selectAuth} img={AuthImage} />
       </UseModal> */}
@@ -326,13 +343,19 @@ export default function UseTable({
                   .map((row, index) => {
                     const isItemSelected = isSelected(Number(row?.id));
                     const labelId = `enhanced-table-checkbox-${index}`;
+                    const { id } = row;
+
+                    const sendId = (id: number) => {
+                      return id;
+                    };
+
                     return (
                       <TableRow
                         hover
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row.name}
+                        key={row?.id}
                         selected={isItemSelected}
                         // sx={index % 2 === 1 ? GrayBackground : null}
                       >
@@ -369,9 +392,27 @@ export default function UseTable({
                           <span>noticias</span>
                         ) : // <NewsContent />
                         null}
+
+                        <TableCell align="left">
+                          <IconButton
+                            onClick={(e) =>
+                              handleClickBasicMenu(e, row?._id.toString())
+                            }
+                          >
+                            <MoreVertIcon />
+                          </IconButton>
+                          <Dropdown
+                            open={openBasicMenu}
+                            handleClose={handleCloseBasicMenu}
+                            anchorEl={anchorEl}
+                          >
+                            <Actions api={api} id={actual} />
+                          </Dropdown>
+                        </TableCell>
                       </TableRow>
                     );
                   })}
+
                 {emptyRows > 0 && (
                   <TableRow
                     style={{

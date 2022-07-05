@@ -10,7 +10,7 @@ import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import { CellTable } from "./Styles";
 import Box from "@mui/material/Box";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
@@ -40,8 +40,7 @@ interface ITableContent {
 }
 
 export const ProjectsContent = ({ project }: ITableContent) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const openBasicMenu = Boolean(anchorEl);
+
 
   const CellTable: SxProps<Theme> = {
     display: "flex",
@@ -57,13 +56,6 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     },
   };
 
-  const handleClickBasicMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseBasicMenu = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <Fragment>
@@ -119,18 +111,6 @@ export const ProjectsContent = ({ project }: ITableContent) => {
             </Box>
           )}
         </Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Dropdown
-          open={openBasicMenu}
-          handleClose={handleCloseBasicMenu}
-          anchorEl={anchorEl}
-        >
-          <Actions />
-        </Dropdown>
-        <IconButton onClick={handleClickBasicMenu}>
-          <MoreVertIcon />
-        </IconButton>
       </TableCell>
     </Fragment>
   );
@@ -193,7 +173,8 @@ const Posts = () => {
   const { projects } = useSelector((state: IState) => state?.projects);
 
   useEffect(() => {
-    const onSubmitHandler = async () => {
+
+    const getProjects = async () => {
       setError({ projects: "", message: "" });
       setLoading(true);
       try {
@@ -215,7 +196,7 @@ const Posts = () => {
       }
     };
 
-    onSubmitHandler();
+    getProjects();
   }, []);
 
   return (
@@ -223,6 +204,7 @@ const Posts = () => {
       {projects.length && (
         <UseTable
           title="Emprendimientos"
+          api="project"
           headCells={headCells}
           rows={projects && projects}
         >

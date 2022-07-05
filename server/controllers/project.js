@@ -41,20 +41,18 @@ export const createProject = async (req, res) => {
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json(err.message);
+    return res.json("Algo salió mal, por favor intente nuevamente");
   }
 };
 
 export const removeProject = async (req, res) => {
-  
   const { id } = req.params;
-
   try {
     const project = await Project.findByIdAndDelete(id);
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json(err.message);
+    return res.json("Algo salió mal, por favor intente nuevamente");
   }
 };
 
@@ -63,6 +61,7 @@ export const getProjects = async (req, res) => {
     const all = await Project.find().populate("name").sort({ createdAt: -1 });
     return res.json(all);
   } catch (err) {
-    return res.json(err.message);
+    console.log(err.message, "Algo salió mal");
+    return res.json("Algo salió mal, por favor intente nuevamente");
   }
 };
