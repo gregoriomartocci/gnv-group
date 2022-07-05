@@ -20,12 +20,14 @@ export interface initialState {
   projects: IProject[];
   project: IProject | {};
   create: TCreate;
+  actions: boolean;
   delete: TDelete;
 }
 
 const initialState: initialState = {
   projects: [],
   project: {},
+  actions: false,
   create: { status: "", message: "", loading: false, modal: false },
   delete: {
     status: "",
@@ -52,10 +54,13 @@ export const projectsSlice = createSlice({
     setDelete: (state, action: PayloadAction<TDelete>) => {
       state.delete = action.payload;
     },
+    setActions: (state, action: PayloadAction<boolean>) => {
+      state.actions = action.payload;
+    },
   },
 });
 
-export const { setProjects, setProject, setCreate, setDelete } =
+export const { setProjects, setProject, setCreate, setDelete, setActions } =
   projectsSlice.actions;
 
 export default projectsSlice.reducer;

@@ -4,7 +4,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import UseButton from "../../../Button";
 import api from "../../../../hooks/Api";
 import Toast from "../../../Alert";
-import { setDelete, setProjects } from "../../../../redux/slices/projects";
+import {
+  setActions,
+  setDelete,
+  setProjects,
+} from "../../../../redux/slices/projects";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../Menu";
 
@@ -14,8 +18,6 @@ interface IDelete {
 }
 
 const Delete = ({ path, id }: IDelete) => {
-  const [error, setError] = useState({ process: "", message: "" });
-  const [loading, setLoading] = useState<boolean>(false);
   const state = useSelector((state: IState) => state?.projects);
   const dispatch = useDispatch();
 
@@ -44,15 +46,18 @@ const Delete = ({ path, id }: IDelete) => {
     dispatch(
       setDelete({
         ...state?.delete,
+        status: "",
+        message: "",
         loading: true,
       })
     );
+
     try {
       const data = await api({
         method: "delete",
         path: `/${state?.delete?.api?.path}/${state?.delete?.api?.id}`,
       });
-      console.log("Dateushh", data);
+      // console.log("Dateushh", data);
       dispatch(
         setDelete({
           ...state?.delete,
@@ -74,10 +79,10 @@ const Delete = ({ path, id }: IDelete) => {
             status: "success",
           })
         );
-
         const updateProjects = state.projects.filter(
           (p) => p._id.toString() !== id.toString()
         );
+        dispatch(setActions(false));
         dispatch(setProjects(updateProjects));
       }
     } catch (err) {
@@ -94,76 +99,80 @@ const Delete = ({ path, id }: IDelete) => {
 
   return (
     <Fragment>
+
       {state?.delete?.status === "success" && (
         <Toast
           message="El emprendimiento se eliminó con éxito"
           type="success"
         />
       )}
+
       {state?.delete?.status === "failed" && (
         <Toast message={state?.delete.message} type="error" />
       )}
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "25px",
-          fontFamily: "'Poppins'",
-        }}
-      >
-        <DeleteIcon
+      {state?.delete?.status !== "success" && (
+        <Box
           sx={{
-            color: "#e0e0e0",
-          }}
-        />
-
-        <span
-          style={{
-            fontSize: "17px",
-            margin: "15px 0 0 0",
-            fontWeight: "600",
-            color: "#1D2D3E",
+            display: "flex",
+            flexDirection: "column",
+            padding: "25px",
+            fontFamily: "'Poppins'",
           }}
         >
-          Eliminar emprendimiento
-        </span>
-        <span
-          style={{
-            fontSize: "13px",
-            margin: "5px 0",
-            fontWeight: "500",
-            color: "#A1A7A9",
-          }}
-        >
-          Esta acción no se puede revertir
-        </span>
+          <DeleteIcon
+            sx={{
+              color: "#e0e0e0",
+            }}
+          />
 
-        <Box sx={{ display: "flex", margin: "15px 0 0 0" }}>
-          <Box
+          <span
             style={{
-              margin: "0 7.5px 0 0",
+              fontSize: "17px",
+              margin: "15px 0 0 0",
+              fontWeight: "600",
+              color: "#1D2D3E",
             }}
           >
-            <UseButton type="Paper" onClickHandler={closeModal}>
-              Cancelar
-            </UseButton>
-          </Box>
-          <Box
+            Eliminar emprendimiento
+          </span>
+          <span
             style={{
-              margin: "0 0 0 7.5px",
+              fontSize: "13px",
+              margin: "5px 0",
+              fontWeight: "500",
+              color: "#A1A7A9",
             }}
           >
-            <UseButton type="Delete" onClickHandler={remove}>
-              {state?.delete.loading ? (
-                <CircularProgress style={{ color: "#fff" }} />
-              ) : (
-                "Eliminar"
-              )}
-            </UseButton>
+            Esta acción no se puede revertir
+          </span>
+
+          <Box sx={{ display: "flex", margin: "15px 0 0 0" }}>
+            <Box
+              style={{
+                margin: "0 7.5px 0 0",
+              }}
+            >
+              <UseButton type="Paper" onClickHandler={closeModal}>
+                Cancelar
+              </UseButton>
+            </Box>
+            <Box
+              style={{
+                margin: "0 0 0 7.5px",
+              }}
+            >
+              <UseButton type="Delete" onClickHandler={remove}>
+                {state?.delete.loading ? (
+                  <CircularProgress style={{ color: "#fff" }} />
+                ) : (
+                  "Eliminar"
+                )}
+              </UseButton>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
     </Fragment>
   );
 };

@@ -180,7 +180,7 @@ const Posts = () => {
 
   const closeCreateModal = () => {
     dispatch(
-      setCreate({ loading: false, status: "", message: "", modal: false })
+      setCreate({ ...state?.delete, loading: false, message: "", modal: false })
     );
   };
 
@@ -189,8 +189,6 @@ const Posts = () => {
       setDelete({
         ...state?.delete,
         loading: false,
-        status: "",
-        message: "",
         modal: false,
       })
     );
@@ -238,6 +236,7 @@ const Posts = () => {
       <UseModal open={create?.modal} handleClose={closeCreateModal}>
         <CreateProject projects={projects} />
       </UseModal>
+
     </Dashboard>
   );
 };

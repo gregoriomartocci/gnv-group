@@ -16,13 +16,14 @@ interface IActions {
 
 const Actions = ({ path, id }: IActions) => {
   const dispatch = useDispatch();
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const state = useSelector((state: IState) => state?.projects);
 
   const OpenDeleteModal = () => {
     dispatch(
       setDelete({
         ...state?.delete,
+        status: "",
+        message: "",
         modal: true,
         api: { path, id },
       })

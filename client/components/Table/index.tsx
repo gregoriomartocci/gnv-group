@@ -28,7 +28,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Actions from "./Components/Actions";
 import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
-import { setCreate } from "../../redux/slices/projects";
+import { setCreate, setActions } from "../../redux/slices/projects";
 import { IState } from "../Menu";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -103,17 +103,18 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const openBasicMenu = Boolean(anchorEl);
+  const openActionsMenu = Boolean(anchorEl && state?.actions);
 
-  const handleClickBasicMenu = (
+  const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
     id: string
   ) => {
     setActual(id);
+    dispatch(setActions(true));
     setAnchorEl(event.currentTarget);
   };
 
-  const handleCloseBasicMenu = () => {
+  const handleCloseActionsMenu = () => {
     setAnchorEl(null);
   };
 
@@ -177,7 +178,7 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
   }
 
   const handleOpen = () => {
-    dispatch(setCreate({ ...create, modal: true }));
+    dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
   };
 
   const handleRequestSort = (
@@ -381,14 +382,14 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
                         <TableCell align="left">
                           <IconButton
                             onClick={(e) =>
-                              handleClickBasicMenu(e, row?._id.toString())
+                              handleClickActionsMenu(e, row?._id.toString())
                             }
                           >
                             <MoreVertIcon />
                           </IconButton>
                           <Dropdown
-                            open={openBasicMenu}
-                            handleClose={handleCloseBasicMenu}
+                            open={openActionsMenu}
+                            handleClose={handleCloseActionsMenu}
                             anchorEl={anchorEl}
                           >
                             <Actions path={api} id={actual} />

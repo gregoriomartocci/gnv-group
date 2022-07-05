@@ -29,6 +29,7 @@ export interface IState {
   projects: {
     projects: IProject[];
     project: IProject;
+    actions: boolean;
     create: TResult;
     delete: TResult;
   };
