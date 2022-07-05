@@ -12,7 +12,7 @@ import { CellTable } from "./Styles";
 import Box from "@mui/material/Box";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Actions from "./components/Actions";
+import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
 
 export interface Data {

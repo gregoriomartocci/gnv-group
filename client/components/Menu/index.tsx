@@ -105,7 +105,6 @@ const Menu = ({ onScroll, theme }: IMenu) => {
                 <Box sx={MenuItem}>Emprendimientos</Box>
               </a>
             </Link>
-
             <Link href={"/news"}>
               <a>
                 <Box sx={MenuItem}>Prensa</Box>

@@ -7,6 +7,8 @@ export interface ButtonOptions {
   Primary: string;
   Secondary: string;
   Blue: string;
+  Paper: string;
+  Delete: string;
 }
 
 export interface ButtonProps {

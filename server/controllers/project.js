@@ -28,7 +28,7 @@ export const createProject = async (req, res) => {
     const upload = images.map((i) => uploadImage(i));
 
     const img_links = await Promise.all(upload);
-    
+
     const project = await new Project({
       name,
       description,
@@ -38,6 +38,19 @@ export const createProject = async (req, res) => {
       images: img_links,
     }).save();
 
+    return res.json(project);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json(err.message);
+  }
+};
+
+export const removeProject = async (req, res) => {
+  
+  const { id } = req.params;
+
+  try {
+    const project = await Project.findByIdAndDelete(id);
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

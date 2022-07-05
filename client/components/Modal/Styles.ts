@@ -9,7 +9,7 @@ export const ModalContainer: SxProps<Theme> = {
   left: 0,
   height: "100%",
   width: "100%",
-  zIndex: 150,
+  zIndex: 1300,
 };
 
 export const ModalWrapper: SxProps<Theme> = {

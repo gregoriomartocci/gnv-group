@@ -22,6 +22,7 @@ import UseModal from "../Modal";
 import CreateUser from "../../pages/profile/users/components/Create";
 import { CellTable, GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
+import Delete from "./Components/Delete";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -95,6 +96,8 @@ export default function UseTable({
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(9);
   const [openModal, setOpenModal] = React.useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
+
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {
@@ -182,7 +185,6 @@ export default function UseTable({
   };
 
   const handleClick = (event: React.MouseEvent<unknown>, id: number) => {
-
     const selectedIndex = selected.indexOf(id);
     let newSelected: readonly number[] = [];
 
@@ -213,7 +215,7 @@ export default function UseTable({
     setPage(0);
   };
 
-  const isSelected = (id: number ) => selected.indexOf(id) !== -1;
+  const isSelected = (id: number) => selected.indexOf(id) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -238,11 +240,11 @@ export default function UseTable({
       >
         {numSelected > 0 ? (
           <Typography
-            sx={{ flex: "1 1 100%" }}
+            sx={{ flex: "1 1 100%", fontFamily: "'Montserrat'" }}
             color="inherit"
             variant="subtitle1"
           >
-            {numSelected} selected
+            {numSelected} seleccionados
           </Typography>
         ) : (
           <Typography
@@ -254,14 +256,13 @@ export default function UseTable({
           </Typography>
         )}
         {numSelected > 0 ? (
-          <Tooltip title="Delete">
+          <Tooltip title="Eliminar">
             <IconButton>
               <DeleteIcon />
             </IconButton>
           </Tooltip>
         ) : (
           <React.Fragment>
-            
             <UseButton type="Primary" onClickHandler={handleOpen}>
               agregar
             </UseButton>
@@ -277,6 +278,13 @@ export default function UseTable({
 
   return (
     <Box sx={{ width: "100%" }}>
+
+
+
+      {/* <UseModal open={openModal} handleClose={handleCloseModal}>
+        <Auth auth={selectAuth} img={AuthImage} />
+      </UseModal> */}
+
       <Paper
         sx={{
           width: "100%",
@@ -326,7 +334,7 @@ export default function UseTable({
                         tabIndex={-1}
                         key={row.name}
                         selected={isItemSelected}
-                        // sx={index % 2 === 0 ? GrayBackground : null}
+                        // sx={index % 2 === 1 ? GrayBackground : null}
                       >
                         <TableCell padding="checkbox">
                           <Checkbox

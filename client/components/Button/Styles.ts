@@ -4,6 +4,8 @@ const magenta = "#e91e63";
 const naranja = "#ff3d00";
 const white = "#ffffff";
 const black = "#212121";
+const paper = "#EFF4FB";
+const red = "#DD5051";
 const blue = "#425CCD";
 const linearGradient = `linear-gradient(45deg, ${magenta}, ${naranja})`;
 
@@ -78,5 +80,45 @@ export const Blue: SxProps<Theme> = {
 
   "&:hover": {
     backgroundColor: blue,
+  },
+};
+
+export const Delete: SxProps<Theme> = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  fontSize: "12px",
+  backgroundColor: red,
+  borderRadius: "7.5px",
+  whiteSpace: "nowrap",
+  padding: "15px 35px",
+  color: "#fff",
+  cursor: "pointer",
+  fontWeight: 500,
+  fontFamily: "'Montserrat', sans-serif",
+
+  "&:hover": {
+    backgroundColor: "#C74142",
+  },
+};
+
+export const Paper: SxProps<Theme> = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  fontSize: "12px",
+  backgroundColor: paper,
+  borderRadius: "7.5px",
+  whiteSpace: "nowrap",
+  padding: "15px 35px",
+  color: "#8C949D",
+  cursor: "pointer",
+  fontWeight: 500,
+  fontFamily: "'Montserrat', sans-serif",
+
+  "&:hover": {
+    backgroundColor: "#E9EDF2",
   },
 };
