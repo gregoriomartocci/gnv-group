@@ -51,7 +51,7 @@ export interface ICreateProject {
   projects: IProject[];
 }
 
-const CreateProject = ({ projects }: ICreateProject) => {
+const Create = ({ projects }: ICreateProject) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
@@ -204,4 +204,4 @@ const CreateProject = ({ projects }: ICreateProject) => {
   );
 };
 
-export default CreateProject;
+export default Create;

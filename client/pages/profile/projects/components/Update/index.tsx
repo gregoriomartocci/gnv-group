@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   Alert,
   Autocomplete,
@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import InputGroup from "../../../../../components/Input";
 import UseButton from "../../../../../components/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
 import api from "../../../../../hooks/Api";
 import { useRouter } from "next/router";
@@ -21,6 +21,9 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
+import { IProject } from "../../../news";
+import { setCreate, setProjects } from "../../../../../redux/slices/projects";
+import { IState } from "../../../../../components/Menu";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -44,15 +47,16 @@ export type errorType = {
   message: any;
 };
 
-const CreateProject = () => {
+export interface ICreateProject {
+  projects: IProject[];
+}
+
+const Update = ({ projects }: ICreateProject) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<errorType>({
-    publish: "",
-    message: "",
-  });
+  const state = useSelector((state: IState) => state?.projects);
+  const { create } = state;
 
   const [input, setInput] = useState<inputType>({
     name: "",
@@ -69,28 +73,38 @@ const CreateProject = () => {
 
   // Publish Project
   const handlePublish = async () => {
-    setError({ publish: "", message: "" });
-    setLoading(true);
+    dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
+
     try {
       const data = await api({
         method: "post",
         path: "/project",
         payload: input,
       });
-      console.log("Dateushh", data);
-      setLoading(false);
 
-      if (data?.error) {
-        setError({ publish: "failed", message: data?.error });
+      dispatch(setCreate({ ...create, loading: false }));
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+      if (error) {
+        dispatch(setCreate({ ...create, status: "failed", message: error }));
       } else {
-        setError({ ...error, publish: "success" });
-        localStorage.setItem("auth", JSON.stringify(data));
-        // dispatch(setAuth(data));
-        // router.push("/profile");
+        const updateProjects = [...projects, data];
+        dispatch(setProjects(updateProjects));
+        dispatch(
+          setCreate({
+            ...create,
+            status: "success",
+            message: "El emprendimiento se agregó con éxito",
+          })
+        );
       }
     } catch (err) {
-      setError({ publish: "failed", message: "Something went wrong" });
-      setLoading(false);
+      setCreate({
+        ...create,
+        status: "failed",
+        message: "Algo salió mal, intente nuevamente!",
+        loading: false,
+      });
     }
   };
 
@@ -151,19 +165,19 @@ const CreateProject = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {error?.publish === "success" && (
-        <Toast message="El emprendimiento se agregó con éxito" type="success" />
+      {create?.status === "success" && (
+        <Toast message={create?.message} type="success" />
       )}
-      {error?.publish === "failed" && (
-        <Toast message={error.message} type="error" />
+      {create?.status === "failed" && (
+        <Toast message={create?.message} type="error" />
       )}
 
       <Box sx={Login}>
         <span
           style={{
-            fontSize: "35px",
+            fontSize: "20px",
             fontWeight: 600,
-            margin: "10px 0",
+            margin: "0 0 15px 0",
             color: "#424242",
           }}
         >
@@ -177,7 +191,7 @@ const CreateProject = () => {
         {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {loading ? (
+          {create?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : tab === 2 ? (
             "Agregar Proyecto"
@@ -190,4 +204,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default Update;

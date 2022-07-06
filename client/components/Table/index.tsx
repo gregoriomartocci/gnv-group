@@ -22,7 +22,7 @@ import UseModal from "../Modal";
 import CreateUser from "../../pages/profile/users/components/Create";
 import { CellTable, GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
-import Delete from "./Components/Delete";
+import Delete from "../../pages/profile/projects/components/Delete";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Actions from "./Components/Actions";

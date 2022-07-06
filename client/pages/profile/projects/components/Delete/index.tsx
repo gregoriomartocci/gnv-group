@@ -1,16 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import UseButton from "../../../Button";
-import api from "../../../../hooks/Api";
-import Toast from "../../../Alert";
+import UseButton from "../../../../../components/Button";
+import api from "../../../../../hooks/Api";
+import Toast from "../../../../../components/Alert";
 import {
   setActions,
   setDelete,
   setProjects,
-} from "../../../../redux/slices/projects";
+} from "../../../../../redux/slices/projects";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../../Menu";
+import { IState } from "../../../../../components/Menu";
 
 interface IDelete {
   path: string;

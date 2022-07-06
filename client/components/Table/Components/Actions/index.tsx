@@ -3,7 +3,7 @@ import { AccountBottom, MenuContainer, MenuItem } from "./Styles";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UseModal from "../../../Modal";
-import Delete from "../Delete";
+import Delete from "../../../../pages/profile/projects/components/Delete";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../Menu";
@@ -30,9 +30,21 @@ const Actions = ({ path, id }: IActions) => {
     );
   };
 
+  const OpenUpdateModal = () => {
+    dispatch(
+      setUpdate({
+        ...state?.update,
+        status: "",
+        message: "",
+        modal: true,
+        api: { path, id },
+      })
+    );
+  };
+
   return (
     <Box sx={MenuContainer}>
-      <Box sx={MenuItem}>
+      <Box sx={MenuItem} onClick={OpenDeleteModal}>
         <EditIcon sx={{ fontSize: "18px", margin: "0 5px" }} />
         <span style={{ fontSize: "14px", margin: "0 5px" }}>Editar</span>
       </Box>

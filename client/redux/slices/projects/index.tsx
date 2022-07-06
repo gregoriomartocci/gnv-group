@@ -22,6 +22,7 @@ export interface initialState {
   create: TCreate;
   actions: boolean;
   delete: TDelete;
+  update: TDelete;
 }
 
 const initialState: initialState = {
@@ -30,6 +31,13 @@ const initialState: initialState = {
   actions: false,
   create: { status: "", message: "", loading: false, modal: false },
   delete: {
+    status: "",
+    message: "",
+    loading: false,
+    modal: false,
+    api: { path: "", id: 0 },
+  },
+  update: {
     status: "",
     message: "",
     loading: false,
@@ -53,6 +61,9 @@ export const projectsSlice = createSlice({
     },
     setDelete: (state, action: PayloadAction<TDelete>) => {
       state.delete = action.payload;
+    },
+    setUpdate: (state, action: PayloadAction<TDelete>) => {
+      state.update = action.payload;
     },
     setActions: (state, action: PayloadAction<boolean>) => {
       state.actions = action.payload;

@@ -19,7 +19,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
-import Delete from "../../../components/Table/Components/Delete";
+import Delete from "./components/Delete";
 import Toast from "../../../components/Alert";
 
 export interface Data {
@@ -223,7 +223,7 @@ const Posts = () => {
 
   return (
     <Dashboard>
-      
+
       {state?.delete?.status === "success" && (
         <Toast
           message="El emprendimiento se eliminó con éxito"
@@ -241,6 +241,10 @@ const Posts = () => {
         headCells={headCells}
         rows={projects}
       />
+
+      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
+        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
+      </UseModal>
 
       <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
         <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
