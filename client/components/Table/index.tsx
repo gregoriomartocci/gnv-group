@@ -22,14 +22,14 @@ import UseModal from "../Modal";
 import CreateUser from "../../pages/profile/users/components/Create";
 import { CellTable, GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
-import Delete from "../../pages/profile/projects/components/Delete";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Actions from "./Components/Actions";
 import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
-import { setCreate, setActions } from "../../redux/slices/projects";
+import { setCreate, setActions, setDelete } from "../../redux/slices/projects";
 import { IState } from "../Menu";
+import Delete from "./Components/Delete";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -98,6 +98,8 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [actual, setActual] = React.useState<string>("");
+  const [rowSelected , setRowSelected] = React.useState<any>();
+
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
   const dispatch = useDispatch();
@@ -107,15 +109,27 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    id: string
+    id: string,
+    row: any
   ) => {
     setActual(id);
+    setRowSelected(row)
     dispatch(setActions(true));
     setAnchorEl(event.currentTarget);
   };
 
   const handleCloseActionsMenu = () => {
     setAnchorEl(null);
+  };
+
+  const closeDeleteModal = () => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        loading: false,
+        modal: false,
+      })
+    );
   };
 
   function EnhancedTableHead(props: EnhancedTableProps) {
@@ -289,9 +303,10 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {/* <UseModal open={openModal} handleClose={handleCloseModal}>
-        <Auth auth={selectAuth} img={AuthImage} />
-      </UseModal> */}
+
+      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
+        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
+      </UseModal>
 
       <Paper
         sx={{
@@ -382,7 +397,7 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
                         <TableCell align="left">
                           <IconButton
                             onClick={(e) =>
-                              handleClickActionsMenu(e, row?._id.toString())
+                              handleClickActionsMenu(e, row?._id.toString(), row)
                             }
                           >
                             <MoreVertIcon />
@@ -392,7 +407,7 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
                             handleClose={handleCloseActionsMenu}
                             anchorEl={anchorEl}
                           >
-                            <Actions path={api} id={actual} />
+                            <Actions path={api} id={actual} row={rowSelected} />
                           </Dropdown>
                         </TableCell>
                       </TableRow>

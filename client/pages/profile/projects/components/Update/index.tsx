@@ -49,23 +49,20 @@ export type errorType = {
 
 export interface ICreateProject {
   projects: IProject[];
+  path: string;
+  id: number;
 }
 
-const Update = ({ projects }: ICreateProject) => {
+const Update = ({ projects, path, id }: ICreateProject) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
 
-  const [input, setInput] = useState<inputType>({
-    name: "",
-    price: 0,
-    description: "",
-    images: [],
-    status: "",
-    type: "",
-  });
+  const [input, setInput] = useState<inputType>(state?.update[path]);
+
+
 
   console.log(input.images, "que pasa aca che");
 
@@ -77,8 +74,8 @@ const Update = ({ projects }: ICreateProject) => {
 
     try {
       const data = await api({
-        method: "post",
-        path: "/project",
+        method: "put",
+        path: `/${path}/${id}`,
         payload: input,
       });
 
@@ -155,7 +152,7 @@ const Update = ({ projects }: ICreateProject) => {
       />
     </Fragment>,
     <ImageUploader
-      value={value}
+      value={input.images}
       setValue={setValue}
       base64={input}
       setBase64={setInput}
@@ -181,7 +178,7 @@ const Update = ({ projects }: ICreateProject) => {
             color: "#424242",
           }}
         >
-          Agregar Emprendimiento
+          Editar Emprendimiento
         </span>
 
         <UseTabs value={tab} setValue={setTab} />

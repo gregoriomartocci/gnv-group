@@ -32,6 +32,7 @@ export interface IState {
     actions: boolean;
     create: TResult;
     delete: TResult;
+    update: TResult;
   };
   users: {};
   auth: IAuth;
@@ -70,7 +71,7 @@ const Menu = ({ onScroll, theme }: IMenu) => {
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
-
+ 
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setNavbar(true);

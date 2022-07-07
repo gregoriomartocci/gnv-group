@@ -16,13 +16,22 @@ export type TDelete = {
   api: { path: string; id: number };
 };
 
+export type TUpdate = {
+  status: string;
+  message: string;
+  loading: boolean;
+  modal: boolean;
+  api: { path: string; id: number };
+  project: IProject | {};
+};
+
 export interface initialState {
   projects: IProject[];
   project: IProject | {};
   create: TCreate;
   actions: boolean;
   delete: TDelete;
-  update: TDelete;
+  update: TUpdate;
 }
 
 const initialState: initialState = {
@@ -43,6 +52,7 @@ const initialState: initialState = {
     loading: false,
     modal: false,
     api: { path: "", id: 0 },
+    project: {},
   },
 };
 
@@ -62,7 +72,7 @@ export const projectsSlice = createSlice({
     setDelete: (state, action: PayloadAction<TDelete>) => {
       state.delete = action.payload;
     },
-    setUpdate: (state, action: PayloadAction<TDelete>) => {
+    setUpdate: (state, action: PayloadAction<TUpdate>) => {
       state.update = action.payload;
     },
     setActions: (state, action: PayloadAction<boolean>) => {
@@ -71,7 +81,13 @@ export const projectsSlice = createSlice({
   },
 });
 
-export const { setProjects, setProject, setCreate, setDelete, setActions } =
-  projectsSlice.actions;
+export const {
+  setProjects,
+  setProject,
+  setCreate,
+  setDelete,
+  setUpdate,
+  setActions,
+} = projectsSlice.actions;
 
 export default projectsSlice.reducer;

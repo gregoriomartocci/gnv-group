@@ -1,16 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import UseButton from "../../../../../components/Button";
-import api from "../../../../../hooks/Api";
-import Toast from "../../../../../components/Alert";
-import {
-  setActions,
-  setDelete,
-  setProjects,
-} from "../../../../../redux/slices/projects";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../../../../components/Menu";
+import { IState } from "../../../Menu";
+import { setActions, setDelete, setProjects } from "../../../../redux/slices/projects";
+import UseButton from "../../../Button";
+import api from "../../../../hooks/Api";
 
 interface IDelete {
   path: string;
@@ -55,7 +50,7 @@ const Delete = ({ path, id }: IDelete) => {
     try {
       const data = await api({
         method: "delete",
-        path: `/${state?.delete?.api?.path}/${state?.delete?.api?.id}`,
+        path: `/${path}/${id}`,
       });
       // console.log("Dateushh", data);
       dispatch(

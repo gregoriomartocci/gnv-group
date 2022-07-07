@@ -9,6 +9,7 @@ import {
   setCreate,
   setDelete,
   setProjects,
+  setUpdate,
 } from "../../../redux/slices/projects";
 import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
@@ -19,8 +20,10 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
-import Delete from "./components/Delete";
+
 import Toast from "../../../components/Alert";
+import Update from "./components/Update";
+
 
 export interface Data {
   id: number;
@@ -185,15 +188,16 @@ const Posts = () => {
     );
   };
 
-  const closeDeleteModal = () => {
+  const closeUpdateModal = () => {
     dispatch(
-      setDelete({
-        ...state?.delete,
+      setUpdate({
+        ...state?.update,
         loading: false,
         modal: false,
       })
     );
   };
+
 
   useEffect(() => {
     const getProjects = async () => {
@@ -242,17 +246,14 @@ const Posts = () => {
         rows={projects}
       />
 
-      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
-        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
-      </UseModal>
-
-      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
-        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
+      <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
+        <Update  projects={projects} path={state?.update?.api?.path} id={state?.update?.api?.id} />
       </UseModal>
 
       <UseModal open={create?.modal} handleClose={closeCreateModal}>
         <CreateProject projects={projects} />
       </UseModal>
+      
     </Dashboard>
   );
 };
