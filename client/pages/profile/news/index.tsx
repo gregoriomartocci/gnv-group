@@ -15,6 +15,7 @@ export interface IProject {
   name: string;
   description: string;
   images: string[];
+  id: number;
   type: string;
   published: boolean;
   status: string;

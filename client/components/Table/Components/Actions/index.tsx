@@ -39,7 +39,7 @@ const Actions = ({ path, id, row }: IActions) => {
         status: "",
         message: "",
         modal: true,
-        api: { path, id },
+        api: { path: `edit-${path}`, id },
         project: row,
       })
     );

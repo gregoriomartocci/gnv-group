@@ -37,8 +37,7 @@ export const createProject = async (req, res) => {
     }));
 
     const updated_images = await Promise.all(upload_images);
-    console.log(updated_images, "OKAAA")
-    
+    console.log(updated_images, "OKAAA");
 
     const project = await new Project({
       name,
@@ -60,6 +59,19 @@ export const removeProject = async (req, res) => {
   const { id } = req.params;
   try {
     const project = await Project.findByIdAndDelete(id);
+    return res.json(project);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json("Algo salió mal, por favor intente nuevamente");
+  }
+};
+
+export const editProject = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const project = await Project.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

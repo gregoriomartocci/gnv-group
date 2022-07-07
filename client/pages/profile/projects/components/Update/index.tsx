@@ -22,7 +22,7 @@ import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
 import { IProject } from "../../../news";
-import { setCreate, setProjects } from "../../../../../redux/slices/projects";
+import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
@@ -58,43 +58,48 @@ const Update = ({ projects, path, id }: ICreateProject) => {
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.projects);
-  const { create } = state;
-  const [input, setInput] = useState<inputType>(state?.update[path]);
+  const { update } = state;
+  const [input, setInput] = useState<inputType>(state?.update.project);
 
-  console.log(input.images, "que pasa aca che");
+  console.log();
 
   const [tab, setTab] = useState<number>(0);
 
   // Publish Project
   const handlePublish = async () => {
-    dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
+    dispatch(setUpdate({ ...update, status: "", message: "", loading: true }));
 
     try {
       const data = await api({
-        method: "put",
+        method: "post",
         path: `/${path}/${id}`,
         payload: input,
       });
 
-      dispatch(setCreate({ ...create, loading: false }));
+      dispatch(setUpdate({ ...update, loading: false }));
       const { error } = data;
       console.log(error, "<== mensaje error");
       if (error) {
-        dispatch(setCreate({ ...create, status: "failed", message: error }));
+        dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
-        const updateProjects = [...projects, data];
+
+        const updateProjects = projects.map((p) =>
+          p._id.toString() === id.toString() ? data : null
+        );
+
         dispatch(setProjects(updateProjects));
+
         dispatch(
-          setCreate({
-            ...create,
+          setUpdate({
+            ...update,
             status: "success",
-            message: "El emprendimiento se agregó con éxito",
+            message: "El emprendimiento se actualizó con éxito",
           })
         );
       }
     } catch (err) {
-      setCreate({
-        ...create,
+      setUpdate({
+        ...update,
         status: "failed",
         message: "Algo salió mal, intente nuevamente!",
         loading: false,
@@ -148,20 +153,17 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         name="type"
       />
     </Fragment>,
-    <ImageUploader
-      value={input}
-      setValue={setInput}
-    />,
+    <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
 
   return (
     <Box sx={{ width: "100%" }}>
-      {create?.status === "success" && (
-        <Toast message={create?.message} type="success" />
+      {update?.status === "success" && (
+        <Toast message={update?.message} type="success" />
       )}
-      {create?.status === "failed" && (
-        <Toast message={create?.message} type="error" />
+      {update?.status === "failed" && (
+        <Toast message={update?.message} type="error" />
       )}
 
       <Box sx={Login}>
@@ -183,7 +185,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {create?.loading ? (
+          {update?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : tab === 2 ? (
             "Agregar Proyecto"

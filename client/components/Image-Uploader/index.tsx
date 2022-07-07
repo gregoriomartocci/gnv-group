@@ -201,7 +201,7 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
       <Box sx={dropFilePreview}>
         {value?.images?.map((file, index) => {
           return (
-            <Box sx={dropFilePreviewItem}>
+            <Box key={index} sx={dropFilePreviewItem}>
               <Box sx={dropFilePreviewTitleItemInfo}>
                 <Box sx={imageContainer}>
                   <img src={file.src} alt="" />
