@@ -3,14 +3,15 @@ import Project from "../models/project";
 
 export const createProject = async (req, res) => {
   try {
-    const { name, description, type, published, status, images } = req.body;
-
-    const alreadyExist = await Project.findOne({ name });
+    const { name, price, description, type, published, status, images } =
+      req.body;
 
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
-    if (!description)
-      return res.json({ error: "Por favor ingrese una descripción" });
+    if (!price)
+      return res.json({
+        error: "Por favor ingrese un precio",
+      });
 
     if (!type)
       return res.json({
@@ -22,12 +23,22 @@ export const createProject = async (req, res) => {
         error: "Por favor indique en que estado se encuentra el emprendimiento",
       });
 
+    if (!description)
+      return res.json({ error: "Por favor ingrese una descripción" });
+
+    const alreadyExist = await Project.findOne({ name });
+
     if (alreadyExist)
       return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
 
-    const upload = images.map((i) => uploadImage(i));
+    const upload_images = images.map(async (i) => ({
+      ...i,
+      src: await uploadImage(i.src),
+    }));
 
-    const img_links = await Promise.all(upload);
+    const updated_images = await Promise.all(upload_images);
+    console.log(updated_images, "OKAAA")
+    
 
     const project = await new Project({
       name,
@@ -35,7 +46,7 @@ export const createProject = async (req, res) => {
       type,
       published,
       status,
-      images: img_links,
+      images: updated_images,
     }).save();
 
     return res.json(project);

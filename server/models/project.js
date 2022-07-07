@@ -16,11 +16,7 @@ const projectSchema = new Schema(
       required: true,
     },
     description: {},
-    images: [
-      {
-        type: String,
-      },
-    ],
+    images: [{}],
     type: {
       type: String,
       required: true,

@@ -36,7 +36,7 @@ export interface IAuthProps {
 export type inputType = {
   name: string;
   price: number;
-  images: string[];
+  images: IImagetoUpload[];
   description: string;
   status: string;
   type: string;
@@ -59,10 +59,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
-
   const [input, setInput] = useState<inputType>(state?.update[path]);
-
-
 
   console.log(input.images, "que pasa aca che");
 
@@ -152,10 +149,8 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       />
     </Fragment>,
     <ImageUploader
-      value={input.images}
-      setValue={setValue}
-      base64={input}
-      setBase64={setInput}
+      value={input}
+      setValue={setInput}
     />,
     <Editor value={input} setValue={setInput} />,
   ];

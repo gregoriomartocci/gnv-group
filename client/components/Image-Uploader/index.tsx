@@ -26,6 +26,7 @@ export interface IImagetoUpload {
   lastModifiedDate: Date;
   name: string;
   size: number;
+  src: string;
   type: string;
   webkitRelativePath: string;
   width?: any;
@@ -48,7 +49,6 @@ export const convertBase64 = (file: any) => {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-
     if (file) {
       fileReader.onload = () => {
         resolve(fileReader.result);
@@ -61,29 +61,16 @@ export const convertBase64 = (file: any) => {
 };
 
 interface IImageUploader {
-  value: IImagetoUpload[];
+  value: inputType;
   setValue: any;
-  base64: inputType;
-  setBase64: any;
 }
 
-const ImageUploader = ({
-  value,
-  setValue,
-  base64,
-  setBase64,
-}: IImageUploader) => {
+const ImageUploader = ({ value, setValue }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
+  const [base64, setBase64] = useState<string[] | []>([]);
 
   console.log(base64);
-
-  // useEffect(() => {
-  //   const set = async () => {
-  //     return await setValue({ ...value, images: file });
-  //   };
-  //   set();
-  // }, [file]);
 
   const schema = yup.object().shape({
     attachment: yup
@@ -93,6 +80,7 @@ const ImageUploader = ({
         "fileSize",
         "La imagen supera los 5 MB. Intente con otra",
         (value: IImagetoUpload) => {
+          console.log(value, "AVER CHEE");
           return value?.size <= 50000000;
         }
       )
@@ -116,13 +104,6 @@ const ImageUploader = ({
       ),
   });
 
-  // Upload Image
-  const uploadImage = async (file: IImagetoUpload) => {
-    const result = await convertBase64(file);
-    typeof result === "string" &&
-      setBase64({ ...base64, images: [...base64.images, result] });
-  };
-
   const onDragEnter = () => wrapperRef.current.classList.add("dragover");
   const onDragLeave = () => wrapperRef.current.classList.remove("dragover");
   const onDrop = () => wrapperRef.current.classList.remove("dragover");
@@ -132,25 +113,25 @@ const ImageUploader = ({
 
     const newFile = e.target.files[0];
 
+    console.log(newFile, "fileee");
+
     await schema
       .validate({ attachment: newFile })
-      .then(() => {
-        setValue([...value, newFile]);
-        uploadImage(newFile);
+      .then(async () => {
+        const result = await convertBase64(newFile);
+        const { name, size, type } = newFile;
+        const image = { name, size, type, src: result };
+        setValue({ ...value, images: [...value?.images, image] });
       })
       .catch(({ errors }: any) => {
-        return setErrors([...errors, errors]);
+        if (errors) return setErrors([...errors, errors]);
       });
   };
 
   // Remove Image
   const fileRemove = (number: number) => {
-    const update = value?.filter((_, index) => index !== number);
-    setValue(update);
-    const update64 = base64?.images?.filter(
-      (_, index: number) => index !== number
-    );
-    setBase64({ ...base64, images: update64 });
+    const update = value?.images?.filter((_, index) => index !== number);
+    setValue({ ...value, images: update });
   };
 
   // Conver KB Format
@@ -218,12 +199,12 @@ const ImageUploader = ({
       </Fragment>
 
       <Box sx={dropFilePreview}>
-        {value?.map((file, index) => {
+        {value?.images?.map((file, index) => {
           return (
             <Box sx={dropFilePreviewItem}>
               <Box sx={dropFilePreviewTitleItemInfo}>
                 <Box sx={imageContainer}>
-                  <img src={base64?.images[index]} alt="" />
+                  <img src={file.src} alt="" />
                 </Box>
                 <Box
                   sx={{

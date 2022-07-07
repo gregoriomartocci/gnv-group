@@ -36,7 +36,7 @@ export interface IAuthProps {
 export type inputType = {
   name: string;
   price: number;
-  images: string[];
+  images: IImagetoUpload[];
   description: string;
   status: string;
   type: string;
@@ -54,7 +54,6 @@ export interface ICreateProject {
 const Create = ({ projects }: ICreateProject) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
 
@@ -74,6 +73,8 @@ const Create = ({ projects }: ICreateProject) => {
   // Publish Project
   const handlePublish = async () => {
     dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
+
+    console.log(input, "QUE ESTOY MANDANDO AL BACKEND");
 
     try {
       const data = await api({
@@ -154,12 +155,7 @@ const Create = ({ projects }: ICreateProject) => {
         name="type"
       />
     </Fragment>,
-    <ImageUploader
-      value={value}
-      setValue={setValue}
-      base64={input}
-      setBase64={setInput}
-    />,
+    <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
 
