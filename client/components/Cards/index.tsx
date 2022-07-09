@@ -1,17 +1,18 @@
 import React, { Fragment } from "react";
 import { Box } from "@mui/material";
-import  Card, { ICard } from "../Card";
+import  Card from "../Card";
 import { ProjectsContainer } from "./Styles";
+import { IProject } from "../../pages/profile/news";
 
-export interface ICards {
-  projects: ICard[];
+export interface IProjects {
+  projects: IProject[];
 }
 
-const Cards = ({ projects }: ICards) => {
+const Cards = ({ projects }: IProjects) => {
   return (
     <Box sx={ProjectsContainer}>
-      {projects?.map((project: ICard, index: number) => (
-        <Card key={project.title + index} {...project} />
+      {projects?.map((project: IProject, index: number) => (
+        <Card key={project.name + index} {...project} />
       ))}
     </Box>
   );

@@ -20,25 +20,46 @@ import {
 } from "./Styles";
 import * as yup from "yup";
 import { inputType } from "../../pages/profile/projects/components/Create";
+import FileResizer from "react-image-file-resizer";
 
 export interface IImagetoUpload {
-  lastModified: number;
-  lastModifiedDate: Date;
+  lastModified?: number;
+  lastModifiedDate?: Date;
   name: string;
   size: number;
   src: string;
   type: string;
-  webkitRelativePath: string;
+  webkitRelativePath?: string;
   width?: any;
   height?: any;
+  arrayBuffer: any;
+  slice: any;
+  stream: any;
+  text: any;
 }
 
+const resizeFile = (file: Blob) =>
+  new Promise((resolve) => {
+    FileResizer.imageFileResizer(
+      file,
+      1920,
+      1080,
+      "JPEG",
+      100,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "base64"
+    );
+  });
+
 // Create Image Object for getting the width ad height
-const ImageFormater = async (newFile: IImagetoUpload) => {
+const ImageFormater = async (newFile: Blob) => {
   const img = new Image();
-  const max_width = 2500;
-  const max_height = 2000;
-  const encoded = (await convertBase64(newFile)) as string;
+  const max_width = 5250;
+  const max_height = 2500;
+  const encoded = (await resizeFile(newFile)) as string;
   img.src = encoded;
   await img.decode();
   return img.naturalWidth < max_width && img.naturalHeight < max_height;
@@ -68,9 +89,6 @@ interface IImageUploader {
 const ImageUploader = ({ value, setValue }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
-  const [base64, setBase64] = useState<string[] | []>([]);
-
-  console.log(base64);
 
   const schema = yup.object().shape({
     attachment: yup
@@ -80,7 +98,6 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
         "fileSize",
         "La imagen supera los 5 MB. Intente con otra",
         (value: IImagetoUpload) => {
-          console.log(value, "AVER CHEE");
           return value?.size <= 50000000;
         }
       )
@@ -113,12 +130,10 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
 
     const newFile = e.target.files[0];
 
-    console.log(newFile, "fileee");
-
     await schema
       .validate({ attachment: newFile })
-      .then(async () => {
-        const result = await convertBase64(newFile);
+      .then(async (project) => {
+        const result = await resizeFile(newFile);
         const { name, size, type } = newFile;
         const image = { name, size, type, src: result };
         setValue({ ...value, images: [...value?.images, image] });
@@ -134,10 +149,15 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
     setValue({ ...value, images: update });
   };
 
-  // Conver KB Format
-  const Convert = (n: number): number => {
-    return n / 1000;
-  };
+  // Convert KB Format
+  function formatBytes(bytes: number, decimals = 2) {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+  }
 
   return (
     <Fragment>
@@ -212,11 +232,12 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
                     flexDirection: "column",
                     justifyContent: "center",
                     padding: " 0px 20px",
+                    fontFamily: "'Poppins' sans-serif" 
                   }}
                 >
-                  <Typography>{file?.name}</Typography>
+                  <Typography sx={{fontFamily: "'Poppins' sans-serif"}}>{file?.name}</Typography>
                   <Typography style={{ fontSize: "14px", fontWeight: 500 }}>
-                    {Convert(file?.size)} KB
+                    {formatBytes(file?.size, 2)}
                   </Typography>
                 </Box>
               </Box>

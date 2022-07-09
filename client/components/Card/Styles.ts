@@ -29,6 +29,7 @@ export const ProjectHeader: SxProps<Theme> = {
 
 export const ProjectBody: SxProps<Theme> = {
   display: "flex",
+  flexDirection: "column",
   flexWrap: "wrap",
   fontFamily: "'Poppins', sans-serif",
 };

@@ -9,16 +9,18 @@ import { setProjects } from "../../../redux/slices/projects";
 import CreateProject from "./components/Create";
 import Box from "@mui/material/Box";
 import UseTable from "../../../components/Table";
+import { IImagetoUpload } from "../../../components/Image-Uploader";
 
 export interface IProject {
   _id: string;
   name: string;
   description: string;
-  images: string[];
+  images: IImagetoUpload[];
   id: number;
   type: string;
   published: boolean;
   status: string;
+  price: number;
   createdAt: string;
   updatedAt: string;
   __v: number;

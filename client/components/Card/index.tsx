@@ -2,52 +2,29 @@ import React from "react";
 import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
 import { ProjectBody, ProjectContainer, ProjectHeader } from "./Styles";
+import { IProject } from "../../pages/profile/news";
 
-export interface ICard {
-  id: number;
-  title: string;
-  price: string;
-  details: {
-    location: string;
-    bathrooms: number;
-    bedrooms: number;
-    surface: number;
-  };
-  image: StaticImageData;
-  label: string;
-  path: string;
-  alt: string;
-}
-
-const Card = ({
-  title,
-  price,
-  details,
-  image,
-  label,
-  path,
-  alt,
-}: ICard) => {
+const Card = ({ name, description, images, price, status, type }: IProject) => {
   return (
     <Box sx={ProjectContainer}>
-      <img src={image.src} alt={alt} />
+      <img src={images[0]?.src} alt={name} />
       <Box sx={ProjectHeader}>
         <span
           style={{
             color: "#212121",
             fontWeight: 600,
             fontSize: "25px",
-            margin: "10px 0",
+            margin: "15px 0",
           }}
         >
-          {title}
+          {name}
         </span>
       </Box>
 
       <Box sx={ProjectBody}>
         <Box style={{ display: "flex", alignItems: "center" }}>
           <span style={{ color: "#212121", fontWeight: 600, fontSize: "12px" }}>
-            En construcción
+            {status}
           </span>
         </Box>
 
@@ -59,15 +36,18 @@ const Card = ({
             margin: "10px 0",
           }}
         >
-          Lideraron, a partir del desarrollo integral de Madero Harbour, la
-          nueva urbanización de Puerto Madero.
+          {description}
         </Box>
+
         <Box
-          style={{ display: "flex", alignItems: "center", margin: "10px 0" }}
+          style={{
+            color: "#424242",
+            fontWeight: 600,
+            fontSize: "12px",
+            margin: "10px 0",
+          }}
         >
-          <span style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}>
-            20 de abril - 2022
-          </span>
+          Ver Proyecto
         </Box>
       </Box>
     </Box>
