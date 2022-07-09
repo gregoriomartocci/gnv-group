@@ -15,15 +15,13 @@ import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import { CellTable } from "./Styles";
 import Box from "@mui/material/Box";
-
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Actions from "../../../components/Table/Components/Actions";
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
-
 import Toast from "../../../components/Alert";
 import Update from "./components/Update";
-
+import parse from "html-react-parser";
 
 export interface Data {
   id: number;
@@ -49,6 +47,10 @@ interface ITableContent {
   project: any;
 }
 
+interface ISanitize {
+  string: string;
+}
+
 export const ProjectsContent = ({ project }: ITableContent) => {
   const CellTable: SxProps<Theme> = {
     display: "flex",
@@ -64,6 +66,11 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     },
   };
 
+  const santize = (string: string) => {
+    const reactElement = parse(string);
+    return reactElement;
+  };
+
   return (
     <Fragment>
       <TableCell align="left">
@@ -76,7 +83,7 @@ export const ProjectsContent = ({ project }: ITableContent) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.description}
+          {santize(project?.description)}
         </Typography>
       </TableCell>
       <TableCell align="left">
@@ -198,7 +205,6 @@ const Posts = () => {
     );
   };
 
-
   useEffect(() => {
     const getProjects = async () => {
       setError({ projects: "", message: "" });
@@ -227,7 +233,6 @@ const Posts = () => {
 
   return (
     <Dashboard>
-
       {state?.delete?.status === "success" && (
         <Toast
           message="El emprendimiento se eliminó con éxito"
@@ -247,13 +252,16 @@ const Posts = () => {
       />
 
       <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
-        <Update  projects={projects} path={state?.update?.api?.path} id={state?.update?.api?.id} />
+        <Update
+          projects={projects}
+          path={state?.update?.api?.path}
+          id={state?.update?.api?.id}
+        />
       </UseModal>
 
       <UseModal open={create?.modal} handleClose={closeCreateModal}>
         <CreateProject projects={projects} />
       </UseModal>
-      
     </Dashboard>
   );
 };

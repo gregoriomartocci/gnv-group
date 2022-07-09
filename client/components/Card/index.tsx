@@ -1,13 +1,20 @@
-import React from "react";
+import * as React from "react";
 import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
 import { ProjectBody, ProjectContainer, ProjectHeader } from "./Styles";
 import { IProject } from "../../pages/profile/news";
+import parse from "html-react-parser";
 
 const Card = ({ name, description, images, price, status, type }: IProject) => {
+
+  const santize = (string: string) => {
+    const reactElement = parse(string);
+    return reactElement;
+  };
+
   return (
     <Box sx={ProjectContainer}>
-      <img src={images[0]?.src} alt={name} />
+      <img src={images[0]?.src ?? ""} alt={name} />
       <Box sx={ProjectHeader}>
         <span
           style={{
@@ -36,7 +43,7 @@ const Card = ({ name, description, images, price, status, type }: IProject) => {
             margin: "10px 0",
           }}
         >
-          {description}
+          {santize(description ?? "")}
         </Box>
 
         <Box

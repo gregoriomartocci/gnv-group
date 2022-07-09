@@ -84,7 +84,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       } else {
 
         const updateProjects = projects.map((p) =>
-          p._id.toString() === id.toString() ? data : null
+          p._id.toString() === id.toString() ? data : p
         );
 
         dispatch(setProjects(updateProjects));

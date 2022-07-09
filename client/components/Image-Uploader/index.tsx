@@ -57,7 +57,7 @@ const resizeFile = (file: Blob) =>
 // Create Image Object for getting the width ad height
 const ImageFormater = async (newFile: Blob) => {
   const img = new Image();
-  const max_width = 5250;
+  const max_width = 2000;
   const max_height = 2500;
   const encoded = (await resizeFile(newFile)) as string;
   img.src = encoded;
@@ -114,8 +114,6 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
         "fileResolution",
         "La resolución de la imagen es mayor a 2400x2000. Pruebe con otra imagen",
         (value: IImagetoUpload): any => {
-          // const maxSize = 250;
-          // return !value || (value && value.size <= maxSize * maxSize);
           return ImageFormater(value);
         }
       ),
@@ -127,12 +125,11 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
 
   const onFileDrop = async (e: any) => {
     setErrors([]);
-
     const newFile = e.target.files[0];
 
     await schema
       .validate({ attachment: newFile })
-      .then(async (project) => {
+      .then(async () => {
         const result = await resizeFile(newFile);
         const { name, size, type } = newFile;
         const image = { name, size, type, src: result };
@@ -232,10 +229,12 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
                     flexDirection: "column",
                     justifyContent: "center",
                     padding: " 0px 20px",
-                    fontFamily: "'Poppins' sans-serif" 
+                    fontFamily: "'Poppins' sans-serif",
                   }}
                 >
-                  <Typography sx={{fontFamily: "'Poppins' sans-serif"}}>{file?.name}</Typography>
+                  <Typography sx={{ fontFamily: "'Poppins' sans-serif" }}>
+                    {file?.name}
+                  </Typography>
                   <Typography style={{ fontSize: "14px", fontWeight: 500 }}>
                     {formatBytes(file?.size, 2)}
                   </Typography>
