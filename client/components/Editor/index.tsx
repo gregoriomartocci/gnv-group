@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Box, CircularProgress } from "@mui/material";
-import UseButton from "../Button";
-import api from "../../hooks/Api";
-import Toast from "../Alert";
+import { Box } from "@mui/material";
 
 const modules = {
   toolbar: [
@@ -22,6 +19,7 @@ const modules = {
   ],
   clipboard: {
     matchVisual: false,
+    ops: [],
   },
 };
 
@@ -48,8 +46,13 @@ export interface IEditor {
 }
 
 const Editor = ({ value, setValue }: IEditor) => {
-  const onChangeHandler = (e: string) => {
-    setValue({ ...value, description: e });
+
+
+  const onChangeHandler = (string: string) => {
+    console.log(string, "string");
+    setValue({ ...value, description: string });
+
+    
   };
 
   return (
@@ -61,10 +64,10 @@ const Editor = ({ value, setValue }: IEditor) => {
             style={{ height: "300px" }}
             placeholder="Introduzca una descripción del proyecto.."
             theme="snow"
-            value={value.description}
+            defaultValue={value.description}
             scrollingContainer="body"
             modules={modules}
-            onChange={() => onChangeHandler}
+            onChange={onChangeHandler}
           />
         ) : null}
       </Box>

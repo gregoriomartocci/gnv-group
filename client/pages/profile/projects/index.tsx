@@ -78,6 +78,13 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     return reactElement;
   };
 
+  const sliceText = (text: any, limit: number) => {
+    const string =
+      text.length > limit ? text.toString().substring(0, limit) + "..." : text;
+    console.log(string);
+    return string;
+  };
+
   return (
     <Fragment>
       <TableCell align="left">
@@ -90,7 +97,7 @@ export const ProjectsContent = ({ project }: ITableContent) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {santize(project?.description)}
+          {santize(sliceText(project?.description, 45))}
         </Typography>
       </TableCell>
       <TableCell align="left">
