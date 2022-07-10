@@ -145,7 +145,7 @@ const Delete = ({ path, id }: IDelete) => {
               margin: "0 0 0 7.5px",
             }}
           >
-            <UseButton type="Delete" onClickHandler={remove}>
+            <UseButton type="Delete" onClickHandler={() => remove()}>
               {state?.delete.loading ? (
                 <CircularProgress style={{ color: "#fff" }} />
               ) : (

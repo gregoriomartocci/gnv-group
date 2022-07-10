@@ -17,11 +17,17 @@ export type Type = {
 export interface IToast {
   message: string;
   type: keyof Type;
+  action?: any;
 }
 
-export default function Toast({ message, type }: IToast) {
+export default function Toast({ message, type, action }: IToast) {
 
   const [open, setOpen] = React.useState(true);
+
+  const onClickHandler = () => {
+    action()
+    setOpen(false);
+  };
 
   return (
     <Box sx={ToastContainer}>
@@ -40,11 +46,9 @@ export default function Toast({ message, type }: IToast) {
               aria-label="close"
               color="inherit"
               size="small"
-              onClick={() => {
-                setOpen(false);
-              }}
+              onClick={onClickHandler}
             >
-              <CloseIcon fontSize="inherit"/>
+              <CloseIcon fontSize="inherit" />
             </IconButton>
           }
         >

@@ -98,7 +98,7 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [actual, setActual] = React.useState<string>("");
-  const [rowSelected , setRowSelected] = React.useState<any>();
+  const [rowSelected, setRowSelected] = React.useState<any>();
 
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
@@ -113,7 +113,7 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
     row: any
   ) => {
     setActual(id);
-    setRowSelected(row)
+    setRowSelected(row);
     dispatch(setActions(true));
     setAnchorEl(event.currentTarget);
   };
@@ -397,7 +397,11 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
                         <TableCell align="left">
                           <IconButton
                             onClick={(e) =>
-                              handleClickActionsMenu(e, row?._id.toString(), row)
+                              handleClickActionsMenu(
+                                e,
+                                row?._id.toString(),
+                                row
+                              )
                             }
                           >
                             <MoreVertIcon />

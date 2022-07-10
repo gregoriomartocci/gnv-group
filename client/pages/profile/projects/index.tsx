@@ -6,6 +6,7 @@ import Dashboard from "../../../components/Dashboard";
 import { IState } from "../../../components/Menu";
 import api from "../../../hooks/Api";
 import {
+  initialState,
   setCreate,
   setDelete,
   setProjects,
@@ -35,6 +36,12 @@ export interface Data {
   updatedAt: string;
   __v: number;
 }
+
+export type resetParams = {
+  delete: "delete";
+  update: "update";
+  create: "crate";
+};
 
 interface HeadCell {
   disablePadding: boolean;
@@ -189,9 +196,24 @@ const Posts = () => {
   const { create } = state;
   const projects = state?.projects;
 
+  const reset = (string: keyof resetParams) => {
+    const ok = state[string];
+    dispatch(
+      setDelete({
+        ...ok,
+        status: "",
+        message: "",
+      })
+    );
+  };
+
   const closeCreateModal = () => {
     dispatch(
-      setCreate({ ...state?.delete, loading: false, message: "", modal: false })
+      setCreate({
+        ...state?.create,
+        loading: false,
+        modal: false,
+      })
     );
   };
 
@@ -199,6 +221,8 @@ const Posts = () => {
     dispatch(
       setUpdate({
         ...state?.update,
+        status: "",
+        message: "",
         loading: false,
         modal: false,
       })
@@ -237,11 +261,16 @@ const Posts = () => {
         <Toast
           message="El emprendimiento se eliminó con éxito"
           type="success"
+          action={() => reset("delete")}
         />
       )}
 
       {state?.delete?.status === "failed" && (
-        <Toast message={state?.delete.message} type="error" />
+        <Toast
+          message={state?.delete.message}
+          type="error"
+          action={() => reset("delete")}
+        />
       )}
 
       <UseTable

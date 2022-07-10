@@ -24,6 +24,7 @@ import BasicSelect from "../../../../../components/Select";
 import { IProject } from "../../../news";
 import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
+import { resetParams } from "../..";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -62,6 +63,17 @@ const Update = ({ projects, path, id }: ICreateProject) => {
   const [input, setInput] = useState<inputType>(state?.update.project);
   const [tab, setTab] = useState<number>(0);
 
+  const reset = (string: keyof resetParams) => {
+    const ok = state[string];
+    dispatch(
+      setUpdate({
+        ...ok,
+        status: "",
+        message: "",
+      })
+    );
+  };
+
   // Publish Project
   const handlePublish = async () => {
     dispatch(setUpdate({ ...update, status: "", message: "", loading: true }));
@@ -79,7 +91,6 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       if (error) {
         dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
-
         const updateProjects = projects.map((p) =>
           p._id.toString() === id.toString() ? data : p
         );
@@ -157,10 +168,18 @@ const Update = ({ projects, path, id }: ICreateProject) => {
   return (
     <Box sx={{ width: "100%" }}>
       {update?.status === "success" && (
-        <Toast message={update?.message} type="success" />
+        <Toast
+          message={update?.message}
+          type="success"
+          action={() => reset("update")}
+        />
       )}
       {update?.status === "failed" && (
-        <Toast message={update?.message} type="error" />
+        <Toast
+          message={update?.message}
+          type="error"
+          action={() => reset("update")}
+        />
       )}
 
       <Box sx={Login}>

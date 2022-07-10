@@ -24,6 +24,7 @@ import BasicSelect from "../../../../../components/Select";
 import { IProject } from "../../../news";
 import { setCreate, setProjects } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
+import { resetParams } from "../..";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -56,6 +57,17 @@ const Create = ({ projects }: ICreateProject) => {
   const router = useRouter();
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
+
+  const reset = (string: keyof resetParams) => {
+    const ok = state[string];
+    dispatch(
+      setCreate({
+        ...ok,
+        status: "",
+        message: "",
+      })
+    );
+  };
 
   const [input, setInput] = useState<inputType>({
     name: "",
@@ -160,10 +172,18 @@ const Create = ({ projects }: ICreateProject) => {
   return (
     <Box sx={{ width: "100%" }}>
       {create?.status === "success" && (
-        <Toast message={create?.message} type="success" />
+        <Toast
+          message={create?.message}
+          type="success"
+          action={() => reset("create")}
+        />
       )}
       {create?.status === "failed" && (
-        <Toast message={create?.message} type="error" />
+        <Toast
+          message={create?.message}
+          type="error"
+          action={() => reset("create")}
+        />
       )}
 
       <Box sx={Login}>
