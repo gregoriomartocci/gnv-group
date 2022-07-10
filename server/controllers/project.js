@@ -1,4 +1,4 @@
-import { uploadImage } from "../helpers/project";
+import { uploadImage, validateBase64 } from "../helpers/project";
 import Project from "../models/project";
 
 export const createProject = async (req, res) => {
@@ -67,9 +67,27 @@ export const removeProject = async (req, res) => {
 };
 
 export const editProject = async (req, res) => {
+  const { images } = req.body;
+
+  const validate_cloudinay = (str) => {
+    const validate =
+      typeof str === "string" && str.split(".")[1] === "cloudinary";
+    return validate;
+  };
+
   try {
     const { id } = req.params;
-    const project = await Project.findByIdAndUpdate(id, req.body, {
+    
+    const upload_images = images.map(async (i) => ({
+      ...i,
+      src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,
+    }));
+
+    const updated_images = await Promise.all(upload_images);
+    const updated_project = { ...req.body, images: updated_images };
+    // console.log(updated_project, "OKAAA");
+
+    const project = await Project.findByIdAndUpdate(id, updated_project, {
       new: true,
     });
     return res.json(project);
