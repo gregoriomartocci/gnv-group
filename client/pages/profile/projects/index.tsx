@@ -14,7 +14,6 @@ import {
 } from "../../../redux/slices/projects";
 import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
-import { CellTable } from "./Styles";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Actions from "../../../components/Table/Components/Actions";
@@ -59,17 +58,21 @@ interface ISanitize {
 }
 
 export const ProjectsContent = ({ project }: ITableContent) => {
+  
+  const [size, setSize] = useState<number>(50);
+  const [rounded, setRounded] = useState<boolean>(false);
+
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
 
     img: {
-      width: "32px",
-      height: "32px",
-      borderRadius: "50%",
+      width: size,
+      height: size,
+      borderRadius: `${rounded ? "50px" : "5px"}`,
       objectFit: "cover",
-      margin: "0px 10px",
+      margin: "0px 15px",
     },
   };
 
@@ -81,7 +84,6 @@ export const ProjectsContent = ({ project }: ITableContent) => {
   const sliceText = (text: any, limit: number) => {
     const string =
       text.length > limit ? text.toString().substring(0, limit) + "..." : text;
-    console.log(string);
     return string;
   };
 
@@ -200,6 +202,28 @@ const Posts = () => {
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
   const state = useSelector((state: IState) => state?.projects);
 
+  const getProjects = async () => {
+    setError({ projects: "", message: "" });
+    setLoading(true);
+    try {
+      const data = await api({
+        method: "get",
+        path: "/projects",
+      });
+      console.log("Dateushh", data);
+      setLoading(false);
+      if (data?.error) {
+        setError({ projects: "failed", message: data?.error });
+      } else {
+        setError({ ...error, projects: "success" });
+        dispatch(setProjects(data));
+      }
+    } catch (err) {
+      setError({ projects: "failed", message: "Something went wrong" });
+      setLoading(false);
+    }
+  };
+
   const { create } = state;
   const projects = state?.projects;
 
@@ -237,28 +261,6 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    const getProjects = async () => {
-      setError({ projects: "", message: "" });
-      setLoading(true);
-      try {
-        const data = await api({
-          method: "get",
-          path: "/projects",
-        });
-        console.log("Dateushh", data);
-        setLoading(false);
-        if (data?.error) {
-          setError({ projects: "failed", message: data?.error });
-        } else {
-          setError({ ...error, projects: "success" });
-          dispatch(setProjects(data));
-        }
-      } catch (err) {
-        setError({ projects: "failed", message: "Something went wrong" });
-        setLoading(false);
-      }
-    };
-
     getProjects();
   }, []);
 

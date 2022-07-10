@@ -39,17 +39,6 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link href={"/profile/users"}>
-            <a>
-              <Box sx={MenuItem}>
-                <GroupIcon
-                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
-                />
-                <span>Usuarios</span>
-              </Box>
-            </a>
-          </Link>
-
           <Link href={"/profile/news"}>
             <a>
               <Box sx={MenuItem}>
@@ -60,6 +49,17 @@ const Sidebar = () => {
               </Box>
             </a>
           </Link>
+          
+          {/* <Link href={"/profile/users"}>
+            <a>
+              <Box sx={MenuItem}>
+                <GroupIcon
+                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
+                />
+                <span>Usuarios</span>
+              </Box>
+            </a>
+          </Link> */}
         </Box>
       </Box>
     </Box>

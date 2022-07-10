@@ -38,6 +38,7 @@ interface ITableContent {
 }
 
 export const ProjectsContent = ({ project }: ITableContent) => {
+  
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",

@@ -20,7 +20,7 @@ import { visuallyHidden } from "@mui/utils";
 import UseButton from "../Button";
 import UseModal from "../Modal";
 import CreateUser from "../../pages/profile/users/components/Create";
-import { CellTable, GrayBackground } from "./Styles";
+import {  GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
