@@ -64,7 +64,7 @@ const Editor = ({ value, setValue }: IEditor) => {
             value={value.description}
             scrollingContainer="body"
             modules={modules}
-            onChange={onChangeHandler}
+            onChange={() => onChangeHandler}
           />
         ) : null}
       </Box>
