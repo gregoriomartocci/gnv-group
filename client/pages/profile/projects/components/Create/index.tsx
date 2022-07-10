@@ -74,8 +74,6 @@ const Create = ({ projects }: ICreateProject) => {
   const handlePublish = async () => {
     dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
 
-    console.log(input, "QUE ESTOY MANDANDO AL BACKEND");
-
     try {
       const data = await api({
         method: "post",

@@ -60,9 +60,6 @@ const Update = ({ projects, path, id }: ICreateProject) => {
   const state = useSelector((state: IState) => state?.projects);
   const { update } = state;
   const [input, setInput] = useState<inputType>(state?.update.project);
-
-  console.log();
-
   const [tab, setTab] = useState<number>(0);
 
   // Publish Project
