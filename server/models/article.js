@@ -3,25 +3,28 @@ import auto_increment from "mongoose-auto-increment";
 
 const { Schema } = mongoose;
 
-const projectSchema = new Schema(
+const articleSchema = new Schema(
   {
     id: {
       type: Number,
       required: true,
       default: 1,
     },
-    name: {
+    title: {
       type: String,
       trim: true,
       required: true,
     },
-    description: { type: String, required: true },
-    images: [{}],
-    published: { type: Boolean, default: true },
-    status: {
+    source: {
       type: String,
       required: true,
     },
+    date: {
+      type: String,
+      required: true,
+    },
+    images: [{}],
+    published: { type: Boolean, default: true },
     link: {
       type: String,
       required: true,
@@ -32,11 +35,11 @@ const projectSchema = new Schema(
 
 auto_increment.initialize(mongoose.connection);
 
-projectSchema.plugin(auto_increment.plugin, {
+articleSchema.plugin(auto_increment.plugin, {
   model: "Project",
   field: "id",
   startAt: 1,
   incrementBy: 1,
 });
 
-export default mongoose.model("Project", projectSchema);
+export default mongoose.model("Article", articleSchema);
