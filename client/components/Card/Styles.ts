@@ -15,7 +15,7 @@ export const ProjectContainer: SxProps<Theme> = {
 
   img: {
     width: "100%",
-    minHeight: "500px",
+    height: "400px",
     objectFit: "cover",
     borderRadius: "15px",
     objectPosition: "center center"
