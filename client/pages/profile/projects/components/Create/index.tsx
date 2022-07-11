@@ -145,14 +145,16 @@ const Create = ({ projects }: ICreateProject) => {
         value={input.name}
         onChangeHandler={onChangeHandler}
       />
+
       <InputGroup
         name="link"
         description="Ingrese el enlace de la propiedad"
-        label="Link"
+        label="Enlace"
         type="text"
         value={input.link}
         onChangeHandler={onChangeHandler}
       />
+
       <BasicSelect
         options={status}
         width="100%"
@@ -160,7 +162,7 @@ const Create = ({ projects }: ICreateProject) => {
         setValue={setInput}
         label="Estado"
         name="status"
-        placeholder="Ingrese el estado del emprendimiento"
+        placeholder="Ingrese el estado de la noticia"
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,

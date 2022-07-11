@@ -21,10 +21,11 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
-import { IProject } from "../../../news";
-import { setCreate, setProjects } from "../../../../../redux/slices/projects";
+
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
+import { IArticle, setArticles } from "../../../../../redux/slices/articles";
+import { setCreate } from "../../../../../redux/slices/projects";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -34,7 +35,7 @@ export interface IAuthProps {
   img: StaticImageData;
 }
 
-export type inputType = {
+export type ArticleType = {
   name: string;
   price: number;
   images: IImagetoUpload[];
@@ -48,11 +49,11 @@ export type errorType = {
   message: any;
 };
 
-export interface ICreateProject {
-  projects: IProject[];
+export interface ICreateProps {
+  articles: IArticle[];
 }
 
-const Create = ({ projects }: ICreateProject) => {
+const Create = ({ articles }: ICreateProps) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const state = useSelector((state: IState) => state?.projects);
@@ -69,13 +70,11 @@ const Create = ({ projects }: ICreateProject) => {
     );
   };
 
-  const [input, setInput] = useState<inputType>({
-    name: "",
-    price: 0,
-    description: "",
+  const [input, setInput] = useState<IArticle>({
+    title: "",
+    source: "0",
+    link: "",
     images: [],
-    status: "",
-    type: "",
   });
 
   console.log(input.images, "que pasa aca che");
@@ -89,7 +88,7 @@ const Create = ({ projects }: ICreateProject) => {
     try {
       const data = await api({
         method: "post",
-        path: "/project",
+        path: "/article",
         payload: input,
       });
 
@@ -99,8 +98,8 @@ const Create = ({ projects }: ICreateProject) => {
       if (error) {
         dispatch(setCreate({ ...create, status: "failed", message: error }));
       } else {
-        const updateProjects = [...projects, data];
-        dispatch(setProjects(updateProjects));
+        const updateArticles = [...articles, data];
+        dispatch(setArticles(updateArticles));
         dispatch(
           setCreate({
             ...create,
@@ -132,39 +131,36 @@ const Create = ({ projects }: ICreateProject) => {
   const steps = [
     <Fragment>
       <InputGroup
-        name="name"
-        description="Ingrese el nombre de la propiedad"
-        label="Nombre"
+        name="title"
+        description="Ingrese el título de la noticia"
+        label="Titulo"
         type="text"
-        value={input.name}
+        value={input.title}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="price"
-        description="Ingrese el precio de la propiedad"
-        label="Precio"
-        type="number"
-        value={input.price}
+        name="fuente"
+        description="Ingrese la fuente de la noticia"
+        label="Fuente"
+        type="text"
+        value={input.source}
         onChangeHandler={onChangeHandler}
       />
-
-      <BasicSelect
-        options={status}
-        width="100%"
-        value={input}
-        setValue={setInput}
-        label="Estado"
-        name="status"
-        placeholder="Ingrese el estado de la noticia"
+      <InputGroup
+        name="link"
+        description="Ingrese el enlace de la noticia"
+        label="Enlace"
+        type="text"
+        value={input.link}
+        onChangeHandler={onChangeHandler}
       />
-      <BasicSelect
-        options={type}
-        width="100%"
-        value={input}
-        setValue={setInput}
-        label="Tipo"
-        name="type"
-        placeholder="Ingrese el estado de la noticia"
+      <InputGroup
+        name="date"
+        description="Ingrese la fecha de la noticia"
+        label="Fecha"
+        type="text"
+        value={input.date}
+        onChangeHandler={onChangeHandler}
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,

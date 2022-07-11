@@ -189,7 +189,6 @@ const Posts = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ articles: "", message: "" });
   const state = useSelector((state: IState) => state?.articles);
-
   const { articles } = state;
 
   const getArticles = async () => {
@@ -214,8 +213,15 @@ const Posts = () => {
     }
   };
 
-  const { create } = state;
-  const projects = state?.articles;
+  const { create, update } = state;
+
+  const openCreateModal = () => {
+    dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
+  };
+
+  const openUpdateModal = () => {
+    dispatch(setCreate({ ...update, status: "", message: "", modal: true }));
+  };
 
   const reset = (string: keyof resetParams) => {
     const ok = state[string];
@@ -276,7 +282,8 @@ const Posts = () => {
         title="Noticias"
         api="article"
         headCells={headCells}
-        rows={projects}
+        rows={articles}
+        openModals={[openCreateModal, openUpdateModal]}
       />
 
       <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
@@ -288,7 +295,7 @@ const Posts = () => {
       </UseModal>
 
       <UseModal open={create?.modal} handleClose={closeCreateModal}>
-        <CreateProject projects={projects} />
+        <CreateProject articles={articles} />
       </UseModal>
     </Dashboard>
   );

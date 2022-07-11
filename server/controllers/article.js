@@ -1,32 +1,23 @@
 import { uploadImage, validateBase64 } from "../helpers/project";
-import Project from "../models/project";
+import Article from "../models/article";
 
 export const createArticle = async (req, res) => {
   try {
-    const { name, price, description, type, published, status, images } =
-      req.body;
+    const { title, source, date, images } = req.body;
 
-    if (!name) return res.json({ error: "Por favor ingrese un nombre" });
+    if (!title) return res.json({ error: "Por favor ingrese un Título" });
 
-    if (!price)
+    if (!source)
       return res.json({
-        error: "Por favor ingrese un precio",
+        error: "Por favor ingrese una fuente",
       });
 
-    if (!type)
+    if (!date)
       return res.json({
-        error: "Por favor seleccione un tipo de emprendimiento",
+        error: "Por favor seleccione la fecha de la noticia",
       });
 
-    if (!status)
-      return res.json({
-        error: "Por favor indique en que estado se encuentra el emprendimiento",
-      });
-
-    if (!description)
-      return res.json({ error: "Por favor ingrese una descripción" });
-
-    const alreadyExist = await Project.findOne({ name });
+    const alreadyExist = await Article.findOne({ title });
 
     if (alreadyExist)
       return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
@@ -37,14 +28,12 @@ export const createArticle = async (req, res) => {
     }));
 
     const updated_images = await Promise.all(upload_images);
-    console.log(updated_images, "OKAAA");
+    // console.log(updated_images, "OKAAA");
 
     const project = await new Project({
-      name,
-      description,
-      type,
-      published,
-      status,
+      title,
+      source,
+      date,
       images: updated_images,
     }).save();
 
@@ -77,7 +66,7 @@ export const editArticle = async (req, res) => {
 
   try {
     const { id } = req.params;
-    
+
     const upload_images = images.map(async (i) => ({
       ...i,
       src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,

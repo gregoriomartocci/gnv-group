@@ -82,7 +82,7 @@ export const convertBase64 = (file: any) => {
 };
 
 interface IImageUploader {
-  value: inputType;
+  value: any;
   setValue: any;
 }
 

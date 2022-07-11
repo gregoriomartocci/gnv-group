@@ -21,7 +21,6 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
-import { IProject } from "../../../news";
 import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
@@ -129,39 +128,36 @@ const Update = ({ articles, path, id }: ICreateProps) => {
   const steps = [
     <Fragment>
       <InputGroup
-        name="name"
-        description="Ingrese el nombre de la propiedad"
-        label="Nombre"
+        name="title"
+        description="Ingrese el título de la noticia"
+        label="Titulo"
         type="text"
-        value={input.name}
+        value={input.title}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="price"
-        description="Ingrese el precio de la propiedad"
-        label="Precio"
-        type="number"
-        value={input.price}
+        name="fuente"
+        description="Ingrese la fuente de la noticia"
+        label="Fuente"
+        type="text"
+        value={input.source}
         onChangeHandler={onChangeHandler}
       />
-
-      <BasicSelect
-        options={status}
-        width="100%"
-        value={input}
-        setValue={setInput}
-        label="Estado"
-        name="status"
-        placeholder="Ingrese el estado de la noticia"
+      <InputGroup
+        name="link"
+        description="Ingrese el enlace de la noticia"
+        label="Enlace"
+        type="text"
+        value={input.link}
+        onChangeHandler={onChangeHandler}
       />
-      <BasicSelect
-        options={type}
-        width="100%"
-        value={input}
-        setValue={setInput}
-        label="Tipo"
-        name="type"
-        placeholder="Ingrese el estado de la noticia"
+      <InputGroup
+        name="date"
+        description="Ingrese la fecha de la noticia"
+        label="Fecha"
+        type="text"
+        value={input.date}
+        onChangeHandler={onChangeHandler}
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,

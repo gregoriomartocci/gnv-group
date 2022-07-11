@@ -60,6 +60,7 @@ interface ISanitize {
 export const ProjectsContent = ({ project }: ITableContent) => {
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const CellTable: SxProps<Theme> = {
     display: "flex",
@@ -225,7 +226,7 @@ const Posts = () => {
     }
   };
 
-  const { create } = state;
+  const { create, update } = state;
   const projects = state?.projects;
 
   const reset = (string: keyof resetParams) => {
@@ -237,6 +238,14 @@ const Posts = () => {
         message: "",
       })
     );
+  };
+
+  const openCreateModal = () => {
+    dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
+  };
+
+  const openUpdateModal = () => {
+    dispatch(setCreate({ ...update, status: "", message: "", modal: true }));
   };
 
   const closeCreateModal = () => {
@@ -288,6 +297,7 @@ const Posts = () => {
         api="project"
         headCells={headCells}
         rows={projects}
+        openModals={[openCreateModal, openUpdateModal]}
       />
 
       <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>

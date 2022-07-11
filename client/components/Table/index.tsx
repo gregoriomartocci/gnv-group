@@ -89,9 +89,10 @@ interface IUseTable {
   api: string;
   headCells: any;
   rows: any;
+  openModals: any[];
 }
 
-export default function UseTable({ title, api, headCells, rows }: IUseTable) {
+export default function UseTable({ title, api, headCells, rows, openModals }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -191,10 +192,6 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
     );
   }
 
-  const handleOpen = () => {
-    dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
-  };
-
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
     property: keyof any
@@ -292,7 +289,7 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
           </Tooltip>
         ) : (
           <React.Fragment>
-            <UseButton type="Primary" onClickHandler={handleOpen}>
+            <UseButton type="Primary" onClickHandler={openModals[0]}>
               agregar
             </UseButton>
           </React.Fragment>

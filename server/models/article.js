@@ -36,7 +36,7 @@ const articleSchema = new Schema(
 auto_increment.initialize(mongoose.connection);
 
 articleSchema.plugin(auto_increment.plugin, {
-  model: "Project",
+  model: "Article",
   field: "id",
   startAt: 1,
   incrementBy: 1,
