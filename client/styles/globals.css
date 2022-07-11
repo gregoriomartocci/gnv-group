@@ -30,4 +30,6 @@ a {
   background-color: #3c4552;
 }
 
-
+::placeholder {
+  color: "#000000";
+}

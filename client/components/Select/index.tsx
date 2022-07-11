@@ -4,7 +4,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-
+import { makeStyles } from "@mui/material";
+import clsx from "clsx";
 interface ISelect {
   options: string[];
   width: string;
@@ -12,6 +13,7 @@ interface ISelect {
   setValue: any;
   label?: string;
   name: string;
+  placeholder: string;
 }
 
 const BasicSelect = ({
@@ -21,10 +23,15 @@ const BasicSelect = ({
   setValue,
   label,
   name,
+  placeholder,
 }: ISelect) => {
   const handleChange = (event: SelectChangeEvent) => {
     setValue({ ...value, [name]: event.target.value });
   };
+
+  React.useEffect(() => {
+    value[name] === "" ? setValue({ ...value, [name]: placeholder }) : null;
+  }, []);
 
   return (
     <Box sx={{ width }}>
@@ -33,7 +40,7 @@ const BasicSelect = ({
           style={{
             fontSize: "13px",
             color: "#9e9e9e",
-            fontWeight: "700",
+            fontWeight: "600",
             margin: "10px 0",
           }}
         >
@@ -56,18 +63,34 @@ const BasicSelect = ({
           value={value[name]}
           onChange={handleChange}
         >
-          {options.map((element: string, index: number) => (
-            <MenuItem
-              key={index}
-              sx={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: "13px",
-              }}
-              value={element}
-            >
-              {element}
-            </MenuItem>
-          ))}
+          {options.map((element: string, index: number) => {
+            {
+              return index !== 0 ? (
+                <MenuItem
+                  key={index}
+                  sx={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "13px",
+                  }}
+                  value={element}
+                >
+                  {element}
+                </MenuItem>
+              ) : (
+                <MenuItem
+                  key={index}
+                  sx={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "13px",
+                  }}
+                  value={element}
+                  disabled
+                >
+                  {element}
+                </MenuItem>
+              );
+            }
+          })}
         </Select>
       </FormControl>
     </Box>
