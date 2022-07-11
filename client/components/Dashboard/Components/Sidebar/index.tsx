@@ -39,7 +39,7 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link href={"/profile/news"}>
+          <Link href={"/profile/articles"}>
             <a>
               <Box sx={MenuItem}>
                 <ArticleIcon

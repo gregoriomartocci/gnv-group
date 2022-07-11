@@ -12,10 +12,6 @@ export interface IUseModalProps {
 
 const UseModal = ({ open, handleClose, children }: IUseModalProps) => {
 
-  useEffect(() => {
-    console.log("ME ACTUALIZO");
-  }, []);
-  
   return (
     <Modal
       sx={ModalContainer}

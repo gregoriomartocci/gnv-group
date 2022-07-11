@@ -155,6 +155,7 @@ const Create = ({ projects }: ICreateProject) => {
         setValue={setInput}
         label="Estado"
         name="status"
+        placeholder="Ingrese el estado de la noticia"
       />
       <BasicSelect
         options={type}
@@ -163,6 +164,7 @@ const Create = ({ projects }: ICreateProject) => {
         setValue={setInput}
         label="Tipo"
         name="type"
+        placeholder="Ingrese el estado de la noticia"
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,

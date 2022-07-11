@@ -23,9 +23,17 @@ import Account from "../Account";
 import Link from "next/link";
 import { IProject } from "../../pages/profile/news";
 import { TResult } from "../../redux/slices/projects";
+import { IArticle } from "../../redux/slices/articles";
 
 export interface IState {
-  articles: {};
+  articles: {
+    articles: IArticle[];
+    project: IProject;
+    actions: boolean;
+    create: TResult;
+    delete: TResult;
+    update: TResult;
+  };
   projects: {
     projects: IProject[];
     project: IProject;
@@ -71,7 +79,7 @@ const Menu = ({ onScroll, theme }: IMenu) => {
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
- 
+
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setNavbar(true);

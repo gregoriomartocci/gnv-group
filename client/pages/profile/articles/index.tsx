@@ -6,12 +6,11 @@ import Dashboard from "../../../components/Dashboard";
 import { IState } from "../../../components/Menu";
 import api from "../../../hooks/Api";
 import {
-  initialState,
   setCreate,
   setDelete,
-  setProjects,
+  setArticles,
   setUpdate,
-} from "../../../redux/slices/projects";
+} from "../../../redux/slices/articles";
 import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
@@ -22,15 +21,16 @@ import UseModal from "../../../components/Modal";
 import Toast from "../../../components/Alert";
 import Update from "./components/Update";
 import parse from "html-react-parser";
+import { IImagetoUpload } from "../../../components/Image-Uploader";
 
 export interface Data {
   id: number;
-  name: string;
-  description: string;
-  images: string[];
-  type: string;
+  title: string;
+  source: string;
+  images: IImagetoUpload[];
+  date: string;
   published: boolean;
-  status: string;
+  link: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -57,8 +57,7 @@ interface ISanitize {
   string: string;
 }
 
-export const ProjectsContent = ({ project }: ITableContent) => {
-  
+export const ProjectsContent = ({ project: article }: ITableContent) => {
   const [size, setSize] = useState<number>(50);
   const [rounded, setRounded] = useState<boolean>(false);
 
@@ -91,30 +90,25 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={project?.images[0]?.src} alt="" />
+          <img src={article?.images[0]?.src} alt="" />
           <Typography style={{ fontFamily: "Montserrat" }}>
-            {project?.name}
+            {article?.title}
           </Typography>
         </Box>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {santize(sliceText(project?.description, 45))}
+          {article?.source}
         </Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.type}
+          {article?.link}
         </Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.status}
-        </Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published ? (
+          {article?.published ? (
             <Box
               sx={{
                 width: "min-content",
@@ -154,28 +148,22 @@ const headCells: readonly HeadCell[] = [
     label: "ID",
   },
   {
-    id: "name",
+    id: "title",
     numeric: true,
     disablePadding: false,
-    label: "Nombre",
+    label: "Título",
   },
   {
-    id: "description",
+    id: "source",
     numeric: true,
     disablePadding: false,
-    label: "Descripción",
+    label: "Fuente",
   },
   {
-    id: "type",
+    id: "link",
     numeric: true,
     disablePadding: false,
-    label: "Tipo",
-  },
-  {
-    id: "status",
-    numeric: true,
-    disablePadding: false,
-    label: "Estado",
+    label: "Enlace",
   },
   {
     id: "published",
@@ -192,40 +180,42 @@ const headCells: readonly HeadCell[] = [
 ];
 
 export type errorType = {
-  projects: string;
+  articles: string;
   message: any;
 };
 
 const Posts = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<errorType>({ projects: "", message: "" });
-  const state = useSelector((state: IState) => state?.projects);
+  const [error, setError] = useState<errorType>({ articles: "", message: "" });
+  const state = useSelector((state: IState) => state?.articles);
 
-  const getProjects = async () => {
-    setError({ projects: "", message: "" });
+  const { articles } = state;
+
+  const getArticles = async () => {
+    setError({ articles: "", message: "" });
     setLoading(true);
     try {
       const data = await api({
         method: "get",
-        path: "/projects",
+        path: "/articles",
       });
       console.log("Dateushh", data);
       setLoading(false);
       if (data?.error) {
-        setError({ projects: "failed", message: data?.error });
+        setError({ articles: "failed", message: data?.error });
       } else {
-        setError({ ...error, projects: "success" });
-        dispatch(setProjects(data));
+        setError({ ...error, articles: "success" });
+        dispatch(setArticles(data));
       }
     } catch (err) {
-      setError({ projects: "failed", message: "Something went wrong" });
+      setError({ articles: "failed", message: "Something went wrong" });
       setLoading(false);
     }
   };
 
   const { create } = state;
-  const projects = state?.projects;
+  const projects = state?.articles;
 
   const reset = (string: keyof resetParams) => {
     const ok = state[string];
@@ -261,7 +251,7 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    getProjects();
+    getArticles();
   }, []);
 
   return (
@@ -276,22 +266,22 @@ const Posts = () => {
 
       {state?.delete?.status === "failed" && (
         <Toast
-          message={state?.delete.message}
+          message={state?.delete?.message}
           type="error"
           action={() => reset("delete")}
         />
       )}
 
       <UseTable
-        title="Emprendimientos"
-        api="project"
+        title="Noticias"
+        api="article"
         headCells={headCells}
         rows={projects}
       />
 
       <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
         <Update
-          projects={projects}
+          articles={articles}
           path={state?.update?.api?.path}
           id={state?.update?.api?.id}
         />

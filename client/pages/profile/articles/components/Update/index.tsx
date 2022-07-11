@@ -25,6 +25,7 @@ import { IProject } from "../../../news";
 import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
+import { IArticle } from "../../../../../redux/slices/articles";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -48,19 +49,19 @@ export type errorType = {
   message: any;
 };
 
-export interface ICreateProject {
-  projects: IProject[];
+export interface ICreateProps {
+  articles: IArticle[];
   path: string;
   id: number;
 }
 
-const Update = ({ projects, path, id }: ICreateProject) => {
+const Update = ({ articles, path, id }: ICreateProps) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.articles);
   const { update } = state;
-  const [input, setInput] = useState<inputType>(state?.update.project);
+  const [input, setInput] = useState<inputType>(state?.update?.articles);
   const [tab, setTab] = useState<number>(0);
 
   const reset = (string: keyof resetParams) => {
@@ -91,7 +92,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       if (error) {
         dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
-        const updateProjects = projects.map((p) =>
+        const updateProjects = articles?.map((p) =>
           p._id.toString() === id.toString() ? data : p
         );
 
@@ -151,6 +152,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         setValue={setInput}
         label="Estado"
         name="status"
+        placeholder="Ingrese el estado de la noticia"
       />
       <BasicSelect
         options={type}
@@ -159,6 +161,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         setValue={setInput}
         label="Tipo"
         name="type"
+        placeholder="Ingrese el estado de la noticia"
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,

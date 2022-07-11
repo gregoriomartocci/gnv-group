@@ -20,7 +20,7 @@ import { visuallyHidden } from "@mui/utils";
 import UseButton from "../Button";
 import UseModal from "../Modal";
 import CreateUser from "../../pages/profile/users/components/Create";
-import {  GrayBackground } from "./Styles";
+import { GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -59,15 +59,15 @@ function stableSort<T>(
   array: readonly T[],
   comparator: (a: T, b: T) => number
 ) {
-  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-  stabilizedThis.sort((a, b) => {
+  const stabilizedThis = array?.map((el, index) => [el, index] as [T, number]);
+  stabilizedThis?.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) {
       return order;
     }
     return a[1] - b[1];
   });
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis?.map((el) => el[0]);
 }
 
 interface EnhancedTableProps {
@@ -303,7 +303,6 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
 
   return (
     <Box sx={{ width: "100%" }}>
-
       <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
         <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
       </UseModal>
@@ -345,8 +344,8 @@ export default function UseTable({ title, api, headCells, rows }: IUseTable) {
               />
               <TableBody>
                 {stableSort(rows, getComparator(order, orderBy))
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
+                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  ?.map((row, index) => {
                     const isItemSelected = isSelected(Number(row?.id));
                     const labelId = `enhanced-table-checkbox-${index}`;
 
