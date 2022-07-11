@@ -21,10 +21,11 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
-import { IProject } from "../../../news";
+
 import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
+import { IProjects } from "../../../../../components/Cards";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -36,7 +37,7 @@ export interface IAuthProps {
 
 export type inputType = {
   name: string;
-  price: number;
+  link: string;
   images: IImagetoUpload[];
   description: string;
   status: string;
@@ -49,7 +50,7 @@ export type errorType = {
 };
 
 export interface ICreateProject {
-  projects: IProject[];
+  projects: IProjects[];
   path: string;
   id: number;
 }
@@ -122,7 +123,11 @@ const Update = ({ projects, path, id }: ICreateProject) => {
     });
   };
 
-  const status = ["En construcción", "Finalizado"];
+  const status = [
+    "Ingrese el estado del emprendimiento",
+    "En construcción",
+    "Finalizado",
+  ];
   const type = ["Casa", "Departamento", "Local Comercial"];
 
   const steps = [
@@ -136,14 +141,13 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="price"
-        description="Ingrese el precio de la propiedad"
-        label="Precio"
-        type="number"
-        value={input.price}
+        name="link"
+        description="Ingrese el enlace de la propiedad"
+        label="Link"
+        type="text"
+        value={input.link}
         onChangeHandler={onChangeHandler}
       />
-
       <BasicSelect
         options={status}
         width="100%"
@@ -151,14 +155,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         setValue={setInput}
         label="Estado"
         name="status"
-      />
-      <BasicSelect
-        options={type}
-        width="100%"
-        value={input}
-        setValue={setInput}
-        label="Tipo"
-        name="type"
+        placeholder="Ingrese el estado del emprendimiento"
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,

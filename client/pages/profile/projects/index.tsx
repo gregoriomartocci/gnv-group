@@ -28,7 +28,7 @@ export interface Data {
   name: string;
   description: string;
   images: string[];
-  type: string;
+  link: string;
   published: boolean;
   status: string;
   createdAt: string;
@@ -58,8 +58,7 @@ interface ISanitize {
 }
 
 export const ProjectsContent = ({ project }: ITableContent) => {
-  
-  const [size, setSize] = useState<number>(50);
+  const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
 
   const CellTable: SxProps<Theme> = {
@@ -83,7 +82,9 @@ export const ProjectsContent = ({ project }: ITableContent) => {
 
   const sliceText = (text: any, limit: number) => {
     const string =
-      text.length > limit ? text.toString().substring(0, limit) + "..." : text;
+      text?.length && text?.length > limit
+        ? text.toString().substring(0, limit) + "..."
+        : text;
     return string;
   };
 
@@ -99,12 +100,12 @@ export const ProjectsContent = ({ project }: ITableContent) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {santize(sliceText(project?.description, 45))}
+          {santize(sliceText(project?.description, 30))}
         </Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.type}
+          {sliceText(project?.link, 30)}
         </Typography>
       </TableCell>
       <TableCell align="left">
@@ -166,10 +167,10 @@ const headCells: readonly HeadCell[] = [
     label: "Descripción",
   },
   {
-    id: "type",
+    id: "link",
     numeric: true,
     disablePadding: false,
-    label: "Tipo",
+    label: "Link",
   },
   {
     id: "status",

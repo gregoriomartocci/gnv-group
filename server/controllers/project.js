@@ -3,19 +3,13 @@ import Project from "../models/project";
 
 export const createProject = async (req, res) => {
   try {
-    const { name, price, description, type, published, status, images } =
-      req.body;
+    const { name, link, description, published, status, images } = req.body;
 
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
-    if (!price)
+    if (!link)
       return res.json({
         error: "Por favor ingrese un precio",
-      });
-
-    if (!type)
-      return res.json({
-        error: "Por favor seleccione un tipo de emprendimiento",
       });
 
     if (!status)
@@ -77,7 +71,7 @@ export const editProject = async (req, res) => {
 
   try {
     const { id } = req.params;
-    
+
     const upload_images = images.map(async (i) => ({
       ...i,
       src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,

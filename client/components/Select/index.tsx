@@ -61,6 +61,7 @@ const BasicSelect = ({
             fontSize: "13px",
           }}
           value={value[name]}
+          defaultValue={placeholder}
           onChange={handleChange}
         >
           {options.map((element: string, index: number) => {
@@ -78,13 +79,14 @@ const BasicSelect = ({
                 </MenuItem>
               ) : (
                 <MenuItem
-                  key={index}
+                  key={0}
                   sx={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: "13px",
                   }}
                   value={element}
                   disabled
+                  hidden
                 >
                   {element}
                 </MenuItem>
