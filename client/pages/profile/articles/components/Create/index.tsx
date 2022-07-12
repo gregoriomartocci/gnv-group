@@ -59,7 +59,7 @@ export interface ICreateProps {
 const Create = ({ articles }: ICreateProps) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.articles);
   const { create } = state;
 
   const reset = (string: keyof resetParams) => {
@@ -110,7 +110,7 @@ const Create = ({ articles }: ICreateProps) => {
           setCreate({
             ...create,
             status: "success",
-            message: "El emprendimiento se agregó con éxito",
+            message: "La noticia se agregó con éxito",
           })
         );
       }

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import Main from "../../components/Main";
 import { projectsData, SliderData } from "../../data/SliderData";
 import Ventures from "./components/Ventures";
-import Menu from "../../components/Menu";
+import Menu, { IState } from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
 import Carousel from "../../components/Carousel";
@@ -12,8 +12,44 @@ import UseButton from "../../components/Button";
 import Article, { ICard } from "../../components/Article";
 import { SwiperSlide } from "swiper/react";
 import Card from "../../components/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { errorType } from "../profile/articles";
+import api from "../../hooks/Api";
+import { setArticles } from "../../redux/slices/articles";
 
 const News = () => {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<errorType>({ articles: "", message: "" });
+  const state = useSelector((state: IState) => state?.articles);
+  const { articles } = state;
+
+  useEffect(() => {
+    getArticles();
+  }, []);
+
+  const getArticles = async () => {
+    setError({ articles: "", message: "" });
+    setLoading(true);
+    try {
+      const data = await api({
+        method: "get",
+        path: "/articles",
+      });
+      console.log("Dateushh", data);
+      setLoading(false);
+      if (data?.error) {
+        setError({ articles: "failed", message: data?.error });
+      } else {
+        setError({ ...error, articles: "success" });
+        dispatch(setArticles(data));
+      }
+    } catch (err) {
+      setError({ articles: "failed", message: "Something went wrong" });
+      setLoading(false);
+    }
+  };
+
   return (
     <Box>
       <Menu onScroll={false} />

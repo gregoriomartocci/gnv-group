@@ -105,7 +105,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
           setUpdate({
             ...update,
             status: "success",
-            message: "El emprendimiento se actualizó con éxito",
+            message: "La noticia se actualizó con éxito",
           })
         );
       }

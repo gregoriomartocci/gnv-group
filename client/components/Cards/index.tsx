@@ -2,10 +2,9 @@ import React, { Fragment } from "react";
 import { Box } from "@mui/material";
 import  Card from "../Card";
 import { ProjectsContainer } from "./Styles";
-import { IProject } from "../../pages/profile/news";
 
 export interface IProjects {
-  projects: IProject[];
+  projects: IProject[] | IArticle[];
 }
 
 const Cards = ({ projects }: IProjects) => {
