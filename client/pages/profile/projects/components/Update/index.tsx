@@ -92,8 +92,9 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       if (error) {
         dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
+        
         const updateProjects = projects.map((p) =>
-          p._id.toString() === id.toString() ? data : p
+          p?._id?.toString() ?? "" === id.toString() ? data : p
         );
 
         dispatch(setProjects(updateProjects));
@@ -122,6 +123,8 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
   const status = [
     "Ingrese el estado del emprendimiento",
@@ -191,7 +194,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
           Editar Emprendimiento
         </span>
 
-        <UseTabs value={tab} setValue={setTab} />
+        <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 

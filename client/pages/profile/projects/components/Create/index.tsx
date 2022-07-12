@@ -97,6 +97,7 @@ const Create = ({ projects }: ICreateProject) => {
       dispatch(setCreate({ ...create, loading: false }));
       const { error } = data;
       console.log(error, "<== mensaje error");
+      console.log(data, "ok")
       if (error) {
         dispatch(setCreate({ ...create, status: "failed", message: error }));
       } else {
@@ -169,6 +170,8 @@ const Create = ({ projects }: ICreateProject) => {
     <Editor value={input} setValue={setInput} />,
   ];
 
+  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
+
   return (
     <Box sx={{ width: "100%" }}>
       {create?.status === "success" && (
@@ -198,7 +201,7 @@ const Create = ({ projects }: ICreateProject) => {
           Agregar Emprendimiento
         </span>
 
-        <UseTabs value={tab} setValue={setTab} />
+        <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 

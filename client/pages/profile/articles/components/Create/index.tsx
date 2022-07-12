@@ -72,8 +72,9 @@ const Create = ({ articles }: ICreateProps) => {
 
   const [input, setInput] = useState<IArticle>({
     title: "",
-    source: "0",
+    source: "",
     link: "",
+    date: "",
     images: [],
   });
 
@@ -125,8 +126,7 @@ const Create = ({ articles }: ICreateProps) => {
     });
   };
 
-  const status = ["En construcción", "Finalizado"];
-  const type = ["Casa", "Departamento", "Local Comercial"];
+  const tab_options = ["Información Básica", "Multimedia"]
 
   const steps = [
     <Fragment>
@@ -139,7 +139,7 @@ const Create = ({ articles }: ICreateProps) => {
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="fuente"
+        name="source"
         description="Ingrese la fuente de la noticia"
         label="Fuente"
         type="text"
@@ -164,7 +164,7 @@ const Create = ({ articles }: ICreateProps) => {
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,
-    <Editor value={input} setValue={setInput} />,
+
   ];
 
   return (
@@ -196,7 +196,8 @@ const Create = ({ articles }: ICreateProps) => {
           Agregar Emprendimiento
         </span>
 
-        <UseTabs value={tab} setValue={setTab} />
+      
+        <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 

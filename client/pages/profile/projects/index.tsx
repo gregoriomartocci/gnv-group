@@ -93,7 +93,7 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={project?.images[0]?.src} alt="" />
+          <img src={project?.images[0]?.src ?? ""} alt="" />
           <Typography style={{ fontFamily: "Montserrat" }}>
             {project?.name}
           </Typography>

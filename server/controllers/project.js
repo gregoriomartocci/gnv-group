@@ -36,8 +36,8 @@ export const createProject = async (req, res) => {
     const project = await new Project({
       name,
       description,
-      type,
       published,
+      link,
       status,
       images: updated_images,
     }).save();

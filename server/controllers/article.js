@@ -3,7 +3,7 @@ import Article from "../models/article";
 
 export const createArticle = async (req, res) => {
   try {
-    const { title, source, date, images } = req.body;
+    const { title, link, source, date, images } = req.body;
 
     if (!title) return res.json({ error: "Por favor ingrese un Título" });
 
@@ -11,6 +11,9 @@ export const createArticle = async (req, res) => {
       return res.json({
         error: "Por favor ingrese una fuente",
       });
+
+    if (!link)
+      return res.json({ error: "Por favor ingrese el enlace de la noticia" });
 
     if (!date)
       return res.json({
@@ -30,14 +33,14 @@ export const createArticle = async (req, res) => {
     const updated_images = await Promise.all(upload_images);
     // console.log(updated_images, "OKAAA");
 
-    const project = await new Project({
+    const article = await new Article({
       title,
       source,
       date,
       images: updated_images,
     }).save();
 
-    return res.json(project);
+    return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json("Algo salió mal, por favor intente nuevamente");

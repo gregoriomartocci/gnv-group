@@ -13,9 +13,10 @@ interface ITabPanel {
 interface IChildren {
   value: number;
   setValue: any;
+  options: string[];
 }
 
-export default function UseTabs({ value, setValue }: IChildren) {
+export default function UseTabs({ value, setValue, options }: IChildren) {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -38,30 +39,18 @@ export default function UseTabs({ value, setValue }: IChildren) {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab
-            sx={{
-              textTransform: "none",
-              color: "#9BA5B3",
-              fontFamily: "'Poppins'",
-            }}
-            label="Información Básica"
-          />
-          <Tab
-            sx={{
-              textTransform: "none",
-              color: "#9BA5B3",
-              fontFamily: "'Poppins'",
-            }}
-            label="Multimedia"
-          />
-          <Tab
-            sx={{
-              textTransform: "none",
-              color: "#9BA5B3",
-              fontFamily: "'Poppins'",
-            }}
-            label="Descripción"
-          />
+          {options.map((item) => {
+            return (
+              <Tab
+                sx={{
+                  textTransform: "none",
+                  color: "#9BA5B3",
+                  fontFamily: "'Poppins'",
+                }}
+                label={item}
+              />
+            );
+          })}
         </Tabs>
       </Box>
     </Box>
