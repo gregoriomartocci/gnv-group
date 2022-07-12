@@ -84,10 +84,12 @@ export const editProject = async (req, res) => {
     const project = await Project.findByIdAndUpdate(id, updated_project, {
       new: true,
     });
+
+    console.log(project, "que proyect va para el front")
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+    return res.json({error:"Algo salió mal, por favor intente nuevamente"});
   }
 };
 
@@ -97,6 +99,6 @@ export const getProjects = async (req, res) => {
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+    return res.json({error:"Algo salió mal, por favor intente nuevamente"});
   }
 };

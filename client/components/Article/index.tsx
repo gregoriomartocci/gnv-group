@@ -2,28 +2,20 @@ import React from "react";
 import { Box } from "@mui/material";
 import { StaticImageData } from "next/image";
 import { ProjectBody, ProjectContainer } from "./Styles";
+import { IArticle } from "../../redux/slices/articles";
 
-export interface ICard {
-  id: number;
-  title: string;
-  price: string;
-  details: {
-    location: string;
-    bathrooms: number;
-    bedrooms: number;
-    surface: number;
-  };
-  image: StaticImageData;
-  label: string;
-  path: string;
-  alt: string;
-}
-
-const Article = ({ title, price, details, image, label, path, alt }: ICard) => {
+const Article = ({
+  title,
+  source,
+  date,
+  images,
+  published,
+  link,
+}: IArticle) => {
   return (
     <Box sx={ProjectContainer}>
-      <Box>
-        <img src={image.src} alt={alt} />
+      <Box sx={{ height: "100%" }}>
+        <img src={images[0]?.src ?? ""} alt={title} />
       </Box>
 
       <Box sx={ProjectBody}>
@@ -35,7 +27,7 @@ const Article = ({ title, price, details, image, label, path, alt }: ICard) => {
             margin: "10px 0",
           }}
         >
-          MH / Info Negocios
+          {title}
         </span>
 
         <Box
@@ -45,15 +37,13 @@ const Article = ({ title, price, details, image, label, path, alt }: ICard) => {
             fontSize: "12px",
             margin: "10px 0",
           }}
-        >
-          Lideraron, a partir del desarrollo integral de Madero Harbour, la
-          nueva urbanización de Puerto Madero.
-        </Box>
+        ></Box>
+
         <Box
           style={{ display: "flex", alignItems: "center", margin: "10px 0" }}
         >
           <span style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}>
-            20 de abril - 2022
+            {date}
           </span>
         </Box>
       </Box>

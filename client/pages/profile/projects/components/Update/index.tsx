@@ -21,11 +21,10 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
-
-import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
+import { IProject, setProjects, setUpdate } from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
-import { IProjects } from "../../../../../components/Cards";
+
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -50,7 +49,7 @@ export type errorType = {
 };
 
 export interface ICreateProject {
-  projects: IProjects[];
+  projects: IProject[];
   path: string;
   id: number;
 }
@@ -92,9 +91,10 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       if (error) {
         dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
-        
+
+
         const updateProjects = projects.map((p) =>
-          p?._id?.toString() ?? "" === id.toString() ? data : p
+          p._id.toString() === id.toString() ? data : p
         );
 
         dispatch(setProjects(updateProjects));

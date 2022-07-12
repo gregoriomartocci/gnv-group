@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IProject {
   id: number;
+  _id: string;
   name: string;
   description: string;
   images: string[];

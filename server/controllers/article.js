@@ -86,6 +86,7 @@ export const editArticle = async (req, res) => {
     const article = await Article.findByIdAndUpdate(id, updated_article, {
       new: true,
     });
+    console.log(article, "Article")
     return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

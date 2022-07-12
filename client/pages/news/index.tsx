@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 import Carousel from "../../components/Carousel";
 import Cards from "../../components/Cards";
 import UseButton from "../../components/Button";
-import Article, { ICard } from "../../components/Article";
+import Article from "../../components/Article";
 import { SwiperSlide } from "swiper/react";
 import Card from "../../components/Card";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,6 @@ import { setArticles } from "../../redux/slices/articles";
 import { CardBody, CardHeader } from "./Styles";
 
 const ArticleCard = ({ images, title, source, date, status }: any) => {
-
   // const santize = (string: string) => {
   //   const reactElement = parse(string);
   //   return reactElement;
@@ -130,11 +129,9 @@ const News = () => {
         }}
       >
         <Carousel>
-          {SliderData?.map((project: any, index: number) => (
+          {articles?.map((article: any, index: number) => (
             <SwiperSlide>
-              <Box>
-                <Article key={project.title + index} {...project} />
-              </Box>
+              <Article key={article.title + index} {...article} />
             </SwiperSlide>
           ))}
         </Carousel>
