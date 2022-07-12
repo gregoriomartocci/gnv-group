@@ -23,27 +23,40 @@ const SelectorB = () => {
   const state = useSelector((state: IState) => state?.projects);
   const { projects_filter, projects } = state;
   const [selectOptions, setSelectOptions] = useState([
-    "Estado",
-    "En desarrollo",
-    "Finalizado",
+    "estado",
+    "todos",
+    "en desarrollo",
+    "finalizado",
   ]);
 
   const [input, setInput] = useState({
     status: "",
+    search: "",
   });
 
   const filterVentures = (name: String) => {
-    console.log(name, "name");
-
-    console.log("COMPARACION", typeof projects_filter[0].status, typeof name)
+    if (name === "todos") return dispatch(setFilter(projects));
     const filtered = projects.filter(
-      (p:IProject) => String(p.status) === String(name)
+      (p: IProject) =>
+        String(p.status).toLowerCase() === String(name).toLowerCase()
     );
-    dispatch(setFilter(filtered));
+
+    return dispatch(setFilter(filtered));
   };
 
   const selectTab = (number: number): void => {
     setActive(number);
+  };
+
+  const onChangeHandler = (value: string) => {
+    console.log("Valueeee", value);
+    if (value) {
+      const filtered = projects.filter((p: IProject) =>
+        String(p.name).includes(value)
+      );
+      return dispatch(setFilter(filtered));
+    }
+    return dispatch(setFilter(projects));
   };
 
   return (
@@ -66,7 +79,11 @@ const SelectorB = () => {
             </Box>
           </Box>
           <Box>
-            <SearchBar />
+            <SearchBar
+              onChange={onChangeHandler}
+              value={input}
+              setValue={setInput}
+            />
           </Box>
         </Box>
       </Box>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { projectsData } from "../../../../data/SliderData";
 import SelectorB from "../../../../components/SelectorB";
 import Cards from "../../../../components/Cards";
@@ -9,15 +9,19 @@ import { IState } from "../../../../components/Menu";
 import { CardBody, CardHeader } from "./Styles";
 import parse from "html-react-parser";
 import api from "../../../../hooks/Api";
-import { IProject, setFilter, setProjects } from "../../../../redux/slices/projects";
+import {
+  IProject,
+  setFilter,
+  setProjects,
+} from "../../../../redux/slices/projects";
 import { errorType } from "../../../profile/projects";
 import { IArticle } from "../../../../redux/slices/articles";
 
-const VentureCard = ({ images, name, status }: any) => {
-  // const santize = (string: string) => {
-  //   const reactElement = parse(string);
-  //   return reactElement;
-  // };
+const VentureCard = ({ images, name, status, description }: any) => {
+  const santize = (string: string) => {
+    const reactElement = parse(string);
+    return reactElement;
+  };
 
   return (
     <Box>
@@ -56,11 +60,13 @@ const VentureCard = ({ images, name, status }: any) => {
             margin: "10px 0",
           }}
         >
-          {/* {santize(description ?? "")} */}
+          {santize(description ?? "")}
         </Box>
 
         <Box
           style={{
+            display: "flex",
+            alignItems:"center",
             color: "#424242",
             fontWeight: 600,
             fontSize: "12px",
@@ -68,6 +74,7 @@ const VentureCard = ({ images, name, status }: any) => {
           }}
         >
           Ver Proyecto
+          <KeyboardArrowRightIcon />
         </Box>
       </Box>
     </Box>
@@ -109,14 +116,13 @@ const Ventures = () => {
     getProjects();
   }, []);
 
-
   const state = useSelector((state: IState) => state?.projects);
   const { projects_filter, projects } = state;
 
   const filterVentures = () => {
-    const filtered = projects_filter.filter((p) => p.status === "")
-    dispatch(setFilter(filtered))
-  }
+    const filtered = projects_filter.filter((p) => p.status === "");
+    dispatch(setFilter(filtered));
+  };
 
   return (
     <Box

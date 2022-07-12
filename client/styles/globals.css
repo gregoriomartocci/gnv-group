@@ -33,3 +33,11 @@ a {
 ::placeholder {
   color: "#000000";
 }
+
+.MuiSelect-select
+  .MuiSelect-outlined
+  .MuiOutlinedInput-input
+  .MuiInputBase-input
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  border: "!important unset";
+}

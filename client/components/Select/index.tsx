@@ -50,18 +50,27 @@ const BasicSelect = ({
           {label}
         </span>
       ) : null}
-      <FormControl style={{ width }}>
+      <FormControl style={{ width }}  variant="outlined">
         <Select
           sx={{
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
             width: "100%",
-            border: "1px solid #e0e0e0",
+            border: "unset",
             borderRadius: "5px",
-            fontFamily: "'Montserrat', sans-serif",
+            fontFamily: "'Poppins', sans-serif",
             margin: "5px 0",
-            fontSize: "13px",
+            fontSize: "14px",
+            fontWeight: 500,
+            color: "#bdbdbd",
+          }}
+          variant="outlined"
+          inputProps={{
+            classes: {
+              root: "unset",
+              icon: "unset",
+            },
           }}
           value={value[name]}
           defaultValue={placeholder}

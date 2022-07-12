@@ -5,7 +5,19 @@ import { GridSearchIcon } from "@mui/x-data-grid";
 import InputBase from "@mui/material/InputBase";
 import { SearchInput } from "./Styles";
 
-const SearchBar = () => {
+interface ISearchBar {
+  onChange: any;
+  value: any;
+  setValue: any;
+}
+
+const SearchBar = ({ onChange, value, setValue }: ISearchBar) => {
+
+  const onChangeHandler = (e: any) => {
+    setValue({ ...value, search: e.target.value });
+    onChange(e.target.value);
+  };
+
   return (
     <Box
       sx={{
@@ -18,7 +30,12 @@ const SearchBar = () => {
       }}
     >
       <Search sx={{ margin: "0 10px", fontSize: "20px", color: "#bdbdbd" }} />
-      <InputBase sx={SearchInput} placeholder="búsqueda por nombre" />
+      <InputBase
+        sx={SearchInput}
+        placeholder="búsqueda por nombre"
+        value={value.search}
+        onChange={onChangeHandler}
+      />
     </Box>
   );
 };
