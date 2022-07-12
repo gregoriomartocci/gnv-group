@@ -1,17 +1,21 @@
 import React, { Fragment } from "react";
 import { Box } from "@mui/material";
-import  Card from "../Card";
+import Card from "../Card";
 import { ProjectsContainer } from "./Styles";
+import { IProject } from "../../redux/slices/projects";
+import { IArticle } from "../../redux/slices/articles";
 
 export interface IProjects {
-  projects: IProject[] | IArticle[];
+  items: IProject[] | IArticle[];
+  component: any;
 }
 
-const Cards = ({ projects }: IProjects) => {
+const Cards = ({ items, component }: IProjects) => {
+  console.log(items, "LOS ITEMS CHE");
   return (
     <Box sx={ProjectsContainer}>
-      {projects?.map((project: IProject, index: number) => (
-        <Card key={project.name + index} {...project} />
+      {items?.map((item, index: number) => (
+        <Card key={index}>{component(item)}</Card>
       ))}
     </Box>
   );

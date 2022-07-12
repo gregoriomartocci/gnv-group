@@ -16,6 +16,70 @@ import { useDispatch, useSelector } from "react-redux";
 import { errorType } from "../profile/articles";
 import api from "../../hooks/Api";
 import { setArticles } from "../../redux/slices/articles";
+import { CardBody, CardHeader } from "./Styles";
+
+const ArticleCard = ({ images, title, source, date, status }: any) => {
+
+  // const santize = (string: string) => {
+  //   const reactElement = parse(string);
+  //   return reactElement;
+  // };
+
+  return (
+    <Box>
+      <img src={images[0]?.src ?? ""} alt={title} />
+
+      <Box sx={CardHeader}>
+        <span
+          style={{
+            color: "#212121",
+            fontWeight: 600,
+            fontSize: "25px",
+            margin: "15px 0",
+          }}
+        >
+          {title}
+        </span>
+      </Box>
+
+      <Box sx={CardBody}>
+        <Box style={{ display: "flex", alignItems: "center" }}>
+          <span
+            style={{
+              color: "#212121",
+              fontWeight: 600,
+              fontSize: "12px",
+            }}
+          >
+            {status}
+          </span>
+        </Box>
+
+        <Box
+          style={{
+            color: "#424242",
+            fontWeight: 600,
+            fontSize: "12px",
+            margin: "10px 0",
+          }}
+        >
+          {/* {santize(description ?? "")} */}
+        </Box>
+
+        <Box
+          style={{
+            color: "#424242",
+            fontWeight: 600,
+            fontSize: "12px",
+            margin: "10px 0",
+          }}
+        >
+          Ver Noticia
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 
 const News = () => {
   const dispatch = useDispatch();
@@ -77,7 +141,10 @@ const News = () => {
       </Box>
       <HeaderTitle title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
-        <Cards projects={projectsData}></Cards>
+        <Cards
+          items={articles}
+          component={(item: IArticle) => <ArticleCard {...item} />}
+        ></Cards>
       </Box>
       <Box
         sx={{

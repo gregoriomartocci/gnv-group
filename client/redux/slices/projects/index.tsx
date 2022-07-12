@@ -1,5 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProject } from "../../../pages/profile/news";
+
+export interface IProject {
+  id: number;
+  name: string;
+  description: string;
+  images: string[];
+  link: string;
+  published: boolean;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 export type TCreate = {
   status: string;
