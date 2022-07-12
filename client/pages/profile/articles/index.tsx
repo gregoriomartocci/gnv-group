@@ -10,8 +10,9 @@ import {
   setDelete,
   setArticles,
   setUpdate,
+  IArticle,
 } from "../../../redux/slices/articles";
-import CreateProject from "./components/Create";
+
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -22,6 +23,7 @@ import Toast from "../../../components/Alert";
 import Update from "./components/Update";
 import parse from "html-react-parser";
 import { IImagetoUpload } from "../../../components/Image-Uploader";
+import Create from "./components/Create";
 
 export interface Data {
   id: number;
@@ -50,14 +52,14 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: any;
+  article: IArticle;
 }
 
 interface ISanitize {
   string: string;
 }
 
-export const ProjectsContent = ({ project: article }: ITableContent) => {
+export const ArticlesContent = ({ article }: ITableContent) => {
   const [size, setSize] = useState<number>(50);
   const [rounded, setRounded] = useState<boolean>(false);
 
@@ -295,7 +297,7 @@ const Posts = () => {
       </UseModal>
 
       <UseModal open={create?.modal} handleClose={closeCreateModal}>
-        <CreateProject articles={articles} />
+        <Create articles={articles} />
       </UseModal>
     </Dashboard>
   );

@@ -24,8 +24,8 @@ import BasicSelect from "../../../../../components/Select";
 
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
-import { IArticle, setArticles } from "../../../../../redux/slices/articles";
-import { setCreate } from "../../../../../redux/slices/projects";
+import { IArticle, setArticles, setCreate } from "../../../../../redux/slices/articles";
+
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,

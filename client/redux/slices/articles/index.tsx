@@ -37,8 +37,8 @@ export type TUpdate = {
 };
 
 export interface initialState {
-  projects: IArticle[];
-  project: IArticle | {};
+  articles: IArticle[];
+  article: IArticle | {};
   create: TCreate;
   actions: boolean;
   delete: TDelete;
@@ -46,8 +46,8 @@ export interface initialState {
 }
 
 const initialState: initialState = {
-  projects: [],
-  project: {},
+  articles: [],
+  article: {},
   actions: false,
   create: { status: "", message: "", loading: false, modal: false },
   delete: {
@@ -72,10 +72,10 @@ export const articlesSlice = createSlice({
   initialState,
   reducers: {
     setArticles: (state, action: PayloadAction<IArticle[]>) => {
-      state.projects = [...action.payload];
+      state.articles = [...action.payload];
     },
     setArticle: (state, action: PayloadAction<IArticle>) => {
-      state.project = { ...action.payload };
+      state.article = { ...action.payload };
     },
     setCreate: (state, action: PayloadAction<TCreate>) => {
       state.create = action.payload;

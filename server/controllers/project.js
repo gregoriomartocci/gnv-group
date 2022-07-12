@@ -45,7 +45,7 @@ export const createProject = async (req, res) => {
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: err.message });
   }
 };
 
@@ -56,7 +56,7 @@ export const removeProject = async (req, res) => {
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
@@ -87,7 +87,7 @@ export const editProject = async (req, res) => {
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
@@ -97,6 +97,6 @@ export const getProjects = async (req, res) => {
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };

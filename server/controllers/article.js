@@ -36,6 +36,7 @@ export const createArticle = async (req, res) => {
     const article = await new Article({
       title,
       source,
+      link,
       date,
       images: updated_images,
     }).save();
@@ -43,7 +44,9 @@ export const createArticle = async (req, res) => {
     return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({
+      error: err.message,
+    });
   }
 };
 
@@ -91,10 +94,10 @@ export const editArticle = async (req, res) => {
 
 export const getArticles = async (req, res) => {
   try {
-    const all = await Project.find().populate("name").sort({ createdAt: -1 });
+    const all = await Article.find().populate("title").sort({ createdAt: -1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: err.message });
   }
 };

@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCreate, setActions, setDelete } from "../../redux/slices/projects";
 import { IState } from "../Menu";
 import Delete from "./Components/Delete";
+import { ArticlesContent } from "../../pages/profile/articles";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -92,7 +93,13 @@ interface IUseTable {
   openModals: any[];
 }
 
-export default function UseTable({ title, api, headCells, rows, openModals }: IUseTable) {
+export default function UseTable({
+  title,
+  api,
+  headCells,
+  rows,
+  openModals,
+}: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -386,7 +393,7 @@ export default function UseTable({ title, api, headCells, rows, openModals }: IU
                           <span>usuarios</span>
                         ) : // <UsersContent />
                         title === "Noticias" ? (
-                          <span>noticias</span>
+                          <ArticlesContent article={row} />
                         ) : // <NewsContent />
                         null}
 
