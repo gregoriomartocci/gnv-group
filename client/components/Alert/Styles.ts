@@ -6,4 +6,5 @@ export const ToastContainer: SxProps<Theme> = {
   top: "70px",
   width: "400px",
   fontFamily: "'Poppins', sans-serif",
+  zIndex:1500
 };
