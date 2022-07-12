@@ -3,7 +3,7 @@ import { IImagetoUpload } from "../../../components/Image-Uploader";
 
 export interface IArticle {
   id?: number;
-  _id?: string;
+  _id: string;
   title: string;
   source: string;
   date: string;

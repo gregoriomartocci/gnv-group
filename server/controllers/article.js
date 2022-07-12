@@ -1,4 +1,4 @@
-import { uploadImage, validateBase64 } from "../helpers/project";
+import { uploadImage } from "../helpers/project";
 import Article from "../models/article";
 
 export const createArticle = async (req, res) => {
@@ -53,8 +53,8 @@ export const createArticle = async (req, res) => {
 export const removeArticle = async (req, res) => {
   const { id } = req.params;
   try {
-    const project = await Project.findByIdAndDelete(id);
-    return res.json(project);
+    const article = await Article.findByIdAndDelete(id);
+    return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
@@ -62,6 +62,7 @@ export const removeArticle = async (req, res) => {
 };
 
 export const editArticle = async (req, res) => {
+
   const { images } = req.body;
 
   const validate_cloudinay = (str) => {
@@ -79,13 +80,13 @@ export const editArticle = async (req, res) => {
     }));
 
     const updated_images = await Promise.all(upload_images);
-    const updated_project = { ...req.body, images: updated_images };
+    const updated_article = { ...req.body, images: updated_images };
     // console.log(updated_project, "OKAAA");
 
-    const project = await Project.findByIdAndUpdate(id, updated_project, {
+    const article = await Article.findByIdAndUpdate(id, updated_article, {
       new: true,
     });
-    return res.json(project);
+    return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });

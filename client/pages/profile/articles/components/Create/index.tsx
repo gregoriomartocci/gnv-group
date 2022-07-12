@@ -79,6 +79,7 @@ const Create = ({ articles }: ICreateProps) => {
     link: "",
     date: "",
     images: [],
+    _id: "",
     published: true,
   });
 

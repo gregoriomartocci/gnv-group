@@ -320,7 +320,7 @@ const Posts = () => {
     <Dashboard>
       {state?.delete?.status === "success" && (
         <Toast
-          message="El artículo se eliminó con éxito"
+          message="La Noticia se eliminó con éxito"
           type="success"
           action={() => reset("delete")}
         />
