@@ -196,7 +196,7 @@ const Create = ({ articles }: ICreateProps) => {
             color: "#424242",
           }}
         >
-          Agregar Emprendimiento
+          Agregar Noticia
         </span>
 
         <UseTabs value={tab} setValue={setTab} options={tab_options} />

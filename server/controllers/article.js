@@ -57,7 +57,7 @@ export const removeArticle = async (req, res) => {
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
@@ -88,7 +88,7 @@ export const editArticle = async (req, res) => {
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json("Algo salió mal, por favor intente nuevamente");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 

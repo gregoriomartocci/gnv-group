@@ -2,10 +2,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../../Menu";
-import { setActions, setDelete, setProjects } from "../../../../redux/slices/projects";
-import UseButton from "../../../Button";
-import api from "../../../../hooks/Api";
+import { IState } from "../../../../../components/Menu";
+import UseButton from "../../../../../components/Button";
+import api from "../../../../../hooks/Api";
+import { setActions, setArticles, setDelete } from "../../../../../redux/slices/articles";
 
 interface IDelete {
   path: string;
@@ -13,7 +13,7 @@ interface IDelete {
 }
 
 const Delete = ({ path, id }: IDelete) => {
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.articles);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -75,11 +75,11 @@ const Delete = ({ path, id }: IDelete) => {
             modal: false,
           })
         );
-        const updateProjects = state.projects.filter(
-          (p) => p._id.toString() !== id.toString()
+        const updateArticles = state.articles.filter(
+          (p) => p?._id.toString() !== id.toString()
         );
         dispatch(setActions(false));
-        dispatch(setProjects(updateProjects));
+        dispatch(setArticles(updateArticles));
       }
     } catch (err) {
       dispatch(

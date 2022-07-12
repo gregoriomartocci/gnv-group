@@ -4,9 +4,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
 import { IState } from "../../../components/Menu";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import api from "../../../hooks/Api";
 import {
   initialState,
+  setActions,
   setCreate,
   setDelete,
   setProjects,
@@ -16,12 +18,13 @@ import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Actions from "../../../components/Table/Components/Actions";
+import Actions from "./components/Actions";
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
 import Toast from "../../../components/Alert";
 import Update from "./components/Update";
 import parse from "html-react-parser";
+import Delete from "./components/Delete";
 
 export interface Data {
   id: number;
@@ -60,7 +63,29 @@ interface ISanitize {
 export const ProjectsContent = ({ project }: ITableContent) => {
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [actual, setActual] = React.useState<string>("");
+  const [rowSelected, setRowSelected] = React.useState<any>();
+  const state = useSelector((state: IState) => state?.projects);
+
+  const openActionsMenu = Boolean(anchorEl && state?.actions);
+
+  const handleCloseActionsMenu = () => {
+    setAnchorEl(null);
+  };
+
   const dispatch = useDispatch();
+
+  const handleClickActionsMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string,
+    row: any
+  ) => {
+    setActual(id);
+    setRowSelected(row);
+    dispatch(setActions(true));
+    setAnchorEl(event.currentTarget);
+  };
 
   const CellTable: SxProps<Theme> = {
     display: "flex",
@@ -143,6 +168,22 @@ export const ProjectsContent = ({ project }: ITableContent) => {
             </Box>
           )}
         </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <IconButton
+          onClick={(e) =>
+            handleClickActionsMenu(e, project?._id.toString(), project)
+          }
+        >
+          <MoreVertIcon />
+        </IconButton>
+        <Dropdown
+          open={openActionsMenu}
+          handleClose={handleCloseActionsMenu}
+          anchorEl={anchorEl}
+        >
+          <Actions path="project" id={actual} row={rowSelected} />
+        </Dropdown>
       </TableCell>
     </Fragment>
   );
@@ -240,6 +281,16 @@ const Posts = () => {
     );
   };
 
+  const closeDeleteModal = () => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        loading: false,
+        modal: false,
+      })
+    );
+  };
+
   const openCreateModal = () => {
     dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
   };
@@ -299,6 +350,10 @@ const Posts = () => {
         rows={projects}
         openModals={[openCreateModal, openUpdateModal]}
       />
+
+      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
+        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
+      </UseModal>
 
       <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
         <Update

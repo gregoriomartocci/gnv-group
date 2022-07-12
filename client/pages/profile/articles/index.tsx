@@ -3,6 +3,7 @@ import { Theme } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IState } from "../../../components/Menu";
 import api from "../../../hooks/Api";
 import {
@@ -11,12 +12,13 @@ import {
   setArticles,
   setUpdate,
   IArticle,
+  setActions,
 } from "../../../redux/slices/articles";
 
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Actions from "../../../components/Table/Components/Actions";
+
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
 import Toast from "../../../components/Alert";
@@ -24,6 +26,9 @@ import Update from "./components/Update";
 import parse from "html-react-parser";
 import { IImagetoUpload } from "../../../components/Image-Uploader";
 import Create from "./components/Create";
+import Actions from "./components/Actions";
+import Delete from "./components/Delete";
+
 
 export interface Data {
   id: number;
@@ -63,6 +68,11 @@ interface ISanitize {
 export const ArticlesContent = ({ article }: ITableContent) => {
   const [size, setSize] = useState<number>(50);
   const [rounded, setRounded] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [actual, setActual] = React.useState<string>("");
+  const state = useSelector((state: IState) => state?.articles);
+  const [rowSelected, setRowSelected] = React.useState<any>();
+  const dispatch = useDispatch();
 
   const CellTable: SxProps<Theme> = {
     display: "flex",
@@ -76,6 +86,23 @@ export const ArticlesContent = ({ article }: ITableContent) => {
       objectFit: "cover",
       margin: "0px 15px",
     },
+  };
+
+  const openActionsMenu = Boolean(anchorEl && state?.actions);
+
+  const handleCloseActionsMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClickActionsMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string,
+    row: any
+  ) => {
+    setActual(id);
+    setRowSelected(row);
+    dispatch(setActions(true));
+    setAnchorEl(event.currentTarget);
   };
 
   const santize = (string: string) => {
@@ -138,6 +165,22 @@ export const ArticlesContent = ({ article }: ITableContent) => {
             </Box>
           )}
         </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <IconButton
+          onClick={(e) =>
+            handleClickActionsMenu(e, article?._id.toString(), article)
+          }
+        >
+          <MoreVertIcon />
+        </IconButton>
+        <Dropdown
+          open={openActionsMenu}
+          handleClose={handleCloseActionsMenu}
+          anchorEl={anchorEl}
+        >
+          <Actions path="article" id={actual} row={rowSelected} />
+        </Dropdown>
       </TableCell>
     </Fragment>
   );
@@ -218,6 +261,16 @@ const Posts = () => {
 
   const { create, update } = state;
 
+  const closeDeleteModal = () => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        loading: false,
+        modal: false,
+      })
+    );
+  };
+
   const openCreateModal = () => {
     dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
   };
@@ -267,7 +320,7 @@ const Posts = () => {
     <Dashboard>
       {state?.delete?.status === "success" && (
         <Toast
-          message="El emprendimiento se eliminó con éxito"
+          message="El artículo se eliminó con éxito"
           type="success"
           action={() => reset("delete")}
         />
@@ -288,6 +341,10 @@ const Posts = () => {
         rows={articles}
         openModals={[openCreateModal, openUpdateModal]}
       />
+
+      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
+        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
+      </UseModal>
 
       <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
         <Update

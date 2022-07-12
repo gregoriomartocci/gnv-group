@@ -64,7 +64,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.articles);
   const { update } = state;
-  const [input, setInput] = useState<IArticle>(state?.update?.articles);
+  const [input, setInput] = useState<IArticle>(state?.update?.article);
   const [tab, setTab] = useState<number>(0);
 
   const reset = (string: keyof resetParams) => {
@@ -196,7 +196,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
             color: "#424242",
           }}
         >
-          Editar Emprendimiento
+          Editar Noticia
         </span>
 
         <UseTabs value={tab} setValue={setTab} options={tab_options} />

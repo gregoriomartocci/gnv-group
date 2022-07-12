@@ -24,13 +24,14 @@ import { GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Actions from "./Components/Actions";
+import Actions from "../../pages/profile/projects/components/Actions";
 import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
 import { setCreate, setActions, setDelete } from "../../redux/slices/projects";
 import { IState } from "../Menu";
-import Delete from "./Components/Delete";
+import Delete from "../../pages/profile/projects/components/Delete";
 import { ArticlesContent } from "../../pages/profile/articles";
+
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -112,33 +113,8 @@ export default function UseTable({
   const { create } = state;
   const dispatch = useDispatch();
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const openActionsMenu = Boolean(anchorEl && state?.actions);
 
-  const handleClickActionsMenu = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: string,
-    row: any
-  ) => {
-    setActual(id);
-    setRowSelected(row);
-    dispatch(setActions(true));
-    setAnchorEl(event.currentTarget);
-  };
 
-  const handleCloseActionsMenu = () => {
-    setAnchorEl(null);
-  };
-
-  const closeDeleteModal = () => {
-    dispatch(
-      setDelete({
-        ...state?.delete,
-        loading: false,
-        modal: false,
-      })
-    );
-  };
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {
@@ -307,9 +283,7 @@ export default function UseTable({
 
   return (
     <Box sx={{ width: "100%" }}>
-      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
-        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
-      </UseModal>
+
 
       <Paper
         sx={{
@@ -396,27 +370,6 @@ export default function UseTable({
                           <ArticlesContent article={row} />
                         ) : // <NewsContent />
                         null}
-
-                        <TableCell align="left">
-                          <IconButton
-                            onClick={(e) =>
-                              handleClickActionsMenu(
-                                e,
-                                row?._id.toString(),
-                                row
-                              )
-                            }
-                          >
-                            <MoreVertIcon />
-                          </IconButton>
-                          <Dropdown
-                            open={openActionsMenu}
-                            handleClose={handleCloseActionsMenu}
-                            anchorEl={anchorEl}
-                          >
-                            <Actions path={api} id={actual} row={rowSelected} />
-                          </Dropdown>
-                        </TableCell>
                       </TableRow>
                     );
                   })}

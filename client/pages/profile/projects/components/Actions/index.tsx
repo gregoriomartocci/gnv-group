@@ -2,11 +2,11 @@ import { Box, Divider } from "@mui/material";
 import { AccountBottom, MenuContainer, MenuItem } from "./Styles";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import UseModal from "../../../Modal";
+import UseModal from "../../../../../components/Modal";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../../Menu";
-import { setDelete, setUpdate } from "../../../../redux/slices/projects";
+import { IState } from "../../../../../components/Menu";
+import { setDelete, setUpdate } from "../../../../../redux/slices/projects";
 
 interface IActions {
   path: string;
@@ -17,8 +17,7 @@ interface IActions {
 const Actions = ({ path, id, row }: IActions) => {
   const dispatch = useDispatch();
   const state = useSelector((state: IState) => state?.projects);
-
-  console.log(row, "Tamos Chelo");
+  
 
   const OpenDeleteModal = () => {
     dispatch(
