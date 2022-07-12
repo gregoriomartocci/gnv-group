@@ -41,6 +41,7 @@ export type TUpdate = {
 export interface initialState {
   projects: IProject[];
   project: IProject | {};
+  projects_filter: IProject[];
   create: TCreate;
   actions: boolean;
   delete: TDelete;
@@ -50,6 +51,7 @@ export interface initialState {
 const initialState: initialState = {
   projects: [],
   project: {},
+  projects_filter: [],
   actions: false,
   create: { status: "", message: "", loading: false, modal: false },
   delete: {
@@ -76,6 +78,9 @@ export const projectsSlice = createSlice({
     setProjects: (state, action: PayloadAction<IProject[]>) => {
       state.projects = [...action.payload];
     },
+    setFilter: (state, action: PayloadAction<IProject[]>) => {
+      state.projects_filter = [...action.payload];
+    },
     setProject: (state, action: PayloadAction<IProject>) => {
       state.project = { ...action.payload };
     },
@@ -98,6 +103,7 @@ export const {
   setProjects,
   setProject,
   setCreate,
+  setFilter,
   setDelete,
   setUpdate,
   setActions,

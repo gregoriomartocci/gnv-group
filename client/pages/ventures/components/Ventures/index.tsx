@@ -9,7 +9,7 @@ import { IState } from "../../../../components/Menu";
 import { CardBody, CardHeader } from "./Styles";
 import parse from "html-react-parser";
 import api from "../../../../hooks/Api";
-import { IProject, setProjects } from "../../../../redux/slices/projects";
+import { IProject, setFilter, setProjects } from "../../../../redux/slices/projects";
 import { errorType } from "../../../profile/projects";
 import { IArticle } from "../../../../redux/slices/articles";
 
@@ -97,6 +97,7 @@ const Ventures = () => {
       } else {
         setError({ ...error, projects: "success" });
         dispatch(setProjects(data));
+        dispatch(setFilter(data));
       }
     } catch (err) {
       setError({ projects: "failed", message: "Something went wrong" });
@@ -108,8 +109,14 @@ const Ventures = () => {
     getProjects();
   }, []);
 
+
   const state = useSelector((state: IState) => state?.projects);
-  const { projects } = state;
+  const { projects_filter, projects } = state;
+
+  const filterVentures = () => {
+    const filtered = projects_filter.filter((p) => p.status === "")
+    dispatch(setFilter(filtered))
+  }
 
   return (
     <Box
@@ -119,7 +126,7 @@ const Ventures = () => {
     >
       <SelectorB />
       <Cards
-        items={projects}
+        items={projects_filter}
         component={(item: IProject | IArticle) => <VentureCard {...item} />}
       ></Cards>
     </Box>

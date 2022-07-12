@@ -132,7 +132,7 @@ const Create = ({ projects }: ICreateProject) => {
 
   const status = [
     "Ingrese el estado del emprendimiento",
-    "En construcción",
+    "En desarrollo",
     "Finalizado",
   ];
 

@@ -128,7 +128,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
 
   const status = [
     "Ingrese el estado del emprendimiento",
-    "En construcción",
+    "En desarrollo",
     "Finalizado",
   ];
   const type = ["Casa", "Departamento", "Local Comercial"];

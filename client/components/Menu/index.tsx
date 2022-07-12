@@ -36,6 +36,7 @@ export interface IState {
   };
   projects: {
     projects: IProject[];
+    projects_filter: IProject[];
     project: IProject;
     actions: boolean;
     create: TResult;

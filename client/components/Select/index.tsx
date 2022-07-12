@@ -14,6 +14,7 @@ interface ISelect {
   label?: string;
   name: string;
   placeholder: string;
+  filter?: any;
 }
 
 const BasicSelect = ({
@@ -24,13 +25,15 @@ const BasicSelect = ({
   label,
   name,
   placeholder,
+  filter,
 }: ISelect) => {
   const handleChange = (event: SelectChangeEvent) => {
     setValue({ ...value, [name]: event.target.value });
+    filter && filter(event.target.value);
   };
 
   React.useEffect(() => {
-    value[name] === "" ? setValue({ ...value, [name]: placeholder }) : null;
+    setValue({ ...value, [name]: placeholder });
   }, []);
 
   return (
