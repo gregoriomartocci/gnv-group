@@ -24,8 +24,11 @@ import BasicSelect from "../../../../../components/Select";
 
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
-import { IArticle, setArticles, setCreate } from "../../../../../redux/slices/articles";
-
+import {
+  IArticle,
+  setArticles,
+  setCreate,
+} from "../../../../../redux/slices/articles";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -76,6 +79,7 @@ const Create = ({ articles }: ICreateProps) => {
     link: "",
     date: "",
     images: [],
+    published: true,
   });
 
   console.log(input.images, "que pasa aca che");
@@ -126,7 +130,7 @@ const Create = ({ articles }: ICreateProps) => {
     });
   };
 
-  const tab_options = ["Información Básica", "Multimedia"]
+  const tab_options = ["Información Básica", "Multimedia"];
 
   const steps = [
     <Fragment>
@@ -164,7 +168,6 @@ const Create = ({ articles }: ICreateProps) => {
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,
-
   ];
 
   return (
@@ -196,7 +199,6 @@ const Create = ({ articles }: ICreateProps) => {
           Agregar Emprendimiento
         </span>
 
-      
         <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>

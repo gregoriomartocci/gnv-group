@@ -21,10 +21,14 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
-import { setProjects, setUpdate } from "../../../../../redux/slices/projects";
+
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
-import { IArticle } from "../../../../../redux/slices/articles";
+import {
+  IArticle,
+  setArticles,
+  setUpdate,
+} from "../../../../../redux/slices/articles";
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -60,7 +64,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
   const state = useSelector((state: IState) => state?.articles);
   const { update } = state;
-  const [input, setInput] = useState<inputType>(state?.update?.articles);
+  const [input, setInput] = useState<IArticle>(state?.update?.articles);
   const [tab, setTab] = useState<number>(0);
 
   const reset = (string: keyof resetParams) => {
@@ -92,10 +96,10 @@ const Update = ({ articles, path, id }: ICreateProps) => {
         dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
         const updateProjects = articles?.map((p) =>
-          p._id.toString() === id.toString() ? data : p
+          p?._id?.toString() === id?.toString() ? data : p
         );
 
-        dispatch(setProjects(updateProjects));
+        dispatch(setArticles(updateProjects));
 
         dispatch(
           setUpdate({
@@ -132,7 +136,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
         description="Ingrese el título de la noticia"
         label="Titulo"
         type="text"
-        value={input.title}
+        value={input?.title}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -140,7 +144,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
         description="Ingrese la fuente de la noticia"
         label="Fuente"
         type="text"
-        value={input.source}
+        value={input?.source}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -148,7 +152,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
         description="Ingrese el enlace de la noticia"
         label="Enlace"
         type="text"
-        value={input.link}
+        value={input?.link}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -156,13 +160,15 @@ const Update = ({ articles, path, id }: ICreateProps) => {
         description="Ingrese la fecha de la noticia"
         label="Fecha"
         type="text"
-        value={input.date}
+        value={input?.date}
         onChangeHandler={onChangeHandler}
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
+
+  const tab_options = ["Información Básica", "Multimedia"];
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -193,7 +199,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
           Editar Emprendimiento
         </span>
 
-        <UseTabs value={tab} setValue={setTab} />
+        <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 

@@ -2,15 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IImagetoUpload } from "../../../components/Image-Uploader";
 
 export interface IArticle {
-  id?:number;
-  _id?:string;
-  title:string;
-  source:string;
-  date:string;
-  images:IImagetoUpload[]
+  id?: number;
+  _id?: string;
+  title: string;
+  source: string;
+  date: string;
+  images: any[];
   published?: boolean;
-  link:string;
-} 
+  link: string;
+}
 
 export type TCreate = {
   status: string;

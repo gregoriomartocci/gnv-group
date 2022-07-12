@@ -27,6 +27,7 @@ import Create from "./components/Create";
 
 export interface Data {
   id: number;
+  _id: string;
   title: string;
   source: string;
   images: IImagetoUpload[];
@@ -52,7 +53,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  article: IArticle;
+  article: any;
 }
 
 interface ISanitize {
