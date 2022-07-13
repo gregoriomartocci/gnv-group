@@ -207,7 +207,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
           {update?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
-            "Agregar Noticia"
+            "Guardar"
           )}
         </UseButton>
       </Box>

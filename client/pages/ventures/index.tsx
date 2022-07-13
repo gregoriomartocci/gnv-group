@@ -15,7 +15,7 @@ const News = () => {
       <Main slides={SliderData}></Main>
       <HeaderTitle
         title="Emprendimientos"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor, in at facilisis pellentesque lectus quisque a, luctus sed. Urna, amet sapien, amet scelerisque venenatis netus vitae."
+        description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
       />
       <Ventures></Ventures>
       <Footer></Footer>

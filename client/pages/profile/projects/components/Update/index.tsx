@@ -205,7 +205,7 @@ const Update = ({ projects, path, id }: ICreateProject) => {
           {update?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
-            "Agregar emprendimiento"
+            "Guardar"
           )}
         </UseButton>
       </Box>
