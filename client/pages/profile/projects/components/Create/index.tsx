@@ -97,7 +97,7 @@ const Create = ({ projects }: ICreateProject) => {
       dispatch(setCreate({ ...create, loading: false }));
       const { error } = data;
       console.log(error, "<== mensaje error");
-      console.log(data, "ok")
+      console.log(data, "ok");
       if (error) {
         dispatch(setCreate({ ...create, status: "failed", message: error }));
       } else {
@@ -210,10 +210,8 @@ const Create = ({ projects }: ICreateProject) => {
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {create?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
-          ) : tab === 2 ? (
-            "Agregar Proyecto"
           ) : (
-            "Siguiente"
+            "Agregar emprendimiento"
           )}
         </UseButton>
       </Box>

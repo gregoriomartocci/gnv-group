@@ -29,7 +29,6 @@ import Create from "./components/Create";
 import Actions from "./components/Actions";
 import Delete from "./components/Delete";
 
-
 export interface Data {
   id: number;
   _id: string;
@@ -39,6 +38,7 @@ export interface Data {
   date: string;
   published: boolean;
   link: string;
+  description: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -105,7 +105,7 @@ export const ArticlesContent = ({ article }: ITableContent) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const santize = (string: string) => {
+  const sanitize = (string: string) => {
     const reactElement = parse(string);
     return reactElement;
   };
@@ -122,7 +122,7 @@ export const ArticlesContent = ({ article }: ITableContent) => {
         <Box sx={CellTable}>
           <img src={article?.images[0]?.src} alt="" />
           <Typography style={{ fontFamily: "Montserrat" }}>
-            {article?.title}
+            {sliceText(article?.title, 40)}
           </Typography>
         </Box>
       </TableCell>
@@ -133,7 +133,12 @@ export const ArticlesContent = ({ article }: ITableContent) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {article?.link}
+          {sliceText(article?.link, 40)}
+        </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
+          {sanitize(sliceText(article?.description ?? "", 40))}
         </Typography>
       </TableCell>
       <TableCell align="left">
@@ -210,6 +215,12 @@ const headCells: readonly HeadCell[] = [
     numeric: true,
     disablePadding: false,
     label: "Enlace",
+  },
+  {
+    id: "description",
+    numeric: true,
+    disablePadding: false,
+    label: "Descripción",
   },
   {
     id: "published",

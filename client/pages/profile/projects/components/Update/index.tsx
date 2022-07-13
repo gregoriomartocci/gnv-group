@@ -21,10 +21,13 @@ import UseTabs from "../../../../../components/Tabs";
 import dynamic from "next/dynamic";
 import Toast from "../../../../../components/Alert";
 import BasicSelect from "../../../../../components/Select";
-import { IProject, setProjects, setUpdate } from "../../../../../redux/slices/projects";
+import {
+  IProject,
+  setProjects,
+  setUpdate,
+} from "../../../../../redux/slices/projects";
 import { IState } from "../../../../../components/Menu";
 import { resetParams } from "../..";
-
 
 const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
@@ -91,8 +94,6 @@ const Update = ({ projects, path, id }: ICreateProject) => {
       if (error) {
         dispatch(setUpdate({ ...update, status: "failed", message: error }));
       } else {
-
-
         const updateProjects = projects.map((p) =>
           p._id.toString() === id.toString() ? data : p
         );
@@ -203,10 +204,8 @@ const Update = ({ projects, path, id }: ICreateProject) => {
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {update?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
-          ) : tab === 2 ? (
-            "Agregar Proyecto"
           ) : (
-            "Siguiente"
+            "Agregar emprendimiento"
           )}
         </UseButton>
       </Box>

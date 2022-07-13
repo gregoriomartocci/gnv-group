@@ -8,6 +8,7 @@ export interface IArticle {
   source: string;
   date: string;
   images: any[];
+  description: string;
   published?: boolean;
   link: string;
 }

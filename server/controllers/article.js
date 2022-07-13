@@ -3,7 +3,7 @@ import Article from "../models/article";
 
 export const createArticle = async (req, res) => {
   try {
-    const { title, link, source, date, images } = req.body;
+    const { title, link, source, date, images, description } = req.body;
 
     if (!title) return res.json({ error: "Por favor ingrese un Título" });
 
@@ -19,6 +19,9 @@ export const createArticle = async (req, res) => {
       return res.json({
         error: "Por favor seleccione la fecha de la noticia",
       });
+
+    if (!description)
+      return res.json({ error: "Por favor ingrese una descripción" });
 
     const alreadyExist = await Article.findOne({ title });
 
@@ -62,7 +65,6 @@ export const removeArticle = async (req, res) => {
 };
 
 export const editArticle = async (req, res) => {
-
   const { images } = req.body;
 
   const validate_cloudinay = (str) => {
@@ -73,7 +75,6 @@ export const editArticle = async (req, res) => {
 
   try {
     const { id } = req.params;
-
     const upload_images = images.map(async (i) => ({
       ...i,
       src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,
@@ -86,7 +87,7 @@ export const editArticle = async (req, res) => {
     const article = await Article.findByIdAndUpdate(id, updated_article, {
       new: true,
     });
-    console.log(article, "Article")
+    console.log(article, "Article");
     return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

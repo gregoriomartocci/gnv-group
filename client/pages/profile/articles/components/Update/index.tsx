@@ -140,7 +140,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="fuente"
+        name="source"
         description="Ingrese la fuente de la noticia"
         label="Fuente"
         type="text"
@@ -168,7 +168,7 @@ const Update = ({ articles, path, id }: ICreateProps) => {
     <Editor value={input} setValue={setInput} />,
   ];
 
-  const tab_options = ["Información Básica", "Multimedia"];
+  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -203,15 +203,11 @@ const Update = ({ articles, path, id }: ICreateProps) => {
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 
-        {/* {console.log(input, "INPUT")} */}
-
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {update?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
-          ) : tab === 2 ? (
-            "Agregar Proyecto"
           ) : (
-            "Siguiente"
+            "Agregar Noticia"
           )}
         </UseButton>
       </Box>

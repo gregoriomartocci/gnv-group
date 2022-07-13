@@ -131,7 +131,7 @@ const Create = ({ articles }: ICreateProps) => {
     });
   };
 
-  const tab_options = ["Información Básica", "Multimedia"];
+  const tab_options = ["Información Básica", "Multimedia", "Descripcion"];
 
   const steps = [
     <Fragment>
@@ -169,6 +169,7 @@ const Create = ({ articles }: ICreateProps) => {
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,
+    <Editor value={input} setValue={setInput} />,
   ];
 
   return (
@@ -209,10 +210,8 @@ const Create = ({ articles }: ICreateProps) => {
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {create?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
-          ) : tab === 2 ? (
-            "Agregar Proyecto"
           ) : (
-            "Siguiente"
+            "Agregar Noticia"
           )}
         </UseButton>
       </Box>

@@ -71,7 +71,6 @@ export const editProject = async (req, res) => {
 
   try {
     const { id } = req.params;
-
     const upload_images = images.map(async (i) => ({
       ...i,
       src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,
@@ -85,7 +84,7 @@ export const editProject = async (req, res) => {
       new: true,
     });
 
-    console.log(project, "que proyect va para el front")
+    console.log(project,)
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

@@ -16,6 +16,7 @@ import SearchBar from "../Search-Bar";
 import BasicSelect from "../Select";
 import { useDispatch, useSelector } from "react-redux";
 import { IProject, setFilter } from "../../redux/slices/projects";
+import { IState } from "../Menu";
 
 const SelectorB = () => {
   const [active, setActive] = useState(1);
@@ -40,7 +41,6 @@ const SelectorB = () => {
       (p: IProject) =>
         String(p.status).toLowerCase() === String(name).toLowerCase()
     );
-
     return dispatch(setFilter(filtered));
   };
 
@@ -49,10 +49,9 @@ const SelectorB = () => {
   };
 
   const onChangeHandler = (value: string) => {
-    console.log("Valueeee", value);
     if (value) {
       const filtered = projects.filter((p: IProject) =>
-        String(p.name).includes(value)
+        String(p.name.toLowerCase()).includes(value.toLowerCase())
       );
       return dispatch(setFilter(filtered));
     }
@@ -65,7 +64,6 @@ const SelectorB = () => {
         <Box sx={SelectorFilters}>
           <Box sx={SelectorFiltersLeft}>
             {/* <UseButton type="Primary">todos</UseButton> */}
-
             <Box sx={SelectorFilter}>
               <BasicSelect
                 options={selectOptions}

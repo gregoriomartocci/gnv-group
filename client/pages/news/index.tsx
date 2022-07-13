@@ -15,68 +15,96 @@ import Card from "../../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { errorType } from "../profile/articles";
 import api from "../../hooks/Api";
-import { setArticles } from "../../redux/slices/articles";
+import { IArticle, setArticles } from "../../redux/slices/articles";
 import { CardBody, CardHeader } from "./Styles";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import parse from "html-react-parser";
+import Link from "next/link";
 
-const ArticleCard = ({ images, title, source, date, status }: any) => {
+export const santize = (string: string) => {
+  const reactElement = parse(string);
+  return reactElement;
+};
+
+export const sliceText = (text: any, limit: number) => {
+  const string =
+    text?.length && text?.length > limit
+      ? text.toString().substring(0, limit) + "..."
+      : text;
+  return string;
+};
+
+const ArticleCard = ({
+  images,
+  title,
+  source,
+  date,
+  link,
+  status,
+  description,
+}: any) => {
   // const santize = (string: string) => {
   //   const reactElement = parse(string);
   //   return reactElement;
   // };
 
   return (
-    <Box>
-      <img src={images[0]?.src ?? ""} alt={title} />
-
-      <Box sx={CardHeader}>
-        <span
-          style={{
-            color: "#212121",
-            fontWeight: 600,
-            fontSize: "25px",
-            margin: "15px 0",
-          }}
-        >
-          {title}
-        </span>
-      </Box>
-
-      <Box sx={CardBody}>
-        <Box style={{ display: "flex", alignItems: "center" }}>
+    <Link href={link}>
+      <a target="_blank">
+        <img src={images[0]?.src ?? ""} alt={title} />
+        <Box sx={CardHeader}>
           <span
             style={{
               color: "#212121",
               fontWeight: 600,
-              fontSize: "12px",
+              fontSize: "20px",
+              margin: "15px 0",
             }}
           >
-            {status}
+            {title}
           </span>
         </Box>
 
-        <Box
-          style={{
-            color: "#424242",
-            fontWeight: 600,
-            fontSize: "12px",
-            margin: "10px 0",
-          }}
-        >
-          {/* {santize(description ?? "")} */}
-        </Box>
+        <Box sx={CardBody}>
+          <Box style={{ display: "flex", alignItems: "center" }}>
+            <span
+              style={{
+                color: "#212121",
+                fontWeight: 600,
+                fontSize: "12px",
+              }}
+            >
+              {status}
+            </span>
+          </Box>
 
-        <Box
-          style={{
-            color: "#424242",
-            fontWeight: 600,
-            fontSize: "12px",
-            margin: "10px 0",
-          }}
-        >
-          Ver Noticia
+          <Box
+            style={{
+              color: "#424242",
+              fontWeight: 600,
+              fontSize: "12px",
+              margin: "10px 0",
+            }}
+          >
+            {santize(sliceText(description, 150) ?? "")}
+          </Box>
+
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
+              color: "#424242",
+              fontWeight: 600,
+              fontSize: "12px",
+              margin: "10px 0",
+            }}
+          >
+            Ver Noticia
+            <KeyboardArrowRightIcon />
+          </Box>
         </Box>
-      </Box>
-    </Box>
+      </a>
+    </Link>
   );
 };
 

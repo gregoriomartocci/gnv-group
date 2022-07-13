@@ -60,6 +60,19 @@ interface ISanitize {
   string: string;
 }
 
+export const santize = (string: string) => {
+  const reactElement = parse(string);
+  return reactElement;
+};
+
+export const sliceText = (text: any, limit: number) => {
+  const string =
+    text?.length && text?.length > limit
+      ? text.toString().substring(0, limit) + "..."
+      : text;
+  return string;
+};
+
 export const ProjectsContent = ({ project }: ITableContent) => {
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
@@ -101,18 +114,7 @@ export const ProjectsContent = ({ project }: ITableContent) => {
     },
   };
 
-  const santize = (string: string) => {
-    const reactElement = parse(string);
-    return reactElement;
-  };
 
-  const sliceText = (text: any, limit: number) => {
-    const string =
-      text?.length && text?.length > limit
-        ? text.toString().substring(0, limit) + "..."
-        : text;
-    return string;
-  };
 
   return (
     <Fragment>
