@@ -4,7 +4,7 @@ export const AuthContainer: SxProps<Theme> = {
   display: "grid",
   gridTemplateColumns: "40% auto",
   width: "100%",
-  height: "100%",
+  height: "100vh",
 };
 
 export const AuthImage: SxProps<Theme> = {

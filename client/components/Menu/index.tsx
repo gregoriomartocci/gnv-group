@@ -8,6 +8,7 @@ import {
   Logo,
   MenuContainer,
   MenuContainerOnScroll,
+  MenuContainerRelative,
   MenuContent,
   MenuItem,
   MenuItems,
@@ -50,9 +51,10 @@ export interface IState {
 export interface IMenu {
   onScroll: boolean;
   theme?: string;
+  relative?: boolean;
 }
 
-const Menu = ({ onScroll, theme }: IMenu) => {
+const Menu = ({ onScroll, theme, relative }: IMenu) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectAuth, setSelectAuth] = useState("sign-up");
@@ -97,7 +99,7 @@ const Menu = ({ onScroll, theme }: IMenu) => {
   return (
     <Fragment>
       <UseModal open={openModal} handleClose={handleCloseModal}>
-        <Auth auth={selectAuth} img={AuthImage} />
+        <Auth img={AuthImage} />
       </UseModal>
       <ResponsiveMenu Open={openDropdown} Toggle={toggleDropdown} />
       <Box
@@ -111,14 +113,16 @@ const Menu = ({ onScroll, theme }: IMenu) => {
             : MenuContainerOnScroll
         }
       >
-        <Box sx={MenuContent}>
-          <Link href={"/"}>
-            <a>
-              <Box sx={Logo}>GNV Group</Box>
-            </a>
-          </Link>
+        <Box sx={relative ? MenuContainerRelative : MenuContent}>
+          <Box>
+            <Link href={"/"}>
+              <a>
+                <Box sx={Logo}>GNV Group</Box>
+              </a>
+            </Link>
+          </Box>
           <Box sx={MenuItems}>
-            <Box sx={MenuItem}>Campaña</Box>
+            <Box sx={MenuItem}>Portfolio</Box>
             <Link href={"/ventures"}>
               <a>
                 <Box sx={MenuItem}>Emprendimientos</Box>
@@ -130,18 +134,6 @@ const Menu = ({ onScroll, theme }: IMenu) => {
               </a>
             </Link>
             <Box sx={MenuItem}>Contacto</Box>
-            <Box sx={MenuItem}>
-              <IconButton
-                sx={AccountIcon}
-                id="basic-button"
-                aria-controls={openBasicMenu ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={openBasicMenu ? "true" : undefined}
-                onClick={data?.user !== "" ? handleClickBasicMenu : handleOpen}
-              >
-                <AccountCircleIcon />
-              </IconButton>
-            </Box>
 
             <IconButton
               sx={CloseIcon}

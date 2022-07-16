@@ -8,8 +8,7 @@ import SignUp from "./Components/Sign-Up";
 import SignIn from "./Components/Sign-In";
 
 export interface IAuthProps {
-  auth: string;
-  img: StaticImageData;
+  img: StaticImageData | string;
 }
 
 export type inputType = {
@@ -19,21 +18,16 @@ export type inputType = {
 };
 
 export type errorType = {
-  auth: string;
   message: any;
 };
 
-const Auth = ({ auth, img }: IAuthProps) => {
+const Auth = ({ img }: IAuthProps) => {
   return (
     <Box sx={AuthContainer}>
       <Box sx={AuthImage}>
-        <img src={img?.src} alt="auth" />
+        <img src={img} alt="auth" />
       </Box>
-      {auth === "sign-in" ? (
-        <SignIn img={img} />
-      ) : (
-        auth === "sign-up" && <SignUp img={img} />
-      )}
+      <SignIn img={img} />
     </Box>
   );
 };

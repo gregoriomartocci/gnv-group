@@ -212,5 +212,5 @@ const Update = ({ projects, path, id }: ICreateProject) => {
     </Box>
   );
 };
-
+ 
 export default Update;

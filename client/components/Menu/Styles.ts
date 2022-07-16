@@ -1,17 +1,17 @@
 import { SxProps, Theme } from "@mui/material";
 
-export const MenuContainer: SxProps<Theme> = {
+export const MenuContainer: SxProps = {
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   padding: "0 10%",
   height: "80px",
-  zIndex: 50,
+  zIndex: 2500,
   color: "#fff",
   fontFamily: "'Montserrat', sans-serif",
-  transition:"all 0.3s ease",
-  fontWeight:600,
+  transition: "all 0.3s ease",
+  fontWeight: 600,
 };
 
 export const MenuContainerOnScroll: SxProps<Theme> = {
@@ -21,12 +21,29 @@ export const MenuContainerOnScroll: SxProps<Theme> = {
   width: "100%",
   padding: "0 10%",
   height: "80px",
-  zIndex: 50,
+  zIndex: 2500,
   color: "#212121",
   backgroundColor: "#fff",
   fontFamily: "'Montserrat', sans-serif",
-  transition:"all 0.3s ease",
-  fontWeight:600,
+  transition: "all 0.3s ease",
+  fontWeight: 600,
+};
+
+export const MenuContainerRelative: SxProps = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  position: "relative",
+  top: 0,
+  left: 0,
+  width: "100%",
+  padding: "0 10%",
+  height: "80px",
+  zIndex: 2500,
+  color: "##212121",
+  fontFamily: "'Montserrat', sans-serif",
+  transition: "all 0.3s ease",
+  fontWeight: 600,
 };
 
 export const MenuContent: SxProps<Theme> = {
@@ -40,6 +57,7 @@ export const MenuContent: SxProps<Theme> = {
 export const Logo: SxProps<Theme> = {
   // fontFamily: "Poppins, sans-serif",
   fontFamily: "'Montserrat', sans-serif",
+  width:"max-content"
 };
 
 export const MenuItems: SxProps<Theme> = {

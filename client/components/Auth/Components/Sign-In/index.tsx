@@ -12,7 +12,7 @@ import api from "../../../../hooks/Api";
 import { useRouter } from "next/router";
 
 export interface IAuthProps {
-  img: StaticImageData;
+  img: StaticImageData | string;
 }
 
 export type inputType = {
@@ -86,7 +86,7 @@ const SignIn = ({ img }: IAuthProps) => {
               color: "#424242",
             }}
           >
-            Loguearse
+            Iniciar sesión
           </span>
           <InputGroup
             name="email"
@@ -105,13 +105,20 @@ const SignIn = ({ img }: IAuthProps) => {
             onChangeHandler={onChangeHandler}
           />
 
-          <UseButton type="Auth" onClickHandler={onSubmitHandler}>
-            {loading ? (
-              <CircularProgress style={{ color: "#fff" }} />
-            ) : (
-              "Ingresar"
-            )}
-          </UseButton>
+          <Box sx={{ margin: "10px 0px 0px 0px" }}>
+            <UseButton
+              type="Primary"
+              width="100%"
+              height="50px"
+              onClickHandler={onSubmitHandler}
+            >
+              {loading ? (
+                <CircularProgress style={{ color: "#fff" }} />
+              ) : (
+                "Siguiente"
+              )}
+            </UseButton>
+          </Box>
         </Fragment>
         {/* Es tu primera vez? Create una cuenta <span>Sign in</span> */}
       </Box>
