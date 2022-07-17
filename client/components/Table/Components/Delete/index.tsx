@@ -2,18 +2,19 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-
+import { IState } from "../../../Menu";
+import UseButton from "../../../Button";
 
 interface IDelete {
   path: string;
   id: number;
+  name: "projects" | "articles" | "users";
+  stateHandler: any;
 }
 
-const Delete = ({ path, id }: IDelete) => {
-  const state = useSelector((state: IState) => state?.articles);
+const Delete = ({ path, id, name, stateHandler }: IDelete) => {
+  const state = useSelector((state: IState) => state[name]);
   const dispatch = useDispatch();
-
- 
 
   return (
     <Fragment>
@@ -58,7 +59,21 @@ const Delete = ({ path, id }: IDelete) => {
               margin: "0 7.5px 0 0",
             }}
           >
-            <UseButton type="Paper" onClickHandler={closeModal}>
+            <UseButton
+              type="Paper"
+              onClickHandler={() => {
+                stateHandler({
+                  method: "delete",
+                  payload: { modal: false },
+                  state,
+                }),
+                  stateHandler({
+                    method: "actions",
+                    payload: { modal: false },
+                    state,
+                  });
+              }}
+            >
               Cancelar
             </UseButton>
           </Box>
@@ -67,7 +82,16 @@ const Delete = ({ path, id }: IDelete) => {
               margin: "0 0 0 7.5px",
             }}
           >
-            <UseButton type="Delete" onClickHandler={() => remove()}>
+            <UseButton
+              type="Delete"
+              onClickHandler={() =>
+                stateHandler({
+                  method: "delete",
+                  payload: { message: "", success: "", failed: "" },
+                  state,
+                })
+              }
+            >
               {state?.delete.loading ? (
                 <CircularProgress style={{ color: "#fff" }} />
               ) : (

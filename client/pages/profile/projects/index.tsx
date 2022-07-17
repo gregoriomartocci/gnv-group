@@ -75,15 +75,23 @@ export const sliceText = (text: any, limit: number) => {
 };
 
 export const ProjectsContent = (project: ITableContent) => {
+  const dispatch = useDispatch();
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [actual, setActual] = React.useState<string>("");
   const [rowSelected, setRowSelected] = React.useState<any>();
-
   const state = useSelector((state: IState) => state?.projects);
 
-  const openActionsMenu = Boolean(anchorEl && state?.actions);
+  const openActionsMenu = Boolean(anchorEl && state?.actions?.modal);
+
+  const stateHandler = ({ method, payload, state }) => {
+    const update_state = {
+      ...state,
+      [method]: { ...state[method], ...payload },
+    };
+    dispatch(setState({ ...update_state }));
+  };
 
   const handleCloseActionsMenu = () => {
     setAnchorEl(null);
@@ -100,17 +108,13 @@ export const ProjectsContent = (project: ITableContent) => {
     );
   };
 
-  const dispatch = useDispatch();
-
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    id: string,
-    row: any
+    id: string
   ) => {
     setActual(id);
-    setRowSelected(row);
-    dispatch(setActions(true));
     setAnchorEl(event.currentTarget);
+    stateHandler({ method: "actions", payload: { modal: true }, state });
   };
 
   const CellTable: SxProps<Theme> = {
@@ -183,11 +187,7 @@ export const ProjectsContent = (project: ITableContent) => {
         </Typography>
       </TableCell>
       <TableCell align="left">
-        <IconButton
-          onClick={(e) =>
-            handleClickActionsMenu(e, project?._id.toString(), project)
-          }
-        >
+        <IconButton onClick={(e) => handleClickActionsMenu(e, project?.id)}>
           <MoreVertIcon />
         </IconButton>
         <Dropdown
@@ -195,7 +195,12 @@ export const ProjectsContent = (project: ITableContent) => {
           handleClose={handleCloseActionsMenu}
           anchorEl={anchorEl}
         >
-          <Actions path="project" id={actual} row={rowSelected} />
+          <Actions
+            path="project"
+            id={actual}
+            row={rowSelected}
+            stateHandler={(props) => stateHandler(props)}
+          />
         </Dropdown>
       </TableCell>
     </Fragment>
@@ -258,9 +263,7 @@ const Posts = () => {
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
   const state = useSelector((state: IState) => state?.projects);
 
-  const actionsHandler = (method, payload) => {};
-
-  const stateHandler = ({ method, payload }) => {
+  const stateHandler = ({ method, payload, state }) => {
     const update_state = {
       ...state,
       [method]: { ...state[method], ...payload },
@@ -504,18 +507,6 @@ const Posts = () => {
     );
   };
 
-  const closeUpdateModal = () => {
-    dispatch(
-      setUpdate({
-        ...state?.update,
-        status: "",
-        message: "",
-        loading: false,
-        modal: false,
-      })
-    );
-  };
-
   useEffect(() => {
     getProjects();
   }, []);
@@ -554,6 +545,7 @@ const Posts = () => {
       <UseTable
         title="Emprendimientos"
         api="project"
+        name="projects"
         headCells={headCells}
         rows={projects}
         content={(project: IProject) => <ProjectsContent {...project} />}
@@ -566,6 +558,7 @@ const Posts = () => {
           stateHandler({
             method: "create",
             payload: { modal: false },
+            state,
           })
         }
       >
@@ -583,13 +576,29 @@ const Posts = () => {
           stateHandler({
             method: "delete",
             payload: { modal: false },
+            state,
           })
         }
       >
-        <Delete path="project" id={state?.delete?.api?.id} />
+        <Delete
+          path="project"
+          id={state?.delete?.api?.id}
+          name="projects"
+          stateHandler={(props) => stateHandler(props)}
+        />
       </UseModal>
-      <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
-        <Update items={projects} path="project" id={state?.update?.api?.id} />
+      <UseModal
+        open={state?.update?.modal}
+        handleClose={() =>
+          stateHandler({ method: "update", payload: { modal: false }, state })
+        }
+      >
+        <Update
+          items={projects}
+          path="project"
+          id={state?.update?.api?.id}
+          stateHandler={(props) => stateHandler(props)}
+        />
       </UseModal>
     </Dashboard>
   );

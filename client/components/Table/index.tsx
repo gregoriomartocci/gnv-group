@@ -85,6 +85,7 @@ interface EnhancedTableToolbarProps {
 interface IUseTable {
   title: string;
   api: string;
+  name: "projects" | "articles";
   headCells: any;
   rows: any;
   content: any;
@@ -94,6 +95,7 @@ interface IUseTable {
 export default function UseTable({
   title,
   api,
+  name,
   headCells,
   rows,
   content,
@@ -107,8 +109,8 @@ export default function UseTable({
   const [actual, setActual] = React.useState<string>("");
   const [rowSelected, setRowSelected] = React.useState<any>();
 
-  const state = useSelector((state: IState) => state?.projects);
-  const { create } = state;
+  const state = useSelector((state: IState) => state[name]);
+
   const dispatch = useDispatch();
 
   function EnhancedTableHead(props: EnhancedTableProps) {
@@ -270,7 +272,11 @@ export default function UseTable({
             <UseButton
               type="Primary"
               onClickHandler={() =>
-                stateHandler({ method: "create", payload: { modal: true } })
+                stateHandler({
+                  method: "create",
+                  payload: { modal: true },
+                  state,
+                })
               }
             >
               agregar

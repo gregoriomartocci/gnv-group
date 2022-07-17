@@ -12,12 +12,15 @@ import { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
 
-
 import { IProject } from "../../../../redux/slices/projects";
 import dynamic from "next/dynamic";
 import UseButton from "../../../Button";
 import UseTabs from "../../../Tabs";
 import Toast from "../../../Alert";
+import InputGroup from "../../../Input";
+import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
+import { IArticle } from "../../../../redux/slices/articles";
+import { IState } from "../../../Menu";
 
 const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,
@@ -45,17 +48,18 @@ export interface ICreateProps {
   items: IArticle[] | IProject[];
   path: string;
   id: number;
+  stateHandler: any;
 }
 
-const Update = ({ items, path, id }: ICreateProps) => {
+const Update = ({ items, path, id, stateHandler }: ICreateProps) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-  const state = useSelector((state: IState) => state?.[path]);
+  const state = useSelector((state: IState) => state?.projects);
+
   const { update } = state;
   const [input, setInput] = useState<IArticle>(state?.update?.article);
   const [tab, setTab] = useState<number>(0);
-
 
   const onChangeHandler = (e: any) => {
     setInput({
@@ -114,14 +118,18 @@ const Update = ({ items, path, id }: ICreateProps) => {
         <Toast
           message={update?.message}
           type="success"
-          action={() => reset("update")}
+          action={() =>
+            stateHandler({ method: "update", payload: { modal: true } })
+          }
         />
       )}
       {update?.status === "failed" && (
         <Toast
           message={update?.message}
           type="error"
-          action={() => reset("update")}
+          action={() =>
+            stateHandler({ method: "update", payload: { modal: true } })
+          }
         />
       )}
 
@@ -141,7 +149,11 @@ const Update = ({ items, path, id }: ICreateProps) => {
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 
-        <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
+        <UseButton
+          type="Primary"
+          width="100%"
+          onClickHandler={console.log("ok!")}
+        >
           {update?.loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
