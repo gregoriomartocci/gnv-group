@@ -6,31 +6,26 @@ import {
   CircularProgress,
   TextField,
 } from "@mui/material";
-import InputGroup from "../../../../../components/Input";
-import UseButton from "../../../../../components/Button";
+
 import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-import api from "../../../../../hooks/Api";
+
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
-import UseAutocomplete from "../../../../../components/Autocomplete";
-import ImageUploader, {
-  IImagetoUpload,
-} from "../../../../../components/Image-Uploader";
-import UseTabs from "../../../../../components/Tabs";
+
 import dynamic from "next/dynamic";
-import Toast from "../../../../../components/Alert";
-import BasicSelect from "../../../../../components/Select";
+import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
+import { IArticle } from "../../../../redux/slices/articles";
+import { IState } from "../../../Menu";
+import { resetParams } from "../../../../pages/profile/projects";
+import api from "../../../../hooks/Api";
+import { IProject } from "../../../../redux/slices/projects";
+import UseButton from "../../../Button";
+import UseTabs from "../../../Tabs";
+import Toast from "../../../Alert";
+import InputGroup from "../../../Input";
 
-import { IState } from "../../../../../components/Menu";
-import { resetParams } from "../..";
-import {
-  IArticle,
-  setArticles,
-  setCreate,
-} from "../../../../../redux/slices/articles";
-
-const Editor = dynamic(() => import("../../../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,
 });
 
@@ -53,25 +48,15 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  articles: IArticle[];
+  items: IArticle[] | IProject[];
+  path: "article" | "project" | "user";
+  publish: any;
+  reset: any;
+  loading: boolean;
 }
 
-const Create = ({ articles }: ICreateProps) => {
-  const dispatch = useDispatch();
+const Create = ({ items, path, publish, reset, loading }: ICreateProps) => {
   const router = useRouter();
-  const state = useSelector((state: IState) => state?.articles);
-  const { create } = state;
-
-  const reset = (string: keyof resetParams) => {
-    const ok = state[string];
-    dispatch(
-      setCreate({
-        ...ok,
-        status: "",
-        message: "",
-      })
-    );
-  };
 
   const [input, setInput] = useState<IArticle>({
     title: "",
@@ -88,41 +73,8 @@ const Create = ({ articles }: ICreateProps) => {
 
   const [tab, setTab] = useState<number>(0);
 
-  // Publish Project
-  const handlePublish = async () => {
-    dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
-
-    try {
-      const data = await api({
-        method: "post",
-        path: "/article",
-        payload: input,
-      });
-
-      dispatch(setCreate({ ...create, loading: false }));
-      const { error } = data;
-      console.log(error, "<== mensaje error");
-      if (error) {
-        dispatch(setCreate({ ...create, status: "failed", message: error }));
-      } else {
-        const updateArticles = [...articles, data];
-        dispatch(setArticles(updateArticles));
-        dispatch(
-          setCreate({
-            ...create,
-            status: "success",
-            message: "La noticia se agregó con éxito",
-          })
-        );
-      }
-    } catch (err) {
-      setCreate({
-        ...create,
-        status: "failed",
-        message: "Algo salió mal, intente nuevamente!",
-        loading: false,
-      });
-    }
+  const handlePublish = () => {
+    publish();
   };
 
   const onChangeHandler = (e: any) => {
@@ -175,21 +127,6 @@ const Create = ({ articles }: ICreateProps) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {create?.status === "success" && (
-        <Toast
-          message={create?.message}
-          type="success"
-          action={() => reset("create")}
-        />
-      )}
-      {create?.status === "failed" && (
-        <Toast
-          message={create?.message}
-          type="error"
-          action={() => reset("create")}
-        />
-      )}
-
       <Box sx={Login}>
         <span
           style={{
@@ -209,7 +146,7 @@ const Create = ({ articles }: ICreateProps) => {
         {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {create?.loading ? (
+          {loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
             "Agregar Noticia"

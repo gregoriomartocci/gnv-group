@@ -19,19 +19,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { visuallyHidden } from "@mui/utils";
 import UseButton from "../Button";
 import UseModal from "../Modal";
-import CreateUser from "../../pages/profile/users/components/Create";
 import { GrayBackground } from "./Styles";
 import { ProjectsContent } from "../../pages/profile/projects";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Actions from "../../pages/profile/projects/components/Actions";
 import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
-import { setCreate, setActions, setDelete } from "../../redux/slices/projects";
 import { IState } from "../Menu";
-import Delete from "../../pages/profile/projects/components/Delete";
-import { ArticlesContent } from "../../pages/profile/articles";
 
+import { ArticlesContent } from "../../pages/profile/articles";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -91,7 +87,8 @@ interface IUseTable {
   api: string;
   headCells: any;
   rows: any;
-  openModals: any[];
+  content: any;
+  stateHandler: any;
 }
 
 export default function UseTable({
@@ -99,7 +96,8 @@ export default function UseTable({
   api,
   headCells,
   rows,
-  openModals,
+  content,
+  stateHandler,
 }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
@@ -112,9 +110,6 @@ export default function UseTable({
   const state = useSelector((state: IState) => state?.projects);
   const { create } = state;
   const dispatch = useDispatch();
-
-
-
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {
@@ -272,7 +267,12 @@ export default function UseTable({
           </Tooltip>
         ) : (
           <React.Fragment>
-            <UseButton type="Primary" onClickHandler={openModals[0]}>
+            <UseButton
+              type="Primary"
+              onClickHandler={() =>
+                stateHandler({ method: "create", payload: { modal: true } })
+              }
+            >
               agregar
             </UseButton>
           </React.Fragment>
@@ -283,8 +283,6 @@ export default function UseTable({
 
   return (
     <Box sx={{ width: "100%" }}>
-
-
       <Paper
         sx={{
           width: "100%",
@@ -361,15 +359,7 @@ export default function UseTable({
                           </Typography>
                         </TableCell>
 
-                        {title === "Emprendimientos" ? (
-                          <ProjectsContent project={row} />
-                        ) : title === "Usuarios" ? (
-                          <span>usuarios</span>
-                        ) : // <UsersContent />
-                        title === "Noticias" ? (
-                          <ArticlesContent article={row} />
-                        ) : // <NewsContent />
-                        null}
+                        {content(row)}
                       </TableRow>
                     );
                   })}

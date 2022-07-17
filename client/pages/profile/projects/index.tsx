@@ -8,23 +8,21 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import api from "../../../hooks/Api";
 import {
   initialState,
-  setActions,
-  setCreate,
-  setDelete,
+  IProject,
   setProjects,
-  setUpdate,
+  setState,
 } from "../../../redux/slices/projects";
-import CreateProject from "./components/Create";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Actions from "./components/Actions";
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
 import Toast from "../../../components/Alert";
-import Update from "./components/Update";
 import parse from "html-react-parser";
-import Delete from "./components/Delete";
+import Actions from "../../../components/Table/Components/Actions";
+import Delete from "../../../components/Table/Components/Delete";
+import Update from "../../../components/Table/Components/Update";
+import Create from "../../../components/Table/Components/Create";
 
 export interface Data {
   id: number;
@@ -53,7 +51,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: any;
+  project: IProject;
 }
 
 interface ISanitize {
@@ -61,8 +59,11 @@ interface ISanitize {
 }
 
 export const santize = (string: string) => {
-  const reactElement = parse(string);
-  return reactElement;
+  if (typeof string === "string") {
+    const reactElement = parse(string);
+    return reactElement;
+  }
+  return;
 };
 
 export const sliceText = (text: any, limit: number) => {
@@ -73,18 +74,30 @@ export const sliceText = (text: any, limit: number) => {
   return string;
 };
 
-export const ProjectsContent = ({ project }: ITableContent) => {
+export const ProjectsContent = (project: ITableContent) => {
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [actual, setActual] = React.useState<string>("");
   const [rowSelected, setRowSelected] = React.useState<any>();
+
   const state = useSelector((state: IState) => state?.projects);
 
   const openActionsMenu = Boolean(anchorEl && state?.actions);
 
   const handleCloseActionsMenu = () => {
     setAnchorEl(null);
+  };
+
+  const resetCreate = (string: keyof resetParams) => {
+    const ok = state[string];
+    dispatch(
+      setCreate({
+        ...ok,
+        status: "",
+        message: "",
+      })
+    );
   };
 
   const dispatch = useDispatch();
@@ -113,8 +126,6 @@ export const ProjectsContent = ({ project }: ITableContent) => {
       margin: "0px 15px",
     },
   };
-
-
 
   return (
     <Fragment>
@@ -247,6 +258,31 @@ const Posts = () => {
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
   const state = useSelector((state: IState) => state?.projects);
 
+  const actionsHandler = (method, payload) => {};
+
+  const stateHandler = ({ method, payload }) => {
+    const update_state = {
+      ...state,
+      [method]: { ...state[method], ...payload },
+    };
+    dispatch(setState({ ...update_state }));
+  };
+
+  console.log(state, "stateeee");
+
+  // const { create } = state;
+
+  const reset = (string: keyof resetParams) => {
+    const ok = state[string];
+    dispatch(
+      setUpdate({
+        ...ok,
+        status: "",
+        message: "",
+      })
+    );
+  };
+
   const getProjects = async () => {
     setError({ projects: "", message: "" });
     setLoading(true);
@@ -269,10 +305,87 @@ const Posts = () => {
     }
   };
 
+  // Update Project
+  const updateProject = async () => {
+    dispatch(setUpdate({ ...update, status: "", message: "", loading: true }));
+
+    try {
+      const data = await api({
+        method: "post",
+        path: `/${path}/${id}`,
+        payload: input,
+      });
+
+      dispatch(setUpdate({ ...update, loading: false }));
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+      if (error) {
+        dispatch(setUpdate({ ...update, status: "failed", message: error }));
+      } else {
+        const updateProjects = articles?.map((p) =>
+          p?._id?.toString() === id?.toString() ? data : p
+        );
+
+        dispatch(setArticles(updateProjects));
+
+        dispatch(
+          setUpdate({
+            ...update,
+            status: "success",
+            message: "La noticia se actualizó con éxito",
+          })
+        );
+      }
+    } catch (err) {
+      setUpdate({
+        ...update,
+        status: "failed",
+        message: "Algo salió mal, intente nuevamente!",
+        loading: false,
+      });
+    }
+  };
+
+  const createProject = async () => {
+    dispatch(setCreate({ ...create, status: "", message: "", loading: true }));
+
+    try {
+      const data = await api({
+        method: "post",
+        path: `/project`,
+        payload: input,
+      });
+
+      dispatch(setCreate({ ...create, loading: false }));
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+      if (error) {
+        dispatch(setCreate({ ...create, status: "failed", message: error }));
+      } else {
+        const updateProjects = [...projects, data];
+        dispatch(setProjects(updateProjects));
+        dispatch(
+          setCreate({
+            ...create,
+            status: "success",
+            message: "La noticia se agregó con éxito",
+          })
+        );
+      }
+    } catch (err) {
+      setCreate({
+        ...create,
+        status: "failed",
+        message: "Algo salió mal, intente nuevamente!",
+        loading: false,
+      });
+    }
+  };
+
   const { create, update } = state;
   const projects = state?.projects;
 
-  const reset = (string: keyof resetParams) => {
+  const resetDelete = (string: keyof resetParams) => {
     const ok = state[string];
     dispatch(
       setDelete({
@@ -283,14 +396,94 @@ const Posts = () => {
     );
   };
 
-  const closeDeleteModal = () => {
+  const resetCreate = (string: keyof resetParams) => {
+    const ok = state[string];
+    dispatch(
+      setCreate({
+        ...ok,
+        status: "",
+        message: "",
+      })
+    );
+  };
+
+  const openDeleteModal = () => {
     dispatch(
       setDelete({
         ...state?.delete,
-        loading: false,
-        modal: false,
+        status: "",
+        message: "",
+        modal: true,
       })
     );
+  };
+
+  const closeModal = () => {
+    dispatch(
+      setDelete({
+        status: "",
+        message: "",
+        loading: false,
+        modal: false,
+        api: { path: "", id: 0 },
+      })
+    );
+  };
+
+  const deleteProject = async () => {
+    dispatch(
+      setDelete({
+        ...state?.delete,
+        status: "",
+        message: "",
+        loading: true,
+      })
+    );
+
+    try {
+      const data = await api({
+        method: "delete",
+        path: `/${path}/${id}`,
+      });
+      // console.log("Dateushh", data);
+      dispatch(
+        setDelete({
+          ...state?.delete,
+          loading: false,
+        })
+      );
+      if (data?.error) {
+        dispatch(
+          setDelete({
+            ...state?.delete,
+            status: "failed",
+            message: data?.error,
+          })
+        );
+      } else {
+        dispatch(
+          setDelete({
+            ...state?.delete,
+            status: "success",
+            modal: false,
+          })
+        );
+        const updateArticles = state.articles.filter(
+          (p) => p?._id.toString() !== id.toString()
+        );
+        dispatch(setActions(false));
+        dispatch(setArticles(updateArticles));
+      }
+    } catch (err) {
+      dispatch(
+        setDelete({
+          ...state?.delete,
+          status: "failed",
+          message: "Something went wrong",
+          loading: false,
+        })
+      );
+    }
   };
 
   const openCreateModal = () => {
@@ -333,15 +526,28 @@ const Posts = () => {
         <Toast
           message="El emprendimiento se eliminó con éxito"
           type="success"
-          action={() => reset("delete")}
+          action={() => resetDelete("delete")}
         />
       )}
-
       {state?.delete?.status === "failed" && (
         <Toast
           message={state?.delete.message}
           type="error"
-          action={() => reset("delete")}
+          action={() => resetDelete("delete")}
+        />
+      )}
+      {create?.status === "success" && (
+        <Toast
+          message={create?.message}
+          type="success"
+          action={() => reset("create")}
+        />
+      )}
+      {create?.status === "failed" && (
+        <Toast
+          message={create?.message}
+          type="error"
+          action={() => reset("create")}
         />
       )}
 
@@ -350,23 +556,40 @@ const Posts = () => {
         api="project"
         headCells={headCells}
         rows={projects}
-        openModals={[openCreateModal, openUpdateModal]}
+        content={(project: IProject) => <ProjectsContent {...project} />}
+        stateHandler={(props) => stateHandler(props)}
       />
 
-      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
-        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
-      </UseModal>
-
-      <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
-        <Update
-          projects={projects}
-          path={state?.update?.api?.path}
-          id={state?.update?.api?.id}
+      <UseModal
+        open={create?.modal}
+        handleClose={() =>
+          stateHandler({
+            method: "create",
+            payload: { modal: false },
+          })
+        }
+      >
+        <Create
+          items={projects}
+          path="project"
+          publish={createProject}
+          reset={resetCreate}
+          loading={create?.loading}
         />
       </UseModal>
-
-      <UseModal open={create?.modal} handleClose={closeCreateModal}>
-        <CreateProject projects={projects} />
+      <UseModal
+        open={state?.delete?.modal}
+        handleClose={() =>
+          stateHandler({
+            method: "delete",
+            payload: { modal: false },
+          })
+        }
+      >
+        <Delete path="project" id={state?.delete?.api?.id} />
+      </UseModal>
+      <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
+        <Update items={projects} path="project" id={state?.update?.api?.id} />
       </UseModal>
     </Dashboard>
   );

@@ -75,38 +75,18 @@ export const projectsSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
+    setState: (state, action: PayloadAction<initialState>) => {
+      return state = action.payload;
+    },
     setProjects: (state, action: PayloadAction<IProject[]>) => {
       state.projects = [...action.payload];
     },
     setFilter: (state, action: PayloadAction<IProject[]>) => {
       state.projects_filter = [...action.payload];
     },
-    setProject: (state, action: PayloadAction<IProject>) => {
-      state.project = { ...action.payload };
-    },
-    setCreate: (state, action: PayloadAction<TCreate>) => {
-      state.create = action.payload;
-    },
-    setDelete: (state, action: PayloadAction<TDelete>) => {
-      state.delete = action.payload;
-    },
-    setUpdate: (state, action: PayloadAction<TUpdate>) => {
-      state.update = action.payload;
-    },
-    setActions: (state, action: PayloadAction<boolean>) => {
-      state.actions = action.payload;
-    },
   },
 });
 
-export const {
-  setProjects,
-  setProject,
-  setCreate,
-  setFilter,
-  setDelete,
-  setUpdate,
-  setActions,
-} = projectsSlice.actions;
+export const { setState, setProjects, setFilter } = projectsSlice.actions;
 
 export default projectsSlice.reducer;

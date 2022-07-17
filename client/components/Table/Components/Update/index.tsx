@@ -6,31 +6,20 @@ import {
   CircularProgress,
   TextField,
 } from "@mui/material";
-import InputGroup from "../../../../../components/Input";
-import UseButton from "../../../../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-import api from "../../../../../hooks/Api";
+
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
-import UseAutocomplete from "../../../../../components/Autocomplete";
-import ImageUploader, {
-  IImagetoUpload,
-} from "../../../../../components/Image-Uploader";
-import UseTabs from "../../../../../components/Tabs";
+
+
+import { IProject } from "../../../../redux/slices/projects";
 import dynamic from "next/dynamic";
-import Toast from "../../../../../components/Alert";
-import BasicSelect from "../../../../../components/Select";
+import UseButton from "../../../Button";
+import UseTabs from "../../../Tabs";
+import Toast from "../../../Alert";
 
-import { IState } from "../../../../../components/Menu";
-import { resetParams } from "../..";
-import {
-  IArticle,
-  setArticles,
-  setUpdate,
-} from "../../../../../redux/slices/articles";
-
-const Editor = dynamic(() => import("../../../../../components/Editor"), {
+const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,
 });
 
@@ -53,71 +42,20 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  articles: IArticle[];
+  items: IArticle[] | IProject[];
   path: string;
   id: number;
 }
 
-const Update = ({ articles, path, id }: ICreateProps) => {
+const Update = ({ items, path, id }: ICreateProps) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-  const state = useSelector((state: IState) => state?.articles);
+  const state = useSelector((state: IState) => state?.[path]);
   const { update } = state;
   const [input, setInput] = useState<IArticle>(state?.update?.article);
   const [tab, setTab] = useState<number>(0);
 
-  const reset = (string: keyof resetParams) => {
-    const ok = state[string];
-    dispatch(
-      setUpdate({
-        ...ok,
-        status: "",
-        message: "",
-      })
-    );
-  };
-
-  // Publish Project
-  const handlePublish = async () => {
-    dispatch(setUpdate({ ...update, status: "", message: "", loading: true }));
-
-    try {
-      const data = await api({
-        method: "post",
-        path: `/${path}/${id}`,
-        payload: input,
-      });
-
-      dispatch(setUpdate({ ...update, loading: false }));
-      const { error } = data;
-      console.log(error, "<== mensaje error");
-      if (error) {
-        dispatch(setUpdate({ ...update, status: "failed", message: error }));
-      } else {
-        const updateProjects = articles?.map((p) =>
-          p?._id?.toString() === id?.toString() ? data : p
-        );
-
-        dispatch(setArticles(updateProjects));
-
-        dispatch(
-          setUpdate({
-            ...update,
-            status: "success",
-            message: "La noticia se actualizó con éxito",
-          })
-        );
-      }
-    } catch (err) {
-      setUpdate({
-        ...update,
-        status: "failed",
-        message: "Algo salió mal, intente nuevamente!",
-        loading: false,
-      });
-    }
-  };
 
   const onChangeHandler = (e: any) => {
     setInput({

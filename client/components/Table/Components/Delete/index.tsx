@@ -2,10 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../../../../components/Menu";
-import UseButton from "../../../../../components/Button";
-import api from "../../../../../hooks/Api";
-import { setActions, setArticles, setDelete } from "../../../../../redux/slices/articles";
+
 
 interface IDelete {
   path: string;
@@ -16,82 +13,7 @@ const Delete = ({ path, id }: IDelete) => {
   const state = useSelector((state: IState) => state?.articles);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(
-      setDelete({
-        ...state?.delete,
-        api: { path, id },
-      })
-    );
-  }, []);
-
-  const closeModal = () => {
-    dispatch(
-      setDelete({
-        status: "",
-        message: "",
-        loading: false,
-        modal: false,
-        api: { path: "", id: 0 },
-      })
-    );
-  };
-
-  const remove = async () => {
-    dispatch(
-      setDelete({
-        ...state?.delete,
-        status: "",
-        message: "",
-        loading: true,
-      })
-    );
-
-    try {
-      const data = await api({
-        method: "delete",
-        path: `/${path}/${id}`,
-      });
-      // console.log("Dateushh", data);
-      dispatch(
-        setDelete({
-          ...state?.delete,
-          loading: false,
-        })
-      );
-      if (data?.error) {
-        dispatch(
-          setDelete({
-            ...state?.delete,
-            status: "failed",
-            message: data?.error,
-          })
-        );
-      } else {
-        dispatch(
-          setDelete({
-            ...state?.delete,
-            status: "success",
-            modal: false,
-          })
-        );
-        const updateArticles = state.articles.filter(
-          (p) => p?._id.toString() !== id.toString()
-        );
-        dispatch(setActions(false));
-        dispatch(setArticles(updateArticles));
-      }
-    } catch (err) {
-      dispatch(
-        setDelete({
-          ...state?.delete,
-          status: "failed",
-          message: "Something went wrong",
-          loading: false,
-        })
-      );
-    }
-  };
+ 
 
   return (
     <Fragment>

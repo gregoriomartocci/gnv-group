@@ -2,11 +2,8 @@ import { Box, Divider } from "@mui/material";
 import { AccountBottom, MenuContainer, MenuItem } from "./Styles";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import UseModal from "../../../../../components/Modal";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "../../../../../components/Menu";
-import { setDelete, setUpdate } from "../../../../../redux/slices/articles";
 
 
 interface IActions {
@@ -21,30 +18,7 @@ const Actions = ({ path, id, row }: IActions) => {
 
   console.log(row, "Tamos Chelo");
 
-  const OpenDeleteModal = () => {
-    dispatch(
-      setDelete({
-        ...state?.delete,
-        status: "",
-        message: "",
-        modal: true,
-        api: { path, id },
-      })
-    );
-  };
 
-  const OpenUpdateModal = () => {
-    dispatch(
-      setUpdate({
-        ...state?.update,
-        status: "",
-        message: "",
-        modal: true,
-        api: { path: `edit-${path}`, id },
-        article: row,
-      })
-    );
-  };
 
   return (
     <Box sx={MenuContainer}>
