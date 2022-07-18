@@ -46,6 +46,7 @@ export interface initialState {
   actions: boolean;
   delete: TDelete;
   update: TUpdate;
+  alert: { message: string; status: string };
 }
 
 const initialState: initialState = {
@@ -69,6 +70,7 @@ const initialState: initialState = {
     api: { path: "", id: 0 },
     project: {},
   },
+  alert: { message: "", status: "" },
 };
 
 export const projectsSlice = createSlice({
@@ -76,7 +78,7 @@ export const projectsSlice = createSlice({
   initialState,
   reducers: {
     setState: (state, action: PayloadAction<initialState>) => {
-      return state = action.payload;
+      return (state = action.payload);
     },
     setProjects: (state, action: PayloadAction<IProject[]>) => {
       state.projects = [...action.payload];

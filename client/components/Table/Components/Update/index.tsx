@@ -46,19 +46,19 @@ export type errorType = {
 
 export interface ICreateProps {
   items: IArticle[] | IProject[];
-  path: string;
+  path: "projects" | "articles" | "users";
   id: number;
   stateHandler: any;
+  form: any;
 }
 
-const Update = ({ items, path, id, stateHandler }: ICreateProps) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-  const state = useSelector((state: IState) => state?.projects);
+const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
+  // const dispatch = useDispatch();
+  // const router = useRouter();
+  // const [value, setValue] = useState<IImagetoUpload[] | []>([]);
 
-  const { update } = state;
-  const [input, setInput] = useState<IArticle>(state?.update?.article);
+  const state_selector = useSelector((state: IState) => state[path]);
+  const [input, setInput] = useState<IArticle>(state_selector?.update);
   const [tab, setTab] = useState<number>(0);
 
   const onChangeHandler = (e: any) => {
@@ -72,40 +72,41 @@ const Update = ({ items, path, id, stateHandler }: ICreateProps) => {
   const type = ["Casa", "Departamento", "Local Comercial"];
 
   const steps = [
-    <Fragment>
-      <InputGroup
-        name="title"
-        description="Ingrese el título de la noticia"
-        label="Titulo"
-        type="text"
-        value={input?.title}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="source"
-        description="Ingrese la fuente de la noticia"
-        label="Fuente"
-        type="text"
-        value={input?.source}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="link"
-        description="Ingrese el enlace de la noticia"
-        label="Enlace"
-        type="text"
-        value={input?.link}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="date"
-        description="Ingrese la fecha de la noticia"
-        label="Fecha"
-        type="text"
-        value={input?.date}
-        onChangeHandler={onChangeHandler}
-      />
-    </Fragment>,
+    // <Fragment>
+    //   <InputGroup
+    //     name="title"
+    //     description="Ingrese el título de la noticia"
+    //     label="Titulo"
+    //     type="text"
+    //     value={input?.title}
+    //     onChangeHandler={onChangeHandler}
+    //   />
+    //   <InputGroup
+    //     name="source"
+    //     description="Ingrese la fuente de la noticia"
+    //     label="Fuente"
+    //     type="text"
+    //     value={input?.source}
+    //     onChangeHandler={onChangeHandler}
+    //   />
+    //   <InputGroup
+    //     name="link"
+    //     description="Ingrese el enlace de la noticia"
+    //     label="Enlace"
+    //     type="text"
+    //     value={input?.link}
+    //     onChangeHandler={onChangeHandler}
+    //   />
+    //   <InputGroup
+    //     name="date"
+    //     description="Ingrese la fecha de la noticia"
+    //     label="Fecha"
+    //     type="text"
+    //     value={input?.date}
+    //     onChangeHandler={onChangeHandler}
+    //   />
+    // </Fragment>,
+    form({ input, onChangeHandler, setInput }),
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
@@ -114,7 +115,8 @@ const Update = ({ items, path, id, stateHandler }: ICreateProps) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      {update?.status === "success" && (
+
+      {/* {update?.status === "success" && (
         <Toast
           message={update?.message}
           type="success"
@@ -131,7 +133,7 @@ const Update = ({ items, path, id, stateHandler }: ICreateProps) => {
             stateHandler({ method: "update", payload: { modal: true } })
           }
         />
-      )}
+      )} */}
 
       <Box sx={Login}>
         <span
@@ -154,7 +156,7 @@ const Update = ({ items, path, id, stateHandler }: ICreateProps) => {
           width="100%"
           onClickHandler={console.log("ok!")}
         >
-          {update?.loading ? (
+          {false ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
             "Guardar"

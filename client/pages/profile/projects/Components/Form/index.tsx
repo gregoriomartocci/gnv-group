@@ -24,10 +24,6 @@ import { IProject } from "../../../../../redux/slices/projects";
 import { IArticle } from "../../../../../redux/slices/articles";
 import BasicSelect from "../../../../../components/Select";
 
-const Editor = dynamic(() => import("../../../../../components/Editor"), {
-  ssr: false,
-});
-
 export interface IAuthProps {
   img: StaticImageData;
 }
@@ -47,55 +43,21 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  items: IArticle[] | IProject[];
-  path: "article" | "project" | "user";
-  publish: any;
-  loading: boolean;
-  stateHandler: any;
+  input:any,
+  onChangeHandler:any,
+  setInput:any,
 }
 
-const Create = ({
-  items,
-  path,
-  publish,
-  loading,
-  stateHandler,
+const Form = ({
+  input,
+  onChangeHandler,
+  setInput,
 }: ICreateProps) => {
-  const router = useRouter();
 
-  const [input, setInput] = useState<IProject>({
-    _id: "",
-    name: "",
-    status: "",
-    link: "",
-    images: [],
-    description: "",
-    published: true,
-  });
+  const status = ["en desarrollo", "finalizado"];
 
-  const [tab, setTab] = useState<number>(0);
-
-  const handlePublish = () => {
-    publish(input);
-  };
-
-  const onChangeHandler = (e: any) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const tab_options = ["Información Básica", "Multimedia", "Descripcion"];
-
-  const status = [
-    "Seleccione el estado en el que se encuentra el emprendimiento",
-    "En desarrollo",
-    "Finalizados",
-  ];
-
-  const steps = [
-    <Fragment>
+  return (
+    <Box>
       <InputGroup
         name="name"
         description="Ingrese el nombre del emprendimiento"
@@ -121,43 +83,8 @@ const Create = ({
         placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
         label="Estado"
       />
-    </Fragment>,
-    <ImageUploader value={input} setValue={setInput} />,
-    <Editor value={input} setValue={setInput} />,
-  ];
-
-  return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={Login}>
-        <span
-          style={{
-            fontSize: "20px",
-            fontWeight: 600,
-            margin: "0 0 15px 0",
-            color: "#424242",
-          }}
-        >
-          Agregar Noticia
-        </span>
-
-        <UseTabs value={tab} setValue={setTab} options={tab_options} />
-
-        <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
-
-        <UseButton
-          type="Primary"
-          width="100%"
-          onClickHandler={handlePublish}
-        >
-          {loading ? (
-            <CircularProgress style={{ color: "#fff" }} />
-          ) : (
-            "Agregar Emprendimiento"
-          )}
-        </UseButton>
-      </Box>
     </Box>
   );
 };
 
-export default Create;
+export default Form;

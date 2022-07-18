@@ -9,10 +9,8 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
-
 import dynamic from "next/dynamic";
 import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
 import { IArticle } from "../../../../redux/slices/articles";
@@ -53,11 +51,17 @@ export interface ICreateProps {
   publish: any;
   loading: boolean;
   stateHandler: any;
+  form: any;
 }
 
-const Create = ({ items, path, publish, loading, stateHandler }: ICreateProps) => {
-  const router = useRouter();
-
+const Create = ({
+  items,
+  path,
+  publish,
+  loading,
+  stateHandler,
+  form,
+}: ICreateProps) => {
   const [input, setInput] = useState<IArticle>({
     title: "",
     source: "",
@@ -74,7 +78,7 @@ const Create = ({ items, path, publish, loading, stateHandler }: ICreateProps) =
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
-    publish();
+    publish(input);
   };
 
   const onChangeHandler = (e: any) => {
@@ -87,40 +91,7 @@ const Create = ({ items, path, publish, loading, stateHandler }: ICreateProps) =
   const tab_options = ["Información Básica", "Multimedia", "Descripcion"];
 
   const steps = [
-    <Fragment>
-      <InputGroup
-        name="title"
-        description="Ingrese el título de la noticia"
-        label="Titulo"
-        type="text"
-        value={input.title}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="source"
-        description="Ingrese la fuente de la noticia"
-        label="Fuente"
-        type="text"
-        value={input.source}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="link"
-        description="Ingrese el enlace de la noticia"
-        label="Enlace"
-        type="text"
-        value={input.link}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="date"
-        description="Ingrese la fecha de la noticia"
-        label="Fecha"
-        type="text"
-        value={input.date}
-        onChangeHandler={onChangeHandler}
-      />
-    </Fragment>,
+    form({ input, onChangeHandler, setInput }),
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];

@@ -22,7 +22,8 @@ import parse from "html-react-parser";
 import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
-import Create from "./Components/Create";
+import Create from "../../../components/Table/Components/Create";
+import Form from "./Components/Form";
 
 export interface Data {
   id: number;
@@ -79,10 +80,8 @@ export const ProjectsContent = (project: ITableContent) => {
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [actual, setActual] = React.useState<string>("");
+  const [selected, setSelected] = React.useState<IProject>({});
   const state = useSelector((state: IState) => state?.projects);
-
-  console.log("SET ACTUAL", actual);
 
   const openActionsMenu = Boolean(anchorEl && state?.actions?.modal);
 
@@ -100,9 +99,9 @@ export const ProjectsContent = (project: ITableContent) => {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    id: string
+    project: IProject
   ) => {
-    setActual(id);
+    setSelected(project);
     setAnchorEl(event.currentTarget);
     stateHandler({
       method: "actions",
@@ -182,7 +181,7 @@ export const ProjectsContent = (project: ITableContent) => {
         </Typography>
       </TableCell>
       <TableCell align="left">
-        <IconButton onClick={(e) => handleClickActionsMenu(e, project?.id)}>
+        <IconButton onClick={(e) => handleClickActionsMenu(e, project)}>
           <MoreVertIcon />
         </IconButton>
         <Dropdown
@@ -192,7 +191,7 @@ export const ProjectsContent = (project: ITableContent) => {
         >
           <Actions
             path="project"
-            id={actual}
+            item={selected}
             stateHandler={(props) => stateHandler(props)}
           />
         </Dropdown>
@@ -294,10 +293,29 @@ const Posts = () => {
     }
   };
 
+  const operations = (action, array, item) => {
+    let updateProjects;
+
+    action === "update"
+      ? (updateProjects = array?.map((p) =>
+          p?._id?.toString() === item?.id?.toString() ? item : p
+        ))
+      : action === "delete"
+      ? (updateProjects = array.filter(
+          (p) => p?._id.toString() !== item?.id.toString()
+        ))
+      : action === "create"
+      ? (updateProjects = [...array, item])
+      : updateProjects;
+
+    console.log(updateProjects, "aver gaspaaaaaar");
+    return updateProjects;
+  };
+
   // Update Project
-  const updateProject = async (input, id, path) => {
+  const request = async (action, method, input, id, path, message) => {
     stateHandler({
-      method: "update",
+      method: action,
       payload: { status: "", message: "", loading: true },
       state,
       keep: true,
@@ -305,13 +323,13 @@ const Posts = () => {
 
     try {
       const data = await api({
-        method: "post",
+        method,
         path: `/${path}/${id}`,
         payload: input,
       });
 
       stateHandler({
-        method: "update",
+        method: action,
         payload: { loading: false },
         state,
         keep: true,
@@ -319,25 +337,29 @@ const Posts = () => {
 
       const { error } = data;
       console.log(error, "<== mensaje error");
+
       if (error) {
         stateHandler({
-          method: "update",
+          method: action,
           payload: { status: "failed", message: error },
           state,
           keep: true,
         });
       } else {
-        const updateProjects = projects?.map((p) =>
-          p?._id?.toString() === id?.toString() ? data : p
-        );
+        const updated_array = operations(method, projects, data);
 
-        dispatch(setProjects(updateProjects));
+        // const updateProjects = projects?.map((p) =>
+        //   p?._id?.toString() === id?.toString() ? data : p
+        // );
+
+        dispatch(setProjects(updated_array));
 
         stateHandler({
-          method: "update",
+          method: action,
           payload: {
             status: "success",
-            message: "La noticia se actualizó con éxito",
+            message,
+            // "La noticia se actualizó con éxito"
           },
           state,
           keep: true,
@@ -345,7 +367,7 @@ const Posts = () => {
       }
     } catch (err) {
       stateHandler({
-        method: "update",
+        method: action,
         payload: {
           status: "failed",
           message: "Algo salió mal, intente nuevamente!",
@@ -414,7 +436,6 @@ const Posts = () => {
     }
   };
 
-  const { create, update } = state;
   const projects = state?.projects;
 
   const deleteProject = async () => {
@@ -424,13 +445,11 @@ const Posts = () => {
       state,
       keep: true,
     });
-
     try {
       const data = await api({
         method: "delete",
         path: `/${path}/${id}`,
       });
-      // console.log("Dateushh", data);
 
       stateHandler({
         method: "delete",
@@ -570,6 +589,7 @@ const Posts = () => {
           publish={createProject}
           stateHandler={(payload) => stateHandler(payload)}
           loading={create?.loading}
+          form={(props) => <Form {...props} />}
         />
       </UseModal>
       <UseModal
@@ -603,9 +623,10 @@ const Posts = () => {
       >
         <Update
           items={projects}
-          path="project"
+          path="projects"
           id={state?.update?.api?.id}
           stateHandler={(props) => stateHandler(props)}
+          form={(props) => <Form {...props} />}
         />
       </UseModal>
     </Dashboard>
