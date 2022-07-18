@@ -22,7 +22,7 @@ import parse from "html-react-parser";
 import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
-import Create from "./components/Create";
+import Create from "./Components/Create";
 
 export interface Data {
   id: number;
