@@ -436,6 +436,7 @@ const Posts = () => {
     }
   };
 
+  const { create, update } = state;
   const projects = state?.projects;
 
   const deleteProject = async () => {

@@ -58,7 +58,9 @@ const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
   // const [value, setValue] = useState<IImagetoUpload[] | []>([]);
 
   const state_selector = useSelector((state: IState) => state[path]);
-  const [input, setInput] = useState<IArticle>(state_selector?.update);
+  const [input, setInput] = useState<IArticle>(
+    state_selector?.update[path.slice(0, -1)]
+  );
   const [tab, setTab] = useState<number>(0);
 
   const onChangeHandler = (e: any) => {
@@ -115,7 +117,6 @@ const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-
       {/* {update?.status === "success" && (
         <Toast
           message={update?.message}
@@ -156,11 +157,7 @@ const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
           width="100%"
           onClickHandler={console.log("ok!")}
         >
-          {false ? (
-            <CircularProgress style={{ color: "#fff" }} />
-          ) : (
-            "Guardar"
-          )}
+          {false ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
         </UseButton>
       </Box>
     </Box>
