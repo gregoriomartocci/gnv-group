@@ -298,11 +298,11 @@ const Posts = () => {
 
     action === "update"
       ? (updateProjects = array?.map((p) =>
-          p?._id?.toString() === item?.id?.toString() ? item : p
+          p?._id?.toString() === item?._id?.toString() ? item : p
         ))
       : action === "delete"
       ? (updateProjects = array.filter(
-          (p) => p?._id.toString() !== item?.id.toString()
+          (p) => p?._id.toString() !== item?._id.toString()
         ))
       : action === "create"
       ? (updateProjects = [...array, item])
@@ -320,7 +320,6 @@ const Posts = () => {
       state,
       keep: true,
     });
-
     try {
       const data = await api({
         method,
@@ -346,13 +345,7 @@ const Posts = () => {
           keep: true,
         });
       } else {
-        const updated_array = operations(method, projects, data);
-
-        // const updateProjects = projects?.map((p) =>
-        //   p?._id?.toString() === id?.toString() ? data : p
-        // );
-
-        dispatch(setProjects(updated_array));
+        const updated_array = operations(action, projects, data);
 
         stateHandler({
           method: action,
@@ -363,6 +356,13 @@ const Posts = () => {
           },
           state,
           keep: true,
+        });
+
+        stateHandler({
+          method: "projects",
+          payload: updated_array,
+          state,
+          keep: false,
         });
       }
     } catch (err) {
@@ -628,6 +628,7 @@ const Posts = () => {
           id={state?.update?.api?.id}
           stateHandler={(props) => stateHandler(props)}
           form={(props) => <Form {...props} />}
+          request={request}
         />
       </UseModal>
     </Dashboard>

@@ -50,9 +50,17 @@ export interface ICreateProps {
   id: number;
   stateHandler: any;
   form: any;
+  request: any;
 }
 
-const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
+const Update = ({
+  items,
+  path,
+  id,
+  stateHandler,
+  form,
+  request,
+}: ICreateProps) => {
   // const dispatch = useDispatch();
   // const router = useRouter();
   // const [value, setValue] = useState<IImagetoUpload[] | []>([]);
@@ -68,6 +76,17 @@ const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
       ...input,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handlePublish = () => {
+    request(
+      "update",
+      "post",
+      input,
+      state_selector?.update[path.slice(0, -1)]._id,
+      "edit-project",
+      "La noticia se actualizó con éxito"
+    );
   };
 
   const status = ["En construcción", "Finalizado"];
@@ -152,11 +171,7 @@ const Update = ({ items, path, id, stateHandler, form }: ICreateProps) => {
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 
-        <UseButton
-          type="Primary"
-          width="100%"
-          onClickHandler={console.log("ok!")}
-        >
+        <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {false ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
         </UseButton>
       </Box>
