@@ -9,11 +9,11 @@ import { IState } from "../../../Menu";
 interface IActions {
   path: string;
   id: string;
-  row: any;
+
   stateHandler: any;
 }
 
-const Actions = ({ path, id, row, stateHandler }: IActions) => {
+const Actions = ({ path, id, stateHandler }: IActions) => {
   const state = useSelector((state: IState) => state?.projects);
 
   return (

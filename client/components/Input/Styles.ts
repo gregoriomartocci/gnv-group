@@ -20,7 +20,7 @@ export const InputContainer: SxProps<Theme> = {
     padding: "15px",
     border: "1px solid #e0e0e0",
     borderRadius: "5px",
-    fontFamily: "'Montserrat', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     margin: "5px 0",
     fontSize: "13px",
   },

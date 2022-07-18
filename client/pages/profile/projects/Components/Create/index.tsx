@@ -14,18 +14,17 @@ import { useRouter } from "next/router";
 import { Login } from "./Styles";
 
 import dynamic from "next/dynamic";
-import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
-import { IArticle } from "../../../../redux/slices/articles";
-import { IState } from "../../../Menu";
-import { resetParams } from "../../../../pages/profile/projects";
-import api from "../../../../hooks/Api";
-import { IProject } from "../../../../redux/slices/projects";
-import UseButton from "../../../Button";
-import UseTabs from "../../../Tabs";
-import Toast from "../../../Alert";
-import InputGroup from "../../../Input";
+import ImageUploader, {
+  IImagetoUpload,
+} from "../../../../../components/Image-Uploader";
+import InputGroup from "../../../../../components/Input";
+import UseTabs from "../../../../../components/Tabs";
+import UseButton from "../../../../../components/Button";
+import { IProject } from "../../../../../redux/slices/projects";
+import { IArticle } from "../../../../../redux/slices/articles";
+import BasicSelect from "../../../../../components/Select";
 
-const Editor = dynamic(() => import("../../../Editor"), {
+const Editor = dynamic(() => import("../../../../../components/Editor"), {
   ssr: false,
 });
 
@@ -55,26 +54,29 @@ export interface ICreateProps {
   stateHandler: any;
 }
 
-const Create = ({ items, path, publish, loading, stateHandler }: ICreateProps) => {
+const Create = ({
+  items,
+  path,
+  publish,
+  loading,
+  stateHandler,
+}: ICreateProps) => {
   const router = useRouter();
 
-  const [input, setInput] = useState<IArticle>({
-    title: "",
-    source: "",
+  const [input, setInput] = useState<IProject>({
+    _id: "",
+    name: "",
+    status: "",
     link: "",
-    date: "",
     images: [],
     description: "",
-    _id: "",
     published: true,
   });
-
-  console.log(input.images, "que pasa aca che");
 
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
-    publish();
+    publish(input);
   };
 
   const onChangeHandler = (e: any) => {
@@ -86,39 +88,38 @@ const Create = ({ items, path, publish, loading, stateHandler }: ICreateProps) =
 
   const tab_options = ["Información Básica", "Multimedia", "Descripcion"];
 
+  const status = [
+    "Seleccione el estado en el que se encuentra el emprendimiento",
+    "En desarrollo",
+    "Finalizados",
+  ];
+
   const steps = [
     <Fragment>
       <InputGroup
-        name="title"
-        description="Ingrese el título de la noticia"
-        label="Titulo"
+        name="name"
+        description="Ingrese el nombre del emprendimiento"
+        label="Nombre"
         type="text"
-        value={input.title}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="source"
-        description="Ingrese la fuente de la noticia"
-        label="Fuente"
-        type="text"
-        value={input.source}
+        value={input.name}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
         name="link"
-        description="Ingrese el enlace de la noticia"
+        description="Ingrese el enlace del emprendimiento"
         label="Enlace"
         type="text"
         value={input.link}
         onChangeHandler={onChangeHandler}
       />
-      <InputGroup
-        name="date"
-        description="Ingrese la fecha de la noticia"
-        label="Fecha"
-        type="text"
-        value={input.date}
-        onChangeHandler={onChangeHandler}
+      <BasicSelect
+        options={status}
+        width="100%"
+        value={input}
+        setValue={setInput}
+        name="status"
+        placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
+        label="Estado"
       />
     </Fragment>,
     <ImageUploader value={input} setValue={setInput} />,
@@ -143,13 +144,15 @@ const Create = ({ items, path, publish, loading, stateHandler }: ICreateProps) =
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 
-        {/* {console.log(input, "INPUT")} */}
-
-        <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
+        <UseButton
+          type="Primary"
+          width="100%"
+          onClickHandler={handlePublish}
+        >
           {loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
-            "Agregar Noticia"
+            "Agregar Emprendimiento"
           )}
         </UseButton>
       </Box>

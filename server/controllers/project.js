@@ -5,6 +5,8 @@ export const createProject = async (req, res) => {
   try {
     const { name, link, description, published, status, images } = req.body;
 
+    console.log(req.body, "que nos llega??");
+
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
     if (!link)
@@ -84,11 +86,11 @@ export const editProject = async (req, res) => {
       new: true,
     });
 
-    console.log(project,)
+    console.log(project);
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json({error:"Algo salió mal, por favor intente nuevamente"});
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
@@ -98,6 +100,6 @@ export const getProjects = async (req, res) => {
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json({error:"Algo salió mal, por favor intente nuevamente"});
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };

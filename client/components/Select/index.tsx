@@ -27,6 +27,7 @@ const BasicSelect = ({
   placeholder,
   filter,
 }: ISelect) => {
+  
   const handleChange = (event: SelectChangeEvent) => {
     setValue({ ...value, [name]: event.target.value });
     filter && filter(event.target.value);
@@ -62,8 +63,7 @@ const BasicSelect = ({
             fontFamily: "'Poppins', sans-serif",
             margin: "5px 0",
             fontSize: "14px",
-            fontWeight: 500,
-            color: "#bdbdbd",
+            color: "#9e9e9e",
           }}
           variant="outlined"
           inputProps={{

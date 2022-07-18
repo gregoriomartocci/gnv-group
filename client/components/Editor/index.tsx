@@ -46,17 +46,13 @@ export interface IEditor {
 }
 
 const Editor = ({ value, setValue }: IEditor) => {
-
-
   const onChangeHandler = (string: string) => {
     console.log(string, "string");
     setValue({ ...value, description: string });
-
-    
   };
 
   return (
-    <Box style={{ height: "auto" }}>
+    <Box style={{ height: "auto", margin: "0 0 15px 0" }}>
       <Box style={{ height: "350px" }}>
         {typeof window !== "undefined" ? (
           <ReactQuill
