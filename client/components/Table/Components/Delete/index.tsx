@@ -14,7 +14,7 @@ interface IDelete {
 }
 
 const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
-  const state = useSelector((state: IState) => state);
+  const state = useSelector((state: IState) => state.projects);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -26,6 +26,7 @@ const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
       "project",
       "el Emprendimiento se ha eliminado con éxito"
     );
+
   };
 
   return (
@@ -78,12 +79,8 @@ const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
                   method: "delete",
                   payload: { modal: false },
                   state,
-                }),
-                  stateHandler({
-                    method: "actions",
-                    payload: { modal: false },
-                    state,
-                  });
+                  keep: true,
+                });
               }}
             >
               Cancelar

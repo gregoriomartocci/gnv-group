@@ -57,7 +57,8 @@ function stableSort<T>(
   array: readonly T[],
   comparator: (a: T, b: T) => number
 ) {
-  const stabilizedThis = array?.map((el, index) => [el, index] as [T, number]);
+  const stabilizedThis =
+    array?.map((el, index) => [el, index] as [T, number]);
   stabilizedThis?.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) {
@@ -106,8 +107,6 @@ export default function UseTable({
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [actual, setActual] = React.useState<string>("");
-  const [rowSelected, setRowSelected] = React.useState<any>();
 
   const state = useSelector((state: IState) => state[name]);
 

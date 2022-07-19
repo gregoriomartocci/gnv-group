@@ -347,23 +347,28 @@ const Posts = () => {
       } else {
         const updated_array = operations(action, projects, data);
 
+        let payload;
+
+        action === "delete"
+          ? (payload = {
+              status: "success",
+              message,
+              modal: false,
+            })
+          : (payload = {
+              status: "success",
+              message,
+              modal: false,
+            });
+
         stateHandler({
           method: action,
-          payload: {
-            status: "success",
-            message,
-            // "La noticia se actualizó con éxito"
-          },
+          payload,
           state,
           keep: true,
         });
 
-        stateHandler({
-          method: "projects",
-          payload: updated_array,
-          state,
-          keep: false,
-        });
+        dispatch(setProjects(updated_array));
       }
     } catch (err) {
       stateHandler({
@@ -416,7 +421,7 @@ const Posts = () => {
           method: "create",
           payload: {
             status: "success",
-            message: "La noticia se agregó con éxito",
+            message: "El emprendimiento se agregó con éxito",
           },
           state,
           keep: true,
@@ -439,66 +444,66 @@ const Posts = () => {
   const { create, update } = state;
   const projects = state?.projects;
 
-  const deleteProject = async () => {
-    stateHandler({
-      method: "delete",
-      payload: { status: "", message: "", loading: true },
-      state,
-      keep: true,
-    });
-    try {
-      const data = await api({
-        method: "delete",
-        path: `/${path}/${id}`,
-      });
+  // const deleteProject = async () => {
+  //   stateHandler({
+  //     method: "delete",
+  //     payload: { status: "", message: "", loading: true },
+  //     state,
+  //     keep: true,
+  //   });
+  //   try {
+  //     const data = await api({
+  //       method: "delete",
+  //       path: `/${path}/${id}`,
+  //     });
 
-      stateHandler({
-        method: "delete",
-        payload: { loading: false },
-        state,
-        keep: true,
-      });
-      if (data?.error) {
-        stateHandler({
-          method: "delete",
-          payload: { status: "failed", message: data?.error },
-          state,
-          keep: true,
-        });
-      } else {
-        stateHandler({
-          method: "delete",
-          payload: { status: "success", modal: false },
-          state,
-          keep: true,
-        });
+  //     stateHandler({
+  //       method: "delete",
+  //       payload: { loading: false },
+  //       state,
+  //       keep: true,
+  //     });
+  //     if (data?.error) {
+  //       stateHandler({
+  //         method: "delete",
+  //         payload: { status: "failed", message: data?.error },
+  //         state,
+  //         keep: true,
+  //       });
+  //     } else {
+  //       stateHandler({
+  //         method: "delete",
+  //         payload: { status: "success", modal: false },
+  //         state,
+  //         keep: true,
+  //       });
 
-        const updateProjects = projects.filter(
-          (p) => p?._id.toString() !== id.toString()
-        );
+  //       const updateProjects = projects.filter(
+  //         (p) => p?._id.toString() !== id.toString()
+  //       );
 
-        stateHandler({
-          method: "actions",
-          payload: { modal: false },
-          state,
-          keep: true,
-        });
+  //       stateHandler({
+  //         method: "actions",
+  //         payload: { modal: false },
+  //         state,
+  //         keep: true,
+  //       });
 
-        dispatch(setProjects(updateProjects));
-      }
-    } catch (err) {
-      stateHandler({
-        method: "actions",
-        payload: {
-          status: "failed",
-          message: "Something went wrong",
-          loading: false,
-        },
-        state,
-        keep: true,
-      });
-    }
-  };
+  //       dispatch(setProjects(updateProjects));
+  //     }
+  //   } catch (err) {
+  //     stateHandler({
+  //       method: "actions",
+  //       payload: {
+  //         status: "failed",
+  //         message: "Something went wrong",
+  //         loading: false,
+  //       },
+  //       state,
+  //       keep: true,
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
     getProjects();
@@ -568,7 +573,7 @@ const Posts = () => {
         api="project"
         name="projects"
         headCells={headCells}
-        rows={projects}
+        rows={projects.length ? projects : []}
         content={(project: IProject) => <ProjectsContent {...project} />}
         stateHandler={(props) => stateHandler(props)}
       />
@@ -593,6 +598,7 @@ const Posts = () => {
           form={(props) => <Form {...props} />}
         />
       </UseModal>
+
       <UseModal
         open={state?.delete?.modal}
         handleClose={() => {
@@ -608,7 +614,7 @@ const Posts = () => {
           path="project"
           id={state?.delete?.api?.id}
           name="projects"
-          stateHandler={(props) => stateHandler(props)}
+          stateHandler={stateHandler}
           request={request}
         />
       </UseModal>
@@ -627,7 +633,7 @@ const Posts = () => {
           items={projects}
           path="projects"
           id={state?.update?.api?.id}
-          stateHandler={(props) => stateHandler(props)}
+          stateHandler={stateHandler}
           form={(props) => <Form {...props} />}
           request={request}
         />

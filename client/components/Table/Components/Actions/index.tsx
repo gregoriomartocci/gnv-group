@@ -10,7 +10,6 @@ import { IArticle } from "../../../../redux/slices/articles";
 
 interface IActions {
   path: string;
-  id: string;
   item: IProject | IArticle;
   stateHandler: any;
 }

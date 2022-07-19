@@ -22,7 +22,7 @@ const api = async ({ path, payload, method }: IFetch) => {
   }
 
   try {
-    if (payload) {
+    if (payload !== {}) {
       const { data } = await axios[method](path, payload);
       return data;
     }
