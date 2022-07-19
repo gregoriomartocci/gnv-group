@@ -7,14 +7,26 @@ import UseButton from "../../../Button";
 
 interface IDelete {
   path: string;
-  id: number;
+  id: "string";
   name: "projects" | "articles" | "users";
   stateHandler: any;
+  request: any;
 }
 
-const Delete = ({ path, id, name, stateHandler }: IDelete) => {
-  const state = useSelector((state: IState) => state[name]);
+const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
+  const state = useSelector((state: IState) => state);
   const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    request(
+      "delete",
+      "delete",
+      {},
+      id,
+      "project",
+      "el Emprendimiento se ha eliminado con éxito"
+    );
+  };
 
   return (
     <Fragment>
@@ -82,17 +94,8 @@ const Delete = ({ path, id, name, stateHandler }: IDelete) => {
               margin: "0 0 0 7.5px",
             }}
           >
-            <UseButton
-              type="Delete"
-              onClickHandler={() =>
-                stateHandler({
-                  method: "delete",
-                  payload: { message: "", success: "", failed: "" },
-                  state,
-                })
-              }
-            >
-              {state?.delete.loading ? (
+            <UseButton type="Delete" onClickHandler={handleDelete}>
+              {false ? (
                 <CircularProgress style={{ color: "#fff" }} />
               ) : (
                 "Eliminar"

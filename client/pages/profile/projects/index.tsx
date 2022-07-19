@@ -609,6 +609,7 @@ const Posts = () => {
           id={state?.delete?.api?.id}
           name="projects"
           stateHandler={(props) => stateHandler(props)}
+          request={request}
         />
       </UseModal>
       <UseModal

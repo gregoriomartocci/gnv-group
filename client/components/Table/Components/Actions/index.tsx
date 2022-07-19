@@ -15,7 +15,7 @@ interface IActions {
   stateHandler: any;
 }
 
-const Actions = ({ path,  item, stateHandler }: IActions) => {
+const Actions = ({ path, item, stateHandler }: IActions) => {
   const state = useSelector((state: IState) => state?.projects);
 
   return (
@@ -26,7 +26,11 @@ const Actions = ({ path,  item, stateHandler }: IActions) => {
         onClick={() =>
           stateHandler({
             method: "update",
-            payload: { modal: true, api: { id:item?.id, path }, project: item },
+            payload: {
+              modal: true,
+              api: { id: item?.id, path },
+              project: item,
+            },
             state,
             keep: true,
           })
@@ -41,7 +45,7 @@ const Actions = ({ path,  item, stateHandler }: IActions) => {
         onClick={() =>
           stateHandler({
             method: "delete",
-            payload: { modal: true },
+            payload: { modal: true, api: { id: item?._id } },
             state,
             keep: true,
           })
