@@ -293,7 +293,7 @@ const Posts = () => {
     }
   };
 
-  const operations = (action, array, item) => {
+  const array_operations = (action, array, item) => {
     let updateProjects;
 
     action === "update"
@@ -312,8 +312,10 @@ const Posts = () => {
     return updateProjects;
   };
 
-  // Update Project
+  // request function
+
   const request = async (action, method, input, id, path, message) => {
+
     stateHandler({
       method: action,
       payload: { status: "", message: "", loading: true },
@@ -345,7 +347,7 @@ const Posts = () => {
           keep: true,
         });
       } else {
-        const updated_array = operations(action, projects, data);
+        const updated_array = array_operations(action, projects, data);
 
         let payload;
 
@@ -444,67 +446,6 @@ const Posts = () => {
   const { create, update } = state;
   const projects = state?.projects;
 
-  // const deleteProject = async () => {
-  //   stateHandler({
-  //     method: "delete",
-  //     payload: { status: "", message: "", loading: true },
-  //     state,
-  //     keep: true,
-  //   });
-  //   try {
-  //     const data = await api({
-  //       method: "delete",
-  //       path: `/${path}/${id}`,
-  //     });
-
-  //     stateHandler({
-  //       method: "delete",
-  //       payload: { loading: false },
-  //       state,
-  //       keep: true,
-  //     });
-  //     if (data?.error) {
-  //       stateHandler({
-  //         method: "delete",
-  //         payload: { status: "failed", message: data?.error },
-  //         state,
-  //         keep: true,
-  //       });
-  //     } else {
-  //       stateHandler({
-  //         method: "delete",
-  //         payload: { status: "success", modal: false },
-  //         state,
-  //         keep: true,
-  //       });
-
-  //       const updateProjects = projects.filter(
-  //         (p) => p?._id.toString() !== id.toString()
-  //       );
-
-  //       stateHandler({
-  //         method: "actions",
-  //         payload: { modal: false },
-  //         state,
-  //         keep: true,
-  //       });
-
-  //       dispatch(setProjects(updateProjects));
-  //     }
-  //   } catch (err) {
-  //     stateHandler({
-  //       method: "actions",
-  //       payload: {
-  //         status: "failed",
-  //         message: "Something went wrong",
-  //         loading: false,
-  //       },
-  //       state,
-  //       keep: true,
-  //     });
-  //   }
-  // };
-
   useEffect(() => {
     getProjects();
   }, []);
@@ -575,7 +516,7 @@ const Posts = () => {
         headCells={headCells}
         rows={projects.length ? projects : []}
         content={(project: IProject) => <ProjectsContent {...project} />}
-        stateHandler={(props) => stateHandler(props)}
+        stateHandler={stateHandler}
       />
 
       <UseModal
@@ -593,9 +534,10 @@ const Posts = () => {
           items={projects}
           path="project"
           publish={createProject}
-          stateHandler={(payload) => stateHandler(payload)}
+          stateHandler={stateHandler}
           loading={create?.loading}
           form={(props) => <Form {...props} />}
+          request={request}
         />
       </UseModal>
 

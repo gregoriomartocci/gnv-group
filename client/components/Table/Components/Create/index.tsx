@@ -52,15 +52,16 @@ export interface ICreateProps {
   loading: boolean;
   stateHandler: any;
   form: any;
+  request: any;
 }
 
 const Create = ({
   items,
   path,
-  publish,
   loading,
   stateHandler,
   form,
+  request
 }: ICreateProps) => {
   const [input, setInput] = useState<IArticle>({
     title: "",
@@ -71,6 +72,7 @@ const Create = ({
     description: "",
     _id: "",
     published: true,
+    request
   });
 
   console.log(input.images, "que pasa aca che");
@@ -78,7 +80,16 @@ const Create = ({
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
-    publish(input);
+
+    request(
+      "create",
+      "post",
+      input,
+      "",
+      "project",
+      "El emprendimiento se agregó con éxito"
+    );
+    
   };
 
   const onChangeHandler = (e: any) => {
