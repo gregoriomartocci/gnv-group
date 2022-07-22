@@ -286,121 +286,99 @@ export default function UseTable({
   };
 
   return (
-    <Box sx={{ maxHeight: "100%", width: "100%", }}>
-      <Paper
-        sx={{
-          width: "100%",
-          borderRadius: "10px",
-          padding: "15px",
-          fontFamily: "Montserrat",
-          boxShadow: "unset",
-          border: "1px solid #e0e0e0",
-          height: "100%",
-          position: "relative"
-        }}
-      >
-        <EnhancedTableToolbar title={title} numSelected={selected.length} />
-        <TableContainer
+    <Paper
+      sx={{
+        position: "relative",
+        width: "100%",
+        borderRadius: "10px",
+        padding: "15px",
+        fontFamily: "Montserrat",
+        boxShadow: "unset",
+        border: "1px solid #e0e0e0",
+        height: "100%",
+        fontFamily: "Montserrat",
+      }}
+    >
+      <EnhancedTableToolbar title={title} numSelected={selected.length} />
+      <TableContainer>
+        <Table aria-labelledby="tableTitle" size={"medium"}>
+          <EnhancedTableHead
+            numSelected={selected.length}
+            order={order}
+            orderBy={orderBy}
+            onSelectAllClick={handleSelectAllClick}
+            onRequestSort={handleRequestSort}
+            rowCount={rows?.length}
+          />
+          <TableBody>
+            {stableSort(rows, getComparator(order, orderBy))
+              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ?.map((row, index) => {
+                const isItemSelected = isSelected(Number(row?.id));
+                const labelId = `enhanced-table-checkbox-${index}`;
+
+                return (
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    aria-checked={isItemSelected}
+                    tabIndex={-1}
+                    key={row?.id}
+                    selected={isItemSelected}
+                    // sx={index % 2 === 1 ? GrayBackground : null}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        color="primary"
+                        checked={isItemSelected}
+                        inputProps={{
+                          "aria-labelledby": labelId,
+                        }}
+                        onClick={(event: any) =>
+                          handleClick(event, Number(row?.id))
+                        }
+                      />
+                    </TableCell>
+                    <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      padding="none"
+                    >
+                      <Typography style={{ fontFamily: "Montserrat" }}>
+                        {row?.id}
+                      </Typography>
+                    </TableCell>
+
+                    {content(row)}
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+        <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            maxHeight: "100%",
+            alignItems: "center",
+            width: "100%",
+            justifyContent: "flex-end",
+            position: "absolute",
+            height: "80px",
+            bottom: 0,
+            right: 0,
+            padding: "50px",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              height: "100%",
-            }}
-          >
-            <Box>
-              <Table
-                sx={{ fontFamily: "Montserrat" }}
-                aria-labelledby="tableTitle"
-                size={"medium"}
-              >
-                <EnhancedTableHead
-                  numSelected={selected.length}
-                  order={order}
-                  orderBy={orderBy}
-                  onSelectAllClick={handleSelectAllClick}
-                  onRequestSort={handleRequestSort}
-                  rowCount={rows?.length}
-                />
-                <TableBody>
-                  {stableSort(rows, getComparator(order, orderBy))
-                    ?.slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                    ?.map((row, index) => {
-                      const isItemSelected = isSelected(Number(row?.id));
-                      const labelId = `enhanced-table-checkbox-${index}`;
-
-                      return (
-                        <TableRow
-                          hover
-                          role="checkbox"
-                          aria-checked={isItemSelected}
-                          tabIndex={-1}
-                          key={row?.id}
-                          selected={isItemSelected}
-                          // sx={index % 2 === 1 ? GrayBackground : null}
-                        >
-                          <TableCell padding="checkbox">
-                            <Checkbox
-                              color="primary"
-                              checked={isItemSelected}
-                              inputProps={{
-                                "aria-labelledby": labelId,
-                              }}
-                              onClick={(event: any) =>
-                                handleClick(event, Number(row?.id))
-                              }
-                            />
-                          </TableCell>
-
-                          <TableCell
-                            component="th"
-                            id={labelId}
-                            scope="row"
-                            padding="none"
-                          >
-                            <Typography style={{ fontFamily: "Montserrat" }}>
-                              {index + 1}
-                            </Typography>
-                          </TableCell>
-
-                          {content(row)}
-                        </TableRow>
-                      );
-                    })}
-                </TableBody>
-              </Table>
-            </Box>
-            <Box
-              sx={{
-                position: "absolute",
-                width: "100%",
-                bottom: 0,
-                padding: "5px 15px",
-              }}
-            >
-              <TablePagination
-                component="span"
-                count={rows?.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-              />
-            </Box>
-          </Box>
-        </TableContainer>
-      </Paper>
-    </Box>
+          <TablePagination
+            component="span"
+            count={rows?.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Box>
+      </TableContainer>
+    </Paper>
   );
 }
