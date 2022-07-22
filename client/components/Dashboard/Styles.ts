@@ -5,9 +5,6 @@ const white = "#ffffff";
 const paper = "#F3F6F9";
 
 export const DashboardContainer: SxProps<Theme> = {
-  display: "grid",
-  gridTemplateColumns: "auto 1fr",
-  width: "100vw",
+  display: "flex",
   height: "100vh",
 };
-

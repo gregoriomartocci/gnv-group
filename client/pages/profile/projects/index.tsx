@@ -315,7 +315,6 @@ const Posts = () => {
   // request function
 
   const request = async (action, method, input, id, path, message) => {
-
     stateHandler({
       method: action,
       payload: { status: "", message: "", loading: true },

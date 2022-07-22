@@ -12,12 +12,11 @@ interface IDahboard {
 const Dashboard = ({ children }: IDahboard) => {
   return (
     <Box sx={DashboardContainer}>
-      <Box>
-        <Sidebar />
-      </Box>
-      <Box>
+      <Sidebar />
+      <Box sx={{ height: "100%", width: "100%" }}>
         <Menu />
-        <Main>{children}</Main>
+    
+        <Main >{children}</Main>
       </Box>
     </Box>
   );

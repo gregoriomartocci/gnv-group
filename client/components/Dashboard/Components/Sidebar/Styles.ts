@@ -3,7 +3,7 @@ import { SxProps, Theme } from "@mui/material";
 const black = "#212121";
 
 export const SidebarContainer: SxProps<Theme> = {
-  height: "100%",
+  height: "100vh",
   width: "250px",
   backgroundColor: black,
 };
