@@ -532,6 +532,7 @@ const Posts = () => {
         <Create
           items={projects}
           path="project"
+          object="emprendimiento"
           publish={createProject}
           stateHandler={stateHandler}
           loading={create?.loading}
@@ -554,6 +555,7 @@ const Posts = () => {
         <Delete
           path="project"
           id={state?.delete?.api?.id}
+          object="emprendimiento"
           name="projects"
           stateHandler={stateHandler}
           request={request}
@@ -573,6 +575,7 @@ const Posts = () => {
         <Update
           items={projects}
           path="projects"
+          object="emprendimiento"
           id={state?.update?.api?.id}
           stateHandler={stateHandler}
           form={(props) => <Form {...props} />}

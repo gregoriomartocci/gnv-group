@@ -48,6 +48,7 @@ export interface ICreateProps {
   items: IArticle[] | IProject[];
   path: "projects" | "articles" | "users";
   id: number;
+  object: string;
   stateHandler: any;
   form: any;
   request: any;
@@ -57,6 +58,7 @@ const Update = ({
   items,
   path,
   id,
+  object,
   stateHandler,
   form,
   request,
@@ -164,7 +166,7 @@ const Update = ({
             color: "#424242",
           }}
         >
-          Editar Noticia
+          Editar {object}
         </span>
 
         <UseTabs value={tab} setValue={setTab} options={tab_options} />

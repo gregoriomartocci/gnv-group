@@ -296,7 +296,6 @@ export default function UseTable({
         boxShadow: "unset",
         border: "1px solid #e0e0e0",
         height: "100%",
-        fontFamily: "Montserrat",
       }}
     >
       <EnhancedTableToolbar title={title} numSelected={selected.length} />

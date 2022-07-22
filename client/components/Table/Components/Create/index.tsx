@@ -49,6 +49,7 @@ export interface ICreateProps {
   items: IArticle[] | IProject[];
   path: "article" | "project" | "user";
   publish: any;
+  object: string;
   loading: boolean;
   stateHandler: any;
   form: any;
@@ -59,9 +60,10 @@ const Create = ({
   items,
   path,
   loading,
+  object,
   stateHandler,
   form,
-  request
+  request,
 }: ICreateProps) => {
   const [input, setInput] = useState<IArticle>({
     title: "",
@@ -72,7 +74,6 @@ const Create = ({
     description: "",
     _id: "",
     published: true,
-    request
   });
 
   console.log(input.images, "que pasa aca che");
@@ -80,7 +81,6 @@ const Create = ({
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
-
     request(
       "create",
       "post",
@@ -89,7 +89,6 @@ const Create = ({
       "project",
       "El emprendimiento se agregó con éxito"
     );
-    
   };
 
   const onChangeHandler = (e: any) => {
@@ -99,7 +98,7 @@ const Create = ({
     });
   };
 
-  const tab_options = ["Información Básica", "Multimedia", "Descripcion"];
+  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
   const steps = [
     form({ input, onChangeHandler, setInput }),
@@ -118,7 +117,7 @@ const Create = ({
             color: "#424242",
           }}
         >
-          Agregar Noticia
+          Agregar {object}
         </span>
 
         <UseTabs value={tab} setValue={setTab} options={tab_options} />
@@ -131,7 +130,7 @@ const Create = ({
           {loading ? (
             <CircularProgress style={{ color: "#fff" }} />
           ) : (
-            "Agregar Noticia"
+            "Agregar"
           )}
         </UseButton>
       </Box>

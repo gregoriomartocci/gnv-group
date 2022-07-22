@@ -7,13 +7,14 @@ import UseButton from "../../../Button";
 
 interface IDelete {
   path: string;
-  id: "string";
+  id: string;
+  object: string;
   name: "projects" | "articles" | "users";
   stateHandler: any;
   request: any;
 }
 
-const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
+const Delete = ({ path, id, name, object, stateHandler, request }: IDelete) => {
   const state = useSelector((state: IState) => state.projects);
   const dispatch = useDispatch();
 
@@ -26,7 +27,6 @@ const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
       "project",
       "el Emprendimiento se ha eliminado con éxito"
     );
-
   };
 
   return (
@@ -53,7 +53,7 @@ const Delete = ({ path, id, name, stateHandler, request }: IDelete) => {
             color: "#1D2D3E",
           }}
         >
-          Eliminar emprendimiento
+          Eliminar {object}
         </span>
         <span
           style={{
