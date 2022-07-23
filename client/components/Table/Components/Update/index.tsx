@@ -95,40 +95,6 @@ const Update = ({
   const type = ["Casa", "Departamento", "Local Comercial"];
 
   const steps = [
-    // <Fragment>
-    //   <InputGroup
-    //     name="title"
-    //     description="Ingrese el título de la noticia"
-    //     label="Titulo"
-    //     type="text"
-    //     value={input?.title}
-    //     onChangeHandler={onChangeHandler}
-    //   />
-    //   <InputGroup
-    //     name="source"
-    //     description="Ingrese la fuente de la noticia"
-    //     label="Fuente"
-    //     type="text"
-    //     value={input?.source}
-    //     onChangeHandler={onChangeHandler}
-    //   />
-    //   <InputGroup
-    //     name="link"
-    //     description="Ingrese el enlace de la noticia"
-    //     label="Enlace"
-    //     type="text"
-    //     value={input?.link}
-    //     onChangeHandler={onChangeHandler}
-    //   />
-    //   <InputGroup
-    //     name="date"
-    //     description="Ingrese la fecha de la noticia"
-    //     label="Fecha"
-    //     type="text"
-    //     value={input?.date}
-    //     onChangeHandler={onChangeHandler}
-    //   />
-    // </Fragment>,
     form({ input, onChangeHandler, setInput }),
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
