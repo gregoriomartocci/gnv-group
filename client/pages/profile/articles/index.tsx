@@ -28,6 +28,7 @@ export interface Data {
   id: number;
   title: string;
   description: string;
+  source: string;
   images: string[];
   link: string;
   date: string;

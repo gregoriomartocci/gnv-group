@@ -75,14 +75,14 @@ const Update = ({
   const steps = [
     form({ input: state_selector.update[item], onChangeHandler, setInput }),
     <ImageUploader
-      value={input}
+      value={state_selector.update[item]}
       method="update"
       item={item}
       stateHandler={stateHandler}
       state={state_selector}
     />,
     <Editor
-      value={input}
+      value={state_selector.update[item]}
       method="update"
       item={item}
       stateHandler={stateHandler}

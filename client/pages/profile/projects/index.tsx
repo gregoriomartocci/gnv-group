@@ -295,22 +295,23 @@ const Posts = () => {
   };
 
   const array_operations = (action, array, item) => {
-    let updateProjects;
+    let update;
 
-    action === "update"
-      ? (updateProjects = array?.map((p) =>
+    action === "create"
+      ? (update = [...array, item])
+      : action === "read"
+      ? (update = [...item])
+      : action === "update"
+      ? (update = array?.map((p) =>
           p?._id?.toString() === item?._id?.toString() ? item : p
         ))
       : action === "delete"
-      ? (updateProjects = array.filter(
+      ? (update = array.filter(
           (p) => p?._id.toString() !== item?._id.toString()
         ))
-      : action === "create"
-      ? (updateProjects = [...array, item])
-      : updateProjects;
+      : update;
 
-    console.log(updateProjects, "aver gaspaaaaaar");
-    return updateProjects;
+    return update;
   };
 
   // request function
