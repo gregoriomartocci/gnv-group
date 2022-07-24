@@ -18,7 +18,11 @@ import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
 import Form from "./Components/Form";
-import { IArticle, setArticles, setState } from "../../../redux/slices/articles";
+import {
+  IArticle,
+  setArticles,
+  setState,
+} from "../../../redux/slices/articles";
 
 export interface Data {
   id: number;
@@ -76,7 +80,6 @@ export const Content = (article: ITableContent) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selected, setSelected] = React.useState<IArticle>({});
   const state = useSelector((state: IState) => state?.articles);
-
   const openActionsMenu = Boolean(anchorEl && state?.actions?.modal);
 
   const stateHandler = ({ method, payload, state, keep }) => {
@@ -93,9 +96,9 @@ export const Content = (article: ITableContent) => {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    project: IArticle
+    article: IArticle
   ) => {
-    setSelected(project);
+    setSelected(article);
     setAnchorEl(event.currentTarget);
     stateHandler({
       method: "actions",
@@ -180,6 +183,7 @@ export const Content = (article: ITableContent) => {
         >
           <Actions
             path="article"
+            selector="articles"
             item={selected}
             stateHandler={(props) => stateHandler(props)}
           />
@@ -464,26 +468,6 @@ const Posts = () => {
         />
       </UseModal>
       <UseModal
-        open={state?.delete?.modal}
-        handleClose={() => {
-          stateHandler({
-            method: "delete",
-            payload: { modal: false },
-            state,
-            keep: true,
-          });
-        }}
-      >
-        <Delete
-          path="article"
-          id={state?.delete?.api?.id}
-          object="noticia"
-          name="article"
-          stateHandler={stateHandler}
-          request={request}
-        />
-      </UseModal>
-      <UseModal
         open={update?.modal}
         handleClose={() =>
           stateHandler({
@@ -501,6 +485,26 @@ const Posts = () => {
           id={update?.api?.id}
           stateHandler={stateHandler}
           form={(props) => <Form {...props} />}
+          request={request}
+        />
+      </UseModal>
+      <UseModal
+        open={state?.delete?.modal}
+        handleClose={() => {
+          stateHandler({
+            method: "delete",
+            payload: { modal: false },
+            state,
+            keep: true,
+          });
+        }}
+      >
+        <Delete
+          path="article"
+          id={state?.delete?.api?.id}
+          object="noticia"
+          name="article"
+          stateHandler={stateHandler}
           request={request}
         />
       </UseModal>

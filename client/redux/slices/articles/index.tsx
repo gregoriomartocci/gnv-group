@@ -34,7 +34,7 @@ export type TUpdate = {
   loading: boolean;
   modal: boolean;
   api: { path: string; id: number };
-  project: IArticle | {};
+  article: IArticle | {};
 };
 
 export interface initialState {
@@ -65,7 +65,7 @@ const initialState: initialState = {
     loading: false,
     modal: false,
     api: { path: "", id: 0 },
-    project: {},
+    article: {},
   },
   alert: { message: "", status: "" },
 };

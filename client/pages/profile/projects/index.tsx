@@ -191,6 +191,7 @@ export const Content = (project: IProject) => {
         >
           <Actions
             path="project"
+            selector="projects"
             item={selected}
             stateHandler={(props) => stateHandler(props)}
           />
@@ -507,7 +508,6 @@ const Posts = () => {
           }
         />
       )}
-
       <UseTable
         title="Emprendimientos"
         api="project"
@@ -539,27 +539,6 @@ const Posts = () => {
           request={request}
         />
       </UseModal>
-
-      <UseModal
-        open={state?.delete?.modal}
-        handleClose={() => {
-          stateHandler({
-            method: "delete",
-            payload: { modal: false },
-            state,
-            keep: true,
-          });
-        }}
-      >
-        <Delete
-          path="project"
-          id={state?.delete?.api?.id}
-          object="emprendimiento"
-          name="projects"
-          stateHandler={stateHandler}
-          request={request}
-        />
-      </UseModal>
       <UseModal
         open={state?.update?.modal}
         handleClose={() =>
@@ -578,6 +557,26 @@ const Posts = () => {
           id={state?.update?.api?.id}
           stateHandler={stateHandler}
           form={(props) => <Form {...props} />}
+          request={request}
+        />
+      </UseModal>
+      <UseModal
+        open={state?.delete?.modal}
+        handleClose={() => {
+          stateHandler({
+            method: "delete",
+            payload: { modal: false },
+            state,
+            keep: true,
+          });
+        }}
+      >
+        <Delete
+          path="project"
+          id={state?.delete?.api?.id}
+          object="emprendimiento"
+          name="projects"
+          stateHandler={stateHandler}
           request={request}
         />
       </UseModal>

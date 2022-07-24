@@ -10,12 +10,13 @@ import { IArticle } from "../../../../redux/slices/articles";
 
 interface IActions {
   path: string;
+  selector: "projects" | "articles";
   item: IProject | IArticle;
   stateHandler: any;
 }
 
-const Actions = ({ path, item, stateHandler }: IActions) => {
-  const state = useSelector((state: IState) => state?.projects);
+const Actions = ({ path, selector, item, stateHandler }: IActions) => {
+  const state = useSelector((state: IState) => state[selector]);
 
   return (
     <Box sx={MenuContainer}>
@@ -28,7 +29,7 @@ const Actions = ({ path, item, stateHandler }: IActions) => {
             payload: {
               modal: true,
               api: { id: item?.id, path },
-              project: item,
+              article: item,
             },
             state,
             keep: true,

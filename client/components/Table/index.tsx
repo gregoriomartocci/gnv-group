@@ -26,8 +26,6 @@ import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../Menu";
 
-
-
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
