@@ -50,6 +50,22 @@ const Form = ({ input, onChangeHandler }: ICreateProps) => {
         value={input?.link}
         onChangeHandler={onChangeHandler}
       />
+      <InputGroup
+        name="source"
+        description="Ingrese la fuente de la noticia"
+        label="Fuente"
+        type="text"
+        value={input?.source}
+        onChangeHandler={onChangeHandler}
+      />
+      <InputGroup
+        name="date"
+        description="Ingrese la fecha de la noticia"
+        label="Fecha"
+        type="text"
+        value={input?.date}
+        onChangeHandler={onChangeHandler}
+      />
     </Box>
   );
 };

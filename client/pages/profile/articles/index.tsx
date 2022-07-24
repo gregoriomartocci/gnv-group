@@ -500,12 +500,19 @@ const Posts = () => {
         }}
       >
         <Delete
-          path="article"
-          id={state?.delete?.api?.id}
-          object="noticia"
-          name="article"
+          selector="articles"
+          concept="noticia"
           stateHandler={stateHandler}
-          request={request}
+          request={() =>
+            request(
+              "delete",
+              "delete",
+              {},
+              state?.delete?.api?.id,
+              "article",
+              "La noticia se ha eliminado con éxito"
+            )
+          }
         />
       </UseModal>
     </Dashboard>

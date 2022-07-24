@@ -69,8 +69,6 @@ const Create = ({
     published: true,
   });
 
-  console.log(input.images, "que pasa aca che");
-
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
@@ -79,7 +77,7 @@ const Create = ({
       "post",
       input,
       "",
-      "project",
+      path,
       "El emprendimiento se agregó con éxito"
     );
   };

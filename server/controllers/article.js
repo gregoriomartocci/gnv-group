@@ -5,6 +5,8 @@ export const createArticle = async (req, res) => {
   try {
     const { title, link, source, date, images, description } = req.body;
 
+    console.log(req.body, "Yenderson");
+
     if (!title) return res.json({ error: "Por favor ingrese un Título" });
 
     if (!source)
@@ -41,6 +43,7 @@ export const createArticle = async (req, res) => {
       source,
       link,
       date,
+      description,
       images: updated_images,
     }).save();
 
@@ -60,7 +63,7 @@ export const removeArticle = async (req, res) => {
     return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
-    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+    return res.json({ error: err.message });
   }
 };
 

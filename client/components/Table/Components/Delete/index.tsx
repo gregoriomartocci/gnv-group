@@ -6,27 +6,17 @@ import { IState } from "../../../Menu";
 import UseButton from "../../../Button";
 
 interface IDelete {
-  path: string;
-  id: string;
-  object: string;
-  name: "projects" | "articles" | "users";
+  concept: string;
+  selector: "projects" | "articles" | "users";
   stateHandler: any;
   request: any;
 }
 
-const Delete = ({ path, id, name, object, stateHandler, request }: IDelete) => {
-  const state = useSelector((state: IState) => state.projects);
-  const dispatch = useDispatch();
+const Delete = ({ concept, stateHandler, request, selector }: IDelete) => {
+  const state = useSelector((state: IState) => state[selector]);
 
   const handleDelete = () => {
-    request(
-      "delete",
-      "delete",
-      {},
-      id,
-      "project",
-      "el Emprendimiento se ha eliminado con éxito"
-    );
+    request();
   };
 
   return (
@@ -53,7 +43,7 @@ const Delete = ({ path, id, name, object, stateHandler, request }: IDelete) => {
             color: "#1D2D3E",
           }}
         >
-          Eliminar {object}
+          Eliminar {concept}
         </span>
         <span
           style={{

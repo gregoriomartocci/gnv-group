@@ -23,7 +23,7 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-import Form from "../articles/Components/Form";
+import Form from "./Components/Form";
 
 export interface Data {
   id: number;
@@ -386,62 +386,62 @@ const Posts = () => {
     }
   };
 
-  const createProject = async (input) => {
-    stateHandler({
-      method: "create",
-      payload: { status: "", message: "", loading: true },
-      state,
-      keep: true,
-    });
+  // const createProject = async (input) => {
+  //   stateHandler({
+  //     method: "create",
+  //     payload: { status: "", message: "", loading: true },
+  //     state,
+  //     keep: true,
+  //   });
 
-    try {
-      const data = await api({
-        method: "post",
-        path: `/project`,
-        payload: input,
-      });
+  //   try {
+  //     const data = await api({
+  //       method: "post",
+  //       path: `/project`,
+  //       payload: input,
+  //     });
 
-      stateHandler({
-        method: "create",
-        payload: { loading: false },
-        state,
-        keep: true,
-      });
-      const { error } = data;
-      console.log(error, "<== mensaje error");
-      if (error) {
-        stateHandler({
-          method: "create",
-          payload: { ...create, status: "failed", message: error },
-          state,
-          keep: true,
-        });
-      } else {
-        const updateProjects = [...projects, data];
-        dispatch(setProjects(updateProjects));
-        stateHandler({
-          method: "create",
-          payload: {
-            status: "success",
-            message: "El emprendimiento se agregó con éxito",
-          },
-          state,
-          keep: true,
-        });
-      }
-    } catch (err) {
-      stateHandler({
-        method: "create",
-        payload: {
-          status: "failed",
-          message: "Algo salió mal, intente nuevamente!",
-          loading: false,
-        },
-        state,
-        keep: true,
-      });
-    }
-  };
+  //     stateHandler({
+  //       method: "create",
+  //       payload: { loading: false },
+  //       state,
+  //       keep: true,
+  //     });
+  //     const { error } = data;
+  //     console.log(error, "<== mensaje error");
+  //     if (error) {
+  //       stateHandler({
+  //         method: "create",
+  //         payload: { ...create, status: "failed", message: error },
+  //         state,
+  //         keep: true,
+  //       });
+  //     } else {
+  //       const updateProjects = [...projects, data];
+  //       dispatch(setProjects(updateProjects));
+  //       stateHandler({
+  //         method: "create",
+  //         payload: {
+  //           status: "success",
+  //           message: "El emprendimiento se agregó con éxito",
+  //         },
+  //         state,
+  //         keep: true,
+  //       });
+  //     }
+  //   } catch (err) {
+  //     stateHandler({
+  //       method: "create",
+  //       payload: {
+  //         status: "failed",
+  //         message: "Algo salió mal, intente nuevamente!",
+  //         loading: false,
+  //       },
+  //       state,
+  //       keep: true,
+  //     });
+  //   }
+  // };
 
   const { create, update } = state;
   const projects = state?.projects;
@@ -572,12 +572,19 @@ const Posts = () => {
         }}
       >
         <Delete
-          path="project"
-          id={state?.delete?.api?.id}
-          object="emprendimiento"
-          name="projects"
+          selector="projects"
+          concept="emprendimiento"
           stateHandler={stateHandler}
-          request={request}
+          request={() =>
+            request(
+              "delete",
+              "delete",
+              {},
+              state?.delete?.api?.id,
+              "project",
+              "El emprendimiento se ha eliminado con éxito"
+            )
+          }
         />
       </UseModal>
     </Dashboard>
