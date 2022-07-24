@@ -36,22 +36,35 @@ export type errorType = {
 export interface ICreateProps {
   selector: "projects" | "articles" | "users";
   concept: string;
+  item: string;
+  stateHandler: any;
   form: any;
   request: any;
 }
 
-const Update = ({ selector, concept, form, request }: ICreateProps) => {
+const Update = ({
+  selector,
+  concept,
+  item,
+  form,
+  request,
+  stateHandler,
+}: ICreateProps) => {
   const state_selector = useSelector((state: IState) => state[selector]);
   const [input, setInput] = useState<IProject | IArticle>(
-    state_selector?.update[selector.slice(0, -1)]
+    state_selector?.update[item]
   );
 
   const [tab, setTab] = useState<number>(0);
 
   const onChangeHandler = (e: any) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
+    stateHandler({
+      method: "update",
+      payload: {
+        [item]: { ...input, [e.target.name]: e.target.value },
+      },
+      state: state_selector,
+      keep: true,
     });
   };
 
@@ -60,7 +73,7 @@ const Update = ({ selector, concept, form, request }: ICreateProps) => {
   };
 
   const steps = [
-    form({ input, onChangeHandler, setInput }),
+    form({ input: state_selector.update[item], onChangeHandler, setInput }),
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];

@@ -251,8 +251,6 @@ const Posts = () => {
     dispatch(setState(update_state));
   };
 
-  console.log(state, "stateeee");
-
   // const { create } = state;
 
   const getArticles = async () => {
@@ -480,15 +478,16 @@ const Posts = () => {
       >
         <Update
           selector="articles"
+          item="article"
           concept="noticia"
           form={(props) => <Form {...props} />}
+          stateHandler={stateHandler}
           request={() =>
             request(
               "update",
               "post",
-              {},
+              state?.update?.article,
               update?.api?.id,
-              "article",
               "edit-article",
               "La noticia se actualizó con éxito"
             )

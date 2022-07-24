@@ -386,63 +386,6 @@ const Posts = () => {
     }
   };
 
-  // const createProject = async (input) => {
-  //   stateHandler({
-  //     method: "create",
-  //     payload: { status: "", message: "", loading: true },
-  //     state,
-  //     keep: true,
-  //   });
-
-  //   try {
-  //     const data = await api({
-  //       method: "post",
-  //       path: `/project`,
-  //       payload: input,
-  //     });
-
-  //     stateHandler({
-  //       method: "create",
-  //       payload: { loading: false },
-  //       state,
-  //       keep: true,
-  //     });
-  //     const { error } = data;
-  //     console.log(error, "<== mensaje error");
-  //     if (error) {
-  //       stateHandler({
-  //         method: "create",
-  //         payload: { ...create, status: "failed", message: error },
-  //         state,
-  //         keep: true,
-  //       });
-  //     } else {
-  //       const updateProjects = [...projects, data];
-  //       dispatch(setProjects(updateProjects));
-  //       stateHandler({
-  //         method: "create",
-  //         payload: {
-  //           status: "success",
-  //           message: "El emprendimiento se agregó con éxito",
-  //         },
-  //         state,
-  //         keep: true,
-  //       });
-  //     }
-  //   } catch (err) {
-  //     stateHandler({
-  //       method: "create",
-  //       payload: {
-  //         status: "failed",
-  //         message: "Algo salió mal, intente nuevamente!",
-  //         loading: false,
-  //       },
-  //       state,
-  //       keep: true,
-  //     });
-  //   }
-  // };
-
   const { create, update } = state;
   const projects = state?.projects;
 
@@ -552,8 +495,10 @@ const Posts = () => {
       >
         <Update
           selector="projects"
+          item="project"
           concept="emprendimiento"
           form={(props) => <Form {...props} />}
+          stateHandler={stateHandler}
           request={() =>
             request(
               "update",
