@@ -1,23 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {
-  Alert,
-  Autocomplete,
-  Box,
-  CircularProgress,
-  TextField,
-} from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { Box, CircularProgress } from "@mui/material";
+import { useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-
-import { useRouter } from "next/router";
 import { Login } from "./Styles";
-
 import { IProject } from "../../../../redux/slices/projects";
 import dynamic from "next/dynamic";
 import UseButton from "../../../Button";
 import UseTabs from "../../../Tabs";
-import Toast from "../../../Alert";
-import InputGroup from "../../../Input";
 import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
 import { IArticle } from "../../../../redux/slices/articles";
 import { IState } from "../../../Menu";
@@ -63,14 +52,8 @@ const Update = ({
   form,
   request,
 }: ICreateProps) => {
-  // const dispatch = useDispatch();
-  // const router = useRouter();
-  // const [value, setValue] = useState<IImagetoUpload[] | []>([]);
-
   const state_selector = useSelector((state: IState) => state[path]);
-  const [input, setInput] = useState<IArticle>(
-    state_selector?.update[path.slice(0, -1)]
-  );
+  const [input, setInput] = useState<IArticle>(state_selector?.update[path.slice(0, -1)]);
   const [tab, setTab] = useState<number>(0);
 
   const onChangeHandler = (e: any) => {
@@ -91,11 +74,8 @@ const Update = ({
     );
   };
 
-  const status = ["En construcción", "Finalizado"];
-  const type = ["Casa", "Departamento", "Local Comercial"];
-
   const steps = [
-    form({ input, onChangeHandler, setInput }),
+    form({ input, onChangeHandler }),
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
