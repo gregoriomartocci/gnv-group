@@ -299,7 +299,7 @@ const Posts = () => {
 
     action === "create"
       ? (update = [...array, item])
-      : action === "read"
+      : action === "projects"
       ? (update = [...item])
       : action === "update"
       ? (update = array?.map((p) =>
@@ -392,6 +392,7 @@ const Posts = () => {
 
   useEffect(() => {
     getProjects();
+    request("projects", "get", {}, "", "projects", "");
   }, []);
 
   return (
