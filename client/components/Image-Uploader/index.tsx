@@ -83,10 +83,19 @@ export const convertBase64 = (file: any) => {
 
 interface IImageUploader {
   value: any;
-  setValue: any;
+  stateHandler: any;
+  state: any;
+  method: string;
+  item: string;
 }
 
-const ImageUploader = ({ value, setValue }: IImageUploader) => {
+const ImageUploader = ({
+  value,
+  stateHandler,
+  method,
+  state,
+  item,
+}: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
 
@@ -133,7 +142,16 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
         const result = await resizeFile(newFile);
         const { name, size, type } = newFile;
         const image = { name, size, type, src: result };
-        setValue({ ...value, images: [...value?.images, image] });
+
+        stateHandler({
+          method,
+          payload: {
+            [item]: { ...value, images: [...value?.images, image] },
+          },
+          state,
+          keep: true,
+        });
+
       })
       .catch(({ errors }: any) => {
         if (errors) return setErrors([...errors, errors]);
@@ -143,7 +161,14 @@ const ImageUploader = ({ value, setValue }: IImageUploader) => {
   // Remove Image
   const fileRemove = (number: number) => {
     const update = value?.images?.filter((_, index) => index !== number);
-    setValue({ ...value, images: update });
+    stateHandler({
+      method,
+      payload: {
+        [item]: { ...value, images: update },
+      },
+      state,
+      keep: true,
+    });
   };
 
   // Convert KB Format

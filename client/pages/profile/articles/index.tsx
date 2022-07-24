@@ -30,6 +30,7 @@ export interface Data {
   description: string;
   images: string[];
   link: string;
+  date: string;
   published: boolean;
   createdAt: string;
   updatedAt: string;
@@ -134,12 +135,22 @@ export const Content = (article: ITableContent) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
+          {sliceText(article?.source, 30)}
+        </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
           {santize(sliceText(article?.description, 30))}
         </Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
           {sliceText(article?.link, 30)}
+        </Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography style={{ fontFamily: "Montserrat" }}>
+          {sliceText(article?.date, 30)}
         </Typography>
       </TableCell>
       <TableCell align="left">
@@ -207,6 +218,12 @@ const headCells: readonly HeadCell[] = [
     label: "Título",
   },
   {
+    id: "source",
+    numeric: true,
+    disablePadding: false,
+    label: "Fuente",
+  },
+  {
     id: "description",
     numeric: true,
     disablePadding: false,
@@ -217,6 +234,12 @@ const headCells: readonly HeadCell[] = [
     numeric: true,
     disablePadding: false,
     label: "Link",
+  },
+  {
+    id: "date",
+    numeric: true,
+    disablePadding: false,
+    label: "Fecha",
   },
   {
     id: "published",

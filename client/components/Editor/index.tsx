@@ -42,13 +42,23 @@ const formats = [
 
 export interface IEditor {
   value: any;
-  setValue: any;
+  method: string;
+  item: any;
+  stateHandler: any;
+  state: any;
 }
 
-const Editor = ({ value, setValue }: IEditor) => {
+const Editor = ({ value, method, item, stateHandler, state }: IEditor) => {
+
   const onChangeHandler = (string: string) => {
-    console.log(string, "string");
-    setValue({ ...value, description: string });
+    stateHandler({
+      method,
+      payload: {
+        [item]: { ...value, description: string },
+      },
+      state,
+      keep: true,
+    });
   };
 
   return (
@@ -58,7 +68,7 @@ const Editor = ({ value, setValue }: IEditor) => {
           <ReactQuill
             formats={formats}
             style={{ height: "300px" }}
-            placeholder="Introduzca una descripción del proyecto.."
+            placeholder="Introduzca una descripción..."
             theme="snow"
             defaultValue={value.description}
             scrollingContainer="body"

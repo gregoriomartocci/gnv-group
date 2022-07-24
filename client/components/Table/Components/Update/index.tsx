@@ -74,8 +74,20 @@ const Update = ({
 
   const steps = [
     form({ input: state_selector.update[item], onChangeHandler, setInput }),
-    <ImageUploader value={input} setValue={setInput} />,
-    <Editor value={input} setValue={setInput} />,
+    <ImageUploader
+      value={input}
+      method="update"
+      item={item}
+      stateHandler={stateHandler}
+      state={state_selector}
+    />,
+    <Editor
+      value={input}
+      method="update"
+      item={item}
+      stateHandler={stateHandler}
+      state={state_selector}
+    />,
   ];
 
   const tab_options = ["Información Básica", "Multimedia", "Descripción"];
