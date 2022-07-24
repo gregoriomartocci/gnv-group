@@ -44,6 +44,7 @@ export interface initialState {
   actions: boolean;
   delete: TDelete;
   update: TUpdate;
+  alert: { message: string; status: string };
 }
 
 const initialState: initialState = {
@@ -66,40 +67,22 @@ const initialState: initialState = {
     api: { path: "", id: 0 },
     project: {},
   },
+  alert: { message: "", status: "" },
 };
 
 export const articlesSlice = createSlice({
   name: "articles",
-  initialState,
+  initialState, 
   reducers: {
+    setState: (state, action: PayloadAction<initialState>) => {
+      return (state = action.payload);
+    },
     setArticles: (state, action: PayloadAction<IArticle[]>) => {
       state.articles = [...action.payload];
-    },
-    setArticle: (state, action: PayloadAction<IArticle>) => {
-      state.article = { ...action.payload };
-    },
-    setCreate: (state, action: PayloadAction<TCreate>) => {
-      state.create = action.payload;
-    },
-    setDelete: (state, action: PayloadAction<TDelete>) => {
-      state.delete = action.payload;
-    },
-    setUpdate: (state, action: PayloadAction<TUpdate>) => {
-      state.update = action.payload;
-    },
-    setActions: (state, action: PayloadAction<boolean>) => {
-      state.actions = action.payload;
     },
   },
 });
 
-export const {
-  setArticles,
-  setArticle,
-  setCreate,
-  setDelete,
-  setUpdate,
-  setActions,
-} = articlesSlice.actions;
+export const { setState, setArticles } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

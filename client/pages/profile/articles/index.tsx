@@ -3,42 +3,30 @@ import { Theme } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IState } from "../../../components/Menu";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import api from "../../../hooks/Api";
-import {
-  setCreate,
-  setDelete,
-  setArticles,
-  setUpdate,
-  IArticle,
-  setActions,
-} from "../../../redux/slices/articles";
-
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-
 import Dropdown from "../../../components/Dropdown";
 import UseModal from "../../../components/Modal";
 import Toast from "../../../components/Alert";
-import Update from "./components/Update";
 import parse from "html-react-parser";
-import { IImagetoUpload } from "../../../components/Image-Uploader";
-import Create from "./components/Create";
-import Actions from "./components/Actions";
-import Delete from "./components/Delete";
+import Actions from "../../../components/Table/Components/Actions";
+import Delete from "../../../components/Table/Components/Delete";
+import Update from "../../../components/Table/Components/Update";
+import Create from "../../../components/Table/Components/Create";
+import Form from "./Components/Form";
+import { IArticle, setArticles, setState } from "../../../redux/slices/articles";
 
 export interface Data {
   id: number;
-  _id: string;
   title: string;
-  source: string;
-  images: IImagetoUpload[];
-  date: string;
-  published: boolean;
-  link: string;
   description: string;
+  images: string[];
+  link: string;
+  published: boolean;
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -58,21 +46,64 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  article: any;
+  article: IArticle;
 }
 
 interface ISanitize {
   string: string;
 }
 
-export const ArticlesContent = ({ article }: ITableContent) => {
-  const [size, setSize] = useState<number>(50);
+export const santize = (string: string) => {
+  if (typeof string === "string") {
+    const reactElement = parse(string);
+    return reactElement;
+  }
+  return;
+};
+
+export const sliceText = (text: any, limit: number) => {
+  const string =
+    text?.length && text?.length > limit
+      ? text.toString().substring(0, limit) + "..."
+      : text;
+  return string;
+};
+
+export const Content = (article: ITableContent) => {
+  const dispatch = useDispatch();
+  const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [actual, setActual] = React.useState<string>("");
+  const [selected, setSelected] = React.useState<IArticle>({});
   const state = useSelector((state: IState) => state?.articles);
-  const [rowSelected, setRowSelected] = React.useState<any>();
-  const dispatch = useDispatch();
+
+  const openActionsMenu = Boolean(anchorEl && state?.actions?.modal);
+
+  const stateHandler = ({ method, payload, state, keep }) => {
+    const update_state = {
+      ...state,
+      [method]: keep ? { ...state[method], ...payload } : payload,
+    };
+    dispatch(setState(update_state));
+  };
+
+  const handleCloseActionsMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClickActionsMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    project: IArticle
+  ) => {
+    setSelected(project);
+    setAnchorEl(event.currentTarget);
+    stateHandler({
+      method: "actions",
+      payload: { modal: true },
+      state,
+      keep: true,
+    });
+  };
 
   const CellTable: SxProps<Theme> = {
     display: "flex",
@@ -88,57 +119,24 @@ export const ArticlesContent = ({ article }: ITableContent) => {
     },
   };
 
-  const openActionsMenu = Boolean(anchorEl && state?.actions);
-
-  const handleCloseActionsMenu = () => {
-    setAnchorEl(null);
-  };
-
-  const handleClickActionsMenu = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: string,
-    row: any
-  ) => {
-    setActual(id);
-    setRowSelected(row);
-    dispatch(setActions(true));
-    setAnchorEl(event.currentTarget);
-  };
-
-  const sanitize = (string: string) => {
-    const reactElement = parse(string);
-    return reactElement;
-  };
-
-  const sliceText = (text: any, limit: number) => {
-    const string =
-      text.length > limit ? text.toString().substring(0, limit) + "..." : text;
-    return string;
-  };
-
   return (
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={article?.images[0]?.src} alt="" />
+          <img src={article?.images[0]?.src ?? ""} alt="" />
           <Typography style={{ fontFamily: "Montserrat" }}>
-            {sliceText(article?.title, 40)}
+            {article?.title}
           </Typography>
         </Box>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {article?.source}
+          {santize(sliceText(article?.description, 30))}
         </Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {sliceText(article?.link, 40)}
-        </Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography style={{ fontFamily: "Montserrat" }}>
-          {sanitize(sliceText(article?.description ?? "", 40))}
+          {sliceText(article?.link, 30)}
         </Typography>
       </TableCell>
       <TableCell align="left">
@@ -172,11 +170,7 @@ export const ArticlesContent = ({ article }: ITableContent) => {
         </Typography>
       </TableCell>
       <TableCell align="left">
-        <IconButton
-          onClick={(e) =>
-            handleClickActionsMenu(e, article?._id.toString(), article)
-          }
-        >
+        <IconButton onClick={(e) => handleClickActionsMenu(e, article)}>
           <MoreVertIcon />
         </IconButton>
         <Dropdown
@@ -184,7 +178,11 @@ export const ArticlesContent = ({ article }: ITableContent) => {
           handleClose={handleCloseActionsMenu}
           anchorEl={anchorEl}
         >
-          <Actions path="article" id={actual} row={rowSelected} />
+          <Actions
+            path="article"
+            item={selected}
+            stateHandler={(props) => stateHandler(props)}
+          />
         </Dropdown>
       </TableCell>
     </Fragment>
@@ -205,22 +203,16 @@ const headCells: readonly HeadCell[] = [
     label: "Título",
   },
   {
-    id: "source",
+    id: "description",
     numeric: true,
     disablePadding: false,
-    label: "Fuente",
+    label: "Descripción",
   },
   {
     id: "link",
     numeric: true,
     disablePadding: false,
-    label: "Enlace",
-  },
-  {
-    id: "description",
-    numeric: true,
-    disablePadding: false,
-    label: "Descripción",
+    label: "Link",
   },
   {
     id: "published",
@@ -246,18 +238,32 @@ const Posts = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ articles: "", message: "" });
   const state = useSelector((state: IState) => state?.articles);
-  const { articles } = state;
+
+  const stateHandler = ({ method, payload, state, keep }) => {
+    const update_state = {
+      ...state,
+      [method]: keep ? { ...state[method], ...payload } : payload,
+    };
+    dispatch(setState(update_state));
+  };
+
+  console.log(state, "stateeee");
+
+  // const { create } = state;
 
   const getArticles = async () => {
     setError({ articles: "", message: "" });
     setLoading(true);
+
     try {
       const data = await api({
         method: "get",
         path: "/articles",
       });
+
       console.log("Dateushh", data);
       setLoading(false);
+
       if (data?.error) {
         setError({ articles: "failed", message: data?.error });
       } else {
@@ -270,58 +276,100 @@ const Posts = () => {
     }
   };
 
+  const array_operations = (action, array, item) => {
+    let update_array;
+
+    action === "update"
+      ? (update_array = array?.map((p) =>
+          p?._id?.toString() === item?._id?.toString() ? item : p
+        ))
+      : action === "delete"
+      ? (update_array = array.filter(
+          (p) => p?._id.toString() !== item?._id.toString()
+        ))
+      : action === "create"
+      ? (update_array = [...array, item])
+      : update_array;
+
+    console.log(update_array, "aver gaspaaaaaar");
+    return update_array;
+  };
+
+  // request function
+
+  const request = async (action, method, input, id, path, message) => {
+    stateHandler({
+      method: action,
+      payload: { status: "", message: "", loading: true },
+      state,
+      keep: true,
+    });
+    try {
+      const data = await api({
+        method,
+        path: `/${path}/${id}`,
+        payload: input,
+      });
+
+      stateHandler({
+        method: action,
+        payload: { loading: false },
+        state,
+        keep: true,
+      });
+
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+
+      if (error) {
+        stateHandler({
+          method: action,
+          payload: { status: "failed", message: error },
+          state,
+          keep: true,
+        });
+      } else {
+        const updated_array = array_operations(action, articles, data);
+
+        let payload;
+
+        action === "delete"
+          ? (payload = {
+              status: "success",
+              message,
+              modal: false,
+            })
+          : (payload = {
+              status: "success",
+              message,
+              modal: false,
+            });
+
+        stateHandler({
+          method: action,
+          payload,
+          state,
+          keep: true,
+        });
+
+        dispatch(setArticles(updated_array));
+      }
+    } catch (err) {
+      stateHandler({
+        method: action,
+        payload: {
+          status: "failed",
+          message: "Algo salió mal, intente nuevamente!",
+          loading: false,
+        },
+        state,
+        keep: true,
+      });
+    }
+  };
+
+  const articles = state?.articles;
   const { create, update } = state;
-
-  const closeDeleteModal = () => {
-    dispatch(
-      setDelete({
-        ...state?.delete,
-        loading: false,
-        modal: false,
-      })
-    );
-  };
-
-  const openCreateModal = () => {
-    dispatch(setCreate({ ...create, status: "", message: "", modal: true }));
-  };
-
-  const openUpdateModal = () => {
-    dispatch(setCreate({ ...update, status: "", message: "", modal: true }));
-  };
-
-  const reset = (string: keyof resetParams) => {
-    const ok = state[string];
-    dispatch(
-      setDelete({
-        ...ok,
-        status: "",
-        message: "",
-      })
-    );
-  };
-
-  const closeCreateModal = () => {
-    dispatch(
-      setCreate({
-        ...state?.create,
-        loading: false,
-        modal: false,
-      })
-    );
-  };
-
-  const closeUpdateModal = () => {
-    dispatch(
-      setUpdate({
-        ...state?.update,
-        status: "",
-        message: "",
-        loading: false,
-        modal: false,
-      })
-    );
-  };
 
   useEffect(() => {
     getArticles();
@@ -331,42 +379,130 @@ const Posts = () => {
     <Dashboard>
       {state?.delete?.status === "success" && (
         <Toast
-          message="La Noticia se eliminó con éxito"
+          message="El emprendimiento se eliminó con éxito"
           type="success"
-          action={() => reset("delete")}
+          action={() =>
+            stateHandler({
+              method: "delete",
+              payload: { status: "", message: "" },
+              state,
+              keep: true,
+            })
+          }
         />
       )}
-
       {state?.delete?.status === "failed" && (
         <Toast
-          message={state?.delete?.message}
+          message={state?.delete.message}
           type="error"
-          action={() => reset("delete")}
+          action={() =>
+            stateHandler({
+              method: "delete",
+              payload: { status: "", message: "" },
+              state,
+              keep: true,
+            })
+          }
         />
       )}
-
+      {create?.status === "success" && (
+        <Toast
+          message={create?.message}
+          type="success"
+          action={() =>
+            stateHandler({
+              method: "create",
+              payload: { status: "", message: "" },
+              state,
+              keep: true,
+            })
+          }
+        />
+      )}
+      {create?.status === "failed" && (
+        <Toast
+          message={create?.message}
+          type="error"
+          action={() =>
+            stateHandler({
+              method: "create",
+              payload: { status: "", message: "" },
+              state,
+              keep: true,
+            })
+          }
+        />
+      )}
       <UseTable
         title="Noticias"
         api="article"
+        name="articles"
         headCells={headCells}
-        rows={articles}
-        openModals={[openCreateModal, openUpdateModal]}
+        rows={articles?.length ? articles : []}
+        content={(article: IArticle) => <Content {...article} />}
+        stateHandler={stateHandler}
       />
-
-      <UseModal open={state?.delete?.modal} handleClose={closeDeleteModal}>
-        <Delete path={state?.delete?.api?.path} id={state?.delete?.api?.id} />
-      </UseModal>
-
-      <UseModal open={state?.update?.modal} handleClose={closeUpdateModal}>
-        <Update
-          articles={articles}
-          path={state?.update?.api?.path}
-          id={state?.update?.api?.id}
+      <UseModal
+        open={create?.modal}
+        handleClose={() =>
+          stateHandler({
+            method: "create",
+            payload: { modal: false },
+            state,
+            keep: true,
+          })
+        }
+      >
+        <Create
+          items={articles}
+          path="article"
+          object="noticia"
+          stateHandler={stateHandler}
+          loading={create?.loading}
+          form={(props) => <Form {...props} />}
+          request={request}
         />
       </UseModal>
-
-      <UseModal open={create?.modal} handleClose={closeCreateModal}>
-        <Create articles={articles} />
+      <UseModal
+        open={state?.delete?.modal}
+        handleClose={() => {
+          stateHandler({
+            method: "delete",
+            payload: { modal: false },
+            state,
+            keep: true,
+          });
+        }}
+      >
+        <Delete
+          path="article"
+          id={state?.delete?.api?.id}
+          object="noticia"
+          name="article"
+          stateHandler={stateHandler}
+          request={request}
+        />
+      </UseModal>
+      <UseModal
+        open={update?.modal}
+        handleClose={() =>
+          stateHandler({
+            method: "update",
+            payload: { modal: false },
+            state,
+            keep: true,
+          })
+        }
+      >
+        <Update
+          items={articles}
+          path="articles"
+          object="noticia"
+          id={update?.api?.id}
+          stateHandler={stateHandler}
+          form={(props) => <Form {...props} />}
+          request={request}
+        />
       </UseModal>
     </Dashboard>
   );

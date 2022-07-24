@@ -19,7 +19,7 @@ import {
   InfoMessage,
 } from "./Styles";
 import * as yup from "yup";
-import { inputType } from "../../pages/profile/projects/Components/Form";
+import { inputType } from "../../pages/profile/articles/Components/Form";
 import FileResizer from "react-image-file-resizer";
 
 export interface IImagetoUpload {

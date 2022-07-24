@@ -35,7 +35,7 @@ const Main = ({ slides }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides.length;
   const timeout = useRef(0);
-  const slideTime = 5000;
+  const slideTime = 8000;
 
   const dispatch = useDispatch();
 

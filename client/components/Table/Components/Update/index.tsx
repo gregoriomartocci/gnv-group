@@ -104,25 +104,6 @@ const Update = ({
 
   return (
     <Box sx={{ width: "100%" }}>
-      {/* {update?.status === "success" && (
-        <Toast
-          message={update?.message}
-          type="success"
-          action={() =>
-            stateHandler({ method: "update", payload: { modal: true } })
-          }
-        />
-      )}
-      {update?.status === "failed" && (
-        <Toast
-          message={update?.message}
-          type="error"
-          action={() =>
-            stateHandler({ method: "update", payload: { modal: true } })
-          }
-        />
-      )} */}
-
       <Box sx={Login}>
         <span
           style={{

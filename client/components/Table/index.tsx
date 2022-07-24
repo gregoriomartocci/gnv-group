@@ -20,14 +20,13 @@ import { visuallyHidden } from "@mui/utils";
 import UseButton from "../Button";
 import UseModal from "../Modal";
 import { GrayBackground } from "./Styles";
-import { ProjectsContent } from "../../pages/profile/projects";
 import Dropdown from "../Dropdown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../Menu";
 
-import { ArticlesContent } from "../../pages/profile/articles";
+
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -108,6 +107,8 @@ export default function UseTable({
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
   const state = useSelector((state: IState) => state[name]);
+
+  console.log(state, "que pasaaa")
 
   const dispatch = useDispatch();
 

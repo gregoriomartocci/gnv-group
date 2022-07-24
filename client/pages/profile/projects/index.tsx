@@ -23,7 +23,7 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-import Form from "./Components/Form";
+import Form from "../articles/Components/Form";
 
 export interface Data {
   id: number;
@@ -75,7 +75,7 @@ export const sliceText = (text: any, limit: number) => {
   return string;
 };
 
-export const ProjectsContent = (project: ITableContent) => {
+export const Content = (project: IProject) => {
   const dispatch = useDispatch();
   const [size, setSize] = useState<number>(60);
   const [rounded, setRounded] = useState<boolean>(false);
@@ -513,8 +513,8 @@ const Posts = () => {
         api="project"
         name="projects"
         headCells={headCells}
-        rows={projects.length ? projects : []}
-        content={(project: IProject) => <ProjectsContent {...project} />}
+        rows={projects?.length ? projects : []}
+        content={(project: IProject) => <Content {...project} />}
         stateHandler={stateHandler}
       />
 
@@ -533,7 +533,6 @@ const Posts = () => {
           items={projects}
           path="project"
           object="emprendimiento"
-          publish={createProject}
           stateHandler={stateHandler}
           loading={create?.loading}
           form={(props) => <Form {...props} />}

@@ -7,21 +7,15 @@ import {
   TextField,
 } from "@mui/material";
 
-import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-import { useRouter } from "next/router";
 import { Login } from "./Styles";
 import dynamic from "next/dynamic";
 import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
 import { IArticle } from "../../../../redux/slices/articles";
-import { IState } from "../../../Menu";
-import { resetParams } from "../../../../pages/profile/projects";
-import api from "../../../../hooks/Api";
 import { IProject } from "../../../../redux/slices/projects";
 import UseButton from "../../../Button";
 import UseTabs from "../../../Tabs";
-import Toast from "../../../Alert";
-import InputGroup from "../../../Input";
+
 
 const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,
@@ -48,7 +42,6 @@ export type errorType = {
 export interface ICreateProps {
   items: IArticle[] | IProject[];
   path: "article" | "project" | "user";
-  publish: any;
   object: string;
   loading: boolean;
   stateHandler: any;
@@ -123,8 +116,6 @@ const Create = ({
         <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
-
-        {/* {console.log(input, "INPUT")} */}
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
           {loading ? (
