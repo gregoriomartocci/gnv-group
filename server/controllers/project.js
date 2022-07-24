@@ -65,6 +65,8 @@ export const removeProject = async (req, res) => {
 export const editProject = async (req, res) => {
   const { images } = req.body;
 
+  console.log(req.body, "que poronga nos llega")
+
   const validate_cloudinay = (str) => {
     const validate =
       typeof str === "string" && str.split(".")[1] === "cloudinary";
@@ -73,20 +75,27 @@ export const editProject = async (req, res) => {
 
   try {
     const { id } = req.params;
-    const upload_images = images.map(async (i) => ({
-      ...i,
-      src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,
-    }));
 
-    const updated_images = await Promise.all(upload_images);
-    const updated_project = { ...req.body, images: updated_images };
-    // console.log(updated_project, "OKAAA");
+    let promise_array;
+    let updated_images;
+    let updated_project;
+
+    if (images) {
+      images_aux = images.map(async (i) => ({
+        ...i,
+        src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,
+      }));
+      updated_images = await Promise.all(images_aux);
+      updated_project = { ...req.body, images: updated_images };
+    }
+
+    updated_project = { ...req.body };
 
     const project = await Project.findByIdAndUpdate(id, updated_project, {
       new: true,
     });
 
-    console.log(project);
+    // console.log(project);
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

@@ -34,26 +34,18 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  items: IArticle[] | IProject[];
-  path: "projects" | "articles" | "users";
-  id: number;
-  object: string;
-  stateHandler: any;
+  selector: "projects" | "articles" | "users";
+  concept: string;
   form: any;
   request: any;
 }
 
-const Update = ({
-  items,
-  path,
-  id,
-  object,
-  stateHandler,
-  form,
-  request,
-}: ICreateProps) => {
-  const state_selector = useSelector((state: IState) => state[path]);
-  const [input, setInput] = useState<IArticle>(state_selector?.update[path.slice(0, -1)]);
+const Update = ({ selector, concept, form, request }: ICreateProps) => {
+  const state_selector = useSelector((state: IState) => state[selector]);
+  const [input, setInput] = useState<IProject | IArticle>(
+    state_selector?.update[selector.slice(0, -1)]
+  );
+
   const [tab, setTab] = useState<number>(0);
 
   const onChangeHandler = (e: any) => {
@@ -64,18 +56,11 @@ const Update = ({
   };
 
   const handlePublish = () => {
-    request(
-      "update",
-      "post",
-      input,
-      state_selector?.update[path.slice(0, -1)]._id,
-      "edit-project",
-      "La noticia se actualizó con éxito"
-    );
+    request();
   };
 
   const steps = [
-    form({ input, onChangeHandler }),
+    form({ input, onChangeHandler, setInput }),
     <ImageUploader value={input} setValue={setInput} />,
     <Editor value={input} setValue={setInput} />,
   ];
@@ -93,7 +78,7 @@ const Update = ({
             color: "#424242",
           }}
         >
-          Editar {object}
+          Editar {concept}
         </span>
 
         <UseTabs value={tab} setValue={setTab} options={tab_options} />

@@ -479,13 +479,20 @@ const Posts = () => {
         }
       >
         <Update
-          items={articles}
-          path="articles"
-          object="noticia"
-          id={update?.api?.id}
-          stateHandler={stateHandler}
+          selector="articles"
+          concept="noticia"
           form={(props) => <Form {...props} />}
-          request={request}
+          request={() =>
+            request(
+              "update",
+              "post",
+              {},
+              update?.api?.id,
+              "article",
+              "edit-article",
+              "La noticia se actualizó con éxito"
+            )
+          }
         />
       </UseModal>
       <UseModal

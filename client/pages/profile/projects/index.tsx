@@ -551,13 +551,19 @@ const Posts = () => {
         }
       >
         <Update
-          items={projects}
-          path="projects"
-          object="emprendimiento"
-          id={state?.update?.api?.id}
-          stateHandler={stateHandler}
+          selector="projects"
+          concept="emprendimiento"
           form={(props) => <Form {...props} />}
-          request={request}
+          request={() =>
+            request(
+              "update",
+              "post",
+              state?.update?.project,
+              state?.update?.api?.id,
+              "edit-project",
+              "El emprendimiento se ha eliminado con éxito"
+            )
+          }
         />
       </UseModal>
       <UseModal

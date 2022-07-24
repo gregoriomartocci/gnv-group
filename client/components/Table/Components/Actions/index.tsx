@@ -18,6 +18,8 @@ interface IActions {
 const Actions = ({ path, selector, item, stateHandler }: IActions) => {
   const state = useSelector((state: IState) => state[selector]);
 
+  console.log(state, "BOCA JUNIORS");
+
   return (
     <Box sx={MenuContainer}>
       <Box
@@ -28,8 +30,8 @@ const Actions = ({ path, selector, item, stateHandler }: IActions) => {
             method: "update",
             payload: {
               modal: true,
-              api: { id: item?.id, path },
-              article: item,
+              api: { id: item?._id, path },
+              [path]: item,
             },
             state,
             keep: true,
