@@ -277,48 +277,24 @@ const Posts = () => {
 
   // const { create } = state;
 
-  const getArticles = async () => {
-    setError({ articles: "", message: "" });
-    setLoading(true);
-
-    try {
-      const data = await api({
-        method: "get",
-        path: "/articles",
-      });
-
-      console.log("Dateushh", data);
-      setLoading(false);
-
-      if (data?.error) {
-        setError({ articles: "failed", message: data?.error });
-      } else {
-        setError({ ...error, articles: "success" });
-        dispatch(setArticles(data));
-      }
-    } catch (err) {
-      setError({ articles: "failed", message: "Something went wrong" });
-      setLoading(false);
-    }
-  };
-
   const array_operations = (action, array, item) => {
-    let update_array;
+    let update;
 
-    action === "update"
-      ? (update_array = array?.map((p) =>
+    action === "create"
+      ? (update = [...array, item])
+      : action === "articles"
+      ? (update = [...item])
+      : action === "update"
+      ? (update = array?.map((p) =>
           p?._id?.toString() === item?._id?.toString() ? item : p
         ))
       : action === "delete"
-      ? (update_array = array.filter(
+      ? (update = array.filter(
           (p) => p?._id.toString() !== item?._id.toString()
         ))
-      : action === "create"
-      ? (update_array = [...array, item])
-      : update_array;
+      : update;
 
-    console.log(update_array, "aver gaspaaaaaar");
-    return update_array;
+    return update;
   };
 
   // request function
@@ -344,6 +320,7 @@ const Posts = () => {
         keep: true,
       });
 
+      console.log(data, "TALLERES DE CORDOBA");
       const { error } = data;
       console.log(error, "<== mensaje error");
 
@@ -356,7 +333,6 @@ const Posts = () => {
         });
       } else {
         const updated_array = array_operations(action, articles, data);
-
         let payload;
 
         action === "delete"
@@ -398,7 +374,8 @@ const Posts = () => {
   const { create, update } = state;
 
   useEffect(() => {
-    getArticles();
+    // getArticles();
+    request("articles", "get", {}, "", "articles", "");
   }, []);
 
   return (

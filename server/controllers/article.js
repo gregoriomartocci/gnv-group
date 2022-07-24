@@ -99,8 +99,12 @@ export const editArticle = async (req, res) => {
 };
 
 export const getArticles = async (req, res) => {
+
+
+
   try {
     const all = await Article.find().populate("title").sort({ createdAt: -1 });
+    console.log(all, "BANFIELD")
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
