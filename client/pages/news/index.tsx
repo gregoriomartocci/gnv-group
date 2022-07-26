@@ -16,11 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { errorType } from "../profile/articles";
 import api from "../../hooks/Api";
 import { IArticle, setArticles } from "../../redux/slices/articles";
-import { CardBody, CardHeader } from "./Styles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
-import { CardContainer } from "../../components/Card/Styles";
+import { CardBody, CardContainer, CardHeader } from "../../components/Card/Styles";
 
 export const santize = (string: string) => {
   const reactElement = parse(string);
