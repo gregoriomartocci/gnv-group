@@ -18,7 +18,7 @@ const Home = () => {
       <Main
         slides={SliderData}
         mode="static"
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg"
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg"
       />
 
       <HeaderTitle

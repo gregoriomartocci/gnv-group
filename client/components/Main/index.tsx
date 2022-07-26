@@ -90,7 +90,6 @@ const Main = ({ slides, mode, img }: ISlidesProps) => {
                       />
                     </Box>
                     <Box sx={MainContent}>
-                      {/* <h1>{slide?.name}</h1> */}
                       <Box style={{ width: "150px" }}>
                         <Button type={"Primary"}>Contactanos</Button>
                       </Box>

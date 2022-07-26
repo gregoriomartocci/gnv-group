@@ -121,7 +121,10 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
             <Link href={"/"}>
               <a>
                 <Box sx={LogoStyle}>
-                  <Logo theme={navbar ? "dark" : "light"} width="125px" />
+                  <Logo
+                    theme={onScroll ? (navbar ? "dark" : "light") : "dark"}
+                    width="125px"
+                  />
                 </Box>
               </a>
             </Link>
