@@ -18,6 +18,9 @@ const News = () => {
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg"
       ></Main>
       <HeaderTitle
+        height={10}
+        width={20}
+        fontSize="22px"
         title="Emprendimientos"
         description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
       />

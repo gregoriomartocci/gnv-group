@@ -145,7 +145,7 @@ const News = () => {
     <Box>
       <Menu onScroll={false} />
       <Box sx={{ margin: "40px 0" }}>
-        <HeaderTitle title="Noticias destacadas" />
+        <HeaderTitle height={5} width={18} title="Noticias destacadas" />
       </Box>
       <Box
         sx={{
@@ -164,7 +164,7 @@ const News = () => {
           ))}
         </Carousel>
       </Box>
-      <HeaderTitle title="Todas las noticias" />
+      <HeaderTitle height={7.5} width={18} title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
         <Cards
           items={articles}

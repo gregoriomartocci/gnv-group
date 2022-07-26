@@ -2,11 +2,14 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 
 interface IHeaderTitle {
-  title: string;
+  title?: string;
   description?: string;
+  fontSize?: string;
+  height?: number;
+  width?: number;
 }
 
-const HeaderTitle = ({ title, description }: IHeaderTitle) => {
+const HeaderTitle = ({ title, description, height, width, fontSize }: IHeaderTitle) => {
   return (
     <Box
       sx={{
@@ -14,25 +17,27 @@ const HeaderTitle = ({ title, description }: IHeaderTitle) => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        padding: "5% 20%",
+        padding: `${height}% ${width}%`,
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
       }}
     >
-      <Typography
-        sx={{
-          fontSize: "35px",
-          margin: "20px 0",
-          fontWeight: 600,
-          fontFamily: "'Poppins', sans-serif",
-        }}
-      >
-        {title}
-      </Typography>
+      {title ? (
+        <Typography
+          sx={{
+            fontSize: "35px",
+            margin: "20px 0",
+            fontWeight: 600,
+            fontFamily: "'Poppins', sans-serif",
+          }}
+        >
+          {title}
+        </Typography>
+      ) : null}
       {description && (
         <Typography
           sx={{
-            fontSize: "20px",
+            fontSize,
             margin: "15px 0",
             fontFamily: "'Poppins', sans-serif",
           }}
