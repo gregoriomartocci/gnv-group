@@ -31,7 +31,7 @@ export interface ISlide {
 export interface ISlidesProps {
   slides: StaticImageData[];
   mode: "slider" | "static";
-  img?: StaticImageData;
+  img?: string;
 }
 
 const Main = ({ slides, mode, img }: ISlidesProps) => {

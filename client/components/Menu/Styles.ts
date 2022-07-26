@@ -6,7 +6,7 @@ export const MenuContainer: SxProps = {
   left: 0,
   width: "100%",
   padding: "0 10%",
-  height: "80px",
+  height: "100px",
   zIndex: 2500,
   color: "#fff",
   fontFamily: "'Montserrat', sans-serif",
@@ -20,7 +20,7 @@ export const MenuContainerOnScroll: SxProps<Theme> = {
   left: 0,
   width: "100%",
   padding: "0 10%",
-  height: "80px",
+  height: "100px",
   zIndex: 2500,
   color: "#212121",
   backgroundColor: "#fff",
@@ -66,6 +66,7 @@ export const MenuItems: SxProps<Theme> = {
   justifyContent: "flex-end",
   alignItems: "center",
   width: "100%",
+  fontSize:"18px"
 };
 
 export const MenuItem: SxProps<Theme> = {

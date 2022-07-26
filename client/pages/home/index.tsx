@@ -16,7 +16,8 @@ const Home = () => {
       <Menu onScroll />
       <Main
         slides={SliderData}
-        mode="slider"
+        mode="static"
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg"
       />
       <Section {...InfoDataOne} />
       <Section {...InfoDataTwo} reverse />
