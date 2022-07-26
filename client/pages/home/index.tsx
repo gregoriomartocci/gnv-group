@@ -74,6 +74,8 @@ const Home = () => {
       </Box>
 
       <Cards
+        gap={0}
+        columns={2}
         items={items}
         component={(item: TDemo) => <Card {...item} />}
       ></Cards>

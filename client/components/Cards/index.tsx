@@ -8,9 +8,20 @@ import { IArticle } from "../../redux/slices/articles";
 export interface IProjects {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
+  gap: numer;
+  columns: number;
 }
 
-const Cards = ({ items, component }: IProjects) => {
+const Cards = ({ items, component, gap, columns }: IProjects) => {
+
+  const ProjectsContainer: SxProps<Theme> = {
+    display: "grid",
+    gridTemplateColumns: `repeat(${columns},1fr)`,
+    gap,
+    backgroundColor: "#fff",
+    fontFamily: "Poppins",
+  };
+
   return (
     <Box sx={ProjectsContainer}>
       {items?.map((item, index: number) => (

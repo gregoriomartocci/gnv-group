@@ -20,6 +20,7 @@ import { CardBody, CardHeader } from "./Styles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
+import { CardContainer } from "../../components/Card/Styles";
 
 export const santize = (string: string) => {
   const reactElement = parse(string);
@@ -51,56 +52,58 @@ const ArticleCard = ({
   return (
     <Link href={link}>
       <a target="_blank">
-        <img src={images[0]?.src ?? ""} alt={title} />
-        <Box sx={CardHeader}>
-          <span
-            style={{
-              color: "#212121",
-              fontWeight: 600,
-              fontSize: "20px",
-              margin: "15px 0",
-            }}
-          >
-            {title}
-          </span>
-        </Box>
-
-        <Box sx={CardBody}>
-          <Box style={{ display: "flex", alignItems: "center" }}>
+        <Box sx={CardContainer}>
+          <img src={images[0]?.src ?? ""} alt={title} />
+          <Box sx={CardHeader}>
             <span
               style={{
                 color: "#212121",
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "20px",
+                margin: "15px 0",
               }}
             >
-              {status}
+              {title}
             </span>
           </Box>
 
-          <Box
-            style={{
-              color: "#424242",
-              fontWeight: 600,
-              fontSize: "12px",
-              margin: "10px 0",
-            }}
-          >
-            {santize(sliceText(description, 150) ?? "")}
-          </Box>
+          <Box sx={CardBody}>
+            <Box style={{ display: "flex", alignItems: "center" }}>
+              <span
+                style={{
+                  color: "#212121",
+                  fontWeight: 600,
+                  fontSize: "12px",
+                }}
+              >
+                {status}
+              </span>
+            </Box>
 
-          <Box
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "#424242",
-              fontWeight: 600,
-              fontSize: "12px",
-              margin: "10px 0",
-            }}
-          >
-            Ver Noticia
-            <KeyboardArrowRightIcon />
+            <Box
+              style={{
+                color: "#424242",
+                fontWeight: 600,
+                fontSize: "12px",
+                margin: "10px 0",
+              }}
+            >
+              {santize(sliceText(description, 150) ?? "")}
+            </Box>
+
+            <Box
+              style={{
+                display: "flex",
+                alignItems: "center",
+                color: "#424242",
+                fontWeight: 600,
+                fontSize: "12px",
+                margin: "10px 0",
+              }}
+            >
+              Ver Noticia
+              <KeyboardArrowRightIcon />
+            </Box>
           </Box>
         </Box>
       </a>
@@ -167,6 +170,8 @@ const News = () => {
       <HeaderTitle height={7.5} width={18} title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
         <Cards
+          gap={3}
+          columns={4}
           items={articles}
           component={(item: IArticle) => <ArticleCard {...item} />}
         ></Cards>

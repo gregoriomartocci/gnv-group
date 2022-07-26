@@ -6,7 +6,6 @@ import SelectorB from "../../../../components/SelectorB";
 import Cards from "../../../../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../../components/Menu";
-import { CardBody, CardHeader } from "./Styles";
 import parse from "html-react-parser";
 import api from "../../../../hooks/Api";
 import {
@@ -16,6 +15,7 @@ import {
 } from "../../../../redux/slices/projects";
 import { errorType } from "../../../profile/projects";
 import { IArticle } from "../../../../redux/slices/articles";
+import { CardBody, CardContainer, CardHeader } from "../../../../components/Card/Styles";
 
 const VentureCard = ({ images, name, status, description }: any) => {
   const santize = (string: string) => {
@@ -24,7 +24,7 @@ const VentureCard = ({ images, name, status, description }: any) => {
   };
 
   return (
-    <Box>
+    <Box sx={CardContainer}>
       <img src={images[0]?.src ?? ""} alt={name} />
       <Box sx={CardHeader}>
         <span
@@ -66,7 +66,7 @@ const VentureCard = ({ images, name, status, description }: any) => {
         <Box
           style={{
             display: "flex",
-            alignItems:"center",
+            alignItems: "center",
             color: "#424242",
             fontWeight: 600,
             fontSize: "12px",
@@ -133,6 +133,8 @@ const Ventures = () => {
       <SelectorB />
       <Cards
         items={projects_filter}
+        gap={3}
+        columns={4}
         component={(item: IProject | IArticle) => <VentureCard {...item} />}
       ></Cards>
     </Box>
