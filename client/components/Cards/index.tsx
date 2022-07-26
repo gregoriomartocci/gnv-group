@@ -6,12 +6,11 @@ import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
 
 export interface IProjects {
-  items: IProject[] | IArticle[];
+  items: IProject[] | IArticle[] | IDemo[];
   component: any;
 }
 
 const Cards = ({ items, component }: IProjects) => {
-  console.log(items, "LOS ITEMS CHE");
   return (
     <Box sx={ProjectsContainer}>
       {items?.map((item, index: number) => (

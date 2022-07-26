@@ -10,9 +10,10 @@ export type ICounterElement = {
 
 export type ICounter = {
   data: ICounterElement[];
+  counterSize?: number;
 };
 
-const Counter = ({ data }: ICounter) => {
+const Counter = ({ data, counterSize }: ICounter) => {
   return (
     <Box
       sx={{
@@ -35,7 +36,10 @@ const Counter = ({ data }: ICounter) => {
             key={index}
           >
             <Typography
-              sx={{ fontFamily: "'Poppins', sans-serif", fontSize: "30px" }}
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: `${counterSize}px`,
+              }}
             >
               {element.number} {element?.unity}
             </Typography>

@@ -9,6 +9,13 @@ import Footer from "../../components/Footer";
 import { useSelector } from "react-redux";
 import HeaderTitle from "../../components/Header-Title";
 import Counter from "../../components/Counters";
+import Card from "./Components/Card";
+import Cards from "../../components/Cards";
+
+export type TDemo = {
+  img: string;
+  title: string;
+};
 
 const Home = () => {
   const state = useSelector((state: IState) => state?.projects);
@@ -23,6 +30,25 @@ const Home = () => {
       description: "corporativos World Trade Center",
     },
     { number: 771190, description: "centros comerciales desarrollados" },
+  ];
+
+  const items = [
+    {
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      title: "WTC Buenos Aires I, II, III IV",
+    },
+    {
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      title: "Ostent Tower",
+    },
+    {
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      title: "Harbour Tower",
+    },
+    {
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      title: "The Shops",
+    },
   ];
 
   return (
@@ -44,8 +70,13 @@ const Home = () => {
       </Box>
 
       <Box sx={{ width: "100%", padding: "7.5% 0 15% 0" }}>
-        <Counter data={data} />
+        <Counter data={data} counterSize={35} />
       </Box>
+
+      <Cards
+        items={items}
+        component={(item: TDemo) => <Card {...item} />}
+      ></Cards>
 
       <Footer></Footer>
     </Fragment>
