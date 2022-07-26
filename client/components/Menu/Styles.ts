@@ -47,17 +47,18 @@ export const MenuContainerRelative: SxProps = {
 };
 
 export const MenuContent: SxProps<Theme> = {
-  display: "grid",
-  gridTemplateColumns: "1fr auto",
+  display: "flex",
+  justifyItems: "space-between",
   alignItems: "center",
   height: "100%",
   width: "100%",
 };
 
-export const Logo: SxProps<Theme> = {
-  // fontFamily: "Poppins, sans-serif",
-  fontFamily: "'Montserrat', sans-serif",
-  width:"max-content"
+export const LogoStyle: SxProps<Theme> = {
+  display: "flex",
+  justifyContent: "flex-end",
+  alignItems: "center",
+  width: "100%",
 };
 
 export const MenuItems: SxProps<Theme> = {

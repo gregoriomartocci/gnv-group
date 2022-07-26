@@ -265,34 +265,6 @@ const Posts = () => {
     dispatch(setState(update_state));
   };
 
-  console.log(state, "stateeee");
-
-  // const { create } = state;
-
-  const getProjects = async () => {
-    setError({ projects: "", message: "" });
-    setLoading(true);
-
-    try {
-      const data = await api({
-        method: "get",
-        path: "/projects",
-      });
-
-      console.log("Dateushh", data);
-      setLoading(false);
-
-      if (data?.error) {
-        setError({ projects: "failed", message: data?.error });
-      } else {
-        setError({ ...error, projects: "success" });
-        dispatch(setProjects(data));
-      }
-    } catch (err) {
-      setError({ projects: "failed", message: "Something went wrong" });
-      setLoading(false);
-    }
-  };
 
   const array_operations = (action, array, item) => {
     let update;
@@ -391,7 +363,7 @@ const Posts = () => {
   const projects = state?.projects;
 
   useEffect(() => {
-    getProjects();
+    // getProjects();
     request("projects", "get", {}, "", "projects", "");
   }, []);
 

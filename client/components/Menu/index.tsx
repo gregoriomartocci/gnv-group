@@ -5,7 +5,7 @@ import { Fragment, useState } from "react";
 import {
   AccountIcon,
   CloseIcon,
-  Logo,
+  LogoStyle,
   MenuContainer,
   MenuContainerOnScroll,
   MenuContainerRelative,
@@ -25,6 +25,9 @@ import Link from "next/link";
 import { IProject } from "../../pages/profile/news";
 import { TResult } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
+
+import logo from "../../assets/logo/logo.svg";
+import Logo from "../Logo";
 
 export interface IState {
   articles: {
@@ -117,7 +120,9 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
           <Box>
             <Link href={"/"}>
               <a>
-                <Box sx={Logo}>GNV Group</Box>
+                <Box sx={LogoStyle}>
+                  <Logo theme={navbar ? "dark" : "light"} width="100px" />
+                </Box>
               </a>
             </Link>
           </Box>

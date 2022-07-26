@@ -17,6 +17,7 @@ import { time } from "console";
 import Button from "../Button";
 import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
+import { IProject } from "../../redux/slices/projects";
 
 export interface ISlide {
   title: string;
@@ -28,10 +29,12 @@ export interface ISlide {
 }
 
 export interface ISlidesProps {
-  slides: ISlide[];
+  slides: StaticImageData[];
+  mode: "slider" | "static";
+  img?: StaticImageData;
 }
 
-const Main = ({ slides }: ISlidesProps) => {
+const Main = ({ slides, mode, img }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides.length;
   const timeout = useRef(0);
@@ -72,35 +75,50 @@ const Main = ({ slides }: ISlidesProps) => {
   return (
     <Box sx={MainSection}>
       <Box sx={MainContainer}>
-        {slides?.map((slide, index) => {
-          return (
-            <Box sx={MainSlide} key={index}>
-              {index === current && (
-                <Box sx={MainSlider}>
-                  <Box sx={MainImage}>
-                    <img
-                      src={slide?.image?.src}
-                      alt={slide?.alt}
-                      loading="lazy"
-                      style={{ position: "absolute" }}
-                    />
-                  </Box>
-                  <Box sx={MainContent}>
-                    <h1>{slide?.title}</h1>
-                    <p>{slide?.price}</p>
-                    <Box style={{ width: "150px" }}>
-                      <Button type={"Primary"}>Contactanos</Button>
+        {mode === "slider" ? (
+          slides?.map((slide, index) => {
+            return (
+              <Box sx={MainSlide} key={index}>
+                {index === current && (
+                  <Box sx={MainSlider}>
+                    <Box sx={MainImage}>
+                      <img
+                        src={slide?.src}
+                        alt={""}
+                        loading="lazy"
+                        style={{ position: "absolute" }}
+                      />
+                    </Box>
+                    <Box sx={MainContent}>
+                      {/* <h1>{slide?.name}</h1> */}
+                      <Box style={{ width: "150px" }}>
+                        <Button type={"Primary"}>Contactanos</Button>
+                      </Box>
                     </Box>
                   </Box>
+                )}
+
+                <Box sx={SliderButtons}>
+                  <ArrowCircleLeftIcon onClick={prevSlide} sx={ArrowButtons} />
+                  <ArrowCircleRightIcon onClick={nextSlide} sx={ArrowButtons} />
                 </Box>
-              )}
+              </Box>
+            );
+          }) ?? []
+        ) : mode === "static" ? (
+          <Box sx={MainSection}>
+            <Box sx={MainContainer}>
+              <Box sx={MainImage}>
+                <img
+                  src={img}
+                  alt=""
+                  loading="lazy"
+                  style={{ position: "absolute" }}
+                />
+              </Box>
             </Box>
-          );
-        }) ?? []}
-        <Box sx={SliderButtons}>
-          <ArrowCircleLeftIcon onClick={prevSlide} sx={ArrowButtons} />
-          <ArrowCircleRightIcon onClick={nextSlide} sx={ArrowButtons} />
-        </Box>
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );

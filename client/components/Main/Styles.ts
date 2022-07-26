@@ -22,6 +22,7 @@ export const MainSection: SxProps<Theme> = {
   width: "100%",
   maxHeight: "1100px",
   position: "relative",
+
   overflow: "hidden",
 };
 
@@ -79,13 +80,14 @@ export const MainSlider: SxProps<Theme> = {
 };
 
 export const MainImage: SxProps<Theme> = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100vw",
-  height: "100vh",
-  display: "flex",
-  objectFit: "cover",
+  img: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    objectFit: "cover",
+  },
 };
 
 export const MainContent: SxProps<Theme> = {
