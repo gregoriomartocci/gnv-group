@@ -12,18 +12,26 @@ const Card = ({ img, title }: TDemo) => {
         position: "relative",
         display: "flex",
         backgroundColor: "#fff",
-        borderRadius: "20px",
         cursor: "pointer",
         fontFamily: "'Poppins', sans-serif",
         fontSize: "20px",
-        // "&:hover": {
-        //   boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-        // },
+        maxHeight: "100%",
+        maxWidth: "100%",
+        overflow: "hidden",
 
         img: {
+          position: "relative",
+          top: 0,
+          left: 0,
           width: "100%",
+          height: "100%",
           objectFit: "cover",
-          height:"350px"
+          transition: "transform 2.5s",
+
+          "&:hover": {
+            transform: "scale(1.05)",
+            overflow: "hidden",
+          },
         },
       }}
     >

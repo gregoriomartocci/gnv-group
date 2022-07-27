@@ -27,7 +27,7 @@ const WhatsApp = ({ number }: IWhatsApp) => {
             zIndex: 100,
           }}
         >
-          <WhatsAppIcon sx={{ fontSize: "35px" }} />
+          <WhatsAppIcon sx={{ fontSize: "30px" }} />
         </Box>
       </a>
     </Link>

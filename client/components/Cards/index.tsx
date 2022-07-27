@@ -1,25 +1,24 @@
 import React, { Fragment } from "react";
 import { Box } from "@mui/material";
 import Card from "../Card";
-import { ProjectsContainer } from "./Styles";
 import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
 
 export interface IProjects {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
-  gap: numer;
+  gap: number;
   columns: number;
 }
 
 const Cards = ({ items, component, gap, columns }: IProjects) => {
-
   const ProjectsContainer: SxProps<Theme> = {
     display: "grid",
-    gridTemplateColumns: `repeat(${columns},1fr)`,
+    gridTemplateColumns: `repeat(${columns}, auto)`,
     gap,
     backgroundColor: "#fff",
     fontFamily: "Poppins",
+    overflow: "hidden",
   };
 
   return (
