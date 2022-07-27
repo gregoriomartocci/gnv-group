@@ -16,7 +16,7 @@ import {
 import UseModal from "../Modal";
 import Auth from "../Auth";
 import AuthImage from "../../assets/images/Image-1.jpg";
-import ResponsiveMenu from "../ResponsiveMenu";
+import ResponsiveMenu from "../Responsive-Menu";
 import Dropdown from "../Dropdown";
 import { useSelector } from "react-redux";
 import { IAuth } from "../../redux/slices/auth";

@@ -20,17 +20,13 @@ const Card = ({ img, title }: TDemo) => {
         overflow: "hidden",
 
         img: {
-          position: "relative",
-          top: 0,
-          left: 0,
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transition: "transform 2.5s",
+          transition: "transform 1s",
 
           "&:hover": {
-            transform: "scale(1.05)",
-            overflow: "hidden",
+            transform: "scale(1.025)",
           },
         },
       }}

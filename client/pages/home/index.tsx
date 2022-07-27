@@ -11,6 +11,7 @@ import HeaderTitle from "../../components/Header-Title";
 import Counter from "../../components/Counters";
 import Card from "./Components/Card";
 import Cards from "../../components/Cards";
+import Quote from "../../components/Quote";
 
 export type TDemo = {
   img: string;
@@ -79,6 +80,15 @@ const Home = () => {
         items={items}
         component={(item: TDemo) => <Card {...item} />}
       ></Cards>
+
+      <Quote
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+        text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
+        author={{
+          name: "Alejandro Ginevra",
+          position: "Presidente de GNV Group",
+        }}
+      />
 
       <Footer></Footer>
     </Fragment>
