@@ -56,7 +56,6 @@ const Home = () => {
     <Fragment>
       <Menu onScroll />
       <Main
-        slides={SliderData}
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg"
       />
@@ -88,6 +87,11 @@ const Home = () => {
           name: "Alejandro Ginevra",
           position: "Presidente de GNV Group",
         }}
+      />
+
+      <Main
+        mode="static"
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
       />
 
       <Footer></Footer>

@@ -29,14 +29,14 @@ export interface ISlide {
 }
 
 export interface ISlidesProps {
-  slides: StaticImageData[];
+  slides?: StaticImageData[];
   mode: "slider" | "static";
   img?: string;
 }
 
 const Main = ({ slides, mode, img }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
-  const lenght = slides.length;
+  const lenght = slides?.length;
   const timeout = useRef(0);
   const slideTime = 8000;
 
