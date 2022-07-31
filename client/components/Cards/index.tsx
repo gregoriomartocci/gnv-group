@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Box } from "@mui/material";
+import { Box, SxProps, Theme } from "@mui/material";
 import Card from "../Card";
 import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
