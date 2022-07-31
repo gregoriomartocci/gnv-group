@@ -1,10 +1,11 @@
 import React from "react";
 import { Box } from "@mui/material";
-import { Logo, MenuItem, MenuItems, SidebarContainer } from "./Styles";
+import { MenuItem, MenuItems, SidebarContainer } from "./Styles";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import GroupIcon from "@mui/icons-material/Group";
 import Link from "next/link";
 import ArticleIcon from "@mui/icons-material/Article";
+import Logo from "../../../Logo";
 
 const Sidebar = () => {
   return (
@@ -20,7 +21,9 @@ const Sidebar = () => {
       >
         <Link href={"/"}>
           <a>
-            <Box sx={Logo}>GNV</Box>
+            {/* <Box sx={Logo}>GNV</Box> */}
+
+            <Logo theme={"light"} width="125px" />
           </a>
         </Link>
       </Box>
@@ -49,7 +52,7 @@ const Sidebar = () => {
               </Box>
             </a>
           </Link>
-          
+
           {/* <Link href={"/profile/users"}>
             <a>
               <Box sx={MenuItem}>

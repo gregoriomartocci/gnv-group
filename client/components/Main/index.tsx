@@ -114,6 +114,11 @@ const Main = ({ slides, mode, img }: ISlidesProps) => {
                   loading="lazy"
                   style={{ position: "absolute" }}
                 />
+                <Box sx={MainContent}>
+                  <Box style={{ width: "150px" }}>
+                    <Button type={"Primary"}>Contactanos</Button>
+                  </Box>
+                </Box>
               </Box>
             </Box>
           </Box>
