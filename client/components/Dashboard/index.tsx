@@ -15,8 +15,7 @@ const Dashboard = ({ children }: IDahboard) => {
       <Sidebar />
       <Box sx={{ height: "100%", width: "100%" }}>
         <Menu />
-    
-        <Main >{children}</Main>
+        <Main>{children}</Main>
       </Box>
     </Box>
   );

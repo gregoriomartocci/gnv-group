@@ -5,6 +5,8 @@ import ApartmentIcon from "@mui/icons-material/Apartment";
 import GroupIcon from "@mui/icons-material/Group";
 import Link from "next/link";
 import ArticleIcon from "@mui/icons-material/Article";
+import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import Logo from "../../../Logo";
 
 const Sidebar = () => {
@@ -29,7 +31,16 @@ const Sidebar = () => {
       </Box>
       <Box sx={{ padding: "15px", height: "calc(100% - 80px)" }}>
         <Box sx={MenuItems}>
-          <span> ADMINISTRAR CONTENIDO</span>
+          <Link href={"/profile/layout"}>
+            <a>
+              <Box sx={MenuItem}>
+                <AutoAwesomeMosaicIcon
+                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
+                />
+                <span>Personalizar</span>
+              </Box>
+            </a>
+          </Link>
 
           <Link href={"/profile/projects"}>
             <a>
@@ -53,7 +64,7 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          {/* <Link href={"/profile/users"}>
+          <Link href={"/profile/users"}>
             <a>
               <Box sx={MenuItem}>
                 <GroupIcon
@@ -62,7 +73,7 @@ const Sidebar = () => {
                 <span>Usuarios</span>
               </Box>
             </a>
-          </Link> */}
+          </Link>
         </Box>
       </Box>
     </Box>

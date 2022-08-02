@@ -14,16 +14,22 @@ interface IChildren {
   value: number;
   setValue: any;
   options: string[];
+  border?: boolean;
 }
 
-export default function UseTabs({ value, setValue, options }: IChildren) {
+export default function UseTabs({
+  value,
+  setValue,
+  options,
+  border,
+}: IChildren) {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={`${border ? {borderBottom: 1, borderColor: "divider" } : {}}`}>
         <Tabs
           value={value}
           variant="fullWidth"
@@ -31,13 +37,14 @@ export default function UseTabs({ value, setValue, options }: IChildren) {
             outline: "none",
             "&:active": {
               outline: "none",
+              color: "#757575",
             },
             "&:focus": {
               outline: "none",
             },
           }}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="tabs"
         >
           {options.map((item) => {
             return (
