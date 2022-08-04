@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth";
 import projectRoutes from "./routes/project";
 import articleRoutes from "./routes/articles";
+import templateRoutes from "./routes/template";
 
 const morgan = require("morgan");
 const app = express();
@@ -25,6 +26,7 @@ app.use(morgan("dev"));
 app.use("/api", authRoutes);
 app.use("/api", projectRoutes);
 app.use("/api", articleRoutes);
+app.use("/api", templateRoutes);
 
 const port = process.env.SERVER || 8000;
 
