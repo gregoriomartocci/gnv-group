@@ -272,8 +272,6 @@ const ImageUploader = ({
           );
         }) ?? null}
       </Box>
-
-      {/* {file?.length >= 1 && <UseButton type="Blue">Subir Imágenes</UseButton>} */}
     </Fragment>
   );
 };

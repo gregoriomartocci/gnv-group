@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Box, Typography } from "@mui/material";
-import { ImageContainer } from "./Styles";
-
+import { AddImage, ImageContainer } from "./Styles";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
 
 type IImageSelector = {
   items: any[];
@@ -49,6 +49,12 @@ const ImageSelector = ({ items }: IImageSelector) => {
             </Box>
           );
         })}
+        <Box sx={AddImage} >
+          {/* <img src={img} alt={name} /> */}
+
+          <FileUploadIcon sx={{ fontSize: "40px", color: "#e0e0e0" }} />
+
+        </Box>
       </Box>
     </Fragment>
   );
