@@ -1,12 +1,129 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Dashboard from "../../../components/Dashboard";
 import UseTabs from "../../../components/Tabs";
 import { Box, Paper } from "@mui/material";
 import UseAccordion from "../../../components/Accordion";
 import HeaderSelector from "./Components/Header-Selector";
+import { useDispatch, useSelector } from "react-redux";
+import { setState } from "../../../redux/slices/templates";
+import api from "../../../hooks/Api";
+import { setTemplates } from "../../../redux/slices/articles";
+import UseModal from "../../../components/Modal";
 
 const Layout = () => {
+  const dispatch = useDispatch();
+
   const [tab, setTab] = useState<number>(0);
+  const state = useSelector((state: IState) => state?.templates);
+
+  const array_operations = (action, array, item) => {
+    let update;
+
+    if (!array || !action || !item) return;
+
+    action === "create"
+      ? (update = [...array, item])
+      : action === "templates"
+      ? (update = [...item])
+      : action === "update"
+      ? (update = array?.map((p) =>
+          p?._id?.toString() === item?._id?.toString() ? item : p
+        ))
+      : action === "delete"
+      ? (update = array.filter(
+          (p) => p?._id.toString() !== item?._id.toString()
+        ))
+      : update;
+
+    return update;
+  };
+
+  const stateHandler = ({ method, payload, state, keep }) => {
+    const update_state = {
+      ...state,
+      [method]: keep ? { ...state[method], ...payload } : payload,
+    };
+    dispatch(setState(update_state));
+  };
+
+  // REQUEST
+  const request = async (action, method, input, id, path, message) => {
+    if (!action || !method || !input || !id || path || !message) return;
+
+    stateHandler({
+      method: action,
+      payload: { status: "", message: "", loading: true },
+      state,
+      keep: true,
+    });
+    try {
+      const data = await api({
+        method,
+        path: `/${path}/${id}`,
+        payload: input,
+      });
+
+      stateHandler({
+        method: action,
+        payload: { loading: false },
+        state,
+        keep: true,
+      });
+
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+
+      if (error) {
+        stateHandler({
+          method: action,
+          payload: { status: "failed", message: error },
+          state,
+          keep: true,
+        });
+      } else {
+        const updated_array = array_operations(action, state, data);
+
+        let payload;
+
+        action === "delete"
+          ? (payload = {
+              status: "success",
+              message,
+              modal: false,
+            })
+          : (payload = {
+              status: "success",
+              message,
+              modal: false,
+            });
+
+        stateHandler({
+          method: action,
+          payload,
+          state,
+          keep: true,
+        });
+
+        dispatch(setTemplates(updated_array));
+      }
+    } catch (err) {
+      stateHandler({
+        method: action,
+        payload: {
+          status: "failed",
+          message: "Algo salió mal, intente nuevamente!",
+          loading: false,
+        },
+        state,
+        keep: true,
+      });
+    }
+  };
+
+  useEffect(() => {
+    // getProjects();
+    request("templates", "get", {}, "", "templates", "");
+  }, []);
 
   const tab_options = [
     "Home",
@@ -40,7 +157,7 @@ const Layout = () => {
   ];
 
   return (
-    <Fragment>
+    <Box>
       <Dashboard>
         <Paper
           sx={{
@@ -70,7 +187,18 @@ const Layout = () => {
             </Box>
           </Box>
 
-          <Box sx={{ padding: "10px 10px 0px 10px" }}>
+          <Box
+            sx={{ padding: "10px 10px 0px 10px" }}
+            component="span"
+            onClick={() => {
+              stateHandler({
+                method: "create",
+                payload: { modal: true },
+                state,
+                keep: true,
+              });
+            }}
+          >
             <UseAccordion
               name="Header"
               content={() => <HeaderSelector items={items} />}
@@ -79,8 +207,21 @@ const Layout = () => {
             <UseAccordion name="Frase 1" />
           </Box>
         </Paper>
+        <UseModal
+          open={state?.create?.modal}
+          handleClose={() => {
+            stateHandler({
+              method: "create",
+              payload: { modal: false },
+              state,
+              keep: true,
+            });
+          }}
+        >
+          Holis
+        </UseModal>
       </Dashboard>
-    </Fragment>
+    </Box>
   );
 };
 

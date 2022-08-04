@@ -1,16 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IImagetoUpload } from "../../../components/Image-Uploader";
 
-export interface IArticle {
+export interface ITemplate {
   id?: number;
-  _id: string;
+  name: string;
   title: string;
-  source: string;
-  date: string;
-  images: any[];
+  carousel: any[];
   description: string;
-  published?: boolean;
-  link: string;
 }
 
 export type TCreate = {
@@ -34,12 +30,12 @@ export type TUpdate = {
   loading: boolean;
   modal: boolean;
   api: { path: string; id: number };
-  article: IArticle | {};
+  article: ITemplate | {};
 };
 
 export interface initialState {
-  articles: IArticle[];
-  article: IArticle | {};
+  templates: ITemplate[];
+  template: ITemplate | {};
   create: TCreate;
   actions: boolean;
   delete: TDelete;
@@ -48,8 +44,8 @@ export interface initialState {
 }
 
 const initialState: initialState = {
-  articles: [],
-  article: {},
+  templates: [],
+  template: {},
   actions: false,
   create: { status: "", message: "", loading: false, modal: false },
   delete: {
@@ -70,19 +66,19 @@ const initialState: initialState = {
   alert: { message: "", status: "" },
 };
 
-export const articlesSlice = createSlice({
-  name: "articles",
-  initialState, 
+export const templatesSlice = createSlice({
+  name: "templates",
+  initialState,
   reducers: {
     setState: (state, action: PayloadAction<initialState>) => {
       return (state = action.payload);
     },
-    setArticles: (state, action: PayloadAction<IArticle[]>) => {
-      state.articles = [...action.payload];
+    setTemplates: (state, action: PayloadAction<ITemplate[]>) => {
+      state.templates = [...action.payload];
     },
   },
 });
 
-export const { setState, setArticles } = articlesSlice.actions;
+export const { setState, setTemplates } = templatesSlice.actions;
 
-export default articlesSlice.reducer;
+export default templatesSlice.reducer;

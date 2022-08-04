@@ -3,6 +3,7 @@ import articlesSlice from "../slices/articles";
 import authSlice from "../slices/auth";
 import projectsSlice from "../slices/projects";
 import usersSlice from "../slices/users";
+import templatesSlice from "../slices/templates";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     projects: projectsSlice,
     users: usersSlice,
     auth: authSlice,
+    templates: templatesSlice,
   },
 });
 
