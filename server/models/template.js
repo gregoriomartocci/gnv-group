@@ -8,7 +8,7 @@ const templateSchema = new Schema(
       required: true,
       default: 1,
     },
-    name: {
+    page: {
       type: String,
       trim: true,
       required: true,

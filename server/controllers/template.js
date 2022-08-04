@@ -1,50 +1,54 @@
 import { uploadImage, validateBase64 } from "../helpers/project";
+import { validate_cloudinary } from "../helpers/validateCloudinary";
 import Project from "../models/project";
 import Template from "../models/template";
 
+// CREATE
 export const createTemplate = async (req, res) => {
   try {
-    const { name, title, carousel, description } = req.body;
+    const { page, title, carousel, description } = req.body;
 
     console.log(req.body, "que nos llega??");
 
-    if (!name) return res.json({ error: "Por favor ingrese el nombre" });
+    let images_aux;
+    let updated_images;
 
-    // if (!title) return res.json({ error: "Por favor ingrese un título principal para el header" });
+    if (carousel.length) {
+      // create promise array
+      images_aux = carousel.map(async (i) => ({
+        ...i,
+        src: !validate_cloudinary(i.src) ? await uploadImage(i.src) : i.src,
+      }));
 
-    // if (!description)
-    //   return res.json({ error: "Por favor ingrese una descripción" });
+      updated_images = await Promise.all(images_aux);
+    }
 
-    const alreadyExist = await Template.findOne({ name });
-
-    if (!carousel)
-      return res.json({ error: "Por favor ingrese almenos una imagen" });
-
-    if (alreadyExist)
-      return res.json({ error: "Ya existe un Template con ese nombre." });
-
-    const upload_images = carousel.map(async (i) => ({
-      ...i,
-      src: await uploadImage(i.src),
-    }));
-
-    const updated_images = await Promise.all(upload_images);
-    console.log(updated_images, "OKAAA");
-
-    const template = await new Template({
-      name,
+    const new_template = {
+      page,
       title,
       carousel: updated_images,
       description,
-    }).save();
+    };
 
-    return res.json(template);
+    const alreadyExist = await Template.findOne({ page });
+
+    if (alreadyExist) {
+      const updated = await Template.findOneAndUpdate({ page }, new_template, {
+        new: "true",
+      });
+
+      return res.json(updated);
+    } else {
+      const template = await new Template(new_template).save();
+      return res.json(template);
+    }
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: err.message });
   }
 };
 
+// DELETE
 export const removeTemplate = async (req, res) => {
   const { id } = req.params;
   try {
@@ -56,6 +60,7 @@ export const removeTemplate = async (req, res) => {
   }
 };
 
+// UPDATE
 export const editTemplate = async (req, res) => {
   const { carousel } = req.body;
 
@@ -97,10 +102,11 @@ export const editTemplate = async (req, res) => {
   }
 };
 
+// READ
 export const getTemplates = async (req, res) => {
   try {
-    const all = await Template.find().populate("name").sort({ createdAt: -1 });
-    console.log(all, "DATA")
+    const all = await Template.find().populate("page").sort({ createdAt: -1 });
+    console.log(all, "DATA");
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

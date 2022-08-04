@@ -213,7 +213,7 @@ const Layout = () => {
                 "templates",
                 "post",
                 {
-                  name: "home",
+                  page: "home",
                   title: "",
                   description: "",
                   carousel: state?.create?.template?.carousel,
