@@ -19,7 +19,6 @@ import {
   InfoMessage,
 } from "./Styles";
 import * as yup from "yup";
-import { inputType } from "../../pages/profile/articles/Components/Form";
 import FileResizer from "react-image-file-resizer";
 
 export interface IImagetoUpload {
@@ -83,19 +82,11 @@ export const convertBase64 = (file: any) => {
 
 interface IImageUploader {
   value: any;
-  stateHandler: any;
-  state: any;
-  method: string;
-  item: string;
+  addImage: any;
+  removeImage: any;
 }
 
-const ImageUploader = ({
-  value,
-  stateHandler,
-  method,
-  state,
-  item,
-}: IImageUploader) => {
+const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
 
@@ -132,6 +123,7 @@ const ImageUploader = ({
   const onDragLeave = () => wrapperRef.current.classList.remove("dragover");
   const onDrop = () => wrapperRef.current.classList.remove("dragover");
 
+  // Upload Function
   const onFileDrop = async (e: any) => {
     setErrors([]);
     const newFile = e.target.files[0];
@@ -143,15 +135,16 @@ const ImageUploader = ({
         const { name, size, type } = newFile;
         const image = { name, size, type, src: result };
 
-        stateHandler({
-          method,
-          payload: {
-            [item]: { ...value, images: [...value?.images, image] },
-          },
-          state,
-          keep: true,
-        });
+        // stateHandler({
+        //   method,
+        //   payload: {
+        //     [item]: { ...value, images: [...value?.images, image] },
+        //   },
+        //   state,
+        //   keep: true,
+        // });
 
+        addImage(image);
       })
       .catch(({ errors }: any) => {
         if (errors) return setErrors([...errors, errors]);
@@ -160,15 +153,10 @@ const ImageUploader = ({
 
   // Remove Image
   const fileRemove = (number: number) => {
-    const update = value?.images?.filter((_, index) => index !== number);
-    stateHandler({
-      method,
-      payload: {
-        [item]: { ...value, images: update },
-      },
-      state,
-      keep: true,
-    });
+    const update = value?.filter((_, index) => index !== number);
+
+    removeImage(update);
+
   };
 
   // Convert KB Format
@@ -241,12 +229,12 @@ const ImageUploader = ({
       </Fragment>
 
       <Box sx={dropFilePreview}>
-        {value?.images?.map((file, index) => {
+        {value?.map((file, index) => {
           return (
             <Box key={index} sx={dropFilePreviewItem}>
               <Box sx={dropFilePreviewTitleItemInfo}>
                 <Box sx={imageContainer}>
-                  <img src={file.src} alt="" />
+                  <img src={file?.src} alt="" />
                 </Box>
                 <Box
                   sx={{

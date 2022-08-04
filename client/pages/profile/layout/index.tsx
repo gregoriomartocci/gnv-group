@@ -5,16 +5,15 @@ import { Box, CircularProgress, Paper } from "@mui/material";
 import UseAccordion from "../../../components/Accordion";
 import HeaderSelector from "./Components/Header-Selector";
 import { useDispatch, useSelector } from "react-redux";
-import { setState } from "../../../redux/slices/templates";
+import { setState, setTemplates } from "../../../redux/slices/templates";
 import api from "../../../hooks/Api";
-import { setTemplates } from "../../../redux/slices/articles";
+
 import UseModal from "../../../components/Modal";
 import ImageUploader from "../../../components/Image-Uploader";
 import UseButton from "../../../components/Button";
 
 const Layout = () => {
   const dispatch = useDispatch();
-
   const [tab, setTab] = useState<number>(0);
   const state = useSelector((state: IState) => state?.templates);
 
@@ -50,7 +49,8 @@ const Layout = () => {
 
   // REQUEST
   const request = async (action, method, input, id, path, message) => {
-    if (!action || !method || !input || !id || path || !message) return;
+
+    // if (!action || !method || !input || !id || !path || !message) return;
 
     stateHandler({
       method: action,
@@ -83,6 +83,7 @@ const Layout = () => {
           keep: true,
         });
       } else {
+
         const updated_array = array_operations(action, state, data);
 
         let payload;
@@ -123,7 +124,6 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    // getProjects();
     request("templates", "get", {}, "", "templates", "");
   }, []);
 
@@ -158,8 +158,6 @@ const Layout = () => {
     },
   ];
 
-  const loading = true;
-
   return (
     <Box>
       <UseModal
@@ -174,21 +172,59 @@ const Layout = () => {
         }}
       >
         <Box sx={{ padding: "25px" }}>
-          <ImageUploader />
+          <ImageUploader
+            value={state?.create?.template?.carousel ?? []}
+            addImage={(value) =>
+              stateHandler({
+                method: "create",
+                payload: {
+                  template: {
+                    ...state?.create?.template,
+                    carousel: [
+                      ...(state?.create?.template?.carousel ?? []),
+                      value,
+                    ],
+                  },
+                },
+                state,
+                keep: true,
+              })
+            }
+            removeImage={(value) =>
+              stateHandler({
+                method: "create",
+                payload: {
+                  template: {
+                    ...state?.create?.template,
+                    carousel: value,
+                  },
+                },
+                state,
+                keep: true,
+              })
+            }
+          />
 
           <UseButton
             type="Primary"
             width="100%"
-            onClickHandler={request(
-              "templates",
-              "get",
-              {},
-              "",
-              "templates",
-              ""
-            )}
+            onClickHandler={() =>
+              request(
+                "templates",
+                "post",
+                {
+                  name: "home",
+                  title: "",
+                  description: "",
+                  carousel: state?.create?.template?.carousel,
+                },
+                "",
+                "template",
+                ""
+              )
+            }
           >
-            {loading ? (
+            {state?.create?.template?.loading ? (
               <CircularProgress style={{ color: "#fff" }} />
             ) : (
               "Agregar"
@@ -230,7 +266,7 @@ const Layout = () => {
               name="Header"
               content={() => (
                 <HeaderSelector
-                  items={items}
+                  items={state?.templates[0]?.carousel ?? []}
                   uploadImage={() => {
                     stateHandler({
                       method: "create",

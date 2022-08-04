@@ -10,10 +10,10 @@ export const createTemplate = async (req, res) => {
 
     if (!name) return res.json({ error: "Por favor ingrese el nombre" });
 
-    if (!title) return res.json({ error: "Por favor ingrese un título principal para el header" });
+    // if (!title) return res.json({ error: "Por favor ingrese un título principal para el header" });
 
-    if (!description)
-      return res.json({ error: "Por favor ingrese una descripción" });
+    // if (!description)
+    //   return res.json({ error: "Por favor ingrese una descripción" });
 
     const alreadyExist = await Template.findOne({ name });
 
@@ -23,7 +23,7 @@ export const createTemplate = async (req, res) => {
     if (alreadyExist)
       return res.json({ error: "Ya existe un Template con ese nombre." });
 
-    const upload_images = images.map(async (i) => ({
+    const upload_images = carousel.map(async (i) => ({
       ...i,
       src: await uploadImage(i.src),
     }));
@@ -100,6 +100,7 @@ export const editTemplate = async (req, res) => {
 export const getTemplates = async (req, res) => {
   try {
     const all = await Template.find().populate("name").sort({ createdAt: -1 });
+    console.log(all, "DATA")
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

@@ -19,10 +19,10 @@ const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
           margin: "10px",
         }}
       >
-        {items.map(({ img, name, size }) => {
+        {items.map(({ src, name, size }) => {
           return (
             <Box sx={ImageContainer}>
-              <img src={img} alt={name} />
+              <img src={src} alt={name} />
               <Box sx={{ padding: "0 5px" }}>
                 <Typography
                   sx={{

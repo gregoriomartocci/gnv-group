@@ -16,12 +16,12 @@ const templateSchema = new Schema(
     title: {
       type: String,
       trim: true,
-      required: true,
+
     },
     carousel: [""],
     description: {
       type: String,
-      required: true,
+
     },
   },
   { timestamps: true }
