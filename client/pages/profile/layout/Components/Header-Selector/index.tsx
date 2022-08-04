@@ -5,14 +5,10 @@ import FileUploadIcon from "@mui/icons-material/FileUpload";
 
 type IImageSelector = {
   items: any[];
+  uploadImage: any;
 };
 
-const ImageSelector = ({ items }: IImageSelector) => {
-
-
-  
-
-  
+const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
   return (
     <Fragment>
       <Box
@@ -54,11 +50,9 @@ const ImageSelector = ({ items }: IImageSelector) => {
             </Box>
           );
         })}
-        <Box sx={AddImage} >
+        <Box sx={AddImage} component="span" onClick={uploadImage}>
           {/* <img src={img} alt={name} /> */}
-
           <FileUploadIcon sx={{ fontSize: "40px", color: "#e0e0e0" }} />
-
         </Box>
       </Box>
     </Fragment>

@@ -21,5 +21,9 @@ export const AddImage: SxProps<Theme> = {
   backgroundColor: "#fafafa",
   border: "3px dashed #e0e0e0",
   borderRadius: "7.5px",
-  cursor: "pointer",
+  
+  "&:hover": {
+    backgroundColor: "#f5f5f5",
+    cursor: "pointer",
+  },
 };

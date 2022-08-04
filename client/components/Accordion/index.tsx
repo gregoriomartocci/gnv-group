@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 type IAccordion = {
   name: string;
   content?: any;
+  
 };
 
 const UseAccordion = ({ name, content }: IAccordion) => {

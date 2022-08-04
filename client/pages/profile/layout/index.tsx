@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Dashboard from "../../../components/Dashboard";
 import UseTabs from "../../../components/Tabs";
-import { Box, Paper } from "@mui/material";
+import { Box, CircularProgress, Paper } from "@mui/material";
 import UseAccordion from "../../../components/Accordion";
 import HeaderSelector from "./Components/Header-Selector";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,8 @@ import { setState } from "../../../redux/slices/templates";
 import api from "../../../hooks/Api";
 import { setTemplates } from "../../../redux/slices/articles";
 import UseModal from "../../../components/Modal";
+import ImageUploader from "../../../components/Image-Uploader";
+import UseButton from "../../../components/Button";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -156,8 +158,44 @@ const Layout = () => {
     },
   ];
 
+  const loading = true;
+
   return (
     <Box>
+      <UseModal
+        open={state?.create?.modal}
+        handleClose={() => {
+          stateHandler({
+            method: "create",
+            payload: { modal: false },
+            state,
+            keep: true,
+          });
+        }}
+      >
+        <Box sx={{ padding: "25px" }}>
+          <ImageUploader />
+
+          <UseButton
+            type="Primary"
+            width="100%"
+            onClickHandler={request(
+              "templates",
+              "get",
+              {},
+              "",
+              "templates",
+              ""
+            )}
+          >
+            {loading ? (
+              <CircularProgress style={{ color: "#fff" }} />
+            ) : (
+              "Agregar"
+            )}
+          </UseButton>
+        </Box>
+      </UseModal>
       <Dashboard>
         <Paper
           sx={{
@@ -187,39 +225,27 @@ const Layout = () => {
             </Box>
           </Box>
 
-          <Box
-            sx={{ padding: "10px 10px 0px 10px" }}
-            component="span"
-            onClick={() => {
-              stateHandler({
-                method: "create",
-                payload: { modal: true },
-                state,
-                keep: true,
-              });
-            }}
-          >
+          <Box sx={{ padding: "10px 10px 0px 10px" }}>
             <UseAccordion
               name="Header"
-              content={() => <HeaderSelector items={items} />}
+              content={() => (
+                <HeaderSelector
+                  items={items}
+                  uploadImage={() => {
+                    stateHandler({
+                      method: "create",
+                      payload: { modal: true },
+                      state,
+                      keep: true,
+                    });
+                  }}
+                />
+              )}
             />
             <UseAccordion name="Frase 1" />
-            <UseAccordion name="Frase 1" />
+            <UseAccordion name="Frase 2" />
           </Box>
         </Paper>
-        <UseModal
-          open={state?.create?.modal}
-          handleClose={() => {
-            stateHandler({
-              method: "create",
-              payload: { modal: false },
-              state,
-              keep: true,
-            });
-          }}
-        >
-          Holis
-        </UseModal>
       </Dashboard>
     </Box>
   );
