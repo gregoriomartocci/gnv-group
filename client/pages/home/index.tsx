@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import React from "react";
 import Main from "../../components/Main";
 import Menu, { IState } from "../../components/Menu";
@@ -6,12 +6,14 @@ import Box from "@mui/material/Box";
 import { SliderData } from "../../data/SliderData";
 import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
 import Footer from "../../components/Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HeaderTitle from "../../components/Header-Title";
 import Counter from "../../components/Counters";
 import Card from "./Components/Card";
 import Cards from "../../components/Cards";
 import Quote from "../../components/Quote";
+import { setState, setTemplates } from "../../redux/slices/templates";
+import api from "../../hooks/Api";
 
 export type TDemo = {
   img: string;
@@ -19,7 +21,118 @@ export type TDemo = {
 };
 
 const Home = () => {
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.templates);
+  const dispatch = useDispatch();
+
+  console.log(state, "Okkkkkk");
+
+  const array_operations = (action, array, item) => {
+    let update;
+
+    if (!array || !action || !item) return;
+
+    action === "create"
+      ? (update = [...array, item])
+      : action === "templates"
+      ? (update = [...item])
+      : action === "update"
+      ? (update = array?.map((p) =>
+          p?._id?.toString() === item?._id?.toString() ? item : p
+        ))
+      : action === "delete"
+      ? (update = array.filter(
+          (p) => p?._id.toString() !== item?._id.toString()
+        ))
+      : update;
+
+    return update;
+  };
+
+  const stateHandler = ({ method, payload, state, keep }) => {
+    const update_state = {
+      ...state,
+      [method]: keep ? { ...state[method], ...payload } : payload,
+    };
+    dispatch(setState(update_state));
+  };
+
+  // REQUEST
+  const request = async (action, method, input, id, path, message) => {
+    // if (!action || !method || !input || !id || !path || !message) return;
+
+    stateHandler({
+      method: action,
+      payload: { status: "", message: "", loading: true },
+      state,
+      keep: true,
+    });
+    try {
+      const data = await api({
+        method,
+        path: `/${path}/${id}`,
+        payload: input,
+      });
+
+      stateHandler({
+        method: action,
+        payload: { loading: false },
+        state,
+        keep: true,
+      });
+
+      const { error } = data;
+      console.log(error, "<== mensaje error");
+
+      if (error) {
+        stateHandler({
+          method: action,
+          payload: { status: "failed", message: error },
+          state,
+          keep: true,
+        });
+      } else {
+        const updated_array = array_operations(action, state, data);
+
+        let payload;
+
+        action === "delete"
+          ? (payload = {
+              status: "success",
+              message,
+              modal: false,
+            })
+          : (payload = {
+              status: "success",
+              message,
+              modal: false,
+            });
+
+        stateHandler({
+          method: action,
+          payload,
+          state,
+          keep: true,
+        });
+
+        dispatch(setTemplates(updated_array));
+      }
+    } catch (err) {
+      stateHandler({
+        method: action,
+        payload: {
+          status: "failed",
+          message: "Algo salió mal, intente nuevamente!",
+          loading: false,
+        },
+        state,
+        keep: true,
+      });
+    }
+  };
+
+  useEffect(() => {
+    request("templates", "get", {}, "", "templates", "");
+  }, []);
 
   const data = [
     { number: 771190, description: "m² desarrollados" },
@@ -56,8 +169,11 @@ const Home = () => {
     <Fragment>
       <Menu onScroll />
       <Main
-        mode="static"
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg"
+        mode="slider"
+        slides={state?.templates[0]?.carousel}
+        img={
+          "https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg"
+        }
       />
 
       <Box sx={{ width: "100%", padding: "5% 0" }}>
