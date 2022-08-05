@@ -276,8 +276,10 @@ const Layout = () => {
                 />
               )}
             />
-            <UseAccordion name="Frase 1" />
-            <UseAccordion name="Frase 2" />
+            <UseAccordion name="Sección 1" />
+            <UseAccordion name="Sección 2" />
+            <UseAccordion name="Sección 3" />
+            <UseAccordion name="Sección 4" />
           </Box>
         </Paper>
       </Dashboard>
