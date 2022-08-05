@@ -88,22 +88,21 @@ export const MainImage: SxProps<Theme> = {
   },
 };
 
+export const HeaderTitle: SxProps<Theme> = {
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: "clamp(1rem, 8vw, 2rem);",
+  fontWeight: 400,
+  textShadow: "0px 0px 20px rgba(0, 0, 0, 0.4);",
+  textAlign: "left",
+  marginBottom: "30px",
+};
+
 export const MainContent: SxProps<Theme> = {
   position: "relative",
   zIndex: 10,
   display: "flex",
   flexDirection: "column",
-  maxWidth: "1600px",
-  width: "calc(100% - 100px)",
+  width: "100%",
+  padding: "10%",
   color: "#fff",
-  fontFamily: "'Montserrat', sans-serif",
-
-  h1: {
-    fontSize: "clamp(1rem, 8vw, 2rem);",
-    fontWeight: 400,
-    textTransform: "uppercase",
-    textShadow: "0px 0px 20px rgba(0, 0, 0, 0.4);",
-    textAlign: "left",
-    marginBottom: "10px",
-  },
 };

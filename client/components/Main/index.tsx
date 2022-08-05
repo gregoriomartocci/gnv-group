@@ -1,9 +1,10 @@
 import { StaticImageData } from "next/image";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import { Alert, Box } from "@mui/material";
+import { Alert, Box, Typography } from "@mui/material";
 import {
   ArrowButtons,
+  HeaderTitle,
   MainContainer,
   MainContent,
   MainImage,
@@ -18,6 +19,7 @@ import Button from "../Button";
 import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
 import { IProject } from "../../redux/slices/projects";
+
 
 export interface ISlide {
   title: string;
@@ -90,6 +92,7 @@ const Main = ({ slides, mode, img }: ISlidesProps) => {
                       />
                     </Box>
                     <Box sx={MainContent}>
+                      <Typography sx={HeaderTitle}> Proyectos definitivos con visión de futuro.</Typography>
                       <Box style={{ width: "150px" }}>
                         <Button type={"Primary"}>Contactanos</Button>
                       </Box>
