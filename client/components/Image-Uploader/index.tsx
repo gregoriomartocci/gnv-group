@@ -153,10 +153,10 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
 
   // Remove Image
   const fileRemove = (number: number) => {
+    console.log(value, "ANTES")
     const update = value?.filter((_, index) => index !== number);
-
+    console.log(value, "DESPUES")
     removeImage(update);
-
   };
 
   // Convert KB Format

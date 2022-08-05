@@ -49,7 +49,6 @@ const Layout = () => {
 
   // REQUEST
   const request = async (action, method, input, id, path, message) => {
-
     // if (!action || !method || !input || !id || !path || !message) return;
 
     stateHandler({
@@ -83,7 +82,6 @@ const Layout = () => {
           keep: true,
         });
       } else {
-
         const updated_array = array_operations(action, state, data);
 
         let payload;
@@ -180,10 +178,7 @@ const Layout = () => {
                 payload: {
                   template: {
                     ...state?.create?.template,
-                    carousel: [
-                      ...(state?.create?.template?.carousel ?? []),
-                      value,
-                    ],
+                    carousel: [...state?.create?.template?.carousel, value],
                   },
                 },
                 state,
@@ -224,7 +219,7 @@ const Layout = () => {
               )
             }
           >
-            {state?.create?.template?.loading ? (
+            {state?.create?.loading ? (
               <CircularProgress style={{ color: "#fff" }} />
             ) : (
               "Agregar"
@@ -270,7 +265,10 @@ const Layout = () => {
                   uploadImage={() => {
                     stateHandler({
                       method: "create",
-                      payload: { modal: true },
+                      payload: {
+                        modal: true,
+                        template: state.templates[0],
+                      },
                       state,
                       keep: true,
                     });
