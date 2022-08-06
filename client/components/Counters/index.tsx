@@ -16,9 +16,13 @@ export type ICounterElement = {
 export type ICounter = {
   data: ICounterElement[];
   counterSize?: number;
+  countersRef: boolean;
 };
 
-const Counters = ({ data, counterSize }: ICounter) => {
+const Counters = ({ data, counterSize, countersRef }: ICounter) => {
+
+  console.log(countersRef, "dale loo")
+
   return (
     <Box
       sx={{
@@ -47,7 +51,12 @@ const Counters = ({ data, counterSize }: ICounter) => {
                   fontSize: `${counterSize}px`,
                 }}
               >
-                <DynamicCounter from={0} to={element?.number} duration={7} />
+                <DynamicCounter
+                  from={0}
+                  to={element?.number}
+                  duration={4}
+                  counterRef={countersRef}
+                />
               </Typography>
               <Typography
                 sx={{

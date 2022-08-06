@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import React from "react";
 import Main from "../../components/Main";
 import Menu, { IState } from "../../components/Menu";
@@ -17,7 +17,6 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 
-
 export type TDemo = {
   img: string;
   title: string;
@@ -26,8 +25,18 @@ export type TDemo = {
 const Home = () => {
   const state = useSelector((state: IState) => state?.templates);
   const dispatch = useDispatch();
+  const [countersVisible, setCountersVisible] = useState(false);
+  const CountersRef = useRef();
 
-  console.log(state, "Okkkkkk");
+  console.log(countersVisible, "OKkkk???");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setCountersVisible(entry.isIntersecting);
+    });
+    observer.observe(CountersRef?.current);
+  }, []);
 
   const array_operations = (action, array, item) => {
     let update;
@@ -177,14 +186,6 @@ const Home = () => {
     },
   };
 
-  const FadeFromtop = {
-    offscreen: { y: 50, opacity: 0 },
-    onscreen: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 1.5 },
-    },
-  };
 
   return (
     <Fragment>
@@ -213,14 +214,14 @@ const Home = () => {
         </motion.div>
       </Box>
 
-      <Box sx={{ width: "100%", padding: "5% 0 15% 0" }}>
+      <Box sx={{ width: "100%", padding: "5% 0 15% 0" }} ref={CountersRef}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
           viewport={{ once: false, amount: 0.5 }}
           variants={FadeFromBottom}
         >
-          <Counters data={data} counterSize={35} />.
+          <Counters data={data} counterSize={35} countersRef={countersVisible}/>.
         </motion.div>
       </Box>
 
