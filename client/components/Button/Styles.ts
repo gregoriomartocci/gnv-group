@@ -21,7 +21,7 @@ export const Primary: SxProps<Theme> = {
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
   "&:hover": {
     backgroundColor: black,
   },
@@ -39,7 +39,7 @@ export const Secondary: SxProps<Theme> = {
   color: "#212121",
   cursor: "pointer",
   fontWeight: 500,
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
   "&:hover": {
     backgroundColor: white,
   },
@@ -57,7 +57,7 @@ export const Auth: SxProps<Theme> = {
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
   "&:hover": {
     backgroundColor: magenta,
   },
@@ -76,7 +76,7 @@ export const Blue: SxProps<Theme> = {
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
 
   "&:hover": {
     backgroundColor: blue,
@@ -96,7 +96,7 @@ export const Delete: SxProps<Theme> = {
   color: "#fff",
   cursor: "pointer",
   fontWeight: 500,
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
 
   "&:hover": {
     backgroundColor: "#C74142",
@@ -116,7 +116,7 @@ export const Paper: SxProps<Theme> = {
   color: "#8C949D",
   cursor: "pointer",
   fontWeight: 500,
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
 
   "&:hover": {
     backgroundColor: "#E9EDF2",

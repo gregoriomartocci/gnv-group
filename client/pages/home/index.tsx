@@ -14,6 +14,8 @@ import Cards from "../../components/Cards";
 import Quote from "../../components/Quote";
 import { setState, setTemplates } from "../../redux/slices/templates";
 import api from "../../hooks/Api";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export type TDemo = {
   img: string;
@@ -165,6 +167,24 @@ const Home = () => {
     },
   ];
 
+  const FadeFromBottom = {
+    offscreen: { y: 50, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 1.5 },
+    },
+  };
+
+  const FadeFromtop = {
+    offscreen: { y: 50, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 1.5 },
+    },
+  };
+
   return (
     <Fragment>
       <Menu onScroll />
@@ -176,39 +196,66 @@ const Home = () => {
         }
       />
 
-      <Box sx={{ width: "100%", padding: "5% 0" }}>
-        <HeaderTitle
-          height={8}
-          width={18}
-          fontSize="24px"
-          description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
+      <Box sx={{ width: "100%", padding: "7.5% 0" }}>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.5 }}
+          variants={FadeFromBottom}
+        >
+          <HeaderTitle
+            height={8}
+            width={18}
+            fontSize="28px"
+            description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
+          />
+        </motion.div>
+      </Box>
+
+      <Box sx={{ width: "100%", padding: "5% 0 15% 0" }}>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.5 }}
+          variants={FadeFromBottom}
+        >
+          <Counter data={data} counterSize={35} />
+        </motion.div>
+      </Box>
+
+      <Box>
+        <Cards
+          gap={0}
+          columns={2}
+          items={items}
+          component={(item: TDemo) => <Card {...item} />}
+        ></Cards>
+      </Box>
+
+      <Box>
+        <Quote
+          img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+          text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
+          author={{
+            name: "Alejandro Ginevra",
+            position: "Presidente de GNV Group",
+          }}
         />
       </Box>
 
-      <Box sx={{ width: "100%", padding: "7.5% 0 15% 0" }}>
-        <Counter data={data} counterSize={35} />
+      <Box>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.5 }}
+          variants={FadeFromBottom}
+        >
+          <Main
+            mode="static"
+            img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
+          />
+        </motion.div>
       </Box>
-
-      <Cards
-        gap={0}
-        columns={2}
-        items={items}
-        component={(item: TDemo) => <Card {...item} />}
-      ></Cards>
-
-      <Quote
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
-        text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
-        author={{
-          name: "Alejandro Ginevra",
-          position: "Presidente de GNV Group",
-        }}
-      />
-
-      <Main
-        mode="static"
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
-      />
 
       <Footer></Footer>
     </Fragment>

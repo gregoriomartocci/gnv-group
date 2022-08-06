@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { QuoteContainer } from "./Styles";
+import { motion } from "framer-motion";
 
 type TAuthor = {
   name: string;
@@ -13,11 +14,36 @@ interface IQuote {
 }
 
 const Quote = ({ img, text, author: { name, position } }: IQuote) => {
+  const FadeFromBottom = {
+    offscreen: { y: 75, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 2 },
+    },
+  };
+
+  const FadeFromTop = {
+    offscreen: { y: -75, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 2 },
+    },
+  };
+
   return (
     <Box sx={QuoteContainer}>
-      <Box>
-        <img src={img} alt={name} />
-      </Box>
+      <motion.div
+        initial={"offscreen"}
+        whileInView={"onscreen"}
+        viewport={{ once: false, amount: 0 }}
+        variants={FadeFromTop}
+      >
+        <Box>
+          <img src={img} alt={name} />
+        </Box>
+      </motion.div>
 
       <Box
         sx={{
@@ -29,46 +55,53 @@ const Quote = ({ img, text, author: { name, position } }: IQuote) => {
           padding: "0 7.5%",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            margin: "0 0 35px 0",
-            fontSize: "32px",
-            color: "#424242",
-            fontWeight: 500,
-            fontFamily: "'Poppins'",
-            fontStyle: "italic",
-          }}
-        >
-          {text}
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0 }}
+          variants={FadeFromBottom}
         >
           <Box
             sx={{
-              fontSize: "24px",
+              display: "flex",
+              margin: "0 0 35px 0",
+              fontSize: "32px",
               color: "#424242",
               fontWeight: 500,
-              margin: "0 0 7.5px 0",
+              fontFamily: "'Poppins'",
+              fontStyle: "italic",
             }}
           >
-            {name}
+            {text}
           </Box>
+
           <Box
             sx={{
-              fontSize: "15px",
-              fontWeight: 400,
-              color: "#9e9e9e",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            {position}
+            <Box
+              sx={{
+                fontSize: "24px",
+                color: "#424242",
+                fontWeight: 500,
+                margin: "0 0 7.5px 0",
+              }}
+            >
+              {name}
+            </Box>
+            <Box
+              sx={{
+                fontSize: "15px",
+                fontWeight: 400,
+                color: "#9e9e9e",
+              }}
+            >
+              {position}
+            </Box>
           </Box>
-        </Box>
+        </motion.div>
       </Box>
     </Box>
   );
