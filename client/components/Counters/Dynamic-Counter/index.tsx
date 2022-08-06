@@ -18,9 +18,6 @@ export default function DynamicCounter({
   const [increase, setIncrease] = useState(to);
 
   useEffect(() => {
-
-    console.log("ME ACTUALIZO")
-    
     if (counterRef) {
       animate(from, to, {
         duration,
