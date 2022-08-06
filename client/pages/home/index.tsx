@@ -8,7 +8,6 @@ import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
 import Footer from "../../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTitle from "../../components/Header-Title";
-import Counter from "../../components/Counters";
 import Card from "./Components/Card";
 import Cards from "../../components/Cards";
 import Quote from "../../components/Quote";
@@ -16,6 +15,8 @@ import { setState, setTemplates } from "../../redux/slices/templates";
 import api from "../../hooks/Api";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Counters from "../../components/Counters";
+
 
 export type TDemo = {
   img: string;
@@ -219,7 +220,7 @@ const Home = () => {
           viewport={{ once: false, amount: 0.5 }}
           variants={FadeFromBottom}
         >
-          <Counter data={data} counterSize={35} />
+          <Counters data={data} counterSize={35} />.
         </motion.div>
       </Box>
 
@@ -244,17 +245,10 @@ const Home = () => {
       </Box>
 
       <Box>
-        <motion.div
-          initial={"offscreen"}
-          whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.5 }}
-          variants={FadeFromBottom}
-        >
-          <Main
-            mode="static"
-            img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
-          />
-        </motion.div>
+        <Main
+          mode="static"
+          img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
+        />
       </Box>
 
       <Footer></Footer>

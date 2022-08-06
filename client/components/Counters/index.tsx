@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { CounterBlock } from "./Styles";
+import dynamic from "next/dynamic";
+
+const DynamicCounter = dynamic(() => import("./Dynamic-Counter"), {
+  ssr: false,
+});
 
 export type ICounterElement = {
   number: number;
@@ -13,7 +18,7 @@ export type ICounter = {
   counterSize?: number;
 };
 
-const Counter = ({ data, counterSize }: ICounter) => {
+const Counters = ({ data, counterSize }: ICounter) => {
   return (
     <Box
       sx={{
@@ -35,14 +40,25 @@ const Counter = ({ data, counterSize }: ICounter) => {
             }
             key={index}
           >
-            <Typography
-              sx={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: `${counterSize}px`,
-              }}
-            >
-              {element.number} {element?.unity}
-            </Typography>
+            <Box sx={{ display: "flex" }}>
+              <Typography
+                sx={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: `${counterSize}px`,
+                }}
+              >
+                <DynamicCounter from={0} to={element?.number} duration={7} />
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: `${counterSize}px`,
+                  margin: "0 0 0 15px 0",
+                }}
+              >
+                {element?.unity}
+              </Typography>
+            </Box>
             <Typography
               sx={{ fontFamily: "'Poppins', sans-serif", fontSize: "18px" }}
             >
@@ -55,4 +71,4 @@ const Counter = ({ data, counterSize }: ICounter) => {
   );
 };
 
-export default Counter;
+export default Counters;
