@@ -43,10 +43,8 @@ const News = () => {
           description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
         />
       </motion.div>
-
       <Ventures />
-
-      <Footer></Footer>
+      <Footer />
     </Box>
   );
 };

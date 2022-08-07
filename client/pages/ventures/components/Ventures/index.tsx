@@ -58,6 +58,8 @@ const Ventures = () => {
     dispatch(setFilter(filtered));
   };
 
+  console.log(projects_filter, "Projects Filterrr");
+
   return (
     <Box
       sx={{
@@ -67,8 +69,6 @@ const Ventures = () => {
       <SelectorB />
       <Cards
         items={projects_filter}
-        gap={3}
-        columns={4}
         component={(item: IProject | IArticle) => <Venture {...item} />}
       />
     </Box>

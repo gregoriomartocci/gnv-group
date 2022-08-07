@@ -13,7 +13,7 @@ import Cards from "../../components/Cards";
 import Quote from "../../components/Quote";
 import { setState, setTemplates } from "../../redux/slices/templates";
 import api from "../../hooks/Api";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 
@@ -257,7 +257,7 @@ const Home = () => {
         />
       </Box>
 
-      <Footer></Footer>
+      <Footer />
     </Fragment>
   );
 };

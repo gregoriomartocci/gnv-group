@@ -1,8 +1,8 @@
 import { CardBody, CardContainer, CardHeader } from "./Styles";
 import { Box } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { motion } from "framer-motion";
 import parse from "html-react-parser";
+import { motion } from "framer-motion";
 
 const Venture = ({ images, name, status, description }: any) => {
   const santize = (string: string) => {
@@ -10,68 +10,99 @@ const Venture = ({ images, name, status, description }: any) => {
     return reactElement;
   };
 
-  return (
-    <motion.div
-      layout
-      animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-    >
-      <Box sx={CardContainer}>
-        <img src={images[0]?.src ?? ""} alt={name} />
-        <Box sx={CardHeader}>
-          <span
-            style={{
-              color: "#212121",
-              fontWeight: 600,
-              fontSize: "25px",
-              margin: "15px 0",
-            }}
-          >
-            {name}
-          </span>
-        </Box>
+  const transition = { duration: 1, ease: "easeInOut" };
 
-        <Box sx={CardBody}>
-          <Box style={{ display: "flex", alignItems: "center" }}>
+  const postVariants = {
+    initial: { y: 100, opacity: 0 },
+    enter: { y: 0, opacity: 1, transition },
+    exit: { y: -100, opacity: 0, transition },
+  };
+
+  const postPreviewVariants = {
+    initial: { x: "100%", opacity: 0 },
+    enter: { x: 0, opacity: 1, transition },
+    exit: { x: "-100%", opacity: 0, transition },
+  };
+
+  const containerVariant = {
+    visible: {
+      opacity: 1,
+    },
+    hidden: {
+      opacity: 0,
+    },
+  };
+
+  const blogVariants = {
+    enter: { transition: { staggerChildren: 0.1 } },
+    exit: { transition: { staggerChildren: 0.1 } },
+  };
+
+  return (
+    <>
+      <motion.div
+        layout
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={postVariants}
+      >
+        <Box sx={CardContainer}>
+          <img src={images[0]?.src ?? ""} alt={name} />
+          <Box sx={CardHeader}>
             <span
               style={{
                 color: "#212121",
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "25px",
+                margin: "15px 0",
               }}
             >
-              {status}
+              {name}
             </span>
           </Box>
 
-          <Box
-            style={{
-              color: "#424242",
-              fontWeight: 600,
-              fontSize: "12px",
-              margin: "10px 0",
-            }}
-          >
-            {santize(description ?? "")}
-          </Box>
+          <Box sx={CardBody}>
+            <Box style={{ display: "flex", alignItems: "center" }}>
+              <span
+                style={{
+                  color: "#212121",
+                  fontWeight: 600,
+                  fontSize: "12px",
+                }}
+              >
+                {status}
+              </span>
+            </Box>
 
-          <Box
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "#424242",
-              fontWeight: 600,
-              fontSize: "12px",
-              margin: "10px 0",
-            }}
-          >
-            Ver Proyecto
-            <KeyboardArrowRightIcon />
+            <Box
+              style={{
+                color: "#424242",
+                fontWeight: 600,
+                fontSize: "12px",
+                margin: "10px 0",
+              }}
+            >
+              {santize(description ?? "")}
+            </Box>
+
+            <Box
+              style={{
+                display: "flex",
+                alignItems: "center",
+                color: "#424242",
+                fontWeight: 600,
+                fontSize: "12px",
+                margin: "10px 0",
+              }}
+            >
+              Ver Proyecto
+              <KeyboardArrowRightIcon />
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import { SxProps, Theme } from "@mui/material";
 
 export const CardContainer: SxProps<Theme> = {
   display: "flex",
-  maxWidth: "250px",
+  maxWidth: "350px",
   flexDirection: "column",
   backgroundColor: "#fff",
   borderRadius: "20px",
@@ -16,11 +16,10 @@ export const CardContainer: SxProps<Theme> = {
   margin: "15px",
 
   img: {
-    width: "100%",
-    height: "400px",
     objectFit: "cover",
+    width: "100%",
+    height: "100%",
     borderRadius: "15px",
-    objectPosition: "center center",
   },
 };
 
