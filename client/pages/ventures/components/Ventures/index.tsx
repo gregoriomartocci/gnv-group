@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { projectsData } from "../../../../data/SliderData";
 import SelectorB from "../../../../components/SelectorB";
 import Cards from "../../../../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../../components/Menu";
-import parse from "html-react-parser";
 import api from "../../../../hooks/Api";
 import {
   IProject,
@@ -15,71 +12,8 @@ import {
 } from "../../../../redux/slices/projects";
 import { errorType } from "../../../profile/projects";
 import { IArticle } from "../../../../redux/slices/articles";
-import { CardBody, CardContainer, CardHeader } from "../../../../components/Card/Styles";
 
-const VentureCard = ({ images, name, status, description }: any) => {
-  const santize = (string: string) => {
-    const reactElement = parse(string);
-    return reactElement;
-  };
-
-  return (
-    <Box sx={CardContainer}>
-      <img src={images[0]?.src ?? ""} alt={name} />
-      <Box sx={CardHeader}>
-        <span
-          style={{
-            color: "#212121",
-            fontWeight: 600,
-            fontSize: "25px",
-            margin: "15px 0",
-          }}
-        >
-          {name}
-        </span>
-      </Box>
-
-      <Box sx={CardBody}>
-        <Box style={{ display: "flex", alignItems: "center" }}>
-          <span
-            style={{
-              color: "#212121",
-              fontWeight: 600,
-              fontSize: "12px",
-            }}
-          >
-            {status}
-          </span>
-        </Box>
-
-        <Box
-          style={{
-            color: "#424242",
-            fontWeight: 600,
-            fontSize: "12px",
-            margin: "10px 0",
-          }}
-        >
-          {santize(description ?? "")}
-        </Box>
-
-        <Box
-          style={{
-            display: "flex",
-            alignItems: "center",
-            color: "#424242",
-            fontWeight: 600,
-            fontSize: "12px",
-            margin: "10px 0",
-          }}
-        >
-          Ver Proyecto
-          <KeyboardArrowRightIcon />
-        </Box>
-      </Box>
-    </Box>
-  );
-};
+import Venture from "../Venture";
 
 const Ventures = () => {
   const dispatch = useDispatch();
@@ -135,8 +69,8 @@ const Ventures = () => {
         items={projects_filter}
         gap={3}
         columns={4}
-        component={(item: IProject | IArticle) => <VentureCard {...item} />}
-      ></Cards>
+        component={(item: IProject | IArticle) => <Venture {...item} />}
+      />
     </Box>
   );
 };

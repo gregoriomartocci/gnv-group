@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { Box, SxProps, Theme } from "@mui/material";
-import Card from "../Card";
 import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
+import { AnimatePresence, motion } from "framer-motion";
 
 export interface IProjects {
   items: IProject[] | IArticle[] | IDemo[];
@@ -11,22 +11,16 @@ export interface IProjects {
   columns: number;
 }
 
-const Cards = ({ items, component, gap, columns }: IProjects) => {
-  const ProjectsContainer: SxProps<Theme> = {
-    display: "grid",
-    gridTemplateColumns: `repeat(${columns}, auto)`,
-    gap,
-    backgroundColor: "#fff",
-    fontFamily: "Poppins",
-    overflow: "hidden",
-  };
-
+const Cards = ({ items, component}: IProjects) => {
+  
   return (
-    <Box sx={ProjectsContainer}>
-      {items?.map((item, index: number) => (
-        <Card key={index}>{component(item)}</Card>
-      ))}
-    </Box>
+    <motion.div layout>
+      <AnimatePresence>
+        {items?.map((item, index: number) => (
+          <Box key={index}>{component(item)}</Box>
+        ))}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
