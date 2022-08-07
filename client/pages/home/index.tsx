@@ -186,7 +186,6 @@ const Home = () => {
     },
   };
 
-
   return (
     <Fragment>
       <Menu onScroll />
@@ -221,7 +220,12 @@ const Home = () => {
           viewport={{ once: false, amount: 0.5 }}
           variants={FadeFromBottom}
         >
-          <Counters data={data} counterSize={35} countersRef={countersVisible}/>.
+          <Counters
+            data={data}
+            counterSize={35}
+            countersRef={countersVisible}
+          />
+          .
         </motion.div>
       </Box>
 
@@ -249,6 +253,7 @@ const Home = () => {
         <Main
           mode="static"
           img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
+          imageOnly
         />
       </Box>
 

@@ -19,6 +19,7 @@ import Button from "../Button";
 import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
 import { IProject } from "../../redux/slices/projects";
+import Frame from "./Components/Frame";
 
 export interface ISlide {
   title: string;
@@ -33,9 +34,11 @@ export interface ISlidesProps {
   slides?: StaticImageData[];
   mode: "slider" | "static";
   img?: string;
+  imageOnly?: boolean;
+  frame?: boolean;
 }
 
-const Main = ({ slides, mode, img }: ISlidesProps) => {
+const Main = ({ slides, mode, img, imageOnly, frame }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
@@ -90,15 +93,18 @@ const Main = ({ slides, mode, img }: ISlidesProps) => {
                         style={{ position: "absolute" }}
                       />
                     </Box>
-                    <Box sx={MainContent}>
-                      <Typography sx={HeaderTitle}>
-                        {" "}
-                        Proyectos distintivos con visión de futuro.
-                      </Typography>
-                      <Box style={{ width: "150px" }}>
-                        <Button type={"Primary"}>Contactanos</Button>
+                    {!imageOnly ? (
+                      <Box sx={MainContent}>
+                        <Typography sx={HeaderTitle}>
+                          Proyectos distintivos con visión de futuro.
+                        </Typography>
+                        <Box style={{ width: "150px" }}>
+                          <Button type={"Primary"}>Contactanos</Button>
+                        </Box>
                       </Box>
-                    </Box>
+                    ) : (
+                      ""
+                    )}
                   </Box>
                 )}
 
@@ -119,14 +125,19 @@ const Main = ({ slides, mode, img }: ISlidesProps) => {
                   loading="lazy"
                   style={{ position: "absolute" }}
                 />
-                <Box sx={MainContent}>
-                  <Typography sx={HeaderTitle}>
-                    Proyectos distintivos con visión de futuro.
-                  </Typography>
-                  <Box style={{ width: "150px" }}>
-                    <Button type={"Primary"}>Contactanos</Button>
+                {!imageOnly ? (
+                  <Box sx={MainContent}>
+                    <Typography sx={HeaderTitle}>
+                      Proyectos distintivos con visión de futuro.
+                    </Typography>
+                    <Box style={{ width: "150px" }}>
+                      <Button type={"Primary"}>Contactanos</Button>
+                    </Box>
                   </Box>
-                </Box>
+                ) : (
+                  ""
+                )}
+                {frame ? <Frame theme="light" width="100vw" /> : ""}
               </Box>
             </Box>
           </Box>

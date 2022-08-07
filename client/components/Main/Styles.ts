@@ -102,7 +102,7 @@ export const MainContent: SxProps<Theme> = {
   zIndex: 10,
   display: "flex",
   flexDirection: "column",
-  width: "100%",
+  width: "100vw",
   padding: "10%",
   color: "#fff",
 };

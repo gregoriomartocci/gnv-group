@@ -54,7 +54,7 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
                 <DynamicCounter
                   from={0}
                   to={element?.number}
-                  duration={6}
+                  duration={2}
                   counterRef={countersRef}
                 />
               </Typography>
