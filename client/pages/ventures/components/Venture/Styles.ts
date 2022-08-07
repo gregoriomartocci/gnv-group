@@ -17,8 +17,7 @@ export const CardContainer: SxProps<Theme> = {
 
   img: {
     objectFit: "cover",
-    width: "100%",
-    height: "100%",
+    height: "500px",
     borderRadius: "15px",
   },
 };

@@ -9,23 +9,15 @@ export interface IProjects {
   component: any;
 }
 
-const transition = { duration: 0.5, ease: "easeInOut" };
-
-const postVariants = {
-  initial: { y: 100, opacity: 0 },
-  enter: { y: 0, opacity: 1, transition },
-  exit: { y: -100, opacity: 0, transition },
-};
-
 const Cards = ({ items, component }: IProjects) => {
   return (
-    <motion.div layout style={{ display: "flex", flexWrap: "wrap" }}>
-      <AnimatePresence>
+    <AnimatePresence>
+      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {items?.map((item, index: number) => {
           return <Box key={index}>{component(item)}</Box>;
         })}
-      </AnimatePresence>
-    </motion.div>
+      </Box>
+    </AnimatePresence>
   );
 };
 

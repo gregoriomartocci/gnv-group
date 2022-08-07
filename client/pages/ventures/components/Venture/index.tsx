@@ -12,30 +12,10 @@ const Venture = ({ images, name, status, description }: any) => {
 
   const transition = { duration: 1, ease: "easeInOut" };
 
-  const postVariants = {
-    initial: { y: 100, opacity: 0 },
+  const venturesVariants = {
+    initial: { y: 50, opacity: 0 },
     enter: { y: 0, opacity: 1, transition },
-    exit: { y: -100, opacity: 0, transition },
-  };
-
-  const postPreviewVariants = {
-    initial: { x: "100%", opacity: 0 },
-    enter: { x: 0, opacity: 1, transition },
-    exit: { x: "-100%", opacity: 0, transition },
-  };
-
-  const containerVariant = {
-    visible: {
-      opacity: 1,
-    },
-    hidden: {
-      opacity: 0,
-    },
-  };
-
-  const blogVariants = {
-    enter: { transition: { staggerChildren: 0.1 } },
-    exit: { transition: { staggerChildren: 0.1 } },
+    exit: { y: -50, opacity: 0, transition },
   };
 
   return (
@@ -45,7 +25,7 @@ const Venture = ({ images, name, status, description }: any) => {
         initial="initial"
         animate="enter"
         exit="exit"
-        variants={postVariants}
+        variants={venturesVariants}
       >
         <Box sx={CardContainer}>
           <img src={images[0]?.src ?? ""} alt={name} />
