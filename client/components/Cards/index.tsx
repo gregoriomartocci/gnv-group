@@ -10,14 +10,34 @@ export interface IProjects {
 }
 
 const Cards = ({ items, component }: IProjects) => {
+  
+  const transition = { duration: 1, ease: "easeInOut" };
+
+  const venturesVariants = {
+    initial: { y: 50, opacity: 0 },
+    enter: { y: 0, opacity: 1, transition },
+    exit: { y: -50, opacity: 0, transition },
+  };
+
   return (
-    <AnimatePresence>
-      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+    <motion.div layout style={{ display: "flex", flexWrap: "wrap" }} >
+      <AnimatePresence>
         {items?.map((item, index: number) => {
-          return <Box key={index}>{component(item)}</Box>;
+          return (
+            <motion.div
+              layout
+              key={index}
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              variants={venturesVariants}
+            >
+              {component(item)}
+            </motion.div>
+          );
         })}
-      </Box>
-    </AnimatePresence>
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
