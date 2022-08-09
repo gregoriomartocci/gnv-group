@@ -2,7 +2,7 @@ import { CardBody, CardContainer, CardHeader } from "./Styles";
 import { Box } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
-
+import { motion } from "framer-motion";
 
 const Venture = ({ images, name, status, description }: any) => {
   const santize = (string: string) => {

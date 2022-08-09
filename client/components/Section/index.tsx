@@ -1,67 +1,74 @@
 import React from "react";
-import { Box } from "@mui/material";
-import ImageOne from "../../assets/images/Image-1.jpg";
-import ImageTwo from "../../assets/images/Image-2.jpg";
-import { ColumnLeft, ColumRight, Container, Reverse, SectionStyle } from "./Styles";
-import { StaticImageData } from "next/image";
-import Button from "../Button";
+import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 
-export const InfoDataOne = {
-  heading: "Conozca nuestras propiedades",
-  paragraphOne:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita repudiandae voluptas nemo asperiores facilis doloribus placeat. Quisquam a eos necessitatibus?",
-  paragraphOTwo:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita repudiandae voluptas nemo asperiores facilis doloribus placeat. Quisquam a eos necessitatibus?",
-  buttonLabel: "View Homes",
-  image: ImageOne,
-  reverse: false,
-  delay: 100,
-};
-
-export const InfoDataTwo = {
-  heading: "Diseños modernos",
-  paragraphOne:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita repudiandae voluptas nemo asperiores facilis doloribus placeat. Quisquam a eos necessitatibus?",
-  paragraphOTwo:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita repudiandae voluptas nemo asperiores facilis doloribus placeat. Quisquam a eos necessitatibus?",
-  buttonLabel: "View Homes",
-  image: ImageTwo,
-  reverse: true,
-  delay: 300,
-};
+import {
+  ColumnLeft,
+  ColumRight,
+  Container,
+  Reverse,
+  SectionStyle,
+} from "./Styles";
 
 export interface ISectionProps {
   heading: string;
-  paragraphOne: string;
-  paragraphOTwo?: string;
-  buttonLabel: string;
-  image: StaticImageData;
+  image: string;
   reverse?: boolean;
-  delay?: number;
 }
 
-const Section = ({
-  heading,
-  paragraphOne,
-  paragraphOTwo,
-  buttonLabel,
-  image,
-  reverse,
-  delay,
-}: ISectionProps) => {
+const duration = 2
+
+const FadeFromRight = {
+  offscreen: { x: 50, opacity: 0, transition: { duration } },
+  onscreen: {
+    x: 0,
+    opacity: 1,
+    transition: { duration },
+  },
+};
+
+const FadeFromLeft = {
+  offscreen: { x: -50, opacity: 0, transition: { duration } },
+  onscreen: {
+    x: 0,
+    opacity: 1,
+    transition: { duration },
+  },
+};
+
+const Section = ({ heading, image, reverse }: ISectionProps) => {
   return (
     <Box sx={SectionStyle}>
       <Box sx={reverse ? Reverse : Container}>
-        <Box sx={ColumnLeft}>
-          <h1>{heading}</h1>
-          <p>{paragraphOne}</p>
-          <Box style={{ width: "150px" }}>
-            <Button type={"Primary"}>View Home</Button>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.25 }}
+          variants={FadeFromLeft}
+        >
+          <Box sx={ColumnLeft}>
+            <Typography
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 400,
+                fontSize: "30px",
+              }}
+            >
+              {heading}
+            </Typography>
           </Box>
-        </Box>
-        <Box sx={ColumRight}>
-          <img src={image?.src} alt="home" />
-        </Box>
+        </motion.div>
+
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0 }}
+          variants={FadeFromRight}
+        >
+          <Box sx={ColumRight}>
+            <img src={image} alt="home" />
+          </Box>
+        </motion.div>
       </Box>
     </Box>
   );

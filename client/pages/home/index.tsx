@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 
+
 export type TDemo = {
   img: string;
   title: string;
@@ -155,7 +156,7 @@ const Home = () => {
       unity: "m²",
       description: "corporativos World Trade Center",
     },
-    { number: 771190, description: "centros comerciales desarrollados" },
+    { number: 17, description: "centros comerciales desarrollados" },
   ];
 
   const items = [
@@ -250,10 +251,9 @@ const Home = () => {
       </Box>
 
       <Box>
-        <Main
-          mode="static"
-          img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
-          imageOnly
+        <Section
+          heading="Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end."
+          image="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
         />
       </Box>
 

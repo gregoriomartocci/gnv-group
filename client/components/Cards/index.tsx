@@ -7,35 +7,39 @@ import { motion, AnimatePresence } from "framer-motion";
 export interface IProjects {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
+  columns: number;
+  gap: string;
 }
 
-const Cards = ({ items, component }: IProjects) => {
-  
-  const transition = { duration: 1, ease: "easeInOut" };
-
+const Cards = ({ items, component, columns, gap }: IProjects) => {
+  const transition = { duration: 0.5, ease: "easeInOut" };
   const venturesVariants = {
-    initial: { y: 50, opacity: 0 },
+    initial: { y: 25, opacity: 0 },
     enter: { y: 0, opacity: 1, transition },
-    exit: { y: -50, opacity: 0, transition },
+    exit: { y: -25, opacity: 0, transition },
   };
 
   return (
-    <motion.div layout style={{ display: "flex", flexWrap: "wrap" }} >
+    <motion.div
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        flexWrap: "wrap",
+        gap,
+      }}
+    >
       <AnimatePresence>
-        {items?.map((item, index: number) => {
-          return (
-            <motion.div
-              layout
-              key={index}
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              variants={venturesVariants}
-            >
-              {component(item)}
-            </motion.div>
-          );
-        })}
+        {items?.map((item, index: number) => (
+          <motion.div
+            key={index}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={venturesVariants}
+          >
+            {component(item)}
+          </motion.div>
+        ))}
       </AnimatePresence>
     </motion.div>
   );

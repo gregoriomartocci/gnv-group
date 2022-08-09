@@ -21,15 +21,14 @@ export type ICounter = {
 
 const Counters = ({ data, counterSize, countersRef }: ICounter) => {
 
-  console.log(countersRef, "dale loo")
-
   return (
     <Box
       sx={{
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: "repeat(5,1fr)",
+        padding: "0 10%",
         width: "100%",
         justifyContent: "center",
-
         alignItems: "center",
       }}
     >
@@ -44,7 +43,13 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
             }
             key={index}
           >
-            <Box sx={{ display: "flex" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Typography
                 sx={{
                   fontFamily: "'Poppins', sans-serif",
