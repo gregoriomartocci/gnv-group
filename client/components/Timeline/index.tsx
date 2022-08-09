@@ -19,6 +19,8 @@ const Timeline = () => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        padding: "20%",
+        height:"100%",
         transform: "rotate(-90deg)",
       }}
     >
@@ -31,6 +33,7 @@ const Timeline = () => {
                   display: "grid",
                   gridTemplateColumns: "repeat(3, 150px)",
                   transform: "rotate(90deg)",
+                  padding:"10% 0"
                 }}
               >
                 {highlights?.map(({ title, date, description }) => {
@@ -52,6 +55,7 @@ const Timeline = () => {
                 sx={{
                   display: "flex",
                   padding: "30px 25px",
+                  width: "100%",
                   justifyContent: "space-between",
                   alignItems: "center",
                   cursor: "pointer",

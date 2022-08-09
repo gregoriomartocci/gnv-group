@@ -5,19 +5,19 @@ export const data = [
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
       ],
@@ -28,19 +28,19 @@ export const data = [
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
       ],
@@ -51,19 +51,19 @@ export const data = [
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
       ],
@@ -74,19 +74,19 @@ export const data = [
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
         {
           title: "Harbour Tower",
           description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas enim ad est quam harum voluptas a dignissimos aut eos quia! Alias itaque iusto soluta quidem aut accusantium tenetur reprehenderit nam.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           date: "20 de Abril",
         },
       ],
