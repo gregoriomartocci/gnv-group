@@ -16,7 +16,7 @@ export interface ISectionProps {
   reverse?: boolean;
 }
 
-const duration = 2
+const duration = 2.5
 
 const FadeFromRight = {
   offscreen: { x: 50, opacity: 0, transition: { duration } },
@@ -51,7 +51,7 @@ const Section = ({ heading, image, reverse }: ISectionProps) => {
               sx={{
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 400,
-                fontSize: "30px",
+                fontSize: "28px",
               }}
             >
               {heading}

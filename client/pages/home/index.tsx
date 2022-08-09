@@ -17,7 +17,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 
-
 export type TDemo = {
   img: string;
   title: string;
@@ -214,7 +213,7 @@ const Home = () => {
         </motion.div>
       </Box>
 
-      <Box sx={{ width: "100%", padding: "5% 0 15% 0" }} ref={CountersRef}>
+      <Box sx={{ width: "100%", padding: "5% 0 20% 0" }} ref={CountersRef}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}

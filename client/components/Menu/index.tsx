@@ -130,7 +130,11 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
             </Link>
           </Box>
           <Box sx={MenuItems}>
-            <Box sx={MenuItem}>Portfolio</Box>
+            <Link href={"/company"}>
+              <a>
+                <Box sx={MenuItem}>Compañía</Box>
+              </a>
+            </Link>
             <Link href={"/ventures"}>
               <a>
                 <Box sx={MenuItem}>Emprendimientos</Box>
