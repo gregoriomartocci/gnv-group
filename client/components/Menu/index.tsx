@@ -66,16 +66,8 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
   const openBasicMenu = Boolean(anchorEl);
   const [navbar, setNavbar] = useState(false);
 
-  const handleClickBasicMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handleCloseBasicMenu = () => {
     setAnchorEl(null);
-  };
-
-  const handleOpen = () => {
-    setOpenModal(true);
   };
 
   const handleCloseModal = () => {

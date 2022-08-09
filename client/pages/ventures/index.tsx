@@ -17,7 +17,7 @@ const FadeFromBottom = {
   },
 };
 
-const News = () => {
+const Ventures = () => {
   return (
     <Box>
       <Menu onScroll />
@@ -49,4 +49,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Ventures;
