@@ -41,9 +41,15 @@ function Carousel() {
     <Box
       sx={{
         display: "flex",
+        position: "relative",
         justifyContent: "center",
+        alignItems: "center",
         width: "100%",
         height: "100%",
+        cursor: "pointer",
+        backgroundColor: "#ffffff",
+        borderRadius: "10px",
+        padding: "15px",
       }}
     >
       <Box
@@ -53,38 +59,50 @@ function Carousel() {
           alignItems: "center",
           padding: "15px",
           border: "1px solid #e0e0e0",
+          backgroundColor: "#ffffff",
+          cursor: "pointer",
+          borderRadius: "10px",
+          zIndex: 10,
         }}
-        component="span"
         onClick={onLeft}
+        component="span"
       >
         <ArrowBackIosIcon />
       </Box>
 
-      <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          padding:"15px",
+          position: "relative",
+          width: "500px",
+          height: "300px",
+        }}
+      >
         {slides?.map((url, index) => (
-          <Box component="span" onClick={() => positionSet(index)}>
-            <motion.div
-              style={CardContainer}
-              key={index}
-              initial={{ scale: 0 }}
-              animate={{
-                rotate: 0,
-                left: `${(index - position) * 70 - 30}px`,
-                scale: index === position ? 1 : 0.8,
-                zIndex: 5 - index ,
-              }}
-              transition={{
-                stiffness: 260,
-                damping: 20,
-              }}
-            >
-              <img
-                src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
-                alt="title"
-              ></img>
-              <Typography>{index}</Typography>
-            </motion.div>
-          </Box>
+          <motion.div
+            style={CardContainer}
+            key={index}
+            initial={{ scale: 0 }}
+            animate={{
+              rotate: 0,
+              left: `${(index - position) * 50 + 100}px`,
+              scale: index === position ? 1 : 0.9,
+              zIndex: 5 - index,
+            }}
+            transition={{
+              stiffness: 260,
+              damping: 20,
+            }}
+            onClick={() => positionSet(index)}
+          >
+            <img
+              src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
+              alt="title"
+            ></img>
+            <Typography>{index}</Typography>
+          </motion.div>
         ))}
       </Box>
       <Box
@@ -94,6 +112,10 @@ function Carousel() {
           alignItems: "center",
           padding: "15px",
           border: "1px solid #e0e0e0",
+          backgroundColor: "#ffffff",
+          cursor: "pointer",
+          borderRadius: "10px",
+          zIndex: 10,
         }}
         component="span"
         onClick={onRight}

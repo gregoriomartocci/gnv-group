@@ -23,14 +23,21 @@ const Timeline = () => {
         flexDirection: "column",
         padding: "20%",
         height: "100%",
-        transform: "rotate(-90deg)",
+        // transform: "rotate(-90deg)",
       }}
     >
       {data?.map(({ year, highlights }, index) => {
         return (
           <Box>
             {selected === index ? (
-              <Box sx={{ transform: "rotate(90deg)" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
                 <Carousel />
               </Box>
             ) : (
