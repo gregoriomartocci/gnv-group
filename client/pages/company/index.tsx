@@ -7,7 +7,7 @@ import Menu from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
-import Timeline from "../../components/Timeline";
+import Timeline from "./components/Timeline";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -21,12 +21,11 @@ const FadeFromBottom = {
 const Company = () => {
   return (
     <Box>
-      <Menu onScroll={false} />
+      <Menu onScroll theme="dark"/>
       <Main
         slides={SliderData}
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
-        imageOnly
       ></Main>
 
       <Box sx={{ width: "100%", padding: "7.5% 0" }}>

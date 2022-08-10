@@ -4,6 +4,8 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 import { data } from "./Data";
 import { CardContainer } from "./Styles";
+import { HighQuality } from "@mui/icons-material";
+import Carousel from "../Carousel";
 
 const Timeline = () => {
   const [selected, setSelected] = useState<number>(0);
@@ -20,35 +22,16 @@ const Timeline = () => {
         alignItems: "center",
         flexDirection: "column",
         padding: "20%",
-        height:"100%",
+        height: "100%",
         transform: "rotate(-90deg)",
       }}
     >
       {data?.map(({ year, highlights }, index) => {
         return (
-          <Fragment>
+          <Box>
             {selected === index ? (
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 150px)",
-                  transform: "rotate(90deg)",
-                  padding:"10% 0"
-                }}
-              >
-                {highlights?.map(({ title, date, description }) => {
-                  return (
-                    <Box sx={CardContainer}>
-                      <img
-                        src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
-                        alt={title}
-                      ></img>
-                      <Typography>{title}</Typography>
-                      <Typography>{description}</Typography>
-                      <Typography>{date}</Typography>
-                    </Box>
-                  );
-                })}
+              <Box sx={{ transform: "rotate(90deg)" }}>
+                <Carousel />
               </Box>
             ) : (
               <Box
@@ -85,7 +68,7 @@ const Timeline = () => {
                 <Box />
               </Box>
             )}
-          </Fragment>
+          </Box>
         );
       })}
     </Box>

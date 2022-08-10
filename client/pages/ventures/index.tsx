@@ -17,7 +17,7 @@ const FadeFromBottom = {
   },
 };
 
-const Ventures = () => {
+const VenturesLayout = () => {
   return (
     <Box>
       <Menu onScroll />
@@ -49,4 +49,4 @@ const Ventures = () => {
   );
 };
 
-export default Ventures;
+export default VenturesLayout;
