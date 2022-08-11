@@ -13,6 +13,7 @@ export interface IProjects {
 
 const Cards = ({ items, component, columns, gap }: IProjects) => {
   const transition = { duration: 0.5, ease: "easeInOut" };
+  
   const venturesVariants = {
     initial: { y: 25, opacity: 0 },
     enter: { y: 0, opacity: 1, transition },

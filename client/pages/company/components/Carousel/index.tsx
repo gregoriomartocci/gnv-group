@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Swipeable from "react-swipeable";
 import { Box, Typography } from "@mui/material";
 import { CardContainer } from "./Styles";
@@ -37,15 +37,26 @@ function Carousel() {
     }
   };
 
+  const difference = (num1: number, num2: number): number => {
+    const result = Math.abs(num1 - num2);
+    console.log(result);
+    return result;
+  };
+
+  const transition = { duration: 0, ease: "easeInOut" };
+
+  const venturesVariants = {
+    initial: { y: 25, opacity: 0 },
+    enter: { y: 0, opacity: 1, transition },
+    exit: { y: -25, opacity: 0, transition },
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
-        position: "relative",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
-        width: "100%",
-        height: "100%",
         cursor: "pointer",
         backgroundColor: "#ffffff",
         borderRadius: "10px",
@@ -70,41 +81,62 @@ function Carousel() {
         <ArrowBackIosIcon />
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          padding:"15px",
-          position: "relative",
-          width: "500px",
-          height: "300px",
-        }}
-      >
-        {slides?.map((url, index) => (
-          <motion.div
-            style={CardContainer}
-            key={index}
-            initial={{ scale: 0 }}
-            animate={{
-              rotate: 0,
-              left: `${(index - position) * 50 + 100}px`,
-              scale: index === position ? 1 : 0.9,
-              zIndex: 5 - index,
-            }}
-            transition={{
-              stiffness: 260,
-              damping: 20,
-            }}
-            onClick={() => positionSet(index)}
-          >
-            <img
-              src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
-              alt="title"
-            ></img>
-            <Typography>{index}</Typography>
-          </motion.div>
-        ))}
-      </Box>
+      <AnimatePresence>
+        <motion.div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+            padding: "0 30px",
+            width: "100%",
+            height: "100%",
+          }}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={venturesVariants}
+        >
+          {slides?.map((url, index) => {
+            return difference(position, index) > 1 ? null : (
+              <motion.div
+                layout
+                style={CardContainer}
+                key={index}
+                initial={{ opacity: difference(position, index) > 1 ? 0 : 1 }}
+                animate={{
+                  rotate: 0,
+                  left: `${(index - position) * 1.5}%`,
+                  scale:
+                    index === position
+                      ? 1.3
+                      : `0.${9 - difference(position, index)} `,
+                  zIndex: 5 - difference(position, index),
+                  opacity: difference(position, index) > 1 ? 0 : 1,
+                }}
+                exit="exit"
+                variants={venturesVariants}
+                onClick={() => positionSet(index)}
+              >
+                <img
+                  style={{
+                    objectFit: "cover",
+                    width: "100%",
+                    borderRadius: "15px",
+                  }}
+                  src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
+                  alt="title"
+                />
+
+                <Typography></Typography>
+                <Typography>Lorem Ipsum</Typography>
+                <Typography>Ver más</Typography>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </AnimatePresence>
+
       <Box
         sx={{
           display: "flex",

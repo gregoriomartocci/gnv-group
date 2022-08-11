@@ -22,7 +22,7 @@ export const Carousel: SxProps<Theme> = {
 };
 
 export const CardContainer: SxProps<Theme> = {
-  position: "absolute",
+  position: "relative",
   display: "flex",
   width: "150px",
   flexDirection: "column",
@@ -31,8 +31,8 @@ export const CardContainer: SxProps<Theme> = {
   cursor: "pointer",
   fontFamily: "'Poppins', sans-serif",
   fontSize: "20px",
-  boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-  padding: "20px",
+  boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 12px",
+  padding: "10px",
   margin: "15px",
 
   img: {
