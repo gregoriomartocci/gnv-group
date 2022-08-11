@@ -17,12 +17,6 @@ const Timeline = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        padding: "20%",
-        height: "100%",
         transform: "rotate(-90deg)",
       }}
     >
@@ -30,6 +24,9 @@ const Timeline = () => {
         return (
           <Box
             sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               width: "100%",
               height: "100%",
             }}
@@ -37,9 +34,14 @@ const Timeline = () => {
             {selected === index ? (
               <Box
                 sx={{
-                  transform: "rotate(90deg)",
                   position: "relative",
+                  transform: "rotate(90deg)",
                   display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                  height: "100%",
+                  padding: "18% 0",
                 }}
               >
                 <Carousel />
@@ -55,6 +57,7 @@ const Timeline = () => {
                   cursor: "pointer",
                   borderTop: "1px solid #eeeeee",
                   borderBottom: "1px solid #eeeeee",
+                  zIndex: 100,
                 }}
                 component="span"
                 onClick={() => handleClick(index)}
@@ -69,7 +72,7 @@ const Timeline = () => {
                   sx={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 600,
-                    fontSize: "18px",
+                    fontSize: "20px",
                     color: "#bdbdbd",
                   }}
                 >

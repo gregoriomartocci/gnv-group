@@ -43,12 +43,12 @@ function Carousel() {
     return result;
   };
 
-  const transition = { duration: 0, ease: "easeInOut" };
+  const transition = { duration: 1.25, ease: "easeInOut" };
 
   const venturesVariants = {
-    initial: { y: 25, opacity: 0 },
+    initial: { y: 100, opacity: 0 },
     enter: { y: 0, opacity: 1, transition },
-    exit: { y: -25, opacity: 0, transition },
+    exit: { y: -100, opacity: 0, transition },
   };
 
   return (
@@ -60,7 +60,9 @@ function Carousel() {
         cursor: "pointer",
         backgroundColor: "#ffffff",
         borderRadius: "10px",
-        padding: "15px",
+        width: "900px",
+        height: "100%",
+        padding: "100px",
       }}
     >
       <Box
@@ -81,7 +83,7 @@ function Carousel() {
         <ArrowBackIosIcon />
       </Box>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}> 
         <motion.div
           style={{
             display: "flex",

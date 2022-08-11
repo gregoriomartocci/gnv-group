@@ -21,14 +21,14 @@ const FadeFromBottom = {
 const Company = () => {
   return (
     <Box>
-      <Menu onScroll theme="dark"/>
+      <Menu onScroll theme="dark" />
       <Main
         slides={SliderData}
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
       ></Main>
 
-      <Box sx={{ width: "100%", padding: "7.5% 0" }}>
+      <Box sx={{ width: "100%", height: "100%", padding: "7.5%" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
@@ -47,7 +47,14 @@ const Company = () => {
         </motion.div>
       </Box>
 
-      <Box sx={{ width: "100%", padding: "7.5% 0" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
         <Timeline />
       </Box>
 
