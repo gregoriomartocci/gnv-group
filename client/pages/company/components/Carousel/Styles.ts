@@ -24,20 +24,14 @@ export const Carousel: SxProps<Theme> = {
 export const CardContainer: SxProps<Theme> = {
   position: "relative",
   display: "flex",
-  width: "150px",
   flexDirection: "column",
+  width: "250px",
   backgroundColor: "#fff",
-  borderRadius: "20px",
+  borderRadius: "15px",
   cursor: "pointer",
   fontFamily: "'Poppins', sans-serif",
   fontSize: "20px",
-  boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 12px",
+  boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
   padding: "10px",
-  margin: "15px",
-
-  img: {
-    objectFit: "cover",
-    width: "100%",
-    borderRadius: "15px",
-  },
+  margin: "-50px",
 };

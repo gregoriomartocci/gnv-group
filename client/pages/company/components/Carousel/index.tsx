@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Swipeable from "react-swipeable";
 import { Box, Typography } from "@mui/material";
@@ -11,6 +11,7 @@ function Carousel() {
   const [position, positionSet] = useState(0);
 
   const slides = [0, 2, 3, 4];
+  const transition = { duration: 0.25, ease: "easeInOut" };
 
   const onRight = () => {
     if (position < slides?.length - 1) {
@@ -24,18 +25,32 @@ function Carousel() {
     }
   };
 
-  const handleSwipe = ({ dir }) => {
-    if (dir === "Right") {
-      if (position < slides.length - 1) {
-        positionSet(position + 1);
-      }
-    }
-    if (dir === "Left") {
-      if (position > 0) {
-        positionSet(position - 1);
-      }
-    }
+  const venturesVariants = {
+    initial: { y: 100, opacity: 0 },
+    enter: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.75, ease: "easeInOut" },
+    },
+    exit: {
+      y: -100,
+      opacity: 0,
+      transition: { duration: 0.75, ease: "easeInOut" },
+    },
   };
+
+  // const handleSwipe = ({ dir }) => {
+  //   if (dir === "Right") {
+  //     if (position < slides.length - 1) {
+  //       positionSet(position + 1);
+  //     }
+  //   }
+  //   if (dir === "Left") {
+  //     if (position > 0) {
+  //       positionSet(position - 1);
+  //     }
+  //   }
+  // };
 
   const difference = (num1: number, num2: number): number => {
     const result = Math.abs(num1 - num2);
@@ -43,26 +58,18 @@ function Carousel() {
     return result;
   };
 
-  const transition = { duration: 1.25, ease: "easeInOut" };
-
-  const venturesVariants = {
-    initial: { y: 100, opacity: 0 },
-    enter: { y: 0, opacity: 1, transition },
-    exit: { y: -100, opacity: 0, transition },
-  };
-
   return (
     <Box
       sx={{
         display: "flex",
+        position: "relative",
         justifyContent: "space-between",
         alignItems: "center",
+        height: "100vh",
+        width: "100vw",
         cursor: "pointer",
         backgroundColor: "#ffffff",
-        borderRadius: "10px",
-        width: "900px",
-        height: "100%",
-        padding: "100px",
+        transform: "rotate(90deg)",
       }}
     >
       <Box
@@ -70,33 +77,35 @@ function Carousel() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "15px",
+          padding: "12.5px",
           border: "1px solid #e0e0e0",
           backgroundColor: "#ffffff",
           cursor: "pointer",
-          borderRadius: "10px",
+          borderRadius: "15px",
+          textAlign: "center",
           zIndex: 10,
+          margin: "0 25px",
+          transform: "rotate(180deg)",
         }}
         onClick={onLeft}
         component="span"
       >
-        <ArrowBackIosIcon />
+        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
       </Box>
 
-      <AnimatePresence initial={false}> 
+      <AnimatePresence>
         <motion.div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position: "relative",
-            padding: "0 30px",
             width: "100%",
             height: "100%",
           }}
           initial="initial"
           animate="enter"
           exit="exit"
+          layout
           variants={venturesVariants}
         >
           {slides?.map((url, index) => {
@@ -105,34 +114,103 @@ function Carousel() {
                 layout
                 style={CardContainer}
                 key={index}
-                initial={{ opacity: difference(position, index) > 1 ? 0 : 1 }}
-                animate={{
-                  rotate: 0,
-                  left: `${(index - position) * 1.5}%`,
-                  scale:
-                    index === position
-                      ? 1.3
-                      : `0.${9 - difference(position, index)} `,
-                  zIndex: 5 - difference(position, index),
-                  opacity: difference(position, index) > 1 ? 0 : 1,
+                initial={{
+                  scale: 1 - 0.25 * difference(position, index),
                 }}
-                exit="exit"
-                variants={venturesVariants}
+                animate={{
+                  scale: 1 - 0.25 * difference(position, index),
+                  zIndex:
+                    index === position
+                      ? 100
+                      : 1 - 0.4 * difference(position, index),
+                  opacity:
+                    index === position
+                      ? 1
+                      : 1 - 0.4 * difference(position, index),
+                  transition,
+                }}
                 onClick={() => positionSet(index)}
               >
                 <img
                   style={{
                     objectFit: "cover",
                     width: "100%",
-                    borderRadius: "15px",
+                    borderRadius: "10px",
                   }}
                   src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
                   alt="title"
                 />
 
-                <Typography></Typography>
-                <Typography>Lorem Ipsum</Typography>
-                <Typography>Ver más</Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "20px 0 0 0",
+                      fontSize: "12px",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: "20px",
+                      }}
+                    >
+                      Ostent Tower
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "15px 20px",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: "12.5px",
+                      }}
+                    >
+                      Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+                      ipsum Lorem ipsum
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: "10px 0",
+                      borderTop: "1px solid #eeeeee",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: "12px",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Ver más
+                    </Typography>
+                  </Box>
+                </Box>
               </motion.div>
             );
           })}
@@ -144,17 +222,19 @@ function Carousel() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "15px",
+          padding: "12.5px",
+          textAlign: "center",
           border: "1px solid #e0e0e0",
           backgroundColor: "#ffffff",
           cursor: "pointer",
-          borderRadius: "10px",
+          borderRadius: "15px",
+          margin: "0 25px",
           zIndex: 10,
         }}
         component="span"
         onClick={onRight}
       >
-        <ArrowForwardIosIcon />
+        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
       </Box>
     </Box>
   );

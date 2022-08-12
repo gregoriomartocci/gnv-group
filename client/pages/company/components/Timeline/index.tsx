@@ -17,6 +17,12 @@ const Timeline = () => {
   return (
     <Box
       sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "80vh",
+        height: "100vh",
         transform: "rotate(-90deg)",
       }}
     >
@@ -32,20 +38,7 @@ const Timeline = () => {
             }}
           >
             {selected === index ? (
-              <Box
-                sx={{
-                  position: "relative",
-                  transform: "rotate(90deg)",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100%",
-                  height: "100%",
-                  padding: "18% 0",
-                }}
-              >
-                <Carousel />
-              </Box>
+              <Carousel />
             ) : (
               <Box
                 sx={{
@@ -71,8 +64,8 @@ const Timeline = () => {
                 <Typography
                   sx={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 600,
-                    fontSize: "20px",
+                    fontWeight: 500,
+                    fontSize: "25px",
                     color: "#bdbdbd",
                   }}
                 >
