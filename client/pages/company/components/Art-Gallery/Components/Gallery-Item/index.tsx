@@ -9,9 +9,6 @@ type TMemberProps = {
 };
 
 const GalleryItem = ({ img, name, role }: TMemberProps) => {
-
-  
-  console.log(img, name, role, "QUE PASA ACA CHE");
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
@@ -20,8 +17,10 @@ const GalleryItem = ({ img, name, role }: TMemberProps) => {
       <Typography
         sx={{
           fontFamily: "'Poppins', sans-serif",
-          fontSize: "28px",
           margin: "10px 0 0 0",
+          fontSize: "22px",
+          fontWeight: "700",
+          color: "#424242",
         }}
       >
         {name}
@@ -30,7 +29,9 @@ const GalleryItem = ({ img, name, role }: TMemberProps) => {
         sx={{
           fontFamily: "'Poppins', sans-serif",
           fontSize: "18px",
-          margin: "10px",
+          margin: "10px 0 0 0",
+          fontWeight: "600",
+          color: "#bdbdbd",
         }}
       >
         {role}

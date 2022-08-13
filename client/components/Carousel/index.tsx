@@ -14,15 +14,16 @@ import { FreeMode, Pagination } from "swiper";
 
 export interface ICarousel {
   children: any;
+  slidesPerView: number;
 }
 
-export const Carousel = ({ children }: any) => {
+export const Carousel = ({ children, slidesPerView }: any) => {
   return (
     <>
       <Swiper
-        style={{ padding: "15px 10%", width: "100%" }}
-        slidesPerView={1}
-        spaceBetween={100}
+        style={{ width: "100%" }}
+        slidesPerView={slidesPerView}
+        spaceBetween={0}
         freeMode={true}
         modules={[FreeMode, Pagination, Autoplay]}
         className="mySwiper"

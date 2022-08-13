@@ -17,8 +17,10 @@ const Member = ({ img, name, role }: TMemberProps) => {
       <Typography
         sx={{
           fontFamily: "'Poppins', sans-serif",
-          fontSize: "28px",
+          fontSize: "22px",
           margin: "10px 0 0 0",
+          fontWeight: "700",
+          color:"#424242"
         }}
       >
         {name}
@@ -26,8 +28,10 @@ const Member = ({ img, name, role }: TMemberProps) => {
       <Typography
         sx={{
           fontFamily: "'Poppins', sans-serif",
-          fontSize: "18px",
-          margin: "10px",
+          fontSize: "16px",
+          margin: "7.5px 0",
+          fontWeight: "600",
+          color: "#bdbdbd",
         }}
       >
         {role}

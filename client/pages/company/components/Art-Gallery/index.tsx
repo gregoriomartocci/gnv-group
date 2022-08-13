@@ -5,10 +5,9 @@ import GalleryItem from "./Components/Gallery-Item";
 import { SwiperSlide } from "swiper/react";
 import Carousel from "../../../../components/Carousel";
 
-
 const ArtGallery = ({ gallery }) => {
   return (
-    <Carousel>
+    <Carousel slidesPerView={4}>
       {gallery?.map((item: any, index: number) => (
         <SwiperSlide>
           <GalleryItem key={item.title + index} {...item} />

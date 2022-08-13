@@ -116,6 +116,19 @@ const Company = () => {
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
       ></Main>
 
+      {/* Campaign */}
+      <Box sx={{ width: "100%", height: "100%", padding: "7.5%" }}>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.25 }}
+          variants={FadeFromBottom}
+        >
+          <HeaderTitle height={8} width={18} fontSize="25px" title="Campaña" />
+        </motion.div>
+      </Box>
+
+      {/* Trayectory */}
       <Box sx={{ width: "100%", height: "100%", padding: "7.5%" }}>
         <motion.div
           initial={"offscreen"}
@@ -132,20 +145,20 @@ const Company = () => {
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
             Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
           />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Timeline />
+          </Box>
         </motion.div>
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
-        <Timeline />
-      </Box>
-
+      {/* Team */}
       <Box
         sx={{
           display: "flex",
@@ -160,6 +173,7 @@ const Company = () => {
         <Team members={members} />
       </Box>
 
+      {/* Gallery */}
       <Box
         sx={{
           display: "flex",
@@ -167,7 +181,6 @@ const Company = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
- 
         }}
       >
         <HeaderTitle
