@@ -25,7 +25,7 @@ export const CardContainer: SxProps<Theme> = {
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  width: "250px",
+  width: "275px",
   backgroundColor: "#fff",
   borderRadius: "15px",
   cursor: "pointer",

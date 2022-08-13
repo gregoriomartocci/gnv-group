@@ -81,7 +81,7 @@ function Carousel() {
           border: "1px solid #e0e0e0",
           backgroundColor: "#ffffff",
           cursor: "pointer",
-          borderRadius: "15px",
+          borderRadius: "10px",
           textAlign: "center",
           zIndex: 10,
           margin: "0 25px",
@@ -227,7 +227,7 @@ function Carousel() {
           border: "1px solid #e0e0e0",
           backgroundColor: "#ffffff",
           cursor: "pointer",
-          borderRadius: "15px",
+          borderRadius: "10px",
           margin: "0 25px",
           zIndex: 10,
         }}

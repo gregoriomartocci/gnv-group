@@ -65,7 +65,7 @@ const Timeline = () => {
                   sx={{
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: 500,
-                    fontSize: "25px",
+                    fontSize: "28px",
                     color: "#bdbdbd",
                   }}
                 >
