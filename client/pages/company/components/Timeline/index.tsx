@@ -5,7 +5,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { data } from "./Data";
 import { CardContainer } from "./Styles";
 import { HighQuality } from "@mui/icons-material";
-import Carousel from "../Carousel";
+import Carousel from "./Components/Carousel";
 
 const Timeline = () => {
   const [selected, setSelected] = useState<number>(0);

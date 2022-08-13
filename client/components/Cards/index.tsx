@@ -4,17 +4,18 @@ import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
 import { motion, AnimatePresence } from "framer-motion";
 
-export interface IProjects {
+export interface ICards {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
   columns: number;
+  rows?: number;
   gap: string;
 }
 
-const Cards = ({ items, component, columns, gap }: IProjects) => {
+const Cards = ({ items, component, columns, rows, gap }: ICards) => {
   const transition = { duration: 0.5, ease: "easeInOut" };
-  
-  const venturesVariants = {
+
+  const cardVariants = {
     initial: { y: 25, opacity: 0 },
     enter: { y: 0, opacity: 1, transition },
     exit: { y: -25, opacity: 0, transition },
@@ -25,6 +26,7 @@ const Cards = ({ items, component, columns, gap }: IProjects) => {
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gridTemplateRows: `repeat(${rows}, 1fr)`,
         flexWrap: "wrap",
         gap,
       }}
@@ -36,7 +38,7 @@ const Cards = ({ items, component, columns, gap }: IProjects) => {
             initial="initial"
             animate="enter"
             exit="exit"
-            variants={venturesVariants}
+            variants={cardVariants}
           >
             {component(item)}
           </motion.div>

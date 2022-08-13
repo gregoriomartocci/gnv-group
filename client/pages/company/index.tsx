@@ -8,6 +8,8 @@ import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
 import Timeline from "./components/Timeline";
+import Team from "./components/Team";
+import ArtGallery from "./components/Art-Gallery";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -17,6 +19,92 @@ const FadeFromBottom = {
     transition: { duration: 2 },
   },
 };
+
+const members = [
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Alejandro Ginevra",
+    role: "Presidente",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Mercedes Ginevra",
+    role: "Presidente",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Iván Ginevra",
+    role: "Director",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Camila Ginevra",
+    role: "Responsable Interiorismo",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Candela Ginevra",
+    role: "Responsable Marketing",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Julia Granero",
+    role: "Responsable relaciones insitucionales",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Viviana Reissis",
+    role: "Gerente Ginevra Realty Zona Norte",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Florencia Ponce",
+    role: "Gerente comercial Ginevra Realty Puerto Madero",
+  },
+];
+
+const gallery = [
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Alejandro Ginevra",
+    role: "Presidente",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Mercedes Ginevra",
+    role: "Presidente",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Iván Ginevra",
+    role: "Director",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Camila Ginevra",
+    role: "Responsable Interiorismo",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Candela Ginevra",
+    role: "Responsable Marketing",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Julia Granero",
+    role: "Responsable relaciones insitucionales",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Viviana Reissis",
+    role: "Gerente Ginevra Realty Zona Norte",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    name: "Florencia Ponce",
+    role: "Gerente comercial Ginevra Realty Puerto Madero",
+  },
+];
 
 const Company = () => {
   return (
@@ -56,6 +144,39 @@ const Company = () => {
         }}
       >
         <Timeline />
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          padding: "0 10%",
+        }}
+      >
+        <HeaderTitle height={8} width={18} fontSize="25px" title="El Grupo" />
+        <Team members={members} />
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          padding: "0 10%",
+        }}
+      >
+        <HeaderTitle
+          height={8}
+          width={18}
+          fontSize="25px"
+          title="Galería de arte GNV"
+        />
+        <ArtGallery gallery={gallery} />
       </Box>
 
       <Footer />
