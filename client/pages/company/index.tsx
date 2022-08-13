@@ -124,7 +124,7 @@ const Company = () => {
           viewport={{ once: false, amount: 0.25 }}
           variants={FadeFromBottom}
         >
-          <HeaderTitle height={8} width={18} fontSize="25px" title="Campaña" />
+          <HeaderTitle py="10%" px="10%" fontSize="25px" title="Campaña" />
         </motion.div>
       </Box>
 
@@ -133,12 +133,12 @@ const Company = () => {
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: false, amount: 0.4 }}
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            height={8}
-            width={18}
+            py="45px"
+            px="50px"
             fontSize="25px"
             title="Trayectoria"
             description="La compañía está viviendo una etapa de expansión fenomenal.
@@ -169,7 +169,7 @@ const Company = () => {
           padding: "0 10%",
         }}
       >
-        <HeaderTitle height={8} width={18} fontSize="25px" title="El Grupo" />
+        <HeaderTitle  py="7.5%" px="15px" fontSize="25px" title="El Grupo" />
         <Team members={members} />
       </Box>
 
@@ -184,8 +184,8 @@ const Company = () => {
         }}
       >
         <HeaderTitle
-          height={8}
-          width={18}
+          py="7.5%"
+          px="15px"
           fontSize="25px"
           title="Galería de arte GNV"
         />

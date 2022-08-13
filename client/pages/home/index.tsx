@@ -205,8 +205,8 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            height={8}
-            width={18}
+            px="10%"
+            py="10%"
             fontSize="28px"
             description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
           />

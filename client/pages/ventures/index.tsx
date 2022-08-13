@@ -28,7 +28,7 @@ const VenturesLayout = () => {
         imageOnly
         frame
       ></Main>
-      
+
       <motion.div
         initial={"offscreen"}
         whileInView={"onscreen"}
@@ -36,8 +36,8 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       >
         <HeaderTitle
-          height={0}
-          width={20}
+          px="12.5%"
+          py="7.5%"
           fontSize="22px"
           title="Emprendimientos"
           description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."

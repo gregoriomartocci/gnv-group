@@ -163,7 +163,8 @@ function Carousel() {
                     <Typography
                       sx={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: "20px",
+                        fontSize: "24px",
+                        fontWeight: 600
                       }}
                     >
                       Ostent Tower
@@ -176,13 +177,13 @@ function Carousel() {
                       textAlign: "center",
                       justifyContent: "center",
                       alignItems: "center",
-                      padding: "15px 20px",
+                      padding: "20px 10px",
                     }}
                   >
                     <Typography
                       sx={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: "12.5px",
+                        fontSize: "14px",
                       }}
                     >
                       Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem

@@ -5,11 +5,17 @@ interface IHeaderTitle {
   title?: string;
   description?: string;
   fontSize?: string;
-  height?: number;
-  width?: number;
+  px?: string;
+  py?: string;
 }
 
-const HeaderTitle = ({ title, description, height, width, fontSize }: IHeaderTitle) => {
+const HeaderTitle = ({
+  title,
+  description,
+  py,
+  px,
+  fontSize,
+}: IHeaderTitle) => {
   return (
     <Box
       sx={{
@@ -17,7 +23,7 @@ const HeaderTitle = ({ title, description, height, width, fontSize }: IHeaderTit
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        padding: `${height}% ${width}%`,
+        padding: `${py} ${px}`,
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
       }}
