@@ -9,6 +9,9 @@ type TMemberProps = {
 };
 
 const GalleryItem = ({ img, name, role }: TMemberProps) => {
+
+  
+  console.log(img, name, role, "QUE PASA ACA CHE");
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>

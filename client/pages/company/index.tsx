@@ -167,7 +167,7 @@ const Company = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          padding: "0 10%",
+ 
         }}
       >
         <HeaderTitle
