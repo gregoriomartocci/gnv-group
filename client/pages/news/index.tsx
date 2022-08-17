@@ -11,7 +11,7 @@ import Cards from "../../components/Cards";
 import UseButton from "../../components/Button";
 import Article from "../../components/Article";
 import { SwiperSlide } from "swiper/react";
-import Card from "../../components/Card";
+
 import { useDispatch, useSelector } from "react-redux";
 import { errorType } from "../profile/articles";
 import api from "../../hooks/Api";
@@ -19,7 +19,6 @@ import { IArticle, setArticles } from "../../redux/slices/articles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
-import { CardBody, CardContainer, CardHeader } from "../../components/Card/Styles";
 
 export const santize = (string: string) => {
   const reactElement = parse(string);
@@ -166,6 +165,7 @@ const News = () => {
           ))}
         </Carousel>
       </Box>
+
       <HeaderTitle height={7.5} width={18} title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
         <Cards

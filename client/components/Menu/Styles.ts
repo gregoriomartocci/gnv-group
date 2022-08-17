@@ -41,6 +41,7 @@ export const MenuContainerDark: SxProps<Theme> = {
   fontFamily: "'Montserrat', sans-serif",
   transition: "all 0.3s ease",
   fontWeight: 600,
+  backgroundColor: "#fff",
 };
 
 export const MenuContainerRelative: SxProps = {

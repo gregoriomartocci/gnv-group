@@ -24,7 +24,7 @@ const VenturesLayout = () => {
       <Main
         slides={SliderData}
         mode="static"
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg"
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png"
         imageOnly
         frame
       ></Main>

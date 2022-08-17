@@ -15,11 +15,12 @@ const Card = ({ img, title }: TDemo) => {
         cursor: "pointer",
         fontFamily: "'Poppins', sans-serif",
         fontSize: "20px",
-        maxHeight: "1200px",
+        maxHeight: "1000px",
+        width:"100%",
         maxWidth: "100%",
         overflow: "hidden",
 
-
+        transform: "scale(1.025)",
         img: {
           width: "100%",
           height: "100%",
@@ -27,7 +28,7 @@ const Card = ({ img, title }: TDemo) => {
           transition: "transform 1s",
 
           "&:hover": {
-            transform: "scale(1.025)",
+            transform: "scale(1.030)",
           },
         },
       }}

@@ -186,7 +186,7 @@ const Home = () => {
     },
   };
 
-  const slider = [
+  const slides = [
     {
       src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
     },
@@ -194,20 +194,21 @@ const Home = () => {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg",
     },
     {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg",
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742034/rox1kitdhybmoktvdckn.png",
+    },
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742148/ndwl4synhalqmpaw54ao.png",
+    },
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742361/zmga4wvfzztpfk1zt5gu.png",
     },
   ];
 
   return (
     <Box sx={{ overflow: "hidden" }}>
       <Menu onScroll />
-      <Main
-        mode="slider"
-        slides={slider}
-        img={
-          "https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg"
-        }
-      />
+      
+      <Main mode="slider" slides={slides} />
 
       <Box sx={{ width: "100%", height: "100%", padding: "7.5% 0" }}>
         <motion.div
