@@ -7,6 +7,7 @@ import {
   CloseIcon,
   LogoStyle,
   MenuContainer,
+  MenuContainerDark,
   MenuContainerOnScroll,
   MenuContainerRelative,
   MenuContent,
@@ -52,7 +53,7 @@ export interface IState {
 }
 
 export interface IMenu {
-  onScroll: boolean;
+  onScroll?: boolean;
   theme?: string;
   relative?: boolean;
 }
@@ -105,7 +106,7 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
               : MenuContainer
             : theme === "light"
             ? MenuContainer
-            : MenuContainerOnScroll
+            : MenuContainerDark
         }
       >
         <Box sx={relative ? MenuContainerRelative : MenuContent}>

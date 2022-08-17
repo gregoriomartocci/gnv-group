@@ -29,6 +29,20 @@ export const MenuContainerOnScroll: SxProps<Theme> = {
   fontWeight: 600,
 };
 
+export const MenuContainerDark: SxProps<Theme> = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  padding: "0 10%",
+  height: "80px",
+  zIndex: 2500,
+  color: "#212121",
+  fontFamily: "'Montserrat', sans-serif",
+  transition: "all 0.3s ease",
+  fontWeight: 600,
+};
+
 export const MenuContainerRelative: SxProps = {
   display: "flex",
   justifyContent: "space-between",
@@ -66,7 +80,7 @@ export const MenuItems: SxProps<Theme> = {
   justifyContent: "flex-end",
   alignItems: "center",
   width: "100%",
-  fontSize:"17px"
+  fontSize: "17px",
 };
 
 export const MenuItem: SxProps<Theme> = {

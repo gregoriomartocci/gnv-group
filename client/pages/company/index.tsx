@@ -153,7 +153,7 @@ const Company = () => {
 
   return (
     <Box>
-      <Menu onScroll theme="dark" />
+      <Menu theme="dark" />
       <Main
         slides={SliderData}
         mode="static"
