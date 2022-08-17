@@ -29,7 +29,7 @@ export const Carousel = ({ children, slidesPerView }: any) => {
         className="mySwiper"
         loop={true}
         autoplay={{
-          delay: 3000,
+          delay: 2500,
           disableOnInteraction: false,
         }}
       >

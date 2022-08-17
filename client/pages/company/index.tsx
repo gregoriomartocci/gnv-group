@@ -114,6 +114,7 @@ const Company = () => {
         slides={SliderData}
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
+        flip
       ></Main>
 
       {/* Campaign */}

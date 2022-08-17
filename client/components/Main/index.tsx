@@ -36,9 +36,10 @@ export interface ISlidesProps {
   img?: string;
   imageOnly?: boolean;
   frame?: boolean;
+  flip?: boolean;
 }
 
-const Main = ({ slides, mode, img, imageOnly, frame }: ISlidesProps) => {
+const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
@@ -123,7 +124,11 @@ const Main = ({ slides, mode, img, imageOnly, frame }: ISlidesProps) => {
                   src={img}
                   alt=""
                   loading="lazy"
-                  style={{ position: "absolute" }}
+                  style={
+                    flip
+                      ? { position: "absolute", transform: "scaleX(-1)" }
+                      : { position: "absolute" }
+                  }
                 />
                 {!imageOnly ? (
                   <Box sx={MainContent}>
