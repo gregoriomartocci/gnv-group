@@ -197,7 +197,7 @@ const Home = () => {
         }
       />
 
-      <Box sx={{ width: "100%", padding: "7.5% 0" }}>
+      <Box sx={{ width: "100%", height: "100%", padding: "7.5% 0" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
