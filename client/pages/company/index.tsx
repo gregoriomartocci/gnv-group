@@ -142,7 +142,7 @@ const Company = () => {
           variants={FadeFromBottom}
           style={{ width: "100%", height: "100%", padding: "0 10%" }}
         >
-          <HeaderTitle py="10%" px="10%" fontSize="25px" title="Campaña" />
+          <HeaderTitle py="10%" px="10%" fontSize="25px" title="Compañia" />
 
           <MessageSection
             title=" Liderar el sector inmobiliario, mucho más que una tradición familiar."

@@ -47,7 +47,7 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
-  const slideTime = 8000;
+  const slideTime = 10000;
 
   const dispatch = useDispatch();
 
@@ -76,6 +76,12 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
     setCurrent(index);
   };
 
+  const getFormat = (file) => {
+    const result = file?.split(".").pop()?.toUpperCase();
+    console.log(result, " RESULT");
+    return result;
+  };
+
   return (
     <Box sx={MainSection}>
       <Box sx={MainContainer}>
@@ -101,12 +107,16 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
                 {index === current && (
                   <Box sx={MainSlider}>
                     <Box sx={MainImage}>
-                      <img
-                        src={slide?.src}
-                        alt={""}
-                        loading="lazy"
-                        style={{ position: "absolute" }}
-                      />
+                      {getFormat(slide?.src) === "MP4" ? (
+                        <video src={slide?.src} autoPlay loop muted/>
+                      ) : (
+                        <img
+                          src={slide?.src}
+                          alt={""}
+                          loading="lazy"
+                          style={{ position: "absolute" }}
+                        />
+                      )}
                     </Box>
                     {!imageOnly ? (
                       <Box sx={MainContent}>

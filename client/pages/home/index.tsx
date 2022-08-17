@@ -186,12 +186,24 @@ const Home = () => {
     },
   };
 
+  const slider = [
+    {
+      src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
+    },
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg",
+    },
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg",
+    },
+  ];
+
   return (
     <Box sx={{ overflow: "hidden" }}>
       <Menu onScroll />
       <Main
         mode="slider"
-        slides={state?.templates[0]?.carousel}
+        slides={slider}
         img={
           "https://res.cloudinary.com/gregomartocci/image/upload/v1657430151/bl6a6maqd6wmqsepcr5t.jpg"
         }

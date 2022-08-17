@@ -96,6 +96,14 @@ export const MainImage: SxProps<Theme> = {
     height: "100vh",
     objectFit: "cover",
   },
+  video: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    objectFit: "cover",
+  },
 };
 
 export const HeaderTitle: SxProps<Theme> = {
