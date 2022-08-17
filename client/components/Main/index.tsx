@@ -47,7 +47,7 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
-  const slideTime = 10000;
+  const slideTime = 15000;
 
   const dispatch = useDispatch();
 
