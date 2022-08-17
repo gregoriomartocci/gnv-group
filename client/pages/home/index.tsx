@@ -187,7 +187,7 @@ const Home = () => {
   };
 
   return (
-    <Fragment>
+    <Box sx={{ overflow: "hidden" }}>
       <Menu onScroll />
       <Main
         mode="slider"
@@ -257,7 +257,7 @@ const Home = () => {
       </Box>
 
       <Footer />
-    </Fragment>
+    </Box>
   );
 };
 
