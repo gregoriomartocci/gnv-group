@@ -14,7 +14,7 @@ const Team = ({ members }: TTeamProps) => {
         items={members}
         component={(item) => <Member {...item} />}
         columns={4}
-        gap="65px"
+        gap="45px"
       />
     </Box>
   );

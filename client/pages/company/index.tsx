@@ -23,37 +23,37 @@ const FadeFromBottom = {
 
 const members = [
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/l16dgiu2maxocdxd5gmg.png",
     name: "Alejandro Ginevra",
     role: "Presidente",
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/ppugf8iteyuvfpeearqg.png",
     name: "Mercedes Ginevra",
-    role: "Presidente",
+    role: "Directora Comercial",
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709357/orogwyh1lvyqji2tfqai.png",
     name: "Iván Ginevra",
     role: "Director",
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709469/fdy72awmrhynvgbywzcd.png",
     name: "Camila Ginevra",
     role: "Responsable Interiorismo",
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709173/eb5kfhispqmcve9x6tu4.png",
     name: "Candela Ginevra",
     role: "Responsable Marketing",
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/mojcy8latflmlord4ym4.png",
     name: "Julia Granero",
     role: "Responsable relaciones insitucionales",
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/ugugdx8tsbqgak4fkqj2.png",
     name: "Viviana Reissis",
     role: "Gerente Ginevra Realty Zona Norte",
   },
@@ -61,6 +61,21 @@ const members = [
     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
     name: "Florencia Ponce",
     role: "Gerente comercial Ginevra Realty Puerto Madero",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/twoyrlmrniaxsndjw0ea.png",
+    name: "Gabriela River",
+    role: "Gerente Administración",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709173/pmgsoof4pjhm5sl9tftl.png",
+    name: "Ezequiel Acuña",
+    role: "Gerente Obras",
+  },
+  {
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709171/qedzobkij5gv7kdt22ky.png",
+    name: "Julieta Steinmann",
+    role: "Responsable Arquitectura",
   },
 ];
 
