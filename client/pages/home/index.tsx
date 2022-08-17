@@ -160,19 +160,19 @@ const Home = () => {
 
   const items = [
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736986/n89xyxepp2122mydo4oh.png",
       title: "WTC Buenos Aires I, II, III IV",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736989/c9guxvcotlbesoydjdot.png",
       title: "Ostent Tower",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736982/ckusx7p3reagh4r0und8.png",
       title: "Harbour Tower",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736982/tvemotdx2trrlwf7dxks.png",
       title: "The Shops",
     },
   ];
@@ -243,16 +243,16 @@ const Home = () => {
 
       <Box>
         <Cards
-          gap={0}
+          gap={""}
           columns={2}
           items={items}
           component={(item: TDemo) => <Card {...item} />}
-        ></Cards>
+        />
       </Box>
 
       <Box>
         <Quote
-          img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+          img="https://res.cloudinary.com/gregomartocci/image/upload/v1660737963/jivl050fydpjncw0bchp.png"
           text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
           author={{
             name: "Alejandro Ginevra",
@@ -264,7 +264,7 @@ const Home = () => {
       <Box>
         <Section
           heading="Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end."
-          image="https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg"
+          image="https://res.cloudinary.com/gregomartocci/image/upload/v1660738159/a7cxffqimjt8lyyq9por.png"
         />
       </Box>
 

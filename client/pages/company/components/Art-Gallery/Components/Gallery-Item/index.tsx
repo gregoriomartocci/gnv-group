@@ -3,16 +3,14 @@ import { Box, Typography } from "@mui/material";
 import { CardContainer, ImageContainer } from "./Styles";
 
 type TMemberProps = {
-  img: string;
-  name: string;
-  role: string;
+  urls: string;
 };
 
-const GalleryItem = ({ img, name, role }: TMemberProps) => {
+const GalleryItem = ({ urls }: TMemberProps) => {
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
-        <img src={img} alt={name}></img>
+        <img src={urls?.regular} alt={name}></img>
       </Box>
       <Typography
         sx={{
@@ -23,7 +21,7 @@ const GalleryItem = ({ img, name, role }: TMemberProps) => {
           color: "#424242",
         }}
       >
-        {name}
+        {/* {name} */}
       </Typography>
       <Typography
         sx={{
@@ -34,7 +32,7 @@ const GalleryItem = ({ img, name, role }: TMemberProps) => {
           color: "#bdbdbd",
         }}
       >
-        {role}
+        {/* {role} */}
       </Typography>
     </Box>
   );

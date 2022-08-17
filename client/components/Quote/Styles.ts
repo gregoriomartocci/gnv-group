@@ -11,9 +11,13 @@ export const QuoteContainer: SxProps<Theme> = {
   fontFamily: "'Poppins', sans-serif",
 
   img: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     width: "400px",
     height: "400px",
     borderRadius: "50%",
     objectFit: "cover",
+    transform: "scale(1.025)",
   },
 };

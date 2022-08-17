@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import Main from "../../components/Main";
 import { SliderData } from "../../data/SliderData";
@@ -11,6 +11,7 @@ import Timeline from "./components/Timeline";
 import Team from "./components/Team";
 import ArtGallery from "./components/Art-Gallery";
 import MessageSection from "./components/Message-Section";
+import api from "../../hooks/Api";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -79,50 +80,77 @@ const members = [
   },
 ];
 
-const gallery = [
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Alejandro Ginevra",
-    role: "Presidente",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Mercedes Ginevra",
-    role: "Presidente",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Iván Ginevra",
-    role: "Director",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Camila Ginevra",
-    role: "Responsable Interiorismo",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Candela Ginevra",
-    role: "Responsable Marketing",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Julia Granero",
-    role: "Responsable relaciones insitucionales",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Viviana Reissis",
-    role: "Gerente Ginevra Realty Zona Norte",
-  },
-  {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-    name: "Florencia Ponce",
-    role: "Gerente comercial Ginevra Realty Puerto Madero",
-  },
-];
+// const gallery = [
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Alejandro Ginevra",
+//     role: "Presidente",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Mercedes Ginevra",
+//     role: "Presidente",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Iván Ginevra",
+//     role: "Director",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Camila Ginevra",
+//     role: "Responsable Interiorismo",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Candela Ginevra",
+//     role: "Responsable Marketing",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Julia Granero",
+//     role: "Responsable relaciones insitucionales",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Viviana Reissis",
+//     role: "Gerente Ginevra Realty Zona Norte",
+//   },
+//   {
+//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+//     name: "Florencia Ponce",
+//     role: "Gerente comercial Ginevra Realty Puerto Madero",
+//   },
+// ];
 
 const Company = () => {
+  const [gallery, setGallery] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getPictures = async () => {
+      try {
+        setLoading(true);
+        const data = await api({
+          method: "get",
+          path: "https://api.unsplash.com/photos?client_id=8FBBMc7N0M0n2zNPFDnKZ47ifr2D0fU-O08tF-uhkjQ",
+        });
+        setGallery(data);
+        setLoading(false);
+      } catch (err) {
+        setError("Something went wrong");
+        setLoading(false);
+      }
+    };
+
+    getPictures();
+
+    return () => {};
+  }, []);
+
+  console.log(gallery, "Que pasa cheee");
+
   return (
     <Box>
       <Menu onScroll theme="dark" />
@@ -225,7 +253,8 @@ const Company = () => {
           fontSize="25px"
           title="Galería de arte GNV"
         />
-        <ArtGallery gallery={gallery} />
+
+        <ArtGallery gallery={gallery.length ? gallery : [] ?? []} />
       </Box>
 
       <Footer />

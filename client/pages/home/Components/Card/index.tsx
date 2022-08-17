@@ -15,9 +15,10 @@ const Card = ({ img, title }: TDemo) => {
         cursor: "pointer",
         fontFamily: "'Poppins', sans-serif",
         fontSize: "20px",
-        maxHeight: "100%",
+        maxHeight: "1200px",
         maxWidth: "100%",
         overflow: "hidden",
+
 
         img: {
           width: "100%",
