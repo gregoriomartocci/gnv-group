@@ -3,6 +3,8 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { Alert, Box, Typography } from "@mui/material";
 import {
+  ArrowButton,
+  ArrowButtonActive,
   ArrowButtons,
   HeaderTitle,
   MainContainer,
@@ -20,6 +22,8 @@ import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
 import { IProject } from "../../redux/slices/projects";
 import Frame from "./Components/Frame";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import CircleIcon from "@mui/icons-material/Circle";
 
 export interface ISlide {
   title: string;
@@ -67,19 +71,29 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
     };
   }, [current, lenght]);
 
-  const nextSlide = () => {
+  const setSlide = (index) => {
     timeout.current && clearTimeout(timeout.current);
-    setCurrent(current === lenght - 1 ? 0 : current + 1);
-  };
-
-  const prevSlide = () => {
-    timeout.current && clearTimeout(timeout.current);
-    setCurrent(current === 0 ? lenght - 1 : current - 1);
+    setCurrent(index);
   };
 
   return (
     <Box sx={MainSection}>
       <Box sx={MainContainer}>
+        <Box sx={SliderButtons}>
+          {mode === "slider" &&
+            slides?.map((slide, index) => {
+              return index === current ? (
+                <RadioButtonCheckedIcon
+                  onClick={() => setSlide(index)}
+                  sx={ArrowButtonActive}
+                />
+              ) : (
+                <CircleIcon onClick={() => setSlide(index)} sx={ArrowButton} />
+              );
+            })}
+          {/* <ArrowCircleRightIcon onClick={nextSlide} sx={ArrowButtons} /> */}
+        </Box>
+
         {mode === "slider" ? (
           slides?.map((slide, index) => {
             return (
@@ -108,11 +122,6 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
                     )}
                   </Box>
                 )}
-
-                <Box sx={SliderButtons}>
-                  <ArrowCircleLeftIcon onClick={prevSlide} sx={ArrowButtons} />
-                  <ArrowCircleRightIcon onClick={nextSlide} sx={ArrowButtons} />
-                </Box>
               </Box>
             );
           }) ?? []

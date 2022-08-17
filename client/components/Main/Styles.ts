@@ -1,22 +1,6 @@
 import { SxProps, Theme } from "@mui/material";
 import { textAlign } from "@mui/system";
 
-export const SliderButtons: SxProps<Theme> = {
-  position: "absolute",
-  bottom: "50px",
-  right: "50px",
-  display: "flex",
-  zIndex: 10,
-  marginRight: "15px",
-  userSelect: "none",
-  transition: "0.3s",
-  color: "#b2b2b2",
-
-  "&:hover": {
-    transform: "scale(1.05)",
-  },
-};
-
 export const MainSection: SxProps<Theme> = {
   height: "100vh",
   width: "100%",
@@ -34,14 +18,40 @@ export const MainContainer: SxProps<Theme> = {
   position: "relative",
 };
 
-export const ArrowButtons: SxProps<Theme> = {
-  width: "50px",
-  height: "50px",
-  color: "#fff",
-  cursor: "pointer",
-  borderRadius: "50px",
+export const SliderButtons: SxProps<Theme> = {
+  display: "flex",
+  flexDirection: "column",
+  position: "absolute",
+  bottom: "50px",
+  right: "40px",
+  top: "45%",
+  zIndex: 10,
+  marginRight: "15px",
+  userSelect: "none",
+  transition: "0.3s",
+  color: "#b2b2b2",
+};
+
+export const ArrowButton: SxProps<Theme> = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   padding: "10px",
-  marginRight: "1rem",
+  color: "#fff",
+  fontSize: "40px",
+  cursor: "pointer",
+  userSelect: "none",
+  transition: "0.3s",
+};
+
+export const ArrowButtonActive: SxProps<Theme> = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "10px",
+  color: "#fff",
+  fontSize: "40px",
+  cursor: "pointer",
   userSelect: "none",
   transition: "0.3s",
 };
