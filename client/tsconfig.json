@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Menu", "data/SliderData.js", "components/Main/Styles.ts", "pages/profile/layout/Components/Header-Selector/Styles.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Menu", "data/SliderData.js", "components/Main/Styles.ts", "pages/profile/layout/Components/Header-Selector/Styles.ts", "pages/_document.js"],
   "exclude": ["node_modules"]
 }
