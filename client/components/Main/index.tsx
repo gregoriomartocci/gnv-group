@@ -5,7 +5,6 @@ import { Alert, Box, Typography } from "@mui/material";
 import {
   ArrowButton,
   ArrowButtonActive,
-  ArrowButtons,
   HeaderTitle,
   MainContainer,
   MainContent,

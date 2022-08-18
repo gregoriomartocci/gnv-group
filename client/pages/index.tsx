@@ -1,7 +1,4 @@
-import React, { Fragment } from "react";
-import Admin from "../pages/admin/index";
-import { Provider } from "react-redux";
-import { store } from "../redux/store";
+import React from "react";
 import Home from "./home";
 
 export const Index = () => {

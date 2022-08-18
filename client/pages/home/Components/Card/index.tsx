@@ -2,7 +2,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { TDemo } from "../..";
-import { CardContainer } from "../../../../components/Card/Styles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 const Card = ({ img, title }: TDemo) => {

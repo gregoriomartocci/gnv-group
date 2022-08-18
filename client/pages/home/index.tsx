@@ -4,7 +4,7 @@ import Main from "../../components/Main";
 import Menu, { IState } from "../../components/Menu";
 import Box from "@mui/material/Box";
 import { SliderData } from "../../data/SliderData";
-import Section, { InfoDataOne, InfoDataTwo } from "../../components/Section";
+import Section from "../../components/Section";
 import Footer from "../../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTitle from "../../components/Header-Title";
