@@ -35,7 +35,7 @@ export interface ISlide {
 }
 
 export interface ISlidesProps {
-  slides?: StaticImageData[];
+  slides?: any;
   mode: "slider" | "static";
   img?: string;
   imageOnly?: boolean;
@@ -44,7 +44,6 @@ export interface ISlidesProps {
 }
 
 const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
-  
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
@@ -109,7 +108,7 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
                   <Box sx={MainSlider}>
                     <Box sx={MainImage}>
                       {getFormat(slide?.src) === "MP4" ? (
-                        <video src={slide?.src} autoPlay loop muted/>
+                        <video src={slide?.src} autoPlay loop muted />
                       ) : (
                         <img
                           src={slide?.src}

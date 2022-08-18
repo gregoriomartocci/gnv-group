@@ -196,19 +196,19 @@ const Home = () => {
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742034/rox1kitdhybmoktvdckn.png",
     },
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742148/ndwl4synhalqmpaw54ao.png",
-    },
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742361/zmga4wvfzztpfk1zt5gu.png",
-    },
+    // {
+    //   src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742148/ndwl4synhalqmpaw54ao.png",
+    // },
+    // {
+    //   src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742361/zmga4wvfzztpfk1zt5gu.png",
+    // },
   ];
 
   return (
     <Box sx={{ overflow: "hidden" }}>
       <Menu onScroll />
-      
-      <Main mode="slider" slides={slides} />
+
+      <Main slides={slides} mode="slider"  />
 
       <Box sx={{ width: "100%", height: "100%", padding: "7.5% 0" }}>
         <motion.div
