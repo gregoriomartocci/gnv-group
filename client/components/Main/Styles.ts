@@ -95,8 +95,6 @@ export const MainImage: SxProps<Theme> = {
     width: "100vw",
     height: "100vh",
     objectFit: "cover",
-    background: "url(https://picsum.photos/id/10/600/800) center/cover",
-    // mask: "radial-gradient(#FFA384, #74BDCB)",
   },
   video: {
     position: "absolute",

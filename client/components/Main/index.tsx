@@ -47,7 +47,7 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
-  const slideTime = 15000;
+  const slideTime = 8000;
 
   const dispatch = useDispatch();
 
@@ -71,14 +71,13 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
     };
   }, [current, lenght]);
 
-  const setSlide = (index) => {
+  const setSlide = (index: number) => {
     timeout.current && clearTimeout(timeout.current);
     setCurrent(index);
   };
 
-  const getFormat = (file) => {
+  const getFormat = (file: string) => {
     const result = file?.split(".").pop()?.toUpperCase();
-    console.log(result, " RESULT");
     return result;
   };
 
@@ -140,7 +139,7 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
             <Box sx={MainContainer}>
               <Box sx={MainImage}>
                 <img
-                  src={img}
+                  src={img ?? ""}
                   alt=""
                   loading="lazy"
                   style={
