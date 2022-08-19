@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import Main from "../../components/Main";
-import { projectsData, SliderData } from "../../data/SliderData";
-import Ventures from "./components/Ventures";
 import Menu, { IState } from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
@@ -19,6 +16,7 @@ import { IArticle, setArticles } from "../../redux/slices/articles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
+import { CardBody, CardContainer, CardHeader } from "./Styles";
 
 export const santize = (string: string) => {
   const reactElement = parse(string);
@@ -145,31 +143,33 @@ const News = () => {
   return (
     <Box>
       <Menu onScroll={false} />
-      <Box sx={{ margin: "40px 0" }}>
-        <HeaderTitle height={5} width={18} title="Noticias destacadas" />
+      <Box>
+        <HeaderTitle px="25px" py="150px" title="Noticias destacadas" />
       </Box>
+
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           aligntContent: "center",
+          height: "100%",
+          width: "100%",
           padding: "0 10%",
-          maxHeight: "400px",
         }}
       >
-        <Carousel>
+        <Carousel slidesPerView={1} delay={8000}>
           {articles?.map((article: any, index: number) => (
             <SwiperSlide>
-              <Article key={article.title + index} {...article} />
+              <Article {...article} />
             </SwiperSlide>
           ))}
         </Carousel>
       </Box>
 
-      <HeaderTitle height={7.5} width={18} title="Todas las noticias" />
+      <HeaderTitle py="150px" px="150px" title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
         <Cards
-          gap={3}
+          gap="25px"
           columns={4}
           items={articles}
           component={(item: IArticle) => <ArticleCard {...item} />}

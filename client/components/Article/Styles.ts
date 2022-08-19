@@ -9,12 +9,13 @@ export const ProjectContainer: SxProps<Theme> = {
   fontFamily: "'Poppins', sans-serif",
   fontSize: "20px",
   boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-  height: "100%",
-  width: "100%",
+  height: "600px",
+  width: "90%",
+  margin: "50px",
 
   img: {
-    width: "100%",
     height: "100%",
+    width: "100%",
     objectFit: "cover",
   },
 };

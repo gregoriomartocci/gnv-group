@@ -7,7 +7,7 @@ import Carousel from "../../../../components/Carousel";
 
 const ArtGallery = ({ gallery }) => {
   return (
-    <Carousel slidesPerView={4}>
+    <Carousel slidesPerView={4} delay={5000}>
       {gallery?.map((item: any, index: number) => (
         <SwiperSlide>
           <GalleryItem key={item.title + index} {...item} />

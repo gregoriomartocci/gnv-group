@@ -28,7 +28,6 @@ export const CardContainer: SxProps<Theme> = {
   textAlign: "left",
   fontSize: "20px",
   margin: "25px 35px ",
-
   height: "100%",
   borderRadius: "10px",
   boxShadow: "rgba(0, 0, 0, 0.15) 0px 8px 16px",

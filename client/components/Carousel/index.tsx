@@ -15,27 +15,26 @@ import { FreeMode, Pagination } from "swiper";
 export interface ICarousel {
   children: any;
   slidesPerView: number;
+  delay?: number;
 }
 
-export const Carousel = ({ children, slidesPerView }: any) => {
+export const Carousel = ({ children, slidesPerView, delay }: any) => {
   return (
-    <>
-      <Swiper
-        style={{ width: "100%", height: "100%" }}
-        slidesPerView={slidesPerView}
-        spaceBetween={0}
-        freeMode={true}
-        modules={[FreeMode, Pagination, Autoplay]}
-        className="mySwiper"
-        loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-      >
-        {children}
-      </Swiper>
-    </>
+    <Swiper
+      style={{ width: "100%", height: "100%" }}
+      slidesPerView={slidesPerView}
+      spaceBetween={0}
+      freeMode={true}
+      modules={[FreeMode, Pagination, Autoplay]}
+      className="mySwiper"
+      loop={true}
+      autoplay={{
+        delay,
+        disableOnInteraction: false,
+      }}
+    >
+      {children}
+    </Swiper>
   );
 };
 
