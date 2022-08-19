@@ -392,7 +392,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@motionone/animation@^10.13.1":
+"@motionone/animation@^10.12.0", "@motionone/animation@^10.13.1":
   "integrity" "sha512-YGWss58IR2X4lOjW89rv1Q+/Nq/QhfltaggI7i8sZTpKC1yUvM+XYDdvlRpWc6dk8LviMBrddBJAlLdbaqeRmw=="
   "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/@motionone/animation/-/animation-10.13.2.tgz"
   "version" "10.13.2"
@@ -400,6 +400,18 @@
     "@motionone/easing" "^10.13.2"
     "@motionone/types" "^10.13.2"
     "@motionone/utils" "^10.13.2"
+    "tslib" "^2.3.1"
+
+"@motionone/dom@10.12.0":
+  "integrity" "sha512-UdPTtLMAktHiqV0atOczNYyDd/d8Cf5fFsd1tua03PqTwwCe/6lwhLSQ8a7TbnQ5SN0gm44N1slBfj+ORIhrqw=="
+  "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/@motionone/dom/-/dom-10.12.0.tgz"
+  "version" "10.12.0"
+  dependencies:
+    "@motionone/animation" "^10.12.0"
+    "@motionone/generators" "^10.12.0"
+    "@motionone/types" "^10.12.0"
+    "@motionone/utils" "^10.12.0"
+    "hey-listen" "^1.0.8"
     "tslib" "^2.3.1"
 
 "@motionone/dom@10.13.1":
@@ -422,7 +434,7 @@
     "@motionone/utils" "^10.13.2"
     "tslib" "^2.3.1"
 
-"@motionone/generators@^10.13.1":
+"@motionone/generators@^10.12.0", "@motionone/generators@^10.13.1":
   "integrity" "sha512-QMoXV1MXEEhR6D3dct/RMMS1FwJlAsW+kMPbFGzBA4NbweblgeYQCft9DcDAVpV9wIwD6qvlBG9u99sOXLfHiA=="
   "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/@motionone/generators/-/generators-10.13.2.tgz"
   "version" "10.13.2"
@@ -431,12 +443,12 @@
     "@motionone/utils" "^10.13.2"
     "tslib" "^2.3.1"
 
-"@motionone/types@^10.13.0", "@motionone/types@^10.13.2":
+"@motionone/types@^10.12.0", "@motionone/types@^10.13.0", "@motionone/types@^10.13.2":
   "integrity" "sha512-yYV4q5v5F0iADhab4wHfqaRJnM/eVtQLjUPhyEcS72aUz/xyOzi09GzD/Gu+K506BDfqn5eULIilUI77QNaqhw=="
   "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/@motionone/types/-/types-10.13.2.tgz"
   "version" "10.13.2"
 
-"@motionone/utils@^10.13.1", "@motionone/utils@^10.13.2":
+"@motionone/utils@^10.12.0", "@motionone/utils@^10.13.1", "@motionone/utils@^10.13.2":
   "integrity" "sha512-6Lw5bDA/w7lrPmT/jYWQ76lkHlHs9fl2NZpJ22cVy1kKDdEH+Cl1U6hMTpdphO6VQktQ6v2APngag91WBKLqlA=="
   "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/@motionone/utils/-/utils-10.13.2.tgz"
   "version" "10.13.2"
@@ -1515,6 +1527,27 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
+"framer-motion-carousel@^2.0.1":
+  "integrity" "sha512-USoPnkFjw07ebS0IAU0HFfa/0xz1K3/GaU2lD3fW1iMBzGPO6V4TuTBo1GevZ3V7r5bD2Wk4wo4M0t3IFuBqqQ=="
+  "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/framer-motion-carousel/-/framer-motion-carousel-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "framer-motion" "^6.3.11"
+
+"framer-motion@^6.3.11":
+  "integrity" "sha512-o1BGqqposwi7cgDrtg0dNONhkmPsUFDaLcKXigzuTFC5x58mE8iyTazxSudFzmT6MEyJKfjjU8ItoMe3W+3fiw=="
+  "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/framer-motion/-/framer-motion-6.5.1.tgz"
+  "version" "6.5.1"
+  dependencies:
+    "@motionone/dom" "10.12.0"
+    "framesync" "6.0.1"
+    "hey-listen" "^1.0.8"
+    "popmotion" "11.0.3"
+    "style-value-types" "5.0.0"
+    "tslib" "^2.1.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
 "framer-motion@^7.0.0":
   "integrity" "sha512-mOUKle6LouYVP4KLz+cMiNI6fL3qP9hQY4PBaN3E1FyPhcvuAgvs/JPgYktvK5zdRbIRU0gpBsr0CW5hP2KzKA=="
   "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/framer-motion/-/framer-motion-7.0.0.tgz"
@@ -2346,7 +2379,7 @@
   "resolved" "https://registry.npmjs.org/react-dom-factories/-/react-dom-factories-1.0.2.tgz"
   "version" "1.0.2"
 
-"react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.0.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@18.1.0":
+"react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.0.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=16.8 || ^17.0.0 || ^18.0.0", "react-dom@18.1.0":
   "integrity" "sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.1.0.tgz"
   "version" "18.1.0"
@@ -2443,7 +2476,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14.9 || ^15.3.0 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.3 || ^17 || ^18", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.0.0", "react@^18.1.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@0.14 || 15 || 16 || 17 || 18", "react@18.1.0":
+"react@*", "react@^0.14.9 || ^15.3.0 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.3 || ^17 || ^18", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.0.0", "react@^18.1.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0 || ^18.0.0", "react@>=16.8.0", "react@0.14 || 15 || 16 || 17 || 18", "react@18.1.0":
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"
@@ -2738,12 +2771,7 @@
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
 
-"tslib@^2.1.0":
-  "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
-  "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/tslib/-/tslib-2.4.0.tgz"
-  "version" "2.4.0"
-
-"tslib@^2.3.1":
+"tslib@^2.1.0", "tslib@^2.3.1":
   "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
   "resolved" "https://hco-artifacts-894048876128.d.codeartifact.us-east-1.amazonaws.com:443/npm/hco-sdk/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"

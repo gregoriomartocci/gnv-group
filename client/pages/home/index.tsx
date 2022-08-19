@@ -16,6 +16,7 @@ import api from "../../hooks/Api";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
+import { Example, UseCarousel } from "./Components/Carousel";
 
 export type TDemo = {
   img: string;
@@ -275,6 +276,17 @@ const Home = () => {
           heading="Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end."
           image="https://res.cloudinary.com/gregomartocci/image/upload/v1660738159/a7cxffqimjt8lyyq9por.png"
         />
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          position: "relative",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <Example />
       </Box>
 
       <Footer />

@@ -37,7 +37,7 @@ const VenturesLayout = () => {
       >
         <HeaderTitle
           px="12.5%"
-          py="7.5%"
+          py="20%"
           fontSize="22px"
           title="Emprendimientos"
           description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."

@@ -17,6 +17,7 @@
     "axios": "^0.27.2",
     "dompurify": "^2.3.8",
     "framer-motion": "^7.0.0",
+    "framer-motion-carousel": "^2.0.1",
     "html-react-parser": "^3.0.0",
     "nanoid": "^3.3.4",
     "next": "12.1.6",

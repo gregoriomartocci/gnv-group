@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 
-
 const Venture = ({ images, name, status, description }: any) => {
   const santize = (string: string) => {
     const reactElement = parse(string);
@@ -18,8 +17,8 @@ const Venture = ({ images, name, status, description }: any) => {
           style={{
             color: "#212121",
             fontWeight: 600,
-            fontSize: "25px",
-            margin: "15px 0",
+            fontSize: "30px",
+            margin: "15px 0 0 0",
           }}
         >
           {name}
@@ -27,12 +26,18 @@ const Venture = ({ images, name, status, description }: any) => {
       </Box>
 
       <Box sx={CardBody}>
-        <Box style={{ display: "flex", alignItems: "center" }}>
+        <Box
+          style={{
+            display: "flex",
+            alignItems: "center",
+            margin: "10px 0 0 0",
+          }}
+        >
           <span
             style={{
               color: "#212121",
               fontWeight: 600,
-              fontSize: "12px",
+              fontSize: "15px",
             }}
           >
             {status}
@@ -43,21 +48,20 @@ const Venture = ({ images, name, status, description }: any) => {
           style={{
             color: "#424242",
             fontWeight: 600,
-            fontSize: "12px",
-            margin: "10px 0",
+            fontSize: "17px",
+            margin: "15px 0 0 0",
           }}
         >
           {santize(description ?? "")}
         </Box>
-
         <Box
           style={{
             display: "flex",
             alignItems: "center",
             color: "#424242",
             fontWeight: 600,
-            fontSize: "12px",
-            margin: "10px 0",
+            fontSize: "16px",
+            margin: "15px 0 0 0",
           }}
         >
           Ver Proyecto
