@@ -37,12 +37,21 @@ export interface ISlidesProps {
   slides?: any;
   mode: "slider" | "static";
   img?: string;
+  phrase: string;
   imageOnly?: boolean;
   frame?: boolean;
   flip?: boolean;
 }
 
-const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
+const Main = ({
+  slides,
+  mode,
+  img,
+  imageOnly,
+  frame,
+  flip,
+  phrase,
+}: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
   const timeout = useRef(0);
@@ -99,17 +108,17 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
         </Box>
 
         {mode === "slider" ? (
-          slides?.map((slide, index) => {
+          slides?.map(({ src, phrase }, index) => {
             return (
               <Box sx={MainSlide} key={index}>
                 {index === current && (
                   <Box sx={MainSlider}>
                     <Box sx={MainImage}>
-                      {getFormat(slide?.src) === "MP4" ? (
-                        <video src={slide?.src} autoPlay loop muted />
+                      {getFormat(src) === "MP4" ? (
+                        <video src={src} autoPlay loop muted />
                       ) : (
                         <img
-                          src={slide?.src}
+                          src={src}
                           alt={""}
                           loading="lazy"
                           style={{ position: "absolute" }}
@@ -118,9 +127,7 @@ const Main = ({ slides, mode, img, imageOnly, frame, flip }: ISlidesProps) => {
                     </Box>
                     {!imageOnly ? (
                       <Box sx={MainContent}>
-                        <Typography sx={HeaderTitle}>
-                          Proyectos distintivos con visión de futuro.
-                        </Typography>
+                        <Typography sx={HeaderTitle}>{phrase}</Typography>
                         <Box style={{ width: "150px" }}>
                           <Button type={"Primary"}>Contactanos</Button>
                         </Box>

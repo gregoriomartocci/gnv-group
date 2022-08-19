@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { CardContainer, ImageContainer } from "./Styles";
+import { CardBody, CardContainer, ImageContainer } from "./Styles";
 
 type TMemberProps = {
   urls: string;
@@ -12,28 +12,31 @@ const GalleryItem = ({ urls }: TMemberProps) => {
       <Box sx={ImageContainer}>
         <img src={urls?.regular} alt={name}></img>
       </Box>
-      <Typography
-        sx={{
-          fontFamily: "'Poppins', sans-serif",
-          margin: "10px 0 0 0",
-          fontSize: "22px",
-          fontWeight: "700",
-          color: "#424242",
-        }}
-      >
-        {/* {name} */}
-      </Typography>
-      <Typography
-        sx={{
-          fontFamily: "'Poppins', sans-serif",
-          fontSize: "18px",
-          margin: "10px 0 0 0",
-          fontWeight: "600",
-          color: "#bdbdbd",
-        }}
-      >
-        {/* {role} */}
-      </Typography>
+      <Box sx={CardBody}>
+        <Typography
+          sx={{
+            fontFamily: "'Poppins', sans-serif",
+            margin: "10px 0 0 0",
+            fontSize: "18px",
+            fontWeight: "600",
+            color: "#424242",
+          }}
+        >
+          B Bros Artista: Juan Becú Galería Nora Fisch | Buenos Aires Técnica:
+          Óleo sobre tela Medidas: 265 x 195 cm Año: 2013
+        </Typography>
+        <Typography
+          sx={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "18px",
+            margin: "10px 0 0 0",
+            fontWeight: "600",
+            color: "#bdbdbd",
+          }}
+        >
+          {/* {role} */}
+        </Typography>
+      </Box>
     </Box>
   );
 };

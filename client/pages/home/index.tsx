@@ -189,26 +189,34 @@ const Home = () => {
   const slides = [
     {
       src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
+      phrase: "Proyectos con visión de futuro",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg",
+      phrase: "El diálogo entre el entorno y el urbanismo",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742034/rox1kitdhybmoktvdckn.png",
+      phrase: "Liderazgo y experiencia en real estate de lujo",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742148/ndwl4synhalqmpaw54ao.png",
+      phrase: "Proyectos con visión de futuro",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742361/zmga4wvfzztpfk1zt5gu.png",
+      phrase: "Diseño, innovación y calidad",
     },
   ];
 
   return (
     <Box sx={{ overflow: "hidden" }}>
-
       <Menu onScroll />
-      <Main slides={slides} mode="slider" />
+      <Main
+        slides={slides}
+        mode="slider"
+        img="https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4"
+      />
 
       <Box sx={{ width: "100%", height: "100%", padding: "7.5% 0" }}>
         <motion.div

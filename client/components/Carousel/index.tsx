@@ -21,7 +21,7 @@ export const Carousel = ({ children, slidesPerView }: any) => {
   return (
     <>
       <Swiper
-        style={{ width: "100%" }}
+        style={{ width: "100%", height: "100%" }}
         slidesPerView={slidesPerView}
         spaceBetween={0}
         freeMode={true}

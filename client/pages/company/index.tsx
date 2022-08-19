@@ -248,12 +248,12 @@ const Company = () => {
           title="Galería de arte GNV"
         />
 
-        <ArtGallery gallery={gallery.length ? gallery : [] ?? []} />
+        <ArtGallery gallery={gallery?.length ? gallery : [] ?? []} />
       </Box>
 
       <Footer />
     </Box>
-  );
+  ); 
 };
 
 export default Company;
