@@ -6,31 +6,13 @@ import { Box } from "@mui/material";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import useWindowDimensions from "../../../../hooks/ScreenSize";
 
 export const images = [
   "https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png",
   "https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png",
   "https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png",
 ];
-
-const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-    };
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 1,
-      x: direction < 0 ? 1000 : -1000,
-    };
-  },
-};
 
 /**
  * Experimenting with distilling swipe offset and velocity into a single variable, so the
@@ -47,6 +29,28 @@ const swipePower = (offset: number, velocity: number) => {
 
 export const Example = () => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const { height, width } = useWindowDimensions();
+
+  const variants = {
+    enter: (direction: number) => {
+      return {
+        x: direction > 0 ? width : width ? -width : 0,
+      };
+    },
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => {
+      return {
+        zIndex: 1,
+        x: direction < 0 ? width : width ? -width : 0,
+      };
+    },
+  };
+
+  console.log(height, width, "ok");
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
