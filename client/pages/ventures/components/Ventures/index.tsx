@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import SelectorB from "../../../../components/SelectorB";
 import Cards from "../../../../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../../components/Menu";
@@ -59,19 +58,12 @@ const Ventures = () => {
   };
 
   return (
-    <Box
-      sx={{
-        padding: "5% 10%",
-      }}
-    >
-      <SelectorB />
-      <Cards
-        items={projects_filter}
-        component={(item: IProject | IArticle) => <Venture {...item} />}
-        columns={3}
-        gap="50px"
-      />
-    </Box>
+    <Cards
+      items={projects_filter}
+      component={(item: IProject | IArticle) => <Venture {...item} />}
+      columns={3}
+      gap="50px"
+    />
   );
 };
 

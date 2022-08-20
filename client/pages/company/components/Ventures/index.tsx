@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import SelectorB from "../../../../components/SelectorB";
+import SelectorB from "../../../../components/Selectors-B";
 import Cards from "../../../../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../../components/Menu";

@@ -12,6 +12,7 @@ import Team from "./components/Team";
 import ArtGallery from "./components/Art-Gallery";
 import MessageSection from "./components/Message-Section";
 import api from "../../hooks/Api";
+import TeamB from "./components/Team B";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -24,59 +25,70 @@ const FadeFromBottom = {
 
 const members = [
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/l16dgiu2maxocdxd5gmg.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Alejandro Ginevra",
     role: "Presidente",
+    priority: 2,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/ppugf8iteyuvfpeearqg.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg",
     name: "Mercedes Ginevra",
     role: "Directora Comercial",
+    priority: 2,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709357/orogwyh1lvyqji2tfqai.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660970604/qfneqixqdug2vaaahvcc.jpg",
     name: "Iván Ginevra",
     role: "Director",
+    priority: 3,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709469/fdy72awmrhynvgbywzcd.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Camila Ginevra",
     role: "Responsable Interiorismo",
+    priority: 3,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709173/eb5kfhispqmcve9x6tu4.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Candela Ginevra",
     role: "Responsable Marketing",
+    priority: 3,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/mojcy8latflmlord4ym4.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Julia Granero",
     role: "Responsable relaciones insitucionales",
+    priority: 4,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/ugugdx8tsbqgak4fkqj2.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Viviana Reissis",
     role: "Gerente Ginevra Realty Zona Norte",
+    priority: 4,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Florencia Ponce",
     role: "Gerente comercial Ginevra Realty Puerto Madero",
+    priority: 4,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709172/twoyrlmrniaxsndjw0ea.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Gabriela River",
     role: "Gerente Administración",
+    priority: 4,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709173/pmgsoof4pjhm5sl9tftl.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Ezequiel Acuña",
     role: "Gerente Obras",
+    priority: 4,
   },
   {
-    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660709171/qedzobkij5gv7kdt22ky.png",
+    img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg",
     name: "Julieta Steinmann",
     role: "Responsable Arquitectura",
+    priority: 4,
   },
 ];
 
@@ -217,6 +229,7 @@ const Company = () => {
       </Box>
 
       {/* Team */}
+
       <Box
         sx={{
           display: "flex",
@@ -228,7 +241,9 @@ const Company = () => {
         }}
       >
         <HeaderTitle py="7.5%" px="15px" fontSize="25px" title="El Grupo" />
-        <Team members={members} />
+        {/* <Team members={members} /> */}
+
+        <TeamB members={members} />
       </Box>
 
       {/* Gallery */}
@@ -253,7 +268,7 @@ const Company = () => {
 
       <Footer />
     </Box>
-  ); 
+  );
 };
 
 export default Company;

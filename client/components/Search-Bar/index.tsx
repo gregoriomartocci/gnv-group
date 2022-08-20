@@ -24,43 +24,25 @@ const SearchBar = ({
   };
 
   return (
-    <Box>
-      {variant === "small" ? (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "7px",
-            border: "2px solid #e0e0e0",
-            borderRadius: "50px",
-          }}
-        >
-          <Search
-            sx={{ margin: "0 10px", fontSize: "20px", color: "#bdbdbd" }}
-          />
-          <InputBase
-            sx={SearchInput}
-            placeholder="búsqueda por nombre"
-            value={value.search}
-            onChange={onChangeHandler}
-          />
-        </Box>
-      ) : (
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "7px",
-            border: "2px solid #e0e0e0",
-            borderRadius: "50px",
-          }}
-        >
-          Ok
-        </Box>
-      )}
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        padding: "25px 5px",
+        borderBottom: "2px solid #e0e0e0",
+        width: "100%",
+      }}
+    >
+      <Search
+        sx={{ margin: "0  20px 0 5px", fontSize: "28px", color: "#bdbdbd" }}
+      />
+      <InputBase
+        sx={SearchInput}
+        placeholder="búsqueda por nombre"
+        value={value.search}
+        onChange={onChangeHandler}
+      />
     </Box>
   );
 };

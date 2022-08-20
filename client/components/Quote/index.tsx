@@ -11,9 +11,10 @@ interface IQuote {
   text: string;
   img: string;
   author: TAuthor;
+  rounded?: boolean;
 }
 
-const Quote = ({ img, text, author: { name, position } }: IQuote) => {
+const Quote = ({ img, text, author: { name, position }, rounded }: IQuote) => {
   const FadeFromBottom = {
     offscreen: { y: 75, opacity: 0 },
     onscreen: {
@@ -33,7 +34,21 @@ const Quote = ({ img, text, author: { name, position } }: IQuote) => {
   };
 
   return (
-    <Box sx={QuoteContainer}>
+    <Box
+      sx={{
+        img: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "400px",
+          height: "400px",
+          borderRadius: `${rounded ? "50%" : 0} `,
+          objectFit: "cover",
+          transform: "scale(1.025)",
+        },
+      }}
+      style={QuoteContainer}
+    >
       <motion.div
         initial={"offscreen"}
         whileInView={"onscreen"}

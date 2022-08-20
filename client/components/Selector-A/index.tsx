@@ -142,7 +142,7 @@ export const items = [
   { label: "Monty Python and the Holy Grail", year: 1975 },
 ];
 
-const SelectorA = () => {
+const Selector = () => {
   const [active, setActive] = useState(1);
   const selectTab = (number: number): void => {
     setActive(number);
@@ -155,6 +155,7 @@ const SelectorA = () => {
           <Box
             sx={active === 1 ? SelectorTabActive : SelectorTab}
             onClick={() => selectTab(1)}
+            component="span"
           >
             <HomeIcon
               style={{
@@ -172,6 +173,7 @@ const SelectorA = () => {
           <Box
             sx={active === 2 ? SelectorTabActive : SelectorTab}
             onClick={() => selectTab(2)}
+            component="span"
           >
             <ApartmentIcon />
             <span
@@ -230,4 +232,4 @@ const SelectorA = () => {
   );
 };
 
-export default SelectorA;
+export default Selector;

@@ -16,7 +16,7 @@ import api from "../../hooks/Api";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
-import { Example, UseCarousel } from "./Components/Carousel";
+import { UseCarousel } from "./Components/Carousel";
 
 export type TDemo = {
   img: string;
@@ -189,7 +189,7 @@ const Home = () => {
 
   const slides = [
     {
-      src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png",
       phrase: "Proyectos con visión de futuro",
     },
     {
@@ -201,7 +201,7 @@ const Home = () => {
       phrase: "Liderazgo y experiencia en real estate de lujo",
     },
     {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742148/ndwl4synhalqmpaw54ao.png",
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1658450788/sdp7axfl9ouoodgh2uhs.jpg",
       phrase: "Proyectos con visión de futuro",
     },
     {
@@ -251,7 +251,7 @@ const Home = () => {
         </motion.div>
       </Box>
 
-      <Box>
+      <Box sx={{ margin: "50px 0" }}>
         <Cards
           gap={""}
           columns={2}
@@ -262,7 +262,7 @@ const Home = () => {
 
       <Box>
         <Quote
-          img="https://res.cloudinary.com/gregomartocci/image/upload/v1660737963/jivl050fydpjncw0bchp.png"
+          img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
           author={{
             name: "Alejandro Ginevra",
@@ -271,12 +271,12 @@ const Home = () => {
         />
       </Box>
 
-      <Box>
+      {/* <Box>
         <Section
           heading="Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end."
           image="https://res.cloudinary.com/gregomartocci/image/upload/v1660738159/a7cxffqimjt8lyyq9por.png"
         />
-      </Box>
+      </Box> */}
 
       <Box
         sx={{
@@ -286,7 +286,7 @@ const Home = () => {
           height: "100vh",
         }}
       >
-        <Example />
+        <UseCarousel items={slides} slideTime={5000} />
       </Box>
 
       <Footer />
