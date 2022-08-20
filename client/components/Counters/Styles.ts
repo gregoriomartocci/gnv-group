@@ -8,5 +8,5 @@ export const CounterBlock: SxProps<Theme> = {
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
-  padding: "25px 45px",
+  padding: "20px 45px",
 };

@@ -38,7 +38,7 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
             sx={CounterBlock}
             style={
               index !== data?.length - 1
-                ? { borderRight: "1px solid#bdbdbd" }
+                ? { borderRight: "2.5px solid#eeeeee" }
                 : {}
             }
             key={index}

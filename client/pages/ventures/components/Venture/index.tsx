@@ -30,26 +30,26 @@ const Venture = ({ images, name, status, description }: any) => {
           style={{
             display: "flex",
             alignItems: "center",
-            margin: "10px 0 0 0",
+            margin: "5px 0 0 0",
           }}
         >
           <span
             style={{
               color: "#212121",
-              fontWeight: 600,
-              fontSize: "15px",
+              fontWeight: 700,
+              fontSize: "16px",
             }}
           >
-            {status}
+            {status.toUpperCase()}
           </span>
         </Box>
 
         <Box
           style={{
-            color: "#424242",
-            fontWeight: 600,
+            color: "#757575",
+            fontWeight: 500,
             fontSize: "17px",
-            margin: "15px 0 0 0",
+            margin: "10px 0 0 0",
           }}
         >
           {santize(description ?? "")}
@@ -58,10 +58,10 @@ const Venture = ({ images, name, status, description }: any) => {
           style={{
             display: "flex",
             alignItems: "center",
-            color: "#424242",
+            color: "#212121",
             fontWeight: 600,
-            fontSize: "16px",
-            margin: "15px 0 0 0",
+            fontSize: "17px",
+            margin: "10px 0 0 0",
           }}
         >
           Ver Proyecto
