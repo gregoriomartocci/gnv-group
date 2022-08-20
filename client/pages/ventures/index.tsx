@@ -96,7 +96,7 @@ const VenturesLayout = () => {
           display: "flex",
           justifyContent: "flex-start",
           width: "100%",
-          padding: "1% 5%",
+          padding: "1% 7.55%",
         }}
       >
         <SelectorB
@@ -117,7 +117,7 @@ const VenturesLayout = () => {
         </Box>
       </Box>
 
-      <Box sx={{ padding: "0 5%" }}>
+      <Box sx={{ padding: "0 7.5%" }}>
         <Ventures />
       </Box>
       <Footer />
