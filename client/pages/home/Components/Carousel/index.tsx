@@ -2,11 +2,12 @@ import * as React from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import useWindowDimensions from "../../../../hooks/ScreenSize";
+import { HeaderTitle } from "./Styles";
 
 const swipeConfidenceThreshold = 10000;
 
@@ -54,72 +55,131 @@ export const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
     setPage([page + newDirection, newDirection]);
   };
 
+  const getFormat = (file: string) => {
+    const result = file?.split(".").pop()?.toUpperCase();
+    return result;
+  };
+
   return (
     <Box
       sx={{
+        display: "flex",
+        alignItems: "center",
         position: "relative",
         width: "100%",
         height: "100%",
+        zIndex: 1,
       }}
     >
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.img
-          style={{
+      {getFormat(items[imageIndex].src) === "MP4" ? (
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.video
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              cursor: "pointer",
+            }}
+            autoPlay
+            loop
+            muted
+            key={page}
+            src={items[imageIndex].src}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
+              if (swipe < -swipeConfidenceThreshold) {
+                paginate(1);
+              } else if (swipe > swipeConfidenceThreshold) {
+                paginate(-1);
+              }
+            }}
+          />
+        </AnimatePresence>
+      ) : (
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.img
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              cursor: "pointer",
+            }}
+            key={page}
+            src={items[imageIndex].src}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
+              if (swipe < -swipeConfidenceThreshold) {
+                paginate(1);
+              } else if (swipe > swipeConfidenceThreshold) {
+                paginate(-1);
+              }
+            }}
+          />
+        </AnimatePresence>
+      )}
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          zIndex: 1,
+          padding: "0% 10%",
+        }}
+      >
+        <Box
+          sx={{
             position: "absolute",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            left: "50px",
+            zIndex: 1,
             cursor: "pointer",
           }}
-          key={page}
-          src={items[imageIndex].src}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
+          component="span"
+          onClick={() => paginate(-1)}
+        >
+          <ArrowBackIosIcon sx={{ color: "#fff", fontSize: "30px" }} />
+        </Box>
+        <Box sx={{ marginBottom: "10px" }}>
+          <Typography sx={HeaderTitle}>{items[imageIndex].phrase}</Typography>
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            right: "50px",
+            zIndex: 1,
+            cursor: "pointer",
           }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipePower(offset.x, velocity.x);
-            if (swipe < -swipeConfidenceThreshold) {
-              paginate(1);
-            } else if (swipe > swipeConfidenceThreshold) {
-              paginate(-1);
-            }
-          }}
-        />
-      </AnimatePresence>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50px",
-          zIndex: 1,
-          cursor: "pointer",
-        }}
-        component="span"
-        onClick={() => paginate(-1)}
-      >
-        <ArrowBackIosIcon sx={{ color: "#fff", fontSize: "50px" }} />
-      </Box>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          right: "50px",
-          zIndex: 1,
-          cursor: "pointer",
-        }}
-        component="span"
-        onClick={() => paginate(1)}
-      >
-        <ArrowForwardIosIcon sx={{ color: "#fff", fontSize: "50px" }} />
+          component="span"
+          onClick={() => paginate(1)}
+        >
+          <ArrowForwardIosIcon sx={{ color: "#fff", fontSize: "30px" }} />
+        </Box>
       </Box>
     </Box>
   );

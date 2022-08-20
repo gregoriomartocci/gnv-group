@@ -189,7 +189,7 @@ const Home = () => {
 
   const slides = [
     {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png",
+      src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
       phrase: "Proyectos con visión de futuro",
     },
     {
