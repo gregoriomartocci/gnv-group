@@ -4,6 +4,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 
 const Venture = ({ images, name, status, description }: any) => {
+  
   const santize = (string: string) => {
     const reactElement = parse(string);
     return reactElement;

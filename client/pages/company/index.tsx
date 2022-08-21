@@ -13,6 +13,7 @@ import ArtGallery from "./components/Art-Gallery";
 import MessageSection from "./components/Message-Section";
 import api from "../../hooks/Api";
 import TeamB from "./components/Team B";
+import parse from "html-react-parser";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -21,6 +22,14 @@ const FadeFromBottom = {
     opacity: 1,
     transition: { duration: 2 },
   },
+};
+
+export const sanitize = (string: string) => {
+  if (typeof string === "string" && typeof window !== "undefined") {
+    const reactElement = parse(string);
+    return reactElement;
+  }
+  return null;
 };
 
 const members = [
@@ -166,7 +175,6 @@ const Company = () => {
   return (
     <Box>
       <Menu onScroll color="#212121" />
-      
       <Main
         slides={SliderData}
         mode="static"
@@ -187,13 +195,13 @@ const Company = () => {
 
           <MessageSection
             title=" Liderar el sector inmobiliario, mucho más que una tradición familiar."
-            description="Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay.
-
-            Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras.
-            
-            Nuestro compromiso está enfocado en la búsqueda constante de calidad e innovación en un mercado cada vez más versátil y exigente, con una fuerte vocación por un urbanismo innovador y respetuoso del entorno y el medio ambiente.
-            
-            Construir pensando en el futuro, sin olvidar nuestra historia."
+            description={
+              typeof window !== "undefined"
+                ? sanitize(
+                    "<div><div>Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay.</div><br><div>Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras.</div><br><div>Nuestro compromiso está enfocado en la búsqueda constante de calidad e innovación en un mercado cada vez más versátil y exigente, con una fuerte vocación por un urbanismo innovador y respetuoso del entorno y el medio ambiente.<br>Construir pensando en el futuro, sin olvidar nuestra historia.</div><div>"
+                  )
+                : null
+            }
             img="https://res.cloudinary.com/gregomartocci/image/upload/v1660704914/i7jqgzhxsgpvs6ndycaj.jpg"
           />
         </motion.div>

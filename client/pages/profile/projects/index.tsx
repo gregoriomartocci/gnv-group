@@ -59,7 +59,7 @@ interface ISanitize {
   string: string;
 }
 
-export const santize = (string: string) => {
+export const sanitize = (string: string) => {
   if (typeof string === "string") {
     const reactElement = parse(string);
     return reactElement;
@@ -137,7 +137,7 @@ export const Content = (project: IProject) => {
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {santize(sliceText(project?.description, 30))}
+          {sanitize(sliceText(project?.description, 30))}
         </Typography>
       </TableCell>
       <TableCell align="left">

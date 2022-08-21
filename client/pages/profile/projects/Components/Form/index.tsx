@@ -9,14 +9,14 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-
 import { useRouter } from "next/router";
 import { Login } from "./Styles";
-
 import dynamic from "next/dynamic";
+
 import ImageUploader, {
   IImagetoUpload,
 } from "../../../../../components/Image-Uploader";
+
 import InputGroup from "../../../../../components/Input";
 import UseTabs from "../../../../../components/Tabs";
 import UseButton from "../../../../../components/Button";

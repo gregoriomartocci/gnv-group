@@ -40,11 +40,6 @@ const ArticleCard = ({
   status,
   description,
 }: any) => {
-  // const santize = (string: string) => {
-  //   const reactElement = parse(string);
-  //   return reactElement;
-  // };
-
   return (
     <Link href={link}>
       <a target="_blank">
@@ -55,7 +50,7 @@ const ArticleCard = ({
               style={{
                 color: "#212121",
                 fontWeight: 600,
-                fontSize: "20px",
+                fontSize: "22px",
                 margin: "15px 0",
               }}
             >
@@ -64,27 +59,15 @@ const ArticleCard = ({
           </Box>
 
           <Box sx={CardBody}>
-            <Box style={{ display: "flex", alignItems: "center" }}>
-              <span
-                style={{
-                  color: "#212121",
-                  fontWeight: 600,
-                  fontSize: "12px",
-                }}
-              >
-                {status}
-              </span>
-            </Box>
-
             <Box
               style={{
-                color: "#424242",
+                color: "#9e9e9e",
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "16px",
                 margin: "10px 0",
               }}
             >
-              {santize(sliceText(description, 150) ?? "")}
+              {santize(sliceText(description, 85) ?? "")}
             </Box>
 
             <Box
@@ -93,7 +76,7 @@ const ArticleCard = ({
                 alignItems: "center",
                 color: "#424242",
                 fontWeight: 600,
-                fontSize: "12px",
+                fontSize: "16px",
                 margin: "10px 0",
               }}
             >
@@ -169,11 +152,11 @@ const News = () => {
       <HeaderTitle py="150px" px="150px" title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
         <Cards
-          gap="25px"
+          gap="60px"
           columns={4}
           items={articles}
           component={(item: IArticle) => <ArticleCard {...item} />}
-        ></Cards>
+        />
       </Box>
       <Box
         sx={{

@@ -50,6 +50,8 @@ export interface IEditor {
 
 const Editor = ({ value, method, item, stateHandler, state }: IEditor) => {
 
+  console.log(value.description, "Riquelme")
+
   const onChangeHandler = (string: string) => {
     stateHandler({
       method,

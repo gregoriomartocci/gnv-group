@@ -41,21 +41,12 @@ const Article = ({
               style={{
                 color: "#212121",
                 fontWeight: 600,
-                fontSize: "25px",
+                fontSize: "30px",
                 margin: "10px 0",
               }}
             >
               {title}
             </span>
-
-            <Box
-              style={{
-                color: "#424242",
-                fontWeight: 600,
-                fontSize: "12px",
-                margin: "10px 0",
-              }}
-            ></Box>
 
             <Box
               style={{
@@ -65,7 +56,7 @@ const Article = ({
               }}
             >
               <span
-                style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}
+                style={{ color: "#616161", fontWeight: 600, fontSize: "18px" }}
               >
                 {sanitize(sliceText(description, 250))}
               </span>
@@ -79,7 +70,7 @@ const Article = ({
               }}
             >
               <span
-                style={{ color: "#424242", fontWeight: 600, fontSize: "12px" }}
+                style={{ color: "#424242", fontWeight: 600, fontSize: "16px" }}
               >
                 {date}
               </span>
