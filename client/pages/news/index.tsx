@@ -142,7 +142,7 @@ const News = () => {
 
   return (
     <Box>
-      <Menu onScroll={false} />
+      <Menu onScroll />
       <Box>
         <HeaderTitle px="25px" py="150px" title="Noticias destacadas" />
       </Box>

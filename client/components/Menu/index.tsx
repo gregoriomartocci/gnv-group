@@ -56,9 +56,11 @@ export interface IMenu {
   onScroll?: boolean;
   theme?: string;
   relative?: boolean;
+  color?: string;
+  backgroundColor: string;
 }
 
-const Menu = ({ onScroll, theme, relative }: IMenu) => {
+const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectAuth, setSelectAuth] = useState("sign-up");
@@ -103,10 +105,8 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
           onScroll
             ? navbar
               ? MenuContainerOnScroll
-              : MenuContainer
-            : theme === "light"
-            ? MenuContainer
-            : MenuContainerDark
+              : { ...MenuContainer, color, backgroundColor }
+            : { ...MenuContainer, color, backgroundColor }
         }
       >
         <Box sx={relative ? MenuContainerRelative : MenuContent}>
@@ -115,7 +115,7 @@ const Menu = ({ onScroll, theme, relative }: IMenu) => {
               <a>
                 <Box sx={LogoStyle}>
                   <Logo
-                    theme={onScroll ? (navbar ? "dark" : "light") : "dark"}
+                    color={onScroll ? !navbar && color : color}
                     width="125px"
                   />
                 </Box>

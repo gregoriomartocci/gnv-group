@@ -212,7 +212,7 @@ const Home = () => {
 
   return (
     <Box sx={{ overflow: "hidden" }}>
-      <Menu onScroll />
+      <Menu onScroll color="#fff" />
       <Main
         slides={slides}
         mode="static"

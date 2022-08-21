@@ -165,7 +165,7 @@ const Company = () => {
 
   return (
     <Box>
-      <Menu theme="dark" />
+      <Menu onScroll color="#212121" />
       <Main
         slides={SliderData}
         mode="static"
