@@ -51,7 +51,7 @@ const ArticleCard = ({
                 color: "#212121",
                 fontWeight: 600,
                 fontSize: "22px",
-                margin: "15px 0",
+                margin: "15px 0 0 0",
               }}
             >
               {title}
@@ -62,12 +62,12 @@ const ArticleCard = ({
             <Box
               style={{
                 color: "#9e9e9e",
-                fontWeight: 600,
-                fontSize: "16px",
-                margin: "10px 0",
+                fontWeight: 500,
+                fontSize: "18px",
+                margin: "15px 0 0 0",
               }}
             >
-              {santize(sliceText(description, 85) ?? "")}
+              {santize(sliceText(description, 125) ?? "")}
             </Box>
 
             <Box
@@ -76,8 +76,8 @@ const ArticleCard = ({
                 alignItems: "center",
                 color: "#424242",
                 fontWeight: 600,
-                fontSize: "16px",
-                margin: "10px 0",
+                fontSize: "18px",
+                margin: "15px 0 0 0",
               }}
             >
               Ver Noticia
@@ -152,8 +152,8 @@ const News = () => {
       <HeaderTitle py="150px" px="150px" title="Todas las noticias" />
       <Box sx={{ padding: "0 5%" }}>
         <Cards
-          gap="60px"
-          columns={4}
+          gap="75px"
+          columns={3}
           items={articles}
           component={(item: IArticle) => <ArticleCard {...item} />}
         />
@@ -168,7 +168,7 @@ const News = () => {
       >
         <UseButton type="Primary">Ver Mas</UseButton>
       </Box>
-      <Footer></Footer>
+      <Footer/>
     </Box>
   );
 };

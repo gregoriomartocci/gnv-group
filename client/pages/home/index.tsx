@@ -219,36 +219,63 @@ const Home = () => {
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
       />
 
-      <Box sx={{ width: "100%", height: "100%", padding: "7.5% 0" }}>
-        <motion.div
-          initial={"offscreen"}
-          whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.5 }}
-          variants={FadeFromBottom}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100vw",
+          height: "100vh",
+          padding: "5%",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+            padding: "10% 5% 0 5%",
+          }}
         >
-          <HeaderTitle
-            px="10%"
-            py="2.5%"
-            fontSize="28px"
-            description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
-          />
-        </motion.div>
-      </Box>
+          <motion.div
+            initial={"offscreen"}
+            whileInView={"onscreen"}
+            viewport={{ once: false, amount: 0.5 }}
+            variants={FadeFromBottom}
+          >
+            <HeaderTitle
+              fontSize="28px"
+              description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
+            />
+          </motion.div>
+        </Box>
 
-      <Box sx={{ width: "100%", padding: "0 0 20% 0" }} ref={CountersRef}>
-        <motion.div
-          initial={"offscreen"}
-          whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.5 }}
-          variants={FadeFromBottom}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "10% 0 7.5% 0",
+            height: "100%",
+            width: "100%",
+          }}
+          ref={CountersRef}
         >
-          <Counters
-            data={data}
-            counterSize={35}
-            countersRef={countersVisible}
-          />
-          .
-        </motion.div>
+          <motion.div
+            initial={"offscreen"}
+            whileInView={"onscreen"}
+            viewport={{ once: false, amount: 0.5 }}
+            variants={FadeFromBottom}
+          >
+            <Counters
+              data={data}
+              counterSize={35}
+              countersRef={countersVisible}
+            />
+          </motion.div>
+        </Box>
       </Box>
 
       <Box sx={{ margin: "50px 0" }}>
@@ -268,6 +295,7 @@ const Home = () => {
             name: "Alejandro Ginevra",
             position: "Presidente de GNV Group",
           }}
+          rounded
         />
       </Box>
 

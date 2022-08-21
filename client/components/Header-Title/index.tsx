@@ -45,6 +45,8 @@ const HeaderTitle = ({
           sx={{
             fontSize,
             margin: "15px 0",
+            fontWeight: 500,
+            color: "#424242",
             fontFamily: "'Poppins', sans-serif",
           }}
         >

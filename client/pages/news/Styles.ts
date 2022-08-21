@@ -7,17 +7,15 @@ export const CardContainer: SxProps<Theme> = {
   cursor: "pointer",
   fontFamily: "'Poppins', sans-serif",
   fontSize: "20px",
-  padding: "20px",
   height: "100%",
   width: "100%",
-  "&:hover": {
-    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-  },
 
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: "350px",
+    minHeight: "500px",
+    minWidth:"500px"
+    
   },
 };
 
