@@ -144,16 +144,20 @@ const Main = ({
           <Box sx={MainSection}>
             <Box sx={MainContainer}>
               <Box sx={MainImage}>
-                <img
-                  src={img ?? ""}
-                  alt=""
-                  loading="lazy"
-                  style={
-                    flip
-                      ? { position: "absolute", transform: "scaleX(-1)" }
-                      : { position: "absolute" }
-                  }
-                />
+                {getFormat(img ?? "") === "MP4" ? (
+                  <video src={img} autoPlay loop muted />
+                ) : (
+                  <img
+                    src={img ?? ""}
+                    alt=""
+                    loading="lazy"
+                    style={
+                      flip
+                        ? { position: "absolute", transform: "scaleX(-1)" }
+                        : { position: "absolute" }
+                    }
+                  />
+                )}
                 {!imageOnly ? (
                   <Box sx={MainContent}>
                     <Typography sx={HeaderTitle}>

@@ -215,7 +215,7 @@ const Home = () => {
       <Menu onScroll />
       <Main
         slides={slides}
-        mode="slider"
+        mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4"
       />
 
