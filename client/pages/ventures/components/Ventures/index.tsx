@@ -62,7 +62,7 @@ const Ventures = () => {
       items={projects_filter}
       component={(item: IProject | IArticle) => <Venture {...item} />}
       columns={3}
-      gap="60px"
+      gap="50px"
     />
   );
 };

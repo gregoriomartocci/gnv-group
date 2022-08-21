@@ -12,7 +12,7 @@ export const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: "400px",
+    minHeight: "350px",
     maxHeight: "1000px",
   },
 };
