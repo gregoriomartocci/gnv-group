@@ -110,7 +110,6 @@ export const HeaderTitle: SxProps<Theme> = {
   fontFamily: "'Poppins', sans-serif",
   fontSize: "37.5px",
   fontWeight: 400,
-  textShadow: "0px 0px 20px rgba(0, 0, 0, 0.4);",
   textAlign: "left",
   marginBottom: "30px",
 };

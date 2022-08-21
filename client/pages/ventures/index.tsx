@@ -60,7 +60,7 @@ const VenturesLayout = () => {
 
   return (
     <Box>
-      <Menu onScroll />
+      <Menu onScroll color="#fff" />
       <Main
         slides={SliderData}
         mode="static"

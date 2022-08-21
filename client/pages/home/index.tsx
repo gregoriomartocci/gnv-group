@@ -216,7 +216,7 @@ const Home = () => {
       <Main
         slides={slides}
         mode="static"
-        img="https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4"
+        img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
       />
 
       <Box sx={{ width: "100%", height: "100%", padding: "7.5% 0" }}>
@@ -228,14 +228,14 @@ const Home = () => {
         >
           <HeaderTitle
             px="10%"
-            py="10%"
+            py="2.5%"
             fontSize="28px"
             description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
           />
         </motion.div>
       </Box>
 
-      <Box sx={{ width: "100%", padding: "5% 0 20% 0" }} ref={CountersRef}>
+      <Box sx={{ width: "100%", padding: "0 0 20% 0" }} ref={CountersRef}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
