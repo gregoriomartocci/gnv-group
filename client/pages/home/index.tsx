@@ -190,22 +190,15 @@ const Home = () => {
   const slides = [
     {
       src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
-      phrase: "Proyectos con visión de futuro",
+      phrase:
+        "¨Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos.",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg",
       phrase: "El diálogo entre el entorno y el urbanismo",
     },
     {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742034/rox1kitdhybmoktvdckn.png",
-      phrase: "Liderazgo y experiencia en real estate de lujo",
-    },
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1658450788/sdp7axfl9ouoodgh2uhs.jpg",
-      phrase: "Proyectos con visión de futuro",
-    },
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742361/zmga4wvfzztpfk1zt5gu.png",
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       phrase: "Diseño, innovación y calidad",
     },
   ];
@@ -295,7 +288,6 @@ const Home = () => {
             name: "Alejandro Ginevra",
             position: "Presidente de GNV Group",
           }}
-          rounded
         />
       </Box>
 
