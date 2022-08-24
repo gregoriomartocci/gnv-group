@@ -14,22 +14,17 @@ import MessageSection from "./components/Message-Section";
 import api from "../../hooks/Api";
 import TeamB from "./components/Team B";
 import parse from "html-react-parser";
+import Section from "../../components/Section";
+import Logo from "../../components/Logo";
+import { BorderBottom } from "@mui/icons-material";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
   onscreen: {
     y: 0,
     opacity: 1,
-    transition: { duration: 2 },
+    transition: { duration: 0.5 },
   },
-};
-
-export const sanitize = (string: string) => {
-  if (typeof string === "string" && typeof window !== "undefined") {
-    const reactElement = parse(string);
-    return reactElement;
-  }
-  return null;
 };
 
 const members = [
@@ -101,48 +96,13 @@ const members = [
   },
 ];
 
-// const gallery = [
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Alejandro Ginevra",
-//     role: "Presidente",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Mercedes Ginevra",
-//     role: "Presidente",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Iván Ginevra",
-//     role: "Director",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Camila Ginevra",
-//     role: "Responsable Interiorismo",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Candela Ginevra",
-//     role: "Responsable Marketing",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Julia Granero",
-//     role: "Responsable relaciones insitucionales",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Viviana Reissis",
-//     role: "Gerente Ginevra Realty Zona Norte",
-//   },
-//   {
-//     img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660354943/da2yya1gt6e1i5nyhgrq.svg",
-//     name: "Florencia Ponce",
-//     role: "Gerente comercial Ginevra Realty Puerto Madero",
-//   },
-// ];
+export const sanitize = (string: string) => {
+  if (typeof string === "string" && typeof window !== "undefined") {
+    const reactElement = parse(string);
+    return reactElement;
+  }
+  return "";
+};
 
 const Company = () => {
   const [gallery, setGallery] = useState([]);
@@ -175,6 +135,7 @@ const Company = () => {
   return (
     <Box>
       <Menu onScroll color="#212121" />
+
       <Main
         slides={SliderData}
         mode="static"
@@ -193,17 +154,74 @@ const Company = () => {
         >
           <HeaderTitle py="10%" px="10%" fontSize="25px" title="Compañia" />
 
-          <MessageSection
+          {/* <MessageSection
             title=" Liderar el sector inmobiliario, mucho más que una tradición familiar."
             description={
               typeof window !== "undefined"
                 ? sanitize(
-                    "<div><div>Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay.</div><br><div>Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras.</div><br><div>Nuestro compromiso está enfocado en la búsqueda constante de calidad e innovación en un mercado cada vez más versátil y exigente, con una fuerte vocación por un urbanismo innovador y respetuoso del entorno y el medio ambiente.<br>Construir pensando en el futuro, sin olvidar nuestra historia.</div><div>"
+                    "<p>Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay.</p><p><br></p><p>Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras.</p><p><br></p><p>Nuestro compromiso está enfocado en la búsqueda constante de calidad e innovación en un mercado cada vez más versátil y exigente, con una fuerte vocación por un urbanismo innovador y respetuoso del entorno y el medio ambiente.</p><p>Construir pensando en el futuro, sin olvidar nuestra historia.</p> "
                   )
-                : null
+                : ""
             }
             img="https://res.cloudinary.com/gregomartocci/image/upload/v1660704914/i7jqgzhxsgpvs6ndycaj.jpg"
-          />
+          /> */}
+        </motion.div>
+      </Box>
+
+      {/* Section */}
+      <Box sx={{ width: "100vw", padding: "7.5% 5%", height: "100%" }}>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.1 }}
+          variants={FadeFromBottom}
+          style={{ width: "100%", height: "100%", padding: "0 10%" }}
+        >
+          {/* <HeaderTitle py="10%" px="2.5%" fontSize="25px" title="Compañia" /> */}
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "7.5% 0",
+              borderBottom: "1.5px solid #eeeeee",
+            }}
+          >
+            <Section
+              title={<Logo width="calc(100% - 150px)" color="#212121" />}
+              paragraph="Presidida por Alejandro Ginevra y familia, con presencia en Argentina y Uruguay, de GNV se depresión sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
+              image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
+              reverse
+            />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "7.5% 0",
+              borderBottom: "1.5px solid #eeeeee",
+            }}
+          >
+            <Section
+              title={<Logo width="calc(100% - 150px)" color="#212121" />}
+              paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas mas exclusivas del mercado."
+              image="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+            />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "7.5% 0",
+            }}
+          >
+            <Section
+              title={<Logo width="calc(100% - 80px)" color="#212121" />}
+              paragraph="Presidida por Alejandro Ginevra y familia, con presencia en Argentina y Uruguay, de GNV se depresión sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
+              image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
+              reverse
+            />
+          </Box>
         </motion.div>
       </Box>
 

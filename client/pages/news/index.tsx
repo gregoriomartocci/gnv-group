@@ -168,7 +168,7 @@ const News = () => {
       >
         <UseButton type="Primary">Ver Mas</UseButton>
       </Box>
-      <Footer/>
+      <Footer />
     </Box>
   );
 };

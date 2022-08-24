@@ -9,6 +9,8 @@ type TMessageSection = {
 };
 
 const MessageSection = ({ title, description, img }: TMessageSection) => {
+
+  const ok = typeof window !== "undefined";
   return (
     <Box
       sx={{
@@ -47,7 +49,7 @@ const MessageSection = ({ title, description, img }: TMessageSection) => {
         </Typography>
 
         <Typography sx={{ fontFamily: "'Poppins', sans-serif" }}>
-          {description}
+          {ok && description ? description : ""}
         </Typography>
       </Box>
 

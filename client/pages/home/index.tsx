@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 import { UseCarousel } from "./Components/Carousel";
+import Logo from "../../components/Logo";
 
 export type TDemo = {
   img: string;
@@ -280,7 +281,12 @@ const Home = () => {
         />
       </Box>
 
-      <Box>
+      <Box sx={{ display: "flex", height: "100vh", width: "100%" }}>
+        {/* <Section
+          quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"
+          image="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+          reverse
+        /> */}
         <Quote
           img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
@@ -290,7 +296,6 @@ const Home = () => {
           }}
         />
       </Box>
-
       {/* <Box>
         <Section
           heading="Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end."
