@@ -10,13 +10,17 @@ import { motion, useAnimation } from "framer-motion";
 import Timeline from "./components/Timeline";
 import Team from "./components/Team";
 import ArtGallery from "./components/Art-Gallery";
-import MessageSection from "./components/Message-Section";
 import api from "../../hooks/Api";
 import TeamB from "./components/Team B";
 import parse from "html-react-parser";
-import Section from "../../components/Section";
 import Logo from "../../components/Logo";
-import { BorderBottom } from "@mui/icons-material";
+
+import dynamic from "next/dynamic";
+import Section from "../../components/Section";
+
+const MessageSection = dynamic(() => import("./components/Message-Section"), {
+  ssr: false,
+});
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -108,6 +112,7 @@ const Company = () => {
   const [gallery, setGallery] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [render, setRender] = useState<any>(typeof window !== "undefined");
 
   useEffect(() => {
     const getPictures = async () => {
@@ -141,32 +146,7 @@ const Company = () => {
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
         flip
-      ></Main>
-
-      {/* Campaign */}
-      <Box sx={{ width: "100vw", padding: "7.5%" }}>
-        <motion.div
-          initial={"offscreen"}
-          whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.1 }}
-          variants={FadeFromBottom}
-          style={{ width: "100%", height: "100%", padding: "0 10%" }}
-        >
-          <HeaderTitle py="10%" px="10%" fontSize="25px" title="Compañia" />
-
-          {/* <MessageSection
-            title=" Liderar el sector inmobiliario, mucho más que una tradición familiar."
-            description={
-              typeof window !== "undefined"
-                ? sanitize(
-                    "<p>Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay.</p><p><br></p><p>Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras.</p><p><br></p><p>Nuestro compromiso está enfocado en la búsqueda constante de calidad e innovación en un mercado cada vez más versátil y exigente, con una fuerte vocación por un urbanismo innovador y respetuoso del entorno y el medio ambiente.</p><p>Construir pensando en el futuro, sin olvidar nuestra historia.</p> "
-                  )
-                : ""
-            }
-            img="https://res.cloudinary.com/gregomartocci/image/upload/v1660704914/i7jqgzhxsgpvs6ndycaj.jpg"
-          /> */}
-        </motion.div>
-      </Box>
+      />
 
       {/* Section */}
       <Box sx={{ width: "100vw", padding: "7.5% 5%", height: "100%" }}>
@@ -222,6 +202,34 @@ const Company = () => {
               reverse
             />
           </Box>
+        </motion.div>
+      </Box>
+
+      {/* Campaign */}
+      <Box sx={{ width: "100vw", padding: "7.5%" }}>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: false, amount: 0.1 }}
+          variants={FadeFromBottom}
+          style={{ width: "100%", height: "100%", padding: "0 10%" }}
+        >
+          <HeaderTitle py="10%" px="10%" fontSize="25px" title="Compañia" />
+
+          {render ? (
+            <MessageSection
+              title=" Liderar el sector inmobiliario, mucho más que una tradición familiar."
+              description={
+                render
+                  ? sanitize(
+                      "<p>Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay.</p><p><br></p><p>Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras.</p><p><br></p><p>Nuestro compromiso está enfocado en la búsqueda constante de calidad e innovación en un mercado cada vez más versátil y exigente, con una fuerte vocación por un urbanismo innovador y respetuoso del entorno y el medio ambiente.</p><p>Construir pensando en el futuro, sin olvidar nuestra historia.</p> "
+                    )
+                  : ""
+              }
+              render={render}
+              img="https://res.cloudinary.com/gregomartocci/image/upload/v1660704914/i7jqgzhxsgpvs6ndycaj.jpg"
+            />
+          ) : null}
         </motion.div>
       </Box>
 

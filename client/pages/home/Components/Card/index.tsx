@@ -10,21 +10,24 @@ const Card = ({ img, title }: TDemo) => {
       sx={{
         position: "relative",
         display: "flex",
-        backgroundColor: "#fff",
         cursor: "pointer",
         fontFamily: "'Poppins', sans-serif",
-        fontSize: "20px",
-        maxHeight: "1000px",
-        width:"100%",
-        maxWidth: "100%",
+        top: 0,
+        left: 0,
+        width: "50vw",
+        height: "50vh",
         overflow: "hidden",
 
-        transform: "scale(1.025)",
+
         img: {
+          display: "flex",
+          position: "absolute",
+          top: 0,
+          left: 0,
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transition: "transform 1s",
+          transition: "all 1s ease",
 
           "&:hover": {
             transform: "scale(1.030)",
@@ -32,28 +35,34 @@ const Card = ({ img, title }: TDemo) => {
         },
       }}
     >
-      <img src={img} alt={title}></img>
+
+      <img src={img} alt={title} />
 
       <Box
         sx={{
           display: "flex",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          userSelect: "none",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-end",
+          background: "rgba(0,0,0,0.3)",
           alignItems: "center",
           padding: "20px",
-          width: "100%",
-          position: "absolute",
-          bottom: 0,
           color: "#fff",
-          margin: "25px 0",
           fontFamily: "'Poppins', sans-serif",
         }}
       >
+        
+      {/* <img src={img} alt={title} /> */}
         <Typography
           sx={{
-            fontSize: "25px",
-            fontWeight: 600,
-            fontFamily: "'Poppins', sans-serif",
+            fontSize: "28px",
+            fontWeight: 500,
+            fontFamily: "'Poppins', sans-serif !important",
           }}
         >
           {title}
@@ -66,8 +75,18 @@ const Card = ({ img, title }: TDemo) => {
             margin: "5px 0",
           }}
         >
-          Ver Proyecto
-          <KeyboardArrowRightIcon />
+          <Typography
+            sx={{
+              fontSize: "18px",
+              fontWeight: 400,
+              fontFamily: "'Poppins', sans-serif",
+            }}
+          >
+            ver emprendimiento
+          </Typography>
+          <Box sx={{ height: "100%" }}>
+            <KeyboardArrowRightIcon sx={{ height: "100%" }} />
+          </Box>
         </Box>
       </Box>
     </Box>

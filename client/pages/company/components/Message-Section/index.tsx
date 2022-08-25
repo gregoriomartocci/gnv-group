@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { imageContainer } from "./Styles";
 
 type TMessageSection = {
   title: string;
-  description: string;
+  description?: any;
   img: string;
+  render: boolean;
 };
 
-const MessageSection = ({ title, description, img }: TMessageSection) => {
-
-  const ok = typeof window !== "undefined";
+const MessageSection = ({
+  title,
+  description,
+  img,
+  render,
+}: TMessageSection) => {
   return (
     <Box
       sx={{
@@ -49,7 +53,7 @@ const MessageSection = ({ title, description, img }: TMessageSection) => {
         </Typography>
 
         <Typography sx={{ fontFamily: "'Poppins', sans-serif" }}>
-          {ok && description ? description : ""}
+          {render && description ? description : ""}
         </Typography>
       </Box>
 

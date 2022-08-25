@@ -7,7 +7,11 @@ import { CardContainer } from "./Styles";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-function Carousel() {
+type ICarousel = {
+  items: any[];
+};
+
+function Carousel({ items }: ICarousel) {
   const [position, positionSet] = useState(0);
 
   const slides = [0, 2, 3, 4];
@@ -108,7 +112,7 @@ function Carousel() {
           layout
           variants={venturesVariants}
         >
-          {slides?.map((url, index) => {
+          {items?.map(({ title, description, date }, index) => {
             return difference(position, index) > 1 ? null : (
               <motion.div
                 layout
@@ -164,10 +168,10 @@ function Carousel() {
                       sx={{
                         fontFamily: "'Poppins', sans-serif",
                         fontSize: "24px",
-                        fontWeight: 600
+                        fontWeight: 600,
                       }}
                     >
-                      Ostent Tower
+                      {title}
                     </Typography>
                   </Box>
                   <Box
@@ -186,8 +190,7 @@ function Carousel() {
                         fontSize: "14px",
                       }}
                     >
-                      Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-                      ipsum Lorem ipsum
+                      {description}
                     </Typography>
                   </Box>
                   <Box

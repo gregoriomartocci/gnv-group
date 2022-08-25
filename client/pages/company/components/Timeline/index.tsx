@@ -9,6 +9,7 @@ import Carousel from "./Components/Carousel";
 
 const Timeline = () => {
   const [selected, setSelected] = useState<number>(0);
+  const [ventures, setVentures] = useState(data);
 
   const handleClick = (index: number) => {
     setSelected(index);
@@ -26,7 +27,7 @@ const Timeline = () => {
         transform: "rotate(-90deg)",
       }}
     >
-      {data?.map(({ year, highlights }, index) => {
+      {ventures?.map(({ year, highlights }, index) => {
         return (
           <Box
             sx={{
@@ -38,7 +39,7 @@ const Timeline = () => {
             }}
           >
             {selected === index ? (
-              <Carousel />
+              <Carousel items={highlights ?? []} />
             ) : (
               <Box
                 sx={{

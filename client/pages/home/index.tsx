@@ -166,15 +166,15 @@ const Home = () => {
       title: "WTC Buenos Aires I, II, III IV",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736989/c9guxvcotlbesoydjdot.png",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661382383/ynocflafkurm4ki9dppi.jpg",
       title: "Ostent Tower",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736982/ckusx7p3reagh4r0und8.png",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661382990/fkwfqkqzqq1nilndxgzg.jpg",
       title: "Harbour Tower",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736982/tvemotdx2trrlwf7dxks.png",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
       title: "The Shops",
     },
   ];
@@ -190,7 +190,7 @@ const Home = () => {
 
   const slides = [
     {
-      src: "https://res.cloudinary.com/gregomartocci/video/upload/v1660713998/ryuawf5viqae0y4mj7js.mp4",
+      src: "https://res.cloudinary.com/gregomartocci/video/upload/v1661381763/qt7lymuixtepvnoufb9j.mp4",
       phrase:
         "¨Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos.",
     },
@@ -272,7 +272,7 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Box sx={{ margin: "50px 0" }}>
+      <Box sx={{ position: "relative", height: "100vh", width: "100vw" }}>
         <Cards
           gap={""}
           columns={2}
