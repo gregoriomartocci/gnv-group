@@ -15,7 +15,7 @@ const Card = ({ img, title }: TDemo) => {
         top: 0,
         left: 0,
         width: "50vw",
-        height: "50vh",
+        height: "70vh",
         overflow: "hidden",
 
 
@@ -49,7 +49,7 @@ const Card = ({ img, title }: TDemo) => {
           userSelect: "none",
           flexDirection: "column",
           justifyContent: "flex-end",
-          background: "rgba(0,0,0,0.3)",
+          // background: "rgba(0,0,0,0.3)",
           alignItems: "center",
           padding: "20px",
           color: "#fff",

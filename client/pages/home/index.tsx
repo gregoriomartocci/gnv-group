@@ -162,15 +162,15 @@ const Home = () => {
 
   const items = [
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736986/n89xyxepp2122mydo4oh.png",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
       title: "WTC Buenos Aires I, II, III IV",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661382383/ynocflafkurm4ki9dppi.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
       title: "Ostent Tower",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661382990/fkwfqkqzqq1nilndxgzg.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
     },
     {
@@ -195,12 +195,14 @@ const Home = () => {
         "¨Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos.",
     },
     {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg",
-      phrase: "El diálogo entre el entorno y el urbanismo",
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1661395987/qfqy8bva2otewp8wxkwu.jpg",
+      phrase:
+        "Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end.",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
-      phrase: "Diseño, innovación y calidad",
+      phrase:
+        "Cada proyecto nuestro tiene la cualidad de ser único, singular e irrepetible.  Pretendemos lograr esculturas a gran escala que marquen hitos de diseño urbano",
     },
   ];
 
@@ -272,7 +274,7 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Box sx={{ position: "relative", height: "100vh", width: "100vw" }}>
+      <Box sx={{ position: "relative", height: "140vh", width: "100vw" }}>
         <Cards
           gap={""}
           columns={2}
@@ -281,20 +283,29 @@ const Home = () => {
         />
       </Box>
 
-      <Box sx={{ display: "flex", height: "100vh", width: "100%" }}>
-        {/* <Section
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          width: "100%",
+          padding: "5%",
+        }}
+      >
+        <Section
           quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"
-          image="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+          image={
+            "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+          }
           reverse
-        /> */}
-        <Quote
+        />
+        {/* <Quote
           img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
           author={{
             name: "Alejandro Ginevra",
             position: "Presidente de GNV Group",
           }}
-        />
+        /> */}
       </Box>
       {/* <Box>
         <Section

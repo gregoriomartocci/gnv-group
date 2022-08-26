@@ -64,15 +64,15 @@ const Section = ({
                   <Typography
                     sx={{
                       fontFamily: "'Urbanist', sans-serif !important",
-                      fontStyle: "regular",
-                      fontWeight: 500,
+                      fontStyle: "italic",
+                      fontWeight: 200,
                       textAlign: "left",
                       color: "#616161",
-                      fontSize: "30px",
+                      fontSize: "35px",
                       height: "100%",
                     }}
                   >
-                    {quote}
+                    "{quote}"
                   </Typography>
                 ) : (
                   ""

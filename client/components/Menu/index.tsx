@@ -57,7 +57,7 @@ export interface IMenu {
   theme?: string;
   relative?: boolean;
   color?: string;
-  backgroundColor: string;
+  backgroundColor?: string;
 }
 
 const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {

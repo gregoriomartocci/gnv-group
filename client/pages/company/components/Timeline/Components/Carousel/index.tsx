@@ -112,7 +112,7 @@ function Carousel({ items }: ICarousel) {
           layout
           variants={venturesVariants}
         >
-          {items?.map(({ title, description, date }, index) => {
+          {items?.map(({ title, description, img, date }, index) => {
             return difference(position, index) > 1 ? null : (
               <motion.div
                 layout
@@ -141,7 +141,7 @@ function Carousel({ items }: ICarousel) {
                     width: "100%",
                     borderRadius: "10px",
                   }}
-                  src="https://res.cloudinary.com/gregomartocci/image/upload/v1657429977/kaiotnao9msk80taw1lw.jpg"
+                  src={img}
                   alt="title"
                 />
 
