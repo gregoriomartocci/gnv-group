@@ -30,4 +30,6 @@ app.use("/api", templateRoutes);
 
 const port = process.env.SERVER || 8000;
 
+console.log("Tamos chelo?", process.env.SERVER)
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
