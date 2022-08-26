@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     year: "1998 - 1960",
     highlights: [
@@ -170,3 +170,5 @@ export const data = [
     ],
   },
 ];
+
+export default data;

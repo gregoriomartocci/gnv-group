@@ -166,7 +166,7 @@ const Posts = () => {
           headCells={headCells}
           rows={projects && projects}
         >
-          <CreateProject />
+          {/* <CreateProject /> */}
         </UseTable>
       )}
     </Dashboard>
