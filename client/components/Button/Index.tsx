@@ -1,5 +1,6 @@
-import { Button } from "@mui/material";
 
+
+import { Button } from "@mui/material";
 import * as Styles from "./Styles";
 
 export interface ButtonOptions {
@@ -47,4 +48,5 @@ const UseButton = ({
       {children}
     </Button>
   );
+
 export default UseButton;
