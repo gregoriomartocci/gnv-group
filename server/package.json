@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm index.js"
+    "start": "nodemon -r esm server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.6.0",
     "bcrypt": "^5.0.1",
+    "bcrypt-nodejs": "^0.0.3",
     "cloudinary": "^1.30.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
