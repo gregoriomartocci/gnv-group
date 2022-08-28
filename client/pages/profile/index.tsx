@@ -3,11 +3,7 @@ import Dashboard from "../../components/Dashboard";
 import Layout from "./layout";
 
 const index = () => {
-  return (
-    <Fragment>
-      <Layout />
-    </Fragment>
-  );
+  return <Layout />;
 };
 
 export default index;
