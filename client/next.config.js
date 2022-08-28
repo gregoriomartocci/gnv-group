@@ -4,7 +4,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
+  // pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.

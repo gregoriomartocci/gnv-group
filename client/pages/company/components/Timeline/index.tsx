@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
-import { data } from "./Data";
+import data from "./Data";
 import { CardContainer } from "./Styles";
 import { HighQuality } from "@mui/icons-material";
 import Carousel from "./Components/Carousel";
