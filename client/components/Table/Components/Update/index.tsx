@@ -5,11 +5,11 @@ import { StaticImageData } from "next/image";
 import { Login } from "./Styles";
 import { IProject } from "../../../../redux/slices/projects";
 import dynamic from "next/dynamic";
-import UseButton from "../../../Button";
 import UseTabs from "../../../Tabs";
 import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
 import { IArticle } from "../../../../redux/slices/articles";
 import { IState } from "../../../Menu";
+import UseButton from "../../../Button";
 
 const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,

@@ -23,6 +23,7 @@ import { IProject } from "../../redux/slices/projects";
 import Frame from "./Components/Frame";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import CircleIcon from "@mui/icons-material/Circle";
+import UseButton from "../Button";
 
 export interface ISlide {
   title: string;
@@ -129,7 +130,7 @@ const Main = ({
                       <Box sx={MainContent}>
                         <Typography sx={HeaderTitle}>{phrase}</Typography>
                         <Box style={{ width: "150px" }}>
-                          <Button type={"Primary"}>Contactanos</Button>
+                          <UseButton type={"Primary"}>Contactanos</UseButton>
                         </Box>
                       </Box>
                     ) : (
@@ -164,7 +165,7 @@ const Main = ({
                       Proyectos distintivos con visión de futuro.
                     </Typography>
                     <Box style={{ width: "150px" }}>
-                      <Button type={"Primary"}>Contactanos</Button>
+                      <UseButton type={"Primary"}>Contactanos</UseButton>
                     </Box>
                   </Box>
                 ) : (
