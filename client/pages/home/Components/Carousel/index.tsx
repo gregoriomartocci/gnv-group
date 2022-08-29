@@ -3,11 +3,20 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { Box, Typography } from "@mui/material";
-
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import useWindowDimensions from "../../../../hooks/ScreenSize";
-import { HeaderTitle } from "./Styles";
+import { SxProps, Theme } from "@mui/material";
+
+export const HeaderTitle: SxProps<Theme> = {
+  display: "flex",
+  alignItems: "center",
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: "38px",
+  fontWeight: 400,
+  textAlign: "left",
+  color: "#fff",
+};
 
 const swipeConfidenceThreshold = 10000;
 
@@ -20,7 +29,7 @@ type TUseCarousel = {
   slideTime?: number;
 };
 
-export const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
+const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const { height, width } = useWindowDimensions();
 
@@ -184,3 +193,5 @@ export const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
     </Box>
   );
 };
+
+export default UseCarousel;

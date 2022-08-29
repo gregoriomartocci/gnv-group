@@ -9,6 +9,7 @@ import { ImageContainer } from "./Styles";
 import SignIn from "../../components/Auth/Components/Sign-In";
 import Auth from "../../components/Auth";
 
+
 export interface ILogin {
   img: string;
 }

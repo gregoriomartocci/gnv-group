@@ -16,7 +16,7 @@ import api from "../../hooks/Api";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
-import { UseCarousel } from "./Components/Carousel";
+import UseCarousel from "./Components/Carousel";
 import Logo from "../../components/Logo";
 
 export type TDemo = {
