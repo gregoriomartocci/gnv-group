@@ -87,7 +87,7 @@ const Venture = (item: any) => {
                 margin: "10px 0 0 0",
               }}
             >
-              {santize(item?.description && item?.description)}
+              {item?.description && santize(item?.description)}
             </Box>
             <Box
               style={{
