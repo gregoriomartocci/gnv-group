@@ -18,7 +18,7 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
 
-export const CardContainer: SxProps<Theme> = {
+const CardContainer: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "#fff",
@@ -36,13 +36,13 @@ export const CardContainer: SxProps<Theme> = {
   },
 };
 
-export const CardHeader: SxProps<Theme> = {
+const CardHeader: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
   fontFamily: "'Poppins', sans-serif",
 };
 
-export const CardBody: SxProps<Theme> = {
+const CardBody: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
   fontFamily: "'Poppins', sans-serif",

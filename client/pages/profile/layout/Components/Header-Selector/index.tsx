@@ -1,7 +1,35 @@
 import React, { Fragment } from "react";
 import { Box, Typography } from "@mui/material";
-import { AddImage, ImageContainer } from "./Styles";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import { SxProps, Theme } from "@mui/material";
+
+const ImageContainer: SxProps<Theme> = {
+  margin: "0 10px",
+
+  img: {
+    width: "200px",
+    height: "200px",
+    objectFit: "cover",
+    borderRadius: "7.5px",
+  },
+};
+
+const AddImage: SxProps<Theme> = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "0 10px",
+  width: "200px",
+  height: "200px",
+  backgroundColor: "#fafafa",
+  border: "3px dashed #e0e0e0",
+  borderRadius: "7.5px",
+
+  "&:hover": {
+    backgroundColor: "#f5f5f5",
+    cursor: "pointer",
+  },
+};
 
 type IImageSelector = {
   items: any[];

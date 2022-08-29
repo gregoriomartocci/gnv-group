@@ -10,7 +10,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
-import { Login } from "./Styles";
 import dynamic from "next/dynamic";
 
 import ImageUploader, {
@@ -43,17 +42,12 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  input:any,
-  onChangeHandler:any,
-  setInput:any,
+  input: any;
+  onChangeHandler: any;
+  setInput: any;
 }
 
-const Form = ({
-  input,
-  onChangeHandler,
-  setInput,
-}: ICreateProps) => {
-
+const Form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
   const status = ["en desarrollo", "finalizado"];
 
   return (
