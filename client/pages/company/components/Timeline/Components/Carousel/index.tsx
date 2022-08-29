@@ -6,27 +6,6 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { SxProps, Theme } from "@mui/material";
 
-const Carousel: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-  backgroundColor: "#fff",
-  borderRadius: "20px",
-  cursor: "pointer",
-  fontFamily: "'Poppins', sans-serif",
-  fontSize: "20px",
-  "&:hover": {
-    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-  },
-  padding: "20px",
-  margin: "15px",
-
-  img: {
-    objectFit: "cover",
-    width: "100%",
-    borderRadius: "15px",
-  },
-};
-
 const CardContainer: SxProps<Theme> = {
   position: "relative",
   display: "flex",
