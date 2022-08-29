@@ -43,7 +43,10 @@ const Venture = (item: any) => {
     <Fragment>
       {item ? (
         <Box sx={CardContainer}>
-          <img src={item?.images[0]?.src ?? ""} alt={item?.name ?? ""} />
+          <img
+            src={(item?.images && item?.images[0]?.src) ?? ""}
+            alt={item?.name ?? ""}
+          />
           <Box sx={CardHeader}>
             <span
               style={{
