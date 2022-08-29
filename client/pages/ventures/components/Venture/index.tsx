@@ -1,10 +1,38 @@
-import { CardBody, CardContainer, CardHeader } from "./Styles";
 import { Box } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
+import { SxProps, Theme } from "@mui/material";
+
+const CardContainer: SxProps<Theme> = {
+  display: "flex",
+  flexDirection: "column",
+  backgroundColor: "#fff",
+  borderRadius: "20px",
+  cursor: "pointer",
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: "20px",
+
+  img: {
+    objectFit: "cover",
+    width: "100%",
+    minHeight: "350px",
+    maxHeight: "1000px",
+  },
+};
+
+const CardHeader: SxProps<Theme> = {
+  display: "flex",
+  flexDirection: "column",
+  fontFamily: "'Poppins', sans-serif",
+};
+
+const CardBody: SxProps<Theme> = {
+  display: "flex",
+  flexDirection: "column",
+  fontFamily: "'Poppins', sans-serif",
+};
 
 const Venture = ({ images, name, status, description }: any) => {
-  
   const santize = (string: string) => {
     const reactElement = parse(string);
     return reactElement;

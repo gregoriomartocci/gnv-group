@@ -8,7 +8,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import useWindowDimensions from "../../../../hooks/ScreenSize";
 import { SxProps, Theme } from "@mui/material";
 
-export const HeaderTitle: SxProps<Theme> = {
+const HeaderTitle: SxProps<Theme> = {
   display: "flex",
   alignItems: "center",
   fontFamily: "'Poppins', sans-serif",
