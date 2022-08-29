@@ -75,7 +75,7 @@ const Venture = (item: any) => {
                   fontSize: "16px",
                 }}
               >
-                {item?.status.toUpperCase() ?? ""}
+                {item?.status && item?.status.toUpperCase()}
               </span>
             </Box>
 
@@ -87,7 +87,7 @@ const Venture = (item: any) => {
                 margin: "10px 0 0 0",
               }}
             >
-              {santize(item?.description ?? "")}
+              {santize(item?.description && item?.description)}
             </Box>
             <Box
               style={{
