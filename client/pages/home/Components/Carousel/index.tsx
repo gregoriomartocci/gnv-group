@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useState } from "react";
+
+import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { Box, Typography } from "@mui/material";
@@ -68,7 +68,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       {items?.length ? (
         <Box
           sx={{
