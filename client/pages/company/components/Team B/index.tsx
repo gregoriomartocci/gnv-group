@@ -9,7 +9,10 @@ type TTeamProps = {
 
 const TeamB = ({ members }: TTeamProps) => {
   const filterMembers = (members: any[], number: number) => {
-    const membersFiltered = members.filter((m) => m.priority === number);
+
+    const membersFiltered = members?.length
+      ? members?.filter((m) => m?.priority === number)
+      : [];
     return membersFiltered;
   };
 

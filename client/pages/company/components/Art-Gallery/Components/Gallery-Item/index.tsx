@@ -53,10 +53,13 @@ type TMemberProps = {
 };
 
 const GalleryItem = ({ urls }: TMemberProps) => {
+
+  console.log(urls, "que pasa");
+  
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
-        <img src={urls?.regular} alt={name}></img>
+        <img src={urls?.regular} alt={"ok"}></img>
       </Box>
       <Box sx={CardBody}>
         <Typography

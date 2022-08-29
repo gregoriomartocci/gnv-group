@@ -47,37 +47,39 @@ const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
           margin: "10px",
         }}
       >
-        {items.map(({ src, name, size }) => {
-          return (
-            <Box sx={ImageContainer}>
-              <img src={src} alt={name} />
-              <Box sx={{ padding: "0 5px" }}>
-                <Typography
-                  sx={{
-                    fontFamily: "'Poppins', sans-serif",
-                    margin: "5px 0 0 0",
-                    fontSize: "15px",
-                    color: "#424242",
-                    fontWeight: 600,
-                  }}
-                >
-                  {name}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "'Poppins', sans-serif",
-                    margin: "2px 0 0 0",
-                    fontSize: "11px",
-                    color: "#9e9e9e",
-                    fontWeight: 500,
-                  }}
-                >
-                  {size}
-                </Typography>
-              </Box>
-            </Box>
-          );
-        })}
+        {items?.length
+          ? items?.map(({ src, name, size }) => {
+              return (
+                <Box sx={ImageContainer}>
+                  <img src={src} alt={name} />
+                  <Box sx={{ padding: "0 5px" }}>
+                    <Typography
+                      sx={{
+                        fontFamily: "'Poppins', sans-serif",
+                        margin: "5px 0 0 0",
+                        fontSize: "15px",
+                        color: "#424242",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {name}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontFamily: "'Poppins', sans-serif",
+                        margin: "2px 0 0 0",
+                        fontSize: "11px",
+                        color: "#9e9e9e",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {size}
+                    </Typography>
+                  </Box>
+                </Box>
+              );
+            })
+          : null}
         <Box sx={AddImage} component="span" onClick={uploadImage}>
           {/* <img src={img} alt={name} /> */}
           <FileUploadIcon sx={{ fontSize: "40px", color: "#e0e0e0" }} />

@@ -58,7 +58,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
   // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const imageIndex = wrap(0, items.length, page);
+  const imageIndex = wrap(0, items?.length ?? 0, page);
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
@@ -80,7 +80,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
         zIndex: 1,
       }}
     >
-      {getFormat(items[imageIndex].src) === "MP4" ? (
+      {getFormat(items[imageIndex]?.src) === "MP4" ? (
         <AnimatePresence initial={false} custom={direction}>
           <motion.video
             style={{
@@ -94,7 +94,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
             loop
             muted
             key={page}
-            src={items[imageIndex].src}
+            src={items[imageIndex]?.src}
             custom={direction}
             variants={variants}
             initial="enter"

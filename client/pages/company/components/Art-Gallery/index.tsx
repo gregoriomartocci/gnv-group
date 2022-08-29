@@ -6,13 +6,17 @@ import { SwiperSlide } from "swiper/react";
 import Carousel from "../../../../components/Carousel";
 
 const ArtGallery = ({ gallery }) => {
+  console.log(gallery, "Gallery");
+
   return (
     <Carousel slidesPerView={4} delay={2000}>
-      {gallery?.map((item: any, index: number) => (
-        <SwiperSlide>
-          <GalleryItem key={item.title + index} {...item} />
-        </SwiperSlide>
-      ))}
+      {gallery?.length
+        ? gallery?.map((item: any, index: number) => (
+            <SwiperSlide>
+              <GalleryItem key={item.title + index} {...item} />
+            </SwiperSlide>
+          ))
+        : null}
     </Carousel>
   );
 };

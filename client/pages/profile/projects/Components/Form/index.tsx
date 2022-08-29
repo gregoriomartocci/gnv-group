@@ -57,7 +57,7 @@ const Form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
         description="Ingrese el nombre del emprendimiento"
         label="Nombre"
         type="text"
-        value={input.name}
+        value={input ? input?.name : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -65,13 +65,13 @@ const Form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
         description="Ingrese el enlace del emprendimiento"
         label="Enlace"
         type="text"
-        value={input.link}
+        value={input ? input?.link : ""}
         onChangeHandler={onChangeHandler}
       />
       <BasicSelect
         options={status}
         width="100%"
-        value={input}
+        value={input ? input : {}}
         setValue={setInput}
         name="status"
         placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
