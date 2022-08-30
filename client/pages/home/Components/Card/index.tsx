@@ -15,9 +15,8 @@ const Card = ({ img, title }: TDemo) => {
         top: 0,
         left: 0,
         width: "50vw",
-        height: "70vh",
+        height: "110vh",
         overflow: "hidden",
-
 
         img: {
           display: "flex",
@@ -27,15 +26,15 @@ const Card = ({ img, title }: TDemo) => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transition: "all 1s ease",
+          objectPosition: "75% 0%",
 
           "&:hover": {
+            transition: "all 1s ease",
             transform: "scale(1.030)",
           },
         },
       }}
     >
-
       <img src={img} alt={title} />
 
       <Box
@@ -49,19 +48,19 @@ const Card = ({ img, title }: TDemo) => {
           userSelect: "none",
           flexDirection: "column",
           justifyContent: "flex-end",
-          // background: "rgba(0,0,0,0.3)",
+          background: "rgba(0,0,0,0.2)",
           alignItems: "center",
-          padding: "20px",
+          userSelect: "none",
+          padding: "65px",
           color: "#fff",
           fontFamily: "'Poppins', sans-serif",
         }}
       >
-        
-      {/* <img src={img} alt={title} /> */}
+        {/* <img src={img} alt={title} /> */}
         <Typography
           sx={{
-            fontSize: "28px",
-            fontWeight: 500,
+            fontSize: "40px",
+            fontWeight: 600,
             fontFamily: "'Poppins', sans-serif !important",
           }}
         >

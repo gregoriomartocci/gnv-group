@@ -135,8 +135,6 @@ const Company = () => {
     return () => {};
   }, []);
 
-  console.log(gallery, "Que pasa cheee");
-
   return (
     <Box>
       <Menu onScroll color="#212121" />

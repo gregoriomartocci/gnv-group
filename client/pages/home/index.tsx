@@ -18,6 +18,12 @@ import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 import UseCarousel from "./Components/Carousel";
 import Logo from "../../components/Logo";
+import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
+import dynamic from "next/dynamic";
+
+const Maps = dynamic(() => import("./Components/Maps"), {
+  ssr: false,
+});
 
 export type TDemo = {
   img: string;
@@ -29,6 +35,18 @@ const Home = () => {
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
   const CountersRef = useRef();
+
+  const google_api = typeof window && process.env.NEXT_MAPS;
+  const mapbox_api = typeof window && process.env.NEXT_MAPBOX;
+
+  const leaflet_center = [38.907132, -77.036546];
+  const google_center = { lat: 48.8584, lng: 2.2945 };
+
+  console.log(mapbox_api, "RIQUELME");
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: google_api as string,
+  });
 
   console.log(countersVisible, "OKkkk???");
 
@@ -274,7 +292,7 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Box sx={{ position: "relative", height: "140vh", width: "100vw" }}>
+      <Box sx={{ position: "relative", height: "100%", width: "100vw" }}>
         <Cards
           gap={""}
           columns={2}
@@ -325,6 +343,99 @@ const Home = () => {
         <UseCarousel items={slides} slideTime={5000} />
       </Box>
 
+      {/* Maps */}
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <HeaderTitle
+            py="5%"
+            px="5%"
+            fontSize="25px"
+            title="GNV en Argentina"
+          />
+          <HeaderTitle py="5%" px="5%" fontSize="25px" title="GNV en Uruguay" />
+        </Box>
+
+        {/* GOOGLE MAPS */}
+
+        {/* LEAFLET MAPS */}
+
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+              padding: "0 5%",
+            }}
+          >
+            {/* GOOGLE MAPS */}
+            <Box
+              sx={{
+                display: "flex",
+                width: "1800px",
+                height: "700px",
+              }}
+            >
+              {isLoaded && (
+                <GoogleMap
+                  center={google_center}
+                  zoom={15}
+                  mapContainerStyle={{ width: "100%", height: "100%" }}
+                ></GoogleMap>
+              )}
+            </Box>
+
+            {/* LEAFLET MAPS */}
+
+            {/* <Maps
+              center={leaflet_center}
+              attribution="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
+              zoom={12}
+              url={mapbox_api}
+            >
+              {({ TileLayer, Marker, Popup }) => (
+                <>
+                  <TileLayer
+                    url={mapbox_api}
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  />
+                  <Marker position={leaflet_center}>
+                    <Popup>
+                      A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                  </Marker>
+                </>
+              )}
+            </Maps> */}
+          </Box>
+        </Box>
+      </Box>
       <Footer />
     </Box>
   );
