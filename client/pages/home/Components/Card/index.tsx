@@ -49,7 +49,7 @@ const Card = ({ img, title }: TDemo) => {
           userSelect: "none",
           flexDirection: "column",
           justifyContent: "flex-end",
-          background: "rgba(0,0,0,0.2)",
+          background: "rgba(0,0,0,0.15)",
           alignItems: "center",
           pointerEvents: "none",
           padding: "65px",
@@ -60,7 +60,7 @@ const Card = ({ img, title }: TDemo) => {
         {/* <img src={img} alt={title} /> */}
         <Typography
           sx={{
-            fontSize: "36px",
+            fontSize: "32px",
             fontWeight: 600,
             fontFamily: "'Poppins', sans-serif !important",
           }}
