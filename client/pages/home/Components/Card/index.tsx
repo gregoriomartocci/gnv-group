@@ -15,7 +15,7 @@ const Card = ({ img, title }: TDemo) => {
         top: 0,
         left: 0,
         width: "50vw",
-        height: "110vh",
+        height: "100vh",
         overflow: "hidden",
 
         img: {
@@ -24,9 +24,10 @@ const Card = ({ img, title }: TDemo) => {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
+          height: "100%", 
           objectFit: "cover",
           objectPosition: "75% 0%",
+          transition: "all 1s ease",
 
           "&:hover": {
             transition: "all 1s ease",
@@ -59,7 +60,7 @@ const Card = ({ img, title }: TDemo) => {
         {/* <img src={img} alt={title} /> */}
         <Typography
           sx={{
-            fontSize: "40px",
+            fontSize: "36px",
             fontWeight: 600,
             fontFamily: "'Poppins', sans-serif !important",
           }}

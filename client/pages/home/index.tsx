@@ -20,6 +20,9 @@ import UseCarousel from "./Components/Carousel";
 import Logo from "../../components/Logo";
 import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 import dynamic from "next/dynamic";
+import InputGroup from "../../components/Input";
+import Form from "./Components/Form";
+import UseButton from "../../components/Button";
 
 const Maps = dynamic(() => import("./Components/Maps"), {
   ssr: false,
@@ -32,6 +35,7 @@ export type TDemo = {
 
 const Home = () => {
   const state = useSelector((state: IState) => state?.templates);
+  const [value, setValue] = useState({});
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
   const CountersRef = useRef();
@@ -341,6 +345,30 @@ const Home = () => {
         }}
       >
         <UseCarousel items={slides} slideTime={5000} />
+      </Box>
+
+      {/* Contact */}
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          height: "100vh",
+          width: "100%",
+          padding: "10%",
+        }}
+      >
+        <HeaderTitle py="5%" px="5%" fontSize="25px" title="Contacto" />
+
+        <Form value={value} setValue={setValue} />
+
+        <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
+          <UseButton type="Primary" width="100%">
+            Enviar
+          </UseButton>
+        </Box>
       </Box>
 
       {/* Maps */}
