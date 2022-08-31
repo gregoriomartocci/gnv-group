@@ -350,6 +350,7 @@ const Home = () => {
       {/* Contact */}
 
       <Box
+        id="contact"
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -360,13 +361,19 @@ const Home = () => {
           padding: "10%",
         }}
       >
-        <HeaderTitle py="5%" px="5%" fontSize="25px" title="Contacto" />
+        <HeaderTitle
+          py="5%"
+          px="5%"
+          fontSize="25px"
+          title="Contacto"
+          description="Envianos tu consulta"
+        />
 
         <Form value={value} setValue={setValue} />
 
         <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
           <UseButton type="Primary" width="100%">
-            Enviar
+            ENVIAR
           </UseButton>
         </Box>
       </Box>

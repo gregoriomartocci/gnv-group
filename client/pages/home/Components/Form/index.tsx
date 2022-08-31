@@ -35,7 +35,7 @@ const Form = ({ value, setValue }: IProps) => {
         type="text"
         value={name}
         onChangeHandler={onChangeHandler}
-        description="Lorem Ipsum Siempre Yendo"
+        description="Ingrese su nombre"
       />
       <InputGroup
         label="Email"
@@ -43,7 +43,7 @@ const Form = ({ value, setValue }: IProps) => {
         type="text"
         value={email}
         onChangeHandler={onChangeHandler}
-        description="Lorem Ipsum Siempre Yendo"
+        description="Ingrese su email"
       />
       <InputGroup
         label="Teléfono"
@@ -51,14 +51,14 @@ const Form = ({ value, setValue }: IProps) => {
         type="number"
         value={phone}
         onChangeHandler={onChangeHandler}
-        description="Lorem Ipsum Siempre Yendo"
+        description="Ingrese su numero de telefono"
       />
       <TextArea
         label="Mensaje"
         name="message"
         value={message}
         onChangeHandler={onChangeHandler}
-        description="Leave your message"
+        description="Deje su mensaje"
       />
     </Box>
   );

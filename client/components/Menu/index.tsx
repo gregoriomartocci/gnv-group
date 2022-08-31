@@ -138,7 +138,11 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
                 <Box sx={MenuItem}>Prensa</Box>
               </a>
             </Link>
-            <Box sx={MenuItem}>Contacto</Box>
+            <Link href={"/home/#contact"}>
+              <a>
+                <Box sx={MenuItem}>Contacto</Box>
+              </a>
+            </Link>
 
             <IconButton
               sx={CloseIcon}
