@@ -24,14 +24,14 @@ const Card = ({ img, title }: TDemo) => {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%", 
+          height: "100%",
           objectFit: "cover",
           objectPosition: "75% 0%",
           transition: "all 1s ease",
 
           "&:hover": {
             transition: "all 1s ease",
-            transform: "scale(1.030)",
+            transform: "scale(1.05)",
           },
         },
       }}
@@ -51,7 +51,7 @@ const Card = ({ img, title }: TDemo) => {
           justifyContent: "flex-end",
           background: "rgba(0,0,0,0.2)",
           alignItems: "center",
-          userSelect: "none",
+          pointerEvents: "none",
           padding: "65px",
           color: "#fff",
           fontFamily: "'Poppins', sans-serif",

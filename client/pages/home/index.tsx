@@ -369,12 +369,13 @@ const Home = () => {
           description="Envianos tu consulta"
         />
 
-        <Form value={value} setValue={setValue} />
-
-        <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
-          <UseButton type="Primary" width="100%">
-            ENVIAR
-          </UseButton>
+        <Box sx={{ width: "100%", padding: "0 10%" }}>
+          <Form value={value} setValue={setValue} />
+          <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
+            <UseButton type="Primary" width="100%">
+              ENVIAR
+            </UseButton>
+          </Box>
         </Box>
       </Box>
 
@@ -426,15 +427,15 @@ const Home = () => {
               alignItems: "center",
               width: "100%",
               height: "100%",
-              padding: "0 5%",
+        
             }}
           >
             {/* GOOGLE MAPS */}
             <Box
               sx={{
                 display: "flex",
-                width: "1800px",
-                height: "700px",
+                width: "100%",
+                height: "600px",
               }}
             >
               {isLoaded && (

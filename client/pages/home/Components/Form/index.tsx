@@ -29,22 +29,28 @@ const Form = ({ value, setValue }: IProps) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <InputGroup
-        label="Nombre"
-        name="name"
-        type="text"
-        value={name}
-        onChangeHandler={onChangeHandler}
-        description="Ingrese su nombre"
-      />
-      <InputGroup
-        label="Email"
-        name="email"
-        type="text"
-        value={email}
-        onChangeHandler={onChangeHandler}
-        description="Ingrese su email"
-      />
+      <Box sx={{ display: "flex" }}>
+        <Box sx={{ width: "100%", margin: "0 10px 0 0px" }}>
+          <InputGroup
+            label="Nombre"
+            name="name"
+            type="text"
+            value={name}
+            onChangeHandler={onChangeHandler}
+            description="Ingrese su nombre"
+          />
+        </Box>
+        <Box sx={{ width: "100%", margin: "0 0 0 10px" }}>
+          <InputGroup
+            label="Email"
+            name="email"
+            type="text"
+            value={email}
+            onChangeHandler={onChangeHandler}
+            description="Ingrese su email"
+          />
+        </Box>
+      </Box>
       <InputGroup
         label="Teléfono"
         name="phone"
