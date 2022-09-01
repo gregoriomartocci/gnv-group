@@ -231,7 +231,6 @@ const Company = () => {
               title={<Logo width="calc(100% - 80px)" color="#212121" />}
               paragraph="Presidida por Alejandro Ginevra y familia, con presencia en Argentina y Uruguay, de GNV se depresión sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
-              reverse
             />
           </Box>
         </motion.div>
@@ -248,7 +247,7 @@ const Company = () => {
           minHeight: "100vh",
           width: "100vw",
           padding: "0 7.5%",
-          backgroundColor: "#D9D9D9",
+          backgroundColor: "#f5f5f5",
         }}
       >
         <Box
@@ -258,11 +257,11 @@ const Company = () => {
             justifyContent: "flex-start",
             alignItems: "flex-start",
             textAlign: "left",
-            backgroundColor: "#D9D9D9",
+
             padding: "50px 2.5%",
           }}
         >
-          <HeaderTitle title="Licencias" fontSize="40px" />
+          <HeaderTitle title="Licencias" fontSize="35px" />
           <Box
             sx={{
               display: "flex",

@@ -36,6 +36,7 @@ const Licence = ({ src, description }: TDemo) => {
             alignItems: "center",
             fontSize: "18px",
             margin: "5px 0",
+            padding: "0 0 20px 0",
           }}
         >
           <Svg width="250px">
