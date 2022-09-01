@@ -17,6 +17,8 @@ import Logo from "../../components/Logo";
 
 import dynamic from "next/dynamic";
 import Section from "../../components/Section";
+import Cards from "../../components/Cards";
+import Licence from "./components/Licence";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -100,6 +102,24 @@ const members = [
   },
 ];
 
+const licences = [
+  {
+    img: ["", ""],
+    description:
+      "WTC Buenos Aires está compuesto por 4 torres AAA dentro del complejo Madero Harbour. Más de 70 empresas multinacionales y dos embajadas desarrollan allí sus actividades económicas y comerciales.",
+  },
+  {
+    img: ["", ""],
+    description:
+      "Desarrollado por GNV y diseñado por el estudio de arquitectura Gómez Platero. el proyecto incluirá 80 elegantes habitaciones de hotel de última generación y 150 residencias, en dos torres estilo SLS que contarán con diseño de vanguardia, arte contemporáneo y detalles de lujo.",
+  },
+  {
+    img: ["", ""],
+    description:
+      "El gigante Marriott Internacional firmó un acuerdo con GNV Group, para desarrollar por primera vez en la Argentina un proyecto hotelero/ residencia bajo la disrruptiva marca W.",
+  },
+];
+
 export const sanitize = (string: string) => {
   if (typeof string === "string" && typeof window !== "undefined") {
     const reactElement = parse(string);
@@ -138,7 +158,6 @@ const Company = () => {
   return (
     <Box>
       <Menu onScroll color="#212121" />
-
       <Main
         slides={SliderData}
         mode="static"
@@ -146,7 +165,8 @@ const Company = () => {
         flip
       />
 
-      {/* Section */}
+      {/* SECTION */}
+
       <Box sx={{ width: "100vw", padding: "7.5% 5%", height: "100%" }}>
         <motion.div
           initial={"offscreen"}
@@ -200,10 +220,69 @@ const Company = () => {
               reverse
             />
           </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "7.5% 0",
+            }}
+          >
+            <Section
+              title={<Logo width="calc(100% - 80px)" color="#212121" />}
+              paragraph="Presidida por Alejandro Ginevra y familia, con presencia en Argentina y Uruguay, de GNV se depresión sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
+              image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
+              reverse
+            />
+          </Box>
         </motion.div>
       </Box>
 
-      {/* Campaign */}
+      {/* LICENCES */}
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100vw",
+          padding: "0 7.5%",
+          backgroundColor: "#D9D9D9",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            textAlign: "left",
+            backgroundColor: "#D9D9D9",
+            padding: "50px 2.5%",
+          }}
+        >
+          <HeaderTitle title="Licencias" fontSize="40px" />
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              borderBottom: "3px solid #424242",
+              borderRadius: "500px",
+            }}
+          />
+        </Box>
+        <Box sx={{ display: "flex" }}>
+          <Cards
+            gap={""}
+            columns={2}
+            items={licences}
+            component={(item) => <Licence {...item} />}
+          />
+        </Box>
+      </Box>
+
+      {/* COMPANY */}
+
       <Box sx={{ width: "100vw", padding: "7.5%" }}>
         <motion.div
           initial={"offscreen"}
@@ -231,7 +310,8 @@ const Company = () => {
         </motion.div>
       </Box>
 
-      {/* Trayectory */}
+      {/* TRAYECTORY */}
+
       <Box sx={{ width: "100%", height: "100%", padding: "7.5%" }}>
         <motion.div
           initial={"offscreen"}
@@ -261,7 +341,7 @@ const Company = () => {
         </motion.div>
       </Box>
 
-      {/* Team */}
+      {/* TEAM */}
 
       <Box
         sx={{
@@ -279,7 +359,8 @@ const Company = () => {
         <TeamB members={members} />
       </Box>
 
-      {/* Gallery */}
+      {/* GALLERY */}
+
       <Box
         sx={{
           display: "flex",

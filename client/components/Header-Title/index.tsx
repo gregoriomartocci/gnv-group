@@ -31,7 +31,7 @@ const HeaderTitle = ({
       {title ? (
         <Typography
           sx={{
-            fontSize: "35px",
+            fontSize,
             margin: "20px 0",
             fontWeight: 600,
             fontFamily: "'Poppins', sans-serif",

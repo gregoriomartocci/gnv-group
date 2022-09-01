@@ -5,7 +5,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const Slider = ({ items }) => {
   const [position, setPosition] = useState(0);
-  console.log(items[5], "riquelme");
 
   const onRight = () => {
     const total = items?.length - 1;
@@ -34,7 +33,7 @@ const Slider = ({ items }) => {
         alignItems: "center",
         height: "100vh",
         width: "100vw",
-        padding: "10%",
+        padding: "5%",
         position: "relative",
       }}
     >
@@ -72,47 +71,51 @@ const Slider = ({ items }) => {
         {items &&
           items?.map(({ src, description }, key) => {
             return (
-              <motion.div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  position: "absolute",
-                  width: "100%",
-                  height: "100%",
-                  overflow: "hidden",
-                }}
-                key={key}
-                initial={{ scale: 0 }}
-                animate={{
-                  rotate: 0,
-                  left: `${(key - position) * 50}vw`,
-                  scale: key === position ? 1 : 0.8,
-                  zIndex:
-                    key === position
-                      ? 100
-                      : 1 - 0.4 * difference(position, key),
-                  opacity:
-                    key === position ? 1 : 1 - 0.4 * difference(position, key),
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}
-              >
-                <img
+              <Box onClick={() => setPosition(key)}>
+                <motion.div
                   style={{
                     display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    position: "absolute",
                     width: "100%",
-                    height: "100vh",
-                    objectFit: "cover",
-                    objectPosition: "0% 50%",
+                    height: "100%",
+                    overflow: "hidden",
+                    cursor: "pointer",
                   }}
-                  src={src}
-                  alt={description}
-                />
-              </motion.div>
+                  key={key}
+                  initial={{ scale: 0 }}
+                  animate={{
+                    rotate: 0,
+                    left: `${(key - position) * 50}vw`,
+                    scale: key === position ? 1 : 0.8,
+                    zIndex:
+                      key === position
+                        ? 100
+                        : 1 - 0.4 * difference(position, key),
+                    opacity:
+                      key === position
+                        ? 1
+                        : 1 - 0.4 * difference(position, key),
+                  }}
+                  transition={{
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                >
+                  <img
+                    style={{
+                      display: "flex",
+                      width: "100%",
+                      height: "100vh",
+                      objectFit: "cover",
+                      objectPosition: "25% 0%",
+                    }}
+                    src={src}
+                    alt={description}
+                  />
+                </motion.div>
+              </Box>
             );
           })}
       </Box>
