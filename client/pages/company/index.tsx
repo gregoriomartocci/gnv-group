@@ -317,7 +317,7 @@ const Company = () => {
           height: "100%",
           minHeight: "100vh",
           width: "100vw",
-          padding: "0 7.5%",
+          padding: "5% 7.5%",
           backgroundColor: "#f5f5f5",
         }}
       >
@@ -421,13 +421,17 @@ const Company = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          padding: "0 10%",
         }}
       >
         <HeaderTitle py="7.5%" px="15px" fontSize="25px" title="El Grupo" />
         {/* <Team members={members} /> */}
 
-        <TeamB members={members} />
+        <Main
+          mode="static"
+          imageOnly
+          img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
+        />
+        {/* <TeamB members={members} /> */}
       </Box>
 
       {/* GALLERY */}

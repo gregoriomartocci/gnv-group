@@ -38,7 +38,7 @@ export interface ISlidesProps {
   slides?: any;
   mode: "slider" | "static";
   img?: string;
-  phrase: string;
+  phrase?: string;
   imageOnly?: boolean;
   frame?: boolean;
   flip?: boolean;

@@ -26,7 +26,7 @@ const Licence = ({ img, description }: TDemo) => {
           userSelect: "none",
           flexDirection: "column",
           alignItems: "flex-start",
-          padding: "65px",
+          padding: "25px 50px",
           color: "#212121",
           fontFamily: "'Poppins', sans-serif",
         }}
