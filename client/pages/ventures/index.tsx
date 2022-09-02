@@ -76,14 +76,15 @@ const VenturesLayout = () => {
       >
         <HeaderTitle
           px="12.5%"
-          py="7.5%"
-          fontSize="22px"
+          py="12.5%"
+          titleFontSize="40px"
+          descriptionFontSize="22px"
           title="Emprendimientos"
           description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
         />
       </motion.div>
 
-      <Box sx={{ padding: "1% 15%" }}>
+      <Box sx={{ padding: "0 10%" }}>
         <SearchBar
           onChange={onChangeHandler}
           value={input}
@@ -96,7 +97,7 @@ const VenturesLayout = () => {
           display: "flex",
           justifyContent: "flex-start",
           width: "100%",
-          padding: "1% 7.55%",
+          padding: "1% 10%",
         }}
       >
         <SelectorB
@@ -117,7 +118,7 @@ const VenturesLayout = () => {
         </Box>
       </Box>
 
-      <Box sx={{ padding: "0 5%" }}>
+      <Box sx={{ padding: "0 10%" }}>
         <Ventures />
       </Box>
       <Footer />

@@ -4,7 +4,8 @@ import { Box, Typography } from "@mui/material";
 interface IHeaderTitle {
   title?: string;
   description?: string;
-  fontSize?: string;
+  titleFontSize?: string;
+  descriptionFontSize: string;
   px?: string;
   py?: string;
 }
@@ -12,9 +13,10 @@ interface IHeaderTitle {
 const HeaderTitle = ({
   title,
   description,
+  titleFontSize,
+  descriptionFontSize,
   py,
   px,
-  fontSize,
 }: IHeaderTitle) => {
   return (
     <Box
@@ -31,7 +33,7 @@ const HeaderTitle = ({
       {title ? (
         <Typography
           sx={{
-            fontSize,
+            fontSize: titleFontSize,
             margin: "20px 0",
             fontWeight: 600,
             fontFamily: "'Poppins', sans-serif",
@@ -43,7 +45,7 @@ const HeaderTitle = ({
       {description && (
         <Typography
           sx={{
-            fontSize,
+            fontSize: descriptionFontSize,
             margin: "15px 0",
             fontWeight: 500,
             color: "#424242",
