@@ -35,7 +35,7 @@ const VenturesLayout = () => {
     "finalizado",
   ]);
 
-  const [type, setType] = useState(["comercial", "residencial"]);
+  const [type, setType] = useState(["todos", "comercial", "residencial"]);
 
   const [input, setInput] = useState({
     status: "",
@@ -111,10 +111,20 @@ const VenturesLayout = () => {
         /> */}
         <Box sx={{ display: "flex" }}>
           <Box sx={{ margin: "0 20px 0 0" }}>
-            <Dropdown items={status} placeholder="estado" width="200px" action={filterVentures}/>
+            <Dropdown
+              items={status}
+              placeholder="estado"
+              width="200px"
+              action={filterVentures}
+            />
           </Box>
           <Box>
-            <Dropdown items={type} placeholder="tipo" width="200px" action={filterVentures}/>
+            <Dropdown
+              items={type}
+              placeholder="tipo"
+              width="200px"
+              action={filterVentures}
+            />
           </Box>
         </Box>
       </Box>
