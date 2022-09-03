@@ -157,7 +157,11 @@ const News = () => {
     <Box>
       <Menu onScroll />
       <Box>
-        <HeaderTitle px="25px" py="150px" title="Noticias destacadas" />
+        <HeaderTitle
+          titleFontSize="38px"
+          p="150px 0"
+          title="Noticias destacadas"
+        />
       </Box>
 
       <Box
@@ -179,7 +183,11 @@ const News = () => {
         </Carousel>
       </Box>
 
-      <HeaderTitle py="150px" px="150px" title="Todas las noticias" />
+      <HeaderTitle
+        titleFontSize="38px"
+        p="150px 0"
+        title="Todas las noticias"
+      />
       <Box sx={{ padding: "0 5%" }}>
         <Cards
           gap="75px"

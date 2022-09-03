@@ -332,7 +332,12 @@ const Company = () => {
             padding: "50px 2.5%",
           }}
         >
-          <HeaderTitle title="Licencias" fontSize="35px" />
+          <HeaderTitle
+            title="Licencias"
+            p="0 15px"
+            titleFontSize="34px"
+            descriptionFontSize="20px"
+          />
           <Box
             sx={{
               display: "flex",
@@ -362,7 +367,7 @@ const Company = () => {
           variants={FadeFromBottom}
           style={{ width: "100%", height: "100%", padding: "0 10%" }}
         >
-          <HeaderTitle py="10%" px="10%" fontSize="25px" title="Compañia" />
+          <HeaderTitle p="60px 0" titleFontSize="34px" title="Compañia" />
 
           {render ? (
             <MessageSection
@@ -391,9 +396,9 @@ const Company = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            py="45px"
-            px="50px"
-            fontSize="25px"
+            p="125px 50px"
+            titleFontSize="38px"
+            descriptionFontSize="20px"
             title="Trayectoria"
             description="La compañía está viviendo una etapa de expansión fenomenal.
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
@@ -423,7 +428,11 @@ const Company = () => {
           width: "100%",
         }}
       >
-        <HeaderTitle py="7.5%" px="15px" fontSize="25px" title="El Grupo" />
+        <HeaderTitle
+          p="80px 50px 200px 50px"
+          titleFontSize="38px"
+          title="El Grupo"
+        />
         {/* <Team members={members} /> */}
 
         <Main
@@ -446,9 +455,8 @@ const Company = () => {
         }}
       >
         <HeaderTitle
-          py="7.5%"
-          px="15px"
-          fontSize="25px"
+          p="150px 50px "
+          titleFontSize="38px"
           title="Galería de arte GNV"
         />
 

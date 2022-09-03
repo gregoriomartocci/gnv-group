@@ -5,9 +5,9 @@ interface IHeaderTitle {
   title?: string;
   description?: string;
   titleFontSize?: string;
-  descriptionFontSize: string;
-  px?: string;
-  py?: string;
+  descriptionFontSize?: string;
+  fontWeight?: number;
+  p?: string;
 }
 
 const HeaderTitle = ({
@@ -15,8 +15,8 @@ const HeaderTitle = ({
   description,
   titleFontSize,
   descriptionFontSize,
-  py,
-  px,
+  fontWeight,
+  p,
 }: IHeaderTitle) => {
   return (
     <Box
@@ -25,7 +25,8 @@ const HeaderTitle = ({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        padding: `${py} ${px}`,
+        fontWeight: `${fontWeight ? fontWeight : 400}`,
+        padding: `${p}`,
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
       }}

@@ -11,6 +11,8 @@ import SelectorB from "../../components/Selectors-B";
 import SearchBar from "../../components/Search-Bar";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/slices/projects";
+import Dropdown from "./components/Dropdown";
+import OutsideAlerter from "../../hooks/ClickListener";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -25,14 +27,15 @@ const VenturesLayout = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: IState) => state?.projects);
   const { projects_filter, projects } = state;
+  const [active, setActive] = useState(false);
 
-  const [statusOptions, setStatusOptions] = useState([
+  const [status, setStatus] = useState([
     "todos",
     "en desarrollo",
     "finalizado",
   ]);
 
-  const [typeOptions, setTypeOptions] = useState(["comercial", "residencial"]);
+  const [type, setType] = useState(["comercial", "residencial"]);
 
   const [input, setInput] = useState({
     status: "",
@@ -50,7 +53,7 @@ const VenturesLayout = () => {
 
   const onChangeHandler = (value: string) => {
     if (value) {
-      const filtered = projects.filter((p: IProject) =>
+      const filtered = projects?.filter((p: IProject) =>
         String(p.name.toLowerCase()).includes(value.toLowerCase())
       );
       return dispatch(setFilter(filtered));
@@ -75,8 +78,7 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       >
         <HeaderTitle
-          px="12.5%"
-          py="12.5%"
+          p="7.5% 7.5% 5% 7.5%"
           titleFontSize="40px"
           descriptionFontSize="22px"
           title="Emprendimientos"
@@ -84,7 +86,7 @@ const VenturesLayout = () => {
         />
       </motion.div>
 
-      <Box sx={{ padding: "0 10%" }}>
+      <Box sx={{ padding: "25px 15% 35px 15%" }}>
         <SearchBar
           onChange={onChangeHandler}
           value={input}
@@ -97,28 +99,27 @@ const VenturesLayout = () => {
           display: "flex",
           justifyContent: "flex-start",
           width: "100%",
-          padding: "1% 10%",
+          padding: "45px 10%",
         }}
       >
-        <SelectorB
+        {/* <SelectorB
           selectOptions={statusOptions}
           input={input}
           setInput={setInput}
           filterVentures={filterVentures}
           width="250px"
-        />
-        <Box sx={{ margin: "0 0 0 45px" }}>
-          <SelectorB
-            selectOptions={typeOptions}
-            input={input}
-            setInput={setInput}
-            filterVentures={filterVentures}
-            width="250px"
-          />
+        /> */}
+        <Box sx={{ display: "flex" }}>
+          <Box sx={{ margin: "0 20px 0 0" }}>
+            <Dropdown items={status} placeholder="estado" width="200px" action={filterVentures}/>
+          </Box>
+          <Box>
+            <Dropdown items={type} placeholder="tipo" width="200px" action={filterVentures}/>
+          </Box>
         </Box>
       </Box>
 
-      <Box sx={{ padding: "0 10%" }}>
+      <Box sx={{ padding: "25px 10% 0 10%" }}>
         <Ventures />
       </Box>
       <Footer />

@@ -264,8 +264,8 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              fontSize="28px"
-              description="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
+              titleFontSize="27px"
+              title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
           </motion.div>
         </Box>
@@ -362,11 +362,11 @@ const Home = () => {
         }}
       >
         <HeaderTitle
-          py="5%"
-          px="5%"
-          fontSize="25px"
+          p="5%"
+          titleFontSize="34px"
           title="Contacto"
           description="Envianos tu consulta"
+          descriptionFontSize="20px"
         />
 
         <Box sx={{ width: "100%", padding: "0 10%" }}>
@@ -400,12 +400,17 @@ const Home = () => {
           }}
         >
           <HeaderTitle
-            py="5%"
-            px="5%"
-            fontSize="25px"
+            p="5%"
+            titleFontSize="34px"
+            descriptionFontSize="20px"
             title="GNV en Argentina"
           />
-          <HeaderTitle py="5%" px="5%" fontSize="25px" title="GNV en Uruguay" />
+          <HeaderTitle
+            p="5%"
+            titleFontSize="34px"
+            descriptionFontSize="20px"
+            title="GNV en Uruguay"
+          />
         </Box>
 
         {/* GOOGLE MAPS */}
@@ -427,7 +432,6 @@ const Home = () => {
               alignItems: "center",
               width: "100%",
               height: "100%",
-        
             }}
           >
             {/* GOOGLE MAPS */}

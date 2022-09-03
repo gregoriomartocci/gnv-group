@@ -5,12 +5,13 @@ import { store } from "../redux/store";
 import { useEffect } from "react";
 import { setAuth } from "../redux/slices/auth";
 import WhatsApp from "../components/Whats-App";
+import OutsideAlerter from "../hooks/ClickListener";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Component {...pageProps} />
-      <WhatsApp number={2215673629}/>
+      <WhatsApp number={2215673629} />
     </Provider>
   );
 }

@@ -4,7 +4,7 @@ import Menu from "../../components/Menu";
 
 import Footer from "../../components/Footer";
 import Slider from "./components/Slider";
-import HeaderTitle from "./components/Header-Title";
+import HeaderTitle from "../../components/Header-Title";
 
 const items = [
   {
@@ -35,10 +35,7 @@ const Venture = () => {
     >
       <Menu onScroll />
       <Box sx={{ padding: "150px 10%", width: "100%" }}>
-        <HeaderTitle
-          title="Venture Title"
-          description="Construimos  vínculos profundos y duraderos. La suma de experiencia y visión nos permite participar activamente en los mercados locales e internacionales, mediante tres segmentos: urbanizaciones, edificios residenciales, y torres corporativas."
-        />
+        <HeaderTitle titleFontSize="38px" title="Nombre del Emprendimiento" />
       </Box>
       <Slider items={items ? items : []} />
       <Footer />
