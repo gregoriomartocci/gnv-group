@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import { SxProps, Theme } from "@mui/material";
@@ -8,29 +8,29 @@ const CardContainer: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "#fff",
-  borderRadius: "20px",
+  // borderRadius: "10px",
   cursor: "pointer",
   fontFamily: "'Poppins', sans-serif",
   fontSize: "20px",
+  overflow: "hidden",
 
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: "350px",
-    maxHeight: "1000px",
+    objectPosition: "65% 0",
+    // borderRadius: "10px 10px 0 0",
+    minHeight: "400px",
   },
 };
 
 const CardHeader: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
-  fontFamily: "'Poppins', sans-serif",
 };
 
 const CardBody: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
-  fontFamily: "'Poppins', sans-serif",
 };
 
 const Venture = (item: any) => {
@@ -48,16 +48,16 @@ const Venture = (item: any) => {
             alt={item?.name ?? ""}
           />
           <Box sx={CardHeader}>
-            <span
-              style={{
+            <Typography
+              sx={{
                 color: "#212121",
-                fontWeight: 600,
-                fontSize: "30px",
+                fontWeight: 700,
+                fontSize: "28px",
                 margin: "15px 0 0 0",
               }}
             >
               {item?.name ?? ""}
-            </span>
+            </Typography>
           </Box>
 
           <Box sx={CardBody}>
@@ -65,42 +65,47 @@ const Venture = (item: any) => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                margin: "5px 0 0 0",
+                margin: "7.5px 0 0 0",
               }}
             >
-              <span
-                style={{
-                  color: "#212121",
-                  fontWeight: 700,
+              <Typography
+                sx={{
+                  color: "#9e9e9e",
+                  fontWeight: 500,
                   fontSize: "16px",
                 }}
               >
-                {item?.status && item?.status.toUpperCase()}
-              </span>
+                {item?.status && item?.status}
+              </Typography>
             </Box>
 
             <Box
               style={{
-                color: "#757575",
+                color: "#9e9e9e",
                 fontWeight: 500,
                 fontSize: "17px",
                 margin: "10px 0 0 0",
+                lineHeight: "30px",
               }}
             >
               {item?.description && santize(item?.description)}
             </Box>
             <Box
-              style={{
+              sx={{
                 display: "flex",
                 alignItems: "center",
-                color: "#212121",
+                color: "#757575",
                 fontWeight: 600,
-                fontSize: "17px",
-                margin: "10px 0 0 0",
+                fontSize: "16px",
+                margin: "17.5px 0 0 0",
+
+                "&:hover": {
+                  color: "#616161",
+                },
               }}
             >
               Ver Proyecto
-              <KeyboardArrowRightIcon />
+              <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
             </Box>
           </Box>
         </Box>
