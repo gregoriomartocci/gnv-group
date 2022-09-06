@@ -1,4 +1,3 @@
-
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
@@ -11,10 +10,11 @@ import { SxProps, Theme } from "@mui/material";
 const HeaderTitle: SxProps<Theme> = {
   display: "flex",
   alignItems: "center",
+
   fontFamily: "'Poppins', sans-serif",
   fontSize: "38px",
   fontWeight: 400,
-  textAlign: "left",
+  textAlign: "center",
   color: "#fff",
 };
 

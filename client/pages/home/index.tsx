@@ -23,10 +23,7 @@ import dynamic from "next/dynamic";
 import InputGroup from "../../components/Input";
 import Form from "./Components/Form";
 import UseButton from "../../components/Button";
-
-const Maps = dynamic(() => import("./Components/Maps"), {
-  ssr: false,
-});
+import UseTabs from "../../components/Tabs";
 
 export type TDemo = {
   img: string;
@@ -39,6 +36,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
   const CountersRef = useRef();
+  const [options, setOptions] = useState();
 
   const google_api = typeof window && process.env.NEXT_MAPS;
   const mapbox_api = typeof window && process.env.NEXT_MAPBOX;
@@ -214,12 +212,12 @@ const Home = () => {
     {
       src: "https://res.cloudinary.com/gregomartocci/video/upload/v1661381763/qt7lymuixtepvnoufb9j.mp4",
       phrase:
-        "¨Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos.",
+        "Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1661395987/qfqy8bva2otewp8wxkwu.jpg",
       phrase:
-        "Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end.",
+        "Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
@@ -265,6 +263,7 @@ const Home = () => {
           >
             <HeaderTitle
               titleFontSize="27px"
+              fontWeight={500}
               title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
           </motion.div>
@@ -397,8 +396,11 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
+            padding: "75px 0 40px 0",
           }}
         >
+          <UseTabs options={["GNV en Argentina", "GNV en Argentina"]} setValue={setOptions} border />
+
           <HeaderTitle
             p="5%"
             titleFontSize="34px"
@@ -450,29 +452,6 @@ const Home = () => {
                 ></GoogleMap>
               )}
             </Box>
-
-            {/* LEAFLET MAPS */}
-
-            {/* <Maps
-              center={leaflet_center}
-              attribution="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
-              zoom={12}
-              url={mapbox_api}
-            >
-              {({ TileLayer, Marker, Popup }) => (
-                <>
-                  <TileLayer
-                    url={mapbox_api}
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  />
-                  <Marker position={leaflet_center}>
-                    <Popup>
-                      A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                  </Marker>
-                </>
-              )}
-            </Maps> */}
           </Box>
         </Box>
       </Box>
