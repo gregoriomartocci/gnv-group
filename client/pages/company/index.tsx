@@ -431,7 +431,8 @@ const Company = () => {
         <HeaderTitle
           p="80px 50px 200px 50px"
           titleFontSize="38px"
-          title="El Grupo"
+          title="La trayectoria de una gran empresa 
+          con el trato de una gran familia"
         />
         {/* <Team members={members} /> */}
 

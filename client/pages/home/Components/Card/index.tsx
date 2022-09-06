@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { TDemo } from "../..";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Link from "next/link";
 
 const Card = ({ img, title }: TDemo) => {
   return (
@@ -27,10 +28,10 @@ const Card = ({ img, title }: TDemo) => {
           height: "100%",
           objectFit: "cover",
           objectPosition: "75% 0%",
-          transition: "all 1s ease",
+          transition: "all 1.25s ease",
 
           "&:hover": {
-            transition: "all 1s ease",
+            transition: "all 1.25s ease",
             transform: "scale(1.05)",
           },
         },
@@ -41,7 +42,7 @@ const Card = ({ img, title }: TDemo) => {
       <Box
         sx={{
           display: "flex",
-          position: "absolute",
+          position: "relative",
           top: 0,
           left: 0,
           width: "100%",
@@ -57,37 +58,94 @@ const Card = ({ img, title }: TDemo) => {
           fontFamily: "'Poppins', sans-serif",
         }}
       >
-        {/* <img src={img} alt={title} /> */}
-        <Typography
-          sx={{
-            fontSize: "32px",
-            fontWeight: 600,
-            fontFamily: "'Poppins', sans-serif !important",
-          }}
-        >
-          {title}
-        </Typography>
         <Box
-          style={{
+          sx={{
             display: "flex",
             alignItems: "center",
-            fontSize: "18px",
-            margin: "5px 0",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: "80%",
+            userSelect: "none",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            pointerEvents: "auto",
+            padding: "65px",
+            color: "#fff",
+            fontFamily: "'Poppins', sans-serif",
+            transform: "translateY(25%);",
+            transition: "1.50s ease all",
+
+            "&:hover": {
+              transform: "translateY(0%);",
+              transition: "0.75s ease all",
+            },
+
           }}
         >
-          <Typography
+          <Box
             sx={{
-              fontSize: "18px",
-              fontWeight: 400,
+              display: "flex",
+              alignItems: "center",
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: "25%",
+              userSelect: "none",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              pointerEvents: "auto",
+              padding: "65px",
+              color: "#fff",
               fontFamily: "'Poppins', sans-serif",
+              background: "rgba(255,255,255,0)",
+              backdropFilter: "blur(7px)",
+              boxShadow: "0 8px 32px rgba(31,38,135, 0.37)",
+              
             }}
           >
-            ver emprendimiento
-          </Typography>
-          <Box sx={{ height: "100%" }}>
-            <KeyboardArrowRightIcon sx={{ height: "100%" }} />
+            <Typography
+              sx={{
+                fontSize: "32px",
+                fontWeight: 600,
+                fontFamily: "'Poppins', sans-serif !important",
+              }}
+            >
+              {title}
+            </Typography>
+            <Link href={"/venture"}>
+              <a>
+                <Box
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "18px",
+                    margin: "5px 0",
+                  }}
+                >
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontSize: "20px",
+                        fontWeight: 500,
+                        fontFamily: "'Poppins', sans-serif",
+                      }}
+                    >
+                      ver emprendimiento
+                    </Typography>
+                  </Box>
+                  <Box sx={{ height: "100%" }}>
+                    <KeyboardArrowRightIcon sx={{ height: "100%" }} />
+                  </Box>
+                </Box>
+              </a>
+            </Link>
           </Box>
         </Box>
+
+        {/* <img src={img} alt={title} /> */}
       </Box>
     </Box>
   );

@@ -3,6 +3,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import { SxProps, Theme } from "@mui/material";
 import { Fragment } from "react";
+import Link from "next/link";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -90,23 +91,28 @@ const Venture = (item: any) => {
             >
               {item?.description && santize(item?.description)}
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "#757575",
-                fontWeight: 600,
-                fontSize: "16px",
-                margin: "17.5px 0 0 0",
 
-                "&:hover": {
-                  color: "#616161",
-                },
-              }}
-            >
-              Ver Proyecto
-              <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
-            </Box>
+            <Link href={"/venture"}>
+              <a>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "#757575",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                    margin: "17.5px 0 0 0",
+
+                    "&:hover": {
+                      color: "#616161",
+                    },
+                  }}
+                >
+                  Ver Proyecto
+                  <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
+                </Box>
+              </a>
+            </Link>
           </Box>
         </Box>
       ) : null}

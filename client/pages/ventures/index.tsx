@@ -35,7 +35,9 @@ const VenturesLayout = () => {
     "finalizado",
   ]);
 
-  const [type, setType] = useState(["todos", "comercial", "residencial"]);
+
+
+  const [type, setType] = useState(["todos", "en construccion", "proyecto en desarrollo" , "residencial" , "corporativo" , "hoteleria" , "urbanizacion" ]);
 
   const [input, setInput] = useState({
     status: "",
@@ -114,7 +116,7 @@ const VenturesLayout = () => {
             <Dropdown
               items={status}
               placeholder="estado"
-              width="200px"
+              width="250px"
               action={filterVentures}
             />
           </Box>
@@ -122,7 +124,7 @@ const VenturesLayout = () => {
             <Dropdown
               items={type}
               placeholder="tipo"
-              width="200px"
+              width="250px"
               action={filterVentures}
             />
           </Box>
