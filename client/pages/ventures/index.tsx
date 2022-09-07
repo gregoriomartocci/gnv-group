@@ -36,7 +36,6 @@ const VenturesLayout = () => {
   ]);
 
 
-
   const [type, setType] = useState(["todos", "en construccion", "proyecto en desarrollo" , "residencial" , "corporativo" , "hoteleria" , "urbanizacion" ]);
 
   const [input, setInput] = useState({

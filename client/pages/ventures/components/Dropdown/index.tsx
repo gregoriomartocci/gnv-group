@@ -64,7 +64,7 @@ const Dropdown = ({ items, placeholder, action, width }: Type) => {
               backgroundColor: "#fff",
               flexDirection: "column",
               borderRadius: "5px",
-              width: "200px",
+              width: `${width ? width : "200px"}`,
               boxShadow: "rgba(0, 0, 0, 0.25) 0px 1.5px 4px",
               top: "calc(100% + 10px)",
               left: 0,

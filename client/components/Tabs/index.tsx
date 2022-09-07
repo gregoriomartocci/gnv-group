@@ -15,6 +15,11 @@ interface IChildren {
   setValue: any;
   options: string[];
   border?: boolean;
+  width?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+  p?: string;
 }
 
 export default function UseTabs({
@@ -22,14 +27,21 @@ export default function UseTabs({
   setValue,
   options,
   border,
+  width,
+  fontSize,
+  fontWeight,
+  color,
+  p,
 }: IChildren) {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
+  console.log(value, "imprimo el value del tab");
+
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={`${border ? {borderBottom: 1, borderColor: "divider" } : {}}`}>
+    <Box sx={{ width: `${width ? width : "100%"}` }}>
+      <Box sx={`${border ? { borderBottom: 1, borderColor: "divider" } : {}}`}>
         <Tabs
           value={value}
           variant="fullWidth"
@@ -46,13 +58,16 @@ export default function UseTabs({
           onChange={handleChange}
           aria-label="tabs"
         >
-          {options.map((item) => {
+          {options.map((item, key) => {
             return (
               <Tab
                 sx={{
                   textTransform: "none",
-                  color: "#9BA5B3",
-                  fontFamily: "'Poppins'",
+                  color: `${color ? `${color} !important` : ""}`,
+                  opacity: `${value === key ? 1 : 0.5}`,
+                  fontSize: `${fontSize ? fontSize : ""}`,
+                  fontWeight: `${fontWeight ? fontWeight : ""}`,
+                  p: `${p ? p : ""}`,
                 }}
                 label={item}
               />

@@ -36,15 +36,11 @@ const Home = () => {
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
   const CountersRef = useRef();
-  const [options, setOptions] = useState();
+  const [tab, setTab] = useState<number>(0);
+  const tabsOptions = ["GNV en Argentina", "GNV en Uruguay"];
 
   const google_api = typeof window && process.env.NEXT_MAPS;
-  const mapbox_api = typeof window && process.env.NEXT_MAPBOX;
-
-  const leaflet_center = [38.907132, -77.036546];
   const google_center = { lat: 48.8584, lng: 2.2945 };
-
-  console.log(mapbox_api, "RIQUELME");
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
@@ -396,12 +392,21 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: "75px 0 40px 0",
+            padding: "180px 0 130px 0",
           }}
         >
-          <UseTabs options={["GNV en Argentina", "GNV en Argentina"]} setValue={setOptions} border />
+          <UseTabs
+            value={tab}
+            setValue={setTab}
+            options={tabsOptions}
+            p="35px"
+            width="45%"
+            fontSize="30px"
+            fontWeight="700"
+            color="#212121"
+          />
 
-          <HeaderTitle
+          {/* <HeaderTitle
             p="5%"
             titleFontSize="34px"
             descriptionFontSize="20px"
@@ -412,12 +417,10 @@ const Home = () => {
             titleFontSize="34px"
             descriptionFontSize="20px"
             title="GNV en Uruguay"
-          />
+          /> */}
         </Box>
 
         {/* GOOGLE MAPS */}
-
-        {/* LEAFLET MAPS */}
 
         <Box
           sx={{
