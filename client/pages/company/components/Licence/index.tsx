@@ -13,7 +13,7 @@ const Licence = ({ img, description }: TDemo) => {
         flexDirection: "column",
         cursor: "pointer",
         fontFamily: "'Poppins', sans-serif",
-        width: "100%",
+        width: "50%",
         height: "100%",
         overflow: "hidden",
       }}
@@ -25,7 +25,7 @@ const Licence = ({ img, description }: TDemo) => {
           height: "100%",
           userSelect: "none",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems: "center",
           padding: "25px 50px",
           color: "#212121",
           fontFamily: "'Poppins', sans-serif",
@@ -44,7 +44,7 @@ const Licence = ({ img, description }: TDemo) => {
             img?.map((element) => {
               return (
                 <Box sx={{ margin: "0 0 0 -15px" }}>
-                  <Svg width="300px">{element}</Svg>
+                  <Svg width="200px">{element}</Svg>
                 </Box>
               );
             })}

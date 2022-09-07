@@ -403,13 +403,27 @@ const Company = () => {
             }}
           />
         </Box>
-        <Box sx={{ display: "flex" }}>
-          <Cards
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          {/* <Cards
             gap={""}
             columns={2}
             items={licences}
             component={(item) => <Licence {...item} />}
-          />
+          /> */}
+          {licences && licences?.length
+            ? licences?.map((item, key) => {
+                return <Licence {...item} />;
+              })
+            : []}
         </Box>
       </Box>
 
