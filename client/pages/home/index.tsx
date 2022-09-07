@@ -315,21 +315,7 @@ const Home = () => {
           }
           reverse
         />
-        {/* <Quote
-          img="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
-          text="¨Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia.¨"
-          author={{
-            name: "Alejandro Ginevra",
-            position: "Presidente de GNV Group",
-          }}
-        /> */}
       </Box>
-      {/* <Box>
-        <Section
-          heading="Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end."
-          image="https://res.cloudinary.com/gregomartocci/image/upload/v1660738159/a7cxffqimjt8lyyq9por.png"
-        />
-      </Box> */}
 
       <Box
         sx={{
@@ -360,6 +346,7 @@ const Home = () => {
           p="5%"
           titleFontSize="34px"
           title="Contacto"
+          
           description="Envianos tu consulta"
           descriptionFontSize="20px"
         />

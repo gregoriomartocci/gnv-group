@@ -491,27 +491,50 @@ const Company = () => {
 
       <Box
         sx={{
+          position: "relative",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          width: "100%",
+          height: "100vh",
+          width: "100vw",
         }}
       >
-        <HeaderTitle
-          p="80px 50px 200px 50px"
-          titleFontSize="38px"
-          title="La trayectoria de una gran empresa 
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50px",
+            width: "100%",
+            height: "100%",
+            zIndex: 100,
+          }}
+        >
+          <HeaderTitle
+            p="20px 50px 200px 50px"
+            width="40%"
+            titleFontSize="38px"
+            fontWeight={500}
+            title="La trayectoria de una gran empresa 
           con el trato de una gran familia"
-        />
+            color="#fff"
+          />
+        </Box>
         {/* <Team members={members} /> */}
-
-        <Main
-          mode="static"
-          imageOnly
-          img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
-        />
-        {/* <TeamB members={members} /> */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Main
+            mode="static"
+            imageOnly
+            img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
+          />
+        </Box>
       </Box>
 
       {/* GALLERY */}

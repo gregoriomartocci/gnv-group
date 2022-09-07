@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { width } from "@mui/system";
 
 interface IHeaderTitle {
   title?: string;
@@ -8,6 +9,8 @@ interface IHeaderTitle {
   descriptionFontSize?: string;
   fontWeight?: number;
   p?: string;
+  color?: string;
+  width?: string;
 }
 
 const HeaderTitle = ({
@@ -16,6 +19,8 @@ const HeaderTitle = ({
   titleFontSize,
   descriptionFontSize,
   fontWeight,
+  color,
+  width,
   p,
 }: IHeaderTitle) => {
   return (
@@ -25,7 +30,7 @@ const HeaderTitle = ({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        fontWeight: `${fontWeight ? fontWeight : 400}`,
+
         padding: `${p}`,
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
@@ -36,8 +41,10 @@ const HeaderTitle = ({
           sx={{
             fontSize: titleFontSize,
             margin: "20px 0",
-            fontWeight: 600,
+            fontWeight: `${fontWeight ? fontWeight : 500}`,
+            width: `${width ? width : "100%"}`,
             fontFamily: "'Poppins', sans-serif",
+            color: `${color ? color : "#424242"}`,
           }}
         >
           {title}
@@ -49,7 +56,7 @@ const HeaderTitle = ({
             fontSize: descriptionFontSize,
             margin: "15px 0",
             fontWeight: 500,
-            color: "#424242",
+            color: `${color ? color : "#424242"}`,
             fontFamily: "'Poppins', sans-serif",
           }}
         >
