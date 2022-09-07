@@ -18,7 +18,7 @@ export interface ISectionProps {
   reverse?: boolean;
 }
 
-const duration = 2.5;
+const duration = 1.75;
 
 const FadeFromRight = {
   offscreen: { x: 50, opacity: 0, transition: { duration } },
@@ -48,38 +48,42 @@ const Section = ({
   return (
     <Box sx={SectionStyle}>
       <Box sx={reverse ? Reverse : Container}>
-        <Box>
+        <Box sx={{ width: "50%" }}>
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
             viewport={{ once: false, amount: 0.25 }}
-            variants={FadeFromLeft}
+            variants={reverse ? FadeFromRight : FadeFromLeft}
           >
             <Box sx={ColumnLeft}>
-              <Box sx={{ width: "100%", padding: "10px 0 " }}>
-                {title ? title : ""}
-              </Box>
-              <Box sx={{ width: "100%", padding: "0 0 0 15px " }}>
-                {quote ? (
+              {title ? (
+                <Box sx={{ width: "100%", padding: "10px 0 " }}>{title}</Box>
+              ) : (
+                ""
+              )}
+
+              {quote ? (
+                <Box sx={{ width: "100%", padding: "0 0 0 15px " }}>
+                  {" "}
                   <Typography
                     sx={{
-                      fontFamily: "'Urbanist', sans-serif !important",
                       fontStyle: "italic",
-                      fontWeight: 200,
-                      textAlign: "left",
+                      fontWeight: 300,
+
                       color: "#616161",
-                      fontSize: "35px",
+                      fontSize: "38px",
                       height: "100%",
                     }}
                   >
-                    "{quote}"
+                    {quote}
                   </Typography>
-                ) : (
-                  ""
-                )}
-              </Box>
-              <Box sx={{ width: "100%", padding: "10px 0 " }}>
-                {paragraph ? (
+                </Box>
+              ) : (
+                ""
+              )}
+
+              {paragraph ? (
+                <Box sx={{ width: "100%", padding: "10px 0 " }}>
                   <Typography
                     sx={{
                       fontFamily: "'Poppins', sans-serif",
@@ -91,19 +95,19 @@ const Section = ({
                   >
                     {paragraph}
                   </Typography>
-                ) : (
-                  ""
-                )}
-              </Box>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
           </motion.div>
         </Box>
-        <Box>
+        <Box sx={{ width: "50%" }}>
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
             viewport={{ once: false, amount: 0 }}
-            variants={FadeFromRight}
+            variants={reverse ? FadeFromLeft : FadeFromRight}
           >
             <Box sx={ColumRight}>
               <img src={image} alt="home" />

@@ -9,12 +9,12 @@ export const SectionStyle: SxProps<Theme> = {
 };
 
 export const Container: SxProps<Theme> = {
-  display: "grid",
-  gridTemplateColumns: "50% 50%",
+  display: "flex",
   width: "100%",
   height: "100%",
   alignItems: "center",
   justifyContent: "flex-end",
+  textAlign: "right",
 
   h1: {
     marginBottom: "15px",
@@ -29,15 +29,13 @@ export const Container: SxProps<Theme> = {
 };
 
 export const Reverse: SxProps<Theme> = {
-  display: "grid",
-  gridTemplateColumns: "50% 50%",
-  direction: "rtl",
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "row-reverse",
   textAlign: "right",
-  justifyContent: "flex-end",
   alignItems: "center",
   width: "100%",
   height: "100%",
-
 };
 
 export const ColumnLeft: SxProps<Theme> = {
@@ -45,6 +43,7 @@ export const ColumnLeft: SxProps<Theme> = {
   flexDirection: "column",
   textAlign: "left",
   width: "100%",
+  direction: "unset",
   height: "100%",
   padding: "0 100px",
 };
