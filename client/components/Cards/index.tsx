@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
-import { Box, SxProps, Theme } from "@mui/material";
+import { Box, Grid, SxProps, Theme } from "@mui/material";
 import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
 import { motion, AnimatePresence } from "framer-motion";
+
 
 export interface ICards {
   items: IProject[] | IArticle[] | IDemo[];
@@ -28,29 +29,13 @@ const Cards = ({
   };
 
   return (
-    <motion.div
-      style={{
-        display: "grid",
-        gridTemplateColumns,
-        gridTemplateRows,
-        flexWrap: "wrap",
-        gap,
-      }}
-    >
-      <AnimatePresence>
-        {items?.map((item, index: number) => (
-          <motion.div
-            key={index}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-            variants={cardVariants}
-          >
-            {component(item)}
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </motion.div>
+    <Grid container>
+      {items?.map((item, index: number) => (
+        <Grid item xs={12} sm={12} md={6}>
+          {component(item)}
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
