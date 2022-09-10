@@ -15,7 +15,7 @@ export const Container: SxProps<Theme> = {
   alignItems: "center",
   justifyContent: "flex-end",
   textAlign: "right",
-  flexDirection: { xs: "column", sm: "", md: "", lg: "", xl: "" },
+  flexDirection: { xs: "column", sm: "", md: "flex", lg: "flex", xl: "flex" },
   // { xs: "", sm:"", md:"", lg:"", xl:"" }
 
   h1: {
@@ -33,7 +33,7 @@ export const Container: SxProps<Theme> = {
 export const Reverse: SxProps<Theme> = {
   display: "flex",
   justifyContent: "center",
-  flexDirection: { xs: "column-reverse", sm: "", md: "", lg: "", xl: "" },
+  flexDirection: { xs: "column-reverse", sm: "", md: "row-reverse", lg: "row-reverse", xl: "row-reverse" },
   textAlign: "right",
   alignItems: "center",
   width: "100%",

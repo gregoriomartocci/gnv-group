@@ -236,8 +236,9 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
           width: "100vw",
-          height: "100vh",
+          minHeight: "100vh",
           padding: "5%",
         }}
       >
@@ -246,7 +247,7 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100%",
+
             width: "100%",
             padding: "10% 5% 0 5%",
           }}

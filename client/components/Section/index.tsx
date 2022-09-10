@@ -64,14 +64,12 @@ const Section = ({
 
               {quote ? (
                 <Box sx={{ width: "100%", padding: "0 0 0 15px " }}>
-                  {" "}
                   <Typography
                     sx={{
                       fontStyle: "italic",
                       fontWeight: 300,
-
                       color: "#616161",
-                      fontSize: "38px",
+                      fontSize: { xs: "24px", sm:"24px", md:"30px", lg:"30px", xl:"30px" },
                       height: "100%",
                     }}
                   >

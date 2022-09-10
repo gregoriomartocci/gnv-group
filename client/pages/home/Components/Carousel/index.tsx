@@ -159,6 +159,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
               alignItems: "center",
               zIndex: 1,
               padding: "0% 10%",
+              minHeight: "100vh",
             }}
           >
             <Box
