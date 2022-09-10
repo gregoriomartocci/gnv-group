@@ -63,7 +63,7 @@ export const MenuContainerRelative: SxProps = {
 
 export const MenuContent: SxProps<Theme> = {
   display: "flex",
-  justifyItems: "space-between",
+  justifyContent: "space-between",
   alignItems: "center",
   height: "100%",
   width: "100%",
@@ -77,7 +77,7 @@ export const LogoStyle: SxProps<Theme> = {
 };
 
 export const MenuItems: SxProps<Theme> = {
-  display: "flex",
+  display: { xs: "none", sm: "none", md: "flex", lg: "", xl: "" },
   justifyContent: "flex-end",
   alignItems: "center",
   width: "100%",
@@ -92,6 +92,7 @@ export const AccountIcon: SxProps<Theme> = {
   color: "#fff",
 };
 
-export const CloseIcon: SxProps<Theme> = {
+export const HamburguerMenu: SxProps<Theme> = {
+  display: { xs: "flex", sm: "flex", md: "none", lg: "none", xl: "none" },
   color: "#fff",
 };

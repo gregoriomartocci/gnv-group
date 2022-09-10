@@ -5,6 +5,7 @@ import { Fragment, useState } from "react";
 import {
   AccountIcon,
   CloseIcon,
+  HamburguerMenu,
   LogoStyle,
   MenuContainer,
   MenuContainerDark,
@@ -143,13 +144,22 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
                 <Box sx={MenuItem}>Contacto</Box>
               </a>
             </Link>
-
+          </Box>
+          <Box>
             <IconButton
-              sx={CloseIcon}
+              sx={HamburguerMenu}
               onClick={toggleDropdown}
               aria-label="delete"
             >
-              <MenuIcon fontSize="inherit" />
+              <MenuIcon
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: `${navbar ? "#212121" : "#fff"} `,
+                }}
+                fontSize="inherit"
+              />
             </IconButton>
           </Box>
         </Box>

@@ -295,6 +295,8 @@ const Home = () => {
         <Cards
           gap={""}
           columns={2}
+          gridTemplateColumns={{ xs: `1fr`, sm:"1fr", md:`repeat(${2}, 1fr)` }}
+          gridTemplateRows={{ xs: `1fr`, sm:"", md:`repeat(${2}, 1fr)`, lg:"", xl:"" }} 
           items={items}
           component={(item: TDemo) => <Card {...item} />}
         />

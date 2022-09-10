@@ -10,9 +10,19 @@ export interface ICards {
   columns: number;
   rows?: number;
   gap: string;
+  gridTemplateColumns: any;
+  gridTemplateRows: any;
 }
 
-const Cards = ({ items, component, columns, rows, gap }: ICards) => {
+const Cards = ({
+  items,
+  component,
+  columns,
+  rows,
+  gap,
+  gridTemplateColumns,
+  gridTemplateRows,
+}: ICards) => {
   const transition = { duration: 0.5, ease: "easeInOut" };
 
   const cardVariants = {
@@ -25,8 +35,8 @@ const Cards = ({ items, component, columns, rows, gap }: ICards) => {
     <motion.div
       style={{
         display: "grid",
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`,
+        gridTemplateColumns,
+        gridTemplateRows,
         flexWrap: "wrap",
         gap,
       }}

@@ -1,4 +1,5 @@
 import { SxProps, Theme } from "@mui/material";
+import zIndex from "@mui/material/styles/zIndex";
 
 export const DropdownContainer: SxProps<Theme> = {
   position: "fixed",
@@ -6,12 +7,13 @@ export const DropdownContainer: SxProps<Theme> = {
   left: 0,
   display: "grid",
   alignItems: "center",
-  zIndex: 100,
   height: "100%",
   width: "100vw",
-  backgroundColor: "#212121",
+  backgroundColor: "#fff",
   transition: "0.3s ease-in-out",
   opacity: 1,
+  translateX: "20px",
+  zIndex: 5000,
 };
 
 export const Icon: SxProps<Theme> = {
@@ -35,24 +37,25 @@ export const DropdownMenu: SxProps<Theme> = {
   textAlign: "center",
   marginBottom: "30px",
   fontFamily: "'Montserrat', sans-serif",
-  textTransform: "uppercase",
 };
 
 export const DropdownLink: SxProps<Theme> = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "#fff",
-  fontSize: "20px",
+  color: "#424242",
+  fontSize: "22.5px",
   textDecoration: "none",
   transition: "0.2s ease-in-out",
-
+  cursor: "pointer",
+  fontWeight: "500",
   "&:hover": {
-    color: "#fff",
+    color: "#616161",
+    backgroundColor: "#f5f5f5",
   },
 };
 
-export const Button: SxProps<Theme> = {
+export const CloseResponsiveMenu: SxProps<Theme> = {
   position: "absolute",
   top: "40px",
   right: "40px",
@@ -60,5 +63,5 @@ export const Button: SxProps<Theme> = {
   cursor: "pointer",
   display: "flex",
   justifyContent: "center",
-  color: "#fff",
+  color: "#424242",
 };

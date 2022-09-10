@@ -15,7 +15,7 @@ const Card = ({ img, title }: TDemo) => {
         fontFamily: "'Poppins', sans-serif",
         top: 0,
         left: 0,
-        width: "50vw",
+        width: "100%",
         height: "100vh",
         overflow: "hidden",
 
@@ -27,7 +27,7 @@ const Card = ({ img, title }: TDemo) => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          objectPosition: "75% 0%",
+          objectPosition: { xs: " 75% 0%", sm: "", md: "", lg: "", xl: "" },
           transition: "all 1.25s ease",
 
           "&:hover": {
@@ -81,7 +81,6 @@ const Card = ({ img, title }: TDemo) => {
               transform: "translateY(0%);",
               transition: "0.75s ease all",
             },
-
           }}
         >
           <Box
@@ -103,7 +102,6 @@ const Card = ({ img, title }: TDemo) => {
               background: "rgba(255,255,255,0)",
               backdropFilter: "blur(7px)",
               boxShadow: "0 8px 32px rgba(31,38,135, 0.37)",
-              
             }}
           >
             <Typography

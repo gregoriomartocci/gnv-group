@@ -2,6 +2,7 @@ import React, { Fragment, ReactNode, useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import {
   Button,
+  CloseResponsiveMenu,
   DropdownContainer,
   DropdownLink,
   DropdownMenu,
@@ -11,10 +12,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 export const menuData = [
-  { title: "Proyectos", link: "/projects" },
-  { title: "Novedades", link: "/news" },
-  { title: "Inversores", link: "/investors" },
-  { title: "Ingesar", link: "/log-in" },
+  { title: "Compañia", link: "/company" },
+  { title: "Emprendimientos", link: "/ventures" },
+  { title: "Prensa", link: "/news" },
+  { title: "Contacto", link: "/home/#contact" },
 ];
 
 export interface ImenuData {
@@ -32,7 +33,11 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
     <Fragment>
       {Open && (
         <Box sx={DropdownContainer}>
-          <IconButton sx={Button} onClick={Toggle} aria-label="delete">
+          <IconButton
+            sx={CloseResponsiveMenu}
+            onClick={Toggle}
+            aria-label="delete"
+          >
             <CloseIcon fontSize="inherit" />
           </IconButton>
           <Box sx={DropdownMenu}>
