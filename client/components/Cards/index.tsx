@@ -7,18 +7,16 @@ import { motion, AnimatePresence } from "framer-motion";
 export interface ICards {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
-  columns: number;
-  rows?: number;
-  gap: string;
+
   gridTemplateColumns: any;
   gridTemplateRows: any;
+  gap: string;
 }
 
 const Cards = ({
   items,
   component,
-  columns,
-  rows,
+
   gap,
   gridTemplateColumns,
   gridTemplateRows,

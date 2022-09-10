@@ -291,12 +291,23 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Box sx={{ position: "relative", height: "100%", width: "100vw" }}>
+      <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>
         <Cards
           gap={""}
-          columns={2}
-          gridTemplateColumns={{ xs: `1fr`, sm:"1fr", md:`repeat(${2}, 1fr)` }}
-          gridTemplateRows={{ xs: `1fr`, sm:"", md:`repeat(${2}, 1fr)`, lg:"", xl:"" }} 
+          gridTemplateColumns={{
+            xs: `1fr`,
+            sm: "1fr",
+            md: `repeat(2, auto)`,
+            lg: `repeat(2, auto)`,
+            xl: `repeat(2, auto)`,
+          }}
+          gridTemplateRows={{
+            xs: `1fr`,
+            sm: "1fr",
+            md: `auto`,
+            lg: "auto",
+            xl: "auto",
+          }}
           items={items}
           component={(item: TDemo) => <Card {...item} />}
         />
@@ -305,7 +316,7 @@ const Home = () => {
       <Box
         sx={{
           display: "flex",
-          height: "100vh",
+          minHeight: "100vh",
           width: "100%",
           padding: "5%",
         }}
@@ -324,7 +335,7 @@ const Home = () => {
           display: "flex",
           position: "relative",
           width: "100vw",
-          height: "100vh",
+          minHeight: "100vh",
         }}
       >
         <UseCarousel items={slides} slideTime={5000} />
@@ -339,7 +350,7 @@ const Home = () => {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
-          height: "100vh",
+          minHeight: "100vh",
           width: "100%",
           padding: "10%",
         }}
@@ -348,7 +359,6 @@ const Home = () => {
           p="5%"
           titleFontSize="34px"
           title="Contacto"
-
           description="Envianos tu consulta"
           descriptionFontSize="20px"
         />

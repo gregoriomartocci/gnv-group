@@ -48,7 +48,7 @@ const Section = ({
   return (
     <Box sx={SectionStyle}>
       <Box sx={reverse ? Reverse : Container}>
-        <Box sx={{ width: "50%" }}>
+        <Box sx={{ width: "100%" }}>
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
