@@ -13,6 +13,7 @@ import { errorType } from "../../../profile/projects";
 import { IArticle } from "../../../../redux/slices/articles";
 
 import Venture from "../Venture";
+import UseMasonry from "../../../../components/Masonry";
 
 const Ventures = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,12 @@ const Ventures = () => {
     projects: "",
     message: "",
   });
+
+  const breakpoints = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
 
   const getProjects = async () => {
     setError({ projects: "", message: "" });
@@ -58,12 +65,18 @@ const Ventures = () => {
   };
 
   return (
-    <Cards
+    <UseMasonry
       items={projects_filter}
+      breakpoints={breakpoints}
       component={(item: IProject | IArticle) => <Venture {...item} />}
-      columns={3}
-      gap="50px"
     />
+
+    // <Cards
+    //   items={projects_filter}
+    //   component={(item: IProject | IArticle) => <Venture {...item} />}
+    //   columns={3}
+    //   gap="50px"
+    // />
   );
 };
 

@@ -20,7 +20,7 @@ const CardContainer: SxProps<Theme> = {
     width: "100%",
     objectPosition: "65% 0",
     // borderRadius: "10px 10px 0 0",
-    minHeight: "400px",
+
   },
 };
 
