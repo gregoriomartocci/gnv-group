@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { HighQuality } from "@mui/icons-material";
 import Carousel from "./Components/Carousel";
+import { motion } from "framer-motion";
 
 const data = [
   {
@@ -180,32 +181,51 @@ const data = [
 const Timeline = () => {
   const [selected, setSelected] = useState<number>(0);
   const [ventures, setVentures] = useState(data);
+  const [width, setWidth] = useState<number>(0);
+
+  const carousel = useRef();
+
+  useEffect(() => {
+    if (carousel != undefined) {
+      console.log(
+        carousel.current.scrollWidth,
+        carousel.current.offsetWidth,
+        "ookkkk"
+      );
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    }
+  }, []);
 
   const handleClick = (index: number) => {
     setSelected(index);
   };
 
   return (
-    <Box
-      sx={{
+    <motion.div
+      style={{
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         width: "100vw",
-        height: "100vh",
+        height: "70vh",
         overflow: "hidden",
       }}
+      drag="x"
+      ref={carousel}
+      dragConstraints={{ right: 0, left: -width }}
+      whileTap={{cursor:"grabbing"}}
     >
       {ventures?.map(({ year, highlights }, index) => {
         return (
-          <Box
-            sx={{
+          <motion.div
+            style={{
               display: "flex",
               justifyContent: "flex-start",
               alignItems: "flex-start",
               width: "100%",
               height: "100%",
+              cursor: "grab",
             }}
           >
             {selected === index ? (
@@ -220,7 +240,6 @@ const Timeline = () => {
                   height: "100%",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  cursor: "pointer",
                   borderLeft: "1px solid #eeeeee",
                   borderRight: "1px solid #eeeeee",
                   zIndex: 100,
@@ -228,7 +247,7 @@ const Timeline = () => {
                 component="span"
                 onClick={() => handleClick(index)}
               >
-                <Box/>
+                <Box />
                 <Box>
                   <Typography
                     sx={{
@@ -255,10 +274,10 @@ const Timeline = () => {
                 </Box>
               </Box>
             )}
-          </Box>
+          </motion.div>
         );
       })}
-    </Box>
+    </motion.div>
   );
 };
 
