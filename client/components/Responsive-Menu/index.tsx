@@ -9,7 +9,7 @@ import {
 } from "./Styles";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export const menuData = [
   { title: "Compañia", link: "/company" },
@@ -44,9 +44,9 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
             {menuData?.map((item: ImenuData, index: number): any => {
               return (
                 <Box sx={DropdownLink}>
-                  {/* <Link to={item?.link} key={index}> */}
-                  {item?.title}
-                  {/* </Link> */}
+                  <Link href={item?.link}>
+                    <a>{item?.title}</a>
+                  </Link>
                 </Box>
               );
             })}
