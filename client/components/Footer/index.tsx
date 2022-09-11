@@ -11,6 +11,7 @@ const Footer = () => {
         display: "flex",
         flexDirection: "column",
         fontFamily: "'Poppins', sans-serif",
+        padding: "20px",
       }}
     >
       <Box
@@ -172,7 +173,7 @@ const Footer = () => {
       </Box>
 
       {/* ADDRESS */}
-      <Box sx={{ padding: "2.5% 10%" }}>
+      <Box sx={{ padding: "2.5% 10%", lineHeight: "25px" }}>
         Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
         Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 C. +598 94 785
         878 |
