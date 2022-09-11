@@ -33,7 +33,13 @@ export const Container: SxProps<Theme> = {
 export const Reverse: SxProps<Theme> = {
   display: "flex",
   justifyContent: "center",
-  flexDirection: { xs: "column-reverse", sm: "", md: "row-reverse", lg: "row-reverse", xl: "row-reverse" },
+  flexDirection: {
+    xs: "column-reverse",
+    sm: "column-reverse",
+    md: "column-reverse",
+    lg: "row-reverse",
+    xl: "row-reverse",
+  },
   textAlign: "right",
   alignItems: "center",
   width: "100%",
@@ -42,12 +48,19 @@ export const Reverse: SxProps<Theme> = {
 
 export const ColumnLeft: SxProps<Theme> = {
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "column-reverse",
   textAlign: "left",
   width: "100%",
   direction: "unset",
+
   height: "100%",
-  padding: "0 100px",
+  padding: {
+    xs: "45px 0 0 0",
+    sm: "45px 0 0 0",
+    md: "7.5%",
+    lg: "",
+    xl: "",
+  },
 };
 
 export const ColumRight: SxProps<Theme> = {

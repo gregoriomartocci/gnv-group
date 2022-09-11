@@ -247,7 +247,6 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-
             width: "100%",
             padding: "10% 5% 0 5%",
           }}
@@ -323,10 +322,11 @@ const Home = () => {
         }}
       >
         <Section
-          quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"
+          quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           }
+          title="Alejandro Ginevra, Presidente de GNV Group."
           reverse
         />
       </Box>

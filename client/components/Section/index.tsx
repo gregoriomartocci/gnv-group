@@ -57,19 +57,42 @@ const Section = ({
           >
             <Box sx={ColumnLeft}>
               {title ? (
-                <Box sx={{ width: "100%", padding: "10px 0 " }}>{title}</Box>
+                <Box
+                  sx={{
+                    width: "100%",
+                    padding: {
+                      xs: "25px 0 0 0",
+                      sm: "25px 0 0 0",
+                      md: "25px 0 0 0",
+                      lg: "",
+                      xl: "",
+                    },
+                  }}
+                >
+                  {title}
+                </Box>
               ) : (
                 ""
               )}
 
               {quote ? (
-                <Box sx={{ width: "100%", padding: "0 0 0 15px " }}>
+                <Box
+                  sx={{
+                    width: "100%",
+                  }}
+                >
                   <Typography
                     sx={{
                       fontStyle: "italic",
-                      fontWeight: 300,
+                      fontWeight: 600,
                       color: "#616161",
-                      fontSize: { xs: "24px", sm:"24px", md:"30px", lg:"30px", xl:"30px" },
+                      fontSize: {
+                        xs: "32px",
+                        sm: "32px",
+                        md: "30px",
+                        lg: "30px",
+                        xl: "30px",
+                      },
                       height: "100%",
                     }}
                   >
@@ -100,7 +123,7 @@ const Section = ({
             </Box>
           </motion.div>
         </Box>
-        <Box sx={{ width: "50%" }}>
+        <Box sx={{ width: "100%" }}>
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
