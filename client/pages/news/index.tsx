@@ -17,6 +17,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
+import UseMasonry from "../../components/Masonry";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -59,6 +60,12 @@ export const sliceText = (text: any, limit: number) => {
       ? text.toString().substring(0, limit) + "..."
       : text;
   return string;
+};
+
+const breakpoints = {
+  default: 3,
+  1100: 2,
+  700: 1,
 };
 
 const ArticleCard = ({
@@ -189,9 +196,8 @@ const News = () => {
         title="Todas las noticias"
       />
       <Box sx={{ padding: "0 5%" }}>
-        <Cards
-          gap="75px"
-          columns={3}
+        <UseMasonry
+          breakpoints={breakpoints}
           items={articles}
           component={(item: IArticle) => <ArticleCard {...item} />}
         />

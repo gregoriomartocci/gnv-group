@@ -5,17 +5,23 @@ export const SectionStyle: SxProps<Theme> = {
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  minHeight: "100vh",
+  height: "100%",
 };
 
 export const Container: SxProps<Theme> = {
   display: "flex",
   width: "100%",
-  minHeight: "100vh",
+  height: "100%",
   alignItems: "center",
   justifyContent: "flex-end",
   textAlign: "right",
-  flexDirection: { xs: "column", sm: "", md: "flex", lg: "flex", xl: "flex" },
+  flexDirection: {
+    xs: "column-reverse",
+    sm: "column-reverse",
+    md: "column-reverse",
+    lg: "row",
+    xl: "row",
+  },
   // { xs: "", sm:"", md:"", lg:"", xl:"" }
 
   h1: {
@@ -43,7 +49,7 @@ export const Reverse: SxProps<Theme> = {
   textAlign: "right",
   alignItems: "center",
   width: "100%",
-  minHeight: "100vh",
+  height: "100%",
 };
 
 export const ColumnLeft: SxProps<Theme> = {
