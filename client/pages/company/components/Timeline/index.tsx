@@ -203,80 +203,85 @@ const Timeline = () => {
   return (
     <motion.div
       style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100vw",
-        height: "70vh",
         overflow: "hidden",
       }}
-      drag="x"
       ref={carousel}
-      dragConstraints={{ right: 0, left: -width }}
-      whileTap={{cursor:"grabbing"}}
     >
-      {ventures?.map(({ year, highlights }, index) => {
-        return (
-          <motion.div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              width: "100%",
-              height: "100%",
-              cursor: "grab",
-            }}
-          >
-            {selected === index ? (
-              <Carousel items={highlights ?? []} />
-            ) : (
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  padding: "30px 25px",
-                  width: "100px",
-                  height: "100%",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  borderLeft: "1px solid #eeeeee",
-                  borderRight: "1px solid #eeeeee",
-                  zIndex: 100,
-                }}
-                component="span"
-                onClick={() => handleClick(index)}
-              >
-                <Box />
-                <Box>
-                  <Typography
-                    sx={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontWeight: 600,
-                      fontSize: "20px",
-                      color: "#bdbdbd",
-                      transform: "rotate(-90deg)",
-                      width: "max-content",
-                    }}
-                  >
-                    {year}
-                  </Typography>
-                </Box>
-
+      <motion.div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "70vh",
+        }}
+        drag="x"
+        dragConstraints={{ right: 450, left: -450 }}
+        whileTap={{ cursor: "grabbing" }}
+      >
+        {ventures?.map(({ year, highlights }, index) => {
+          return (
+            <motion.div
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "flex-start",
+                width: "100%",
+                height: "100%",
+                cursor: "grab",
+              }}
+            >
+              {selected === index ? (
+                <Carousel items={highlights ?? []} />
+              ) : (
                 <Box
                   sx={{
-                    color: "#BCBCBC",
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "30px 25px",
+                    width: "100px",
+                    height: "100%",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderLeft: "1px solid #eeeeee",
+                    borderRight: "1px solid #eeeeee",
+                    zIndex: 100,
                   }}
+                  component="span"
+                  onClick={() => handleClick(index)}
                 >
-                  <FiberManualRecordIcon
-                    sx={{ fontSize: "16px", color: "#e0e0e0" }}
-                  />
+                  <Box />
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontWeight: 600,
+                        fontSize: "20px",
+                        color: "#bdbdbd",
+                        transform: "rotate(-90deg)",
+                        width: "max-content",
+                      }}
+                    >
+                      {year}
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      color: "#BCBCBC",
+                    }}
+                  >
+                    <FiberManualRecordIcon
+                      sx={{ fontSize: "16px", color: "#e0e0e0" }}
+                    />
+                  </Box>
                 </Box>
-              </Box>
-            )}
-          </motion.div>
-        );
-      })}
+              )}
+            </motion.div>
+          );
+        })}
+      </motion.div>
     </motion.div>
   );
 };

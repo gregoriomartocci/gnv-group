@@ -519,7 +519,6 @@ const Company = () => {
             color="#fff"
           />
         </Box>
-        {/* <Team members={members} /> */}
         <Box
           sx={{
             position: "absolute",
