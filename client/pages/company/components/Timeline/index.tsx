@@ -189,12 +189,12 @@ const Timeline = () => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        width: "80vh",
+        width: "100vw",
         height: "100vh",
-        transform: "rotate(-90deg)",
+        overflow: "hidden",
       }}
     >
       {ventures?.map(({ year, highlights }, index) => {
@@ -202,8 +202,8 @@ const Timeline = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
               width: "100%",
               height: "100%",
             }}
@@ -214,36 +214,45 @@ const Timeline = () => {
               <Box
                 sx={{
                   display: "flex",
+                  flexDirection: "column",
                   padding: "30px 25px",
-                  width: "100%",
+                  width: "100px",
+                  height: "100%",
                   justifyContent: "space-between",
                   alignItems: "center",
                   cursor: "pointer",
-                  borderTop: "1px solid #eeeeee",
-                  borderBottom: "1px solid #eeeeee",
+                  borderLeft: "1px solid #eeeeee",
+                  borderRight: "1px solid #eeeeee",
                   zIndex: 100,
                 }}
                 component="span"
                 onClick={() => handleClick(index)}
               >
-                <Box sx={{ color: "#BCBCBC" }}>
+                <Box/>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontWeight: 600,
+                      fontSize: "20px",
+                      color: "#bdbdbd",
+                      transform: "rotate(-90deg)",
+                      width: "max-content",
+                    }}
+                  >
+                    {year}
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    color: "#BCBCBC",
+                  }}
+                >
                   <FiberManualRecordIcon
                     sx={{ fontSize: "16px", color: "#e0e0e0" }}
                   />
                 </Box>
-
-                <Typography
-                  sx={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 500,
-                    fontSize: "28px",
-                    color: "#bdbdbd",
-                  }}
-                >
-                  {year}
-                </Typography>
-
-                <Box />
               </Box>
             )}
           </Box>

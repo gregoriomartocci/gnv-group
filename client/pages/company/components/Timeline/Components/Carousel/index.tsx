@@ -57,18 +57,6 @@ function Carousel({ items }: ICarousel) {
     },
   };
 
-  // const handleSwipe = ({ dir }) => {
-  //   if (dir === "Right") {
-  //     if (position < slides.length - 1) {
-  //       positionSet(position + 1);
-  //     }
-  //   }
-  //   if (dir === "Left") {
-  //     if (position > 0) {
-  //       positionSet(position - 1);
-  //     }
-  //   }
-  // };
 
   const difference = (num1: number, num2: number): number => {
     const result = Math.abs(num1 - num2);
@@ -83,11 +71,10 @@ function Carousel({ items }: ICarousel) {
         position: "relative",
         justifyContent: "space-between",
         alignItems: "center",
-        height: "100vh",
-        width: "100vw",
+        height: "100%",
+        width: "100%",
         cursor: "pointer",
         backgroundColor: "#ffffff",
-        transform: "rotate(90deg)",
       }}
     >
       <Box
@@ -102,7 +89,7 @@ function Carousel({ items }: ICarousel) {
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 10,
-          margin: "0 25px",
+          margin: "0 100px",
           transform: "rotate(180deg)",
         }}
         onClick={onLeft}
@@ -246,7 +233,7 @@ function Carousel({ items }: ICarousel) {
           backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
-          margin: "0 25px",
+          margin: "0 100px",
           zIndex: 10,
         }}
         component="span"
