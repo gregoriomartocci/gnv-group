@@ -316,6 +316,7 @@ const Home = () => {
       <Box
         sx={{
           display: "flex",
+          alignItems: "center",
           minHeight: "100vh",
           width: "100%",
           padding: "5%",

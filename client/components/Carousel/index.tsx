@@ -16,9 +16,15 @@ export interface ICarousel {
   children: any;
   slidesPerView: number;
   delay?: number;
+  breakpoints?: any;
 }
 
-export const Carousel = ({ children, slidesPerView, delay }: any) => {
+export const Carousel = ({
+  children,
+  slidesPerView,
+  delay,
+  breakpoints,
+}: any) => {
   return (
     <Swiper
       style={{ width: "100%", height: "100%" }}
@@ -32,6 +38,7 @@ export const Carousel = ({ children, slidesPerView, delay }: any) => {
         delay,
         disableOnInteraction: false,
       }}
+      breakpoints={breakpoints ? breakpoints : {}}
     >
       {children}
     </Swiper>

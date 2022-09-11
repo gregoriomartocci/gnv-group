@@ -54,15 +54,15 @@ export const Reverse: SxProps<Theme> = {
 
 export const ColumnLeft: SxProps<Theme> = {
   display: "flex",
-  flexDirection: "column-reverse",
+  flexDirection: "column",
   textAlign: "left",
   width: "100%",
   direction: "unset",
 
   height: "100%",
   padding: {
-    xs: "45px 0 0 0",
-    sm: "45px 0 0 0",
+    xs: "20px 0 0 0",
+    sm: "20px 0 0 0",
     md: "7.5%",
     lg: "",
     xl: "",

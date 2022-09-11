@@ -79,12 +79,13 @@ const Section = ({
                 <Box
                   sx={{
                     width: "100%",
+                  
                   }}
                 >
                   <Typography
                     sx={{
                       fontStyle: "italic",
-                      fontWeight: 600,
+                      fontWeight: 500,
                       color: "#616161",
                       fontSize: {
                         xs: "32px",
