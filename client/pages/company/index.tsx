@@ -384,7 +384,6 @@ const Company = () => {
             justifyContent: "flex-start",
             alignItems: "flex-start",
             textAlign: "left",
-
             padding: "50px 2.5%",
           }}
         >
@@ -458,11 +457,11 @@ const Company = () => {
 
       {/* TRAYECTORY */}
 
-      <Box sx={{ width: "100%", height: "100%", padding: "7.5%" }}>
+      <Box sx={{ width: "100%", minHeight: "100vh", padding: "7.5%" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.25 }}
           variants={FadeFromBottom}
         >
           <HeaderTitle
@@ -474,16 +473,7 @@ const Company = () => {
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
             Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
           />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <Timeline />
-          </Box>
+          <Timeline />
         </motion.div>
       </Box>
 

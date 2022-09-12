@@ -11,19 +11,18 @@ const ArtGallery = ({ gallery }) => {
   const breakpoints = {
     0: {
       slidesPerView: 1,
-      spaceBetween: 10,
     },
     480: {
-      slidesPerView: 2,
-      spaceBetween: 10,
+      slidesPerView: 1,
     },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 15,
+    700: {
+      slidesPerView: 2,
     },
     1024: {
       slidesPerView: 3,
-      spaceBetween: 15,
+    },
+    1500: {
+      slidesPerView: 4,
     },
   };
 
