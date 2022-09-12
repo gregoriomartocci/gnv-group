@@ -191,15 +191,6 @@ const Timeline = () => {
   return (
     <Box
       sx={{
-        // transform: {
-        //   xs: "rotate(90deg)",
-        //   sm: "rotate(90deg)",
-        //   md: "none",
-        //   lg: "",
-        //   xl: "",
-        // },
-        // height: "100%",
-        // width: "100%",
         overflow: {
           xs: "unset",
           sm: "unset",
@@ -218,12 +209,23 @@ const Timeline = () => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: {
+                xs: "column",
+                sm: "column",
+                md: "row",
+              },
               justifyContent: "center",
               alignItems: "center",
-              padding: "0 10%",
-              width: "100vw",
-              height: "70vh",
+              width: {
+                xs: "100%",
+                sm: "100%",
+                md: "100vw",
+              },
+              height: {
+                xs: "100%",
+                sm: "100%",
+                md: "70vh",
+              },
             }}
           >
             {ventures?.map(({ year, highlights }, index) => {
@@ -242,13 +244,7 @@ const Timeline = () => {
                     <Box
                       sx={{
                         display: "flex",
-                        // transform: {
-                        //   xs: "rotate(-90deg)",
-                        //   sm: "rotate(-90deg)",
-                        //   md: "none",
-                        //   lg: "",
-                        //   xl: "",
-                        // },
+                        width: "100%",
                         alignItems: "center",
                       }}
                     >
@@ -260,27 +256,66 @@ const Timeline = () => {
                         display: "flex",
                         flexDirection: "column",
                         padding: "30px 25px",
-                        width: "100px",
+                        width: {
+                          xs: "100%",
+                          sm: "100%",
+                          md: "100px",
+                        },
                         height: "100%",
                         justifyContent: "space-between",
                         alignItems: "center",
-                        borderLeft: "1px solid #eeeeee",
-                        borderRight: "1px solid #eeeeee",
+                        backgroundColor: "#fff",
+                        borderLeft: {
+                          xs: "none",
+                          sm: "none",
+                          md: "1px solid #eeeeee",
+                        },
+                        borderRight: {
+                          xs: "none",
+                          sm: "none",
+                          md: "1px solid #eeeeee",
+                        },
+                        borderTop: {
+                          xs: "1px solid #eeeeee",
+                          sm: "1px solid #eeeeee",
+                          md: "none",
+                        },
+                        borderBottom: {
+                          xs: "1px solid #eeeeee",
+                          sm: "1px solid #eeeeee",
+                          md: "none",
+                        },
+
                         zIndex: 100,
                       }}
                       component="span"
                       onClick={() => handleClick(index)}
                     >
                       <Box />
-                      <Box>
+                      <Box
+                        sx={{
+                          width: {
+                            xs: "100%",
+                            sm: "100%",
+                            md: "max-content",
+                            lg: "max-content",
+                            xl: "max-content",
+                          },
+                        }}
+                      >
                         <Typography
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
                             fontWeight: 600,
                             fontSize: "20px",
                             color: "#bdbdbd",
-                            transform: "rotate(-90deg)",
-                            width: "max-content",
+                            transform: {
+                              xs: "",
+                              sm: "",
+                              md: "rotate(-90deg)",
+                              lg: "rotate(-90deg)",
+                              xl: "rotate(-90deg)",
+                            },
                           }}
                         >
                           {year}

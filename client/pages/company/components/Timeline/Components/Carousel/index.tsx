@@ -18,7 +18,7 @@ const CardContainer: SxProps<Theme> = {
   fontSize: "20px",
   boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
   padding: "10px",
-  margin: "-50px",
+  margin: "-80px",
 };
 
 type ICarousel = {
@@ -57,7 +57,6 @@ function Carousel({ items }: ICarousel) {
     },
   };
 
-
   const difference = (num1: number, num2: number): number => {
     const result = Math.abs(num1 - num2);
     console.log(result);
@@ -75,6 +74,11 @@ function Carousel({ items }: ICarousel) {
         width: "100%",
         cursor: "pointer",
         backgroundColor: "#ffffff",
+        padding: {
+          xs: "25% 0",
+          sm: "25% 0",
+          md: "10% 0",
+        },
       }}
     >
       <Box
@@ -88,8 +92,12 @@ function Carousel({ items }: ICarousel) {
           cursor: "pointer",
           borderRadius: "10px",
           textAlign: "center",
-          zIndex: 10,
-          margin: "0 100px",
+          zIndex: 1000,
+          margin: {
+            xs: "0 25px",
+            sm: "0 25px",
+            md: "0 75px",
+          },
           transform: "rotate(180deg)",
         }}
         onClick={onLeft}
@@ -233,8 +241,12 @@ function Carousel({ items }: ICarousel) {
           backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
-          margin: "0 100px",
-          zIndex: 10,
+          margin: {
+            xs: "0 25px",
+            sm: "0 25px",
+            md: "0 75px",
+          },
+          zIndex: 1000,
         }}
         component="span"
         onClick={onRight}
