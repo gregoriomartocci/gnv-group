@@ -30,12 +30,22 @@ const VenturesLayout = () => {
   const [active, setActive] = useState(false);
 
   const [status, setStatus] = useState([
-    "todos",
-    "en desarrollo",
-    "finalizados",
+    "Todos",
+    "Ejecutados",
+    "En desarrollo",
+    "Finalizados",
   ]);
 
-  const [type, setType] = useState(["todos", "residencial" , "corporativo" , "hoteleria" , "urbanizacion" ]);
+  const [type, setType] = useState([
+    "Todos",
+    "Usos mixtos",
+    "Residencial",
+    "Corporativo",
+    "Hoteleria",
+    "Retail",
+    "Urbanización",
+    "Gastronomía y Lifestyle",
+  ]);
 
   const [input, setInput] = useState({
     status: "",
@@ -43,7 +53,7 @@ const VenturesLayout = () => {
   });
 
   const filterVentures = (name: String) => {
-    if (name === "todos") return dispatch(setFilter(projects));
+    if (name === "Todos") return dispatch(setFilter(projects));
     const filtered = projects.filter(
       (p: IProject) =>
         String(p.status).toLowerCase() === String(name).toLowerCase()

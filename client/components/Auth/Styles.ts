@@ -12,7 +12,6 @@ export const AuthImage: SxProps<Theme> = {
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    borderRadius: "20px 0px 0px 20px",
   },
 };
 

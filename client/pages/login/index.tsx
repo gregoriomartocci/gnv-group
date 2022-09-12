@@ -17,7 +17,7 @@ export interface ILogin {
 const Login = () => {
   return (
     <Box>
-      <Menu onScroll={false} relative/>
+      <Menu onScroll={false} relative backgroundColor="#fff"/>
       <Auth
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg"
         auth="sign-in"
