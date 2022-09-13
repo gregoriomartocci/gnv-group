@@ -3,13 +3,13 @@ import { Alert, Box, CircularProgress } from "@mui/material";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import UseButton from "../../../Button";
 import InputGroup from "../../../Input";
 import Toast from "../../../Alert";
 import { AuthContainer, AuthImage, Login } from "../../Styles";
 import { setAuth } from "../../../../redux/slices/auth";
 import api from "../../../../hooks/Api";
 import { useRouter } from "next/router";
-import UseButton from "../../../Button/index";
 
 export interface IAuthProps {
   img: StaticImageData | string;
