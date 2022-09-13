@@ -21,7 +21,7 @@ export interface ButtonProps {
   uppercase?: string;
 }
 
-const UseButton = ({
+export const UseButton = ({
   type,
   width,
   height,
@@ -49,4 +49,3 @@ const UseButton = ({
     </Button>
   );
 
-export default UseButton;
