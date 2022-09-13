@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import Menu from "../../components/Menu";
 
@@ -26,6 +26,12 @@ const items = [
 ];
 
 const Venture = () => {
+
+  useEffect(() => {
+    return () => {};
+  }, []);
+  
+
   return (
     <Box
       sx={{
