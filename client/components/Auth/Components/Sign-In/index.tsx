@@ -11,6 +11,7 @@ import api from "../../../../hooks/Api";
 import { useRouter } from "next/router";
 import UseButton from "../../../Button";
 
+
 export interface IAuthProps {
   img: StaticImageData | string;
 }
