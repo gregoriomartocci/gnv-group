@@ -19,8 +19,8 @@ const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    objectPosition: "65% 0",
-    // minHeight: "350px",
+    objectPosition: "70% 0",
+    minHeight: "400px",
     // borderRadius: "10px 10px 0 0",
   },
 };
@@ -82,7 +82,7 @@ const Venture = (venture: TVenture) => {
               sx={{
                 color: "#212121",
                 fontWeight: 700,
-                fontSize: "28px",
+                fontSize: "30px",
                 margin: "15px 0 0 0",
               }}
             >
@@ -101,7 +101,7 @@ const Venture = (venture: TVenture) => {
               <Typography
                 sx={{
                   color: "#9e9e9e",
-                  fontWeight: 500,
+                  fontWeight: 600,
                   fontSize: "16px",
                 }}
               >
@@ -113,13 +113,13 @@ const Venture = (venture: TVenture) => {
               style={{
                 color: "#9e9e9e",
                 fontWeight: 500,
-                fontSize: "17px",
-                margin: "10px 0 0 0",
+                fontSize: "16px",
+                margin: "5px 0 0 0",
                 lineHeight: "30px",
               }}
             >
               {venture?.description
-                ? santize(sliceText(venture?.description, 125))
+                ? santize(sliceText(venture?.description, 200))
                 : ""}
             </Box>
 
@@ -129,13 +129,13 @@ const Venture = (venture: TVenture) => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    color: "#757575",
+                    color: "#9e9e9e",
                     fontWeight: 600,
-                    fontSize: "18px",
-                    margin: "17.5px 0 0 0",
+                    fontSize: "16px",
+                    margin: "12.5px 0 0 0",
 
                     "&:hover": {
-                      color: "#9e9e9e",
+                      color: "#757575",
                     },
                   }}
                 >

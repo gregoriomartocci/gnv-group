@@ -194,7 +194,9 @@ const ventures_mock = [
     name: "Harbour House",
     description:
       "El edificio residencial Harbour House se encuentra ubicado dentro del exclusivo complejo Madero Harbour,  las residencias con unidades de 1, 2, 3 y 4 dormitorios y penthouses con vista al dique y a la ciudad. El edificio cuenta con amenities de primera categoría entre los que se encuentran una Cava de vinos y un Spa, ideal para relajarse y disfrutar de una verdadera experiencia gastronómica en los restaurantes y bares del complejo.",
-    images: [],
+    images: [
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1659660915/cfd44c44gwmyozdrdrqi.jpg",
+    ],
     link: "",
     published: true,
     status: "Ejecutado",
