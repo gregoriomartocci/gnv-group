@@ -35,22 +35,22 @@ const CardBody: SxProps<Theme> = {
   flexDirection: "column",
 };
 
-
-
 const getFormat = (file: string) => {
-  const result = file?.split(".").pop()?.toUpperCase();
+  const result = file?.split(".")?.pop()?.toUpperCase();
   return result;
 };
 
 const filterFormat = (array: string[]) => {
-  const newArray = [...array];
+  if (array) {
+    const newArray = [...array];
 
-  const updateArray = newArray.find(
-    (image) => getFormat(image) === "PNG" || getFormat(image) === "JPG"
-  );
+    const updateArray = newArray.find(
+      (image) => getFormat(image) === "PNG" || getFormat(image) === "JPG"
+    );
 
-  console.log(updateArray, "Roman Riquelme");
-  return updateArray;
+    return updateArray;
+  }
+  return;
 };
 
 type TVenture = {
@@ -65,10 +65,14 @@ type TVenture = {
   date: string;
 };
 
-const Venture = (venture: TVenture) => {
+const Venture = (venture: any) => {
+  
   const santize = (string: string) => {
-    const reactElement = parse(string);
-    return reactElement;
+    if (string) {
+      const reactElement = parse(string);
+      return reactElement;
+    }
+    return;
   };
 
   return (

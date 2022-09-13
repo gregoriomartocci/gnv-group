@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const Slider = ({ items }) => {
+const Slider = ({ items }: any) => {
   const [position, setPosition] = useState(0);
 
   const onRight = () => {
@@ -69,7 +69,7 @@ const Slider = ({ items }) => {
         }}
       >
         {items &&
-          items?.map(({ src, description }, key) => {
+          items?.map(({ src, description }: any, key: number) => {
             return (
               <Box onClick={() => setPosition(key)}>
                 <motion.div
