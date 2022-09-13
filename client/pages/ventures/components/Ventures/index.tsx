@@ -14,7 +14,8 @@ import { IArticle } from "../../../../redux/slices/articles";
 
 import Venture from "../Venture";
 import UseMasonry from "../../../../components/Masonry";
-import ventures_mock from "../../data/ventures_mock";
+import ventures_mock from "../../../../data/ventures_mock";
+
 
 const Ventures = () => {
   const dispatch = useDispatch();

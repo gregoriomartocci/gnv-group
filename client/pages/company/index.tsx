@@ -8,10 +8,10 @@ import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
 import Timeline from "./components/Timeline";
-import Team from "./components/Team";
+
 import ArtGallery from "./components/Art-Gallery";
 import api from "../../hooks/Api";
-import TeamB from "./components/Team B";
+
 import parse from "html-react-parser";
 import Logo from "../../components/Logo";
 
@@ -20,7 +20,8 @@ import Section from "../../components/Section";
 import Cards from "../../components/Cards";
 import Licence from "./components/Licence";
 import Svg from "./components/Licence/components/SVG";
-import art_gallery_mock from "./data/art_gallery_mock";
+import art_gallery_mock from "../../data/art_gallery_mock";
+
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,

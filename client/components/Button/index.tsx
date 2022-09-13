@@ -1,5 +1,3 @@
-
-
 import { Button } from "@mui/material";
 import * as Styles from "./Styles";
 
@@ -21,7 +19,7 @@ export interface ButtonProps {
   uppercase?: string;
 }
 
-export const UseButton = ({
+const UseButton = ({
   type,
   width,
   height,
@@ -49,3 +47,4 @@ export const UseButton = ({
     </Button>
   );
 
+export default UseButton;

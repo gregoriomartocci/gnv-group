@@ -18,7 +18,8 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
 import UseMasonry from "../../components/Masonry";
-import news_mock from "./data/news_mock";
+import news_mock from "../../data/news_mock";
+
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -147,7 +148,7 @@ const News = () => {
   const state = useSelector((state: IState) => state?.articles);
   const { articles } = state;
 
-  console.log(news_mock, "ok");
+  // console.log(news_mock, "ok");
 
   useEffect(() => {
     getArticles();
