@@ -14,14 +14,26 @@ import { IArticle } from "../../../../redux/slices/articles";
 
 import Venture from "../Venture";
 import UseMasonry from "../../../../components/Masonry";
+import ventures_mock from "../../data/ventures_mock";
 
 const Ventures = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
+  const state = useSelector((state: IState) => state?.projects);
+  const { projects_filter, projects } = state;
   const [error, setError] = useState<errorType>({
     projects: "",
     message: "",
   });
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
+  const filterVentures = () => {
+    const filtered = projects_filter.filter((p) => p.status === "");
+    dispatch(setFilter(filtered));
+  };
 
   const breakpoints = {
     default: 3,
@@ -52,31 +64,12 @@ const Ventures = () => {
     }
   };
 
-  useEffect(() => {
-    getProjects();
-  }, []);
-
-  const state = useSelector((state: IState) => state?.projects);
-  const { projects_filter, projects } = state;
-
-  const filterVentures = () => {
-    const filtered = projects_filter.filter((p) => p.status === "");
-    dispatch(setFilter(filtered));
-  };
-
   return (
     <UseMasonry
-      items={projects_filter}
+      items={ventures_mock && ventures_mock.length ? ventures_mock : []}
       breakpoints={breakpoints}
-      component={(item: IProject | IArticle) => <Venture {...item} />}
+      component={(item: IProject) => <Venture {...item} />}
     />
-
-    // <Cards
-    //   items={projects_filter}
-    //   component={(item: IProject | IArticle) => <Venture {...item} />}
-    //   columns={3}
-    //   gap="50px"
-    // />
   );
 };
 

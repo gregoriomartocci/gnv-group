@@ -60,11 +60,7 @@ const ventures_mock = [
     description:
       "Madero Harbour es el primer complejo de usos mixtos del País, una ciudad dentro de la ciudad. Un concepto único que privilegia el tiempo, el espacio y el placer de la vida. La diversidad de propuestas reunidas en un mismo lugar, los edificios con características sustentables, sus amenities y servicios hacen a este proyecto único. El ambicioso desarrollo contará con 80.000 m2 construidos sobre las 8 hectáreas que lo conforman.",
     images: [
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020328/gt3cbcuptrn6iatcqntj.jpg",
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020330/x121uvaadnmdoeudjvai.jpg",
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020324/cu3wqskefcw78vvkexr3.jpg",
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020325/pxjvhv5dztwtp3uny54x.jpg",
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020331/zfiuhuhrvbnjmqqrahte.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663086837/cg5ober25xcbddeitf1u.jpg",
     ],
     link: "",
     published: true,
@@ -110,7 +106,10 @@ const ventures_mock = [
     name: "Aguas Dulces - Uruguay",
     description:
       "proyecto en desarrollo: El proyecto implica un emprendimiento de hotel y resort destinado principalmente a público no residente en el país. Las edificaciones serán de construcción tradicional, con diseño y materiales acordes al entorno costero. Se realizará acondicionamiento paisajístico del sitio aprovechando la vegetación existente, nativa y exótica. Las construcciones planteadas se encontrarán por fuera de la faja de defensa de costa. - Edificio de hotel con planta baja y 5 pisos, - Restaurantes, salones, gimnasio y spa. - Piscinas (al aire libre y cubierta) - Club de playa - Cancha de golf - 6 canchas de tenis - 3 canchas de vóley - 2 canchas de futbol 5 - 1 cancha de futbol",
-    images: [],
+    images: [
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020527/c634ckgrx86svw8gq4et.png",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663020528/nxeegvbyhvz2dlpmpxvy.jpg",
+    ],
     link: "",
     published: true,
     status: "Ejecutado",
@@ -122,7 +121,11 @@ const ventures_mock = [
     name: "Harbour Residences",
     description:
       "El edificio ubicado dentro del complejo Madero Harbour, en el dique 1 de Puerto Madero, cuenta con 3 subsuelos de cocheras privadas, piscina exterior climatizada, solarium con deck y bar, zona de relax parquizada, sauna, gym, sala de reuniones, seguridad 24 horas, conserjería, control de accesos, pet wash, cocheras, bauleras, laundry, servicio de mantenimiento, parking para bicicletas. Las residencias se componen por:  estudios, unidades de 1 y 2 dormitorios desde 46 a 112m2 y penthouses.  En lo que hace a calidad constructiva, este edificio, fruto del trabajo del estudio de arquitectura Pfeifer & Zurdo con Constructora Sudamericana cuenta con materiales de calidad tal como lo pone de manifiesto su hall de ingreso de doble altura revestido en mármol de carrara.",
-    images: [],
+    images: [
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663086063/ict728hkkohumnyz17oe.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663086074/em0amstntaszxo4g199e.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663086064/qzyekowhirajv2xuup5d.jpg",
+    ],
     link: "",
     published: true,
     status: "Ejecutado",
@@ -177,7 +180,9 @@ const ventures_mock = [
     name: "World Trade Center III y IV",
     description:
       "En el ‘73 comienzan a operar como inmobiliaria bajo la marca Aranalfe, y continuando con el crecimiento de su actividad, deciden enfocarse en la comercialización de propiedades comerciales en los principales centros urbanos del país. En la década del 90, fueron los primeros en incorporar el concepto de Shopping Center en el país, desarrollando emprendimientos tan icónicos como Patio Bullrich y Alto Palermo. Alejandro Ginevra participó de su introducción en el país, fusionando el desarrollo con la comercialización. ",
-    images: [],
+    images: [
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663086485/okqdzx6t5fdc9axmdb0g.jpg",
+    ],
     link: "",
     published: true,
     status: "Ejecutado",
@@ -296,7 +301,9 @@ const ventures_mock = [
     id: 20,
     name: "SLS Hotel & Residences Punta del Este",
     description: "",
-    images: [],
+    images: [
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663086371/ddrsegmpkbp0zde9o3ty.jpg",
+    ],
     link: "",
     published: true,
     status: "En desarrollo",

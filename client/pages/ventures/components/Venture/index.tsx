@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import { SxProps, Theme } from "@mui/material";
 import { Fragment } from "react";
 import Link from "next/link";
+import { sliceText } from "../../../profile/articles";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -19,6 +20,7 @@ const CardContainer: SxProps<Theme> = {
     objectFit: "cover",
     width: "100%",
     objectPosition: "65% 0",
+    // minHeight: "350px",
     // borderRadius: "10px 10px 0 0",
   },
 };
@@ -33,7 +35,35 @@ const CardBody: SxProps<Theme> = {
   flexDirection: "column",
 };
 
-const Venture = (item: any) => {
+type TVenture = {
+  id: string;
+  name: string;
+  description: string;
+  images: string[];
+  link: string;
+  published: boolean;
+  status: string;
+  type: string;
+  date: string;
+};
+
+const getFormat = (file: string) => {
+  const result = file?.split(".").pop()?.toUpperCase();
+  return result;
+};
+
+const filterFormat = (array: string[]) => {
+  const newArray = [...array];
+
+  const updateArray = newArray.find(
+    (image) => getFormat(image) === "PNG" || getFormat(image) === "JPG"
+  );
+
+  console.log(updateArray, "Roman Riquelme");
+  return updateArray;
+};
+
+const Venture = (venture: TVenture) => {
   const santize = (string: string) => {
     const reactElement = parse(string);
     return reactElement;
@@ -41,11 +71,11 @@ const Venture = (item: any) => {
 
   return (
     <Fragment>
-      {item ? (
+      {venture ? (
         <Box sx={CardContainer}>
           <img
-            src={(item?.images && item?.images[0]?.src) ?? ""}
-            alt={item?.name ?? ""}
+            src={(venture && filterFormat(venture?.images)) ?? ""}
+            alt={venture?.name ?? ""}
           />
           <Box sx={CardHeader}>
             <Typography
@@ -56,7 +86,7 @@ const Venture = (item: any) => {
                 margin: "15px 0 0 0",
               }}
             >
-              {item?.name ?? ""}
+              {venture?.name ?? ""}
             </Typography>
           </Box>
 
@@ -75,7 +105,7 @@ const Venture = (item: any) => {
                   fontSize: "16px",
                 }}
               >
-                {item?.status && item?.status}
+                {venture?.status ? venture?.status : ""}
               </Typography>
             </Box>
 
@@ -88,7 +118,9 @@ const Venture = (item: any) => {
                 lineHeight: "30px",
               }}
             >
-              {item?.description && santize(item?.description)}
+              {venture?.description
+                ? santize(sliceText(venture?.description, 125))
+                : ""}
             </Box>
 
             <Link href={"/venture"}>
@@ -99,11 +131,11 @@ const Venture = (item: any) => {
                     alignItems: "center",
                     color: "#757575",
                     fontWeight: 600,
-                    fontSize: "16px",
+                    fontSize: "18px",
                     margin: "17.5px 0 0 0",
 
                     "&:hover": {
-                      color: "#616161",
+                      color: "#9e9e9e",
                     },
                   }}
                 >
