@@ -18,6 +18,7 @@ import parse from "html-react-parser";
 import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
 import UseMasonry from "../../components/Masonry";
+import news_mock from "./data/news_mock";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -35,6 +36,17 @@ const CardContainer: SxProps<Theme> = {
     minHeight: "500px",
     minWidth: "500px",
   },
+};
+
+export type TArticle = {
+  id?: number;
+  title: string;
+  source: string;
+  date: string;
+  images: string[];
+  description: string;
+  published?: boolean;
+  link: string;
 };
 
 const CardHeader: SxProps<Theme> = {
@@ -68,62 +80,63 @@ const breakpoints = {
   700: 1,
 };
 
-const ArticleCard = ({
-  images,
-  title,
-  source,
-  date,
-  link,
-  status,
-  description,
-}: any) => {
+const ArticleCard = (article: TArticle) => {
   return (
-    <Link href={link}>
-      <a target="_blank">
-        <Box sx={CardContainer}>
-          <img src={images[0]?.src ?? ""} alt={title} />
-          <Box sx={CardHeader}>
-            <span
-              style={{
-                color: "#212121",
-                fontWeight: 600,
-                fontSize: "22px",
-                margin: "15px 0 0 0",
-              }}
-            >
-              {title}
-            </span>
-          </Box>
+    <Box>
+      {article ? (
+        <Box>
+          <Link href={article?.link ? article?.link : ""}>
+            <a target="_blank">
+              <Box sx={CardContainer}>
+                <img
+                  src={article?.images ? article?.images[0] : ""}
+                  alt={article?.title}
+                />
+                <Box sx={CardHeader}>
+                  <span
+                    style={{
+                      color: "#212121",
+                      fontWeight: 600,
+                      fontSize: "22px",
+                      margin: "15px 0 0 0",
+                    }}
+                  >
+                    {article?.title}
+                  </span>
+                </Box>
 
-          <Box sx={CardBody}>
-            <Box
-              style={{
-                color: "#9e9e9e",
-                fontWeight: 500,
-                fontSize: "18px",
-                margin: "15px 0 0 0",
-              }}
-            >
-              {santize(sliceText(description, 125) ?? "")}
-            </Box>
+                <Box sx={CardBody}>
+                  <Box
+                    style={{
+                      color: "#9e9e9e",
+                      fontWeight: 500,
+                      fontSize: "18px",
+                      margin: "15px 0 0 0",
+                    }}
+                  >
+                    {santize(sliceText(article?.description, 125) ?? "")}
+                  </Box>
 
-            <Box
-              style={{
-                display: "flex",
-                alignItems: "center",
-                color: "#424242",
-                fontWeight: 600,
-                fontSize: "18px",
-                margin: "15px 0 0 0",
-              }}
-            >
-              Ver Noticia
-              <KeyboardArrowRightIcon />
-            </Box>
-          </Box>
+                  <Box
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      color: "#424242",
+                      fontWeight: 600,
+                      fontSize: "18px",
+                      margin: "15px 0 0 0",
+                    }}
+                  >
+                    Ver Noticia
+                    <KeyboardArrowRightIcon />
+                  </Box>
+                </Box>
+              </Box>
+            </a>
+          </Link>
         </Box>
-      </a>
-    </Link>
+      ) : null}
+    </Box>
   );
 };
 
@@ -133,6 +146,8 @@ const News = () => {
   const [error, setError] = useState<errorType>({ articles: "", message: "" });
   const state = useSelector((state: IState) => state?.articles);
   const { articles } = state;
+
+  console.log(news_mock, "ok");
 
   useEffect(() => {
     getArticles();
@@ -181,12 +196,14 @@ const News = () => {
           padding: "0 10%",
         }}
       >
-        <Carousel slidesPerView={1} delay={8000}>
-          {articles?.map((article: any, index: number) => (
-            <SwiperSlide>
-              <Article {...article} />
-            </SwiperSlide>
-          ))}
+        <Carousel slidesPerView={1} delay={5000}>
+          {news_mock && news_mock?.length
+            ? news_mock?.map((article: TArticle, index: number) => (
+                <SwiperSlide>
+                  <Article {...article} />
+                </SwiperSlide>
+              ))
+            : []}
         </Carousel>
       </Box>
 
@@ -198,7 +215,7 @@ const News = () => {
       <Box sx={{ padding: "0 5%" }}>
         <UseMasonry
           breakpoints={breakpoints}
-          items={articles}
+          items={news_mock && news_mock.length ? news_mock : []}
           component={(item: IArticle) => <ArticleCard {...item} />}
         />
       </Box>

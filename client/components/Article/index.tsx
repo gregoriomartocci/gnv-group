@@ -5,6 +5,7 @@ import { ProjectBody, ProjectContainer } from "./Styles";
 import { IArticle } from "../../redux/slices/articles";
 import Link from "next/link";
 import parse from "html-react-parser";
+import { TArticle } from "../../pages/news";
 
 export const sanitize = (string: string) => {
   const reactElement = parse(string);
@@ -27,13 +28,13 @@ const Article = ({
   description,
   published,
   link,
-}: IArticle) => {
+}: TArticle) => {
   return (
     <Link href={link}>
       <a target="_blank">
         <Box sx={ProjectContainer}>
           <Box sx={{ height: "100%" }}>
-            <img src={images[0]?.src ?? ""} alt={title} />
+            <img src={images[0]} alt={title} />
           </Box>
 
           <Box sx={ProjectBody}>

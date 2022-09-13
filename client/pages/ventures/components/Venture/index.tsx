@@ -35,17 +35,7 @@ const CardBody: SxProps<Theme> = {
   flexDirection: "column",
 };
 
-type TVenture = {
-  id: string;
-  name: string;
-  description: string;
-  images: string[];
-  link: string;
-  published: boolean;
-  status: string;
-  type: string;
-  date: string;
-};
+
 
 const getFormat = (file: string) => {
   const result = file?.split(".").pop()?.toUpperCase();
@@ -61,6 +51,18 @@ const filterFormat = (array: string[]) => {
 
   console.log(updateArray, "Roman Riquelme");
   return updateArray;
+};
+
+type TVenture = {
+  id: string;
+  name: string;
+  description: string;
+  images: string[];
+  link: string;
+  published: boolean;
+  status: string;
+  type: string;
+  date: string;
 };
 
 const Venture = (venture: TVenture) => {
