@@ -5,7 +5,7 @@ import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
 import Carousel from "../../components/Carousel";
 import Cards from "../../components/Cards";
-import UseButton from "../../components/Button";
+import UseButton from "../../components/Button/cacona";
 import Article from "../../components/Article";
 import { SwiperSlide } from "swiper/react";
 

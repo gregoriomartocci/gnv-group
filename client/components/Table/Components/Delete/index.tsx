@@ -3,7 +3,7 @@ import { Box, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../Menu";
-import UseButton from "../../../Button";
+import UseButton from "../../../Button/cacona";
 
 interface IDelete {
   concept: string;

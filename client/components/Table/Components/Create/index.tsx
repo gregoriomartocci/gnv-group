@@ -15,7 +15,7 @@ import { IArticle } from "../../../../redux/slices/articles";
 import { IProject } from "../../../../redux/slices/projects";
 
 import UseTabs from "../../../Tabs";
-import UseButton from "../../../Button";
+import UseButton from "../../../Button/cacona";
 
 
 const Editor = dynamic(() => import("../../../Editor"), {
