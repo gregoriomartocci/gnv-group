@@ -11,7 +11,7 @@ import {
 } from "./Styles";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import HomeIcon from "@mui/icons-material/Home";
-import Button from "../Button/cacona";
+import Button from "../Button";
 import UseAutocomplete from "../Autocomplete";
 
 export const items = [

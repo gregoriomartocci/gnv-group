@@ -9,7 +9,7 @@ import UseTabs from "../../../Tabs";
 import ImageUploader, { IImagetoUpload } from "../../../Image-Uploader";
 import { IArticle } from "../../../../redux/slices/articles";
 import { IState } from "../../../Menu";
-import UseButton from "../../../Button/cacona";
+import UseButton from "../../../Button";
 
 const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,

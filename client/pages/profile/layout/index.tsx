@@ -10,7 +10,7 @@ import api from "../../../hooks/Api";
 
 import UseModal from "../../../components/Modal";
 import ImageUploader from "../../../components/Image-Uploader";
-import UseButton from "../../../components/Button/cacona";
+import UseButton from "../../../components/Button";
 
 const Layout = () => {
   const dispatch = useDispatch();

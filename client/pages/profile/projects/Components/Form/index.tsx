@@ -18,7 +18,7 @@ import ImageUploader, {
 
 import InputGroup from "../../../../../components/Input";
 import UseTabs from "../../../../../components/Tabs";
-import UseButton from "../../../../../components/Button/cacona";
+import UseButton from "../../../../../components/Button";
 import { IProject } from "../../../../../redux/slices/projects";
 import { IArticle } from "../../../../../redux/slices/articles";
 import BasicSelect from "../../../../../components/Select";

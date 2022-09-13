@@ -3,7 +3,7 @@ import { Alert, Box, CircularProgress } from "@mui/material";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import UseButton from "../../../Button/cacona";
+import UseButton from "../../../Button";
 import InputGroup from "../../../Input";
 import Toast from "../../../Alert";
 import { Login } from "../../Styles";

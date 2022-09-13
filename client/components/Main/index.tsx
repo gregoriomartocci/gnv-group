@@ -16,14 +16,14 @@ import {
 } from "./Styles";
 import { useEffect, useRef, useState } from "react";
 import { time } from "console";
-import Button from "../Button/cacona";
+import Button from "../Button";
 import { setAuth } from "../../redux/slices/auth";
 import { useDispatch } from "react-redux";
 import { IProject } from "../../redux/slices/projects";
 import Frame from "./Components/Frame";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import CircleIcon from "@mui/icons-material/Circle";
-import UseButton from "../Button/cacona";
+import UseButton from "../Button";
 
 export interface ISlide {
   title: string;
