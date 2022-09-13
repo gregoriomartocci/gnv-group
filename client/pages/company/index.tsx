@@ -20,6 +20,7 @@ import Section from "../../components/Section";
 import Cards from "../../components/Cards";
 import Licence from "./components/Licence";
 import Svg from "./components/Licence/components/SVG";
+import art_gallery_mock from "./data/art_gallery_mock";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -543,7 +544,7 @@ const Company = () => {
           title="Galería de arte GNV"
         />
 
-        <ArtGallery gallery={gallery?.length ? gallery : [] ?? []} />
+        <ArtGallery gallery={art_gallery_mock?.length ? art_gallery_mock : [] ?? []} />
       </Box>
 
       <Footer />

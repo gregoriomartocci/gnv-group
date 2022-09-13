@@ -48,43 +48,113 @@ const CardBody: SxProps<Theme> = {
   height: "100%",
 };
 
-type TMemberProps = {
-  urls: string;
+type TGalleryItems = {
+  id: number;
+  gallery: string;
+  artist: string;
+  title: string;
+  image: string;
+  technique: string;
+  measures: string;
+  date: string;
+  published: boolean;
 };
 
-const GalleryItem = ({ urls }: TMemberProps) => {
-
-  console.log(urls, "que pasa");
-  
+const GalleryItem = ({
+  id,
+  gallery,
+  artist,
+  title,
+  image,
+  technique,
+  measures,
+  date,
+  published,
+}: TGalleryItems) => {
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
-        <img src={urls?.regular} alt={"ok"}></img>
+        <img src={image} alt={title}></img>
       </Box>
       <Box sx={CardBody}>
-        <Typography
-          sx={{
-            fontFamily: "'Poppins', sans-serif",
-            margin: "10px 0 0 0",
-            fontSize: "18px",
-            fontWeight: "600",
-            color: "#424242",
-          }}
-        >
-          B Bros Artista: Juan Becú Galería Nora Fisch | Buenos Aires Técnica:
-          Óleo sobre tela Medidas: 265 x 195 cm Año: 2013
-        </Typography>
-        <Typography
-          sx={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: "18px",
-            margin: "10px 0 0 0",
-            fontWeight: "600",
-            color: "#bdbdbd",
-          }}
-        >
-          {/* {role} */}
-        </Typography>
+        {gallery && (
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              margin: "10px 0 0 0",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#424242",
+            }}
+          >
+            Galería: {gallery}
+          </Typography>
+        )}
+        {artist && (
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              margin: "10px 0 0 0",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#424242",
+            }}
+          >
+            Artista: {artist}
+          </Typography>
+        )}
+        {title && (
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              margin: "10px 0 0 0",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#424242",
+            }}
+          >
+            Título: {title}
+          </Typography>
+        )}
+        {technique && (
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              margin: "10px 0 0 0",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#424242",
+            }}
+          >
+            Técnica: {technique}
+          </Typography>
+        )}
+        {measures && (
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              margin: "10px 0 0 0",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#424242",
+            }}
+          >
+            Medidas: {measures}
+          </Typography>
+        )}
+        {date && (
+          <Typography
+            sx={{
+              fontFamily: "'Poppins', sans-serif",
+              margin: "10px 0 0 0",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#424242",
+            }}
+          >
+            Año: {date}
+          </Typography>
+        )}
       </Box>
     </Box>
   );
