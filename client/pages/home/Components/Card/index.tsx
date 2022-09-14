@@ -5,7 +5,7 @@ import { TDemo } from "../..";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Link from "next/link";
 
-const Card = ({ img, title }: TDemo) => {
+const Card = ({ img, title, link }: TDemo) => {
   const [hover, setHover] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
@@ -84,8 +84,8 @@ const Card = ({ img, title }: TDemo) => {
         >
           {title}
         </Typography>
-        <Link href={"/venture"}>
-          <a>
+        <Link href={link}>
+          <a target="_blank">
             <Box
               style={{
                 display: "flex",

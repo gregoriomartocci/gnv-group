@@ -28,6 +28,7 @@ import UseTabs from "../../components/Tabs";
 export type TDemo = {
   img: string;
   title: string;
+  link: string;
 };
 
 const Home = () => {
@@ -180,18 +181,22 @@ const Home = () => {
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
       title: "WTC Buenos Aires I, II, III IV",
+      link: "https://wtcbuenosaires.com.ar/",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
       title: "Ostent Tower",
+      link: "https://ostentower.com/",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
+      link: "https://www.harbourtower.com.ar/",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
       title: "The Shops",
+      link: "/venture",
     },
   ];
 
@@ -329,7 +334,6 @@ const Home = () => {
           }
           title="Alejandro Ginevra, Presidente de GNV Group."
           reverse
-          
         />
       </Box>
 
