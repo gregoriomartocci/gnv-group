@@ -5,6 +5,8 @@ import { SxProps, Theme } from "@mui/material";
 import { Fragment } from "react";
 import Link from "next/link";
 import { sliceText } from "../../../profile/articles";
+import { useDispatch } from "react-redux";
+import { setProject } from "../../../../redux/slices/projects";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -66,13 +68,18 @@ type TVenture = {
 };
 
 const Venture = (venture: any) => {
-  
+  const dispatch = useDispatch();
+
   const santize = (string: string) => {
     if (string) {
       const reactElement = parse(string);
       return reactElement;
     }
     return;
+  };
+
+  const handleClick = (venture) => {
+    dispatch(setProject(venture));
   };
 
   return (
@@ -122,6 +129,7 @@ const Venture = (venture: any) => {
                 fontSize: "16px",
                 margin: "5px 0 0 0",
                 lineHeight: "30px",
+                textAlign: "justify !important",
               }}
             >
               {venture?.description
@@ -144,6 +152,7 @@ const Venture = (venture: any) => {
                       color: "#757575",
                     },
                   }}
+                  onClick={() => handleClick(venture)}
                 >
                   Ver Proyecto
                   <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />

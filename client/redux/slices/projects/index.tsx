@@ -83,12 +83,16 @@ export const projectsSlice = createSlice({
     setProjects: (state, action: PayloadAction<IProject[]>) => {
       state.projects = [...action.payload];
     },
+    setProject: (state, action: PayloadAction<IProject>) => {
+      state.project = { ...action.payload };
+    },
     setFilter: (state, action: PayloadAction<IProject[]>) => {
       state.projects_filter = [...action.payload];
     },
   },
 });
 
-export const { setState, setProjects, setFilter } = projectsSlice.actions;
+export const { setState, setProjects, setFilter, setProject } =
+  projectsSlice.actions;
 
 export default projectsSlice.reducer;

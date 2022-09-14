@@ -5,7 +5,7 @@ const news_mock = [
     description:
       "La iniciativa del Gobierno busca recaudar dólares para el mercado de la construcción y el trabajo. El antecedente de la Harbour Tower en Puerto Madero. El Gobierno promulgó la ley de incentivo a la inversión, construcción y producción argentina, norma que prolonga por un año el régimen de blanqueo con la intención -principalmente- de incentivar la reincorporación tanto de pesos como de dólares al sistema formal.",
     images: [
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663089954/vunqgj6nnethwen6ofsz.png",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663186575/xhztgwducabdupu5exzf.webp",
     ],
     link: "https://www.letrap.com.ar/nota/2022-9-11-10-27-0-ley-de-blanqueo-un-incentivo-a-la-produccion",
     published: true,
