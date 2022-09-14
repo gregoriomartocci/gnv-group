@@ -49,7 +49,7 @@ const Card = ({ img, title, link }: TDemo) => {
         },
       }}
     >
-      <img src={img} alt={title} />
+      <img src={img ? img : ""} alt={title ? title : ""} />
 
       <Box
         sx={{
@@ -83,7 +83,7 @@ const Card = ({ img, title, link }: TDemo) => {
         >
           {title}
         </Typography>
-        <Link href={link}>
+        <Link href={link ? link : ""}>
           <a target="_blank">
             <Box
               style={{
