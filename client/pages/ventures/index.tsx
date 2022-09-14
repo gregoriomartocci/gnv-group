@@ -24,16 +24,21 @@ const FadeFromBottom = {
 };
 
 const VenturesLayout = () => {
+
   const dispatch = useDispatch();
   const state = useSelector((state: IState) => state?.projects);
+
   const { projects_filter, projects } = state;
+
   const [active, setActive] = useState(false);
+
+  const [ventures, setVentures] = useState()
 
   const [status, setStatus] = useState([
     "Todos",
-    "Ejecutados",
+    "Ejecutado",
     "En desarrollo",
-    "Finalizados",
+    "Finalizado",
   ]);
 
   const [type, setType] = useState([
@@ -52,11 +57,25 @@ const VenturesLayout = () => {
     search: "",
   });
 
-  const filterVentures = (name: String) => {
+
+  const filterVenturesStatus = (name: String) => {
     if (name === "Todos") return dispatch(setFilter(projects));
+
+
+    console.log(projects, "YENDO")
+
     const filtered = projects.filter(
       (p: IProject) =>
         String(p.status).toLowerCase() === String(name).toLowerCase()
+    );
+    return dispatch(setFilter(filtered));
+  };
+
+  const filterVenturesTypes = (name: String) => {
+    if (name === "Todos") return dispatch(setFilter(projects));
+    const filtered = projects.filter(
+      (p: IProject) =>
+        String(p.type).toLowerCase() === String(name).toLowerCase()
     );
     return dispatch(setFilter(filtered));
   };
@@ -118,7 +137,7 @@ const VenturesLayout = () => {
               items={status}
               placeholder="estado"
               width="250px"
-              action={filterVentures}
+              action={filterVenturesStatus}
             />
           </Box>
           <Box>
@@ -126,7 +145,7 @@ const VenturesLayout = () => {
               items={type}
               placeholder="tipo"
               width="250px"
-              action={filterVentures}
+              action={filterVenturesTypes}
             />
           </Box>
         </Box>

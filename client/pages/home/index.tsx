@@ -235,7 +235,6 @@ const Home = () => {
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
       />
-
       <Box
         sx={{
           display: "flex",
@@ -269,7 +268,6 @@ const Home = () => {
             />
           </motion.div>
         </Box>
-
         <Box
           sx={{
             display: "flex",
@@ -295,7 +293,6 @@ const Home = () => {
           </motion.div>
         </Box>
       </Box>
-
       <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>
         <Cards
           gap={""}
@@ -317,7 +314,6 @@ const Home = () => {
           component={(item: TDemo) => <Card {...item} />}
         />
       </Box>
-
       <Box
         sx={{
           display: "flex",

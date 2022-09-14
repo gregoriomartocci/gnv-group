@@ -325,7 +325,7 @@ const ventures_mock = [
     link: "",
     published: true,
     status: "En desarrollo",
-    type: "Hospitalidad y Residencias",
+    type: "Hotelería",
     date: "2022",
   },
 ];

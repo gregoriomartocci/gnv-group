@@ -16,7 +16,6 @@ import Venture from "../Venture";
 import UseMasonry from "../../../../components/Masonry";
 import ventures_mock from "../../../../data/ventures_mock";
 
-
 const Ventures = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,14 +26,20 @@ const Ventures = () => {
     message: "",
   });
 
+  const [ventures, setVentures] = useState(ventures_mock);
+
   useEffect(() => {
-    getProjects();
+    // getProjects();
+    dispatch(setProjects(ventures_mock));
+    dispatch(setFilter(ventures_mock));
   }, []);
+
 
   const filterVentures = () => {
     const filtered = projects_filter.filter((p) => p.status === "");
     dispatch(setFilter(filtered));
   };
+  
 
   const breakpoints = {
     default: 3,
@@ -67,7 +72,7 @@ const Ventures = () => {
 
   return (
     <UseMasonry
-      items={ventures_mock && ventures_mock.length ? ventures_mock : []}
+      items={projects_filter && projects_filter.length ? projects_filter : []}
       breakpoints={breakpoints}
       component={(item: IProject) => <Venture {...item} />}
     />
