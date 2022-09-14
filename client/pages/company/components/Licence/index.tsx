@@ -5,7 +5,7 @@ import { TDemo } from "../..";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Svg from "./components/SVG";
 
-const Licence = ({ img, description }: TDemo) => {
+const Licence = ({ img, description, width }: TDemo) => {
   return (
     <Box
       sx={{
@@ -44,7 +44,7 @@ const Licence = ({ img, description }: TDemo) => {
             img?.map((element) => {
               return (
                 <Box sx={{ margin: "0 0 0 -15px" }}>
-                  <Svg width="200px">{element}</Svg>
+                  <Svg width={width}>{element}</Svg>
                 </Box>
               );
             })}

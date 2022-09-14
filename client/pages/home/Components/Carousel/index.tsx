@@ -15,6 +15,7 @@ const HeaderTitle: SxProps<Theme> = {
   fontWeight: 400,
   textAlign: "center",
   color: "#fff",
+  textShadow: "#212121 0px 0px 5px",
 };
 
 const swipeConfidenceThreshold = 10000;
