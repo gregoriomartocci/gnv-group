@@ -329,6 +329,7 @@ const Home = () => {
           }
           title="Alejandro Ginevra, Presidente de GNV Group."
           reverse
+          
         />
       </Box>
 
