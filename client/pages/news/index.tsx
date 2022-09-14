@@ -35,7 +35,6 @@ const CardContainer: SxProps<Theme> = {
     objectFit: "cover",
     width: "100%",
     minHeight: "500px",
-    minWidth: "500px",
   },
 };
 

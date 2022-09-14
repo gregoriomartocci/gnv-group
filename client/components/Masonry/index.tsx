@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import React from "react";
 import Masonry from "react-masonry-css";
 
-
 type TUseMasonry = {
   items: any[];
   component: any;
