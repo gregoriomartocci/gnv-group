@@ -66,6 +66,7 @@ const Slider = ({ items }: any) => {
           width: "100%",
           height: "100%",
           top: 0,
+          overflowX: "hidden",
         }}
       >
         {items &&
