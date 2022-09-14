@@ -398,7 +398,7 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: "180px 0 130px 0",
+            padding: "180px 10% 130px 10%",
           }}
         >
           <UseTabs
@@ -406,9 +406,9 @@ const Home = () => {
             setValue={setTab}
             options={tabsOptions}
             p="35px"
-            width="45%"
-            fontSize="30px"
-            fontWeight="700"
+            width="100%"
+            fontSize="34px"
+            fontWeight="500"
             color="#212121"
           />
 

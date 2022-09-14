@@ -202,27 +202,6 @@ function Carousel({ items }: ICarousel) {
                       {description}
                     </Typography>
                   </Box>
-                  <Box
-                    sx={{
-                      width: "100%",
-                      display: "flex",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: "10px 0",
-                      borderTop: "1px solid #eeeeee",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Ver más
-                    </Typography>
-                  </Box>
                 </Box>
               </motion.div>
             );
