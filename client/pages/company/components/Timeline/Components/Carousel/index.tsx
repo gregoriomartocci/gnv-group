@@ -32,17 +32,17 @@ function Carousel({ items }: ICarousel) {
   const transition = { duration: 0.25, ease: "easeInOut" };
 
   const onRight = () => {
-    if (position < slides?.length - 1) {
+    const total = items?.length - 1;
+    if (position < total && position + 1 !== undefined) {
       positionSet(position + 1);
     }
   };
 
   const onLeft = () => {
-    if (position > 0) {
+    if (position > 0 && position - 1 !== undefined) {
       positionSet(position - 1);
     }
   };
-
   const venturesVariants = {
     initial: { y: 100, opacity: 0 },
     enter: {
@@ -96,9 +96,10 @@ function Carousel({ items }: ICarousel) {
           margin: {
             xs: "0 25px",
             sm: "0 25px",
-            md: "0 75px",
+            md: "0 100px",
           },
           transform: "rotate(180deg)",
+          overflowX: "hidden",
         }}
         onClick={onLeft}
         component="span"
@@ -215,17 +216,18 @@ function Carousel({ items }: ICarousel) {
           justifyContent: "center",
           alignItems: "center",
           padding: "12.5px",
-          textAlign: "center",
           border: "1px solid #e0e0e0",
           backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
+          textAlign: "center",
+          zIndex: 1000,
+          width: "10%",
           margin: {
             xs: "0 25px",
             sm: "0 25px",
-            md: "0 75px",
+            md: "0 100px",
           },
-          zIndex: 1000,
         }}
         component="span"
         onClick={onRight}
