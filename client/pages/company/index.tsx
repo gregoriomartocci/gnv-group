@@ -417,7 +417,7 @@ const Company = () => {
         >
           <HeaderTitle
             p="20px 50px 200px 50px"
-            width="40%"
+            width="80%"
             titleFontSize="38px"
             fontWeight={500}
             title="La trayectoria de una gran empresa 

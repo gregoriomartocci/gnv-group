@@ -41,7 +41,7 @@ const art_gallery_mock = [
     artist: "Sofia Bohtlingk",
     title: "Cuando comenzó",
     image:
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022483/p32ls4mzobt1aozva1un.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022485/mc3zp1pwjnmd23kj964p.jpg",
     technique: "Oleo sobre tela",
     measures: "200 x 200 cm",
     date: "",
@@ -101,7 +101,7 @@ const art_gallery_mock = [
     artist: "Paola Vega",
     title: "Sin título",
     image:
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022482/cdiyj7vyjnaitvo0q5uc.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022482/haxkmtrcpoq0w7rzmdop.jpg",
     technique: "Óleo sobre tela",
     measures: "190 x 425 cm",
     date: "2015",
@@ -173,7 +173,7 @@ const art_gallery_mock = [
     artist: "Cinthia Cohen",
     title: "Sin Título (Florero)",
     image:
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022482/aepusp6pwzvz3jx7mygg.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663272212/bqqirjmxqoaq8jzeceuk.jpg",
     technique: "de cartón y pintura",
     measures: "220 cm x 170 cm y una gema",
     date: "2018",
@@ -185,7 +185,7 @@ const art_gallery_mock = [
     artist: "Cinthia Cohen",
     title: "Sin Título (Florero)",
     image:
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022483/wqnyytkycnrpnrp333vv.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663272211/h8fpbqr1jzcaknzopr91.jpg",
     technique: "de cartón y pintura",
     measures: "220 cm x 170 cm y una gema",
     date: "2018",
@@ -197,7 +197,7 @@ const art_gallery_mock = [
     artist: "Carolina Antoniadis",
     title: "",
     image:
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022483/kwrxyknz9nzmcziusoqw.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1663272212/vv8tcimyjwwhsa7oqei9.png",
     technique: "",
     measures: "",
     date: "",

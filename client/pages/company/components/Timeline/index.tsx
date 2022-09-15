@@ -203,7 +203,8 @@ const Timeline = () => {
       <motion.div>
         <motion.div
           drag={`${width > 900 ? "x" : ""}`}
-          dragConstraints={{ right: 600, left: -600 }}
+          className="scroller"
+          dragConstraints={{ left: -1120, right: 0 }}
           whileTap={{ cursor: "grabbing" }}
         >
           <Box
