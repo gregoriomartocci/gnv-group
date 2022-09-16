@@ -145,15 +145,17 @@ function Carousel({ items }: ICarousel) {
                 }}
                 onClick={() => positionSet(index)}
               >
-                <img
-                  style={{
-                    objectFit: "cover",
-                    width: "100%",
-                    borderRadius: "10px",
-                  }}
-                  src={img}
-                  alt="title"
-                />
+                {img && img !== "" ? (
+                  <img
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      borderRadius: "10px",
+                    }}
+                    src={img}
+                    alt="title"
+                  />
+                ) : null}
 
                 <Box
                   sx={{
