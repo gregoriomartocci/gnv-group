@@ -241,7 +241,7 @@ const Company = () => {
                   </svg>
                 </Svg>
               }
-              paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas mas exclusivas del mercado."
+              paragraph="Unidad de negoios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
             />
           </Box>

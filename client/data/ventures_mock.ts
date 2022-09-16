@@ -56,7 +56,7 @@ const ventures_mock = [
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663183040/lfr8i1ma3kxxxn37bvli.jpg",
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663020528/nxeegvbyhvz2dlpmpxvy.jpg",
     ],
-    link: "",
+    link: "https://wtcbuenosaires.com.ar/",
     published: true,
     status: "Ejecutado",
     type: "Corporativo",
@@ -99,7 +99,7 @@ const ventures_mock = [
     images: [
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663020703/q7gmz8luoderdklnq50b.jpg",
     ],
-    link: "",
+    link: "https://wtcbuenosaires.com.ar/",
     published: true,
     status: "En desarrollo",
     type: "",
@@ -113,7 +113,7 @@ const ventures_mock = [
     images: [
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663086485/okqdzx6t5fdc9axmdb0g.jpg",
     ],
-    link: "",
+    link: "https://wtcbuenosaires.com.ar/",
     published: true,
     status: "Ejecutado",
     type: "Corporativo",
@@ -128,7 +128,7 @@ const ventures_mock = [
     images: [
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663020828/mtu9aj4ehoug06efu0s4.jpg",
     ],
-    link: "",
+    link: "https://wtcbuenosaires.com.ar/",
     published: true,
     status: "En desarrollo",
     type: "",
