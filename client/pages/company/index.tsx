@@ -373,7 +373,7 @@ const Company = () => {
 
       {/* TRAYECTORY */}
 
-      <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% " }}>
+      <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% 0" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
