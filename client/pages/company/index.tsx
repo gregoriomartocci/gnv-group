@@ -373,11 +373,11 @@ const Company = () => {
 
       {/* TRAYECTORY */}
 
-      <Box sx={{ width: "100%", minHeight: "100vh", padding: "7.5%" }}>
+      <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% " }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: true }}
           variants={FadeFromBottom}
         >
           <HeaderTitle
