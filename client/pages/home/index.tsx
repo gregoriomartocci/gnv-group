@@ -263,7 +263,7 @@ const Home = () => {
           >
             <HeaderTitle
               titleFontSize="30px"
-              fontWeight={600}
+              fontWeight={500}
               title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
           </motion.div>
