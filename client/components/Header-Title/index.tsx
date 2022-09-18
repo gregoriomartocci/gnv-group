@@ -31,7 +31,7 @@ const HeaderTitle = ({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        padding: `${p}`,
+        padding: p,
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
       }}

@@ -59,8 +59,6 @@ const VenturesLayout = () => {
   const filterVenturesStatus = (name: String) => {
     if (name === "Todos") return dispatch(setFilter(projects));
 
-    console.log(projects, "YENDO");
-
     const filtered = projects.filter(
       (p: IProject) =>
         String(p.status).toLowerCase() === String(name).toLowerCase()
@@ -104,16 +102,16 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       >
         <HeaderTitle
-          p="10% 20% 5% 20%"
-          titleFontSize="40px"
+          p={{ xs: "25% 10% 10% 10%", md: "10% 20% 5% 20%" }}
+          titleFontSize={{ xs: "32px", md: "40px" }}
           fontWeight={600}
-          descriptionFontSize="24px"
+          descriptionFontSize={{ xs: "18px", md: "25px" }}
           title="Emprendimientos"
           description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
         />
       </motion.div>
 
-      <Box sx={{ padding: "25px 15% 35px 15%" }}>
+      <Box sx={{ padding: "25px 12.5% 35px 12.5%" }}>
         <SearchBar
           onChange={onChangeHandler}
           value={input}
@@ -126,23 +124,30 @@ const VenturesLayout = () => {
           display: "flex",
           justifyContent: "flex-start",
           width: "100%",
-          padding: "45px 10%",
+          padding: { xs: "10px 10% 25px 10%", sm: "45px 10% 70px 10%" },
         }}
       >
-        <Box sx={{ display: "flex" }}>
-          <Box sx={{ margin: "0 20px 0 0" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            justifyContent: { xs: "space-between", sm: "flex-start" },
+            width: "100%",
+          }}
+        >
+          <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
             <Dropdown
               items={status}
               placeholder="estado"
-              width="250px"
+              width={{ xs: "100%", sm: "250px" }}
               action={filterVenturesStatus}
             />
           </Box>
-          <Box>
+          <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
             <Dropdown
               items={type}
               placeholder="tipo"
-              width="250px"
+              width={{ xs: "100%", sm: "250px" }}
               action={filterVenturesTypes}
             />
           </Box>

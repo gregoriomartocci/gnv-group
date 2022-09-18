@@ -31,10 +31,10 @@ const Dropdown = ({ items, placeholder, action, width }: Type) => {
           width,
           position: "relative",
           justifyContent: "space-between",
-          padding: "15px 25px",
+          padding: { xs: "25px", sm: "15px 25px" },
           borderRadius: "5px",
           cursor: "pointer",
-          border: "2px solid #f5f5f5",
+          border: "2px solid #eeeeee",
 
           "&:hover": {
             border: "2px solid #eeeeee",
@@ -64,10 +64,11 @@ const Dropdown = ({ items, placeholder, action, width }: Type) => {
               backgroundColor: "#fff",
               flexDirection: "column",
               borderRadius: "5px",
-              width: `${width ? width : "200px"}`,
+              width,
               boxShadow: "rgba(0, 0, 0, 0.25) 0px 1.5px 4px",
               top: "calc(100% + 10px)",
               left: 0,
+              zIndex: 5000,
             }}
           >
             {items?.map((element, key) => {
