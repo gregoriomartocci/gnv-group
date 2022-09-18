@@ -16,7 +16,7 @@ const Footer = () => {
     >
       <Box
         sx={{
-          display: "flex",
+          display: { xs: "column", sm: "flex", md: "flex" },
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
@@ -24,6 +24,8 @@ const Footer = () => {
           fontWeight: 500,
         }}
       >
+        {/* FOOTER NAV MENU */}
+
         <Box
           sx={{
             display: "flex",
@@ -110,7 +112,7 @@ const Footer = () => {
 
         {/* SOCIAL MEDIA */}
 
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", padding: { xs: "25px 0 10px 0" } }}>
           <Box
             sx={{
               display: "flex",

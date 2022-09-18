@@ -20,7 +20,6 @@ import { SxProps, Theme } from "@mui/material";
 import UseMasonry from "../../components/Masonry";
 import news_mock from "../../data/news_mock";
 
-
 const CardContainer: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
@@ -178,10 +177,12 @@ const News = () => {
   return (
     <Box>
       <Menu onScroll />
+
       <Box>
         <HeaderTitle
           titleFontSize="38px"
-          p="150px 0"
+          fontWeight={600}
+          p="150px 0 50px 0"
           title="Noticias destacadas"
         />
       </Box>
@@ -193,7 +194,6 @@ const News = () => {
           aligntContent: "center",
           height: "100%",
           width: "100%",
-          padding: "0 10%",
         }}
       >
         <Carousel slidesPerView={1} delay={3000}>
@@ -209,8 +209,9 @@ const News = () => {
 
       <HeaderTitle
         titleFontSize="38px"
-        p="150px 0"
-        title="Todas las noticias"
+        fontWeight={600}
+        p="125px 0 100px 0"
+        title="Todas la noticias"
       />
       <Box sx={{ padding: "0 5%" }}>
         <UseMasonry

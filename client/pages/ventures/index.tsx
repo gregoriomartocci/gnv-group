@@ -24,7 +24,6 @@ const FadeFromBottom = {
 };
 
 const VenturesLayout = () => {
-
   const dispatch = useDispatch();
   const state = useSelector((state: IState) => state?.projects);
 
@@ -32,7 +31,7 @@ const VenturesLayout = () => {
 
   const [active, setActive] = useState(false);
 
-  const [ventures, setVentures] = useState()
+  const [ventures, setVentures] = useState();
 
   const [status, setStatus] = useState([
     "Todos",
@@ -57,12 +56,10 @@ const VenturesLayout = () => {
     search: "",
   });
 
-
   const filterVenturesStatus = (name: String) => {
     if (name === "Todos") return dispatch(setFilter(projects));
 
-
-    console.log(projects, "YENDO")
+    console.log(projects, "YENDO");
 
     const filtered = projects.filter(
       (p: IProject) =>
@@ -107,9 +104,10 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       >
         <HeaderTitle
-          p="7.5% 7.5% 5% 7.5%"
+          p="10% 20% 5% 20%"
           titleFontSize="40px"
-          descriptionFontSize="22px"
+          fontWeight={600}
+          descriptionFontSize="24px"
           title="Emprendimientos"
           description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
         />

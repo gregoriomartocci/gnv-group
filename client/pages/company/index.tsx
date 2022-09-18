@@ -180,7 +180,7 @@ const Company = () => {
           whileInView={"onscreen"}
           viewport={{ once: false, amount: 0.1 }}
           variants={FadeFromBottom}
-          style={{ width: "100%", height: "100%", padding: "0 10%" }}
+          style={{ width: "100%", height: "100%", padding: "0 5%" }}
         >
           {/* <HeaderTitle py="10%" px="2.5%" fontSize="25px" title="Compañia" /> */}
 
@@ -313,6 +313,7 @@ const Company = () => {
             title="Licencias"
             p="0 15px"
             titleFontSize="34px"
+            fontWeight={600}
             descriptionFontSize="20px"
           />
           <Box
@@ -344,15 +345,20 @@ const Company = () => {
 
       {/* COMPANY */}
 
-      <Box sx={{ width: "100vw", padding: "7.5%" }}>
+      <Box sx={{ width: "100vw", padding: "7.5% " }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
           viewport={{ once: false, amount: 0.1 }}
           variants={FadeFromBottom}
-          style={{ width: "100%", height: "100%", padding: "0 10%" }}
+          style={{ width: "100%", height: "100%" }}
         >
-          <HeaderTitle p="60px 0" titleFontSize="34px" title="Compañia" />
+          <HeaderTitle
+            p="75px 0"
+            titleFontSize="38px"
+            fontWeight={600}
+            title="Compañia"
+          />
 
           {render ? (
             <MessageSection
@@ -381,9 +387,10 @@ const Company = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p="125px 50px"
+            p="125px 12.5%"
             titleFontSize="38px"
-            descriptionFontSize="20px"
+            fontWeight={600}
+            descriptionFontSize="25px"
             title="Trayectoria"
             description="La compañía está viviendo una etapa de expansión fenomenal.
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
@@ -417,10 +424,9 @@ const Company = () => {
         >
           <HeaderTitle
             p="20px 50px 200px 50px"
-            width="80%"
-            titleFontSize="38px"
-            fontWeight={500}
-            title="La trayectoria de una gran empresa 
+            fontWeight={600}
+            titleFontSize="35px"
+            title="La trayectoria de una gran empresa  <br>
           con el trato de una gran familia"
             color="#fff"
           />
@@ -454,8 +460,9 @@ const Company = () => {
         }}
       >
         <HeaderTitle
-          p="150px 50px "
+          p="125px 50px 50px 50px"
           titleFontSize="38px"
+          fontWeight={600}
           title="Galería de arte GNV"
         />
 

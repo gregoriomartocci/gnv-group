@@ -262,8 +262,8 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              titleFontSize="27px"
-              fontWeight={500}
+              titleFontSize="30px"
+              fontWeight={600}
               title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
           </motion.div>
@@ -359,8 +359,9 @@ const Home = () => {
         }}
       >
         <HeaderTitle
-          p="5%"
-          titleFontSize="34px"
+          p="20px 0"
+          titleFontSize="38px"
+          fontWeight={600}
           title="Contacto"
           description="Envianos tu consulta"
           descriptionFontSize="20px"
@@ -404,7 +405,7 @@ const Home = () => {
             p="35px"
             width="100%"
             fontSize="34px"
-            fontWeight="500"
+            fontWeight={600}
             color="#212121"
           />
 

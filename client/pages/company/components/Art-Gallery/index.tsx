@@ -27,7 +27,7 @@ const ArtGallery = ({ gallery }) => {
   };
 
   return (
-    <Carousel slidesPerView={4} delay={2000} breakpoints={breakpoints}>
+    <Carousel slidesPerView={4} delay={1000} breakpoints={breakpoints}>
       {gallery?.length
         ? gallery?.map((item: any, index: number) => (
             <SwiperSlide key={index}>

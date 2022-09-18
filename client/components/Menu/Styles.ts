@@ -81,7 +81,8 @@ export const MenuItems: SxProps<Theme> = {
   justifyContent: "flex-end",
   alignItems: "center",
   width: "100%",
-  fontSize: "17px",
+  fontSize: "16.5px",
+
 };
 
 export const MenuItem: SxProps<Theme> = {

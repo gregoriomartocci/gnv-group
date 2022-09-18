@@ -5,18 +5,18 @@ import { SxProps, Theme } from "@mui/material";
 export const imageContainer: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
-  position: "relative",
-  width: "100%",
-  height: "70vh",
-  right: "50px",
-  top: "0",
+  position: { lg: "relative" },
+  width: { xs: "auto", sm: "auto", md: "100%", lg: "100%", xl: "60vw" },
+  height: { xs: "auto", sm: "auto", md: "", lg: "70vh" },
+  right: { xs: 0, sm: 0, md: "50px" },
+  top: 0,
   backgroundColor: "#fff",
   borderRadius: "20px",
   cursor: "pointer",
   fontFamily: "'Poppins', sans-serif",
   fontSize: "20px",
   boxShadow: "rgba(0, 0, 0, 0.20) 0px 14px 18px",
-  margin: "15px",
+  margin: { xs: "25px 0", lg: "15px" },
 
   img: {
     objectFit: "cover",
@@ -42,7 +42,7 @@ const MessageSection = ({
   return (
     <Box
       sx={{
-        display: "flex",
+        display: { xs: "", sm: "column", md: "column", lg: "flex", xl: "" },
         position: "relative",
         justifyContent: "center",
         alignItems: "center",
@@ -56,19 +56,20 @@ const MessageSection = ({
           position: "relative",
           left: "",
           right: "0px",
-          width: "70%",
+          width: "100%",
           flexDirection: "column",
           padding: "40px",
           boxShadow: "rgba(0, 0, 0, 0.1) 0px 8px 18px",
           borderRadius: "15px",
           background: "#fff",
           zIndex: "600",
+          maxWidth: { lg: "40%" },
         }}
       >
         <Typography
           sx={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: "25px",
+            fontSize: "28px",
             fontWeight: "600",
             margin: "0 0 25px  0",
           }}
@@ -76,7 +77,9 @@ const MessageSection = ({
           {title}
         </Typography>
 
-        <Typography sx={{ fontFamily: "'Poppins', sans-serif" }}>
+        <Typography
+          sx={{ fontFamily: "'Poppins', sans-serif", fontSize: "18px" }}
+        >
           {render && description ? description : ""}
         </Typography>
       </Box>
