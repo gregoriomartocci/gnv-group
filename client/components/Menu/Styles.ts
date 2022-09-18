@@ -27,6 +27,7 @@ export const MenuContainerOnScroll: SxProps<Theme> = {
   fontFamily: "'Montserrat', sans-serif",
   transition: "all 0.3s ease",
   fontWeight: 600,
+  boxShadow: "rgba(0, 0, 0, 0.10) 0px 1px 15px",
 };
 
 export const MenuContainerDark: SxProps<Theme> = {
@@ -81,8 +82,8 @@ export const MenuItems: SxProps<Theme> = {
   justifyContent: "flex-end",
   alignItems: "center",
   width: "100%",
-  fontSize: "16.5px",
-
+  fontSize: "18px",
+  fontWeight: 600,
 };
 
 export const MenuItem: SxProps<Theme> = {

@@ -12,10 +12,11 @@ const HeaderTitle: SxProps<Theme> = {
   alignItems: "center",
   fontFamily: "'Poppins', sans-serif",
   fontSize: "38px",
-  fontWeight: 400,
+  fontWeight: 500,
   textAlign: "center",
   color: "#fff",
-  textShadow: "#212121 0px 0px 5px",
+  // textShadow:
+  //   "-1px -1px 0 #212121, 1px -1px 0 #212121, -1px 1px 0 #212121, 2px 1.5px 0 #212121",
 };
 
 const swipeConfidenceThreshold = 10000;
