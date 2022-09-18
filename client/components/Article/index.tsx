@@ -33,7 +33,7 @@ const Article = ({
     <Link href={link}>
       <a target="_blank">
         <Box sx={ProjectContainer}>
-          <Box sx={{ width: "100%", height: "100%" }}>
+          <Box sx={{ width: "100%", height: "100%"  }}>
             <img src={images[0]} alt={title} />
           </Box>
 
