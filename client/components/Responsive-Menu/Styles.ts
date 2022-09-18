@@ -2,18 +2,19 @@ import { SxProps, Theme } from "@mui/material";
 import zIndex from "@mui/material/styles/zIndex";
 
 export const DropdownContainer: SxProps<Theme> = {
-  position: "fixed",
-  top: 0,
-  left: 0,
+  position: "absolute",
+  right: 0,
   display: "grid",
   alignItems: "center",
-  height: "100%",
-  width: "100vw",
+  height: "80vh",
+  pointerEvents: "auto",
+  width: "80vw",
   backgroundColor: "#fff",
   transition: "0.3s ease-in-out",
   opacity: 1,
   translateX: "20px",
   zIndex: 5000,
+  borderRadius: "25px 0 0 25px",
 };
 
 export const Icon: SxProps<Theme> = {
@@ -31,10 +32,10 @@ export const CloseIcon: SxProps<Theme> = {
 };
 
 export const DropdownMenu: SxProps<Theme> = {
-  display: "grid",
-  gridTemplateColumns: "1fr",
-  gridTemplateRows: "repeat(4, 80px)",
-  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
+  textAlign: "right",
   marginBottom: "30px",
   fontFamily: "'Montserrat', sans-serif",
 };
@@ -42,13 +43,15 @@ export const DropdownMenu: SxProps<Theme> = {
 export const DropdownLink: SxProps<Theme> = {
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "flex-end",
+  padding: "25px 10%",
   color: "#424242",
-  fontSize: "22.5px",
+  fontSize: "22px",
+  width: "100%",
   textDecoration: "none",
   transition: "0.2s ease-in-out",
   cursor: "pointer",
-  fontWeight: "500",
+  fontWeight: 600,
   "&:hover": {
     color: "#616161",
     backgroundColor: "#f5f5f5",

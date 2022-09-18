@@ -31,8 +31,28 @@ export interface IDropdownProps {
 const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
   return (
     <Fragment>
-      {Open && (
-        <Box sx={DropdownContainer}>
+      {/* {Open && ( */}
+      <Box
+        sx={{
+          display: "flex",
+          position: "fixed",
+          alignItems: "center",
+          zIndex: 5000,
+          height: "100vh",
+          width: "100vw",
+          pointerEvents: "none",
+          backgroundColor: `${Open ? "rgba(0, 0, 0, 0.3)" : ""}`,
+          transition: "all 1.5s ease",
+          overflow: `${Open ? "hidden" : "none"}`,
+        }}
+      >
+        <Box
+          sx={DropdownContainer}
+          style={{
+            transform: `${Open ? "" : "translateX(100%)"}`,
+            // transition: "all 2s ease",
+          }}
+        >
           <IconButton
             sx={CloseResponsiveMenu}
             onClick={Toggle}
@@ -52,7 +72,8 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
             })}
           </Box>
         </Box>
-      )}
+      </Box>
+      {/* )} */}
     </Fragment>
   );
 };
