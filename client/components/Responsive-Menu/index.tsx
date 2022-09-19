@@ -40,7 +40,7 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
           zIndex: 5000,
           height: "100vh",
           width: "100vw",
-          pointerEvents: "none",
+          pointerEvents: Open ? "auto" : "none",
           backgroundColor: `${Open ? "rgba(0, 0, 0, 0.3)" : ""}`,
           overflow: `${Open ? "hidden" : "none"}`,
         }}
