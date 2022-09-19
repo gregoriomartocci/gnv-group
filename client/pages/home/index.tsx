@@ -262,7 +262,7 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              titleFontSize={{ sx: "25px", md: "30px" }}
+              titleFontSize={{ xs: "20px", md: "30px" }}
               fontWeight={500}
               title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
