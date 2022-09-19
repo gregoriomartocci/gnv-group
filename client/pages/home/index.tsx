@@ -258,11 +258,11 @@ const Home = () => {
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0 }}
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              titleFontSize="30px"
+              titleFontSize={{ sx: "25px", md: "30px" }}
               fontWeight={500}
               title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
@@ -282,8 +282,10 @@ const Home = () => {
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0 }}
             variants={FadeFromBottom}
+            drag="x"
+            dragConstraints={CountersRef}
           >
             <Counters
               data={data}
