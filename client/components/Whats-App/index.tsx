@@ -24,7 +24,7 @@ const WhatsApp = ({ number }: IWhatsApp) => {
             backgroundColor: "#25d366",
             color: "#FFF",
             borderRadius: "50%",
-            zIndex: 100,
+            zIndex: 5000,
           }}
         >
           <WhatsAppIcon sx={{ fontSize: "30px" }} />

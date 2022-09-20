@@ -66,7 +66,7 @@ const licences = [
     ],
     description:
       "Desarrollado por GNV y diseñado por el estudio de arquitectura Gómez Platero. el proyecto incluirá 80 elegantes habitaciones de hotel de última generación y 150 residencias, en dos torres estilo SLS que contarán con diseño de vanguardia, arte contemporáneo y detalles de lujo.",
-    width: "600px",
+    width: "100%",
   },
   {
     img: [

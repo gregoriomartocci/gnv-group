@@ -225,19 +225,13 @@ const Timeline = () => {
               display: "flex",
               flexDirection: {
                 xs: "column",
-                sm: "column",
                 md: "row",
               },
               justifyContent: "center",
               alignItems: "center",
-              width: {
-                xs: "100%",
-                sm: "100%",
-                md: "100%",
-              },
+              width: "100%",
               height: {
                 xs: "100%",
-                sm: "100%",
                 md: "70vh",
               },
             }}
@@ -269,11 +263,13 @@ const Timeline = () => {
                     <Box
                       sx={{
                         display: "flex",
-                        flexDirection: "column",
+                        flexDirection: {
+                          xs: "row",
+                          md: "column",
+                        },
                         padding: "30px 25px",
                         width: {
                           xs: "100%",
-                          sm: "100%",
                           md: "100px",
                         },
                         height: "100%",
@@ -288,15 +284,12 @@ const Timeline = () => {
                         },
                         borderTop: {
                           xs: "1px solid #eeeeee",
-                          sm: "1px solid #eeeeee",
                           md: "none",
                         },
                         borderBottom: {
                           xs: "1px solid #eeeeee",
-                          sm: "1px solid #eeeeee",
                           md: "none",
                         },
-
                         zIndex: 100,
                       }}
                       component="span"
@@ -307,10 +300,7 @@ const Timeline = () => {
                         sx={{
                           width: {
                             xs: "100%",
-                            sm: "100%",
                             md: "max-content",
-                            lg: "max-content",
-                            xl: "max-content",
                           },
                         }}
                       >
@@ -322,10 +312,7 @@ const Timeline = () => {
                             color: "#bdbdbd",
                             transform: {
                               xs: "",
-                              sm: "",
                               md: "rotate(-90deg)",
-                              lg: "rotate(-90deg)",
-                              xl: "rotate(-90deg)",
                             },
                           }}
                         >

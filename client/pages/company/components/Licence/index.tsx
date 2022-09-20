@@ -13,7 +13,7 @@ const Licence = ({ img, description, width }: TDemo) => {
         flexDirection: "column",
         cursor: "pointer",
         fontFamily: "'Poppins', sans-serif",
-        width: "50%",
+        width: { xs: "100%", lg: "50%" },
         height: "100%",
         overflow: "hidden",
       }}
@@ -26,18 +26,21 @@ const Licence = ({ img, description, width }: TDemo) => {
           userSelect: "none",
           flexDirection: "column",
           alignItems: "center",
-          padding: "25px 50px",
+          padding: "25px 7.5%",
           color: "#212121",
           fontFamily: "'Poppins', sans-serif",
         }}
       >
         <Box
-          style={{
+          sx={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
+            justifyContent: "center",
             fontSize: "18px",
+            width: "100%",
+            flexDirection: { xs: "column", sm: "row" },
             margin: "5px 0",
-            padding: "0 0 25px 0",
+            padding: "0 0 25 px 0",
           }}
         >
           {img &&

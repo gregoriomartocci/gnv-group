@@ -8,7 +8,7 @@ type ILogo = {
 };
 
 const Svg = ({ color, width, height, children }: ILogo) => (
-  <svg width={width ? width : ""} height={height}>
+  <svg width="100%" height={height}>
     <g fill={color ?? "#212121"}>{children}</g>
   </svg>
 );
