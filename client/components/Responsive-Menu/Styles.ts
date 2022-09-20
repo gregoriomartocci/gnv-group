@@ -4,8 +4,11 @@ import zIndex from "@mui/material/styles/zIndex";
 export const DropdownContainer: SxProps<Theme> = {
   position: "absolute",
   right: 0,
-  display: "grid",
-  alignItems: "center",
+  display: "flex",
+  padding: "50px 0",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  alignItems: "flex-end",
   height: "80vh",
   pointerEvents: "auto",
   width: "80vw",
@@ -37,16 +40,17 @@ export const DropdownMenu: SxProps<Theme> = {
   alignItems: "flex-end",
   textAlign: "right",
   marginBottom: "30px",
+  padding: "35px 0 0 0",
   fontFamily: "'Montserrat', sans-serif",
 };
 
 export const DropdownLink: SxProps<Theme> = {
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "flex-end",
-  padding: "25px 10%",
-  color: "#424242",
-  fontSize: "22px",
+  padding: "15px 50px",
+  color: "#212121",
+  fontSize: {xs:"19px", md:"22px"},
   width: "100%",
   textDecoration: "none",
   transition: "0.2s ease-in-out",
@@ -59,9 +63,6 @@ export const DropdownLink: SxProps<Theme> = {
 };
 
 export const CloseResponsiveMenu: SxProps<Theme> = {
-  position: "absolute",
-  top: "40px",
-  right: "40px",
   fontSize: "30px",
   cursor: "pointer",
   display: "flex",

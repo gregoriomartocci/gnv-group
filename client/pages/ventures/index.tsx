@@ -154,7 +154,7 @@ const VenturesLayout = () => {
         </Box>
       </Box>
 
-      <Box sx={{ padding: "10px 5% 0 5%" }}>
+      <Box sx={{ padding: "10px 7.5% 0 7.55%" }}>
         <Ventures />
       </Box>
       <Footer />

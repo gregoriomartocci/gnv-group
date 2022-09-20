@@ -8,9 +8,10 @@ import {
   DropdownMenu,
 } from "./Styles";
 import CloseIcon from "@mui/icons-material/Close";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import Link from "next/link";
 import useWindowDimensions from "../../hooks/ScreenSize";
+import Logo from "../Logo";
 
 export const menuData = [
   { title: "Compañia", link: "/company" },
@@ -56,23 +57,35 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
               transition: "all 1s ease",
             }}
           >
-            <IconButton
-              sx={CloseResponsiveMenu}
-              onClick={Toggle}
-              aria-label="delete"
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-            <Box sx={DropdownMenu}>
-              {menuData?.map((item: ImenuData, index: number): any => {
-                return (
-                  <Box sx={DropdownLink}>
-                    <Link href={item?.link}>
-                      <a>{item?.title}</a>
-                    </Link>
-                  </Box>
-                );
-              })}
+            <Box sx={{ width: "100%" }}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end", padding: "0 40px" }}>
+                <IconButton
+                  sx={CloseResponsiveMenu}
+                  onClick={Toggle}
+                  aria-label="delete"
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              </Box>
+              <Box sx={DropdownMenu}>
+                {menuData?.map((item: ImenuData, index: number): any => {
+                  return (
+                    <Box sx={DropdownLink}>
+                      <Link href={item?.link}>
+                        <a>{item?.title}</a>
+                      </Link>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "flex-end", padding: "15px 50px", width: "100%" }}>
+              <Logo
+                color="#212121"
+                width="125px"
+              />
+
             </Box>
           </Box>
         </Box>
