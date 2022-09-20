@@ -199,153 +199,156 @@ const Timeline = () => {
   const [ventures, setVentures] = useState(data);
   const { height, width } = useWindowDimensions();
 
+  const carouselRef = useRef(null)
   const handleClick = (index: number) => {
     setSelected(index);
   };
 
   return (
-    <Box
-      sx={{
-        overflow: {
-          md: "hidden",
-        },
-      }}
-    >
-      <motion.div
-        drag={`${width > 900 ? "x" : ""}`}
-        className="scroller"
-        dragConstraints={{ left: -1120, right: 0 }}
-        whileTap={{ cursor: "grabbing" }}
+    <Box sx={{ padding: { sx: "0", md: "0 5%" } }} >
+      <Box
+        sx={{
+          display: { sx: "column", md: " flex" },
+          overflow: {
+            md: "hidden",
+          },
+          width: "100%",
+          height: "100%",
+        }}
+        ref={carouselRef}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: {
-              xs: "column",
-              sm: "column",
-              md: "row",
-            },
-            justifyContent: "center",
-            alignItems: "center",
-            width: {
-              xs: "100%",
-              sm: "100%",
-              md: "100vw",
-            },
-            height: {
-              xs: "100%",
-              sm: "100%",
-              md: "70vh",
-            },
-          }}
-        >
-          {ventures?.map(({ year, highlights }, index) => {
-            return (
-              <motion.div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  width: "100%",
-                  height: "100%",
-                  cursor: "grab",
-                }}
-              >
-                {selected === index ? (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      width: "100%",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Carousel items={highlights ?? []} />
-                  </Box>
-                ) : (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      padding: "30px 25px",
-                      width: {
-                        xs: "100%",
-                        sm: "100%",
-                        md: "100px",
-                      },
-                      height: "100%",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      backgroundColor: "#fff",
-                      borderLeft: {
-                        md: "1px solid #eeeeee",
-                      },
-                      borderRight: {
-                        md: "1px solid #eeeeee",
-                      },
-                      borderTop: {
-                        xs: "1px solid #eeeeee",
-                        sm: "1px solid #eeeeee",
-                        md: "none",
-                      },
-                      borderBottom: {
-                        xs: "1px solid #eeeeee",
-                        sm: "1px solid #eeeeee",
-                        md: "none",
-                      },
+        <motion.div drag={`${width > 900 ? "x" : ""}`} dragConstraints={carouselRef}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: {
+                xs: "column",
+                sm: "column",
+                md: "row",
+              },
+              justifyContent: "center",
+              alignItems: "center",
+              width: {
+                xs: "100%",
+                sm: "100%",
+                md: "100%",
+              },
+              height: {
+                xs: "100%",
+                sm: "100%",
+                md: "70vh",
+              },
+            }}
 
-                      zIndex: 100,
-                    }}
-                    component="span"
-                    onClick={() => handleClick(index)}
-                  >
-                    <Box />
+          >
+            {ventures?.map(({ year, highlights }, index) => {
+              return (
+                <Box
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                    cursor: "grab",
+                  }}
+                >
+                  {selected === index ? (
                     <Box
                       sx={{
+                        display: "flex",
+                        width: "100%",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Carousel items={highlights ?? []} />
+                    </Box>
+                  ) : (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "30px 25px",
                         width: {
                           xs: "100%",
                           sm: "100%",
-                          md: "max-content",
-                          lg: "max-content",
-                          xl: "max-content",
+                          md: "100px",
                         },
+                        height: "100%",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        backgroundColor: "#fff",
+                        borderLeft: {
+                          md: "1px solid #eeeeee",
+                        },
+                        borderRight: {
+                          md: "1px solid #eeeeee",
+                        },
+                        borderTop: {
+                          xs: "1px solid #eeeeee",
+                          sm: "1px solid #eeeeee",
+                          md: "none",
+                        },
+                        borderBottom: {
+                          xs: "1px solid #eeeeee",
+                          sm: "1px solid #eeeeee",
+                          md: "none",
+                        },
+
+                        zIndex: 100,
                       }}
+                      component="span"
+                      onClick={() => handleClick(index)}
                     >
-                      <Typography
+                      <Box />
+                      <Box
                         sx={{
-                          fontFamily: "'Poppins', sans-serif",
-                          fontWeight: 600,
-                          fontSize: "20px",
-                          color: "#bdbdbd",
-                          transform: {
-                            xs: "",
-                            sm: "",
-                            md: "rotate(-90deg)",
-                            lg: "rotate(-90deg)",
-                            xl: "rotate(-90deg)",
+                          width: {
+                            xs: "100%",
+                            sm: "100%",
+                            md: "max-content",
+                            lg: "max-content",
+                            xl: "max-content",
                           },
                         }}
                       >
-                        {year}
-                      </Typography>
-                    </Box>
+                        <Typography
+                          sx={{
+                            fontFamily: "'Poppins', sans-serif",
+                            fontWeight: 600,
+                            fontSize: "20px",
+                            color: "#bdbdbd",
+                            transform: {
+                              xs: "",
+                              sm: "",
+                              md: "rotate(-90deg)",
+                              lg: "rotate(-90deg)",
+                              xl: "rotate(-90deg)",
+                            },
+                          }}
+                        >
+                          {year}
+                        </Typography>
+                      </Box>
 
-                    <Box
-                      sx={{
-                        color: "#BCBCBC",
-                      }}
-                    >
-                      <FiberManualRecordIcon
-                        sx={{ fontSize: "16px", color: "#e0e0e0" }}
-                      />
+                      <Box
+                        sx={{
+                          color: "#BCBCBC",
+                        }}
+                      >
+                        <FiberManualRecordIcon
+                          sx={{ fontSize: "16px", color: "#e0e0e0" }}
+                        />
+                      </Box>
                     </Box>
-                  </Box>
-                )}
-              </motion.div>
-            );
-          })}
-        </Box>
-      </motion.div>
-    </Box>
+                  )}
+                </Box>
+              );
+            })}
+          </Box>
+        </motion.div>
+      </Box>
+    </Box >
   );
 };
 
