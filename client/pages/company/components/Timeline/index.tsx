@@ -219,11 +219,7 @@ const Timeline = () => {
         }}
         ref={carouselRef}
       >
-        <motion.div animate={{
-          x: sm && 0,
-          y: sm && 0,
-
-        }} drag={`${width && width > 900 ? "x" : ""}`} dragConstraints={carouselRef}>
+        <motion.div animate={{ x: sm && 0 }} drag={`${width && width > 900 ? "x" : ""}`} dragConstraints={carouselRef}>
           <Box
             sx={{
               display: "flex",
