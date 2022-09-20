@@ -46,7 +46,7 @@ const Licence = ({ img, description, width }: TDemo) => {
           {img &&
             img?.map((element) => {
               return (
-                <Box sx={{ margin: "0 0 0 -15px" }}>
+                <Box sx={{ width: "100%", margin: "0 0 0 -15px" }}>
                   <Svg width={width}>{element}</Svg>
                 </Box>
               );
