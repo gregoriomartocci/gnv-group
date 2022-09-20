@@ -24,6 +24,7 @@ import InputGroup from "../../components/Input";
 import Form from "./Components/Form";
 import UseButton from "../../components/Button";
 import UseTabs from "../../components/Tabs";
+import useWindowDimensions from "../../hooks/ScreenSize";
 
 export type TDemo = {
   img: string;
@@ -36,12 +37,17 @@ const Home = () => {
   const [value, setValue] = useState({});
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
-  const CountersRef = useRef();
   const [tab, setTab] = useState<number>(0);
   const tabsOptions = ["GNV en Argentina", "GNV en Uruguay"];
 
   const google_api = typeof window && process.env.NEXT_MAPS;
   const google_center = { lat: 48.8584, lng: 2.2945 };
+
+  const CountersRef = useRef(null);
+  const containerRef = useRef(null);
+
+  const { height, width } = useWindowDimensions();
+  const sm = width && width < 900;
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
@@ -243,7 +249,7 @@ const Home = () => {
           justifyContent: "center",
           width: "100vw",
           minHeight: "100vh",
-          padding: "5%",
+          padding: "15%",
         }}
       >
         <Box
@@ -252,7 +258,7 @@ const Home = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            padding: "10% 5% 0 5%",
+            padding: "10% 0",
           }}
         >
           <motion.div
@@ -268,31 +274,30 @@ const Home = () => {
             />
           </motion.div>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            padding: "10% 0 7.5% 0",
-            height: "100%",
-            width: "100%",
-          }}
-          ref={CountersRef}
-        >
-          <motion.div
-            initial={"offscreen"}
-            whileInView={"onscreen"}
-            viewport={{ once: false, amount: 0 }}
-            variants={FadeFromBottom}
-            drag="x"
-            dragConstraints={CountersRef}
+        <Box sx={{ width: { xs: "200px", sm: "200px", md: "100%" } }}>
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              padding: "10%",
+            }}
+            ref={CountersRef}
           >
-            <Counters
-              data={data}
-              counterSize={35}
-              countersRef={countersVisible}
-            />
-          </motion.div>
+            <motion.div
+              dragConstraints={CountersRef}
+              initial={"offscreen"}
+              whileInView={"onscreen"}
+              viewport={{ once: false, amount: 0 }}
+              drag="x"
+            >
+              <Counters
+                data={data}
+                counterSize={35}
+                countersRef={countersVisible}
+              />
+            </motion.div>
+          </Box>
         </Box>
       </Box>
       <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>

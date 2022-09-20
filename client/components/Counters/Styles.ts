@@ -3,7 +3,8 @@ import { SxProps, Theme } from "@mui/material";
 export const CounterBlock: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
-  height:"80px",
+  height: "80px",
+  width: "200px",
   fontFamily: "'Poppins', sans-serif",
   justifyContent: "center",
   alignItems: "center",

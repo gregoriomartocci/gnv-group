@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { CounterBlock } from "./Styles";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import useWindowDimensions from "../../hooks/ScreenSize";
 
 const DynamicCounter = dynamic(() => import("./Dynamic-Counter"), {
   ssr: false,
@@ -20,13 +22,10 @@ export type ICounter = {
 };
 
 const Counters = ({ data, counterSize, countersRef }: ICounter) => {
-
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(5,1fr)",
-        padding: "0 10%",
+        display: "flex",
         width: "100%",
         justifyContent: "center",
         alignItems: "center",

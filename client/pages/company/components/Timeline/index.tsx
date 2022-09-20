@@ -199,15 +199,15 @@ const Timeline = () => {
   const [ventures, setVentures] = useState(data);
   const { height, width } = useWindowDimensions();
 
-  const carouselRef = useRef(null)
+  const carouselRef = useRef(null);
   const handleClick = (index: number) => {
     setSelected(index);
   };
 
-  const sm = width && width < 900
+  const sm = width && width < 900;
 
   return (
-    <Box sx={{ padding: { sx: "0", md: "0 5%" } }} >
+    <Box sx={{ padding: { sx: "0", md: "0 5%" } }}>
       <Box
         sx={{
           display: { sx: "column", md: " flex" },
@@ -219,7 +219,11 @@ const Timeline = () => {
         }}
         ref={carouselRef}
       >
-        <motion.div animate={{ x: sm && 0 }} drag={`${width && width > 900 ? "x" : ""}`} dragConstraints={carouselRef}>
+        <motion.div
+          animate={{ x: sm && 0 }}
+          drag={`${width && width > 900 ? "x" : ""}`}
+          dragConstraints={carouselRef}
+        >
           <Box
             sx={{
               display: "flex",
@@ -235,7 +239,6 @@ const Timeline = () => {
                 md: "70vh",
               },
             }}
-
           >
             {ventures?.map(({ year, highlights }, index) => {
               return (
@@ -337,7 +340,7 @@ const Timeline = () => {
           </Box>
         </motion.div>
       </Box>
-    </Box >
+    </Box>
   );
 };
 
