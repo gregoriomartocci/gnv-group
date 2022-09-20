@@ -204,6 +204,8 @@ const Timeline = () => {
     setSelected(index);
   };
 
+  const sm = width && width < 900
+
   return (
     <Box sx={{ padding: { sx: "0", md: "0 5%" } }} >
       <Box
@@ -217,7 +219,11 @@ const Timeline = () => {
         }}
         ref={carouselRef}
       >
-        <motion.div drag={`${width > 900 ? "x" : ""}`} dragConstraints={carouselRef}>
+        <motion.div animate={{
+          x: sm && 0,
+          y: sm && 0,
+
+        }} drag={`${width && width > 900 ? "x" : ""}`} dragConstraints={carouselRef}>
           <Box
             sx={{
               display: "flex",
