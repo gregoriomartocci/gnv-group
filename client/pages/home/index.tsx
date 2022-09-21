@@ -274,10 +274,16 @@ const Home = () => {
             />
           </motion.div>
         </Box>
-        <Box sx={{ width: { xs: "200px", sm: "200px", md: "100%" } }}>
+        <Box
+          sx={{
+            display: "flex",
+            width: { xs: "200px", md: "200px", lg: "100%" },
+          }}
+        >
           <Box
             sx={{
               display: "flex",
+              justifyContent: { xs: "", md: "", lg: "center" },
               width: "100%",
               height: "100%",
               padding: "10%",
