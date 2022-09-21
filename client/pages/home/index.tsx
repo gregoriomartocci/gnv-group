@@ -249,7 +249,7 @@ const Home = () => {
           justifyContent: "center",
           width: "100vw",
           minHeight: "100vh",
-          padding: "15%",
+          padding: "10%",
         }}
       >
         <Box
@@ -283,10 +283,10 @@ const Home = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: { xs: "", md: "", lg: "center" },
+              justifyContent: { xs: "none", md: "center" },
               width: "100%",
               height: "100%",
-              padding: "10%",
+              padding: "0 10%",
             }}
             ref={CountersRef}
           >
@@ -296,6 +296,7 @@ const Home = () => {
               whileInView={"onscreen"}
               viewport={{ once: false, amount: 0 }}
               drag="x"
+              animate={{ x: !sm && 0 }}
             >
               <Counters
                 data={data}
