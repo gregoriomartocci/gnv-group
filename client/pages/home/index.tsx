@@ -249,7 +249,7 @@ const Home = () => {
           justifyContent: "center",
           width: "100vw",
           minHeight: "100vh",
-          padding: "10%",
+          padding: "7.5%",
         }}
       >
         <Box
@@ -258,7 +258,7 @@ const Home = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            padding: "10% 0",
+            padding: "5% 0",
           }}
         >
           <motion.div
@@ -268,7 +268,8 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              titleFontSize={{ xs: "20px", md: "30px" }}
+              P={{ md: "0 10%" }}
+              titleFontSize={{ xs: "25px", md: "28px" }}
               fontWeight={500}
               title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
