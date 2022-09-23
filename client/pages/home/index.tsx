@@ -296,7 +296,7 @@ const Home = () => {
               initial={"offscreen"}
               whileInView={"onscreen"}
               viewport={{ once: false, amount: 0 }}
-              drag={sm ? "x" : ""}
+              drag={sm ? "x" : false}
               animate={{ x: !sm && 0 }}
             >
               <Counters
