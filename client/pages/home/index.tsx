@@ -297,7 +297,7 @@ const Home = () => {
               whileInView={"onscreen"}
               viewport={{ once: false, amount: 0 }}
               drag={sm ? "x" : false}
-              animate={{ x: !sm && 0 }}
+              animate={!sm ? { x: 0 } : false}
             >
               <Counters
                 data={data}
