@@ -220,7 +220,7 @@ const Timeline = () => {
         ref={carouselRef}
       >
         <motion.div
-          animate={sm ? { x: 0 } : false}
+          animate={{ x: sm && 0 }}
           drag={width && width > 900 ? "x" : false}
           dragConstraints={carouselRef}
         >
@@ -260,7 +260,7 @@ const Timeline = () => {
                         alignItems: "center",
                       }}
                     >
-                      <Carousel items={highlights ?? []} />
+                      <Carousel items={highlights ?? []} year={year} />
                     </Box>
                   ) : (
                     <Box

@@ -33,9 +33,11 @@ export interface IDropdownProps {
 const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
   const { height, width } = useWindowDimensions();
 
+  const sm = width ? width < 768 : false;
+
   return (
     <Fragment>
-      {width < 900 ? (
+      {sm ? (
         <Box
           sx={{
             display: "flex",
@@ -58,7 +60,13 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
             }}
           >
             <Box sx={{ width: "100%" }}>
-              <Box sx={{ display: "flex", justifyContent: "flex-end", padding: "0 40px" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  padding: "0 40px",
+                }}
+              >
                 <IconButton
                   sx={CloseResponsiveMenu}
                   onClick={Toggle}
@@ -80,12 +88,15 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
               </Box>
             </Box>
 
-            <Box sx={{ display: "flex", justifyContent: "flex-end", padding: "15px 50px", width: "100%" }}>
-              <Logo
-                color="#212121"
-                width="125px"
-              />
-
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                padding: "15px 50px",
+                width: "100%",
+              }}
+            >
+              <Logo color="#212121" width="125px" />
             </Box>
           </Box>
         </Box>

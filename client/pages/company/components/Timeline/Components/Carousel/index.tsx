@@ -5,28 +5,35 @@ import { Box, Typography } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { SxProps, Theme } from "@mui/material";
-
-const CardContainer: SxProps<Theme> = {
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  width: "275px",
-  backgroundColor: "#fff",
-  borderRadius: "15px",
-  cursor: "pointer",
-  fontFamily: "'Poppins', sans-serif",
-  fontSize: "20px",
-  boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
-  padding: "10px",
-  margin: "-80px",
-};
+import useWindowDimensions from "../../../../../../hooks/ScreenSize";
 
 type ICarousel = {
   items: any[];
+  year: string;
 };
 
-function Carousel({ items }: ICarousel) {
+function Carousel({ items, year }: ICarousel) {
   const [position, positionSet] = useState(0);
+  const { height, width } = useWindowDimensions();
+
+  const xs = width ? width < 600 : false;
+  const sm = width ? width < 700 : false;
+  const md = width ? width < 1024 : false;
+
+  const CardContainer = {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    width: xs ? "215px" : sm ? "250px" : "275px",
+    backgroundColor: "#fff",
+    borderRadius: "15px",
+    cursor: "pointer",
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: "20px",
+    boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
+    padding: "10px",
+    margin:  sm ? "-75px" : "-80px",
+  };
 
   const slides = [0, 2, 3, 4];
   const transition = { duration: 0.25, ease: "easeInOut" };
@@ -67,176 +74,193 @@ function Carousel({ items }: ICarousel) {
     <Box
       sx={{
         display: "flex",
-        position: "relative",
-        justifyContent: "space-between",
+        flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center",
-        height: { xs: "500px", md: "100%" },
-        width: { xs: "100%", md: "700px" },
-        cursor: "pointer",
-        backgroundColor: "#ffffff",
-        padding: {
-          xs: "25% 0",
-          sm: "25% 0",
-          md: "10% 0",
-        },
+        width: "100%",
       }}
     >
+      <Box sx={{ display: "flex", padding: "50px 0 0 0" }}>
+        <Typography
+          sx={{ fontSize: "26px", color: "#bdbdbd", fontWeight: 600 }}
+        >
+          {year}
+        </Typography>
+      </Box>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
+          position: "relative",
+          justifyContent: "space-between",
           alignItems: "center",
-          padding: "12.5px",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#ffffff",
+          height: { xs: "100%", md: "100%" },
+          minHeight: { xs: "500px", md: "100%" },
+          width: { xs: "100%", md: "700px" },
           cursor: "pointer",
-          borderRadius: "10px",
-          textAlign: "center",
-          zIndex: 1000,
-          width: "50px",
-          height: "50px",
-          margin: {
-            xs: "0 10px",
-            sm: "0 15px",
-            md: "0 50px",
+          backgroundColor: "#ffffff",
+          padding: {
+            xs: "25% 0",
+            sm: "25% 0",
+            md: "10% 0",
           },
-          transform: "rotate(180deg)",
         }}
-        onClick={onLeft}
-        component="span"
       >
-        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
-      </Box>
-
-      <AnimatePresence>
-        <motion.div
-          style={{
+        <Box
+          sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            width: "100%",
-            height: "100%",
+            padding: "12.5px",
+            border: "1px solid #e0e0e0",
+            backgroundColor: "#ffffff",
+            cursor: "pointer",
+            borderRadius: "10px",
+            textAlign: "center",
+            zIndex: 1000,
+            width: "50px",
+            height: "50px",
+            margin: {
+              xs: "0 10px",
+              sm: "0 15px",
+              md: "0 50px",
+            },
+            transform: "rotate(180deg)",
           }}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          layout
-          variants={venturesVariants}
+          onClick={onLeft}
+          component="span"
         >
-          {items?.map(({ title, description, img, date }, index) => {
-            return difference(position, index) > 1 ? null : (
-              <motion.div
-                layout
-                style={CardContainer}
-                key={index}
-                initial={{
-                  scale: 1 - 0.25 * difference(position, index),
-                }}
-                animate={{
-                  scale: 1 - 0.25 * difference(position, index),
-                  zIndex:
-                    index === position
-                      ? 100
-                      : 1 - 0.4 * difference(position, index),
-                  opacity:
-                    index === position
-                      ? 1
-                      : 1 - 0.4 * difference(position, index),
-                  transition,
-                }}
-                onClick={() => positionSet(index)}
-              >
-                {img && img !== "" ? (
-                  <img
-                    style={{
-                      objectFit: "cover",
-                      width: "100%",
-                      borderRadius: "10px",
-                    }}
-                    src={img}
-                    alt="title"
-                  />
-                ) : null}
+          <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        </Box>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
+        <AnimatePresence>
+          <motion.div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+            }}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            layout
+            variants={venturesVariants}
+          >
+            {items?.map(({ title, description, img, date }, index) => {
+              return difference(position, index) > 1 ? null : (
+                <motion.div
+                  layout
+                  style={CardContainer}
+                  key={index}
+                  initial={{
+                    scale: 1 - 0.25 * difference(position, index),
                   }}
+                  animate={{
+                    scale: 1 - 0.25 * difference(position, index),
+                    zIndex:
+                      index === position
+                        ? 100
+                        : 1 - 0.4 * difference(position, index),
+                    opacity:
+                      index === position
+                        ? 1
+                        : 1 - 0.4 * difference(position, index),
+                    transition,
+                  }}
+                  onClick={() => positionSet(index)}
                 >
+                  {img && img !== "" ? (
+                    <img
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        borderRadius: "10px",
+                      }}
+                      src={img}
+                      alt="title"
+                    />
+                  ) : null}
                   <Box
                     sx={{
-                      width: "100%",
                       display: "flex",
-                      textAlign: "center",
+                      flexDirection: "column",
                       justifyContent: "center",
                       alignItems: "center",
-                      padding: "20px 0 0 0",
-                      fontSize: "12px",
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: "24px",
-                        fontWeight: 600,
+                        width: "100%",
+                        display: "flex",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: "20px 0 0 0",
+                        fontSize: "12px",
                       }}
                     >
-                      {title}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      width: "100%",
-                      display: "flex",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: "20px 10px",
-                    }}
-                  >
-                    <Typography
+                      <Typography
+                        sx={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: "24px",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {title}
+                      </Typography>
+                    </Box>
+                    <Box
                       sx={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: "14px",
+                        width: "100%",
+                        display: "flex",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        padding: "20px 10px",
                       }}
                     >
-                      {description}
-                    </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: "14px",
+                        }}
+                      >
+                        {description}
+                      </Typography>
+                    </Box>
                   </Box>
-                </Box>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "12.5px",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#ffffff",
-          cursor: "pointer",
-          borderRadius: "10px",
-          textAlign: "center",
-          zIndex: 1000,
-          width: "50px",
-          height: "50px",
-          margin: {
-            xs: "0 10px",
-            sm: "0 15px",
-            md: "0 50px",
-          },
-        }}
-        component="span"
-        onClick={onRight}
-      >
-        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "12.5px",
+            border: "1px solid #e0e0e0",
+            backgroundColor: "#ffffff",
+            cursor: "pointer",
+            borderRadius: "10px",
+            textAlign: "center",
+            zIndex: 1000,
+            width: "50px",
+            height: "50px",
+            margin: {
+              xs: "0 10px",
+              sm: "0 15px",
+              md: "0 50px",
+            },
+          }}
+          component="span"
+          onClick={onRight}
+        >
+          <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        </Box>
       </Box>
     </Box>
   );
