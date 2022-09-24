@@ -24,7 +24,7 @@ function Carousel({ items, year }: ICarousel) {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: xs ? "215px" : sm ? "250px" : "275px",
+    width: xs ? "225px" : sm ? "250px" : "300px",
     backgroundColor: "#fff",
     borderRadius: "15px",
     cursor: "pointer",
@@ -32,7 +32,7 @@ function Carousel({ items, year }: ICarousel) {
     fontSize: "20px",
     boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
     padding: "10px",
-    margin:  sm ? "-75px" : "-80px",
+    margin: sm ? "-75px" : "-95px",
   };
 
   const slides = [0, 2, 3, 4];
@@ -80,9 +80,16 @@ function Carousel({ items, year }: ICarousel) {
         width: "100%",
       }}
     >
-      <Box sx={{ display: "flex", padding: "50px 0 0 0" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          padding: { xs: "50px 0 ", md: "0 0 100px 0" },
+        }}
+      >
         <Typography
-          sx={{ fontSize: "26px", color: "#bdbdbd", fontWeight: 600 }}
+          sx={{ fontSize: "24px", color: "#bdbdbd", fontWeight: 700 }}
         >
           {year}
         </Typography>
@@ -95,7 +102,7 @@ function Carousel({ items, year }: ICarousel) {
           alignItems: "center",
           height: { xs: "100%", md: "100%" },
           minHeight: { xs: "500px", md: "100%" },
-          width: { xs: "100%", md: "700px" },
+          minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
           padding: {
@@ -157,7 +164,7 @@ function Carousel({ items, year }: ICarousel) {
                     scale: 1 - 0.25 * difference(position, index),
                   }}
                   animate={{
-                    scale: 1 - 0.25 * difference(position, index),
+                    scale: 1 - 0.45 * difference(position, index),
                     zIndex:
                       index === position
                         ? 100
@@ -175,7 +182,9 @@ function Carousel({ items, year }: ICarousel) {
                       style={{
                         objectFit: "cover",
                         width: "100%",
+                        height: "100%",
                         borderRadius: "10px",
+                        maxHeight: "400px",
                       }}
                       src={img}
                       alt="title"
@@ -187,6 +196,7 @@ function Carousel({ items, year }: ICarousel) {
                       flexDirection: "column",
                       justifyContent: "center",
                       alignItems: "center",
+                      padding: "0 15px",
                     }}
                   >
                     <Box
@@ -203,7 +213,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: "24px",
+                          fontSize: { xs: "20px", md: "24px" },
                           fontWeight: 600,
                         }}
                       >
@@ -223,7 +233,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: "14px",
+                          fontSize: { xs: "16px", md: "18px" },
                         }}
                       >
                         {description}

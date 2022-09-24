@@ -236,7 +236,7 @@ const Timeline = () => {
               width: "100%",
               height: {
                 xs: "100%",
-                md: "70vh",
+                md: "80vh",
               },
             }}
           >
@@ -310,9 +310,9 @@ const Timeline = () => {
                         <Typography
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
-                            fontWeight: 600,
+                            fontWeight: 700,
                             fontSize: "20px",
-                            color: "#bdbdbd",
+                            color: "#e0e0e0",
                             transform: {
                               xs: "",
                               md: "rotate(-90deg)",
