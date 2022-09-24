@@ -39,7 +39,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
   const [tab, setTab] = useState<number>(1);
-  const tabsOptions = ["GNV en Argentina", "GNV en Uruguay"];
 
   const google_api = typeof window && process.env.NEXT_MAPS;
   const google_center = { lat: 48.8584, lng: 2.2945 };
@@ -48,13 +47,12 @@ const Home = () => {
   const containerRef = useRef(null);
 
   const { height, width } = useWindowDimensions();
+
   const sm = width && width < 900;
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
   });
-
-  console.log(countersVisible, "OKkkk???");
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -172,6 +170,19 @@ const Home = () => {
     request("templates", "get", {}, "", "templates", "");
   }, []);
 
+  // ANIMATIONS
+
+  const FadeFromBottom = {
+    offscreen: { y: 50, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 1.5 },
+    },
+  };
+
+  // MOCKDATA
+
   const data = [
     { number: 771190, description: "m² desarrollados" },
     { number: 107000, unity: "m²", description: "de inversión" },
@@ -207,15 +218,6 @@ const Home = () => {
     },
   ];
 
-  const FadeFromBottom = {
-    offscreen: { y: 50, opacity: 0 },
-    onscreen: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 1.5 },
-    },
-  };
-
   const slides = [
     {
       src: "https://res.cloudinary.com/gregomartocci/video/upload/v1661381763/qt7lymuixtepvnoufb9j.mp4",
@@ -232,6 +234,11 @@ const Home = () => {
       phrase:
         "Cada proyecto nuestro tiene la cualidad de ser único, singular e irrepetible.  Pretendemos lograr esculturas a gran escala que marquen hitos de diseño urbano",
     },
+  ];
+
+  const mapItems = [
+    { title: "GNV Argentina", id: 1, coordinates: [-34.6191721, -58.3606006] },
+    { title: "GNV Uruguay", id: 2, coordinates: [-34.9451061, -54.935135] },
   ];
 
   return (
@@ -298,7 +305,7 @@ const Home = () => {
               whileInView={"onscreen"}
               viewport={{ once: false, amount: 0 }}
               drag={sm ? "x" : false}
-              animate={!sm ? { x: 0 } : false}
+              animate={{ x: !sm && 0 }}
             >
               <Counters
                 data={data}
@@ -411,33 +418,10 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: { xs: "180px 10% 80px 10%", md: "180px 10% 135px 10%" },
+            padding: { xs: "180px 10% 80px 10%", md: "180px 10% 100px 10%" },
           }}
         >
-          {/* <UseTabs
-            value={tab}
-            setValue={setTab}
-            options={tabsOptions}
-            p="35px"
-            width="100%"
-            fontSize="34px"
-            fontWeight={600}
-            color="#212121"
-          /> */}
-
-          <UseTabs tab={tab} setTab={setTab} />
-          {/* <HeaderTitle
-            p="5%"
-            titleFontSize="34px"
-            descriptionFontSize="20px"
-            title="GNV en Argentina"
-          />
-          <HeaderTitle
-            p="5%"
-            titleFontSize="34px"
-            descriptionFontSize="20px"
-            title="GNV en Uruguay"
-          /> */}
+          <UseTabs items={mapItems} tab={tab} setTab={setTab} />
         </Box>
 
         {/* GOOGLE MAPS */}
@@ -449,32 +433,26 @@ const Home = () => {
             height: "100%",
           }}
         >
+          {/* GOOGLE MAPS */}
           <Box
             sx={{
               display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
               width: "100%",
-              height: "100%",
+              height: "700px",
             }}
           >
-            {/* GOOGLE MAPS */}
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                height: "600px",
-              }}
-            >
-              {isLoaded && (
-                <GoogleMap
-                  center={google_center}
-                  zoom={15}
-                  mapContainerStyle={{ width: "100%", height: "100%" }}
-                ></GoogleMap>
-              )}
-            </Box>
+            {isLoaded && (
+              <GoogleMap
+                center={google_center}
+                zoom={15}
+                mapContainerStyle={{ width: "100%", height: "100%" }}
+              >
+                {/* {mapItems.map(() => {
+
+
+                    })} */}
+              </GoogleMap>
+            )}
           </Box>
         </Box>
       </Box>

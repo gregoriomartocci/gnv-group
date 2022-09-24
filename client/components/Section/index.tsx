@@ -12,7 +12,7 @@ import {
 
 export interface ISectionProps {
   title?: any;
-  paragraph: string;
+  paragraph?: string;
   image: string;
   quote?: string;
   reverse?: boolean;
