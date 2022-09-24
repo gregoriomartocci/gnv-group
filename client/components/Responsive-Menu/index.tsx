@@ -34,6 +34,7 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
   const { height, width } = useWindowDimensions();
 
   const sm = width ? width < 768 : false;
+  // const sm = false;
 
   return (
     <Fragment>

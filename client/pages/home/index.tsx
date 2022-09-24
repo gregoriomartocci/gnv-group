@@ -23,8 +23,9 @@ import dynamic from "next/dynamic";
 import InputGroup from "../../components/Input";
 import Form from "./Components/Form";
 import UseButton from "../../components/Button";
-import UseTabs from "../../components/Tabs";
+
 import useWindowDimensions from "../../hooks/ScreenSize";
+import UseTabs from "./Components/Tabs";
 
 export type TDemo = {
   img: string;
@@ -37,7 +38,7 @@ const Home = () => {
   const [value, setValue] = useState({});
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
-  const [tab, setTab] = useState<number>(0);
+  const [tab, setTab] = useState<number>(1);
   const tabsOptions = ["GNV en Argentina", "GNV en Uruguay"];
 
   const google_api = typeof window && process.env.NEXT_MAPS;
@@ -410,10 +411,10 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: "180px 10% 130px 10%",
+            padding: { xs: "180px 10% 80px 10%", md: "180px 10% 135px 10%" },
           }}
         >
-          <UseTabs
+          {/* <UseTabs
             value={tab}
             setValue={setTab}
             options={tabsOptions}
@@ -422,8 +423,9 @@ const Home = () => {
             fontSize="34px"
             fontWeight={600}
             color="#212121"
-          />
+          /> */}
 
+          <UseTabs tab={tab} setTab={setTab} />
           {/* <HeaderTitle
             p="5%"
             titleFontSize="34px"
