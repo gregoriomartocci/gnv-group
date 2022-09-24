@@ -70,8 +70,8 @@ function Carousel({ items }: ICarousel) {
         position: "relative",
         justifyContent: "space-between",
         alignItems: "center",
-        height: "100%",
-        width: "100%",
+        height: { xs: "500px", md: "100%" },
+        width: { xs: "100%", md: "700px" },
         cursor: "pointer",
         backgroundColor: "#ffffff",
         padding: {
@@ -93,13 +93,14 @@ function Carousel({ items }: ICarousel) {
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 1000,
+          width: "50px",
+          height: "50px",
           margin: {
-            xs: "0 25px",
-            sm: "0 25px",
-            md: "0 100px",
+            xs: "0 10px",
+            sm: "0 15px",
+            md: "0 50px",
           },
           transform: "rotate(180deg)",
-          overflowX: "hidden",
         }}
         onClick={onLeft}
         component="span"
@@ -224,11 +225,12 @@ function Carousel({ items }: ICarousel) {
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 1000,
-          width: "10%",
+          width: "50px",
+          height: "50px",
           margin: {
-            xs: "0 25px",
-            sm: "0 25px",
-            md: "0 100px",
+            xs: "0 10px",
+            sm: "0 15px",
+            md: "0 50px",
           },
         }}
         component="span"
