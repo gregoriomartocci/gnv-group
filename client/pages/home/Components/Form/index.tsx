@@ -29,8 +29,13 @@ const Form = ({ value, setValue }: any) => {
     <Fragment>
       {value && (
         <Box sx={{ width: "100%" }}>
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ width: "100%", margin: "0 10px 0 0px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", row: "row" },
+            }}
+          >
+            <Box sx={{ width: "100%", margin: { xs: "", ms: "0 10px 0 0px" } }}>
               <InputGroup
                 label="Nombre"
                 name="name"
@@ -40,7 +45,7 @@ const Form = ({ value, setValue }: any) => {
                 description="Ingrese su nombre"
               />
             </Box>
-            <Box sx={{ width: "100%", margin: "0 0 0 10px" }}>
+            <Box sx={{ width: "100%", margin: { xs: "", ms: "0 10px 0 0px" } }}>
               <InputGroup
                 label="Email"
                 name="email"

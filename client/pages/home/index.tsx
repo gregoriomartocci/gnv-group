@@ -370,7 +370,7 @@ const Home = () => {
           alignItems: "center",
           minHeight: "100vh",
           width: "100%",
-          padding: "10%",
+          padding: { xs: "10% 15px", md: "10%" },
         }}
       >
         <HeaderTitle
