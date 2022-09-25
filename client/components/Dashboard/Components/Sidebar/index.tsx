@@ -7,6 +7,8 @@ import Link from "next/link";
 import ArticleIcon from "@mui/icons-material/Article";
 import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import PaletteIcon from '@mui/icons-material/Palette';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import Logo from "../../../Logo";
 
 const Sidebar = () => {
@@ -25,7 +27,7 @@ const Sidebar = () => {
           <a>
             {/* <Box sx={Logo}>GNV</Box> */}
 
-            <Logo theme={"light"} width="125px" />
+            <Logo color="#fff" width="125px" />
           </a>
         </Link>
       </Box>
@@ -71,6 +73,28 @@ const Sidebar = () => {
                   sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
                 />
                 <span>Usuarios</span>
+              </Box>
+            </a>
+          </Link>
+
+          <Link href={"/profile/gallery"}>
+            <a>
+              <Box sx={MenuItem}>
+                <PaletteIcon
+                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
+                />
+                <span>Galeria de Arte</span>
+              </Box>
+            </a>
+          </Link>
+
+          <Link href={"/profile/timeline"}>
+            <a>
+              <Box sx={MenuItem}>
+                <AccessTimeOutlinedIcon
+                  sx={{ margin: "0px 10px 0px 0px", fontSize: "20px" }}
+                />
+                <span>Linea del tiempo</span>
               </Box>
             </a>
           </Link>

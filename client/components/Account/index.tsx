@@ -17,11 +17,6 @@ const menuItems = {
       text: "Perfil",
       route: "/profile",
     },
-    {
-      icon: <SettingsIcon />,
-      text: "Ajustes",
-      route: "/settings",
-    },
   ],
   logout: [
     {
