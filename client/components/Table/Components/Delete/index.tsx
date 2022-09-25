@@ -6,12 +6,13 @@ import { IState } from "../../../Menu";
 import UseButton from "../../../Button";
 
 type TDeleteProps = {
+  title: string;
   deleteProject: any;
+  onClose: any;
 };
 
-const Delete = ({ deleteProject }: TDeleteProps) => {
+const Delete = ({ title, deleteProject, onClose }: TDeleteProps) => {
   const state = useSelector((state: IState) => state);
-
 
   const handleDelete = () => {
     deleteProject();
@@ -41,7 +42,7 @@ const Delete = ({ deleteProject }: TDeleteProps) => {
             color: "#1D2D3E",
           }}
         >
-          Eliminar {concept}
+          Eliminar {title}
         </span>
         <span
           style={{
@@ -60,17 +61,7 @@ const Delete = ({ deleteProject }: TDeleteProps) => {
               margin: "0 7.5px 0 0",
             }}
           >
-            <UseButton
-              type="Paper"
-              onClickHandler={() => {
-                stateHandler({
-                  method: "delete",
-                  payload: { modal: false },
-                  state,
-                  keep: true,
-                });
-              }}
-            >
+            <UseButton type="Paper" onClickHandler={() => onClose()}>
               Cancelar
             </UseButton>
           </Box>

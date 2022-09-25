@@ -25,7 +25,7 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-
+import ProjectForm from "./Components/Form";
 import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
 import form from "./Components/Form";
@@ -239,29 +239,33 @@ export type errorType = {
   message: any;
 };
 
+export type TProject = {
+  id: number;
+  name: string;
+  description: string;
+  images: never[];
+  link: string;
+  published: boolean;
+  status: string;
+  type: string;
+  date: string;
+};
+
 const Ventures = () => {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state?.projects);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
-  const state = useSelector((state) => state?.projects);
   const projectSelected = state?.projectSelected;
-  const [selectedProject, setSelectedProject] =
-    useState<boolean>(projectSelected);
+  const [input, setInput] = useState(state?.projectSelected);
+  const [selectedProject, setSelectedProject] = useState(projectSelected);
+
+  useEffect(() => {
+    setSelectedProject(projectSelected);
+  }, [projectSelected]);
+
   const { modal } = state;
-
-  const [input, setInput] = useState({
-    id: 1,
-    name: "",
-    description: "",
-    images: [],
-    link: "",
-    published: true,
-    status: "",
-    type: "",
-    date: "",
-  });
-
-  console.log("👾  ~ Ventures ~ state", state);
 
   const stateHandler = ({ method, payload, state, keep }) => {
     const update_state = {
@@ -372,13 +376,6 @@ const Ventures = () => {
     request("projects", "get", {}, "", "projects", "");
   }, []);
 
-  const onChangeHandler = (e: any) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const addImage = (file: any) => {
     setInput({ ...input, images: [...input.images, file] });
   };
@@ -388,7 +385,7 @@ const Ventures = () => {
   };
 
   const createContent = [
-    form({ input, setInput, onChangeHandler }),
+    form({ input, setInput }),
     <ImageUploader
       value={input?.images}
       addImage={addImage}
@@ -397,10 +394,14 @@ const Ventures = () => {
     <Editor value={input} setValue={setInput} />,
   ];
 
+  console.log(typeof setSelectedProject, "SELECTED PROJECT");
+  console.log(input, "INPUTTTT");
+  console.log(selectedProject, "sEelected");
+
   const updateContent = [
-    form({ selectedProject, setSelectedProject, onChangeHandler }),
+    <ProjectForm input={selectedProject} setInput={setSelectedProject} />,
     <ImageUploader
-      value={input?.images}
+      value={selectedProject?.id ? selectedProject.images : []}
       addImage={addImage}
       removeImage={removeImage}
     />,
@@ -489,39 +490,47 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        <Update
-          title="emprendimiento"
-          content={updateContent}
-          update={() => console.log("ok")}
-          // selector="projects"
-          // item="project"
-          // concept="emprendimiento"
-          // form={(props) => <Form {...props} />}
-          // stateHandler={stateHandler}
-          // update={() =>
-          //   request(
-          //     "update",
-          //     "post",
-          //     state?.update?.project,
-          //     state?.update?.api?.id,
-          //     "edit-project",
-          //     "El emprendimiento se ha eliminado con éxito"
-          //   )
-          // }
-        />
+        {selectedProject?.id ? (
+          <Update
+            title="emprendimiento"
+            content={updateContent}
+            update={() => console.log("ok")}
+            // update={() =>
+            //   request(
+            //     "update",
+            //     "post",
+            //     state?.update?.project,
+            //     state?.update?.api?.id,
+            //     "edit-project",
+            //     "El emprendimiento se ha eliminado con éxito"
+            //   )
+            // }
+          />
+        ) : null}
       </UseModal>
       <UseModal
-        open={state?.delete?.modal}
+        open={modal?.delete}
         handleClose={() => {
-          stateHandler({
-            method: "delete",
-            payload: { modal: false },
-            state,
-            keep: true,
-          });
+          dispatch(
+            setModal({
+              name: "delete",
+              value: false,
+            })
+          );
         }}
       >
-        <Delete deleteProject={() => console.log("deleting project")} />
+        <Delete
+          title="emprendimiento"
+          deleteProject={() => console.log("deleting project")}
+          onClose={() => {
+            dispatch(
+              setModal({
+                name: "delete",
+                value: false,
+              })
+            );
+          }}
+        />
       </UseModal>
     </Dashboard>
   );

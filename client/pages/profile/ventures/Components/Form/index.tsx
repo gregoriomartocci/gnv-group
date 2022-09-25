@@ -43,12 +43,18 @@ export type errorType = {
 
 export interface ICreateProps {
   input: any;
-  onChangeHandler: any;
   setInput: any;
 }
 
-const form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
+const ProyectForm = ({ input, setInput }: ICreateProps) => {
   const status = ["en desarrollo", "finalizado"];
+
+  const onChangeHandler = (e: any) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <Box>
@@ -57,7 +63,7 @@ const form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
         description="Ingrese el nombre del emprendimiento"
         label="Nombre"
         type="text"
-        value={input ? input?.name : ""}
+        value={input?.id ? input?.name : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -81,4 +87,4 @@ const form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
   );
 };
 
-export default form;
+export default ProyectForm;

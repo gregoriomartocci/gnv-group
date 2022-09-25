@@ -27,14 +27,15 @@ const BasicSelect = ({
   placeholder,
   filter,
 }: ISelect) => {
-  
+
   const handleChange = (event: SelectChangeEvent) => {
     setValue({ ...value, [name]: event.target.value });
     filter && filter(event.target.value);
   };
 
   React.useEffect(() => {
-    setValue({ ...value, [name]: placeholder });
+    typeof setValue === "function" &&
+      setValue({ ...value, [name]: placeholder });
   }, []);
 
   return (
@@ -51,7 +52,7 @@ const BasicSelect = ({
           {label}
         </span>
       ) : null}
-      <FormControl style={{ width }}  variant="outlined">
+      <FormControl style={{ width }} variant="outlined">
         <Select
           sx={{
             display: "flex",
@@ -74,7 +75,7 @@ const BasicSelect = ({
           }}
           value={value[name]}
           defaultValue={placeholder}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e)}
         >
           {options.map((element: string, index: number) => {
             {
