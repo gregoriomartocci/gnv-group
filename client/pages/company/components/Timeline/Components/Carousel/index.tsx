@@ -18,7 +18,9 @@ function Carousel({ items, year }: ICarousel) {
 
   const xs = width ? width < 600 : false;
   const sm = width ? width < 700 : false;
-  const md = width ? width < 1024 : false;
+  const md = width ? width > 1024 : false;
+
+  const onlyOneItem = items?.length === 1;
 
   const CardContainer = {
     position: "relative",
@@ -84,12 +86,12 @@ function Carousel({ items, year }: ICarousel) {
         sx={{
           display: "flex",
           justifyContent: "flex-start",
-          alignItems: "center",
-          padding: { xs: "50px 0 ", md: "0 0 100px 0" },
+          alignItems: "flex-start",
+          padding: { xs: "50px 0 ", md: "0 0 75px 0" },
         }}
       >
         <Typography
-          sx={{ fontSize: "24px", color: "#bdbdbd", fontWeight: 700 }}
+          sx={{ fontSize: "35px", color: "#bdbdbd", fontWeight: 700 }}
         >
           {year}
         </Typography>
@@ -112,32 +114,34 @@ function Carousel({ items, year }: ICarousel) {
           },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "12.5px",
-            border: "1px solid #e0e0e0",
-            backgroundColor: "#ffffff",
-            cursor: "pointer",
-            borderRadius: "10px",
-            textAlign: "center",
-            zIndex: 1000,
-            width: "50px",
-            height: "50px",
-            margin: {
-              xs: "0 10px",
-              sm: "0 15px",
-              md: "0 50px",
-            },
-            transform: "rotate(180deg)",
-          }}
-          onClick={onLeft}
-          component="span"
-        >
-          <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
-        </Box>
+        {!onlyOneItem ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "12.5px",
+              border: "1px solid #e0e0e0",
+              backgroundColor: "#ffffff",
+              cursor: "pointer",
+              borderRadius: "10px",
+              textAlign: "center",
+              zIndex: 1000,
+              width: "50px",
+              height: "50px",
+              margin: {
+                xs: "0 10px",
+                sm: "0 15px",
+                md: "0 50px",
+              },
+              transform: "rotate(180deg)",
+            }}
+            onClick={onLeft}
+            component="span"
+          >
+            <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+          </Box>
+        ) : null}
 
         <AnimatePresence>
           <motion.div
@@ -183,6 +187,7 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
+                        minHeight: md ? "350px" : "",
                         borderRadius: "10px",
                         maxHeight: "400px",
                       }}
@@ -246,31 +251,33 @@ function Carousel({ items, year }: ICarousel) {
           </motion.div>
         </AnimatePresence>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "12.5px",
-            border: "1px solid #e0e0e0",
-            backgroundColor: "#ffffff",
-            cursor: "pointer",
-            borderRadius: "10px",
-            textAlign: "center",
-            zIndex: 1000,
-            width: "50px",
-            height: "50px",
-            margin: {
-              xs: "0 10px",
-              sm: "0 15px",
-              md: "0 50px",
-            },
-          }}
-          component="span"
-          onClick={onRight}
-        >
-          <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
-        </Box>
+        {!onlyOneItem ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "12.5px",
+              border: "1px solid #e0e0e0",
+              backgroundColor: "#ffffff",
+              cursor: "pointer",
+              borderRadius: "10px",
+              textAlign: "center",
+              zIndex: 1000,
+              width: "50px",
+              height: "50px",
+              margin: {
+                xs: "0 10px",
+                sm: "0 15px",
+                md: "0 50px",
+              },
+            }}
+            component="span"
+            onClick={onRight}
+          >
+            <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );
