@@ -63,7 +63,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         description="Ingrese el nombre del emprendimiento"
         label="Nombre"
         type="text"
-        value={input?.id ? input?.name : ""}
+        value={input?.name ? input?.name : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup

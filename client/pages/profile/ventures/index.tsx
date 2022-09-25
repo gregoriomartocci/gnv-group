@@ -385,7 +385,7 @@ const Ventures = () => {
   };
 
   const createContent = [
-    form({ input, setInput }),
+    <ProjectForm input={input} setInput={setInput} />,
     <ImageUploader
       value={input?.images}
       addImage={addImage}
