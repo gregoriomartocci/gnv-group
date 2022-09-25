@@ -10,7 +10,7 @@ import Article from "../../components/Article";
 import { SwiperSlide } from "swiper/react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { errorType } from "../profile/articles";
+import { errorType } from "../profile/news";
 import api from "../../hooks/Api";
 import { IArticle, setArticles } from "../../redux/slices/articles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";

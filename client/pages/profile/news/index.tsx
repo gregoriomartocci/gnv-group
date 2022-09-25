@@ -261,7 +261,7 @@ export type errorType = {
   message: any;
 };
 
-const Articles = () => {
+const News = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ articles: "", message: "" });
@@ -526,4 +526,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default News;

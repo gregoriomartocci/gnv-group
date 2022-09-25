@@ -44,7 +44,7 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link href={"/profile/projects"}>
+          <Link href={"/profile/ventures"}>
             <a>
               <Box sx={MenuItem}>
                 <ApartmentIcon
