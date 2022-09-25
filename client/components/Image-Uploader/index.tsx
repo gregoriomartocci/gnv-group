@@ -90,6 +90,8 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
 
+  console.log(value, "OKKKKK");
+
   const schema = yup.object().shape({
     attachment: yup
       .mixed()
@@ -135,15 +137,6 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         const { name, size, type } = newFile;
         const image = { name, size, type, src: result };
 
-        // stateHandler({
-        //   method,
-        //   payload: {
-        //     [item]: { ...value, images: [...value?.images, image] },
-        //   },
-        //   state,
-        //   keep: true,
-        // });
-
         addImage(image);
       })
       .catch(({ errors }: any) => {
@@ -153,9 +146,9 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
 
   // Remove Image
   const fileRemove = (number: number) => {
-    console.log(value, "ANTES")
+    console.log(value, "ANTES");
     const update = value?.filter((_, index) => index !== number);
-    console.log(value, "DESPUES")
+    console.log(value, "DESPUES");
     removeImage(update);
   };
 
@@ -234,7 +227,7 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
             <Box key={index} sx={dropFilePreviewItem}>
               <Box sx={dropFilePreviewTitleItemInfo}>
                 <Box sx={imageContainer}>
-                  <img src={file?.src} alt="" />
+                  <img src={file.src} alt="Imagen" />
                 </Box>
                 <Box
                   sx={{

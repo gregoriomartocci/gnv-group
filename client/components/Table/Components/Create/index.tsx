@@ -40,68 +40,26 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  items: IArticle[] | IProject[];
-  path: "article" | "project" | "user";
-  object: string;
-  loading: boolean;
-  stateHandler: any;
-  form: any;
-  request: any;
-  textEditor?: boolean;
+  title: string;
+  content: any[];
+  create: any;
 }
 
-const Create = ({
-  items,
-  path,
-  loading,
-  object,
-  stateHandler,
-  form,
-  textEditor,
-  request,
-}: ICreateProps) => {
-  const [input, setInput] = useState<IArticle>({
-    title: "",
-    source: "",
-    link: "",
-    date: "",
-    images: [],
-    description: "",
-    _id: "",
-    published: true,
-  });
-
+const Create = ({ title, content, create }: ICreateProps) => {
   const [tab, setTab] = useState<number>(0);
 
-  const handlePublish = () => {
-    request(
-      "create",
-      "post",
-      input,
-      "",
-      path,
-      "El emprendimiento se agregó con éxito"
-    );
-  };
+  // const handlePublish = () => {
+  //   request(
+  //     "create",
+  //     "post",
+  //     input,
+  //     "",
+  //     path,
+  //     "El emprendimiento se agregó con éxito"
+  //   );
+  // };
 
-  const onChangeHandler = (e: any) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const tab_options = [
-    "Información Básica",
-    "Multimedia",
-    textEditor ? "Descripción" : null,
-  ];
-
-  const steps = [
-    form({ input, onChangeHandler, setInput }),
-    <ImageUploader value={input} setValue={setInput} />,
-    textEditor ? <Editor value={input} setValue={setInput} /> : null,
-  ];
+  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -114,15 +72,15 @@ const Create = ({
             color: "#424242",
           }}
         >
-          Agregar {object}
+          Agregar {title}
         </span>
 
         <UseTabs value={tab} setValue={setTab} options={tab_options} />
 
-        <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
+        <Box style={{ width: "100%", margin: "15px 0px" }}>{content[tab]}</Box>
 
-        <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {loading ? <CircularProgress style={{ color: "#fff" }} /> : "Agregar"}
+        <UseButton type="Primary" width="100%" onClickHandler={create}>
+          Agregar
         </UseButton>
       </Box>
     </Box>

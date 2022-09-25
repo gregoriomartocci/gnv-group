@@ -25,6 +25,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { create } from "domain";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../Menu";
+import { setModal } from "../../redux/slices/projects";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -106,7 +107,7 @@ export default function UseTable({
 
   const state = useSelector((state: IState) => state[name]);
 
-  console.log(state, "que pasaaa")
+  console.log(state, "que pasaaa");
 
   const dispatch = useDispatch();
 
@@ -269,11 +270,12 @@ export default function UseTable({
             <UseButton
               type="Primary"
               onClickHandler={() =>
-                stateHandler({
-                  method: "create",
-                  payload: { modal: true },
-                  state,
-                })
+                dispatch(
+                  setModal({
+                    name: "create",
+                    value: true,
+                  })
+                )
               }
             >
               agregar

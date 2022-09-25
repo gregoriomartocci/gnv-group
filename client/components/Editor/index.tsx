@@ -42,25 +42,24 @@ const formats = [
 
 export interface IEditor {
   value: any;
-  method: string;
-  item: any;
-  stateHandler: any;
-  state: any;
+  setValue: React.Dispatch<
+    React.SetStateAction<{
+      id: number;
+      name: string;
+      description: string;
+      images: never[];
+      link: string;
+      published: boolean;
+      status: string;
+      type: string;
+      date: string;
+    }>
+  >;
 }
 
-const Editor = ({ value, method, item, stateHandler, state }: IEditor) => {
-
-  console.log(value.description, "Riquelme")
-
+const Editor = ({ value, setValue }: IEditor) => {
   const onChangeHandler = (string: string) => {
-    stateHandler({
-      method,
-      payload: {
-        [item]: { ...value, description: string },
-      },
-      state,
-      keep: true,
-    });
+    setValue({ ...value, string });
   };
 
   return (

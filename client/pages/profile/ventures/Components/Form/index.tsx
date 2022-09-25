@@ -47,7 +47,7 @@ export interface ICreateProps {
   setInput: any;
 }
 
-const Form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
+const form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
   const status = ["en desarrollo", "finalizado"];
 
   return (
@@ -81,4 +81,4 @@ const Form = ({ input, onChangeHandler, setInput }: ICreateProps) => {
   );
 };
 
-export default Form;
+export default form;

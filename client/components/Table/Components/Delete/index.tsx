@@ -5,18 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../Menu";
 import UseButton from "../../../Button";
 
-interface IDelete {
-  concept: string;
-  selector: "projects" | "articles" | "users";
-  stateHandler: any;
-  request: any;
-}
+type TDeleteProps = {
+  deleteProject: any;
+};
 
-const Delete = ({ concept, stateHandler, request, selector }: IDelete) => {
-  const state = useSelector((state: IState) => state[selector]);
+const Delete = ({ deleteProject }: TDeleteProps) => {
+  const state = useSelector((state: IState) => state);
+
 
   const handleDelete = () => {
-    request();
+    deleteProject();
   };
 
   return (
