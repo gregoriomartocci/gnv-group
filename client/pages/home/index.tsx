@@ -18,14 +18,15 @@ import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
 import UseCarousel from "./Components/Carousel";
 import Logo from "../../components/Logo";
-import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import dynamic from "next/dynamic";
 import InputGroup from "../../components/Input";
 import Form from "./Components/Form";
 import UseButton from "../../components/Button";
-
 import useWindowDimensions from "../../hooks/ScreenSize";
 import UseTabs from "./Components/Tabs";
+
+import MarkerLogo from "./marker-01.svg";
 
 export type TDemo = {
   img: string;
@@ -41,7 +42,11 @@ const Home = () => {
   const [tab, setTab] = useState<number>(1);
 
   const google_api = typeof window && process.env.NEXT_MAPS;
-  const google_center = { lat: 48.8584, lng: 2.2945 };
+
+  const markerLogoUrl = "../../assets/marker/marker-01.svg";
+
+  const argentinaLocation = { lat: -34.6191721, lng: -58.3606006 };
+  const uruguayLocation = { lat: -34.9451061, lng: -54.935135 };
 
   const CountersRef = useRef(null);
   const containerRef = useRef(null);
@@ -237,8 +242,16 @@ const Home = () => {
   ];
 
   const mapItems = [
-    { title: "GNV Argentina", id: 1, coordinates: [-34.6191721, -58.3606006] },
-    { title: "GNV Uruguay", id: 2, coordinates: [-34.9451061, -54.935135] },
+    {
+      title: "GNV Argentina",
+      id: 1,
+      coordinates: { lat: -34.6191721, lng: -58.3606006 },
+    },
+    {
+      title: "GNV Uruguay",
+      id: 2,
+      coordinates: { lat: -34.9451061, lng: -54.935135 },
+    },
   ];
 
   return (
@@ -443,14 +456,22 @@ const Home = () => {
           >
             {isLoaded && (
               <GoogleMap
-                center={google_center}
+                center={tab === 1 ? argentinaLocation : uruguayLocation}
                 zoom={15}
                 mapContainerStyle={{ width: "100%", height: "100%" }}
               >
-                {/* {mapItems.map(() => {
-
-
-                    })} */}
+                {mapItems.map(({ id, coordinates }) => {
+                  return (
+                    <Marker
+                      key={id}
+                      position={coordinates}
+                      icon={{
+                        url: "/marker-01.svg",
+                        scaledSize: new window.google.maps.Size(100, 100),
+                      }}
+                    />
+                  );
+                })}
               </GoogleMap>
             )}
           </Box>
