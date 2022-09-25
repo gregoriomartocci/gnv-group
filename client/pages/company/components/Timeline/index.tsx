@@ -329,7 +329,7 @@ const Timeline = () => {
                         }}
                       >
                         <FiberManualRecordIcon
-                          sx={{ fontSize: "16px", color: "#f5f5f5" }}
+                          sx={{ fontSize: "16px", color: "#e0e0e0" }}
                         />
                       </Box>
                     </Box>
