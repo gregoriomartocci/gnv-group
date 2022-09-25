@@ -251,7 +251,7 @@ export type errorType = {
   message: any;
 };
 
-const Posts = () => {
+const Ventures = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ projects: "", message: "" });
@@ -264,7 +264,6 @@ const Posts = () => {
     };
     dispatch(setState(update_state));
   };
-
 
   const array_operations = (action, array, item) => {
     let update;
@@ -454,6 +453,7 @@ const Posts = () => {
           loading={create?.loading}
           form={(props) => <Form {...props} />}
           request={request}
+          textEditor
         />
       </UseModal>
       <UseModal
@@ -516,4 +516,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default Ventures;

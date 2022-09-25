@@ -17,7 +17,6 @@ import { IProject } from "../../../../redux/slices/projects";
 import UseTabs from "../../../Tabs";
 import UseButton from "../../../Button";
 
-
 const Editor = dynamic(() => import("../../../Editor"), {
   ssr: false,
 });
@@ -48,6 +47,7 @@ export interface ICreateProps {
   stateHandler: any;
   form: any;
   request: any;
+  textEditor?: boolean;
 }
 
 const Create = ({
@@ -57,6 +57,7 @@ const Create = ({
   object,
   stateHandler,
   form,
+  textEditor,
   request,
 }: ICreateProps) => {
   const [input, setInput] = useState<IArticle>({
@@ -90,12 +91,16 @@ const Create = ({
     });
   };
 
-  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
+  const tab_options = [
+    "Información Básica",
+    "Multimedia",
+    textEditor ? "Descripción" : null,
+  ];
 
   const steps = [
     form({ input, onChangeHandler, setInput }),
     <ImageUploader value={input} setValue={setInput} />,
-    <Editor value={input} setValue={setInput} />,
+    textEditor ? <Editor value={input} setValue={setInput} /> : null,
   ];
 
   return (
@@ -117,11 +122,7 @@ const Create = ({
         <Box style={{ width: "100%", margin: "15px 0px" }}>{steps[tab]}</Box>
 
         <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
-          {loading ? (
-            <CircularProgress style={{ color: "#fff" }} />
-          ) : (
-            "Agregar"
-          )}
+          {loading ? <CircularProgress style={{ color: "#fff" }} /> : "Agregar"}
         </UseButton>
       </Box>
     </Box>

@@ -9,7 +9,7 @@ import {
   setFilter,
   setProjects,
 } from "../../../../redux/slices/projects";
-import { errorType } from "../../../profile/projects";
+import { errorType } from "../../../profile/ventures";
 import { IArticle } from "../../../../redux/slices/articles";
 
 import Venture from "../Venture";
