@@ -58,12 +58,11 @@ export interface IEditor {
 }
 
 const Editor = ({ value, setValue }: IEditor) => {
-
+  
   const onChangeHandler = (string: string) => {
-    setValue({ ...value, string });
+    setValue(string);
   };
 
-  
   return (
     <Box style={{ height: "auto", margin: "0 0 15px 0" }}>
       <Box style={{ height: "350px" }}>
@@ -73,7 +72,7 @@ const Editor = ({ value, setValue }: IEditor) => {
             style={{ height: "300px" }}
             placeholder="Introduzca una descripción..."
             theme="snow"
-            defaultValue={value.description}
+            defaultValue={value?.description}
             scrollingContainer="body"
             modules={modules}
             onChange={onChangeHandler}

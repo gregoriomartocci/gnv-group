@@ -328,7 +328,10 @@ const Ventures = () => {
         setInput({ ...input, images: array });
       }}
     />,
-    <Editor value={input?.description} setValue={setSelected} />,
+    <Editor
+      value={input}
+      setValue={(string) => setInput({ ...input, description: string })}
+    />,
   ];
 
   const updateContent = [
@@ -345,7 +348,12 @@ const Ventures = () => {
         setSelectedProject({ ...selectedProject, images: array });
       }}
     />,
-    <Editor value={selectedProject} setValue={setSelectedProject} />,
+    <Editor
+      value={selectedProject}
+      setValue={(string) =>
+        setSelectedProject({ ...selectedProject, description: string })
+      }
+    />,
   ];
 
   return (
@@ -424,7 +432,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Emprendimiento"
-          create={() => createProjectMutation.mutate(input)}
+          create={() => console.log(input, "OKAAAA")}
         />
       </UseModal>
       <UseModal

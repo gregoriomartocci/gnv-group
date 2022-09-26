@@ -40,13 +40,11 @@ export interface ICreateProps {
 }
 
 const Update = ({ title, content, update }: ICreateProps) => {
-  
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
     update();
   };
-  
 
   const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
