@@ -432,7 +432,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Emprendimiento"
-          create={() => console.log(input, "OKAAAA")}
+          create={() => createProjectMutation.mutate({ ...input })}
         />
       </UseModal>
       <UseModal
