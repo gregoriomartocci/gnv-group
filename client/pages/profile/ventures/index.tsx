@@ -29,6 +29,13 @@ import ProjectForm from "./Components/Form";
 import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
 import form from "./Components/Form";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import {
+  CreateProject,
+  DeleteProject,
+  ReadProjects,
+  UpdateProject,
+} from "./Crud";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -254,16 +261,49 @@ export type TProject = {
 const Ventures = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.projects);
-
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<errorType>({ projects: "", message: "" });
   const projectSelected = state?.projectSelected;
-  const [input, setInput] = useState(state?.projectSelected);
   const [selectedProject, setSelectedProject] = useState(projectSelected);
+
+  const [input, setInput] = useState({
+    name: "",
+    link: "",
+    images: [],
+    description: "",
+  });
+
+  console.log(selectedProject, "Que onda monnoooo");
+
+  // const { projects } = state;
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     setSelectedProject(projectSelected);
   }, [projectSelected]);
+
+  const {
+    isLoading,
+    isError,
+    error,
+    data: allProjects,
+  } = useQuery("projects", ReadProjects);
+
+  const createProjectMutation = useMutation(CreateProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("projects");
+    },
+  });
+
+  const updateProjectMutation = useMutation(UpdateProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("projects");
+    },
+  });
+
+  const deleteProjectMutation = useMutation(DeleteProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("projects");
+    },
+  });
 
   const { modal } = state;
 
@@ -275,137 +315,37 @@ const Ventures = () => {
     dispatch(setState(update_state));
   };
 
-  const array_operations = (action, array, item) => {
-    let update;
-
-    action === "create"
-      ? (update = [...array, item])
-      : action === "projects"
-      ? (update = [...item])
-      : action === "update"
-      ? (update = array?.map((p) =>
-          p?._id?.toString() === item?._id?.toString() ? item : p
-        ))
-      : action === "delete"
-      ? (update = array.filter(
-          (p) => p?._id.toString() !== item?._id.toString()
-        ))
-      : update;
-
-    return update;
-  };
-
-  // request function
-
-  const request = async (action, method, input, id, path, message) => {
-    stateHandler({
-      method: action,
-      payload: { status: "", message: "", loading: true },
-      state,
-      keep: true,
-    });
-    try {
-      const data = await api({
-        method,
-        path: `/${path}/${id}`,
-        payload: input,
-      });
-
-      stateHandler({
-        method: action,
-        payload: { loading: false },
-        state,
-        keep: true,
-      });
-
-      const { error } = data;
-      console.log(error, "<== mensaje error");
-
-      if (error) {
-        stateHandler({
-          method: action,
-          payload: { status: "failed", message: error },
-          state,
-          keep: true,
-        });
-      } else {
-        const updated_array = array_operations(action, projects, data);
-
-        let payload;
-
-        action === "delete"
-          ? (payload = {
-              status: "success",
-              message,
-              modal: false,
-            })
-          : (payload = {
-              status: "success",
-              message,
-              modal: false,
-            });
-
-        stateHandler({
-          method: action,
-          payload,
-          state,
-          keep: true,
-        });
-
-        dispatch(setProjects(updated_array));
-      }
-    } catch (err) {
-      stateHandler({
-        method: action,
-        payload: {
-          status: "failed",
-          message: "Algo salió mal, intente nuevamente!",
-          loading: false,
-        },
-        state,
-        keep: true,
-      });
-    }
-  };
-
-  const { create, update } = state;
-  const projects = state?.projects;
-
-  useEffect(() => {
-    // getProjects();
-    request("projects", "get", {}, "", "projects", "");
-  }, []);
-
-  const addImage = (file: any) => {
-    setInput({ ...input, images: [...input.images, file] });
-  };
-
-  const removeImage = (array: any) => {
-    setInput({ ...input, images: array });
-  };
+  const { create } = state;
 
   const createContent = [
     <ProjectForm input={input} setInput={setInput} />,
     <ImageUploader
       value={input?.images}
-      addImage={addImage}
-      removeImage={removeImage}
+      addImage={(file: any) => {
+        setInput({ ...input, images: [...input.images, file] });
+      }}
+      removeImage={(array: any) => {
+        setInput({ ...input, images: array });
+      }}
     />,
-    <Editor value={input} setValue={setInput} />,
+    <Editor value={input?.description} setValue={setSelected} />,
   ];
-
-  console.log(typeof setSelectedProject, "SELECTED PROJECT");
-  console.log(input, "INPUTTTT");
-  console.log(selectedProject, "sEelected");
 
   const updateContent = [
     <ProjectForm input={selectedProject} setInput={setSelectedProject} />,
     <ImageUploader
-      value={selectedProject?.id ? selectedProject.images : []}
-      addImage={addImage}
-      removeImage={removeImage}
+      value={selectedProject?.id ? selectedProject?.images : []}
+      addImage={(file: any) => {
+        setSelectedProject({
+          ...selectedProject,
+          images: [...selectedProject?.images, file],
+        });
+      }}
+      removeImage={(array: any) => {
+        setSelectedProject({ ...selectedProject, images: array });
+      }}
     />,
-    <Editor value={input} setValue={setInput} />,
+    <Editor value={selectedProject} setValue={setSelectedProject} />,
   ];
 
   return (
@@ -466,12 +406,13 @@ const Ventures = () => {
           }
         />
       )}
+
       <UseTable
         title="Emprendimientos"
         api="project"
         name="projects"
         headCells={headCells}
-        rows={projects?.length ? projects : []}
+        rows={allProjects?.length ? allProjects : []}
         content={(project: IProject) => <Content {...project} />}
         stateHandler={stateHandler}
       />
@@ -483,7 +424,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Emprendimiento"
-          create={() => console.log("Okk")}
+          create={() => createProjectMutation.mutate(input)}
         />
       </UseModal>
       <UseModal
@@ -494,17 +435,7 @@ const Ventures = () => {
           <Update
             title="emprendimiento"
             content={updateContent}
-            update={() => console.log("ok")}
-            // update={() =>
-            //   request(
-            //     "update",
-            //     "post",
-            //     state?.update?.project,
-            //     state?.update?.api?.id,
-            //     "edit-project",
-            //     "El emprendimiento se ha eliminado con éxito"
-            //   )
-            // }
+            update={() => updateProjectMutation.mutate({ ...selectedProject })}
           />
         ) : null}
       </UseModal>
@@ -521,7 +452,9 @@ const Ventures = () => {
       >
         <Delete
           title="emprendimiento"
-          deleteProject={() => console.log("deleting project")}
+          deleteProject={() =>
+            deleteProjectMutation.mutate(selectedProject?.id)
+          }
           onClose={() => {
             dispatch(
               setModal({

@@ -40,16 +40,13 @@ export interface ICreateProps {
 }
 
 const Update = ({ title, content, update }: ICreateProps) => {
-  // const state_selector = useSelector((state: IState) => state[selector]);
-  // const [input, setInput] = useState<IProject | IArticle>(
-  //   state_selector?.update[item]
-  // );
-
+  
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
     update();
   };
+  
 
   const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
@@ -71,7 +68,11 @@ const Update = ({ title, content, update }: ICreateProps) => {
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{content[tab]}</Box>
 
-        <UseButton type="Primary" width="100%" onClickHandler={handlePublish}>
+        <UseButton
+          type="Primary"
+          width="100%"
+          onClickHandler={() => handlePublish()}
+        >
           {false ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
         </UseButton>
       </Box>
