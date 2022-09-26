@@ -461,7 +461,7 @@ const Ventures = () => {
         <Delete
           title="emprendimiento"
           deleteProject={() =>
-            deleteProjectMutation.mutate(selectedProject?.id)
+            deleteProjectMutation.mutate(selectedProject?._id)
           }
           onClose={() => {
             dispatch(

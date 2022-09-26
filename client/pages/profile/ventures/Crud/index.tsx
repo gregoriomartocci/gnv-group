@@ -30,12 +30,9 @@ export const UpdateProject = async (item: any) => {
 };
 
 export const DeleteProject = async (id: any) => {
-
-  console.log(id, "QUE ONDA PACHUUUU")
-
   const result = await api({
-    method: "post",
-    path: `/delete/${id}`,
+    method: "delete",
+    path: `/project/${id}`,
     payload: {},
   });
   return result;
