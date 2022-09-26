@@ -5,8 +5,6 @@ export const createProject = async (req, res) => {
   try {
     const { name, link, description, published, status, images } = req.body;
 
-    console.log(req.body, "que nos llega??");
-
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
     if (!link)
@@ -22,6 +20,8 @@ export const createProject = async (req, res) => {
     if (!description)
       return res.json({ error: "Por favor ingrese una descripción" });
 
+    if (!images) return res.json({ error: "Por favor incluya imágenes" });
+
     const alreadyExist = await Project.findOne({ name });
 
     if (alreadyExist)
@@ -33,7 +33,6 @@ export const createProject = async (req, res) => {
     }));
 
     const updated_images = await Promise.all(upload_images);
-    console.log(updated_images, "OKAAA");
 
     const project = await new Project({
       name,
@@ -53,6 +52,7 @@ export const createProject = async (req, res) => {
 
 export const removeProject = async (req, res) => {
   const { id } = req.params;
+
   try {
     const project = await Project.findByIdAndDelete(id);
     return res.json(project);
@@ -65,8 +65,6 @@ export const removeProject = async (req, res) => {
 export const editProject = async (req, res) => {
   const { images } = req.body;
 
-  console.log(req.body, "que poronga nos llega")
-
   const validate_cloudinay = (str) => {
     const validate =
       typeof str === "string" && str.split(".")[1] === "cloudinary";
@@ -76,9 +74,9 @@ export const editProject = async (req, res) => {
   try {
     const { id } = req.params;
 
-    let promise_array;
     let updated_images;
     let updated_project;
+    let images_aux;
 
     if (images) {
       images_aux = images.map(async (i) => ({
