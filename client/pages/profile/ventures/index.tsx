@@ -38,6 +38,7 @@ import {
   ReadProjects,
   UpdateProject,
 } from "./Crud";
+import { Content } from "./Components/Content";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -91,111 +92,6 @@ export const sliceText = (text: any, limit: number) => {
       ? text.toString().substring(0, limit) + "..."
       : text;
   return string;
-};
-
-export const Content = (project: IProject) => {
-  const dispatch = useDispatch();
-  const [size, setSize] = useState<number>(60);
-  const [rounded, setRounded] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const [selected, setSelected] = React.useState<IProject>({});
-  const state = useSelector((state: IState) => state?.projects);
-
-  const { modal, projectSelected } = state;
-
-  const handleCloseActionsMenu = () => {
-    dispatch(setModal({ name: "actions", value: false }));
-    setAnchorEl(null);
-  };
-
-  const handleClickActionsMenu = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    project: IProject
-  ) => {
-    dispatch(setSelected(project));
-    dispatch(setModal({ name: "actions", value: true }));
-    setAnchorEl(event.currentTarget);
-  };
-
-  const CellTable: SxProps<Theme> = {
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
-
-    img: {
-      width: size,
-      height: size,
-      borderRadius: `${rounded ? "50px" : "5px"}`,
-      objectFit: "cover",
-      margin: "0px 15px",
-    },
-  };
-
-  const match = project?.id === projectSelected?.id;
-
-  return (
-    <Fragment>
-      <TableCell align="left">
-        <Box sx={CellTable}>
-          <img src={project?.images[0]?.src ?? ""} alt="" />
-          <Typography>{project?.name}</Typography>
-        </Box>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{sanitize(sliceText(project?.description, 30))}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{sliceText(project?.link, 30)}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{project?.status}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published ? (
-            <Box
-              sx={{
-                width: "min-content",
-                display: "flex",
-                alignItems: "center",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #E0E0E0",
-              }}
-            >
-              <FiberManualRecordIcon
-                sx={{
-                  margin: "0px 6px",
-                  color: "#30D18D",
-                  fontSize: "12.5px",
-                  fontWeight: "600",
-                }}
-              />
-              Activa
-            </Box>
-          ) : (
-            <Box>
-              <FiberManualRecordIcon /> Pausada
-            </Box>
-          )}
-        </Typography>
-      </TableCell>
-      <TableCell align="left">
-        <IconButton onClick={(e) => handleClickActionsMenu(e, project)}>
-          <MoreVertIcon />
-        </IconButton>
-        {match && (
-          <Dropdown
-            open={modal.actions}
-            handleClose={handleCloseActionsMenu}
-            anchorEl={anchorEl}
-          >
-            <Actions />
-          </Dropdown>
-        )}
-      </TableCell>
-    </Fragment>
-  );
 };
 
 const headCells: readonly HeadCell[] = [
@@ -340,7 +236,7 @@ const Ventures = () => {
         queryClient.invalidateQueries("projects");
         dispatch(
           setAlert({
-            message: "El emprendimiento se actualizó con éxito.",
+            message: "El emprendimiento se eliminó con éxito.",
             status: "success",
           })
         );
@@ -354,14 +250,6 @@ const Ventures = () => {
         );
       },
     });
-
-  const stateHandler = ({ method, payload, state, keep }) => {
-    const update_state = {
-      ...state,
-      [method]: keep ? { ...state[method], ...payload } : payload,
-    };
-    dispatch(setState(update_state));
-  };
 
   const createContent = [
     <ProjectForm input={input} setInput={setInput} />,
@@ -402,8 +290,6 @@ const Ventures = () => {
     />,
   ];
 
-  console.log(alert, "");
-
   return (
     <Dashboard>
       <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
@@ -421,12 +307,10 @@ const Ventures = () => {
 
       <UseTable
         title="Emprendimientos"
-        api="project"
         name="projects"
         headCells={headCells}
         rows={allProjects?.length ? allProjects : []}
         content={(project: IProject) => <Content {...project} />}
-        stateHandler={stateHandler}
       />
 
       <UseModal

@@ -82,22 +82,18 @@ interface EnhancedTableToolbarProps {
 
 interface IUseTable {
   title: string;
-  api: string;
-  name: "projects" | "articles";
+  name: string;
   headCells: any;
   rows: any;
   content: any;
-  stateHandler: any;
 }
 
 export default function UseTable({
   title,
-  api,
   name,
   headCells,
   rows,
   content,
-  stateHandler,
 }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
@@ -106,8 +102,6 @@ export default function UseTable({
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
   const state = useSelector((state: IState) => state[name]);
-
-  console.log(state, "que pasaaa");
 
   const dispatch = useDispatch();
 
