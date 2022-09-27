@@ -9,9 +9,10 @@ type TDeleteProps = {
   title: string;
   deleteProject: any;
   onClose: any;
+  loading: boolean;
 };
 
-const Delete = ({ title, deleteProject, onClose }: TDeleteProps) => {
+const Delete = ({ title, deleteProject, onClose, loading }: TDeleteProps) => {
   const state = useSelector((state: IState) => state);
 
   const handleDelete = () => {
@@ -71,7 +72,7 @@ const Delete = ({ title, deleteProject, onClose }: TDeleteProps) => {
             }}
           >
             <UseButton type="Delete" onClickHandler={handleDelete}>
-              {false ? (
+              {loading ? (
                 <CircularProgress style={{ color: "#fff" }} />
               ) : (
                 "Eliminar"

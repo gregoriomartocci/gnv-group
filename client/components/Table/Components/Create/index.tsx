@@ -43,21 +43,11 @@ export interface ICreateProps {
   title: string;
   content: any[];
   create: any;
+  loading: boolean;
 }
 
-const Create = ({ title, content, create }: ICreateProps) => {
+const Create = ({ title, content, create, loading }: ICreateProps) => {
   const [tab, setTab] = useState<number>(0);
-
-  // const handlePublish = () => {
-  //   request(
-  //     "create",
-  //     "post",
-  //     input,
-  //     "",
-  //     path,
-  //     "El emprendimiento se agregó con éxito"
-  //   );
-  // };
 
   const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
@@ -80,7 +70,7 @@ const Create = ({ title, content, create }: ICreateProps) => {
         <Box style={{ width: "100%", margin: "15px 0px" }}>{content[tab]}</Box>
 
         <UseButton type="Primary" width="100%" onClickHandler={create}>
-          Agregar
+          {loading ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
         </UseButton>
       </Box>
     </Box>

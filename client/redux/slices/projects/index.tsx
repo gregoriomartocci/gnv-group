@@ -50,6 +50,11 @@ export type TModalPayload = {
   value: boolean;
 };
 
+export type TAlert = {
+  message: string;
+  status: string;
+};
+
 export interface initialState {
   projects: IProject[];
   projectView: IProject | {};
@@ -81,6 +86,12 @@ export const projectsSlice = createSlice({
       const { name, value } = action?.payload;
       state.modal = { ...state.modal, [name]: value };
     },
+    setAlert: (state, action: PayloadAction<TAlert>) => {
+      state.alert = [...state.alert, action?.payload];
+    },
+    closeAlert: (state, action: PayloadAction<number>) => {
+      state.alert = [...state.alert].splice(action?.payload, 1);
+    },
     setSelected: (state, action: PayloadAction<IProject>) => {
       state.projectSelected = { ...action.payload };
     },
@@ -103,6 +114,8 @@ export const {
   setSelected,
   setProjectView,
   setModal,
+  setAlert,
+  closeAlert
 } = projectsSlice.actions;
 
 export default projectsSlice.reducer;

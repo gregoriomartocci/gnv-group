@@ -7,8 +7,10 @@ import { IState } from "../../../components/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import api from "../../../hooks/Api";
 import {
+  closeAlert,
   initialState,
   IProject,
+  setAlert,
   setModal,
   setProjects,
   setSelected,
@@ -264,6 +266,8 @@ const Ventures = () => {
   const projectSelected = state?.projectSelected;
   const [selectedProject, setSelectedProject] = useState(projectSelected);
 
+  const { alert, modal } = state;
+
   const [input, setInput] = useState({
     name: "",
     link: "",
@@ -273,7 +277,6 @@ const Ventures = () => {
 
   console.log(selectedProject, "Que onda monnoooo");
 
-  // const { projects } = state;
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -281,31 +284,76 @@ const Ventures = () => {
   }, [projectSelected]);
 
   const {
-    isLoading,
+    isFetching: loading,
     isError,
     error,
     data: allProjects,
   } = useQuery("projects", ReadProjects);
 
-  const createProjectMutation = useMutation(CreateProject, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("projects");
-    },
-  });
+  const { mutateAsync: createProjectMutation, isLoading: createLoading } =
+    useMutation(CreateProject, {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries("projects");
+        console.log(data, "ok");
+        dispatch(
+          setAlert({
+            message: "El emprendimiento se creó con éxito.",
+            status: "success",
+          })
+        );
+      },
+      onError: (data) => {
+        console.log(data, "ok");
+        dispatch(
+          setAlert({
+            message: "Algo salió mal.",
+            status: "error",
+          })
+        );
+      },
+    });
 
-  const updateProjectMutation = useMutation(UpdateProject, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("projects");
-    },
-  });
+  const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
+    useMutation(UpdateProject, {
+      onSuccess: () => {
+        queryClient.invalidateQueries("projects");
+        dispatch(
+          setAlert({
+            message: "El emprendimiento se actualizó con éxito.",
+            status: "success",
+          })
+        );
+      },
+      onError: () => {
+        dispatch(
+          setAlert({
+            message: "Algo salió mal.",
+            status: "error",
+          })
+        );
+      },
+    });
 
-  const deleteProjectMutation = useMutation(DeleteProject, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("projects");
-    },
-  });
-
-  const { modal } = state;
+  const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
+    useMutation(DeleteProject, {
+      onSuccess: () => {
+        queryClient.invalidateQueries("projects");
+        dispatch(
+          setAlert({
+            message: "El emprendimiento se actualizó con éxito.",
+            status: "success",
+          })
+        );
+      },
+      onError: () => {
+        dispatch(
+          setAlert({
+            message: "Algo salió mal.",
+            status: "error",
+          })
+        );
+      },
+    });
 
   const stateHandler = ({ method, payload, state, keep }) => {
     const update_state = {
@@ -314,8 +362,6 @@ const Ventures = () => {
     };
     dispatch(setState(update_state));
   };
-
-  const { create } = state;
 
   const createContent = [
     <ProjectForm input={input} setInput={setInput} />,
@@ -356,64 +402,22 @@ const Ventures = () => {
     />,
   ];
 
+  console.log(alert, "");
+
   return (
     <Dashboard>
-      {state?.delete?.status === "success" && (
-        <Toast
-          message="El emprendimiento se eliminó con éxito"
-          type="success"
-          action={() =>
-            stateHandler({
-              method: "delete",
-              payload: { status: "", message: "" },
-              state,
-              keep: true,
-            })
-          }
-        />
-      )}
-      {state?.delete?.status === "failed" && (
-        <Toast
-          message={state?.delete.message}
-          type="error"
-          action={() =>
-            stateHandler({
-              method: "delete",
-              payload: { status: "", message: "" },
-              state,
-              keep: true,
-            })
-          }
-        />
-      )}
-      {create?.status === "success" && (
-        <Toast
-          message={create?.message}
-          type="success"
-          action={() =>
-            stateHandler({
-              method: "create",
-              payload: { status: "", message: "" },
-              state,
-              keep: true,
-            })
-          }
-        />
-      )}
-      {create?.status === "failed" && (
-        <Toast
-          message={create?.message}
-          type="error"
-          action={() =>
-            stateHandler({
-              method: "create",
-              payload: { status: "", message: "" },
-              state,
-              keep: true,
-            })
-          }
-        />
-      )}
+      <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
+        {alert?.map(({ message, status }, index) => {
+          return (
+            <Toast
+              key={index}
+              message={message}
+              type={status}
+              action={() => dispatch(closeAlert(index))}
+            />
+          );
+        })}
+      </Box>
 
       <UseTable
         title="Emprendimientos"
@@ -432,7 +436,8 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Emprendimiento"
-          create={() => createProjectMutation.mutate({ ...input })}
+          create={() => createProjectMutation({ ...input })}
+          loading={createLoading}
         />
       </UseModal>
       <UseModal
@@ -443,7 +448,8 @@ const Ventures = () => {
           <Update
             title="emprendimiento"
             content={updateContent}
-            update={() => updateProjectMutation.mutate({ ...selectedProject })}
+            update={() => updateProjectMutation({ ...selectedProject })}
+            loading={updateLoading}
           />
         ) : null}
       </UseModal>
@@ -460,9 +466,7 @@ const Ventures = () => {
       >
         <Delete
           title="emprendimiento"
-          deleteProject={() =>
-            deleteProjectMutation.mutate(selectedProject?._id)
-          }
+          deleteProject={() => deleteProjectMutation(selectedProject?._id)}
           onClose={() => {
             dispatch(
               setModal({
@@ -471,6 +475,7 @@ const Ventures = () => {
               })
             );
           }}
+          loading={deleteLoading}
         />
       </UseModal>
     </Dashboard>

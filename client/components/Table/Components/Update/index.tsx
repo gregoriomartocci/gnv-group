@@ -37,9 +37,10 @@ export interface ICreateProps {
   title: string;
   content: any;
   update: any;
+  loading: boolean;
 }
 
-const Update = ({ title, content, update }: ICreateProps) => {
+const Update = ({ title, content, update, loading }: ICreateProps) => {
   const [tab, setTab] = useState<number>(0);
 
   const handlePublish = () => {
@@ -71,7 +72,7 @@ const Update = ({ title, content, update }: ICreateProps) => {
           width="100%"
           onClickHandler={() => handlePublish()}
         >
-          {false ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
+          {loading ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
         </UseButton>
       </Box>
     </Box>
