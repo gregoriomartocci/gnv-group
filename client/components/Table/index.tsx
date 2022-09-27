@@ -287,7 +287,6 @@ export default function UseTable({
         width: "100%",
         borderRadius: "10px",
         padding: "15px",
-        fontFamily: "Montserrat",
         boxShadow: "unset",
         border: "1px solid #e0e0e0",
         height: "100%",

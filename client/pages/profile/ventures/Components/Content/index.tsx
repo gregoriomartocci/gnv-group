@@ -1,7 +1,7 @@
 import { Theme } from "@emotion/react";
 import { SxProps, TableCell, Typography, IconButton, Box } from "@mui/material";
 import React from "react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sanitize, sliceText } from "../..";
 import Dropdown from "../../../../../components/Dropdown";
@@ -17,10 +17,7 @@ import Actions from "../../../../../components/Table/Components/Actions";
 
 export const Content = (project: IProject) => {
   const dispatch = useDispatch();
-  const [size, setSize] = useState<number>(60);
-  const [rounded, setRounded] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const [selected, setSelected] = React.useState<IProject>({});
   const state = useSelector((state: IState) => state?.projects);
 
   const { modal, projectSelected } = state;
@@ -45,11 +42,11 @@ export const Content = (project: IProject) => {
     alignItems: "center",
 
     img: {
-      width: size,
-      height: size,
-      borderRadius: `${rounded ? "50px" : "5px"}`,
+      width: "70px",
+      height: "70px",
+      borderRadius: "5px",
       objectFit: "cover",
-      margin: "0px 15px",
+      margin: "0 20px 0 0",
     },
   };
 
