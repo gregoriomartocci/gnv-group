@@ -3,7 +3,7 @@ import { Box, Grid, SxProps, Theme } from "@mui/material";
 import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
 import { motion, AnimatePresence } from "framer-motion";
- 
+
 export interface ICards {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
@@ -30,7 +30,7 @@ const Cards = ({
   return (
     <Grid container>
       {items?.map((item, index: number) => (
-        <Grid item xs={12} sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           {component(item)}
         </Grid>
       ))}

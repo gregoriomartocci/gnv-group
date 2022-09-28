@@ -329,6 +329,9 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
+
+      {/* CARDS */}
+      
       <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>
         <Cards
           gap={""}

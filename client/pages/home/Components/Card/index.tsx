@@ -64,16 +64,17 @@ const Card = ({ img, title, link }: TDemo) => {
               userSelect: "none",
               flexDirection: "column",
               pointerEvents: "auto",
-              height: "25vh",
+              height: "200px",
               padding: "65px",
               color: "#fff",
               fontFamily: "'Poppins', sans-serif",
               background: "rgba(255,255,255,0)",
               backdropFilter: "blur(10px)",
               boxShadow: "0 8px 32px rgba(31,38,135, 0.37)",
-              bottom: `${hover ? 0 : "-25vh"}`,
+              bottom: `${hover ? 0 : "-200px"}`,
               transition: "all 1.25s ease",
               transform: "scale(1.05)",
+              textAlign: "center",
             }}
           >
             <Typography
