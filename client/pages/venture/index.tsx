@@ -7,32 +7,9 @@ import Slider from "./components/Slider";
 import HeaderTitle from "../../components/Header-Title";
 import { useSelector } from "react-redux";
 
-const items = [
-  {
-    src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
-    description: "WTC Buenos Aires I, II, III IV",
-  },
-  {
-    src: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
-    description: "Ostent Tower",
-  },
-  {
-    src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
-    description: "Harbour Tower",
-  },
-  {
-    src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
-    description: "The Shops",
-  },
-];
-
 const Venture = () => {
   const state = useSelector((state: IState) => state?.projects);
   const { project } = state;
-
-  useEffect(() => {
-    return () => {};
-  }, []);
 
   return (
     <Box>

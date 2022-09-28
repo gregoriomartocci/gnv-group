@@ -227,17 +227,17 @@ const Home = () => {
     {
       src: "https://res.cloudinary.com/gregomartocci/video/upload/v1661381763/qt7lymuixtepvnoufb9j.mp4",
       phrase:
-        "Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos",
+        "Buscamos redefinir la visión de la construcción y otorgarle personalidad a los desarrollos. Creamos espacios versátiles con detalles y diseño en todos sus ángulos.",
     },
     {
       src: "https://res.cloudinary.com/gregomartocci/image/upload/v1661395987/qfqy8bva2otewp8wxkwu.jpg",
       phrase:
-        "Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end",
+        "Generar emociones y cumplir con los estándares sofisticados de nuestros clientes.  Combinamos locaciones extraordinarias con construcción high-end.",
     },
     {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1663021190/hiexbwla0bhru9mtsdyz.jpg",
       phrase:
-        "Cada proyecto nuestro tiene la cualidad de ser único, singular e irrepetible.  Pretendemos lograr esculturas a gran escala que marquen hitos de diseño urbano",
+        "Cada proyecto nuestro tiene la cualidad de ser único, singular e irrepetible.  Pretendemos lograr esculturas a gran escala que marquen hitos de diseño urbano.",
     },
   ];
 
@@ -331,7 +331,7 @@ const Home = () => {
       </Box>
 
       {/* CARDS */}
-      
+
       <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>
         <Cards
           gap={""}
