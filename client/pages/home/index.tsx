@@ -204,17 +204,17 @@ const Home = () => {
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
       title: "WTC Buenos Aires I, II, III IV",
-      link: "https://wtcbuenosaires.com.ar/",
+      link: "/venture",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
       title: "Ostent Tower",
-      link: "https://ostentower.com/",
+      link: "/venture",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
-      link: "https://www.harbourtower.com.ar/",
+      link: "/venture",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
@@ -334,17 +334,11 @@ const Home = () => {
           gap={""}
           gridTemplateColumns={{
             xs: `1fr`,
-            sm: "1fr",
             md: `repeat(2, auto)`,
-            lg: `repeat(2, auto)`,
-            xl: `repeat(2, auto)`,
           }}
           gridTemplateRows={{
             xs: `1fr`,
-            sm: "1fr",
             md: `auto`,
-            lg: "auto",
-            xl: "auto",
           }}
           items={items}
           component={(item: TDemo) => <Card {...item} />}

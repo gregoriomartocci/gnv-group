@@ -3,8 +3,7 @@ import { Box, Grid, SxProps, Theme } from "@mui/material";
 import { IProject } from "../../redux/slices/projects";
 import { IArticle } from "../../redux/slices/articles";
 import { motion, AnimatePresence } from "framer-motion";
-
-
+ 
 export interface ICards {
   items: IProject[] | IArticle[] | IDemo[];
   component: any;
