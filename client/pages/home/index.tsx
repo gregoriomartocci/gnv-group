@@ -27,6 +27,7 @@ import useWindowDimensions from "../../hooks/ScreenSize";
 import UseTabs from "./Components/Tabs";
 
 import MarkerLogo from "./marker-01.svg";
+import Timeline from "./Components/Timeline";
 
 export type TDemo = {
   img: string;
@@ -347,6 +348,40 @@ const Home = () => {
           component={(item: TDemo) => <Card {...item} />}
         />
       </Box>
+
+      {/* Trayectory */}
+
+      <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% 0" }}>
+        <motion.div
+          initial={"offscreen"}
+          whileInView={"onscreen"}
+          viewport={{ once: true }}
+          variants={FadeFromBottom}
+        >
+          <HeaderTitle
+            p="125px 12.5%"
+            titleFontSize="38px"
+            fontWeight={600}
+            descriptionFontSize="25px"
+            title="Trayectoria"
+            description="La compañía está viviendo una etapa de expansión fenomenal.
+            Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
+            Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
+          />
+          <Timeline />
+        </motion.div>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          position: "relative",
+          width: "100vw",
+          minHeight: "100vh",
+        }}
+      >
+        <UseCarousel items={slides} slideTime={5000} />
+      </Box>
+      
       <Box
         sx={{
           display: "flex",
@@ -364,17 +399,6 @@ const Home = () => {
           title="Alejandro Ginevra, Presidente de GNV Group."
           reverse
         />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          position: "relative",
-          width: "100vw",
-          minHeight: "100vh",
-        }}
-      >
-        <UseCarousel items={slides} slideTime={5000} />
       </Box>
 
       {/* Contact */}

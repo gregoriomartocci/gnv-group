@@ -377,29 +377,6 @@ const Company = () => {
         </motion.div>
       </Box>
 
-      {/* TRAYECTORY */}
-
-      <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% 0" }}>
-        <motion.div
-          initial={"offscreen"}
-          whileInView={"onscreen"}
-          viewport={{ once: true }}
-          variants={FadeFromBottom}
-        >
-          <HeaderTitle
-            p="125px 12.5%"
-            titleFontSize="38px"
-            fontWeight={600}
-            descriptionFontSize="25px"
-            title="Trayectoria"
-            description="La compañía está viviendo una etapa de expansión fenomenal.
-            Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
-            Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
-          />
-          <Timeline />
-        </motion.div>
-      </Box>
-
       {/* TEAM */}
 
       <Box
