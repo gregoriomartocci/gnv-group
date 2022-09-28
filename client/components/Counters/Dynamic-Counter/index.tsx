@@ -17,6 +17,12 @@ export default function DynamicCounter({
 }: IDynamicCounter) {
   const [increase, setIncrease] = useState(to);
 
+  const numberWithCommas = (x: number) => {
+    let parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return parts.join(",");
+  };
+
   useEffect(() => {
     if (counterRef) {
       animate(from, to, {
@@ -29,5 +35,5 @@ export default function DynamicCounter({
     return () => {};
   }, [counterRef]);
 
-  return <Box>{increase}</Box>;
+  return <Box>{numberWithCommas(increase)}</Box>;
 }

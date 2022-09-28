@@ -53,7 +53,7 @@ const Home = () => {
 
   const { height, width } = useWindowDimensions();
 
-  const sm = width && width < 900;
+  const sm = width && width < 1200;
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
@@ -189,7 +189,7 @@ const Home = () => {
   // MOCKDATA
 
   const data = [
-    { number: 771190, description: "m² desarrollados" },
+    { number: 771190, unity: "m²", description: "m² desarrollados" },
     { number: 107000, unity: "m²", description: "de inversión" },
     { number: 21, unity: "ha", description: "urbanizados" },
     {
@@ -292,14 +292,14 @@ const Home = () => {
               P={{ md: "0 10%" }}
               titleFontSize={{ xs: "25px", md: "28px" }}
               fontWeight={500}
-              title="Abarcamos todas las aristas del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
+              title="Abarcamos todos los segmentos del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
             />
           </motion.div>
         </Box>
         <Box
           sx={{
             display: "flex",
-            width: { xs: "200px", md: "200px", lg: "100%" },
+            width: { xs: "200px", md: "200px", lg: "200px" },
           }}
         >
           <Box

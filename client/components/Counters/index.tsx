@@ -53,12 +53,13 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
                 sx={{
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: `${counterSize}px`,
+                  width: "max-content",
                 }}
               >
                 <DynamicCounter
                   from={0}
                   to={element?.number}
-                  duration={2}
+                  duration={4}
                   counterRef={countersRef}
                 />
               </Typography>
@@ -66,7 +67,7 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
                 sx={{
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: `${counterSize}px`,
-                  margin: "0 0 0 15px 0",
+                  margin: "0 0 0 5px",
                 }}
               >
                 {element?.unity}
