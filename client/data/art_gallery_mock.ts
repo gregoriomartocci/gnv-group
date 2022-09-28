@@ -216,19 +216,6 @@ const art_gallery_mock = [
     date: "2018",
     published: true,
   },
-  {
-    id: 18,
-    gallery: "",
-    artist: "",
-    title: "Tapas",
-    image:
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663022484/q7sfiml95qroinwmfwpq.jpg",
-    technique: "",
-    measures:
-      "",
-    date: "",
-    published: true,
-  },
 ];
 
 export default art_gallery_mock;
