@@ -241,7 +241,7 @@ const Company = () => {
                   </svg>
                 </Svg>
               }
-              paragraph="Unidad de negoios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
+              paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
             />
           </Box>
@@ -371,7 +371,7 @@ const Company = () => {
                   : ""
               }
               render={render}
-              img="https://res.cloudinary.com/gregomartocci/image/upload/v1660704914/i7jqgzhxsgpvs6ndycaj.jpg"
+              img="https://res.cloudinary.com/gregomartocci/image/upload/v1664330546/oeah8jm3zolreo11n5tg.png"
             />
           ) : null}
         </motion.div>

@@ -42,7 +42,7 @@ const MessageSection = ({
   return (
     <Box
       sx={{
-        display: { xs: "", sm: "column", md: "column", lg: "flex", xl: "" },
+        display: { xs: "column", lg: "flex" },
         position: "relative",
         justifyContent: "center",
         alignItems: "center",
@@ -63,7 +63,7 @@ const MessageSection = ({
           borderRadius: "15px",
           background: "#fff",
           zIndex: "600",
-          maxWidth: { lg: "40%" },
+          maxWidth: { lg: "50%" },
         }}
       >
         <Typography
