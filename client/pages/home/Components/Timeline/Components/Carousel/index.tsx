@@ -87,7 +87,7 @@ function Carousel({ items, year }: ICarousel) {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: { xs: "50px 0 ", md: "0 0 75px 0" },
+          padding: { xs: "50px 0 ", md: "" },
         }}
       >
         <Typography
@@ -102,16 +102,11 @@ function Carousel({ items, year }: ICarousel) {
           position: "relative",
           justifyContent: "space-between",
           alignItems: "center",
-          height: { xs: "100%", md: "100%" },
-          minHeight: { xs: "500px", md: "100%" },
+          height: "100%",
+          minHeight: { xs: "600px", md: "700px" },
           minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
-          padding: {
-            xs: "25% 0",
-            sm: "25% 0",
-            md: "10% 0",
-          },
         }}
       >
         {!onlyOneItem ? (
@@ -187,7 +182,7 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
-                        minHeight: md ? "350px" : "",
+                        minHeight: md ? "350px" : "250px",
                         borderRadius: "10px",
                         maxHeight: "400px",
                       }}

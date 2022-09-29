@@ -234,10 +234,8 @@ const Timeline = () => {
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
-              height: {
-                xs: "100%",
-                md: "80vh",
-              },
+              height: "100%",
+              minHeight: "700px",
             }}
           >
             {ventures?.map(({ year, highlights }, index) => {
