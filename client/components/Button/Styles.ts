@@ -13,17 +13,18 @@ export const Primary: SxProps<Theme> = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "12px",
+  fontSize: "17px",
   backgroundColor: black,
   borderRadius: "7.5px",
-  padding: "15px 35px",
+  padding: "12px 50px",
   whiteSpace: "nowrap",
   color: "#fff",
+  textTransform: "unset",
   cursor: "pointer",
-  fontWeight: 500,
+  fontWeight: 600,
   fontFamily: "'Poppins', sans-serif",
   "&:hover": {
-    backgroundColor: black,
+    backgroundColor: "#424242",
   },
 };
 

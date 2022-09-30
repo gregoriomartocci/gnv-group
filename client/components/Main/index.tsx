@@ -24,6 +24,8 @@ import Frame from "./Components/Frame";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import CircleIcon from "@mui/icons-material/Circle";
 import UseButton from "../Button";
+import Link from "next/link";
+import { sanitize } from "../Article";
 
 export interface ISlide {
   title: string;
@@ -39,9 +41,12 @@ export interface ISlidesProps {
   mode: "slider" | "static";
   img?: string;
   phrase?: string;
+  buttonLink?: string;
   imageOnly?: boolean;
   frame?: boolean;
+  headerTitle: string;
   flip?: boolean;
+  fontColor?: string;
 }
 
 const Main = ({
@@ -49,9 +54,12 @@ const Main = ({
   mode,
   img,
   imageOnly,
+  headerTitle,
   frame,
+  buttonLink,
   flip,
   phrase,
+  fontColor,
 }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
@@ -161,12 +169,19 @@ const Main = ({
                 )}
                 {!imageOnly ? (
                   <Box sx={MainContent}>
-                    <Typography sx={HeaderTitle}>
-                      Proyectos distintivos con visión de futuro.
+                    <Typography
+                      sx={HeaderTitle}
+                      style={{ color: fontColor ?? "" }}
+                    >
+                      {sanitize(headerTitle ?? "") ?? ""}
                     </Typography>
-                    <Box style={{ width: "150px" }}>
-                      <UseButton type={"Primary"}>Contactanos</UseButton>
-                    </Box>
+                    <Link href={buttonLink ?? ""}>
+                      <a>
+                        <Box style={{ width: "150px" }}>
+                          <UseButton type={"Primary"}>Contactanos</UseButton>
+                        </Box>
+                      </a>
+                    </Link>
                   </Box>
                 ) : (
                   ""

@@ -108,10 +108,10 @@ export const MainImage: SxProps<Theme> = {
 
 export const HeaderTitle: SxProps<Theme> = {
   fontFamily: "'Poppins', sans-serif",
-  fontSize: "37.5px",
-  fontWeight: 400,
+  fontSize: "38px",
+  fontWeight: 500,
   textAlign: "left",
-  marginBottom: "30px",
+  marginBottom: "40px",
 };
 
 export const MainContent: SxProps<Theme> = {

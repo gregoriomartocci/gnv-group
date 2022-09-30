@@ -167,9 +167,12 @@ const Company = () => {
       <Menu onScroll color="#212121" />
       <Main
         slides={SliderData}
+        headerTitle="Por más de 50 años, </br> sinónimo de real estate en Argentina"
         mode="static"
+        buttonLink="/home/#contact"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
         flip
+        fontColor="#212121"
       />
 
       {/* SECTION */}

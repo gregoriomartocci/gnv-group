@@ -260,6 +260,8 @@ const Home = () => {
       <Menu onScroll color="#fff" />
       <Main
         slides={slides}
+        buttonLink="/home/#contact"
+        headerTitle="Proyectos distintivos </br> con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
       />
@@ -290,10 +292,12 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              P={{ md: "0 10%" }}
-              titleFontSize={{ xs: "25px", md: "28px" }}
-              fontWeight={500}
-              title="Abarcamos todos los segmentos del mercado inmobiliario.  Desarrollamos, construimos y comercializamos a través de cuatro segmentos: urbanización, edificios residenciales,  torres corporativas y locales comerciales. "
+              p="125px 12.5%"
+              titleFontSize="38px"
+              fontWeight={600}
+              descriptionFontSize="25px"
+              title="Participamos en todos los segmentos del mercado inmobiliario."
+              description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
           </motion.div>
         </Box>
@@ -381,7 +385,7 @@ const Home = () => {
       >
         <UseCarousel items={slides} slideTime={5000} />
       </Box>
-      
+
       <Box
         sx={{
           display: "flex",
@@ -412,7 +416,7 @@ const Home = () => {
           alignItems: "center",
           minHeight: "100vh",
           width: "100%",
-          padding: { xs: "10% 15px", md: "10%" },
+          padding: { xs: "10% 15px", md: "0 10%" },
         }}
       >
         <HeaderTitle
