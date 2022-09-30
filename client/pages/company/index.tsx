@@ -198,7 +198,6 @@ const Company = () => {
               title={<Logo width="calc(100% - 150px)" color="#212121" />}
               paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
-              reverse
             />
           </Box>
           <Box
