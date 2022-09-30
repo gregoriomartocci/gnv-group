@@ -400,7 +400,7 @@ const Home = () => {
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           }
-          title="Alejandro Ginevra, Presidente de GNV Group."
+          author="Alejandro Ginevra, </br> Presidente de GNV Group."
           reverse
         />
       </Box>

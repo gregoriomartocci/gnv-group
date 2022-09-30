@@ -9,12 +9,14 @@ import {
   Reverse,
   SectionStyle,
 } from "./Styles";
+import { sanitize } from "../Article";
 
 export interface ISectionProps {
   title?: any;
   paragraph?: string;
   image: string;
   quote?: string;
+  author?: string;
   reverse?: boolean;
 }
 
@@ -42,6 +44,7 @@ const Section = ({
   title,
   quote,
   paragraph,
+  author,
   image,
   reverse,
 }: ISectionProps) => {
@@ -62,14 +65,11 @@ const Section = ({
                     width: "100%",
                     padding: {
                       xs: "25px 0 0 0",
-                      sm: "25px 0 0 0",
-                      md: "25px 0 0 0",
                       lg: "",
-                      xl: "",
                     },
                   }}
                 >
-                  {title}
+                  <Typography sx={{ fontSize: "15px" }}>{title}</Typography>
                 </Box>
               ) : (
                 ""
@@ -79,25 +79,49 @@ const Section = ({
                 <Box
                   sx={{
                     width: "100%",
-                  
                   }}
                 >
                   <Typography
                     sx={{
-                      fontStyle: "italic",
                       fontWeight: 500,
-                      color: "#616161",
+                      // fontStyle: "oblique",
+                      color: "#bdbdbd",
+                      textAlign: "justify",
                       fontSize: {
                         xs: "32px",
-                        sm: "32px",
-                        md: "30px",
-                        lg: "30px",
-                        xl: "30px",
+                        md: "32px",
+                      },
+                      height: "100%",
+                      lineHeight: "45px",
+                    }}
+                  >
+                    {quote}
+                  </Typography>
+                </Box>
+              ) : (
+                ""
+              )}
+
+              {author ? (
+                <Box
+                  sx={{
+                    width: "100%",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontStyle: "regular",
+                      fontWeight: 700,
+                      color: "#757575",
+                      margin: "20px 0 0 0",
+                      fontSize: {
+                        xs: "32px",
+                        md: "20px",
                       },
                       height: "100%",
                     }}
                   >
-                    {quote}
+                    {sanitize(author) ?? ""}
                   </Typography>
                 </Box>
               ) : (

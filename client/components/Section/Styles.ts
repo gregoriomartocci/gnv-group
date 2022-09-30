@@ -41,10 +41,7 @@ export const Reverse: SxProps<Theme> = {
   justifyContent: "center",
   flexDirection: {
     xs: "column-reverse",
-    sm: "column-reverse",
-    md: "column-reverse",
     lg: "row-reverse",
-    xl: "row-reverse",
   },
   textAlign: "right",
   alignItems: "center",
@@ -62,10 +59,8 @@ export const ColumnLeft: SxProps<Theme> = {
   height: "100%",
   padding: {
     xs: "20px 0 0 0",
-    sm: "20px 0 0 0",
-    md: "7.5%",
+    md: "0 18%",
     lg: "",
-    xl: "",
   },
 };
 
