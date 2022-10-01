@@ -66,11 +66,10 @@ const Slider = ({ items }: any) => {
           width: "100%",
           height: "100%",
           top: 0,
-          overflowX: "hidden",
         }}
       >
         {items &&
-          items?.map((element: any, key: number) => {
+          items?.map(({ src, name }: any, key: number) => {
             return (
               <Box onClick={() => setPosition(key)}>
                 <motion.div
@@ -112,8 +111,8 @@ const Slider = ({ items }: any) => {
                       objectFit: "cover",
                       objectPosition: "25% 0%",
                     }}
-                    src={element}
-                    alt={""}
+                    src={src}
+                    alt={name}
                   />
                 </motion.div>
               </Box>
