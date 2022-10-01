@@ -70,6 +70,9 @@ export const Content = (project: IProject) => {
         <Typography>{project?.status}</Typography>
       </TableCell>
       <TableCell align="left">
+        <Typography>{project?.type}</Typography>
+      </TableCell>
+      <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
           {project?.published ? (
             <Box

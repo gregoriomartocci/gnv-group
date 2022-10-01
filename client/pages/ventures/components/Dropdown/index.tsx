@@ -20,7 +20,7 @@ const Dropdown = ({
   optionsHeight,
 }: Type) => {
   const [active, setActive] = useState(false);
-  const [selected, setSelected] = useState(placeholder);
+  const [selected, setSelected] = useState("");
 
   const handleClick = () => {
     setActive(!active);
@@ -53,7 +53,7 @@ const Dropdown = ({
         <Typography
           sx={{ fontSize: "17px", fontWeight: 500, color: "#9e9e9e" }}
         >
-          {selected}
+          {!selected ? placeholder : selected}
         </Typography>
 
         <KeyboardArrowDownIcon

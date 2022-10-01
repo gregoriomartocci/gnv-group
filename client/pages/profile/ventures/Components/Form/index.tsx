@@ -57,7 +57,6 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
   };
 
   const [type, setType] = useState([
-    "Todos",
     "Usos mixtos",
     "Residencial",
     "Corporativo",
@@ -68,7 +67,6 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
   ]);
 
   const [status, setStatus] = useState([
-    "Todos",
     "Ejecutado",
     "En desarrollo",
     "Finalizado",
@@ -148,7 +146,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
               ["status"]: e,
             })
           }
-          optionsHeight="20px"
+          optionsHeight="40px"
         />
       </Box>
 
