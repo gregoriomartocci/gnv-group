@@ -110,3 +110,14 @@ export const getProjects = async (req, res) => {
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
+
+export const getProject = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const project = await Project.findById(id);
+    return res.json(project);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+  }
+};

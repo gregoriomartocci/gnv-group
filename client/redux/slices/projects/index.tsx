@@ -57,7 +57,7 @@ export type TAlert = {
 
 export interface initialState {
   projects: IProject[];
-  projectView: IProject | {};
+  project: IProject | {};
   projectsFilter: IProject[];
   projectSelected: IProject | {};
   modal: TModal;
@@ -66,7 +66,7 @@ export interface initialState {
 
 const initialState: initialState = {
   projects: [],
-  projectView: {},
+  project: {},
   projectsFilter: [],
   projectSelected: {},
   modal: { actions: false, update: false, delete: false, create: false },
@@ -78,13 +78,11 @@ export const projectsSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
-    setState: (state, action: PayloadAction<initialState>) => {
-      return (state = action.payload);
-    },
-    // setModal: ()
     setModal: (state, action: PayloadAction<TModalPayload>) => {
-      const { name, value } = action?.payload;
-      state.modal = { ...state.modal, [name]: value };
+      state.project = { ...action.payload };
+    },
+    setProject: (state, action: PayloadAction<TModalPayload>) => {
+      state.project = { ...action.payload };
     },
     setAlert: (state, action: PayloadAction<TAlert>) => {
       state.alert = [...state.alert, action?.payload];
@@ -94,9 +92,6 @@ export const projectsSlice = createSlice({
     },
     setSelected: (state, action: PayloadAction<IProject>) => {
       state.projectSelected = { ...action.payload };
-    },
-    setProjectView: (state, action: PayloadAction<IProject>) => {
-      state.projectView = { ...action.payload };
     },
     setProjects: (state, action: PayloadAction<IProject[]>) => {
       state.projects = [...action.payload];
@@ -108,14 +103,13 @@ export const projectsSlice = createSlice({
 });
 
 export const {
-  setState,
   setProjects,
   setFilter,
   setSelected,
-  setProjectView,
+  setProject,
   setModal,
   setAlert,
-  closeAlert
+  closeAlert,
 } = projectsSlice.actions;
 
 export default projectsSlice.reducer;

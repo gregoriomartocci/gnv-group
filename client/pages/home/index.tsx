@@ -28,6 +28,9 @@ import UseTabs from "./Components/Tabs";
 
 import MarkerLogo from "./marker-01.svg";
 import Timeline from "./Components/Timeline";
+import { ReadProject } from "../../api/ventures";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { setProject } from "../../redux/slices/projects";
 
 export type TDemo = {
   img: string;
@@ -255,6 +258,22 @@ const Home = () => {
     },
   ];
 
+  const { mutateAsync: getProjectMutation, isLoading: deleteLoading } =
+    useMutation(ReadProject, {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries("projects");
+        dispatch(setProject(data));
+      },
+      onError: () => {},
+    });
+
+  const queryClient = useQueryClient();
+
+  const navigate = (id: string) => {
+    getProjectMutation(id);
+    
+  };
+
   return (
     <Box sx={{ overflow: "hidden" }}>
       <Menu onScroll color="#fff" />
@@ -349,7 +368,7 @@ const Home = () => {
             md: `auto`,
           }}
           items={items}
-          component={(item: TDemo) => <Card {...item} />}
+          component={(item: TDemo) => <Card {...item} navigate={navigate} />}
         />
       </Box>
 

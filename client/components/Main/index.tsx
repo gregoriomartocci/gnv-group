@@ -173,7 +173,7 @@ const Main = ({
                       sx={HeaderTitle}
                       style={{ color: fontColor ?? "" }}
                     >
-                      {sanitize(headerTitle ?? "") ?? ""}
+                      {headerTitle ? sanitize(headerTitle) : ""}
                     </Typography>
                     <Link href={buttonLink ?? ""}>
                       <a>
