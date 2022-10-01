@@ -109,7 +109,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
 
         <Dropdown
           items={type}
-          placeholder="tipo"
+          placeholder={input?.type}
           width="100%"
           action={(e) =>
             setInput({
@@ -139,7 +139,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         <Dropdown
           items={status}
           width="100%"
-          placeholder="estado"
+          placeholder={input?.status}
           action={(e) =>
             setInput({
               ...input,

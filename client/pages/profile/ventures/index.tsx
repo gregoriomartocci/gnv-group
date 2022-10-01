@@ -52,6 +52,7 @@ export interface Data {
   link: string;
   published: boolean;
   status: string;
+  type: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -124,6 +125,12 @@ const headCells: readonly HeadCell[] = [
     numeric: true,
     disablePadding: false,
     label: "Estado",
+  },
+  {
+    id: "type",
+    numeric: true,
+    disablePadding: false,
+    label: "Tipo",
   },
   {
     id: "published",
