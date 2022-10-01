@@ -22,6 +22,7 @@ import UseButton from "../../../../../components/Button";
 import { IProject } from "../../../../../redux/slices/projects";
 import { IArticle } from "../../../../../redux/slices/articles";
 import BasicSelect from "../../../../../components/Select";
+import Dropdown from "../../../../ventures/components/Dropdown";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -47,7 +48,6 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
-  const status = ["en desarrollo", "finalizado"];
 
   const onChangeHandler = (e: any) => {
     setInput({
@@ -55,6 +55,24 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const [type, setType] = useState([
+    "Todos",
+    "Usos mixtos",
+    "Residencial",
+    "Corporativo",
+    "Hoteleria",
+    "Retail",
+    "Urbanización",
+    "Gastronomía y Lifestyle",
+  ]);
+
+  const [status, setStatus] = useState([
+    "Todos",
+    "Ejecutado",
+    "En desarrollo",
+    "Finalizado",
+  ]);
 
   return (
     <Box>
@@ -74,7 +92,20 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         value={input ? input?.link : ""}
         onChangeHandler={onChangeHandler}
       />
-      <BasicSelect
+      <Dropdown
+        items={type}
+        placeholder="tipo"
+        width={{ xs: "100%", sm: "250px" }}
+        action={onChangeHandler}
+      />
+      <Dropdown
+        
+        items={status}
+        placeholder="tipo"
+        width={{ xs: "100%", sm: "250px" }}
+        action={onChangeHandler}
+      />
+      {/* <BasicSelect
         options={status}
         width="100%"
         value={input ? input : {}}
@@ -82,7 +113,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         name="status"
         placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
         label="Estado"
-      />
+      /> */}
     </Box>
   );
 };

@@ -3,7 +3,8 @@ import Project from "../models/project";
 
 export const createProject = async (req, res) => {
   try {
-    const { name, link, description, published, status, images } = req.body;
+    const { name, link, description, published, status, images, type } =
+      req.body;
 
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
@@ -21,6 +22,8 @@ export const createProject = async (req, res) => {
       return res.json({ error: "Por favor ingrese una descripción" });
 
     if (!images) return res.json({ error: "Por favor incluya imágenes" });
+
+    if (!type) return res.json({ error: "Por favor ingrese un tipo" });
 
     const alreadyExist = await Project.findOne({ name });
 
@@ -93,7 +96,6 @@ export const editProject = async (req, res) => {
       new: true,
     });
 
-    // console.log(project);
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
