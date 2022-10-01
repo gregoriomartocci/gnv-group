@@ -8,18 +8,13 @@ export const createProject = async (req, res) => {
 
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
-    if (!link)
-      return res.json({
-        error: "Por favor ingrese un precio",
-      });
-
     if (!status)
       return res.json({
         error: "Por favor indique en que estado se encuentra el emprendimiento",
       });
 
-    if (!description)
-      return res.json({ error: "Por favor ingrese una descripción" });
+    // if (!description)
+    //   return res.json({ error: "Por favor ingrese una descripción" });
 
     if (!images) return res.json({ error: "Por favor incluya imágenes" });
 
@@ -45,6 +40,8 @@ export const createProject = async (req, res) => {
       status,
       images: updated_images,
     }).save();
+
+    console.log("aca llegue", project);
 
     return res.json(project);
   } catch (err) {

@@ -15,7 +15,7 @@ const projectSchema = new Schema(
       trim: true,
       required: true,
     },
-    description: { type: String, required: true },
+    description: { type: String },
     images: [{}],
     published: { type: Boolean, default: true },
     status: {
@@ -28,7 +28,6 @@ const projectSchema = new Schema(
     },
     link: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
