@@ -208,26 +208,22 @@ const Home = () => {
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664622622/alyz6lern9epriiupccf.jpg",
       title: "WTC Buenos Aires I, II, III IV",
-      link: "/venture",
-      id: "",
+      link: "/venture/62ca623d20e916ae0afc3896",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
       title: "Ostent Tower",
-      link: "/venture",
-      id: "",
+      link: "/venture/62ca5fdb20e916ae0afc3882",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
-      link: "/venture",
-      id: "",
+      link: "/venture/62ca60f120e916ae0afc388a",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
       title: "The Shops",
-      link: "/venture",
-      id: "",
+      link: "/venture/62ca615520e916ae0afc388e",
     },
   ];
 

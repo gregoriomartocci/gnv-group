@@ -9,11 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMutation, useQueryClient } from "react-query";
 import { ReadProject } from "../../api/ventures";
 import { setProject } from "../../redux/slices/projects";
+import { useRouter } from "next/router";
 
 const Venture = () => {
   const state = useSelector((state: IState) => state?.projects);
   const { project } = state;
+  const router = useRouter();
   const dispatch = useDispatch();
+  const ventureId = router.query.venture;
 
   const queryClient = useQueryClient();
 
@@ -30,8 +33,10 @@ const Venture = () => {
     });
 
   useEffect(() => {
-    getProjectMutation();
+    getProjectMutation(ventureId);
   }, []);
+
+  console.log(ventureId, "OKKK");
 
   return (
     <Box>
