@@ -5,6 +5,7 @@ import {
   Box,
   CircularProgress,
   TextField,
+  Typography,
 } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -48,7 +49,6 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
-
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -92,19 +92,66 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         value={input ? input?.link : ""}
         onChangeHandler={onChangeHandler}
       />
-      <Dropdown
-        items={type}
-        placeholder="tipo"
-        width={{ xs: "100%", sm: "250px" }}
-        action={onChangeHandler}
-      />
-      <Dropdown
-        
-        items={status}
-        placeholder="tipo"
-        width={{ xs: "100%", sm: "250px" }}
-        action={onChangeHandler}
-      />
+
+      <Box
+        sx={{
+          margin: "20px 0",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "15px",
+            color: "#212121",
+            fontWeight: "600",
+            margin: "10px 0",
+          }}
+        >
+          Tipo
+        </Typography>
+
+        <Dropdown
+          items={type}
+          placeholder="tipo"
+          width="100%"
+          action={(e) =>
+            setInput({
+              ...input,
+              ["type"]: e,
+            })
+          }
+          optionsHeight="40px"
+        />
+      </Box>
+
+      <Box
+        sx={{
+          margin: "20px 0",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "15px",
+            color: "#212121",
+            fontWeight: "600",
+            margin: "10px 0",
+          }}
+        >
+          Estado
+        </Typography>
+        <Dropdown
+          items={status}
+          width="100%"
+          placeholder="estado"
+          action={(e) =>
+            setInput({
+              ...input,
+              ["status"]: e,
+            })
+          }
+          optionsHeight="20px"
+        />
+      </Box>
+
       {/* <BasicSelect
         options={status}
         width="100%"

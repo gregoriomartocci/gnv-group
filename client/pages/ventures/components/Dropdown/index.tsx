@@ -8,9 +8,17 @@ type Type = {
   placeholder: string;
   action: any;
   width: string;
+  name?: string;
+  optionsHeight?: string;
 };
 
-const Dropdown = ({ items, placeholder, action, width }: Type) => {
+const Dropdown = ({
+  items,
+  placeholder,
+  action,
+  width,
+  optionsHeight,
+}: Type) => {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState(placeholder);
 
@@ -77,7 +85,9 @@ const Dropdown = ({ items, placeholder, action, width }: Type) => {
                   sx={{
                     display: "flex",
                     justifyContent: "flex-start",
+                    alignItems: "center",
                     textAlign: "left",
+                    height: optionsHeight ?? "",
                     padding: "15px 22.5px",
                     borderRadius: "5px",
                     "&:hover": {
