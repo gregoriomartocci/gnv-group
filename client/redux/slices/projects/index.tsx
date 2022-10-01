@@ -78,8 +78,12 @@ export const projectsSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
+    setProjects: (state, action: PayloadAction<IProject[]>) => {
+      state.projects = [...action.payload];
+    },
     setModal: (state, action: PayloadAction<TModalPayload>) => {
-      state.project = { ...action.payload };
+      const { name, value } = action?.payload;
+      state.modal = { ...state.modal, [name]: value };
     },
     setProject: (state, action: PayloadAction<TModalPayload>) => {
       state.project = { ...action.payload };
@@ -92,9 +96,6 @@ export const projectsSlice = createSlice({
     },
     setSelected: (state, action: PayloadAction<IProject>) => {
       state.projectSelected = { ...action.payload };
-    },
-    setProjects: (state, action: PayloadAction<IProject[]>) => {
-      state.projects = [...action.payload];
     },
     setFilter: (state, action: PayloadAction<IProject[]>) => {
       state.projectsFilter = [...action.payload];

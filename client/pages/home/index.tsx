@@ -209,21 +209,25 @@ const Home = () => {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664622622/alyz6lern9epriiupccf.jpg",
       title: "WTC Buenos Aires I, II, III IV",
       link: "/venture",
+      id: "",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
       title: "Ostent Tower",
       link: "/venture",
+      id: "",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
       link: "/venture",
+      id: "",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
       title: "The Shops",
       link: "/venture",
+      id: "",
     },
   ];
 
@@ -258,25 +262,11 @@ const Home = () => {
     },
   ];
 
-  const { mutateAsync: getProjectMutation, isLoading: deleteLoading } =
-    useMutation(ReadProject, {
-      onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
-        dispatch(setProject(data));
-      },
-      onError: () => {},
-    });
-
-  const queryClient = useQueryClient();
-
-  const navigate = (id: string) => {
-    getProjectMutation(id);
-    
-  };
-
   return (
     <Box sx={{ overflow: "hidden" }}>
       <Menu onScroll color="#fff" />
+
+      {/* MAIN SECTION */}
       <Main
         slides={slides}
         buttonLink="/home/#contact"
@@ -284,6 +274,9 @@ const Home = () => {
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
       />
+
+      {/* SECTION 1 */}
+
       <Box
         sx={{
           display: "flex",
@@ -368,12 +361,10 @@ const Home = () => {
             md: `auto`,
           }}
           items={items}
-          component={(item: TDemo) => <Card {...item} navigate={navigate} />}
+          component={(item: TDemo) => <Card {...item} />}
         />
       </Box>
-
       {/* Trayectory */}
-
       <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% 0" }}>
         <motion.div
           initial={"offscreen"}
@@ -404,7 +395,6 @@ const Home = () => {
       >
         <UseCarousel items={slides} slideTime={5000} />
       </Box>
-
       <Box
         sx={{
           display: "flex",
@@ -423,9 +413,7 @@ const Home = () => {
           reverse
         />
       </Box>
-
       {/* Contact */}
-
       <Box
         id="contact"
         sx={{
@@ -456,9 +444,7 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-
       {/* Maps */}
-
       <Box
         sx={{
           display: "flex",

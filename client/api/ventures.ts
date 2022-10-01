@@ -21,7 +21,7 @@ export const ReadProjects = async () => {
 export const ReadProject = async (id: string) => {
   const result = await api({
     method: "get",
-    path: `/projects/${id}`,
+    path: `/project/${id}`,
     payload: {},
   });
   return result;

@@ -4,8 +4,13 @@ import { Typography } from "@mui/material";
 import { TDemo } from "../..";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Link from "next/link";
+import { Navigate } from "react-router-dom";
 
-const Card = ({ img, title, link }: TDemo) => {
+const Card = (
+  { img, title, link }: TDemo,
+  id: string,
+  navigate: (id: string) => void
+) => {
   const [hover, setHover] = useState<boolean>(false);
 
   const handleMouseEnter = () => {

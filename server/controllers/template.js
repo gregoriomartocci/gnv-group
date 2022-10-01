@@ -8,8 +8,6 @@ export const createTemplate = async (req, res) => {
   try {
     const { page, title, carousel, description } = req.body;
 
-    console.log(req.body, "que nos llega??");
-
     let images_aux;
     let updated_images;
 
@@ -64,8 +62,6 @@ export const removeTemplate = async (req, res) => {
 export const editTemplate = async (req, res) => {
   const { carousel } = req.body;
 
-  console.log(req.body, "que poronga nos llega");
-
   const validate_cloudinay = (str) => {
     const validate =
       typeof str === "string" && str.split(".")[1] === "cloudinary";
@@ -94,7 +90,6 @@ export const editTemplate = async (req, res) => {
       new: true,
     });
 
-    // console.log(project);
     return res.json(template);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
@@ -106,7 +101,6 @@ export const editTemplate = async (req, res) => {
 export const getTemplates = async (req, res) => {
   try {
     const all = await Template.find().populate("page").sort({ createdAt: -1 });
-    console.log(all, "DATA");
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
