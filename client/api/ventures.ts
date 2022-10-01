@@ -1,4 +1,4 @@
-import api from "../../../../hooks/Api";
+import api from "../hooks/Api";
 
 export const CreateProject = async (item: any) => {
   const result = await api({
@@ -18,9 +18,16 @@ export const ReadProjects = async () => {
   return result;
 };
 
-export const UpdateProject = async (item: any) => {
-  console.log(item, "CHEEEEEE");
+export const ReadProject = async (id: string) => {
+  const result = await api({
+    method: "get",
+    path: `/projects/${id}`,
+    payload: {},
+  });
+  return result;
+};
 
+export const UpdateProject = async (item: any) => {
   const result = await api({
     method: "post",
     path: `/edit-project/${item?._id}`,
@@ -29,7 +36,7 @@ export const UpdateProject = async (item: any) => {
   return result;
 };
 
-export const DeleteProject = async (id: any) => {
+export const DeleteProject = async (id: string) => {
   const result = await api({
     method: "delete",
     path: `/project/${id}`,

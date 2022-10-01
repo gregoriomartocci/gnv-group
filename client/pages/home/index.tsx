@@ -203,7 +203,7 @@ const Home = () => {
 
   const items = [
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430588/owperet7603w21sgbf7w.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664622622/alyz6lern9epriiupccf.jpg",
       title: "WTC Buenos Aires I, II, III IV",
       link: "/venture",
     },

@@ -37,7 +37,7 @@ import {
   DeleteProject,
   ReadProjects,
   UpdateProject,
-} from "./Crud";
+} from "../../../api/ventures";
 import { Content } from "./Components/Content";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
