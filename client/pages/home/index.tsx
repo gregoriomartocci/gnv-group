@@ -290,7 +290,7 @@ const Home = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            padding: "5% 0",
+            padding: "7.5% 0",
           }}
         >
           <motion.div
@@ -300,7 +300,7 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p="125px 12.5%"
+              p="0 12.5%"
               titleFontSize="38px"
               fontWeight={600}
               descriptionFontSize="25px"
