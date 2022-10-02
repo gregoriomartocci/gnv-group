@@ -31,6 +31,7 @@ const Slider = ({ items }: any) => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        overflowX: "hidden",
         height: "100vh",
         width: "100vw",
         padding: "5%",

@@ -60,6 +60,7 @@ const VenturesLayout = () => {
     error,
     data: allProjects,
   } = useQuery("projects", ReadProjects, {
+    refetchOnWindowFocus: false,
     onSuccess: (data) => {
       dispatch(setProject(data));
       dispatch(setFilter(data));

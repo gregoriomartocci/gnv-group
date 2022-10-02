@@ -85,79 +85,86 @@ const Venture = (venture: any) => {
   return (
     <Fragment>
       {venture?.id ? (
-        <Box sx={CardContainer}>
-          <img src={venture?.images[0]?.src ?? ""} alt={venture?.name ?? ""} />
-          <Box sx={CardHeader}>
-            <Typography
-              sx={{
-                color: "#212121",
-                fontWeight: 700,
-                fontSize: "30px",
-                margin: "15px 0 0 0",
-              }}
-            >
-              {venture?.name ?? ""}
-            </Typography>
-          </Box>
-
-          <Box sx={CardBody}>
-            <Box
-              style={{
-                display: "flex",
-                alignItems: "center",
-                margin: "7.5px 0 0 0",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "#9e9e9e",
-                  fontWeight: 600,
-                  fontSize: "16px",
-                }}
-              >
-                {venture?.status ? venture?.status : ""}
-              </Typography>
-            </Box>
-
-            <Box
-              style={{
-                color: "#9e9e9e",
-                fontWeight: 500,
-                fontSize: "16px",
-                margin: "5px 0 0 0",
-                lineHeight: "30px",
-                textAlign: "justify !important",
-              }}
-            >
-              {venture?.description
-                ? santize(sliceText(venture?.description, 200))
-                : ""}
-            </Box>
-
-            <Link href={"/venture"}>
-              <a>
-                <Box
+        <Link href={`/venture/${venture._id}`}>
+          <a target="_blank">
+            <Box sx={CardContainer}>
+              <img
+                src={venture?.images[0]?.src ?? ""}
+                alt={venture?.name ?? ""}
+              />
+              <Box sx={CardHeader}>
+                <Typography
                   sx={{
+                    color: "#212121",
+                    fontWeight: 700,
+                    fontSize: "30px",
+                    margin: "15px 0 0 0",
+                  }}
+                >
+                  {venture?.name ?? ""}
+                </Typography>
+              </Box>
+
+              <Box sx={CardBody}>
+                <Box
+                  style={{
                     display: "flex",
                     alignItems: "center",
-                    color: "#9e9e9e",
-                    fontWeight: 600,
-                    fontSize: "16px",
-                    margin: "12.5px 0 0 0",
-
-                    "&:hover": {
-                      color: "#757575",
-                    },
+                    margin: "7.5px 0 0 0",
                   }}
-                  onClick={() => handleClick(venture)}
                 >
-                  Ver Proyecto
-                  <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
+                  <Typography
+                    sx={{
+                      color: "#9e9e9e",
+                      fontWeight: 600,
+                      fontSize: "16px",
+                    }}
+                  >
+                    {venture?.status ? venture?.status : ""}
+                  </Typography>
                 </Box>
-              </a>
-            </Link>
-          </Box>
-        </Box>
+
+                <Box
+                  style={{
+                    color: "#9e9e9e",
+                    fontWeight: 500,
+                    fontSize: "16px",
+                    margin: "5px 0 0 0",
+                    lineHeight: "30px",
+                    textAlign: "justify !important",
+                  }}
+                >
+                  {venture?.description
+                    ? santize(sliceText(venture?.description, 200))
+                    : ""}
+                </Box>
+
+                <Link href={"/venture"}>
+                  <a>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#9e9e9e",
+                        fontWeight: 600,
+                        fontSize: "16px",
+                        margin: "12.5px 0 0 0",
+
+                        "&:hover": {
+                          color: "#757575",
+                        },
+                      }}
+                      onClick={() => handleClick(venture)}
+                    >
+                      Ver Proyecto
+                      <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
+                    </Box>
+                  </a>
+                </Link>
+              </Box>
+            </Box>
+          </a>
+        </Link>
       ) : null}
     </Fragment>
   );
