@@ -174,11 +174,13 @@ const Ventures = () => {
   const [input, setInput] = useState({
     name: "",
     link: "",
+    type: "",
+    status: "",
     images: [],
     description: "",
   });
 
-  console.log(selectedProject, "Que onda monnoooo");
+  console.log(input, "Que onda monnoooo");
 
   const queryClient = useQueryClient();
 

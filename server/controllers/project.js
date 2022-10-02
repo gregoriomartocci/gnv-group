@@ -6,6 +6,8 @@ export const createProject = async (req, res) => {
     const { name, link, description, published, status, images, type } =
       req.body;
 
+    console.log(req.body, "me estaaa llegando estoooo");
+
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
     if (!status)
@@ -37,6 +39,7 @@ export const createProject = async (req, res) => {
       description,
       published,
       link,
+      type,
       status,
       images: updated_images,
     }).save();

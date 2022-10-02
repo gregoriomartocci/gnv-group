@@ -49,6 +49,7 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
+  
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
