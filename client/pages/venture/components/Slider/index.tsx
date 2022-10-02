@@ -33,7 +33,8 @@ const Slider = ({ items }: any) => {
         alignItems: "center",
         overflowX: "hidden",
         height: "100%",
-        padding: "5%",
+        padding: "0 5%",
+        margin: "5% 0",
         position: "relative",
       }}
     >

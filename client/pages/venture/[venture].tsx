@@ -52,18 +52,15 @@ const Venture = () => {
               fontWeight={700}
               title={project?.name ?? ""}
               p="0 10%"
-              description={
-                (project?.description && sanitize(project?.description)) ?? ""
-              }
-              descriptionFontSize="25px"
             />
           </Box>
           <Slider items={project ? project?.images : []} />
-          {/* <Box sx={{ display: "flex", padding: "0 10%" }}>
-            <Typography sx={{ fontSize: "26px" }}>
+
+          <Box sx={{ display: "flex", padding: "0 10%" }}>
+            <Typography sx={{ fontSize: "26px", textAlign: "justify" }}>
               {(project?.description && sanitize(project?.description)) ?? ""}
             </Typography>
-          </Box> */}
+          </Box>
           <Footer />
         </Box>
       ) : null}
