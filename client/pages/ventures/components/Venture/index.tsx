@@ -86,10 +86,7 @@ const Venture = (venture: any) => {
     <Fragment>
       {venture?.id ? (
         <Box sx={CardContainer}>
-          <img
-            src={venture.length ? venture?.images[0].src : ""}
-            alt={venture?.name ?? ""}
-          />
+          <img src={venture?.images[0]?.src ?? ""} alt={venture?.name ?? ""} />
           <Box sx={CardHeader}>
             <Typography
               sx={{
