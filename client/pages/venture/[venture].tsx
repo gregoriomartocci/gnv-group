@@ -51,6 +51,7 @@ const Venture = () => {
               titleFontSize="50px"
               fontWeight={700}
               title={project?.name ?? ""}
+              p="0 10%"
               description={
                 (project?.description && sanitize(project?.description)) ?? ""
               }
