@@ -208,7 +208,7 @@ const Home = () => {
       link: "/venture/62ca623d20e916ae0afc3896",
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661433982/e0sxsbscnn7wsjy7ixup.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664740315/irdlqnpade7qxflqicc6.jpg",
       title: "Ostent Tower",
       link: "/venture/62ca5fdb20e916ae0afc3882",
     },
