@@ -31,6 +31,7 @@ import Timeline from "./Components/Timeline";
 import { ReadProject } from "../../api/ventures";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { setProject } from "../../redux/slices/projects";
+import { ligthTheme } from "../../assets/mapsStyles";
 
 export type TDemo = {
   img: string;
@@ -45,7 +46,7 @@ const Home = () => {
   const [countersVisible, setCountersVisible] = useState(false);
   const [tab, setTab] = useState<number>(1);
 
-  const google_api = typeof window && process.env.NEXT_MAPS;
+  const google_api = process.env.NEXT_PUBLIC_MAPS;
 
   const markerLogoUrl = "../../assets/marker/marker-01.svg";
 
@@ -290,7 +291,7 @@ const Home = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            padding: "7.5% 0",
+            padding: "5% 0",
           }}
         >
           <motion.div
@@ -440,7 +441,9 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
+
       {/* Maps */}
+
       <Box
         sx={{
           display: "flex",
@@ -484,6 +487,7 @@ const Home = () => {
               <GoogleMap
                 center={tab === 1 ? argentinaLocation : uruguayLocation}
                 zoom={15}
+                options={{ styles: ligthTheme }}
                 mapContainerStyle={{ width: "100%", height: "100%" }}
               >
                 {mapItems.map(({ id, coordinates }) => {
@@ -492,8 +496,8 @@ const Home = () => {
                       key={id}
                       position={coordinates}
                       icon={{
-                        url: "/marker-01.svg",
-                        scaledSize: new window.google.maps.Size(100, 100),
+                        url: "/markerLogoBlack.svg",
+                        scaledSize: new window.google.maps.Size(125, 125),
                       }}
                     />
                   );
