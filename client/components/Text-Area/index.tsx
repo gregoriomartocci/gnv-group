@@ -20,7 +20,7 @@ const TextArea = ({
     <Box>
       <Typography
         sx={{
-          fontSize: "15px",
+          fontSize: "20px",
           color: "#212121",
           fontWeight: "600",
           margin: "5px 0",
