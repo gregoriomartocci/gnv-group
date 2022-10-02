@@ -7,10 +7,9 @@ import Menu from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
-import SelectorB from "../../components/Selectors-B";
 import SearchBar from "../../components/Search-Bar";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, setProject } from "../../redux/slices/projects";
+import { setFilter, setProject, setProjects } from "../../redux/slices/projects";
 import Dropdown from "./components/Dropdown";
 import OutsideAlerter from "../../hooks/ClickListener";
 import { useQuery } from "react-query";
@@ -62,7 +61,7 @@ const VenturesLayout = () => {
   } = useQuery("projects", ReadProjects, {
     refetchOnWindowFocus: false,
     onSuccess: (data) => {
-      dispatch(setProject(data));
+      dispatch(setProjects(data));
       dispatch(setFilter(data));
     },
   });

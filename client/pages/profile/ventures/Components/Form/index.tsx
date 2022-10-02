@@ -49,7 +49,6 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
-  
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -72,6 +71,8 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     "En desarrollo",
     "Finalizado",
   ]);
+
+  console.log(input, "input");
 
   return (
     <Box>

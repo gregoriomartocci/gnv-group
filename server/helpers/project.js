@@ -7,7 +7,6 @@ cloudinary.config({
 });
 
 export const uploadImage = async (image) => {
-  // console.log(image)
   try {
     const { secure_url } = await cloudinary.uploader.upload(image);
     return secure_url;

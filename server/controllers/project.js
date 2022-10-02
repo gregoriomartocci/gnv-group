@@ -6,8 +6,6 @@ export const createProject = async (req, res) => {
     const { name, link, description, published, status, images, type } =
       req.body;
 
-    console.log(req.body, "me estaaa llegando estoooo");
-
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
     if (!status)
@@ -27,12 +25,14 @@ export const createProject = async (req, res) => {
     if (alreadyExist)
       return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
 
-    const upload_images = images.map(async (i) => ({
+    const uploadImages = images.map(async (i) => ({
       ...i,
       src: await uploadImage(i.src),
     }));
 
-    const updated_images = await Promise.all(upload_images);
+    const updatedImages = await Promise.all(uploadImages);
+
+    console.log(updatedImages, "que pasa che");
 
     const project = await new Project({
       name,
@@ -41,12 +41,12 @@ export const createProject = async (req, res) => {
       link,
       type,
       status,
-      images: updated_images,
+      images: await updatedImages,
     }).save();
 
-    console.log("aca llegue", project);
+    console.log("Que se guarda aca?", project);
 
-    return res.json(project);
+    return res.json(project.images[0]);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: err.message });
@@ -68,7 +68,7 @@ export const removeProject = async (req, res) => {
 export const editProject = async (req, res) => {
   const { images } = req.body;
 
-  const validate_cloudinay = (str) => {
+  const isFromCloudinary = (str) => {
     const validate =
       typeof str === "string" && str.split(".")[1] === "cloudinary";
     return validate;
@@ -77,24 +77,26 @@ export const editProject = async (req, res) => {
   try {
     const { id } = req.params;
 
-    let updated_images;
-    let updated_project;
-    let images_aux;
+    let updatedImages;
+    let updatedProject;
+    let imagesAux;
 
     if (images) {
-      images_aux = images.map(async (i) => ({
+      imagesAux = images.map(async (i) => ({
         ...i,
-        src: !validate_cloudinay(i.src) ? await uploadImage(i.src) : i.src,
+        src: !isFromCloudinary(i.src) ? await uploadImage(i.src) : i.src,
       }));
-      updated_images = await Promise.all(images_aux);
-      updated_project = { ...req.body, images: updated_images };
+      updatedImages = await Promise.all(imagesAux);
+      updatedProject = { ...req.body, images: updatedImages };
+    } else {
+      updatedProject = { ...req.body };
     }
 
-    updated_project = { ...req.body };
-
-    const project = await Project.findByIdAndUpdate(id, updated_project, {
+    const project = await Project.findByIdAndUpdate(id, updatedProject, {
       new: true,
     });
+
+    console.log(project, "sale esto para alla!");
 
     return res.json(project);
   } catch (err) {
