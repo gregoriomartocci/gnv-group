@@ -47,14 +47,10 @@ const Home = () => {
   const [tab, setTab] = useState<number>(1);
 
   const google_api = process.env.NEXT_PUBLIC_MAPS;
-
-  const markerLogoUrl = "../../assets/marker/marker-01.svg";
-
   const argentinaLocation = { lat: -34.6191721, lng: -58.3606006 };
   const uruguayLocation = { lat: -34.9451061, lng: -54.935135 };
 
   const CountersRef = useRef(null);
-  const containerRef = useRef(null);
 
   const { height, width } = useWindowDimensions();
 
@@ -219,7 +215,7 @@ const Home = () => {
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
-      link: "/venture/62ca60f120e916ae0afc388a",
+      link: "/venture/62ca537060ec294bc6a645d9",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
@@ -361,7 +357,9 @@ const Home = () => {
           component={(item: TDemo) => <Card {...item} />}
         />
       </Box>
+
       {/* Trayectory */}
+
       <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% 0" }}>
         <motion.div
           initial={"offscreen"}
@@ -410,7 +408,9 @@ const Home = () => {
           reverse
         />
       </Box>
+
       {/* Contact */}
+
       <Box
         id="contact"
         sx={{
