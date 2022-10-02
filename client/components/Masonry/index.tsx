@@ -5,6 +5,7 @@ import Masonry from "react-masonry-css";
 type TUseMasonry = {
   items: any[];
   component: any;
+  laoding: boolean;
   breakpoints: any;
 };
 

@@ -37,23 +37,23 @@ const CardBody: SxProps<Theme> = {
   flexDirection: "column",
 };
 
-const getFormat = (file: string) => {
-  const result = file?.split(".")?.pop()?.toUpperCase();
-  return result;
-};
+// const getFormat = (file: string) => {
+//   const result = file?.split(".")?.pop()?.toUpperCase();
+//   return result;
+// };
 
-const filterFormat = (array: string[]) => {
-  if (array) {
-    const newArray = [...array];
+// const filterFormat = (array: string[]) => {
+//   if (array) {
+//     const newArray = [...array];
 
-    const updateArray = newArray.find(
-      (image) => getFormat(image) === "PNG" || getFormat(image) === "JPG"
-    );
+//     const updateArray = newArray.find(
+//       ({ src }) => getFormat(src) === "PNG" || getFormat(src) === "JPG"
+//     );
 
-    return updateArray;
-  }
-  return;
-};
+//     return updateArray;
+//   }
+//   return;
+// };
 
 type TVenture = {
   id: string;
@@ -84,10 +84,10 @@ const Venture = (venture: any) => {
 
   return (
     <Fragment>
-      {venture ? (
+      {venture?.id ? (
         <Box sx={CardContainer}>
           <img
-            src={(venture && filterFormat(venture?.images)) ?? ""}
+            src={venture.length ? venture?.images[0].src : ""}
             alt={venture?.name ?? ""}
           />
           <Box sx={CardHeader}>

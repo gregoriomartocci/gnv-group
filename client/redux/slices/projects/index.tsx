@@ -58,7 +58,7 @@ export type TAlert = {
 export interface initialState {
   projects: IProject[];
   project: IProject | {};
-  projectsFilter: IProject[];
+  projectsFiltered: IProject[];
   projectSelected: IProject | {};
   modal: TModal;
   alert: { message: string; status: string }[];
@@ -67,7 +67,7 @@ export interface initialState {
 const initialState: initialState = {
   projects: [],
   project: {},
-  projectsFilter: [],
+  projectsFiltered: [],
   projectSelected: {},
   modal: { actions: false, update: false, delete: false, create: false },
   alert: [],
@@ -98,7 +98,7 @@ export const projectsSlice = createSlice({
       state.projectSelected = { ...action.payload };
     },
     setFilter: (state, action: PayloadAction<IProject[]>) => {
-      state.projectsFilter = [...action.payload];
+      state.projectsFiltered = [...action.payload];
     },
   },
 });

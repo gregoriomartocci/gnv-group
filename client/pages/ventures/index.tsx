@@ -10,9 +10,11 @@ import { motion, useAnimation } from "framer-motion";
 import SelectorB from "../../components/Selectors-B";
 import SearchBar from "../../components/Search-Bar";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "../../redux/slices/projects";
+import { setFilter, setProject } from "../../redux/slices/projects";
 import Dropdown from "./components/Dropdown";
 import OutsideAlerter from "../../hooks/ClickListener";
+import { useQuery } from "react-query";
+import { ReadProjects } from "../../api/ventures";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -25,13 +27,9 @@ const FadeFromBottom = {
 
 const VenturesLayout = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: any) => state?.projects);
 
-  const { projects_filter, projects } = state;
-
-  const [active, setActive] = useState(false);
-
-  const [ventures, setVentures] = useState();
+  const { projectsFiltered, projects } = state;
 
   const [status, setStatus] = useState([
     "Todos",
@@ -56,12 +54,23 @@ const VenturesLayout = () => {
     search: "",
   });
 
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: allProjects,
+  } = useQuery("projects", ReadProjects, {
+    onSuccess: (data) => {
+      dispatch(setProject(data));
+      dispatch(setFilter(data));
+    },
+  });
+
   const filterVenturesStatus = (name: String) => {
     if (name === "Todos") return dispatch(setFilter(projects));
 
     const filtered = projects.filter(
-      (p: IProject) =>
-        String(p.status).toLowerCase() === String(name).toLowerCase()
+      (p: any) => String(p.status).toLowerCase() === String(name).toLowerCase()
     );
     return dispatch(setFilter(filtered));
   };
@@ -69,15 +78,14 @@ const VenturesLayout = () => {
   const filterVenturesTypes = (name: String) => {
     if (name === "Todos") return dispatch(setFilter(projects));
     const filtered = projects.filter(
-      (p: IProject) =>
-        String(p.type).toLowerCase() === String(name).toLowerCase()
+      (p: any) => String(p.type).toLowerCase() === String(name).toLowerCase()
     );
     return dispatch(setFilter(filtered));
   };
 
   const onChangeHandler = (value: string) => {
     if (value) {
-      const filtered = projects?.filter((p: IProject) =>
+      const filtered = projects?.filter((p: any) =>
         String(p.name.toLowerCase()).includes(value.toLowerCase())
       );
       return dispatch(setFilter(filtered));
@@ -88,12 +96,17 @@ const VenturesLayout = () => {
   return (
     <Box>
       <Menu onScroll color="#fff" />
+
+      {/* MAIN SECTION */}
+
       <Main
         slides={SliderData}
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png"
         imageOnly
       />
+
+      {/* HEADER TITLE */}
 
       <motion.div
         initial={"offscreen"}
@@ -118,6 +131,8 @@ const VenturesLayout = () => {
           setValue={setInput}
         />
       </Box>
+
+      {/* FILTER VENTURES */}
 
       <Box
         sx={{
@@ -154,8 +169,14 @@ const VenturesLayout = () => {
         </Box>
       </Box>
 
+      {/* FILTER VENTURES */}
+
       <Box sx={{ padding: "10px 7.5% 0 7.55%" }}>
-        <Ventures />
+        <Ventures
+          items={projectsFiltered ?? []}
+          loading={loading}
+          error={error}
+        />
       </Box>
       <Footer />
     </Box>

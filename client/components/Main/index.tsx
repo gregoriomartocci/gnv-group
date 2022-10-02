@@ -44,7 +44,7 @@ export interface ISlidesProps {
   buttonLink?: string;
   imageOnly?: boolean;
   frame?: boolean;
-  headerTitle: string;
+  headerTitle?: string;
   flip?: boolean;
   fontColor?: string;
 }
