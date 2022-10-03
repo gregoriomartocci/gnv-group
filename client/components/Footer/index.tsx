@@ -112,7 +112,7 @@ const Footer = () => {
 
         {/* SOCIAL MEDIA */}
 
-        <Box sx={{ display: "flex", padding: { xs: "25px 0 10px 0" } }}>
+        {/* <Box sx={{ display: "flex", padding: { xs: "25px 0 10px 0" } }}>
           <Box
             sx={{
               display: "flex",
@@ -152,7 +152,7 @@ const Footer = () => {
           >
             <FaLinkedinIn style={{ color: "#fff" }} />
           </Box>
-        </Box>
+        </Box> */}
       </Box>
 
       {/* DIVIDER */}

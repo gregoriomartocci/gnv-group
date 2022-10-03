@@ -58,7 +58,7 @@ const news_mock = [
     title: "El mercado inmobiliario y el ladrillo pospandemia",
     description: `Las postales se replicaron en muchos puntos del planeta. Imágenes de familias que dejaban las grandes ciudades para instalarse en casas ubicadas en zonas alejadas, con espacios verdes y comodidades para otro tipo de vida. También ocurrió en Argentina, con fuerte demanda de propiedades en countries, más población estable en lugares veraniegos y contracción de la actividad en zonas como el microcentro porteño. “La demanda se trasladó hacia casas con jardín, para compra y alquiler. En la Ciudad, se pedían departamentos con mucha luz, balcón y terrazas”, indica Horacio Benvenuto, gerente general de Izrastzoff.`,
     images: [
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663089953/eldkojxscalfxboem0qq.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1664814339/olzc7zucvznz7ncyfdxm.jpg",
     ],
     link: "https://noticias.perfil.com/noticias/amp/empresas/ladrillo-pospandemia.phtml",
     published: true,

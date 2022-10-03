@@ -141,38 +141,7 @@ const ArticleCard = (article: TArticle) => {
 
 const News = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<errorType>({ articles: "", message: "" });
   const state = useSelector((state: IState) => state?.articles);
-  const { articles } = state;
-
-  // console.log(news_mock, "ok");
-
-  useEffect(() => {
-    getArticles();
-  }, []);
-
-  const getArticles = async () => {
-    setError({ articles: "", message: "" });
-    setLoading(true);
-    try {
-      const data = await api({
-        method: "get",
-        path: "/articles",
-      });
-      console.log("Dateushh", data);
-      setLoading(false);
-      if (data?.error) {
-        setError({ articles: "failed", message: data?.error });
-      } else {
-        setError({ ...error, articles: "success" });
-        dispatch(setArticles(data));
-      }
-    } catch (err) {
-      setError({ articles: "failed", message: "Something went wrong" });
-      setLoading(false);
-    }
-  };
 
   return (
     <Box>
@@ -213,13 +182,19 @@ const News = () => {
         p="125px 0 100px 0"
         title="Todas la noticias"
       />
-      <Box sx={{ padding: "0 5%" }}>
-        <UseMasonry
-          breakpoints={breakpoints}
-          items={news_mock && news_mock.length ? news_mock : []}
-          component={(item: IArticle) => <ArticleCard {...item} />}
-        />
+
+      <Box sx={{ padding: "0 7.5%" }}>
+        <Grid container rowSpacing={5} columnSpacing={5}>
+          {news_mock
+            ? news_mock?.map((item, i) => (
+                <Grid item xs={12} md={6} xl={4}>
+                  <ArticleCard {...item} />
+                </Grid>
+              ))
+            : []}
+        </Grid>
       </Box>
+
       <Box
         sx={{
           display: "flex",

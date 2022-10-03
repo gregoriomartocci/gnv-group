@@ -12,17 +12,27 @@ const data = [
     highlights: [
       {
         title: "Patio Bullrich",
-        description: "Buenos Aires",
+        description: " Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661430298/unlrnzclbys3lsqijlxy.jpg",
       },
       {
         title: "Shopping Soleil",
-        description: "Buenos Aires",
+        description: " Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661430502/qpkobhnwctcwjvp2zfef.jpg",
       },
       {
         title: "Edificio Residencial",
-        description: "Bartolome Mitre 2466,  BS. AS.",
+        description: "Bartolome Mitre 2466, Bs. As.",
+        img: "",
+      },
+      {
+        title: "Edificio Residencial",
+        description: "Valle y José M. Moreno, Bs. As.",
+        img: "",
+      },
+      {
+        title: "Edificio Residencial",
+        description: "Calle Yerbal, Bs. As.",
         img: "",
       },
     ],
@@ -43,7 +53,27 @@ const data = [
       {
         title: "Boulevard Shopping",
         description: "Bs. As.",
-        img: "",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815178/t51oxhhi44e2nvqt2i5t.jpg",
+      },
+      {
+        title: "Palmeras Open Mall",
+        description: "Mendoza",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815337/rgzxtwnvkkromplipjc3.jpg",
+      },
+      {
+        title: "Galerias Pacífico",
+        description: "Bs. As.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815424/rqwjxoql3acnk4fubw48.jpg",
+      },
+      {
+        title: "Patio Olmos",
+        description: "Córdoba.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815534/ek8qedaeue1kcvt2lqbg.jpg",
+      },
+      {
+        title: "Alto Palermo",
+        description: "Bs. As.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815646/ylqwzhnsfdzc1tlpodjc.jpg",
       },
     ],
   },
@@ -52,13 +82,18 @@ const data = [
     highlights: [
       {
         title: "Urbanizacion Dique 1",
-        description: "Puerto Madero, Buenos Aires",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663019975/hhzbushjhp1e9wrt0tac.png",
+        description: "Puerto Madero,  Bs. As.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663019970/oew7m6l0jdgzw3syaand.jpg",
       },
       {
         title: "Devoto Shopping",
         description: "Buenos Aires",
-        img: "",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815810/ow5tiqjr3jlmitvr5576.jpg",
+      },
+      {
+        title: "Malecón Dique 1",
+        description: "Puerto Madero, Bs. As.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664802384/ira6mxdht3hmy15g3k6o.jpg",
       },
     ],
   },
@@ -77,7 +112,7 @@ const data = [
     highlights: [
       {
         title: "Harbour Residences",
-        description: "Edificio Residencial Madero Harbour",
+        description: "Edificio Residencial Madero Harbour, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660742361/zmga4wvfzztpfk1zt5gu.png",
       },
     ],
@@ -103,22 +138,22 @@ const data = [
       {
         title: "World Trade Center III & IV",
         description: "Centro Empresarial Madero Harbour",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663086485/okqdzx6t5fdc9axmdb0g.jpg",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664800485/n70nppki7ir8xsoeclj0.jpg",
       },
       {
         title: "Harbour House",
-        description: "Edificio Residencial Madero Harbour, Buenos Aires",
+        description: "Edificio Residencial Madero Harbour, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1659660915/cfd44c44gwmyozdrdrqi.jpg",
       },
       {
         title: "Malecón Dique 4",
-        description: "Edificio Corporativo Puerto Madero, Buenos Aires",
+        description: "Edificio Corporativo Puerto Madero, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663020724/m3sarfqm4cgpvnei7yam.jpg",
       },
       {
         title: "World Trade Center",
         description: "Santa Cruz de La Sierra, Bolivia",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663020528/nxeegvbyhvz2dlpmpxvy.jpg",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664816490/ivnmuwecxqrwtbrux0sf.jpg",
       },
     ],
   },
@@ -127,8 +162,8 @@ const data = [
     highlights: [
       {
         title: "Plaza Houssay",
-        description: "Buenos Aires",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661431929/kpnd3ffbzkrz1nodgs08.jpg",
+        description: "Bs. As.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664816559/xukclw7z1k1isgq3j8g7.jpg",
       },
       {
         title: "World Trade Center, Córdoba",
@@ -143,12 +178,12 @@ const data = [
       {
         title: "Ginevra International Realty",
         description: "Uruguay PDE",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661432255/p3kexlsxmxdrlsvksvke.jpg",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664816794/vpdr7ws24plfnutrizpc.jpg",
       },
       {
         title: "Madero Harbour",
         description: "Nuevo Masterplan Post Pandemia",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661382990/fkwfqkqzqq1nilndxgzg.jpg",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664801586/ag4wnvecj3x4ltgiipvu.jpg",
       },
     ],
   },
@@ -157,23 +192,23 @@ const data = [
     highlights: [
       {
         title: "Harbour Tower",
-        description: "52 Pisos, Puerto Madero, Buenos Aires",
+        description: "52 Pisos, Puerto Madero, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660736982/ckusx7p3reagh4r0und8.png",
       },
       {
         title: "The Shops",
-        description: "Paseo de Compras Madero Harbour Buenos Aires",
+        description: "Paseo de Compras Madero Harbour Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
       },
       {
-        title: "W HOTEL & RESIDENCES",
-        description: "Paseo de compras Madero Harbour, Buenos Aires",
+        title: "W Hotel & Residences",
+        description: "Paseo de compras Madero Harbour, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663021534/jn9tl1hsqkbs0hoazbwl.jpg",
       },
       {
         title: "Hotel",
         description: "Uruguay",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663183140/d1aioddhckbmzdxyvf6p.jpg",
+        img: "",
       },
     ],
   },
@@ -181,9 +216,9 @@ const data = [
     year: "2022",
     highlights: [
       {
-        title: "Ostent Tower",
-        description: "Puerto Madero, Buenos Aires",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661382383/ynocflafkurm4ki9dppi.jpg",
+        title: "Osten Tower",
+        description: "Puerto Madero, Bs. As.",
+        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664743925/ezwfysleolfcbnsn2vxk.png",
       },
       {
         title: "SLS Punta del Este",
