@@ -139,28 +139,24 @@ const Venture = (venture: any) => {
                     : ""}
                 </Box>
 
-                <Link href={"/venture"}>
-                  <a>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        color: "#9e9e9e",
-                        fontWeight: 600,
-                        fontSize: "16px",
-                        margin: "12.5px 0 0 0",
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "#9e9e9e",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                    margin: "12.5px 0 0 0",
 
-                        "&:hover": {
-                          color: "#757575",
-                        },
-                      }}
-                      onClick={() => handleClick(venture)}
-                    >
-                      Ver Proyecto
-                      <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
-                    </Box>
-                  </a>
-                </Link>
+                    "&:hover": {
+                      color: "#757575",
+                    },
+                  }}
+                  onClick={() => handleClick(venture)}
+                >
+                  Ver Proyecto
+                  <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
+                </Box>
               </Box>
             </Box>
           </a>
