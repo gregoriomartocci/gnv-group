@@ -1,15 +1,16 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Thumbs } from "swiper";
 import { Box, Typography } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
-import styles from "../../../../styles/home.module.css";
 
 // import required modules
 
 export const CarouselB = ({ items }) => {
+  const [active, setActive] = useState();
+
   const getFormat = (file: string) => {
     const result = file?.split(".").pop()?.toUpperCase();
     return result;
@@ -20,8 +21,8 @@ export const CarouselB = ({ items }) => {
       navigation={true}
       freeMode={true}
       loop={true}
-      modules={[Navigation]}
-
+      modules={[Navigation, Thumbs]}
+      style={{ width: "100%" }}
     >
       {items?.map((element) => {
         return (
@@ -34,8 +35,8 @@ export const CarouselB = ({ items }) => {
                 position: "absolute",
                 top: 0,
                 left: 0,
-                width: "100%",
-                height: "100%",
+                width: "100vw",
+                height: "100vh",
               }}
             >
               <Typography
@@ -71,8 +72,8 @@ export const CarouselB = ({ items }) => {
               {getFormat(element?.src) === "MP4" ? (
                 <video
                   style={{
-                    width: "100vw",
-                    height: "100vh",
+                    width: "100%",
+                    height: "100%",
                     objectFit: "cover",
                   }}
                   src={element?.src}
@@ -83,8 +84,8 @@ export const CarouselB = ({ items }) => {
               ) : (
                 <img
                   style={{
-                    width: "100vw",
-                    height: "100vh",
+                    width: "100%",
+                    height: "100%",
                     objectFit: "cover",
                   }}
                   src={element?.src}

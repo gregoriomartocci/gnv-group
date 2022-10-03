@@ -1,0 +1,11 @@
+.homeCarousel {
+  width: 100%;
+}
+
+.swiper-button-next {
+  right: 50;
+}
+
+.swiper-button-prev {
+  left: 50;
+}
