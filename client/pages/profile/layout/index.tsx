@@ -136,22 +136,22 @@ const Layout = () => {
   const items = [
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1658450788/sdp7axfl9ouoodgh2uhs.jpg",
-      name: "Ostent Tower",
+      name: "Osten Tower",
       size: "1.5 MB",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430256/wqheyeka2askuihcx9ys.jpg",
-      name: "Ostent Tower",
+      name: "Osten Tower",
       size: "1.5 MB",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
-      name: "Ostent Tower",
+      name: "Osten Tower",
       size: "1.5 MB",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657646579/hdlhr0yvuvbkyqbevrov.jpg",
-      name: "Ostent Tower",
+      name: "Osten Tower",
       size: "1.5 MB",
     },
   ];

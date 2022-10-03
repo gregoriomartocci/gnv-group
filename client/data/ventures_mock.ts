@@ -1,7 +1,7 @@
 const ventures_mock = [
   {
     id: 1,
-    name: "Ostent Tower",
+    name: "Osten Tower",
     description:
       "Edificios de marca: una tendencia mundial que llega a Argentina de la mano de Osten, sinónimo de excelencia, lifestyle y sofisticación. Fue gracias al rotundo éxito del Restaurant y Bar Osten Madero y como respuesta a una demanda de su clientela que Ginevra, decidió a fines de 2021 dar un paso más allá y convertir al sello en un proyecto de torres residenciales con el mismo estilo y calidad que el restaurante: la Osten Tower dentro del complejo Madero Harbour. Las residencias de marca es una tendencia que venía pisando fuerte en el mundo con marcas como Nobu, Fasano y Cipriani construyendo sus propias torres residenciales, pero que en el mercado local aún no se había visto. La diferencia de estos desarrollos está en que los propietarios ya conocen los estándares de la marca y luego pueden disfrutar esa experiencia 24/7 viviendo en un edificio de la marca. Con 155 unidades residenciales a cargo del Estudio de Arquitectos PFZ  y Hitzig Militello Arquitectos en el interiorismo,  tendrá 25 pisos con fachadas de vidrio ondulante que permitirán vistas al río y ciudad, sobre todo en la terraza; donde sus creadores decidieron concentrar gran parte de las amenities: piscina infinita (que produce el efecto visual de no tener límite o de extenderse hacia el horizonte), un bar con su propio lounge para eventos, gimnasio con equipamiento high-tech, spa y salas de yoga.",
     images: [
