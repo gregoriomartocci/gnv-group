@@ -40,7 +40,7 @@ const HeaderTitle = ({
         <Typography
           sx={{
             fontSize: titleFontSize,
-            margin: "0 0 50px 0",
+            margin: "0 0 0 0",
             fontWeight: `${fontWeight ? fontWeight : 500}`,
             width: `${width ? width : "100%"}`,
             fontFamily: "'Poppins', sans-serif",

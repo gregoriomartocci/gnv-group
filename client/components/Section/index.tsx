@@ -86,7 +86,7 @@ const Section = ({
                       fontWeight: 500,
                       // fontStyle: "oblique",
                       color: "#bdbdbd",
-                      textAlign: "justify",
+                      textAlign: "left",
                       fontSize: {
                         xs: "32px",
                         md: "32px",
@@ -135,8 +135,8 @@ const Section = ({
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 500,
                       color: "4F4F4F",
-                      fontSize: "20px",
-                      textAlign: "justify",
+                      fontSize: "24px",
+                      textAlign: "left",
                       height: "100%",
                     }}
                   >

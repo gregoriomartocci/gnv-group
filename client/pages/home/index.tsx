@@ -191,7 +191,7 @@ const Home = () => {
   // MOCKDATA
 
   const data = [
-    { number: 771190, unity: "m²", description: "m² desarrollados" },
+    { number: 771190, unity: "m²", description: "desarrollados" },
     { number: 107000, unity: "m²", description: "de inversión" },
     { number: 21, unity: "ha", description: "urbanizados" },
     {
@@ -206,7 +206,7 @@ const Home = () => {
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664622622/alyz6lern9epriiupccf.jpg",
       title: "WTC Buenos Aires I, II, III IV",
-      link: "/venture/62ca623d20e916ae0afc3896",
+      link: "/venture/633ad14b79c62c036db870ba",
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664740315/irdlqnpade7qxflqicc6.jpg",
@@ -397,7 +397,7 @@ const Home = () => {
 
       {/* Carousel B */}
 
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           position: "relative",
@@ -406,7 +406,7 @@ const Home = () => {
         }}
       >
         <CarouselB items={slides} />
-      </Box>
+      </Box> */}
 
       {/* Quote */}
 
@@ -420,11 +420,10 @@ const Home = () => {
         }}
       >
         <Section
-          quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
+          quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: </br> construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           }
-          author="Alejandro Ginevra, </br> Presidente de GNV Group."
           reverse
         />
       </Box>

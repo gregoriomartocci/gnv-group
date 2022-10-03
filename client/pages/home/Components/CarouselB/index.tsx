@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 // import required modules
 
 export const CarouselB = ({ items }) => {
-  const [active, setActive] = useState();
 
   const getFormat = (file: string) => {
     const result = file?.split(".").pop()?.toUpperCase();

@@ -85,7 +85,7 @@ const Venture = (venture: any) => {
   return (
     <Fragment>
       {venture?.id ? (
-        <Link href={`/venture/${venture._id}`}>
+        <Link href={venture?.link ? venture?.link : `/venture/${venture._id}`}>
           <a target="_blank">
             <Box sx={CardContainer}>
               <img

@@ -108,9 +108,8 @@ const Slider = ({ items }: any) => {
                     style={{
                       display: "flex",
                       width: "100%",
-                      height: "100vh",
                       objectFit: "cover",
-                      objectPosition: "25% 0%",
+                      objectPosition: "center center",
                     }}
                     src={src}
                     alt={name}
