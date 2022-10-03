@@ -57,6 +57,7 @@ const Licence = ({ img, description, width }: TDemo) => {
           style={{
             display: "flex",
             alignItems: "center",
+
             fontSize: "18px",
             margin: "5px 0",
           }}
@@ -66,6 +67,7 @@ const Licence = ({ img, description, width }: TDemo) => {
               fontSize: "18px",
               fontWeight: 400,
               fontFamily: "'Poppins', sans-serif",
+              textAlign: "center",
             }}
           >
             {description}

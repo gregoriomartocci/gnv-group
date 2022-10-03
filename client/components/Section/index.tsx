@@ -133,10 +133,11 @@ const Section = ({
                   <Typography
                     sx={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontWeight: 500,
+                      fontWeight: 400,
                       color: "4F4F4F",
                       fontSize: "24px",
                       textAlign: "left",
+                      textAlignLast: "left",
                       height: "100%",
                     }}
                   >
