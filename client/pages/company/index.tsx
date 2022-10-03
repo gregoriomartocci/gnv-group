@@ -101,7 +101,7 @@ const licences = [
     ],
     description:
       "El gigante Marriott Internacional firmó un acuerdo con GNV Group, para desarrollar por primera vez en la Argentina un proyecto hotelero/ residencia bajo la disrruptiva marca W.",
-    width: "400px",
+    width: "100%",
   },
   {
     img: [
@@ -324,7 +324,7 @@ const Company = () => {
             ? licences?.map((item, key) => {
                 return <Licence {...item} />;
               })
-            : []}
+            : []} 
         </Box>
       </Box>
 
