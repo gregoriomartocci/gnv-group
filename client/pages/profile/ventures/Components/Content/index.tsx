@@ -56,7 +56,10 @@ const Content = (project: IProject) => {
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={project?.images[0]?.src ?? ""} alt="" />
+          <img
+            src={(project && project?.images && project?.images[0]?.src) ?? ""}
+            alt=""
+          />
           <Typography>{project?.name}</Typography>
         </Box>
       </TableCell>
@@ -120,4 +123,4 @@ const Content = (project: IProject) => {
   );
 };
 
-export default Content
+export default Content;

@@ -4,8 +4,8 @@ import React from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sanitize, sliceText } from "../..";
-import Dropdown from "../../../../../components/Dropdown";
-import { IState } from "../../../../../components/Menu";
+import Dropdown from "../../../../Dropdown";
+import { IState } from "../../../../Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import {
@@ -13,7 +13,7 @@ import {
   setModal,
   setSelected,
 } from "../../../../../redux/slices/projects";
-import Actions from "../../../../../components/Table/Components/Actions";
+import Actions from "../../../../Table/Components/Actions";
 
 const Content = (project: IProject) => {
   const dispatch = useDispatch();

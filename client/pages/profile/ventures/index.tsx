@@ -38,7 +38,7 @@ import {
   ReadProjects,
   UpdateProject,
 } from "../../../api/ventures";
-import { Content } from "./Components/Content";
+import Content from "./Components/Content";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,

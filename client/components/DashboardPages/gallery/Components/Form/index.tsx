@@ -14,14 +14,14 @@ import dynamic from "next/dynamic";
 
 import ImageUploader, {
   IImagetoUpload,
-} from "../../../../../components/Image-Uploader";
+} from "../../../../Image-Uploader";
 
-import InputGroup from "../../../../../components/Input";
-import UseTabs from "../../../../../components/Tabs";
-import UseButton from "../../../../../components/Button";
+import InputGroup from "../../../../Input";
+import UseTabs from "../../../../Tabs";
+import UseButton from "../../../../Button";
 import { IProject } from "../../../../../redux/slices/projects";
 import { IArticle } from "../../../../../redux/slices/articles";
-import BasicSelect from "../../../../../components/Select";
+import BasicSelect from "../../../../Select";
 
 export interface IAuthProps {
   img: StaticImageData;

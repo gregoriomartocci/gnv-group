@@ -4,9 +4,9 @@ import parse from "html-react-parser";
 import { SxProps, Theme } from "@mui/material";
 import { Fragment } from "react";
 import Link from "next/link";
-import { sliceText } from "../../../profile/news";
 import { useDispatch } from "react-redux";
 import { setProject } from "../../../../redux/slices/projects";
+import { sliceText } from "../../../../components/Article";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
