@@ -298,7 +298,7 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p="0 12.5%"
+              p="0 10%"
               titleFontSize="38px"
               fontWeight={600}
               descriptionFontSize="25px"
