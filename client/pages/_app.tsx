@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <Component {...pageProps} />
-        <WhatsApp number={2215673629} />
+        <WhatsApp number={5491161714976} />
       </Provider>
       <ReactQueryDevtools initialIsOpen />
     </QueryClientProvider>

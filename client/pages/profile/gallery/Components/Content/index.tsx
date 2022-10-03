@@ -15,7 +15,7 @@ import {
 } from "../../../../../redux/slices/projects";
 import Actions from "../../../../../components/Table/Components/Actions";
 
-export const Content = (project: IProject) => {
+const Content = (project: IProject) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const state = useSelector((state: IState) => state?.projects);
@@ -116,3 +116,5 @@ export const Content = (project: IProject) => {
     </Fragment>
   );
 };
+
+export default Content
