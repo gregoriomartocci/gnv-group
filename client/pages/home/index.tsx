@@ -32,6 +32,7 @@ import { ReadProject } from "../../api/ventures";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
+import { CarouselB } from "./Components/CarouselB";
 
 export type TDemo = {
   img: string;
@@ -380,6 +381,9 @@ const Home = () => {
           <Timeline />
         </motion.div>
       </Box>
+
+      {/* Carousel A */}
+
       <Box
         sx={{
           display: "flex",
@@ -390,6 +394,22 @@ const Home = () => {
       >
         <UseCarousel items={slides} slideTime={5000} />
       </Box>
+
+      {/* Carousel B */}
+
+      <Box
+        sx={{
+          display: "flex",
+          position: "relative",
+          width: "100vw",
+          minHeight: "100vh",
+        }}
+      >
+        <CarouselB items={slides} />
+      </Box>
+
+      {/* Quote */}
+
       <Box
         sx={{
           display: "flex",
@@ -465,9 +485,6 @@ const Home = () => {
         >
           <UseTabs items={mapItems} tab={tab} setTab={setTab} />
         </Box>
-
-        {/* GOOGLE MAPS */}
-
         <Box
           sx={{
             display: "flex",
@@ -475,7 +492,6 @@ const Home = () => {
             height: "100%",
           }}
         >
-          {/* GOOGLE MAPS */}
           <Box
             sx={{
               display: "flex",
