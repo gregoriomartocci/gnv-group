@@ -104,7 +104,7 @@ function Carousel({ items, year }: ICarousel) {
           alignItems: "center",
           height: "100%",
           minHeight: { xs: "600px", md: "700px" },
-          minWidth: { xs: "100%", md: "700px" },
+          minWidth: { xs: "100%", md: "800px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
         }}
