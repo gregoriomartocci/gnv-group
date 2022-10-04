@@ -25,8 +25,6 @@ import Form from "./Components/Form";
 import UseButton from "../../components/Button";
 import useWindowDimensions from "../../hooks/ScreenSize";
 import UseTabs from "./Components/Tabs";
-import emailjs from "emailjs-com";
-
 import MarkerLogo from "./marker-01.svg";
 import Timeline from "./Components/Timeline";
 import { ReadProject } from "../../api/ventures";
@@ -50,6 +48,7 @@ const Home = () => {
   const [tab, setTab] = useState<number>(1);
 
   const google_api = process.env.NEXT_PUBLIC_MAPS;
+
   const argentinaLocation = { lat: -34.6191721, lng: -58.3606006 };
   const uruguayLocation = { lat: -34.9451061, lng: -54.935135 };
 
@@ -350,11 +349,6 @@ const Home = () => {
 
         <Box sx={{ width: "100%", padding: { xs: "0 10%", md: "0 5%" } }}>
           <Form value={value} setValue={setValue} />
-          <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
-            <UseButton type="Primary" width="100%">
-              ENVIAR
-            </UseButton>
-          </Box>
         </Box>
       </Box>
 

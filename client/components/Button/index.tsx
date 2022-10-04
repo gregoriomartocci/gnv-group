@@ -31,18 +31,15 @@ const UseButton = ({
     <Button
       sx={Styles[type]}
       style={{
-        width: `${width}`,
-        height: `${height}`,
+        width,
+        height,
       }}
       onClick={onClickHandler}
     >
       {children}
     </Button>
   ) : (
-    <Button
-      sx={Styles[type]}
-      style={{ width: `${width}`, height: `${height}` }}
-    >
+    <Button sx={Styles[type]} style={{ width, height }}>
       {children}
     </Button>
   );
