@@ -23,28 +23,27 @@ interface IProps {
 }
 
 const Form = ({ value, setValue }: any) => {
-  const onChangeHandler = (e: any, value: any) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
-  };
   const email_api = process.env.NEXT_PUBLIC_EMAIL;
   const form = useRef();
   const [loading, setLoading] = useState(false);
 
-  console.log(email_api, "Tamos piola?");
+  const onChangeHandler = (e: any, value: any) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+  };
 
   const sendEmail = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
-      const data = await emailjs.sendForm(
+      await emailjs.sendForm(
         "service_1122e5d",
         "template_dq3osnp",
-        form.current,
+        form?.current,
         email_api
       );
       setLoading(false);
-      
+      setValue({ name: "", phone: "", email: "", message: "" });
+      console.log("que pasa che");
     } catch {
       setLoading(false);
     }
