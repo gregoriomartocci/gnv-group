@@ -32,6 +32,7 @@ const HeaderTitle = ({
         alignItems: "center",
         flexDirection: "column",
         padding: p,
+        margin: { xs: "10px 0px", md: "5px 0" },
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
       }}
@@ -54,7 +55,7 @@ const HeaderTitle = ({
         <Typography
           sx={{
             fontSize: descriptionFontSize,
-            margin: "15px 0",
+            margin: "25px 0",
             fontWeight: 500,
             color: `${color ? color : "#424242"}`,
             fontFamily: "'Poppins', sans-serif",

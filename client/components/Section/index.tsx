@@ -85,7 +85,7 @@ const Section = ({
                     sx={{
                       fontWeight: 500,
                       // fontStyle: "oblique",
-                      color: "#bdbdbd",
+                      color: "#9e9e9e",
                       textAlign: "left",
                       fontSize: {
                         xs: "32px",

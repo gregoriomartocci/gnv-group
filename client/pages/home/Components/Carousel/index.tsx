@@ -180,8 +180,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
             <Box
               sx={{
                 position: "absolute",
-                left: "50px",
-
+                left: { xs: "25px", md: "50px" },
                 cursor: "pointer",
               }}
               component="span"
@@ -189,13 +188,13 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
             >
               <ArrowBackIosIcon sx={{ color: "#fff", fontSize: "30px" }} />
             </Box>
-            <Box sx={{ marginBottom: "10px" }}>
+            <Box sx={{ marginBottom: "10px", padding: "0 45px" }}>
               <Typography
                 sx={{
                   display: "flex",
                   alignItems: "center",
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: "38px",
+                  fontSize: { xs: "28px", md: "38px" },
                   fontWeight: 500,
                   textAlign: "center",
                   color: "#fff",
@@ -207,8 +206,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
             <Box
               sx={{
                 position: "absolute",
-                right: "50px",
-
+                right: { xs: "25px", md: "50px" },
                 cursor: "pointer",
               }}
               component="span"

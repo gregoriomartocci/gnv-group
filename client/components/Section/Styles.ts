@@ -12,17 +12,13 @@ export const Container: SxProps<Theme> = {
   display: "flex",
   width: "100%",
   height: "100%",
-  alignItems: "center",
+  alignItems: { xs: "flex-start", md: "center" },
   justifyContent: "flex-end",
   textAlign: "right",
   flexDirection: {
     xs: "column-reverse",
-    sm: "column-reverse",
-    md: "column-reverse",
     lg: "row",
-    xl: "row",
   },
-  // { xs: "", sm:"", md:"", lg:"", xl:"" }
 
   h1: {
     marginBottom: "15px",

@@ -344,7 +344,7 @@ const Timeline = () => {
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
                             fontWeight: 700,
-                            fontSize: "18px",
+                            fontSize: {xs:"22px", md:"22px"},
                             color: "#bdbdbd",
                             transform: {
                               xs: "",

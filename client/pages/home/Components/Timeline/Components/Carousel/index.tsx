@@ -87,7 +87,7 @@ function Carousel({ items, year }: ICarousel) {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: { xs: "50px 0 ", md: "" },
+          padding: { xs: "50px 0 0 0", md: "" },
         }}
       >
         <Typography

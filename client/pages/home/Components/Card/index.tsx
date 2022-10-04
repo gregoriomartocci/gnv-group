@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Navigate } from "react-router-dom";
 
 const Card = (
-  { img, title, link }: TDemo,
+  { img, title, link, objectPosition, sm }: TDemo,
   id: string,
   navigate: (id: string) => void
 ) => {
@@ -46,7 +46,7 @@ const Card = (
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: { xs: " 75% 0%" },
+              objectPosition,
               transition: "all 1.25s ease",
 
               "&:hover ": {
@@ -76,7 +76,7 @@ const Card = (
               background: "rgba(255,255,255,0)",
               backdropFilter: "blur(10px)",
               boxShadow: "0 8px 32px rgba(31,38,135, 0.37)",
-              bottom: `${hover ? 0 : "-200px"}`,
+              bottom: `${sm ? 0 : hover ? 0 : "-200px"}`,
               transition: "all 1.25s ease",
               transform: "scale(1.05)",
               textAlign: "center",
@@ -123,4 +123,3 @@ const Card = (
 };
 
 export default Card;
-

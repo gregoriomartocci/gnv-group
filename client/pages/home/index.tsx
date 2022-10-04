@@ -25,7 +25,7 @@ import Form from "./Components/Form";
 import UseButton from "../../components/Button";
 import useWindowDimensions from "../../hooks/ScreenSize";
 import UseTabs from "./Components/Tabs";
-import emailjs from "emailjs-com"
+import emailjs from "emailjs-com";
 
 import MarkerLogo from "./marker-01.svg";
 import Timeline from "./Components/Timeline";
@@ -39,6 +39,7 @@ export type TDemo = {
   img: string;
   title: string;
   link: string;
+  objectPosition: any;
 };
 
 const Home = () => {
@@ -68,114 +69,6 @@ const Home = () => {
       setCountersVisible(entry.isIntersecting);
     });
     observer.observe(CountersRef?.current);
-  }, []);
-
-  const array_operations = (action, array, item) => {
-    let update;
-
-    if (!array || !action || !item) return;
-
-    action === "create"
-      ? (update = [...array, item])
-      : action === "templates"
-      ? (update = [...item])
-      : action === "update"
-      ? (update = array?.map((p) =>
-          p?._id?.toString() === item?._id?.toString() ? item : p
-        ))
-      : action === "delete"
-      ? (update = array.filter(
-          (p) => p?._id.toString() !== item?._id.toString()
-        ))
-      : update;
-
-    return update;
-  };
-
-  const stateHandler = ({ method, payload, state, keep }) => {
-    const update_state = {
-      ...state,
-      [method]: keep ? { ...state[method], ...payload } : payload,
-    };
-    dispatch(setState(update_state));
-  };
-
-  // REQUEST
-  const request = async (action, method, input, id, path, message) => {
-    // if (!action || !method || !input || !id || !path || !message) return;
-
-    stateHandler({
-      method: action,
-      payload: { status: "", message: "", loading: true },
-      state,
-      keep: true,
-    });
-    try {
-      const data = await api({
-        method,
-        path: `/${path}/${id}`,
-        payload: input,
-      });
-
-      stateHandler({
-        method: action,
-        payload: { loading: false },
-        state,
-        keep: true,
-      });
-
-      const { error } = data;
-      console.log(error, "<== mensaje error");
-
-      if (error) {
-        stateHandler({
-          method: action,
-          payload: { status: "failed", message: error },
-          state,
-          keep: true,
-        });
-      } else {
-        const updated_array = array_operations(action, state, data);
-
-        let payload;
-
-        action === "delete"
-          ? (payload = {
-              status: "success",
-              message,
-              modal: false,
-            })
-          : (payload = {
-              status: "success",
-              message,
-              modal: false,
-            });
-
-        stateHandler({
-          method: action,
-          payload,
-          state,
-          keep: true,
-        });
-
-        dispatch(setTemplates(updated_array));
-      }
-    } catch (err) {
-      stateHandler({
-        method: action,
-        payload: {
-          status: "failed",
-          message: "Algo salió mal, intente nuevamente!",
-          loading: false,
-        },
-        state,
-        keep: true,
-      });
-    }
-  };
-
-  useEffect(() => {
-    request("templates", "get", {}, "", "templates", "");
   }, []);
 
   // ANIMATIONS
@@ -208,16 +101,19 @@ const Home = () => {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664622622/alyz6lern9epriiupccf.jpg",
       title: "WTC Buenos Aires I, II, III IV",
       link: "/venture/633ad14b79c62c036db870ba",
+      objectPosition: { xs: "center center", md: "" },
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664740315/irdlqnpade7qxflqicc6.jpg",
       title: "Ostent Tower",
       link: "/venture/62ca5fdb20e916ae0afc3882",
+      objectPosition: { xs: "80% center", md: "" },
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
       title: "Harbour Tower",
       link: "/venture/62ca537060ec294bc6a645d9",
+      objectPosition: { xs: "68% center", md: "" },
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
@@ -300,9 +196,9 @@ const Home = () => {
           >
             <HeaderTitle
               p="0 10%"
-              titleFontSize="38px"
+              titleFontSize={{ xs: "25px", sm: "20px", ms: "38px" }}
               fontWeight={600}
-              descriptionFontSize="25px"
+              descriptionFontSize={{ xs: "18px", sm: "20px", ms: "38px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -356,7 +252,7 @@ const Home = () => {
             md: `auto`,
           }}
           items={items}
-          component={(item: TDemo) => <Card {...item} />}
+          component={(item: TDemo) => <Card {...item} sm={sm} />}
         />
       </Box>
 
@@ -370,10 +266,10 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p="125px 12.5%"
-            titleFontSize="38px"
+            p={{ xs: "50px", md: "125px 12.5%" }}
+            titleFontSize={{ xs: "30px", md: "30px" }}
             fontWeight={600}
-            descriptionFontSize="25px"
+            descriptionFontSize={{ xs: "18px", md: "25px" }}
             title="Trayectoria"
             description="La compañía está viviendo una etapa de expansión fenomenal.
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
@@ -409,15 +305,15 @@ const Home = () => {
         <CarouselB items={slides} />
       </Box> */}
 
-      {/* Quote */}
+      {/* Quote Section */}
 
       <Box
         sx={{
           display: "flex",
-          alignItems: "center",
-          minHeight: "100vh",
+          alignItems: { xs: "flex-start", md: "center" },
+          minHeight: { xs: "", md: "100vh" },
           width: "100%",
-          padding: "5%",
+          padding: { xs: "20% 5%", md: "" },
         }}
       >
         <Section
@@ -431,8 +327,6 @@ const Home = () => {
 
       {/* Contact */}
 
-
-
       <Box
         id="contact"
         sx={{
@@ -442,7 +336,7 @@ const Home = () => {
           alignItems: "center",
           minHeight: "100vh",
           width: "100%",
-          padding: { xs: "10% 15px", md: "0 10%" },
+          padding: { xs: "0 15px", md: "0 10%" },
         }}
       >
         <HeaderTitle
@@ -454,7 +348,7 @@ const Home = () => {
           descriptionFontSize="20px"
         />
 
-        <Box sx={{ width: "100%", padding: "0 10%" }}>
+        <Box sx={{ width: "100%", padding: { xs: "0 10%", md: "0 5%" } }}>
           <Form value={value} setValue={setValue} />
           <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
             <UseButton type="Primary" width="100%">
