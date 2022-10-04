@@ -25,6 +25,7 @@ import Form from "./Components/Form";
 import UseButton from "../../components/Button";
 import useWindowDimensions from "../../hooks/ScreenSize";
 import UseTabs from "./Components/Tabs";
+import emailjs from "emailjs-com"
 
 import MarkerLogo from "./marker-01.svg";
 import Timeline from "./Components/Timeline";
@@ -429,6 +430,8 @@ const Home = () => {
       </Box>
 
       {/* Contact */}
+
+
 
       <Box
         id="contact"
