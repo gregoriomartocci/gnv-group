@@ -32,9 +32,9 @@ const Slider = ({ items }: any) => {
         justifyContent: "space-between",
         alignItems: "center",
         overflowX: "hidden",
-        height: "100%",
-        padding: "0 5%",
-        margin: "5% 0",
+        height: { xs: "300px", sm: "100%" },
+        padding: { xs: "0", sm: "0 5%" },
+        margin: { xs: "10% 0", md: "5% 0" },
         position: "relative",
       }}
     >
@@ -108,6 +108,7 @@ const Slider = ({ items }: any) => {
                     style={{
                       display: "flex",
                       width: "100%",
+                      height: "100%",
                       objectFit: "cover",
                       objectPosition: "center center",
                     }}
