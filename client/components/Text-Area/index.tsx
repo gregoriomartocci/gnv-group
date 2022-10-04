@@ -35,6 +35,7 @@ const TextArea = ({
           width: "100%",
           height: "200px",
           borderRadius: "5px",
+          fontSize: "18px",
           border: "1px solid #e0e0e0",
         }}
         value={value}

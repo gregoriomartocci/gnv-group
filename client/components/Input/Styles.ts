@@ -2,7 +2,6 @@ import { Mms } from "@mui/icons-material";
 import { SxProps, Theme } from "@mui/material";
 
 export const InputContainer: SxProps<Theme> = {
-
   width: "100%",
   margin: "20px 0",
 
@@ -22,6 +21,6 @@ export const InputContainer: SxProps<Theme> = {
     borderRadius: "5px",
     fontFamily: "'Poppins', sans-serif",
     margin: "7.5px 0 0 0",
-    fontSize: "13px",
+    fontSize: { sx: "15px", md: "18px" },
   },
 };

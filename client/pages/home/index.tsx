@@ -196,9 +196,9 @@ const Home = () => {
           >
             <HeaderTitle
               p="0 10%"
-              titleFontSize={{ xs: "25px", sm: "20px", ms: "38px" }}
+              titleFontSize={{ xs: "25px", sm: "20px", md: "38px" }}
               fontWeight={600}
-              descriptionFontSize={{ xs: "18px", sm: "20px", ms: "38px" }}
+              descriptionFontSize={{ xs: "18px", sm: "20px", md: "28px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
