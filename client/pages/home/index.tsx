@@ -160,7 +160,7 @@ const Home = () => {
       <Main
         slides={slides}
         buttonLink="/home/#contact"
-        headerTitle="Proyectos distintivos </br> con visión de futuro"
+        headerTitle="Proyectos distintivos con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
       />
