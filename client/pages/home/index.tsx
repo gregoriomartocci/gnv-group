@@ -104,7 +104,7 @@ const Home = () => {
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664740315/irdlqnpade7qxflqicc6.jpg",
-      title: "Ostent Tower",
+      title: "Osten Tower",
       link: "/venture/62ca5fdb20e916ae0afc3882",
       objectPosition: { xs: "80% center", md: "" },
     },
@@ -163,7 +163,7 @@ const Home = () => {
         headerTitle="Proyectos distintivos con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
-        textFontSize={{ xs: "30px", md: "40px" }}
+        textFontSize={{ xs: "34px", md: "55px" }}
       />
 
       {/* SECTION 1 */}
@@ -176,7 +176,7 @@ const Home = () => {
           justifyContent: "center",
           width: "100vw",
           minHeight: "100vh",
-          height: { xs: "70vh", sm: "80vh" },
+          height: { xs: "60vh", sm: "80vh" },
           padding: "7.5%",
         }}
       >
@@ -196,10 +196,10 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "5% 0" }}
-              titleFontSize={{ xs: "20px", sm: "20px", md: "38px" }}
+              titleFontSize={{ xs: "28px", sm: "20px", md: "38px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "16px", sm: "20px", md: "28px" }}
+              descriptionFontSize={{ xs: "19px", sm: "20px", md: "28px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -217,7 +217,7 @@ const Home = () => {
               justifyContent: { xs: "none", md: "center" },
               width: "100%",
               height: "100%",
-              padding: "50px 10%",
+              padding: "50px 0",
             }}
             ref={CountersRef}
           >
@@ -259,7 +259,7 @@ const Home = () => {
 
       {/* Trayectory */}
 
-      <Box sx={{ width: "100%", minHeight: "100vh", padding: "10% 0" }}>
+      <Box sx={{ width: "100%", minHeight: "100vh", padding: "5% 0" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
@@ -267,10 +267,10 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "50px", md: "125px 12.5%" }}
+            p={{ xs: "50px", md: "50px 12.5%" }}
             titleFontSize={{ xs: "30px", md: "40px" }}
             fontWeight={600}
-            titlePadding="50px"
+            titlePadding="25px"
             descriptionFontSize={{ xs: "18px", md: "25px" }}
             title="Trayectoria"
             descriptionTextAlign={{ xs: "justify", md: "none" }}
@@ -320,7 +320,7 @@ const Home = () => {
           alignItems: { xs: "flex-start", md: "center" },
           minHeight: { xs: "", md: "100vh" },
           width: "100%",
-          padding: { xs: "20% 5%", md: "" },
+          padding: { xs: "20% 5%", md: "50px 5%" },
         }}
       >
         <Section
@@ -339,11 +339,13 @@ const Home = () => {
         id="contact"
         sx={{
           display: "flex",
+          width: "100%",
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
+          margin: "auto",
           minHeight: "100vh",
-          width: "100%",
+          maxWidth: "1200px",
           padding: { xs: "0 15px", md: "0 10%" },
         }}
       >

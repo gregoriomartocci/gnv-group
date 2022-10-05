@@ -1,5 +1,5 @@
 import { animate } from "framer-motion";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 type IDynamicCounter = {
@@ -35,5 +35,11 @@ export default function DynamicCounter({
     return () => {};
   }, [counterRef]);
 
-  return <Box>{numberWithCommas(increase)}</Box>;
+  return (
+    <Box>
+      <Typography sx={{ fontWeight: 700, fontSize: "35px" }}>
+        {numberWithCommas(increase)}
+      </Typography>
+    </Box>
+  );
 }

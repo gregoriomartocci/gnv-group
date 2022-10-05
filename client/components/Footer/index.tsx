@@ -12,6 +12,8 @@ const Footer = () => {
         flexDirection: "column",
         fontFamily: "'Poppins', sans-serif",
         padding: "20px",
+        backgroundColor: "#f5f5f5",
+        marginTop: "50px",
       }}
     >
       <Box

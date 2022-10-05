@@ -52,7 +52,13 @@ const Form = ({ value, setValue }: any) => {
   return (
     <Fragment>
       {value && (
-        <Box sx={{ width: "100%" }}>
+        <Box
+          sx={{
+
+            width: "100%",
+       
+          }}
+        >
           <form ref={form} onSubmit={sendEmail}>
             <Box
               sx={{

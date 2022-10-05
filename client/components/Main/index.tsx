@@ -150,7 +150,13 @@ const Main = ({
                           {phrase}
                         </Typography>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"}>Contactanos</UseButton>
+                          <UseButton type={"Primary"}>
+                            <Typography
+                              sx={{ fontSize: { xs: "21px", md: "21px" } }}
+                            >
+                              Contactanos
+                            </Typography>
+                          </UseButton>
                         </Box>
                       </Box>
                     ) : (
@@ -191,7 +197,13 @@ const Main = ({
                     <Link href={buttonLink ?? ""}>
                       <a>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"}>Contactanos</UseButton>
+                          <UseButton type={"Primary"}>
+                            <Typography
+                              sx={{ fontSize: { xs: "21px", md: "21px" } }}
+                            >
+                              Contactanos
+                            </Typography>
+                          </UseButton>
                         </Box>
                       </a>
                     </Link>

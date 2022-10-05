@@ -65,6 +65,7 @@ const HeaderTitle = ({
             color: `${color ? color : "#424242"}`,
             fontFamily: "'Poppins', sans-serif",
             textAlign: descriptionTextAlign,
+            marginTop: "20px",
           }}
         >
           {description}

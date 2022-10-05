@@ -5,10 +5,12 @@ type ILogo = {
   width?: string;
   height?: string;
   children: any;
+  margin?: string;
+  maxWidth?: string;
 };
 
-const Svg = ({ color, width, height, children }: ILogo) => (
-  <svg width={width ? width : "100%"} height={height}>
+const Svg = ({ color, width, height, margin, maxWidth, children }: ILogo) => (
+  <svg style={{ maxWidth, margin }} width={width} height={height}>
     <g fill={color ?? "#212121"}>{children}</g>
   </svg>
 );
