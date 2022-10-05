@@ -102,7 +102,6 @@ const licences = [
     description:
       "El gigante Marriott Internacional firmó un acuerdo con GNV Group, para desarrollar por primera vez en la Argentina un proyecto hotelero/ residencia bajo la disrruptiva marca W.",
     width: "100%",
-    height: "75px",
   },
   {
     img: [
@@ -237,7 +236,7 @@ const Company = () => {
               }
               paddingColumnLeft={{ sx: "0", md: "100px 0 100px 100px" }}
               reverse
-              bodyTextpadding="0 5px"
+              bodyTextpadding={{ sx: "10px 0", md: "5px 0" }}
               paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
             />
@@ -251,16 +250,16 @@ const Company = () => {
           >
             <Section
               title={
-                <Image
-                  src={ginevraRealty}
-                  alt="ginevraRoyalty"
-                  width={300}
-                  objectFit="cover"
-                  height={120}
-                />
+                <Box sx={{ width: { xs: "160px", md: "300px" } }}>
+                  <Image
+                    src={ginevraRealty}
+                    alt="ginevraRoyalty"
+                    objectFit="cover"
+                  />
+                </Box>
               }
-              paddingColumnLeft={{ sx: "0", md: "100px 100px 100px 0" }}
-              bodyTextpadding="0 0 0 5px"
+              paddingColumnLeft={{ sx: "45px 0", md: "100px 100px 100px 0" }}
+              bodyTextpadding={{ sx: "25px 0", md: "150px 0 0 0" }}
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
             />
@@ -313,6 +312,7 @@ const Company = () => {
                   </svg>
                 </Svg>
               }
+              bodyTextpadding={{ sx: "10px 0", md: "0" }}
               paddingColumnLeft={{ sx: "0", md: "100px" }}
               reverse
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."

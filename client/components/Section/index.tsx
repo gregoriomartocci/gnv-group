@@ -72,7 +72,7 @@ const Section = ({
                   sx={{
                     width: "100%",
                     padding: {
-                      xs: "25px 0 0 0",
+                      xs: "30px 0 0 0",
                       md: "0",
                     },
                   }}
@@ -144,9 +144,10 @@ const Section = ({
               )}
 
               {paragraph ? (
-                <Box sx={{ width: "100%", padding: bodyTextPadding }}>
+                <Box sx={{ width: "100%" }}>
                   <Typography
                     sx={{
+                      padding: bodyTextPadding,
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 400,
                       color: "4F4F4F",

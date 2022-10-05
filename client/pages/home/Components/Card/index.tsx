@@ -23,7 +23,7 @@ const Card = (
 
   return (
     <Link href={link ? link : ""}>
-      <a target="_blank">
+      <a>
         <Box
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

@@ -43,6 +43,7 @@ const Venture = () => {
           sx={{
             width: "100vw",
             height: "100vh",
+            maxHeight: " 700px",
           }}
         >
           <Menu onScroll />
