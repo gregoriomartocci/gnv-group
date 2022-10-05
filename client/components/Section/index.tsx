@@ -2,22 +2,18 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
-import {
-  ColumnLeft,
-  ColumRight,
-  Container,
-  Reverse,
-  SectionStyle,
-} from "./Styles";
+import { ColumRight, Container, Reverse, SectionStyle } from "./Styles";
 import { sanitize } from "../Article";
 
 export interface ISectionProps {
   title?: any;
   paragraph?: string;
-  image: string;
+  image?: string;
   quote?: string;
   author?: string;
   reverse?: boolean;
+  paddingColumnLeft?: string;
+  bodyTextPadding?: string;
 }
 
 const duration = 1.75;
@@ -44,6 +40,8 @@ const Section = ({
   title,
   quote,
   paragraph,
+  paddingColumnLeft,
+  bodyTextPadding,
   author,
   image,
   reverse,
@@ -58,7 +56,17 @@ const Section = ({
             viewport={{ once: false, amount: 0.25 }}
             variants={reverse ? FadeFromRight : FadeFromLeft}
           >
-            <Box sx={ColumnLeft}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+                width: "100%",
+                direction: "unset",
+                padding: paddingColumnLeft,
+                height: "100%",
+              }}
+            >
               {title ? (
                 <Box
                   sx={{
@@ -85,7 +93,6 @@ const Section = ({
                   <Typography
                     sx={{
                       fontWeight: 500,
-                      // fontStyle: "oblique",
                       color: "#212121",
                       textAlign: "left",
                       fontSize: {
@@ -130,7 +137,7 @@ const Section = ({
               )}
 
               {paragraph ? (
-                <Box sx={{ width: "100%", padding: "10px 0 " }}>
+                <Box sx={{ width: "100%", padding: bodyTextPadding }}>
                   <Typography
                     sx={{
                       fontFamily: "'Poppins', sans-serif",

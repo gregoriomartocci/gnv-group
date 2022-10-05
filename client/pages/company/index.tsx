@@ -21,6 +21,7 @@ import Cards from "../../components/Cards";
 import Licence from "./components/Licence";
 import Svg from "./components/Licence/components/SVG";
 import art_gallery_mock from "../../data/art_gallery_mock";
+import ginevraLogo from "../../assets/logo/GinevraRealtyPNG.png";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -195,7 +196,10 @@ const Company = () => {
             }}
           >
             <Section
-              title={<Logo width="100%" color="#212121" />}
+              title={<Logo width="500px" color="#212121" />}
+              paddingColumnLeft="100px 0 100px 100px"
+              reverse
+              bodyTextpadding="0 5px"
               paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
             />
@@ -217,7 +221,6 @@ const Company = () => {
               }
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
-              reverse
             />
           </Box>
           ,
@@ -231,7 +234,7 @@ const Company = () => {
           >
             <Section
               title={
-                <Svg>
+                <Svg width="500px">
                   <svg
                     id="Layer_1"
                     data-name="Layer 1"
@@ -263,6 +266,8 @@ const Company = () => {
                   </svg>
                 </Svg>
               }
+              paddingColumnLeft="100px"
+              reverse
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664804808/xkqyxa7gg7bnlj0gwy0o.jpg"
             />
@@ -324,7 +329,7 @@ const Company = () => {
             ? licences?.map((item, key) => {
                 return <Licence {...item} />;
               })
-            : []} 
+            : []}
         </Box>
       </Box>
 

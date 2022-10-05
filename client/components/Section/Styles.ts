@@ -45,21 +45,6 @@ export const Reverse: SxProps<Theme> = {
   height: "100%",
 };
 
-export const ColumnLeft: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-  textAlign: "left",
-  width: "100%",
-  direction: "unset",
-
-  height: "100%",
-  // padding: {
-  //   xs: "20px 0 0 0",
-  //   md: "0 10%",
-  //   lg: "",
-  // },
-};
-
 export const ColumRight: SxProps<Theme> = {
   display: "flex",
   width: "100%",
