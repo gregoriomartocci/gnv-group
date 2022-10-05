@@ -182,7 +182,7 @@ const Main = ({
                 {!imageOnly ? (
                   <Box sx={MainContent}>
                     <Typography
-                      sx={{ margin: "15px 0" }}
+                      sx={{ margin: "15px 0", fontWeight: 500 }}
                       style={{ color: fontColor ?? "" }}
                       fontSize={textFontSize}
                     >

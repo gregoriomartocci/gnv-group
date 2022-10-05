@@ -150,7 +150,7 @@ const Section = ({
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 400,
                       color: "4F4F4F",
-                      fontSize: "24px",
+                      fontSize: { xs: "18px", md: "24px" },
                       textAlign: "left",
                       textAlignLast: "left",
                       height: "100%",
