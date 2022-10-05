@@ -106,13 +106,7 @@ export const MainImage: SxProps<Theme> = {
   },
 };
 
-export const HeaderTitle: SxProps<Theme> = {
-  fontFamily: "'Poppins', sans-serif",
-  fontSize: { xs: "30px", md: "38px" },
-  fontWeight: 500,
-  textAlign: "left",
-  marginBottom: "40px",
-};
+
 
 export const MainContent: SxProps<Theme> = {
   position: "relative",
@@ -121,5 +115,6 @@ export const MainContent: SxProps<Theme> = {
   flexDirection: "column",
   width: "100vw",
   padding: "10%",
+  margin: "0 0 20px 0",
   color: "#fff",
 };

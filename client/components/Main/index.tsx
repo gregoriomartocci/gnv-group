@@ -47,6 +47,7 @@ export interface ISlidesProps {
   headerTitle?: string;
   flip?: boolean;
   fontColor?: string;
+  textFontSize?: string;
 }
 
 const Main = ({
@@ -59,6 +60,7 @@ const Main = ({
   buttonLink,
   flip,
   phrase,
+  textFontSize,
   fontColor,
 }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
@@ -136,7 +138,17 @@ const Main = ({
                     </Box>
                     {!imageOnly ? (
                       <Box sx={MainContent}>
-                        <Typography sx={HeaderTitle}>{phrase}</Typography>
+                        <Typography
+                          sx={{
+                            fontFamily: "'Poppins', sans-serif",
+                            fontSize: textFontSize,
+                            fontWeight: 500,
+                            textAlign: "left",
+                            marginBottom: "45px",
+                          }}
+                        >
+                          {phrase}
+                        </Typography>
                         <Box style={{ width: "150px" }}>
                           <UseButton type={"Primary"}>Contactanos</UseButton>
                         </Box>
@@ -170,8 +182,9 @@ const Main = ({
                 {!imageOnly ? (
                   <Box sx={MainContent}>
                     <Typography
-                      sx={HeaderTitle}
+                      sx={{ margin: "15px 0" }}
                       style={{ color: fontColor ?? "" }}
+                      fontSize={textFontSize}
                     >
                       {headerTitle ? sanitize(headerTitle) : ""}
                     </Typography>
