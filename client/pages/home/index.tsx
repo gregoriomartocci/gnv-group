@@ -163,7 +163,7 @@ const Home = () => {
         headerTitle="Proyectos distintivos con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
-        textFontSize={{ xs: "34px", md: "55px" }}
+        textFontSize={{ xs: "34px", md: "45px" }}
       />
 
       {/* SECTION 1 */}
