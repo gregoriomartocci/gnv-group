@@ -145,7 +145,7 @@ const News = () => {
 
   return (
     <Box>
-      <Menu onScroll />
+      <Menu onScroll color="#212121" />
 
       <Box>
         <HeaderTitle

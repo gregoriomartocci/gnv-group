@@ -178,7 +178,7 @@ const Company = () => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{ overflowX: "hidden" }}>
       <Menu onScroll color="#212121" />
       <Main
         slides={SliderData}
