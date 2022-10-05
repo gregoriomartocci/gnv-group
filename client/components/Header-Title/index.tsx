@@ -13,6 +13,7 @@ interface IHeaderTitle {
   color?: string;
   width?: string;
   titlePadding?: string;
+  descriptionTextAlign?: string;
 }
 
 const HeaderTitle = ({
@@ -20,6 +21,7 @@ const HeaderTitle = ({
   description,
   titleFontSize,
   descriptionFontSize,
+  descriptionTextAlign,
   fontWeight,
   color,
   width,
@@ -62,6 +64,7 @@ const HeaderTitle = ({
             fontWeight: 500,
             color: `${color ? color : "#424242"}`,
             fontFamily: "'Poppins', sans-serif",
+            textAlign: descriptionTextAlign,
           }}
         >
           {description}

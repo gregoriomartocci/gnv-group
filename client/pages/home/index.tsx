@@ -272,6 +272,7 @@ const Home = () => {
             titlePadding="50px"
             descriptionFontSize={{ xs: "18px", md: "25px" }}
             title="Trayectoria"
+            descriptionTextAlign={{ xs: "justify", md: "none" }}
             description="La compañía está viviendo una etapa de expansión fenomenal.
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
             Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
@@ -290,7 +291,11 @@ const Home = () => {
           minHeight: "100vh",
         }}
       >
-        <UseCarousel items={slides} slideTime={5000} />
+        <UseCarousel
+          items={slides}
+          slideTime={5000}
+          typographyText={{ xs: "260px", md: "100%" }}
+        />
       </Box>
 
       {/* Carousel B */}
@@ -323,6 +328,7 @@ const Home = () => {
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           }
           reverse
+          bodyTextPadding={{ xs: "25px 0", md: "0" }}
         />
       </Box>
 

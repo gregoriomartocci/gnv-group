@@ -82,3 +82,7 @@ a {
   left: 50;
   color: "#fff" !important;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}

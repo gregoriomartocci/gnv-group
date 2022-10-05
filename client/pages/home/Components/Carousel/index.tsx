@@ -16,9 +16,10 @@ const swipePower = (offset: number, velocity: number) => {
 type TUseCarousel = {
   items: any[];
   slideTime?: number;
+  typographyText?: string;
 };
 
-const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
+const UseCarousel = ({ items, slideTime, typographyText }: TUseCarousel) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const { height, width } = useWindowDimensions();
 
@@ -193,9 +194,10 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
                   display: "flex",
                   alignItems: "center",
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: { xs: "28px", md: "38px" },
+                  fontSize: { xs: "22px", md: "38px" },
                   fontWeight: 500,
                   textAlign: "center",
+                  width: typographyText,
                   color: "#fff",
                 }}
               >

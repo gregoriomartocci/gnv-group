@@ -87,20 +87,27 @@ const Section = ({
                 <Box
                   sx={{
                     width: "100%",
-                    padding: "0 0 0 8%",
+                    padding: {
+                      xs: "25px 20px",
+                      md: "30px",
+                    },
                   }}
                 >
                   <Typography
                     sx={{
                       fontWeight: 500,
                       color: "#212121",
-                      textAlign: "left",
+                      textAlign: "center",
+                      width: "100%",
                       fontSize: {
-                        xs: "32px",
+                        xs: "20px",
                         md: "30px",
                       },
                       height: "100%",
-                      lineHeight: "45px",
+                      lineHeight: {
+                        xs: "40px",
+                        md: "45px",
+                      },
                     }}
                   >
                     {quote}
