@@ -116,7 +116,7 @@ const VenturesLayout = () => {
       >
         <HeaderTitle
           p={{ xs: "25% 10% 10% 10%", md: "10% 20% 5% 20%" }}
-          titleFontSize={{ xs: "25px", md: "40px" }}
+          titleFontSize={{ xs: "35px", md: "40px" }}
           fontWeight={600}
           descriptionFontSize={{ xs: "18px", md: "25px" }}
           title="Emprendimientos"

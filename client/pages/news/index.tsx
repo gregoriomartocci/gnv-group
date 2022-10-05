@@ -151,7 +151,7 @@ const News = () => {
         <HeaderTitle
           titleFontSize="38px"
           fontWeight={600}
-          p="150px 0 50px 0"
+          p={{ xs: "150px 0 00", md: "150px 0 20px 0" }}
           title="Noticias destacadas"
         />
       </Box>
@@ -179,7 +179,7 @@ const News = () => {
       <HeaderTitle
         titleFontSize="38px"
         fontWeight={600}
-        p="125px 0 100px 0"
+        p={{ xs: "25px 0 60px 0", md: "150px 0 20px 0" }}
         title="Todas la noticias"
       />
 

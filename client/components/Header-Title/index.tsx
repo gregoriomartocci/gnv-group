@@ -14,6 +14,7 @@ interface IHeaderTitle {
   width?: string;
   titlePadding?: string;
   descriptionTextAlign?: string;
+  titleLineHeight?: string;
 }
 
 const HeaderTitle = ({
@@ -26,6 +27,7 @@ const HeaderTitle = ({
   color,
   width,
   titlePadding,
+  titleLineHeight,
   p,
 }: IHeaderTitle) => {
   return (
@@ -49,9 +51,9 @@ const HeaderTitle = ({
             margin: "0",
             padding: titlePadding,
             fontWeight,
-            maxWidth: "600px",
             fontFamily: "'Poppins', sans-serif",
             color: `${color ? color : "#424242"}`,
+            lineHeight: titleLineHeight,
           }}
         >
           {sanitize(title)}

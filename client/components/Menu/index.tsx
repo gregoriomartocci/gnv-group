@@ -156,7 +156,7 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  color: `${navbar ? "#212121" : "#fff"} `,
+                  color: `${navbar ? "#212121" : "#212121"} `,
                 }}
                 fontSize="inherit"
               />

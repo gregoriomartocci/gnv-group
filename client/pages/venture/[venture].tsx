@@ -48,16 +48,22 @@ const Venture = () => {
           <Menu onScroll />
           <Box sx={{ padding: "150px 0 0 0 ", width: "100%" }}>
             <HeaderTitle
-              titleFontSize="50px"
+              titleFontSize={{ xs: "40px", md: "50px" }}
               fontWeight={700}
               title={project?.name ?? ""}
               p="0 10%"
+              titleLineHeight="50px"
             />
           </Box>
           <Slider items={project ? project?.images : []} />
 
           <Box sx={{ display: "flex", padding: "0 10%" }}>
-            <Typography sx={{ fontSize: "24px", textAlign: "justify" }}>
+            <Typography
+              sx={{
+                fontSize: "20px",
+                textAlign: "justify",
+              }}
+            >
               {(project?.description && sanitize(project?.description)) ?? ""}
             </Typography>
           </Box>
