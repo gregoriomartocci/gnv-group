@@ -183,7 +183,7 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            width: "100%",
+            width: "1120px",
             padding: "5% 0",
           }}
         >
@@ -192,11 +192,13 @@ const Home = () => {
             whileInView={"onscreen"}
             viewport={{ once: false, amount: 0 }}
             variants={FadeFromBottom}
+            style={{ width: "1120px" }}
           >
             <HeaderTitle
-              p="0 10%"
+              p=""
               titleFontSize={{ xs: "25px", sm: "20px", md: "38px" }}
               fontWeight={600}
+              width="1120px"
               descriptionFontSize={{ xs: "18px", sm: "20px", md: "28px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
@@ -215,7 +217,7 @@ const Home = () => {
               justifyContent: { xs: "none", md: "center" },
               width: "100%",
               height: "100%",
-              padding: "0 10%",
+              padding: "50px 10%",
             }}
             ref={CountersRef}
           >
@@ -266,8 +268,9 @@ const Home = () => {
         >
           <HeaderTitle
             p={{ xs: "50px", md: "125px 12.5%" }}
-            titleFontSize={{ xs: "30px", md: "30px" }}
+            titleFontSize={{ xs: "30px", md: "40px" }}
             fontWeight={600}
+            titlePadding="50px"
             descriptionFontSize={{ xs: "18px", md: "25px" }}
             title="Trayectoria"
             description="La compañía está viviendo una etapa de expansión fenomenal.

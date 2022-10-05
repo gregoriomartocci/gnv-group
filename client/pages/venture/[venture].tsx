@@ -57,7 +57,7 @@ const Venture = () => {
           <Slider items={project ? project?.images : []} />
 
           <Box sx={{ display: "flex", padding: "0 10%" }}>
-            <Typography sx={{ fontSize: "26px", textAlign: "justify" }}>
+            <Typography sx={{ fontSize: "24px", textAlign: "justify" }}>
               {(project?.description && sanitize(project?.description)) ?? ""}
             </Typography>
           </Box>

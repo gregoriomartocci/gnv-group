@@ -53,11 +53,11 @@ export const ColumnLeft: SxProps<Theme> = {
   direction: "unset",
 
   height: "100%",
-  padding: {
-    xs: "20px 0 0 0",
-    md: "0 18%",
-    lg: "",
-  },
+  // padding: {
+  //   xs: "20px 0 0 0",
+  //   md: "0 10%",
+  //   lg: "",
+  // },
 };
 
 export const ColumRight: SxProps<Theme> = {

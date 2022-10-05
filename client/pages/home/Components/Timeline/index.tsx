@@ -56,7 +56,7 @@ const data = [
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815178/t51oxhhi44e2nvqt2i5t.jpg",
       },
       {
-        title: "Palmeras Open Mall",
+        title: "Palmares Open Mall",
         description: "Mendoza",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664815337/rgzxtwnvkkromplipjc3.jpg",
       },

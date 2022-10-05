@@ -65,7 +65,7 @@ const Section = ({
                     width: "100%",
                     padding: {
                       xs: "25px 0 0 0",
-                      lg: "",
+                      md: "0",
                     },
                   }}
                 >
@@ -79,17 +79,18 @@ const Section = ({
                 <Box
                   sx={{
                     width: "100%",
+                    padding: "0 0 0 8%",
                   }}
                 >
                   <Typography
                     sx={{
                       fontWeight: 500,
                       // fontStyle: "oblique",
-                      color: "#757575",
+                      color: "#212121",
                       textAlign: "left",
                       fontSize: {
                         xs: "32px",
-                        md: "32px",
+                        md: "30px",
                       },
                       height: "100%",
                       lineHeight: "45px",

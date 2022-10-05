@@ -12,6 +12,7 @@ interface IHeaderTitle {
   p?: string;
   color?: string;
   width?: string;
+  titlePadding?: string;
 }
 
 const HeaderTitle = ({
@@ -22,6 +23,7 @@ const HeaderTitle = ({
   fontWeight,
   color,
   width,
+  titlePadding,
   p,
 }: IHeaderTitle) => {
   return (
@@ -35,15 +37,16 @@ const HeaderTitle = ({
         margin: { xs: "10px 0px", md: "5px 0" },
         fontFamily: "'Poppins', sans-serif",
         textAlign: "center",
+        width,
       }}
     >
       {title ? (
         <Typography
           sx={{
             fontSize: titleFontSize,
-            margin: "0 0 0 0",
-            fontWeight: `${fontWeight ? fontWeight : 500}`,
-            width: `${width ? width : "100%"}`,
+            margin: "0",
+            padding: titlePadding,
+            fontWeight,
             fontFamily: "'Poppins', sans-serif",
             color: `${color ? color : "#424242"}`,
           }}
@@ -55,7 +58,7 @@ const HeaderTitle = ({
         <Typography
           sx={{
             fontSize: descriptionFontSize,
-            margin: "25px 0",
+            margin: "0",
             fontWeight: 500,
             color: `${color ? color : "#424242"}`,
             fontFamily: "'Poppins', sans-serif",
