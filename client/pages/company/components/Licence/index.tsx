@@ -4,8 +4,9 @@ import { Typography } from "@mui/material";
 import { TDemo } from "../..";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Svg from "./components/SVG";
+import { Height } from "@mui/icons-material";
 
-const Licence = ({ img, description, width }: TDemo) => {
+const Licence = ({ img, description, width, height }: TDemo) => {
   return (
     <Box
       sx={{
@@ -46,8 +47,10 @@ const Licence = ({ img, description, width }: TDemo) => {
           {img &&
             img?.map((element) => {
               return (
-                <Box sx={{ width: "100%", margin: "0 0 0 -15px" }}>
-                  <Svg width={width}>{element}</Svg>
+                <Box sx={{ width: "100%", margin: "0 0 25px -15px" }}>
+                  <Svg width={width} height={height}>
+                    {element}
+                  </Svg>
                 </Box>
               );
             })}
@@ -67,7 +70,7 @@ const Licence = ({ img, description, width }: TDemo) => {
               fontSize: "18px",
               fontWeight: 400,
               fontFamily: "'Poppins', sans-serif",
-              textAlign: "center",
+              textAlign: "left",
             }}
           >
             {description}

@@ -49,6 +49,7 @@ const HeaderTitle = ({
             margin: "0",
             padding: titlePadding,
             fontWeight,
+            maxWidth: "600px",
             fontFamily: "'Poppins', sans-serif",
             color: `${color ? color : "#424242"}`,
           }}

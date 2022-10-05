@@ -12,7 +12,7 @@ const Footer = () => {
         flexDirection: "column",
         fontFamily: "'Poppins', sans-serif",
         padding: "20px",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#fafafa",
         marginTop: "50px",
       }}
     >
