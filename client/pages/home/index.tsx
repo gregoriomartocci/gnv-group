@@ -175,6 +175,7 @@ const Home = () => {
           justifyContent: "center",
           width: "100vw",
           minHeight: "100vh",
+          height: { xs: "70vh", sm: "80vh" },
           padding: "7.5%",
         }}
       >
@@ -183,7 +184,6 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            width: "1120px",
             padding: "5% 0",
           }}
         >
@@ -192,14 +192,13 @@ const Home = () => {
             whileInView={"onscreen"}
             viewport={{ once: false, amount: 0 }}
             variants={FadeFromBottom}
-            style={{ width: "1120px" }}
           >
             <HeaderTitle
-              p=""
-              titleFontSize={{ xs: "25px", sm: "20px", md: "38px" }}
+              p={{ xs: "0 15px", md: "5% 0" }}
+              titleFontSize={{ xs: "20px", sm: "20px", md: "38px" }}
               fontWeight={600}
-              width="1120px"
-              descriptionFontSize={{ xs: "18px", sm: "20px", md: "28px" }}
+              width={{ xs: "100%", md: "1120px" }}
+              descriptionFontSize={{ xs: "16px", sm: "20px", md: "28px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />

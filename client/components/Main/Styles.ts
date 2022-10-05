@@ -108,7 +108,7 @@ export const MainImage: SxProps<Theme> = {
 
 export const HeaderTitle: SxProps<Theme> = {
   fontFamily: "'Poppins', sans-serif",
-  fontSize: "38px",
+  fontSize: { xs: "30px", md: "38px" },
   fontWeight: 500,
   textAlign: "left",
   marginBottom: "40px",
