@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Main from "../../components/Main";
-import { SliderData } from "../../data/SliderData";
+
 import Menu from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";

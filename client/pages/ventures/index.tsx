@@ -8,7 +8,11 @@ import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
 import SearchBar from "../../components/Search-Bar";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, setProject, setProjects } from "../../redux/slices/projects";
+import {
+  setFilter,
+  setProject,
+  setProjects,
+} from "../../redux/slices/projects";
 import Dropdown from "./components/Dropdown";
 import OutsideAlerter from "../../hooks/ClickListener";
 import { useQuery } from "react-query";
@@ -99,7 +103,6 @@ const VenturesLayout = () => {
       {/* MAIN SECTION */}
 
       <Main
-        slides={SliderData}
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png"
         imageOnly
