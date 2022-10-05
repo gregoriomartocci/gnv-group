@@ -79,8 +79,9 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
               opacity: "0.60",
             }}
           ></Box>
-          {getFormat(items[imageIndex]?.src) === "MP4" ? (
-            <AnimatePresence initial={false} custom={direction}>
+
+          <AnimatePresence initial={false} custom={direction}>
+            {getFormat(items[imageIndex]?.src) === "MP4" ? (
               <Box
                 sx={{
                   position: "absolute",
@@ -123,9 +124,7 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
                   }}
                 />
               </Box>
-            </AnimatePresence>
-          ) : (
-            <AnimatePresence initial={false} custom={direction}>
+            ) : (
               <Box
                 sx={{
                   position: "absolute",
@@ -165,8 +164,8 @@ const UseCarousel = ({ items, slideTime }: TUseCarousel) => {
                   }}
                 />
               </Box>
-            </AnimatePresence>
-          )}
+            )}
+          </AnimatePresence>
           <Box
             sx={{
               display: "flex",
