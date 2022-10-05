@@ -147,9 +147,11 @@ const Company = () => {
 
   const xs = width && width < 900;
   const sm = width && width < 1200;
-  const md = width && width < 900;
-  const lg = width && width < 900;
-  const xl = width && width < 900;
+  const md = width && width < 1400;
+  const lg = width && width < 1600;
+  const xl = width && width < 1800;
+
+  console.log(xs);
 
   useEffect(() => {
     const getPictures = async () => {
