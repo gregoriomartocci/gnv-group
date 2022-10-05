@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 // import required modules
 
 export const CarouselB = ({ items }) => {
-
   const getFormat = (file: string) => {
     const result = file?.split(".").pop()?.toUpperCase();
     return result;
@@ -77,8 +76,9 @@ export const CarouselB = ({ items }) => {
                   }}
                   src={element?.src}
                   autoPlay
-                  loop
                   muted
+                  playsInline
+                  loop
                 />
               ) : (
                 <img

@@ -17,7 +17,6 @@ import {
 } from "./Styles";
 import UseModal from "../Modal";
 import Auth from "../Auth";
-import AuthImage from "../../assets/images/Image-1.jpg";
 import ResponsiveMenu from "../Responsive-Menu";
 import Dropdown from "../Dropdown";
 import { useSelector } from "react-redux";
@@ -97,9 +96,6 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
 
   return (
     <Fragment>
-      <UseModal open={openModal} handleClose={handleCloseModal}>
-        <Auth img={AuthImage} />
-      </UseModal>
       <ResponsiveMenu Open={openDropdown} Toggle={toggleDropdown} />
       <Box
         sx={

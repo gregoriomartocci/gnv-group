@@ -126,7 +126,7 @@ const Main = ({
                   <Box sx={MainSlider}>
                     <Box sx={MainImage}>
                       {getFormat(src) === "MP4" ? (
-                        <video src={src} autoPlay loop muted />
+                        <video src={src} autoPlay playsInline loop muted />
                       ) : (
                         <img
                           src={src}
@@ -172,7 +172,7 @@ const Main = ({
             <Box sx={MainContainer}>
               <Box sx={MainImage}>
                 {getFormat(img ?? "") === "MP4" ? (
-                  <video src={img} autoPlay loop muted />
+                  <video src={img} autoPlay playsInline loop muted />
                 ) : (
                   <img
                     src={img ?? ""}

@@ -100,6 +100,7 @@ const UseCarousel = ({ items, slideTime, typographyText }: TUseCarousel) => {
                   }}
                   autoPlay
                   loop
+                  playsInline
                   muted
                   key={page}
                   src={items[imageIndex]?.src}
