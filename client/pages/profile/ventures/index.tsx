@@ -174,8 +174,6 @@ const Ventures = () => {
     description: "",
   });
 
-  console.log(input, "Que onda monnoooo");
-
   const queryClient = useQueryClient();
 
   useEffect(() => {

@@ -275,7 +275,7 @@ export default function UseTable({
         width: "100%",
         // position: "relative",
         borderRadius: "10px",
-        height: "700px",
+        height: "85%",
         overflowY: "auto",
         padding: "15px",
         boxShadow: "unset",
