@@ -2,8 +2,8 @@ import { IconButton, SxProps, TableCell, Typography } from "@mui/material";
 import { Theme } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Dashboard from "../../Dashboard";
-import { IState } from "../../Menu";
+import Dashboard from "../../../components/Dashboard";
+import { IState } from "../../../components/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import api from "../../../hooks/Api";
 import {
@@ -16,19 +16,19 @@ import {
   setSelected,
   setState,
 } from "../../../redux/slices/projects";
-import UseTable from "../../Table";
+import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Dropdown from "../../Dropdown";
-import UseModal from "../../Modal";
-import Toast from "../../Alert";
+import Dropdown from "../../../components/Dropdown";
+import UseModal from "../../../components/Modal";
+import Toast from "../../../components/Alert";
 import parse from "html-react-parser";
-import Actions from "../../Table/Components/Actions";
-import Delete from "../../Table/Components/Delete";
-import Update from "../../Table/Components/Update";
-import Create from "../../Table/Components/Create";
+import Actions from "../../../components/Table/Components/Actions";
+import Delete from "../../../components/Table/Components/Delete";
+import Update from "../../../components/Table/Components/Update";
+import Create from "../../../components/Table/Components/Create";
 import ProjectForm from "./Components/Form";
-import ImageUploader from "../../Image-Uploader";
+import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
 import form from "./Components/Form";
 import { useQuery, useMutation, useQueryClient } from "react-query";
@@ -40,7 +40,7 @@ import {
 } from "../../../api/ventures";
 import { Content } from "./Components/Content";
 
-const Editor = dynamic(() => import("../../Editor"), {
+const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
 
