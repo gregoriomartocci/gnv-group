@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface IArticle {
+export interface IProject {
   id: number;
   _id: string;
   name: string;
@@ -35,7 +35,7 @@ export type TUpdate = {
   loading: boolean;
   modal: boolean;
   api: { path: string; id: number };
-  project: IArticle | {};
+  project: IProject | {};
 };
 
 export type TModal = {
@@ -56,37 +56,37 @@ export type TAlert = {
 };
 
 export interface initialState {
-  articles: IArticle[];
-  article: IArticle | {};
-  articlesFiltered: IArticle[];
-  articleSelected: IArticle | {};
+  projects: IProject[];
+  project: IProject | {};
+  projectsFiltered: IProject[];
+  projectSelected: IProject | {};
   modal: TModal;
   alert: { message: string; status: string }[];
 }
 
 const initialState: initialState = {
-  articles: [],
-  article: {},
-  articlesFiltered: [],
-  articleSelected: {},
+  projects: [],
+  project: {},
+  projectsFiltered: [],
+  projectSelected: {},
   modal: { actions: false, update: false, delete: false, create: false },
   alert: [],
   // alert: { message: "", status: "" },
 };
 
-export const articlesSlice = createSlice({
-  name: "articles",
+export const projectsSlice = createSlice({
+  name: "projects",
   initialState,
   reducers: {
-    setArticles: (state, action: PayloadAction<IArticle[]>) => {
-      state.articles = [...action.payload];
+    setProjects: (state, action: PayloadAction<IProject[]>) => {
+      state.projects = [...action.payload];
     },
     setModal: (state, action: PayloadAction<TModalPayload>) => {
       const { name, value } = action?.payload;
       state.modal = { ...state.modal, [name]: value };
     },
-    setArticle: (state, action: PayloadAction<TModalPayload>) => {
-      state.article = { ...action.payload };
+    setProject: (state, action: PayloadAction<TModalPayload>) => {
+      state.project = { ...action.payload };
     },
     setAlert: (state, action: PayloadAction<TAlert>) => {
       state.alert = [...state.alert, action?.payload];
@@ -94,23 +94,23 @@ export const articlesSlice = createSlice({
     closeAlert: (state, action: PayloadAction<number>) => {
       state.alert = [...state.alert].splice(action?.payload, 1);
     },
-    setSelected: (state, action: PayloadAction<IArticle>) => {
-      state.articleSelected = { ...action.payload };
+    setSelected: (state, action: PayloadAction<IProject>) => {
+      state.projectSelected = { ...action.payload };
     },
-    setFilter: (state, action: PayloadAction<IArticle[]>) => {
-      state.articlesFiltered = [...action.payload];
+    setFilter: (state, action: PayloadAction<IProject[]>) => {
+      state.projectsFiltered = [...action.payload];
     },
   },
 });
 
 export const {
-  setArticles,
+  setProjects,
   setFilter,
   setSelected,
-  setArticle,
+  setProject,
   setModal,
   setAlert,
   closeAlert,
-} = articlesSlice.actions;
+} = projectsSlice.actions;
 
-export default articlesSlice.reducer;
+export default projectsSlice.reducer;

@@ -27,34 +27,65 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-import ProjectForm from "./Components/Form";
+
 import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
 import form from "./Components/Form";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
-  CreateProject,
-  DeleteProject,
-  ReadProjects,
-  UpdateProject,
-} from "../../../api/ventures";
+  CreateArticle,
+  DeleteArticle,
+  ReadArticles,
+  UpdateArticle,
+  ReadArticle,
+} from "../../../api/articles";
 import Content from "./Components/Content";
+import Form from "./Components/Form";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
 
+// id: {
+//   type: Number,
+//   required: true,
+//   default: 1,
+// },
+// title: {
+//   type: String,
+//   trim: true,
+//   required: true,
+// },
+// source: {
+//   type: String,
+//   required: true,
+// },
+// date: {
+//   type: String,
+//   required: true,
+// },
+// description: {
+//   type: String,
+//   required: true,
+// },
+// images: [{}],
+// published: { type: Boolean, default: true },
+// link: {
+//   type: String,
+//   required: true,
+// },
+
 export interface Data {
   id: number;
-  name: string;
+  title: string;
+  source: string;
+  date: string;
   description: string;
   images: string[];
-  link: string;
   published: boolean;
-  status: string;
+  link: string;
   createdAt: string;
   updatedAt: string;
-  __v: number;
 }
 
 export type resetParams = {
@@ -71,7 +102,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: IProject;
+  article: IArticle;
 }
 
 interface ISanitize {
@@ -102,10 +133,22 @@ const headCells: readonly HeadCell[] = [
     label: "ID",
   },
   {
-    id: "name",
+    id: "title",
     numeric: true,
     disablePadding: false,
-    label: "Nombre",
+    label: "Titulo",
+  },
+  {
+    id: "source",
+    numeric: true,
+    disablePadding: false,
+    label: "Fuente",
+  },
+  {
+    id: "date",
+    numeric: true,
+    disablePadding: false,
+    label: "Fecha",
   },
   {
     id: "description",
@@ -117,19 +160,13 @@ const headCells: readonly HeadCell[] = [
     id: "link",
     numeric: true,
     disablePadding: false,
-    label: "Link",
-  },
-  {
-    id: "status",
-    numeric: true,
-    disablePadding: false,
-    label: "Estado",
+    label: "Enlace",
   },
   {
     id: "published",
     numeric: true,
     disablePadding: false,
-    label: "Publicación",
+    label: "Activo",
   },
   {
     id: "actions",
@@ -146,21 +183,20 @@ export type errorType = {
 
 export type TProject = {
   id: number;
-  name: string;
+  title: string;
+  source: string;
+  date: never[];
   description: string;
-  images: never[];
-  link: string;
+  images: any[];
   published: boolean;
-  status: string;
-  type: string;
-  date: string;
+  link: string;
 };
 
-const Ventures = () => {
+const News = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state?.projects);
-  const projectSelected = state?.projectSelected;
-  const [selectedProject, setSelectedProject] = useState(projectSelected);
+  const state = useSelector((state) => state?.articles);
+  const artcileSelected = state?.projectSelected;
+  const [selectedArticle, setSelectedArticle] = useState(artcileSelected);
 
   const { alert, modal } = state;
 
@@ -171,23 +207,23 @@ const Ventures = () => {
     description: "",
   });
 
-  console.log(selectedProject, "Que onda monnoooo");
+  console.log(selectedArticle, "Que onda monnoooo");
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setSelectedProject(projectSelected);
-  }, [projectSelected]);
+    setSelectedArticle(artcileSelected);
+  }, [artcileSelected]);
 
   const {
     isFetching: loading,
     isError,
     error,
-    data: allProjects,
-  } = useQuery("projects", ReadProjects);
+    data: allArticles,
+  } = useQuery("projects", ReadArticles);
 
-  const { mutateAsync: createProjectMutation, isLoading: createLoading } =
-    useMutation(CreateProject, {
+  const { mutateAsync: createArticleMutation, isLoading: createLoading } =
+    useMutation(CreateArticle, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("projects");
         console.log(data, "ok");
@@ -209,8 +245,8 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
-    useMutation(UpdateProject, {
+  const { mutateAsync: updateArticleMutation, isLoading: updateLoading } =
+    useMutation(UpdateArticle, {
       onSuccess: () => {
         queryClient.invalidateQueries("projects");
         dispatch(
@@ -230,8 +266,8 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
-    useMutation(DeleteProject, {
+  const { mutateAsync: deleteArticleMutation, isLoading: deleteLoading } =
+    useMutation(DeleteArticle, {
       onSuccess: () => {
         queryClient.invalidateQueries("projects");
         dispatch(
@@ -252,7 +288,7 @@ const Ventures = () => {
     });
 
   const createContent = [
-    <ProjectForm input={input} setInput={setInput} />,
+    <Form input={input} setInput={setInput} />,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -269,23 +305,23 @@ const Ventures = () => {
   ];
 
   const updateContent = [
-    <ProjectForm input={selectedProject} setInput={setSelectedProject} />,
+    <Form input={selectedArticle} setInput={setSelectedArticle} />,
     <ImageUploader
-      value={selectedProject?.id ? selectedProject?.images : []}
+      value={selectedArticle?.id ? selectedArticle?.images : []}
       addImage={(file: any) => {
-        setSelectedProject({
-          ...selectedProject,
-          images: [...selectedProject?.images, file],
+        setSelectedArticle({
+          ...selectedArticle,
+          images: [...selectedArticle?.images, file],
         });
       }}
       removeImage={(array: any) => {
-        setSelectedProject({ ...selectedProject, images: array });
+        setSelectedArticle({ ...selectedArticle, images: array });
       }}
     />,
     <Editor
-      value={selectedProject}
+      value={selectedArticle}
       setValue={(string) =>
-        setSelectedProject({ ...selectedProject, description: string })
+        setSelectedArticle({ ...selectedArticle, description: string })
       }
     />,
   ];
@@ -304,12 +340,11 @@ const Ventures = () => {
           );
         })}
       </Box>
-
       <UseTable
-        title="Emprendimientos"
-        name="projects"
+        title="Noticias"
+        name="articles"
         headCells={headCells}
-        rows={allProjects?.length ? allProjects : []}
+        rows={allArticles?.length ? allArticles : []}
         content={(project: IProject) => <Content {...project} />}
       />
 
@@ -320,7 +355,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Emprendimiento"
-          create={() => createProjectMutation({ ...input })}
+          create={() => createArticleMutation({ ...input })}
           loading={createLoading}
         />
       </UseModal>
@@ -328,11 +363,11 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id ? (
+        {selectedArticle?.id ? (
           <Update
             title="emprendimiento"
             content={updateContent}
-            update={() => updateProjectMutation({ ...selectedProject })}
+            update={() => updateArticleMutation({ ...selectedArticle })}
             loading={updateLoading}
           />
         ) : null}
@@ -350,7 +385,7 @@ const Ventures = () => {
       >
         <Delete
           title="emprendimiento"
-          deleteProject={() => deleteProjectMutation(selectedProject?._id)}
+          deleteProject={() => deleteProjectMutation(selectedArticle?._id)}
           onClose={() => {
             dispatch(
               setModal({
@@ -366,4 +401,4 @@ const Ventures = () => {
   );
 };
 
-export default Ventures;
+export default News;
