@@ -10,7 +10,7 @@ const ImageContainer: SxProps<Theme> = {
   textAlign: "center",
   borderRadius: "50",
   fontSize: "20px",
-  height: "600px",
+  height: { xs: "350px", md: "600px" },
   width: "100%",
 
   img: {

@@ -8,19 +8,17 @@ import Dropdown from "../../../../../components/Dropdown";
 import { IState } from "../../../../../components/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import {
-  IProject,
-  setModal,
-  setSelected,
-} from "../../../../../redux/slices/projects";
+import { setModal, setSelected } from "../../../../../redux/slices/articles";
 import Actions from "../../../../../components/Table/Components/Actions";
+import { IArticle } from "../../../../../redux/slices/articles";
 
-const Content = (project: IProject) => {
+const Content = (article: IArticle) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.articles);
 
-  const { modal, projectSelected } = state;
+  console.log(article, "que onda paaaa");
+  const { modal, articleSelected } = state;
 
   const handleCloseActionsMenu = () => {
     dispatch(setModal({ name: "actions", value: false }));
@@ -50,28 +48,32 @@ const Content = (project: IProject) => {
     },
   };
 
-  const match = project?.id === projectSelected?.id;
+  const match = article?.id === articleSelected?.id;
 
   return (
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={project?.images[0]?.src ?? ""} alt="" />
-          <Typography>{project?.name}</Typography>
+          <img src={article?.images[0]?.src ?? ""} alt="" />
+        </Box>
+      </TableCell>
+      <TableCell sx={{ width: "200px" }} align="left">
+        <Typography>{article?.title}</Typography>
+      </TableCell>
+      <TableCell sx={{ width: "150px" }} align="left">
+        <Typography>{article?.date}</Typography>
+      </TableCell>
+      <TableCell sx={{ width: "175px" }} align="left">
+        <Typography>{sanitize(sliceText(article?.description, 30))}</Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Box sx={{ width: "80px" }}>
+          <Typography>{sliceText(article?.link, 30)}</Typography>
         </Box>
       </TableCell>
       <TableCell align="left">
-        <Typography>{sanitize(sliceText(project?.description, 30))}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{sliceText(project?.link, 30)}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{project?.status}</Typography>
-      </TableCell>
-      <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published ? (
+          {article?.published ? (
             <Box
               sx={{
                 width: "min-content",
@@ -100,7 +102,7 @@ const Content = (project: IProject) => {
         </Typography>
       </TableCell>
       <TableCell align="left">
-        <IconButton onClick={(e) => handleClickActionsMenu(e, project)}>
+        <IconButton onClick={(e) => handleClickActionsMenu(e, article)}>
           <MoreVertIcon />
         </IconButton>
         {match && (
@@ -117,4 +119,4 @@ const Content = (project: IProject) => {
   );
 };
 
-export default Content
+export default Content;

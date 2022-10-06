@@ -393,7 +393,7 @@ const Company = () => {
         >
           <HeaderTitle
             p="40px 0"
-            titleFontSize="38px"
+            titleFontSize={{ xs: "35px", md: "38px" }}
             fontWeight={600}
             title="Compañia"
           />
@@ -441,7 +441,7 @@ const Company = () => {
             p="20px 25px 200px 25px"
             fontWeight={600}
             titleFontSize={{ xs: "28px", md: "35px" }}
-            title="La trayectoria de una gran empresa con el trato de una gran familia"
+            title="<p> La trayectoria de una gran empresa </br> con el trato de una gran familia</p>"
             color="#fff"
           />
         </Box>
@@ -451,7 +451,7 @@ const Company = () => {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100%",
+            height: "",
           }}
         >
           <Main
@@ -475,7 +475,7 @@ const Company = () => {
       >
         <HeaderTitle
           p="125px 50px 50px 50px"
-          titleFontSize="38px"
+          titleFontSize={{ xs: "35px", md: "38px" }}
           fontWeight={600}
           title="Galería de arte GNV"
         />

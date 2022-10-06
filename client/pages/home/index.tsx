@@ -57,6 +57,7 @@ const Home = () => {
   const { height, width } = useWindowDimensions();
 
   const sm = width && width < 1200;
+  const xs = width && width < 900;
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
@@ -196,7 +197,7 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "5% 0" }}
-              titleFontSize={{ xs: "28px", sm: "20px", md: "38px" }}
+              titleFontSize={{ xs: "28px", md: "38px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
               descriptionFontSize={{ xs: "19px", sm: "20px", md: "28px" }}
@@ -351,7 +352,7 @@ const Home = () => {
       >
         <HeaderTitle
           p="20px 0"
-          titleFontSize="38px"
+          titleFontSize={{ xs: "35px", md: "38px" }}
           fontWeight={600}
           title="Contacto"
           description="Envianos tu consulta"

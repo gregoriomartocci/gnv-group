@@ -101,8 +101,19 @@ interface HeadCell {
   numeric: boolean;
 }
 
+export type TArticle = {
+  id: number;
+  title: string;
+  source: string;
+  date: never[];
+  description: string;
+  images: any[];
+  published: boolean;
+  link: string;
+};
+
 interface ITableContent {
-  article: IArticle;
+  article: TArticle;
 }
 
 interface ISanitize {
@@ -179,17 +190,6 @@ const headCells: readonly HeadCell[] = [
 export type errorType = {
   projects: string;
   message: any;
-};
-
-export type TProject = {
-  id: number;
-  title: string;
-  source: string;
-  date: never[];
-  description: string;
-  images: any[];
-  published: boolean;
-  link: string;
 };
 
 const News = () => {
