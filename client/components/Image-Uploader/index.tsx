@@ -190,28 +190,6 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
             </Box>
           </Box>
         </Box>
-        <Alert
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            margin: "10px 0",
-            borderRadius: "10px",
-          }}
-          variant="outlined"
-          severity="info"
-        >
-          <Box sx={{ margin: "0 15px", fontFamily: "'Poppins' sans-serif" }}>
-            <Typography sx={InfoMessage}>
-              • La imagen no puede ser superior a 5KB
-            </Typography>
-            <Typography sx={InfoMessage}>
-              • La resolución debe ser menor a 1920x1080 px
-            </Typography>
-            <Typography sx={InfoMessage}>
-              • Sólo se admiten imágenes con formato png, jpg, jpeg, svg.
-            </Typography>
-          </Box>
-        </Alert>
         <Box>
           {errors?.length >= 1 && (
             <Alert variant="filled" severity="error">

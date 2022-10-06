@@ -138,12 +138,6 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "id",
-    numeric: true,
-    disablePadding: true,
-    label: "ID",
-  },
-  {
     id: "title",
     numeric: true,
     disablePadding: false,

@@ -99,7 +99,7 @@ export default function UseTable({
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const state = useSelector((state: IState) => state[name]);
 
@@ -122,17 +122,6 @@ export default function UseTable({
     return (
       <TableHead>
         <TableRow style={{ borderRadius: "15px" }}>
-          <TableCell padding="checkbox" sx={GrayBackground}>
-            <Checkbox
-              color="primary"
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={rowCount > 0 && numSelected === rowCount}
-              onChange={onSelectAllClick}
-              inputProps={{
-                "aria-label": "select all desserts",
-              }}
-            />
-          </TableCell>
           {headCells.map((headCell: any) => (
             <TableCell
               key={headCell.id}
@@ -283,17 +272,18 @@ export default function UseTable({
   return (
     <Paper
       sx={{
-        position: "relative",
         width: "100%",
+        // position: "relative",
         borderRadius: "10px",
+        height: "700px",
+        overflowY: "auto",
         padding: "15px",
         boxShadow: "unset",
         border: "1px solid #e0e0e0",
-        height: "100%",
       }}
     >
-      <EnhancedTableToolbar title={title} numSelected={selected.length} />
       <TableContainer>
+      <EnhancedTableToolbar title={title} numSelected={selected.length} />
         <Table aria-labelledby="tableTitle" size={"medium"}>
           <EnhancedTableHead
             numSelected={selected.length}
@@ -303,75 +293,39 @@ export default function UseTable({
             onRequestSort={handleRequestSort}
             rowCount={rows?.length}
           />
+
           <TableBody>
             {stableSort(rows, getComparator(order, orderBy))
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               ?.map((row, index) => {
-                const isItemSelected = isSelected(Number(row?.id));
-                const labelId = `enhanced-table-checkbox-${index}`;
-
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    aria-checked={isItemSelected}
-                    tabIndex={-1}
-                    key={row?.id}
-                    selected={isItemSelected}
-                    // sx={index % 2 === 1 ? GrayBackground : null}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        color="primary"
-                        checked={isItemSelected}
-                        inputProps={{
-                          "aria-labelledby": labelId,
-                        }}
-                        onClick={(event: any) =>
-                          handleClick(event, Number(row?.id))
-                        }
-                      />
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
-                    >
-                      <Typography style={{ fontFamily: "Montserrat" }}>
-                        {row?.id}
-                      </Typography>
-                    </TableCell>
-
-                    {content(row)}
-                  </TableRow>
-                );
+                return <TableRow>{content(row)}</TableRow>;
               })}
           </TableBody>
         </Table>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            width: "100%",
-            justifyContent: "flex-end",
-            position: "absolute",
-            height: "80px",
-            bottom: 0,
-            right: 0,
-            padding: "50px",
-          }}
-        >
-          <TablePagination
-            component="span"
-            count={rows?.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Box>
       </TableContainer>
+      <Box
+        sx={{
+          position: "absolute",
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          justifyContent: "flex-end",
+          backgroundColor: "#fff",
+          height: "80px",
+          bottom: 0,
+          right: 0,
+          padding: "50px",
+        }}
+      >
+        <TablePagination
+          component="span"
+          count={rows?.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Box>
     </Paper>
   );
 }

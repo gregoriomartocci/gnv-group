@@ -40,8 +40,8 @@ const Content = (article: IArticle) => {
     alignItems: "center",
 
     img: {
-      width: "70px",
-      height: "70px",
+      width: "100px",
+      height: "100px",
       borderRadius: "5px",
       objectFit: "cover",
       margin: "0 20px 0 0",
@@ -52,24 +52,26 @@ const Content = (article: IArticle) => {
 
   return (
     <Fragment>
-      <TableCell align="left">
+      <TableCell sx={{ width: "500px" }} align="left">
         <Box sx={CellTable}>
-          <img src={article?.images[0]?.src ?? ""} alt="" />
+          <img
+            src={(article && article?.images && article?.images[0]?.src) ?? ""}
+            alt=""
+          />
+          <Typography>{article?.title}</Typography>
         </Box>
       </TableCell>
-      <TableCell sx={{ width: "200px" }} align="left">
-        <Typography>{article?.title}</Typography>
-      </TableCell>
       <TableCell sx={{ width: "150px" }} align="left">
+        <Typography>{article?.source}</Typography>
+      </TableCell>
+      <TableCell sx={{ width: "200px" }} align="left">
         <Typography>{article?.date}</Typography>
       </TableCell>
       <TableCell sx={{ width: "175px" }} align="left">
         <Typography>{sanitize(sliceText(article?.description, 30))}</Typography>
       </TableCell>
-      <TableCell align="left">
-        <Box sx={{ width: "80px" }}>
-          <Typography>{sliceText(article?.link, 30)}</Typography>
-        </Box>
+      <TableCell sx={{ width: "200px" }} align="left">
+        <Typography>{sliceText(article?.link, 30)}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
