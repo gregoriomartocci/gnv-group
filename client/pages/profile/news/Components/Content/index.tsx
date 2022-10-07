@@ -12,7 +12,8 @@ import { setModal, setSelected } from "../../../../../redux/slices/articles";
 import Actions from "../../../../../components/Table/Components/Actions";
 import { IArticle } from "../../../../../redux/slices/articles";
 
-const Content = (article: IArticle, openUpdateModal) => {
+const Content = (article: IArticle) => {
+  
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const state = useSelector((state: IState) => state?.articles);
