@@ -9,7 +9,6 @@ import api from "../../../hooks/Api";
 import {
   closeAlert,
   initialState,
-  IProject,
   setAlert,
   setModal,
   setArticle,
@@ -159,7 +158,7 @@ export type errorType = {
 const News = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.articles);
-  const artcileSelected = state?.projectSelected;
+  const artcileSelected = state?.articleSelected;
   const [selectedArticle, setSelectedArticle] = useState(artcileSelected);
 
   const { alert, modal } = state;
@@ -326,7 +325,7 @@ const News = () => {
       >
         <Create
           content={createContent}
-          title="Emprendimiento"
+          title="Noticia"
           create={() => createArticleMutation({ ...input })}
           loading={createLoading}
         />
@@ -335,14 +334,15 @@ const News = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedArticle?.id ? (
+        {console.log(selectedArticle, "que onduuuuu")}
+        {selectedArticle?.id && (
           <Update
-            title="emprendimiento"
+            title="noticia"
             content={updateContent}
             update={() => updateArticleMutation({ ...selectedArticle })}
             loading={updateLoading}
           />
-        ) : null}
+        )}
       </UseModal>
       <UseModal
         open={modal?.delete}
@@ -356,7 +356,7 @@ const News = () => {
         }}
       >
         <Delete
-          title="emprendimiento"
+          title="noticia"
           deleteProject={() => createNewMutation(selectedArticle?._id)}
           onClose={() => {
             dispatch(

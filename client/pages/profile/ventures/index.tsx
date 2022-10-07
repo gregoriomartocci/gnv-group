@@ -337,14 +337,14 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id ? (
+        {selectedProject?.id && (
           <Update
             title="emprendimiento"
             content={updateContent}
             update={() => updateProjectMutation({ ...selectedProject })}
             loading={updateLoading}
           />
-        ) : null}
+        )}
       </UseModal>
       <UseModal
         open={modal?.delete}

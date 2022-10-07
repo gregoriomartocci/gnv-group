@@ -115,7 +115,14 @@ const Content = (project: IProject) => {
             handleClose={handleCloseActionsMenu}
             anchorEl={anchorEl}
           >
-            <Actions />
+            <Actions
+              openUpdateModal={() =>
+                dispatch(setModal({ name: "update", value: true }))
+              }
+              openDeleteModal={() =>
+                dispatch(setModal({ name: "delete", value: true }))
+              }
+            />
           </Dropdown>
         )}
       </TableCell>

@@ -12,12 +12,11 @@ import { setModal, setSelected } from "../../../../../redux/slices/articles";
 import Actions from "../../../../../components/Table/Components/Actions";
 import { IArticle } from "../../../../../redux/slices/articles";
 
-const Content = (article: IArticle) => {
+const Content = (article: IArticle, openUpdateModal) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const state = useSelector((state: IState) => state?.articles);
 
-  console.log(article, "que onda paaaa");
   const { modal, articleSelected } = state;
 
   const handleCloseActionsMenu = () => {
@@ -27,9 +26,9 @@ const Content = (article: IArticle) => {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    project: IProject
+    article: IArticle
   ) => {
-    dispatch(setSelected(project));
+    dispatch(setSelected(article));
     dispatch(setModal({ name: "actions", value: true }));
     setAnchorEl(event.currentTarget);
   };
@@ -113,7 +112,14 @@ const Content = (article: IArticle) => {
             handleClose={handleCloseActionsMenu}
             anchorEl={anchorEl}
           >
-            <Actions />
+            <Actions
+              openUpdateModal={() =>
+                dispatch(setModal({ name: "update", value: true }))
+              }
+              openDeleteModal={() =>
+                dispatch(setModal({ name: "delete", value: true }))
+              }
+            />
           </Dropdown>
         )}
       </TableCell>
