@@ -41,8 +41,8 @@ const resizeFile = (file: Blob) =>
   new Promise((resolve) => {
     FileResizer.imageFileResizer(
       file,
-      1920,
-      1080,
+      1280,
+      720,
       "JPEG",
       100,
       0,
@@ -108,7 +108,7 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         "El formato de la imagen no es válido",
         (value: IImagetoUpload) => {
           const format = value?.type.split("/")[1];
-          const isValid = ["png", "jpg", "svg", "jpeg"].includes(format);
+          const isValid = ["png", "jpg", "svg", "jpeg", "mp4"].includes(format);
           return isValid;
         }
       )
