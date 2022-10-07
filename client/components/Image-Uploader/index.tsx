@@ -90,8 +90,6 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
 
-  console.log(value, "OKKKKK");
-
   const schema = yup.object().shape({
     attachment: yup
       .mixed()
@@ -108,7 +106,14 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         "El formato de la imagen no es válido",
         (value: IImagetoUpload) => {
           const format = value?.type.split("/")[1];
-          const isValid = ["png", "jpg", "svg", "jpeg", "mp4"].includes(format);
+          const isValid = [
+            "png",
+            "jpg",
+            "svg",
+            "jpeg",
+            "mp4",
+            "webp",
+          ].includes(format);
           return isValid;
         }
       )
@@ -184,7 +189,7 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
               <input
                 type="file"
                 value=""
-                accept="image/png, image/svg, image/png, image/jpeg, image/jpg"
+                accept="image/png, image/svg, image/png, image/jpeg, image/jpg, image/webpb"
                 onChange={onFileDrop}
               />
             </Box>

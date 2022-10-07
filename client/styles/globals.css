@@ -73,23 +73,8 @@ a {
   margin-bottom: 50px;
 }
 
-.swiper-button-next {
-  right: 50;
-  color: "#fff" !important;
-}
-
-.swiper-button-prev {
-  left: 50;
-  color: "#fff" !important;
-}
-
 * {
   -webkit-tap-highlight-color: transparent;
-}
-
-.swiper-button-next {
-  right: 50;
-  color: "#fff";
 }
 
 /* Prev Arrow */
