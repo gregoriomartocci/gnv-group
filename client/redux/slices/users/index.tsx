@@ -44,7 +44,7 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     setUsers: (state, action: PayloadAction<IUser[]>) => {
-      state.timelineItems = [...action.payload];
+      state.users = [...action.payload];
     },
     setModal: (state, action: PayloadAction<TModalPayload>) => {
       const { name, value } = action?.payload;
@@ -66,6 +66,13 @@ export const usersSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser } = usersSlice.actions;
+export const {
+  setUser,
+  setModal,
+  setUsers,
+  setAlert,
+  closeAlert,
+  setSelected,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -14,18 +14,24 @@ import {
   setSelected,
 } from "../../../../../redux/slices/projects";
 import Actions from "../../../../../components/Table/Components/Actions";
+import { IUser } from "../../../../../redux/slices/users";
 
-const Content = (project: IProject) => {
+const Content = (user: IUser) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const state = useSelector((state: IState) => state?.timeline);
+  const state = useSelector((state: IState) => state?.user);
 
-  const { modal, projectSelected } = state;
+  const { modal, userSelected } = state;
 
   const handleCloseActionsMenu = () => {
     dispatch(setModal({ name: "actions", value: false }));
     setAnchorEl(null);
   };
+
+  // id: string;
+  // name: string;
+  // email: string;
+  // role: string;
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -50,63 +56,21 @@ const Content = (project: IProject) => {
     },
   };
 
-  const match = project?.id === projectSelected?.id;
+  const match = user?.id === userSelected?.id;
 
   return (
     <Fragment>
       <TableCell align="left">
-        <Box sx={CellTable}>
-          <img
-            src={(project && project?.images && project?.images[0]?.src) ?? ""}
-            alt=""
-          />
-          <Typography>{project?.name}</Typography>
-        </Box>
+        <Typography>{user?.id}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{sanitize(sliceText(project?.description, 30))}</Typography>
+        <Typography>{user?.name}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{sliceText(project?.link, 30)}</Typography>
+        <Typography>{user?.email}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{project?.status}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{project?.type}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published ? (
-            <Box
-              sx={{
-                width: "min-content",
-                display: "flex",
-                alignItems: "center",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #E0E0E0",
-              }}
-            >
-              <FiberManualRecordIcon
-                sx={{
-                  margin: "0px 6px",
-                  color: "#30D18D",
-                  fontSize: "12.5px",
-                  fontWeight: "600",
-                }}
-              />
-              Activa
-            </Box>
-          ) : (
-            <Box>
-              <FiberManualRecordIcon /> Pausada
-            </Box>
-          )}
-        </Typography>
-      </TableCell>
-      <TableCell align="left">
-        <IconButton onClick={(e) => handleClickActionsMenu(e, project)}>
+        <IconButton onClick={(e) => handleClickActionsMenu(e, user)}>
           <MoreVertIcon />
         </IconButton>
         {match && (
