@@ -202,7 +202,6 @@ const News = () => {
         );
       },
       onError: (data) => {
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "Algo salió mal.",

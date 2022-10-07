@@ -40,8 +40,8 @@ export const CarouselB = ({ items }) => {
               <Typography
                 sx={{
                   position: "absolute",
-                  padding: "0 10%",
-                  fontSize: "38px",
+                  padding:{ xs: "0 25%", md: "0 10%" },
+                  fontSize: { xs: "24px", md: "38px" },
                   fontWeight: "500",
                   color: "#fff",
                   zIndex: 20,
@@ -63,7 +63,7 @@ export const CarouselB = ({ items }) => {
                   backgroundColor: "#212121",
                   zIndex: 15,
                   pointerEvents: "none",
-                  opacity: "0.50",
+                  opacity: "0.45",
                 }}
               />
 

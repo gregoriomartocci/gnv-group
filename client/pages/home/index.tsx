@@ -283,7 +283,7 @@ const Home = () => {
         </motion.div>
       </Box>
 
-      {/* Carousel A */}
+      {/* Carousel B */}
 
       <Box
         sx={{
@@ -293,25 +293,8 @@ const Home = () => {
           minHeight: "100vh",
         }}
       >
-        <UseCarousel
-          items={slides}
-          slideTime={5000}
-          typographyText={{ xs: "260px", md: "100%" }}
-        />
-      </Box>
-
-      {/* Carousel B */}
-
-      {/* <Box
-        sx={{
-          display: "flex",
-          position: "relative",
-          width: "100vw",
-          minHeight: "100vh",
-        }}
-      >
         <CarouselB items={slides} />
-      </Box> */}
+      </Box>
 
       {/* Quote Section */}
 
