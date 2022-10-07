@@ -46,16 +46,16 @@ const Editor = dynamic(() => import("../../../components/Editor"), {
 
 export interface Data {
   id: number;
-  name: string;
-  description: string;
-  images: string[];
-  link: string;
+  gallery: string;
+  artist: string;
+  title: string;
+  image: string;
+  technique: string;
+  measures: boolean;
+  date: string;
   published: boolean;
-  status: string;
-  type: string;
   createdAt: string;
   updatedAt: string;
-  __v: number;
 }
 
 export type resetParams = {
@@ -103,28 +103,40 @@ const headCells: readonly HeadCell[] = [
     label: "Nombre",
   },
   {
-    id: "description",
+    id: "gallery",
     numeric: true,
     disablePadding: false,
-    label: "Descripción",
+    label: "Galeria",
   },
   {
-    id: "link",
+    id: "artist",
     numeric: true,
     disablePadding: false,
-    label: "Link",
+    label: "Artista",
   },
   {
-    id: "status",
+    id: "title",
     numeric: true,
     disablePadding: false,
-    label: "Estado",
+    label: "Titulo",
   },
   {
-    id: "type",
+    id: "technique",
     numeric: true,
     disablePadding: false,
-    label: "Tipo",
+    label: "Tecnica",
+  },
+  {
+    id: "measures",
+    numeric: true,
+    disablePadding: false,
+    label: "Tecnica",
+  },
+  {
+    id: "date",
+    numeric: true,
+    disablePadding: false,
+    label: "Fecha",
   },
   {
     id: "published",
@@ -159,7 +171,7 @@ export type TProject = {
 
 const Ventures = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state?.projects);
+  const state = useSelector((state) => state?.gallery);
   const projectSelected = state?.projectSelected;
   const [selectedProject, setSelectedProject] = useState(projectSelected);
 
@@ -307,7 +319,7 @@ const Ventures = () => {
       </Box>
 
       <UseTable
-        title="Emprendimientos"
+        title="Galería de Arte"
         name="projects"
         headCells={headCells}
         rows={allProjects?.length ? allProjects : []}
@@ -339,7 +351,7 @@ const Ventures = () => {
       >
         {selectedProject?.id && (
           <Update
-            title="emprendimiento"
+            title="obra"
             content={updateContent}
             update={() => updateProjectMutation({ ...selectedProject })}
             loading={updateLoading}
@@ -358,8 +370,8 @@ const Ventures = () => {
         }}
       >
         <Delete
-          title="emprendimiento"
-          deleteProject={() => deleteProjectMutation(selectedProject?._id)}
+          title="obra"
+          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
           onClose={() => {
             dispatch(
               setModal({

@@ -5,12 +5,14 @@ import projectsSlice from "../slices/projects";
 import usersSlice from "../slices/users";
 import templatesSlice from "../slices/templates";
 import timelineSlice from "../slices/timeline";
+import gallerySlice from "../slices/gallery";
 
 export const store = configureStore({
   reducer: {
     articles: articlesSlice,
     timeline: timelineSlice,
     projects: projectsSlice,
+    gallery: gallerySlice,
     users: usersSlice,
     auth: authSlice,
     templates: templatesSlice,

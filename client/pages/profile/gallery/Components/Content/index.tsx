@@ -15,12 +15,23 @@ import {
 } from "../../../../../redux/slices/projects";
 import Actions from "../../../../../components/Table/Components/Actions";
 
-const Content = (project: IProject) => {
+const Content = (galleryItem: IProject) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const state = useSelector((state: IState) => state?.timeline);
+  const state = useSelector((state: IState) => state?.gallery);
 
-  const { modal, projectSelected } = state;
+  const { modal, galleryItemSelected } = state;
+
+  // id: 1,
+  // gallery: "Galería Nora Fisch | Buenos Aires",
+  // artist: " Juan Becú",
+  // title: "B Bros",
+  // image:
+  //   "https://res.cloudinary.com/gregomartocci/image/upload/v1663022483/tsbljhahckdrg6rewpkb.jpg",
+  // technique: "Oleo sobre tela",
+  // measures: "265 x 195 cm",
+  // date: "2013",
+  // published: true,
 
   const handleCloseActionsMenu = () => {
     dispatch(setModal({ name: "actions", value: false }));
@@ -50,34 +61,38 @@ const Content = (project: IProject) => {
     },
   };
 
-  const match = project?.id === projectSelected?.id;
+  const match = galleryItem?.id === galleryItemSelected?.id;
 
   return (
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img
-            src={(project && project?.images && project?.images[0]?.src) ?? ""}
-            alt=""
-          />
-          <Typography>{project?.name}</Typography>
+          <img src={(galleryItem && galleryItem?.image) ?? ""} alt="" />
         </Box>
+        <Typography>{galleryItem?.gallery}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{sanitize(sliceText(project?.description, 30))}</Typography>
+        <Typography>{galleryItem?.artist}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{sliceText(project?.link, 30)}</Typography>
+        <Typography>{galleryItem?.title}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{project?.status}</Typography>
+        <Typography>{galleryItem?.image}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{project?.type}</Typography>
+        <Typography>{galleryItem?.technique}</Typography>
       </TableCell>
+      <TableCell align="left">
+        <Typography>{galleryItem?.measures}</Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography>{galleryItem?.date}</Typography>
+      </TableCell>
+
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published ? (
+          {galleryItem?.published ? (
             <Box
               sx={{
                 width: "min-content",
@@ -106,7 +121,7 @@ const Content = (project: IProject) => {
         </Typography>
       </TableCell>
       <TableCell align="left">
-        <IconButton onClick={(e) => handleClickActionsMenu(e, project)}>
+        <IconButton onClick={(e) => handleClickActionsMenu(e, galleryItem)}>
           <MoreVertIcon />
         </IconButton>
         {match && (

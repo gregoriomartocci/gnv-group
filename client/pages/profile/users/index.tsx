@@ -14,7 +14,6 @@ import {
   setModal,
   setProjects,
   setSelected,
-  setState,
 } from "../../../redux/slices/projects";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
@@ -159,7 +158,7 @@ export type TProject = {
 
 const Ventures = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state?.projects);
+  const state = useSelector((state) => state?.users);
   const projectSelected = state?.projectSelected;
   const [selectedProject, setSelectedProject] = useState(projectSelected);
 
@@ -185,16 +184,16 @@ const Ventures = () => {
     isError,
     error,
     data: allProjects,
-  } = useQuery("projects", ReadProjects);
+  } = useQuery("users", ReadProjects);
 
   const { mutateAsync: createProjectMutation, isLoading: createLoading } =
     useMutation(CreateProject, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("users");
         console.log(data, "ok");
         dispatch(
           setAlert({
-            message: "El emprendimiento se creó con éxito.",
+            message: "El usuario se creó con éxito.",
             status: "success",
           })
         );
@@ -213,10 +212,10 @@ const Ventures = () => {
   const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
     useMutation(UpdateProject, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("users");
         dispatch(
           setAlert({
-            message: "El emprendimiento se actualizó con éxito.",
+            message: "El usuario se actualizó con éxito.",
             status: "success",
           })
         );
@@ -307,8 +306,8 @@ const Ventures = () => {
       </Box>
 
       <UseTable
-        title="Emprendimientos"
-        name="projects"
+        title="Usuarios"
+        name="users"
         headCells={headCells}
         rows={allProjects?.length ? allProjects : []}
         content={(project: IProject) => <Content {...project} />}
@@ -328,7 +327,7 @@ const Ventures = () => {
       >
         <Create
           content={createContent}
-          title="Emprendimiento"
+          title="Usuario"
           create={() => createProjectMutation({ ...input })}
           loading={createLoading}
         />
@@ -339,7 +338,7 @@ const Ventures = () => {
       >
         {selectedProject?.id && (
           <Update
-            title="emprendimiento"
+            title="usuario"
             content={updateContent}
             update={() => updateProjectMutation({ ...selectedProject })}
             loading={updateLoading}
@@ -358,8 +357,8 @@ const Ventures = () => {
         }}
       >
         <Delete
-          title="emprendimiento"
-          deleteProject={() => deleteProjectMutation(selectedProject?._id)}
+          title="usuario"
+          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
           onClose={() => {
             dispatch(
               setModal({
