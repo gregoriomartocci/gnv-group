@@ -283,7 +283,7 @@ const Ventures = () => {
       </Box>
 
       <UseTable
-        title="Emprendimientos"
+        title="Linea del Tiempo"
         name="projects"
         headCells={headCells}
         rows={allProjects?.length ? allProjects : []}
