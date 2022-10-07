@@ -49,7 +49,7 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
             width: "100vw",
             pointerEvents: Open ? "auto" : "none",
             backgroundColor: `${Open ? "rgba(0, 0, 0, 0.3)" : ""}`,
-            transition: "1s",
+            transition: "0.35s",
             overflow: `${Open ? "hidden" : "none"}`,
           }}
         >
@@ -57,7 +57,7 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
             sx={DropdownContainer}
             style={{
               transform: `${Open ? "" : "translateX(100%)"}`,
-              transition: "all 1s ease",
+              transition: "all 0.35s ease",
             }}
           >
             <Box sx={{ width: "100%" }}>

@@ -85,7 +85,6 @@ const Slider = ({ items }: any) => {
                     cursor: "pointer",
                   }}
                   key={key}
-                  initial={{ scale: 0 }}
                   animate={{
                     rotate: 0,
                     left: `${(key - position) * 50}vw`,

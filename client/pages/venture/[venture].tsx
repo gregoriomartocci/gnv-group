@@ -14,7 +14,7 @@ import { sanitize } from "../company";
 const Venture = () => {
   const router = useRouter();
   const ventureId = router?.query?.venture;
-  const state = useSelector((state: IState) => state?.timeline);
+  const state = useSelector((state: IState) => state?.projects);
   const { project } = state;
   const dispatch = useDispatch();
 
