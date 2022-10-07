@@ -146,7 +146,6 @@ const News = () => {
   return (
     <Box>
       <Menu onScroll color="#212121" />
-
       <Box>
         <HeaderTitle
           titleFontSize="38px"
@@ -155,7 +154,6 @@ const News = () => {
           title="Noticias destacadas"
         />
       </Box>
-
       <Box
         sx={{
           display: "flex",

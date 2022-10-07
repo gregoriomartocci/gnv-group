@@ -12,10 +12,9 @@ import {
   IProject,
   setAlert,
   setModal,
-  setProjects,
+  setArticle,
   setSelected,
-  setState,
-} from "../../../redux/slices/projects";
+} from "../../../redux/slices/articles";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -45,35 +44,6 @@ import Form from "./Components/Form";
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
-
-// id: {
-//   type: Number,
-//   required: true,
-//   default: 1,
-// },
-// title: {
-//   type: String,
-//   trim: true,
-//   required: true,
-// },
-// source: {
-//   type: String,
-//   required: true,
-// },
-// date: {
-//   type: String,
-//   required: true,
-// },
-// description: {
-//   type: String,
-//   required: true,
-// },
-// images: [{}],
-// published: { type: Boolean, default: true },
-// link: {
-//   type: String,
-//   required: true,
-// },
 
 export interface Data {
   id: number;
@@ -379,7 +349,7 @@ const News = () => {
       >
         <Delete
           title="emprendimiento"
-          deleteProject={() => deleteProjectMutation(selectedArticle?._id)}
+          deleteProject={() => createNewMutation(selectedArticle?._id)}
           onClose={() => {
             dispatch(
               setModal({
