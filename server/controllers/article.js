@@ -5,8 +5,6 @@ export const createArticle = async (req, res) => {
   try {
     const { title, link, source, date, images, description } = req.body;
 
-    console.log(req.body, "Yenderson");
-
     if (!title) return res.json({ error: "Por favor ingrese un Título" });
 
     if (!source)
@@ -28,7 +26,7 @@ export const createArticle = async (req, res) => {
     const alreadyExist = await Article.findOne({ title });
 
     if (alreadyExist)
-      return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
+      return res.json({ error: "Ya existe una noticia con ese nombre." });
 
     const upload_images = images.map(async (i) => ({
       ...i,
@@ -36,7 +34,6 @@ export const createArticle = async (req, res) => {
     }));
 
     const updated_images = await Promise.all(upload_images);
-    // console.log(updated_images, "OKAAA");
 
     const article = await new Article({
       title,
@@ -85,11 +82,11 @@ export const editArticle = async (req, res) => {
 
     const updated_images = await Promise.all(upload_images);
     const updated_article = { ...req.body, images: updated_images };
-    // console.log(updated_project, "OKAAA");
 
     const article = await Article.findByIdAndUpdate(id, updated_article, {
       new: true,
     });
+
     console.log(article, "Article");
     return res.json(article);
   } catch (err) {
