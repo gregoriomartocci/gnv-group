@@ -46,16 +46,14 @@ const Editor = dynamic(() => import("../../../components/Editor"), {
 export interface Data {
   id: number;
   name: string;
-  description: string;
-  images: string[];
-  link: string;
-  published: boolean;
-  status: string;
-  type: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  email: string;
+  role: string;
 }
+
+// id: string;
+// name: string;
+// email: string;
+// role: string;
 
 export type resetParams = {
   delete: "delete";
@@ -96,40 +94,22 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
+    id: "id",
+    numeric: true,
+    disablePadding: false,
+    label: "id",
+  },
+  {
     id: "name",
     numeric: true,
     disablePadding: false,
     label: "Nombre",
   },
   {
-    id: "description",
+    id: "email",
     numeric: true,
     disablePadding: false,
-    label: "Descripción",
-  },
-  {
-    id: "link",
-    numeric: true,
-    disablePadding: false,
-    label: "Link",
-  },
-  {
-    id: "status",
-    numeric: true,
-    disablePadding: false,
-    label: "Estado",
-  },
-  {
-    id: "type",
-    numeric: true,
-    disablePadding: false,
-    label: "Tipo",
-  },
-  {
-    id: "published",
-    numeric: true,
-    disablePadding: false,
-    label: "Publicación",
+    label: "Email",
   },
   {
     id: "actions",
@@ -159,8 +139,10 @@ export type TProject = {
 const Ventures = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.users);
-  const projectSelected = state?.projectSelected;
-  const [selectedProject, setSelectedProject] = useState(projectSelected);
+  const userSelected = state?.userSelected;
+  const [selectedProject, setSelectedProject] = useState(userSelected);
+
+  console.log(state, "que onduuu");
 
   const { alert, modal } = state;
 
@@ -176,8 +158,8 @@ const Ventures = () => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setSelectedProject(projectSelected);
-  }, [projectSelected]);
+    setSelectedProject(userSelected);
+  }, [userSelected]);
 
   const {
     isFetching: loading,

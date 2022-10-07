@@ -8,18 +8,18 @@ import Dropdown from "../../../../../components/Dropdown";
 import { IState } from "../../../../../components/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+
+import Actions from "../../../../../components/Table/Components/Actions";
 import {
-  IProject,
+  IUser,
   setModal,
   setSelected,
-} from "../../../../../redux/slices/projects";
-import Actions from "../../../../../components/Table/Components/Actions";
-import { IUser } from "../../../../../redux/slices/users";
+} from "../../../../../redux/slices/users";
 
 const Content = (user: IUser) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const state = useSelector((state: IState) => state?.user);
+  const state = useSelector((state: IState) => state?.users);
 
   const { modal, userSelected } = state;
 
@@ -28,33 +28,28 @@ const Content = (user: IUser) => {
     setAnchorEl(null);
   };
 
-  // id: string;
-  // name: string;
-  // email: string;
-  // role: string;
-
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    project: IProject
+    user: IUser
   ) => {
-    dispatch(setSelected(project));
+    dispatch(setSelected(user));
     dispatch(setModal({ name: "actions", value: true }));
     setAnchorEl(event.currentTarget);
   };
 
-  const CellTable: SxProps<Theme> = {
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
+  // const CellTable: SxProps<Theme> = {
+  //   display: "flex",
+  //   justifyContent: "flex-start",
+  //   alignItems: "center",
 
-    img: {
-      width: "80px",
-      height: "80px",
-      borderRadius: "5px",
-      objectFit: "cover",
-      margin: "0 20px 0 0",
-    },
-  };
+  //   img: {
+  //     width: "80px",
+  //     height: "80px",
+  //     borderRadius: "5px",
+  //     objectFit: "cover",
+  //     margin: "0 20px 0 0",
+  //   },
+  // };
 
   const match = user?.id === userSelected?.id;
 
