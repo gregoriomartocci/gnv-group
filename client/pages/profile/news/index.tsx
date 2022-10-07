@@ -167,8 +167,7 @@ const News = () => {
   const [input, setInput] = useState({
     id: 1,
     title: "",
-    description:
-      "",
+    description: "",
     images: [],
     link: "",
     published: true,
@@ -217,7 +216,7 @@ const News = () => {
         queryClient.invalidateQueries("articles");
         dispatch(
           setAlert({
-            message: "El emprendimiento se actualizó con éxito.",
+            message: "La noticia se actualizó con éxito.",
             status: "success",
           })
         );
@@ -238,7 +237,7 @@ const News = () => {
         queryClient.invalidateQueries("articles");
         dispatch(
           setAlert({
-            message: "El emprendimiento se eliminó con éxito.",
+            message: "La noticia se eliminó con éxito.",
             status: "success",
           })
         );
