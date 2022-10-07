@@ -99,9 +99,6 @@ export const editArticle = async (req, res) => {
 };
 
 export const getArticles = async (req, res) => {
-
-
-
   try {
     const all = await Article.find().populate("title").sort({ createdAt: -1 });
     return res.json(all);

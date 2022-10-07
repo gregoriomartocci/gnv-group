@@ -1,29 +1,20 @@
 import { uploadImage, validateBase64 } from "../helpers/project";
-import Project from "../models/project";
+import Timeline from "../models/timeline";
 
-export const createProject = async (req, res) => {
+export const createTimelineItem = async (req, res) => {
   try {
-    const { name, link, description, published, status, images, type } =
-      req.body;
+    const { year, highlights } = req.body;
 
-    if (!name) return res.json({ error: "Por favor ingrese un nombre" });
+    if (!year) return res.json({ error: "Por favor ingrese un año" });
 
-    if (!status)
+    if (!highlights.length)
       return res.json({
-        error: "Por favor indique en que estado se encuentra el emprendimiento",
+        error: "Por favor ingrese almenos un emprendimiento",
       });
 
-    // if (!description)
-    //   return res.json({ error: "Por favor ingrese una descripción" });
+    const alreadyExist = await Timeline.findOne({ year });
 
-    if (!images) return res.json({ error: "Por favor incluya imágenes" });
-
-    if (!type) return res.json({ error: "Por favor ingrese un tipo" });
-
-    const alreadyExist = await Project.findOne({ name });
-
-    if (alreadyExist)
-      return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
+    if (alreadyExist) return res.json({ error: "el año ingresado ya existe." });
 
     const uploadImages = images.map(async (i) => ({
       ...i,
@@ -32,40 +23,34 @@ export const createProject = async (req, res) => {
 
     const updatedImages = await Promise.all(uploadImages);
 
-    console.log(updatedImages, "que pasa che");
-
-    const project = await new Project({
-      name,
-      description,
-      published,
-      link,
-      type,
-      status,
+    const timeline = await new Timeline({
+      year,
+      highlights,
       images: await updatedImages,
     }).save();
 
-    console.log("Que se guarda aca?", project);
+    console.log("Que se guarda aca?", timeline);
 
-    return res.json(project.images[0]);
+    return res.json(timeline);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: err.message });
   }
 };
 
-export const removeProject = async (req, res) => {
+export const removeTimelineItem = async (req, res) => {
   const { id } = req.params;
-
+  
   try {
-    const project = await Project.findByIdAndDelete(id);
-    return res.json(project);
+    const timeline = await Timeline.findByIdAndDelete(id);
+    return res.json(timeline);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
-export const editProject = async (req, res) => {
+export const editTimelineItem = async (req, res) => {
   const { images } = req.body;
 
   const isFromCloudinary = (str) => {
@@ -78,7 +63,7 @@ export const editProject = async (req, res) => {
     const { id } = req.params;
 
     let updatedImages;
-    let updatedProject;
+    let updatedTimeline;
     let imagesAux;
 
     if (images) {
@@ -87,27 +72,25 @@ export const editProject = async (req, res) => {
         src: !isFromCloudinary(i.src) ? await uploadImage(i.src) : i.src,
       }));
       updatedImages = await Promise.all(imagesAux);
-      updatedProject = { ...req.body, images: updatedImages };
+      updatedTimeline = { ...req.body, images: updatedImages };
     } else {
-      updatedProject = { ...req.body };
+      updatedTimeline = { ...req.body };
     }
 
-    const project = await Project.findByIdAndUpdate(id, updatedProject, {
+    const timeline = await Timeline.findByIdAndUpdate(id, updatedTimeline, {
       new: true,
     });
 
-    console.log(project, "sale esto para alla!");
-
-    return res.json(project);
+    return res.json(timeline);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
-export const getProjects = async (req, res) => {
+export const getTimeline = async (req, res) => {
   try {
-    const all = await Project.find().populate("name").sort({ createdAt: -1 });
+    const all = await Timeline.find().populate("name").sort({ createdAt: -1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
@@ -115,10 +98,10 @@ export const getProjects = async (req, res) => {
   }
 };
 
-export const getProject = async (req, res) => {
+export const getTimelineItem = async (req, res) => {
   const { id } = req.params;
   try {
-    const project = await Project.findById(id);
+    const project = await Timeline.findById(id);
     return res.json(project);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
