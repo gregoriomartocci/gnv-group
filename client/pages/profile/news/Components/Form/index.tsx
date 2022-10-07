@@ -59,29 +59,36 @@ const Form = ({ input, setInput }: ICreateProps) => {
   return (
     <Box>
       <InputGroup
-        name="name"
-        description="Ingrese el nombre del emprendimiento"
-        label="Nombre"
+        name="title"
+        description="Ingrese el nombre de la noticia"
+        label="Titulo"
         type="text"
-        value={input?.name ? input?.name : ""}
+        value={input?.title ? input?.title : ""}
+        onChangeHandler={onChangeHandler}
+      />
+      <InputGroup
+        name="source"
+        description="Ingrese el enlace de la noticia"
+        label="Fuente"
+        type="text"
+        value={input ? input?.source : ""}
+        onChangeHandler={onChangeHandler}
+      />
+      <InputGroup
+        name="date"
+        description="Ingrese la fecha de la noticia"
+        label="Fecha"
+        type="text"
+        value={input ? input?.date : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
         name="link"
-        description="Ingrese el enlace del emprendimiento"
+        description="Ingrese el enlace de la noticia"
         label="Enlace"
         type="text"
         value={input ? input?.link : ""}
         onChangeHandler={onChangeHandler}
-      />
-      <BasicSelect
-        options={status}
-        width="100%"
-        value={input ? input : {}}
-        setValue={setInput}
-        name="status"
-        placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
-        label="Estado"
       />
     </Box>
   );
