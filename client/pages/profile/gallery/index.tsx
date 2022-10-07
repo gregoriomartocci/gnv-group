@@ -52,6 +52,7 @@ export interface Data {
   link: string;
   published: boolean;
   status: string;
+  type: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -96,12 +97,6 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "id",
-    numeric: true,
-    disablePadding: true,
-    label: "ID",
-  },
-  {
     id: "name",
     numeric: true,
     disablePadding: false,
@@ -124,6 +119,12 @@ const headCells: readonly HeadCell[] = [
     numeric: true,
     disablePadding: false,
     label: "Estado",
+  },
+  {
+    id: "type",
+    numeric: true,
+    disablePadding: false,
+    label: "Tipo",
   },
   {
     id: "published",
@@ -167,11 +168,11 @@ const Ventures = () => {
   const [input, setInput] = useState({
     name: "",
     link: "",
+    type: "",
+    status: "",
     images: [],
     description: "",
   });
-
-  console.log(selectedProject, "Que onda monnoooo");
 
   const queryClient = useQueryClient();
 
@@ -311,6 +312,14 @@ const Ventures = () => {
         headCells={headCells}
         rows={allProjects?.length ? allProjects : []}
         content={(project: IProject) => <Content {...project} />}
+        openCreateModal={() =>
+          dispatch(
+            setModal({
+              name: "create",
+              value: true,
+            })
+          )
+        }
       />
 
       <UseModal
@@ -328,14 +337,14 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id ? (
+        {selectedProject?.id && (
           <Update
             title="emprendimiento"
             content={updateContent}
             update={() => updateProjectMutation({ ...selectedProject })}
             loading={updateLoading}
           />
-        ) : null}
+        )}
       </UseModal>
       <UseModal
         open={modal?.delete}

@@ -5,6 +5,7 @@ import {
   Box,
   CircularProgress,
   TextField,
+  Typography,
 } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +23,7 @@ import UseButton from "../../../../../components/Button";
 import { IProject } from "../../../../../redux/slices/projects";
 import { IArticle } from "../../../../../redux/slices/articles";
 import BasicSelect from "../../../../../components/Select";
+import Dropdown from "../../../../ventures/components/Dropdown";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -47,14 +49,30 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
-  const status = ["en desarrollo", "finalizado"];
-
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
   };
+
+  const [type, setType] = useState([
+    "Usos mixtos",
+    "Residencial",
+    "Corporativo",
+    "Hoteleria",
+    "Retail",
+    "Urbanización",
+    "Gastronomía y Lifestyle",
+  ]);
+
+  const [status, setStatus] = useState([
+    "Ejecutado",
+    "En desarrollo",
+    "Finalizado",
+  ]);
+
+  console.log(input, "input");
 
   return (
     <Box>
@@ -74,7 +92,67 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         value={input ? input?.link : ""}
         onChangeHandler={onChangeHandler}
       />
-      <BasicSelect
+
+      <Box
+        sx={{
+          margin: "20px 0",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "15px",
+            color: "#212121",
+            fontWeight: "600",
+            margin: "10px 0",
+          }}
+        >
+          Tipo
+        </Typography>
+
+        <Dropdown
+          items={type}
+          placeholder={input?.type}
+          width="100%"
+          action={(e) =>
+            setInput({
+              ...input,
+              ["type"]: e,
+            })
+          }
+          optionsHeight="40px"
+        />
+      </Box>
+
+      <Box
+        sx={{
+          margin: "20px 0",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "15px",
+            color: "#212121",
+            fontWeight: "600",
+            margin: "10px 0",
+          }}
+        >
+          Estado
+        </Typography>
+        <Dropdown
+          items={status}
+          width="100%"
+          placeholder={input?.status}
+          action={(e) =>
+            setInput({
+              ...input,
+              ["status"]: e,
+            })
+          }
+          optionsHeight="40px"
+        />
+      </Box>
+
+      {/* <BasicSelect
         options={status}
         width="100%"
         value={input ? input : {}}
@@ -82,7 +160,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         name="status"
         placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
         label="Estado"
-      />
+      /> */}
     </Box>
   );
 };

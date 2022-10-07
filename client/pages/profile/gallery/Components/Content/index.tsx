@@ -42,8 +42,8 @@ const Content = (project: IProject) => {
     alignItems: "center",
 
     img: {
-      width: "70px",
-      height: "70px",
+      width: "80px",
+      height: "80px",
       borderRadius: "5px",
       objectFit: "cover",
       margin: "0 20px 0 0",
@@ -56,7 +56,10 @@ const Content = (project: IProject) => {
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={project?.images[0]?.src ?? ""} alt="" />
+          <img
+            src={(project && project?.images && project?.images[0]?.src) ?? ""}
+            alt=""
+          />
           <Typography>{project?.name}</Typography>
         </Box>
       </TableCell>
@@ -68,6 +71,9 @@ const Content = (project: IProject) => {
       </TableCell>
       <TableCell align="left">
         <Typography>{project?.status}</Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography>{project?.type}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
@@ -109,7 +115,14 @@ const Content = (project: IProject) => {
             handleClose={handleCloseActionsMenu}
             anchorEl={anchorEl}
           >
-            <Actions />
+            <Actions
+              openUpdateModal={() =>
+                dispatch(setModal({ name: "update", value: true }))
+              }
+              openDeleteModal={() =>
+                dispatch(setModal({ name: "delete", value: true }))
+              }
+            />
           </Dropdown>
         )}
       </TableCell>
@@ -117,4 +130,4 @@ const Content = (project: IProject) => {
   );
 };
 
-export default Content
+export default Content;
