@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface IProject {
+export interface IGallery {
   id: number;
   _id: string;
   name: string;

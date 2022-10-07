@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -18,11 +17,6 @@ import ImageUploader, {
 } from "../../../../../components/Image-Uploader";
 
 import InputGroup from "../../../../../components/Input";
-import UseTabs from "../../../../../components/Tabs";
-import UseButton from "../../../../../components/Button";
-import { IProject } from "../../../../../redux/slices/projects";
-import { IArticle } from "../../../../../redux/slices/articles";
-import BasicSelect from "../../../../../components/Select";
 import Dropdown from "../../../../ventures/components/Dropdown";
 
 export interface IAuthProps {
@@ -49,6 +43,7 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
+  
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,

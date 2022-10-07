@@ -1,42 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface IProject {
-  id: number;
-  _id: string;
-  name: string;
+export type THighlight = {
+  title: string;
   description: string;
-  images: string[];
-  link: string;
-  published: boolean;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  images: string;
+};
+export interface ITimeline {
+  id: number;
+  _id: number;
+  year: string;
+  highlights: THighlight[];
 }
-
-export type TCreate = {
-  status: string;
-  message: string;
-  loading: boolean;
-  modal: boolean;
-};
-
-export type TDelete = {
-  status: string;
-  message: string;
-  loading: boolean;
-  modal: boolean;
-  api: { path: string; id: number };
-};
-
-export type TUpdate = {
-  status: string;
-  message: string;
-  loading: boolean;
-  modal: boolean;
-  api: { path: string; id: number };
-  project: IProject | {};
-};
 
 export type TModal = {
   actions: boolean;
@@ -56,37 +30,34 @@ export type TAlert = {
 };
 
 export interface initialState {
-  projects: IProject[];
-  project: IProject | {};
-  projectsFiltered: IProject[];
-  projectSelected: IProject | {};
+  timelineItems: ITimeline[];
+  timelineItem: ITimeline | {};
+  timelineItemSelected: ITimeline | {};
   modal: TModal;
   alert: { message: string; status: string }[];
 }
 
 const initialState: initialState = {
-  projects: [],
-  project: {},
-  projectsFiltered: [],
-  projectSelected: {},
+  timelineItems: [],
+  timelineItem: {},
+  timelineItemSelected: {},
   modal: { actions: false, update: false, delete: false, create: false },
   alert: [],
-  // alert: { message: "", status: "" },
 };
 
-export const projectsSlice = createSlice({
-  name: "projects",
+export const timelineSlice = createSlice({
+  name: "timeline",
   initialState,
   reducers: {
-    setProjects: (state, action: PayloadAction<IProject[]>) => {
-      state.projects = [...action.payload];
+    setTimelineItems: (state, action: PayloadAction<ITimeline[]>) => {
+      state.timelineItems = [...action.payload];
     },
     setModal: (state, action: PayloadAction<TModalPayload>) => {
       const { name, value } = action?.payload;
       state.modal = { ...state.modal, [name]: value };
     },
-    setProject: (state, action: PayloadAction<TModalPayload>) => {
-      state.project = { ...action.payload };
+    setTimelineItem: (state, action: PayloadAction<TModalPayload>) => {
+      state.timelineItem = { ...action.payload };
     },
     setAlert: (state, action: PayloadAction<TAlert>) => {
       state.alert = [...state.alert, action?.payload];
@@ -94,23 +65,19 @@ export const projectsSlice = createSlice({
     closeAlert: (state, action: PayloadAction<number>) => {
       state.alert = [...state.alert].splice(action?.payload, 1);
     },
-    setSelected: (state, action: PayloadAction<IProject>) => {
-      state.projectSelected = { ...action.payload };
-    },
-    setFilter: (state, action: PayloadAction<IProject[]>) => {
-      state.projectsFiltered = [...action.payload];
+    setSelected: (state, action: PayloadAction<ITimeline>) => {
+      state.timelineItemSelected = { ...action.payload };
     },
   },
 });
 
 export const {
-  setProjects,
-  setFilter,
+  setTimelineItems,
   setSelected,
-  setProject,
+  setTimelineItem,
   setModal,
   setAlert,
   closeAlert,
-} = projectsSlice.actions;
+} = timelineSlice.actions;
 
-export default projectsSlice.reducer;
+export default timelineSlice.reducer;
