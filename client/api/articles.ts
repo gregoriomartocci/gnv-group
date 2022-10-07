@@ -30,7 +30,7 @@ export const ReadArticle = async (id: string) => {
 export const UpdateArticle = async (item: any) => {
   const result = await api({
     method: "post",
-    path: `/edit-project/${item?._id}`,
+    path: `/edit-article/${item?._id}`,
     payload: item,
   });
   return result;

@@ -13,6 +13,7 @@ import {
   setModal,
   setArticle,
   setSelected,
+  IArticle,
 } from "../../../redux/slices/articles";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
@@ -164,13 +165,16 @@ const News = () => {
   const { alert, modal } = state;
 
   const [input, setInput] = useState({
-    name: "",
-    link: "",
+    id: 1,
+    title: "",
+    description:
+      "",
     images: [],
-    description: "",
+    link: "",
+    published: true,
+    source: "",
+    date: "",
   });
-
-  console.log(selectedArticle, "Que onda monnoooo");
 
   const queryClient = useQueryClient();
 
@@ -183,16 +187,16 @@ const News = () => {
     isError,
     error,
     data: allArticles,
-  } = useQuery("projects", ReadArticles);
+  } = useQuery("articles", ReadArticles);
 
   const { mutateAsync: createArticleMutation, isLoading: createLoading } =
     useMutation(CreateArticle, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("articles");
         console.log(data, "ok");
         dispatch(
           setAlert({
-            message: "El emprendimiento se creó con éxito.",
+            message: "La noticia se creó con éxito.",
             status: "success",
           })
         );
@@ -211,7 +215,7 @@ const News = () => {
   const { mutateAsync: updateArticleMutation, isLoading: updateLoading } =
     useMutation(UpdateArticle, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("articles");
         dispatch(
           setAlert({
             message: "El emprendimiento se actualizó con éxito.",
@@ -232,7 +236,7 @@ const News = () => {
   const { mutateAsync: deleteArticleMutation, isLoading: deleteLoading } =
     useMutation(DeleteArticle, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("articles");
         dispatch(
           setAlert({
             message: "El emprendimiento se eliminó con éxito.",
@@ -308,7 +312,7 @@ const News = () => {
         name="articles"
         headCells={headCells}
         rows={allArticles?.length ? allArticles : []}
-        content={(project: IProject) => <Content {...project} />}
+        content={(article: IArticle) => <Content {...article} />}
         openCreateModal={() =>
           dispatch(
             setModal({
@@ -334,7 +338,6 @@ const News = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {console.log(selectedArticle, "que onduuuuu")}
         {selectedArticle?.id && (
           <Update
             title="noticia"
@@ -357,7 +360,7 @@ const News = () => {
       >
         <Delete
           title="noticia"
-          deleteElement={() => createNewMutation(selectedArticle?._id)}
+          deleteElement={() => deleteArticleMutation(selectedArticle?._id)}
           onClose={() => {
             dispatch(
               setModal({
