@@ -35,7 +35,7 @@ export type TUpdate = {
   loading: boolean;
   modal: boolean;
   api: { path: string; id: number };
-  project: IProject | {};
+  project: IGallery | {};
 };
 
 export type TModal = {

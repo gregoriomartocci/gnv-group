@@ -14,8 +14,9 @@ import {
   setSelected,
 } from "../../../../../redux/slices/projects";
 import Actions from "../../../../../components/Table/Components/Actions";
+import { IGallery } from "../../../../../redux/slices/gallery";
 
-const Content = (galleryItem: IProject) => {
+const Content = (galleryItem: IGallery) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const state = useSelector((state: IState) => state?.gallery);
