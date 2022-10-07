@@ -310,6 +310,14 @@ const News = () => {
         headCells={headCells}
         rows={allArticles?.length ? allArticles : []}
         content={(project: IProject) => <Content {...project} />}
+        openCreateModal={() =>
+          dispatch(
+            setModal({
+              name: "create",
+              value: true,
+            })
+          )
+        }
       />
 
       <UseModal

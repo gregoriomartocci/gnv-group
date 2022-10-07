@@ -86,6 +86,7 @@ interface IUseTable {
   headCells: any;
   rows: any;
   content: any;
+  openCreateModal: any;
 }
 
 export default function UseTable({
@@ -94,16 +95,13 @@ export default function UseTable({
   headCells,
   rows,
   content,
+  openCreateModal,
 }: IUseTable) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const state = useSelector((state: IState) => state[name]);
-
-  const dispatch = useDispatch();
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {
@@ -250,17 +248,7 @@ export default function UseTable({
           </Tooltip>
         ) : (
           <React.Fragment>
-            <UseButton
-              type="Primary"
-              onClickHandler={() =>
-                dispatch(
-                  setModal({
-                    name: "create",
-                    value: true,
-                  })
-                )
-              }
-            >
+            <UseButton type="Primary" onClickHandler={() => openCreateModal()}>
               agregar
             </UseButton>
           </React.Fragment>
@@ -283,7 +271,7 @@ export default function UseTable({
       }}
     >
       <TableContainer>
-      <EnhancedTableToolbar title={title} numSelected={selected.length} />
+        <EnhancedTableToolbar title={title} numSelected={selected.length} />
         <Table aria-labelledby="tableTitle" size={"medium"}>
           <EnhancedTableHead
             numSelected={selected.length}

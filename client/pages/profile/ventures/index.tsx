@@ -312,6 +312,14 @@ const Ventures = () => {
         headCells={headCells}
         rows={allProjects?.length ? allProjects : []}
         content={(project: IProject) => <Content {...project} />}
+        openCreateModal={() =>
+          dispatch(
+            setModal({
+              name: "create",
+              value: true,
+            })
+          )
+        }
       />
 
       <UseModal
