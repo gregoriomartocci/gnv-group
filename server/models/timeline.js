@@ -15,10 +15,7 @@ const timelineSchema = new Schema(
       trim: true,
       required: true,
     },
-    highlights: {
-      type: String,
-      required: true,
-    },
+    highlights: [],
   },
   { timestamps: true }
 );
