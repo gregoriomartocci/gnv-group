@@ -89,7 +89,6 @@ const Content = (galleryItem: IProject) => {
       <TableCell align="left">
         <Typography>{galleryItem?.date}</Typography>
       </TableCell>
-
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
           {galleryItem?.published ? (
