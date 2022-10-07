@@ -54,7 +54,6 @@ export type TAlert = {
   message: string;
   status: string;
 };
-
 export interface initialState {
   articles: IArticle[];
   article: IArticle | {};
@@ -71,7 +70,6 @@ const initialState: initialState = {
   articleSelected: {},
   modal: { actions: false, update: false, delete: false, create: false },
   alert: [],
-  // alert: { message: "", status: "" },
 };
 
 export const articlesSlice = createSlice({
@@ -97,15 +95,11 @@ export const articlesSlice = createSlice({
     setSelected: (state, action: PayloadAction<IArticle>) => {
       state.articleSelected = { ...action.payload };
     },
-    setFilter: (state, action: PayloadAction<IArticle[]>) => {
-      state.articlesFiltered = [...action.payload];
-    },
   },
 });
 
 export const {
   setArticles,
-  setFilter,
   setSelected,
   setArticle,
   setModal,

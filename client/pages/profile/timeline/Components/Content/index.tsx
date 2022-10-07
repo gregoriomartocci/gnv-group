@@ -9,18 +9,18 @@ import { IState } from "../../../../../components/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import {
-  IProject,
+  ITimeline,
   setModal,
   setSelected,
-} from "../../../../../redux/slices/projects";
+} from "../../../../../redux/slices/timeline";
 import Actions from "../../../../../components/Table/Components/Actions";
 
-const Content = (project: IProject) => {
+const Content = (timelineItem: ITimeline) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.timeline);
 
-  const { modal, projectSelected } = state;
+  const { modal, timelineItems, timelineItemSelected } = state;
 
   const handleCloseActionsMenu = () => {
     dispatch(setModal({ name: "actions", value: false }));
@@ -29,9 +29,9 @@ const Content = (project: IProject) => {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    project: IProject
+    timeline: ITimeline
   ) => {
-    dispatch(setSelected(project));
+    dispatch(setSelected(timeline));
     dispatch(setModal({ name: "actions", value: true }));
     setAnchorEl(event.currentTarget);
   };
@@ -50,34 +50,29 @@ const Content = (project: IProject) => {
     },
   };
 
-  const match = project?.id === projectSelected?.id;
+  const match = timelineItem?.id === timelineItemSelected?.id;
 
   return (
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img
-            src={(project && project?.images && project?.images[0]?.src) ?? ""}
-            alt=""
-          />
-          <Typography>{project?.name}</Typography>
+          <Typography>{timelineItem?.year}</Typography>
         </Box>
       </TableCell>
       <TableCell align="left">
-        <Typography>{sanitize(sliceText(project?.description, 30))}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{sliceText(project?.link, 30)}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{project?.status}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{project?.type}</Typography>
+        {timelineItem?.highlights?.map(({ name, description, images }) => {
+          return (
+            <Box sx={CellTable}>
+              <img src={images} alt="" />
+              <Typography>{name}</Typography>
+              <Typography>{description}</Typography>
+            </Box>
+          );
+        })}
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>
-          {project?.published ? (
+          {timelineItem?.published ? (
             <Box
               sx={{
                 width: "min-content",
@@ -106,7 +101,7 @@ const Content = (project: IProject) => {
         </Typography>
       </TableCell>
       <TableCell align="left">
-        <IconButton onClick={(e) => handleClickActionsMenu(e, project)}>
+        <IconButton onClick={(e) => handleClickActionsMenu(e, timelineItem)}>
           <MoreVertIcon />
         </IconButton>
         {match && (

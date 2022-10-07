@@ -4,10 +4,12 @@ import authSlice from "../slices/auth";
 import projectsSlice from "../slices/projects";
 import usersSlice from "../slices/users";
 import templatesSlice from "../slices/templates";
+import timelineSlice from "../slices/timeline";
 
 export const store = configureStore({
   reducer: {
     articles: articlesSlice,
+    timeline: timelineSlice,
     projects: projectsSlice,
     users: usersSlice,
     auth: authSlice,

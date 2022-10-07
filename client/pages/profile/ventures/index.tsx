@@ -359,7 +359,7 @@ const Ventures = () => {
       >
         <Delete
           title="emprendimiento"
-          deleteProject={() => deleteProjectMutation(selectedProject?._id)}
+          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
           onClose={() => {
             dispatch(
               setModal({

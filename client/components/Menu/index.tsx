@@ -39,7 +39,7 @@ export interface IState {
     delete: TResult;
     update: TResult;
   };
-  projects: {
+  timeline: {
     projects: IProject[];
     projects_filter: IProject[];
     project: IProject;

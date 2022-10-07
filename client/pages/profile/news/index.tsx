@@ -357,7 +357,7 @@ const News = () => {
       >
         <Delete
           title="noticia"
-          deleteProject={() => createNewMutation(selectedArticle?._id)}
+          deleteElement={() => createNewMutation(selectedArticle?._id)}
           onClose={() => {
             dispatch(
               setModal({

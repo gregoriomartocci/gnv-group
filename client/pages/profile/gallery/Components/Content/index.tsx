@@ -18,7 +18,7 @@ import Actions from "../../../../../components/Table/Components/Actions";
 const Content = (project: IProject) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const state = useSelector((state: IState) => state?.projects);
+  const state = useSelector((state: IState) => state?.timeline);
 
   const { modal, projectSelected } = state;
 

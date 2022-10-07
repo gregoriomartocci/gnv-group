@@ -7,16 +7,16 @@ import UseButton from "../../../Button";
 
 type TDeleteProps = {
   title: string;
-  deleteProject: any;
+  deleteElement: any;
   onClose: any;
   loading: boolean;
 };
 
-const Delete = ({ title, deleteProject, onClose, loading }: TDeleteProps) => {
+const Delete = ({ title, deleteElement, onClose, loading }: TDeleteProps) => {
   const state = useSelector((state: IState) => state);
 
   const handleDelete = () => {
-    deleteProject();
+    deleteElement()
   };
 
   return (

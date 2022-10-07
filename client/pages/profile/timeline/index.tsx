@@ -14,7 +14,6 @@ import {
   setModal,
   setProjects,
   setSelected,
-  setState,
 } from "../../../redux/slices/projects";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
@@ -39,6 +38,7 @@ import {
   UpdateProject,
 } from "../../../api/ventures";
 import Content from "./Components/Content";
+import { THighlight } from "../../../redux/slices/timeline";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -46,16 +46,10 @@ const Editor = dynamic(() => import("../../../components/Editor"), {
 
 export interface Data {
   id: number;
-  name: string;
-  description: string;
-  images: string[];
-  link: string;
-  published: boolean;
-  status: string;
-  type: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  _id: number;
+  year: string;
+  published: string;
+  highlights: THighlight[];
 }
 
 export type resetParams = {
@@ -97,34 +91,16 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "name",
+    id: "year",
     numeric: true,
     disablePadding: false,
-    label: "Nombre",
+    label: "Año",
   },
   {
-    id: "description",
+    id: "highligths",
     numeric: true,
     disablePadding: false,
-    label: "Descripción",
-  },
-  {
-    id: "link",
-    numeric: true,
-    disablePadding: false,
-    label: "Link",
-  },
-  {
-    id: "status",
-    numeric: true,
-    disablePadding: false,
-    label: "Estado",
-  },
-  {
-    id: "type",
-    numeric: true,
-    disablePadding: false,
-    label: "Tipo",
+    label: "Emprendimientos",
   },
   {
     id: "published",
@@ -185,12 +161,12 @@ const Ventures = () => {
     isError,
     error,
     data: allProjects,
-  } = useQuery("projects", ReadProjects);
+  } = useQuery("timeline", ReadProjects);
 
   const { mutateAsync: createProjectMutation, isLoading: createLoading } =
     useMutation(CreateProject, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("timeline");
         console.log(data, "ok");
         dispatch(
           setAlert({
@@ -213,7 +189,7 @@ const Ventures = () => {
   const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
     useMutation(UpdateProject, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("timeline");
         dispatch(
           setAlert({
             message: "El emprendimiento se actualizó con éxito.",
@@ -234,7 +210,7 @@ const Ventures = () => {
   const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
     useMutation(DeleteProject, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("timeline");
         dispatch(
           setAlert({
             message: "El emprendimiento se eliminó con éxito.",
@@ -328,7 +304,7 @@ const Ventures = () => {
       >
         <Create
           content={createContent}
-          title="Emprendimiento"
+          title="Año"
           create={() => createProjectMutation({ ...input })}
           loading={createLoading}
         />
@@ -339,7 +315,7 @@ const Ventures = () => {
       >
         {selectedProject?.id && (
           <Update
-            title="emprendimiento"
+            title="Año"
             content={updateContent}
             update={() => updateProjectMutation({ ...selectedProject })}
             loading={updateLoading}
@@ -358,8 +334,8 @@ const Ventures = () => {
         }}
       >
         <Delete
-          title="emprendimiento"
-          deleteProject={() => deleteProjectMutation(selectedProject?._id)}
+          title="Año"
+          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
           onClose={() => {
             dispatch(
               setModal({
