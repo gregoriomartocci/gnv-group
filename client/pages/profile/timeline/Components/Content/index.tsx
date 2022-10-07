@@ -42,8 +42,8 @@ const Content = (timelineItem: ITimeline) => {
     alignItems: "center",
 
     img: {
-      width: "80px",
-      height: "80px",
+      width: "100px",
+      height: "100px",
       borderRadius: "5px",
       objectFit: "cover",
       margin: "0 20px 0 0",
