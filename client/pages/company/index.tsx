@@ -141,16 +141,8 @@ const Company = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [render, setRender] = useState<any>(typeof window !== "undefined");
-
   const { height, width } = useWindowDimensions();
-
   const xs = width && width < 900;
-  const sm = width && width < 1200;
-  const md = width && width < 1400;
-  const lg = width && width < 1600;
-  const xl = width && width < 1800;
-
-  console.log(xs);
 
   useEffect(() => {
     const getPictures = async () => {
@@ -396,6 +388,7 @@ const Company = () => {
             titleFontSize={{ xs: "35px", md: "38px" }}
             fontWeight={600}
             title="Compañia"
+            color="#000"
           />
 
           {render ? (

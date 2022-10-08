@@ -71,6 +71,7 @@ const MessageSection = ({
             fontFamily: "'Poppins', sans-serif",
             fontSize: "28px",
             fontWeight: "600",
+            lineHeight: "36px",
             margin: "0 0 25px  0",
           }}
         >
