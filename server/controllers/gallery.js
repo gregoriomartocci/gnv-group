@@ -13,9 +13,6 @@ export const createGalleryItem = async (req, res) => {
         error: "Por favor indique en que estado se encuentra el emprendimiento",
       });
 
-    // if (!description)
-    //   return res.json({ error: "Por favor ingrese una descripción" });
-
     if (!images) return res.json({ error: "Por favor incluya imágenes" });
 
     if (!type) return res.json({ error: "Por favor ingrese un tipo" });

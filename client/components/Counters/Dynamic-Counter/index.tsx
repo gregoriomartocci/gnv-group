@@ -33,8 +33,8 @@ export default function DynamicCounter({
       });
     }
     return () => {};
-  }, [counterRef]);
-
+  }, [counterRef]);  // observer
+  
   return (
     <Box>
       <Typography sx={{ fontWeight: 700, fontSize: "35px" }}>
