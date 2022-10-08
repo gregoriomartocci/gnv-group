@@ -8,13 +8,14 @@ const ImageContainer: SxProps<Theme> = {
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
-  borderRadius: "50",
+
   fontSize: "20px",
   height: { xs: "350px", md: "600px" },
   width: "100%",
 
   img: {
     position: "absolute",
+    borderRadius: "10px 10px 0 0",
     top: "0",
     left: "0",
     height: "100%",
@@ -77,83 +78,114 @@ const GalleryItem = ({
         <img src={image} alt={title}></img>
       </Box>
       <Box sx={CardBody}>
+        {title && (
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                margin: "6px 0 0 0",
+                fontSize: "26px",
+                fontWeight: "700",
+                color: "#000",
+              }}
+            >
+              {title}
+            </Typography>
+          </Box>
+        )}
         {gallery && (
           <Typography
             sx={{
               fontFamily: "'Poppins', sans-serif",
-              margin: "10px 0 0 0",
+              margin: "6px 0 0 0",
               fontSize: "18px",
-              fontWeight: "600",
-              color: "#424242",
+              fontWeight: "700",
+
+              color: "#000",
             }}
           >
-            Galería: {gallery}
+            Galería:{" "}
+            <span style={{ margin: "0 0 0 2px", fontWeight: "600 !important" }}>
+              {gallery}
+            </span>
           </Typography>
         )}
         {artist && (
           <Typography
             sx={{
               fontFamily: "'Poppins', sans-serif",
-              margin: "10px 0 0 0",
+              margin: "6px 0 0 0",
               fontSize: "18px",
-              fontWeight: "600",
-              color: "#424242",
+              fontWeight: "700",
+              color: "#000",
             }}
           >
-            Artista: {artist}
+            Artista:
+            <span style={{ margin: "0 0 0 2px", fontWeight: "600 !important" }}>
+              {artist}
+            </span>
           </Typography>
         )}
-        {title && (
-          <Typography
-            sx={{
-              fontFamily: "'Poppins', sans-serif",
-              margin: "10px 0 0 0",
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#424242",
-            }}
-          >
-            Título: {title}
-          </Typography>
-        )}
+
         {technique && (
-          <Typography
-            sx={{
-              fontFamily: "'Poppins', sans-serif",
-              margin: "10px 0 0 0",
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#424242",
-            }}
-          >
-            Técnica: {technique}
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                margin: "6px 0 0 0",
+                fontSize: "18px",
+                fontWeight: "700",
+                color: "#000",
+              }}
+            >
+              Técnica:
+              <span
+                style={{ margin: "0 0 0 2px", fontWeight: "600 !important" }}
+              >
+                {technique}
+              </span>
+            </Typography>
+          </Box>
         )}
         {measures && (
-          <Typography
-            sx={{
-              fontFamily: "'Poppins', sans-serif",
-              margin: "10px 0 0 0",
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#424242",
-            }}
-          >
-            Medidas: {measures}
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                margin: "6px 0 0 0",
+                fontSize: "18px",
+                fontWeight: "700",
+                color: "#000",
+              }}
+            >
+              Medidas:{" "}
+              <span
+                style={{ margin: "0 0 0 2px", fontWeight: "600 !important" }}
+              >
+                {measures}
+              </span>
+            </Typography>
+          </Box>
         )}
         {date && (
-          <Typography
-            sx={{
-              fontFamily: "'Poppins', sans-serif",
-              margin: "10px 0 0 0",
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#424242",
-            }}
-          >
-            Año: {date}
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                margin: "6px 0 0 0",
+                fontSize: "18px",
+                fontWeight: "700",
+                color: "#000",
+              }}
+            >
+              Año:
+              <span
+                style={{ margin: "0 0 0 2px", fontWeight: "600 !important" }}
+              >
+                {date}
+              </span>
+            </Typography>
+          </Box>
         )}
       </Box>
     </Box>
