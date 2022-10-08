@@ -1,45 +1,45 @@
 import api from "../hooks/Api";
 
-export const CreateNew = async (item: any) => {
+export const CreateGalleryItem = async (item: any) => {
   const result = await api({
     method: "post",
-    path: `/article`,
+    path: `/gallery`,
     payload: item,
   });
   return result;
 };
 
-export const ReadNews = async () => {
+export const ReadGalleryItems = async () => {
   const result = await api({
     method: "get",
-    path: `/articles`,
+    path: `/gallery`,
     payload: {},
   });
   return result;
 };
 
-export const ReadNew = async (id: string) => {
+export const ReadGalleryItem = async (id: string) => {
   const result = await api({
     method: "get",
-    path: `/article/${id}`,
+    path: `/gallery/${id}`,
     payload: {},
   });
   return result;
 };
 
-export const UpdateNew = async (item: any) => {
+export const UpdateGalleryItem = async (item: any) => {
   const result = await api({
     method: "post",
-    path: `/edit-project/${item?._id}`,
+    path: `/edit-gallery/${item?._id}`,
     payload: item,
   });
   return result;
 };
 
-export const DeleteNew = async (id: string) => {
+export const DeleteGalleryItem = async (id: string) => {
   const result = await api({
     method: "delete",
-    path: `/article/${id}`,
+    path: `/gallery/${id}`,
     payload: {},
   });
   return result;

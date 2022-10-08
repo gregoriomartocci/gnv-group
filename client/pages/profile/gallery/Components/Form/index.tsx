@@ -66,101 +66,60 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     "Gastronomía y Lifestyle",
   ]);
 
-  const [status, setStatus] = useState([
-    "Ejecutado",
-    "En desarrollo",
-    "Finalizado",
-  ]);
-
-  console.log(input, "input");
+  // id: number;
+  // gallery: string;
+  // artist: string;
+  // title: string;
+  // image: string;
+  // technique: string;
+  // measures: boolean;
+  // date: string;
+  // published: boolean;
+  // createdAt: string;
+  // updatedAt: string;
 
   return (
     <Box>
       <InputGroup
-        name="name"
-        description="Ingrese el nombre del emprendimiento"
-        label="Nombre"
+        name="title"
+        description="Ingrese el titulo de la obra"
+        label="Titulo"
         type="text"
         value={input?.name ? input?.name : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="link"
-        description="Ingrese el enlace del emprendimiento"
-        label="Enlace"
+        name="gallery"
+        description="Ingrese el nombre de la galeria"
+        label="Galeria"
         type="text"
-        value={input ? input?.link : ""}
+        value={input ? input?.gallery : ""}
         onChangeHandler={onChangeHandler}
       />
-
-      <Box
-        sx={{
-          margin: "20px 0",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Tipo
-        </Typography>
-
-        <Dropdown
-          items={type}
-          placeholder={input?.type}
-          width="100%"
-          action={(e) =>
-            setInput({
-              ...input,
-              ["type"]: e,
-            })
-          }
-          optionsHeight="40px"
-        />
-      </Box>
-
-      <Box
-        sx={{
-          margin: "20px 0",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Estado
-        </Typography>
-        <Dropdown
-          items={status}
-          width="100%"
-          placeholder={input?.status}
-          action={(e) =>
-            setInput({
-              ...input,
-              ["status"]: e,
-            })
-          }
-          optionsHeight="40px"
-        />
-      </Box>
-
-      {/* <BasicSelect
-        options={status}
-        width="100%"
-        value={input ? input : {}}
-        setValue={setInput}
-        name="status"
-        placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
-        label="Estado"
-      /> */}
+      <InputGroup
+        name="artist"
+        description="Ingrese el nombre del artista"
+        label="Artista"
+        type="text"
+        value={input ? input?.artist : ""}
+        onChangeHandler={onChangeHandler}
+      />
+      <InputGroup
+        name="date"
+        description="Ingrese la fecha de la obra"
+        label="Fecha"
+        type="text"
+        value={input ? input?.gallery : ""}
+        onChangeHandler={onChangeHandler}
+      />
+      <InputGroup
+        name="measures"
+        description="Ingrese las medidas de la obra"
+        label="Medidas"
+        type="text"
+        value={input ? input?.gallery : ""}
+        onChangeHandler={onChangeHandler}
+      />
     </Box>
   );
 };

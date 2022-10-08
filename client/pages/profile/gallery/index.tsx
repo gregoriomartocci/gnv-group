@@ -32,13 +32,14 @@ import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
 import form from "./Components/Form";
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import {
-  CreateProject,
-  DeleteProject,
-  ReadProjects,
-  UpdateProject,
-} from "../../../api/ventures";
+
 import Content from "./Components/Content";
+import {
+  CreateGalleryItem,
+  DeleteGalleryItem,
+  ReadGalleryItems,
+  UpdateGalleryItem,
+} from "../../../api/gallery";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -97,10 +98,10 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "name",
+    id: "title",
     numeric: true,
     disablePadding: false,
-    label: "Nombre",
+    label: "Titulo",
   },
   {
     id: "gallery",
@@ -130,7 +131,7 @@ const headCells: readonly HeadCell[] = [
     id: "measures",
     numeric: true,
     disablePadding: false,
-    label: "Tecnica",
+    label: "Medidas",
   },
   {
     id: "date",
@@ -197,10 +198,10 @@ const Ventures = () => {
     isError,
     error,
     data: allProjects,
-  } = useQuery("projects", ReadProjects);
+  } = useQuery("projects", ReadGalleryItems);
 
   const { mutateAsync: createProjectMutation, isLoading: createLoading } =
-    useMutation(CreateProject, {
+    useMutation(CreateGalleryItem, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("projects");
         console.log(data, "ok");
@@ -223,7 +224,7 @@ const Ventures = () => {
     });
 
   const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
-    useMutation(UpdateProject, {
+    useMutation(UpdateGalleryItem, {
       onSuccess: () => {
         queryClient.invalidateQueries("projects");
         dispatch(
@@ -244,7 +245,7 @@ const Ventures = () => {
     });
 
   const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
-    useMutation(DeleteProject, {
+    useMutation(DeleteGalleryItem, {
       onSuccess: () => {
         queryClient.invalidateQueries("projects");
         dispatch(
@@ -275,10 +276,6 @@ const Ventures = () => {
         setInput({ ...input, images: array });
       }}
     />,
-    <Editor
-      value={input}
-      setValue={(string) => setInput({ ...input, description: string })}
-    />,
   ];
 
   const updateContent = [
@@ -294,12 +291,6 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setSelectedProject({ ...selectedProject, images: array });
       }}
-    />,
-    <Editor
-      value={selectedProject}
-      setValue={(string) =>
-        setSelectedProject({ ...selectedProject, description: string })
-      }
     />,
   ];
 
@@ -333,14 +324,13 @@ const Ventures = () => {
           )
         }
       />
-
       <UseModal
         open={modal.create}
         handleClose={() => dispatch(setModal({ name: "create", value: false }))}
       >
         <Create
           content={createContent}
-          title="Emprendimiento"
+          title="obra"
           create={() => createProjectMutation({ ...input })}
           loading={createLoading}
         />
