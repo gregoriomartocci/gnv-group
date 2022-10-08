@@ -1,7 +1,7 @@
 import { uploadImage, validateBase64 } from "../helpers/project";
-import Project from "../models/project";
+import Gallery from "../models/gallery";
 
-export const createProject = async (req, res) => {
+export const createGalleryItem = async (req, res) => {
   try {
     const { name, link, description, published, status, images, type } =
       req.body;
@@ -32,9 +32,7 @@ export const createProject = async (req, res) => {
 
     const updatedImages = await Promise.all(uploadImages);
 
-    console.log(updatedImages, "que pasa che");
-
-    const project = await new Project({
+    const gallery = await new Gallery({
       name,
       description,
       published,
@@ -44,28 +42,28 @@ export const createProject = async (req, res) => {
       images: await updatedImages,
     }).save();
 
-    console.log("Que se guarda aca?", project);
+    console.log("Que se guarda aca?", gallery);
 
-    return res.json(project.images[0]);
+    return res.json(gallery.images[0]);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: err.message });
   }
 };
 
-export const removeProject = async (req, res) => {
+export const removeGalleryItem = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const project = await Project.findByIdAndDelete(id);
-    return res.json(project);
+    const gallery = await Project.findByIdAndDelete(id);
+    return res.json(gallery);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
-export const editProject = async (req, res) => {
+export const editGalleryItem = async (req, res) => {
   const { images } = req.body;
 
   const isFromCloudinary = (str) => {
@@ -92,22 +90,22 @@ export const editProject = async (req, res) => {
       updatedProject = { ...req.body };
     }
 
-    const project = await Project.findByIdAndUpdate(id, updatedProject, {
+    const gallery = await Gallery.findByIdAndUpdate(id, updatedProject, {
       new: true,
     });
 
-    console.log(project, "sale esto para alla!");
+    console.log(gallery, "sale esto para alla!");
 
-    return res.json(project);
+    return res.json(gallery);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
 
-export const getProjects = async (req, res) => {
+export const getGallery = async (req, res) => {
   try {
-    const all = await Project.find().populate("name").sort({ createdAt: -1 });
+    const all = await Gallery.find().populate("name").sort({ createdAt: -1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
@@ -115,11 +113,11 @@ export const getProjects = async (req, res) => {
   }
 };
 
-export const getProject = async (req, res) => {
+export const getGalleryItem = async (req, res) => {
   const { id } = req.params;
   try {
-    const project = await Project.findById(id);
-    return res.json(project);
+    const gallery = await Gallery.findById(id);
+    return res.json(gallery);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
