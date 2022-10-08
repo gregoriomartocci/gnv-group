@@ -35,7 +35,7 @@ const Card = (
             top: 0,
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: { xs: "80vh", md: "100vh" },
             overflow: "hidden",
 
             img: {
@@ -74,7 +74,7 @@ const Card = (
               color: "#fff",
               fontFamily: "'Poppins', sans-serif",
               background: "rgba(255,255,255,0)",
-              backdropFilter: "blur(10px)",
+              backdropFilter: "blur(5px)",
               boxShadow: "0 8px 32px rgba(31,38,135, 0.37)",
               bottom: `${sm ? 0 : hover ? 0 : "-200px"}`,
               transition: "all 1.25s ease",
@@ -84,7 +84,7 @@ const Card = (
           >
             <Typography
               sx={{
-                fontSize: "32px",
+                fontSize: { xs: "30px", md: "32px" },
                 fontWeight: 600,
                 fontFamily: "'Poppins', sans-serif !important",
               }}
@@ -103,7 +103,7 @@ const Card = (
               <Box>
                 <Typography
                   sx={{
-                    fontSize: "20px",
+                    fontSize: "16px",
                     fontWeight: 500,
                     fontFamily: "'Poppins', sans-serif",
                   }}

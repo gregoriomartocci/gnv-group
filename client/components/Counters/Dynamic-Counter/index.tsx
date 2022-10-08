@@ -37,7 +37,7 @@ export default function DynamicCounter({
   
   return (
     <Box>
-      <Typography sx={{ fontWeight: 700, fontSize: "35px" }}>
+      <Typography sx={{ fontWeight: 600, fontSize: "35px" }}>
         {numberWithCommas(increase)}
       </Typography>
     </Box>

@@ -67,6 +67,7 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
                 sx={{
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: `${counterSize}px`,
+                  fontWeight: 600,
                   margin: "0 0 0 5px",
                 }}
               >
