@@ -150,9 +150,11 @@ const Main = ({
                           {phrase}
                         </Typography>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"}>
+                          <UseButton type={"Primary"} padding="15px 30px">
                             <Typography
-                              sx={{ fontSize: { xs: "21px", md: "21px" } }}
+                              sx={{
+                                fontSize: { xs: "21px", md: "21px" },
+                              }}
                             >
                               Contactanos
                             </Typography>
@@ -197,9 +199,11 @@ const Main = ({
                     <Link href={buttonLink ?? ""}>
                       <a>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"}>
+                          <UseButton type={"Primary"} padding="15px 30px">
                             <Typography
-                              sx={{ fontSize: { xs: "21px", md: "21px" } }}
+                              sx={{
+                                fontSize: { xs: "21px", md: "21px" },
+                              }}
                             >
                               Contactanos
                             </Typography>

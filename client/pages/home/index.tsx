@@ -31,7 +31,7 @@ import { ReadProject } from "../../api/ventures";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
-import { CarouselB } from "../../components/CarouselB";
+import { CarouselB } from "./Components/CarouselB";
 
 export type TDemo = {
   img: string;
@@ -274,7 +274,7 @@ const Home = () => {
             titlePadding="25px"
             descriptionFontSize={{ xs: "18px", md: "25px" }}
             title="Trayectoria"
-            descriptionTextAlign={{ xs: "justify", md: "none" }}
+            descriptionTextAlign="center"
             description="La compañía está viviendo una etapa de expansión fenomenal.
             Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
             Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
@@ -290,7 +290,7 @@ const Home = () => {
           display: "flex",
           position: "relative",
           width: "100vw",
-          minHeight: "100vh",
+          minHeight: "80vh",
         }}
       >
         <CarouselB items={slides} />
@@ -328,7 +328,7 @@ const Home = () => {
           flexDirection: "column",
           alignItems: "center",
           margin: "auto",
-          minHeight: "100vh",
+          minHeight: { sx: "", md: "100vh" },
           maxWidth: "1200px",
           padding: { xs: "0 15px", md: "0 10%" },
         }}

@@ -17,6 +17,7 @@ export interface ButtonProps {
   height?: any;
   width?: any;
   uppercase?: string;
+  padding?: string;
 }
 
 const UseButton = ({
@@ -24,6 +25,7 @@ const UseButton = ({
   width,
   height,
   children,
+  padding,
   uppercase,
   onClickHandler,
 }: ButtonProps) =>
@@ -33,13 +35,14 @@ const UseButton = ({
       style={{
         width,
         height,
+        padding,
       }}
       onClick={onClickHandler}
     >
       {children}
     </Button>
   ) : (
-    <Button sx={Styles[type]} style={{ width, height }}>
+    <Button sx={Styles[type]} style={{ width, height, padding }}>
       {children}
     </Button>
   );

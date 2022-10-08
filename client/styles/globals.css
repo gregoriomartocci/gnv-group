@@ -92,21 +92,3 @@ a {
   color: #fff !important;
   right: 60px !important;
 }
-
-@media (max-width: 500px) {
-  .swiper-button-prev,
-  .swiper-rtl .swiper-button-next {
-    color: #fff !important;
-    left: 40px !important;
-    width: "10px" !important;
-    height: "25px" !important;
-  }
-
-  .swiper-button-next,
-  .swiper-rtl .swiper-button-next {
-    color: #fff !important;
-    right: 60px !important;
-    width: "25px" !important;
-    height: "25px" !important;
-  }
-}

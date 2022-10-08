@@ -5,10 +5,15 @@ import { Navigation, Thumbs } from "swiper";
 import { Box, Typography } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
+import useWindowDimensions from "../../../../hooks/ScreenSize";
 
 // import required modules
 
 export const CarouselB = ({ items }) => {
+  const { width, height } = useWindowDimensions();
+
+  const xs = width && width < 600;
+
   const getFormat = (file: string) => {
     const result = file?.split(".").pop()?.toUpperCase();
     return result;
@@ -34,13 +39,13 @@ export const CarouselB = ({ items }) => {
                 top: 0,
                 left: 0,
                 width: "100vw",
-                height: "100vh",
+                height: "80vh",
               }}
             >
               <Typography
                 sx={{
                   position: "absolute",
-                  padding:{ xs: "0 25%", md: "0 10%" },
+                  padding: { xs: "0 25%", md: "0 10%" },
                   fontSize: { xs: "24px", md: "38px" },
                   fontWeight: "500",
                   color: "#fff",
