@@ -238,6 +238,7 @@ const Company = () => {
               display: "flex",
               justifyContent: "flex-start",
               padding: "7.5% 0",
+              borderBottom: "1.5px solid #eeeeee",
             }}
           >
             <Section
@@ -256,7 +257,6 @@ const Company = () => {
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
             />
           </Box>
-          ,
           <Box
             sx={{
               display: "flex",

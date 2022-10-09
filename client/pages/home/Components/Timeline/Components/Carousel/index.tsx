@@ -91,7 +91,11 @@ function Carousel({ items, year }: ICarousel) {
         }}
       >
         <Typography
-          sx={{ fontSize: "35px", color: "#bdbdbd", fontWeight: 700 }}
+          sx={{
+            fontSize: { xs: "28px", md: "35px" },
+            color: "#bdbdbd",
+            fontWeight: 700,
+          }}
         >
           {year}
         </Typography>
@@ -103,7 +107,7 @@ function Carousel({ items, year }: ICarousel) {
           justifyContent: "space-between",
           alignItems: "center",
           height: "100%",
-          width:{xs:"", md:"900px"},
+          width: { xs: "", md: "900px" },
           minHeight: { xs: "600px", md: "700px" },
           minWidth: { xs: "100%", md: "800px" },
           cursor: "pointer",

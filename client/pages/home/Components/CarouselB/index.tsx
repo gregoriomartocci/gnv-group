@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs, Pagination } from "swiper";
+import { Navigation, Thumbs, Pagination, Autoplay } from "swiper";
 import { Box, Typography } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -25,9 +25,13 @@ export const CarouselB = ({ items }) => {
       navigation={true}
       freeMode={true}
       loop={true}
-      modules={[Navigation,  Pagination]}
+      modules={[Navigation, Pagination, Autoplay]}
       style={{ width: "100%" }}
       pagination={{ clickable: true }}
+      autoplay={{
+        delay: 6000,
+        disableOnInteraction: false,
+      }}
     >
       {items?.map((element) => {
         return (
@@ -48,7 +52,8 @@ export const CarouselB = ({ items }) => {
                 sx={{
                   position: "absolute",
                   padding: { xs: "0 50px", md: "0 10%" },
-                  fontSize: { xs: "24px", md: "38px" },
+                  fontSize: { xs: "22px", md: "38px" },
+                  lineHeight: { xs: "35px", md: "" },
                   fontWeight: "500",
                   color: "#fff",
                   zIndex: 20,
@@ -70,7 +75,7 @@ export const CarouselB = ({ items }) => {
                   backgroundColor: "#212121",
                   zIndex: 15,
                   pointerEvents: "none",
-                  opacity: "0.45",
+                  opacity: "0.40",
                 }}
               />
 
