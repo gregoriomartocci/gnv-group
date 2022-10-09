@@ -282,7 +282,7 @@ const Timeline = () => {
                         padding: "30px 25px",
                         width: {
                           xs: "100%",
-                          md: "100px",
+                          md: "125px",
                         },
                         height: "100%",
                         justifyContent: "space-between",
