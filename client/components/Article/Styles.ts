@@ -17,18 +17,9 @@ export const ProjectContainer: SxProps<Theme> = {
     height: "100%",
     width: "100%",
     maxWidth: "100%",
+    minHeight: { xs: "270px", sm: "" },
     objectFit: "cover",
     objectPosition: "center center",
   },
 };
 
-export const ProjectBody: SxProps<Theme> = {
-  display: "flex",
-  height: "100%",
-  width: "100%",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  fontFamily: "'Poppins', sans-serif",
-  padding: "25px",
-  maxWidth: { xs: "100%", lg: "50%" },
-};

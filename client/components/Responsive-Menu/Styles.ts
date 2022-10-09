@@ -12,7 +12,7 @@ export const DropdownContainer: SxProps<Theme> = {
   alignItems: "flex-end",
   height: "100vh",
   pointerEvents: "auto",
-  width: "60vw",
+  width: "70vw",
   backgroundColor: "#fff",
   transition: "0.3s ease-in-out",
   opacity: 1,

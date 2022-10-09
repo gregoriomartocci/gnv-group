@@ -20,21 +20,6 @@ const data = [
         description: " Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661430502/qpkobhnwctcwjvp2zfef.jpg",
       },
-      {
-        title: "Edificio Residencial",
-        description: "Bartolome Mitre 2466, Bs. As.",
-        img: "",
-      },
-      {
-        title: "Edificio Residencial",
-        description: "Valle y José M. Moreno, Bs. As.",
-        img: "",
-      },
-      {
-        title: "Edificio Residencial",
-        description: "Calle Yerbal, Bs. As.",
-        img: "",
-      },
     ],
   },
   {
@@ -45,11 +30,7 @@ const data = [
         description: "San Luis",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661430969/es9zoiz4qvicj6yw4lgr.jpg",
       },
-      {
-        title: "Las Terrazas de La Base",
-        description: "Bs. As.",
-        img: "",
-      },
+
       {
         title: "Boulevard Shopping",
         description: "Bs. As.",
@@ -205,11 +186,6 @@ const data = [
         description: "Paseo de compras Madero Harbour, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663021534/jn9tl1hsqkbs0hoazbwl.jpg",
       },
-      {
-        title: "Hotel",
-        description: "Uruguay",
-        img: "",
-      },
     ],
   },
   {
@@ -344,7 +320,7 @@ const Timeline = () => {
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
                             fontWeight: 700,
-                            fontSize: {xs:"22px", md:"22px"},
+                            fontSize: { xs: "22px", md: "22px" },
                             color: "#bdbdbd",
                             transform: {
                               xs: "",

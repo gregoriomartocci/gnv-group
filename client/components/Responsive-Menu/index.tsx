@@ -1,7 +1,6 @@
 import React, { Fragment, ReactNode, useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import {
-  Button,
   CloseResponsiveMenu,
   DropdownContainer,
   DropdownLink,
@@ -14,6 +13,7 @@ import useWindowDimensions from "../../hooks/ScreenSize";
 import Logo from "../Logo";
 
 export const menuData = [
+  { title: "Home", link: "/" },
   { title: "Compañia", link: "/company" },
   { title: "Emprendimientos", link: "/ventures" },
   { title: "Prensa", link: "/news" },

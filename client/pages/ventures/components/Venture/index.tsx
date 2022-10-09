@@ -8,35 +8,6 @@ import { useDispatch } from "react-redux";
 import { setProject } from "../../../../redux/slices/projects";
 import { sliceText } from "../../../../components/Article";
 
-const CardContainer: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-  backgroundColor: "#fff",
-  // borderRadius: "10px",
-  cursor: "pointer",
-  fontFamily: "'Poppins', sans-serif",
-  fontSize: "20px",
-  overflow: "hidden",
-
-  img: {
-    objectFit: "cover",
-    width: "100%",
-    objectPosition: "70% 0",
-    minHeight: "400px",
-    // borderRadius: "10px 10px 0 0",
-  },
-};
-
-const CardHeader: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-};
-
-const CardBody: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-};
-
 type TVenture = {
   id: string;
   name: string;
@@ -65,16 +36,34 @@ const Venture = (venture: any) => {
   };
 
   return (
-    <Fragment>
+    <Box sx={{ border: "unset !important" }}>
       {venture?.id ? (
         <Link href={venture?.link ? venture?.link : `/venture/${venture._id}`}>
           <a>
-            <Box sx={CardContainer}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                backgroundColor: "#fff",
+                cursor: "pointer",
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: "20px",
+                overflow: "hidden",
+                border: "unset !important",
+
+                img: {
+                  objectFit: "cover",
+                  width: "100%",
+                  objectPosition: "70% 0",
+                  minHeight: "400px",
+                },
+              }}
+            >
               <img
                 src={venture?.images[0]?.src ?? ""}
                 alt={venture?.name ?? ""}
               />
-              <Box sx={CardHeader}>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Typography
                   sx={{
                     color: "#212121",
@@ -87,18 +76,24 @@ const Venture = (venture: any) => {
                 </Typography>
               </Box>
 
-              <Box sx={CardBody}>
+              <Box
+                sx={{
+                  display: "flex",
+                  border: "1px solid transparent !important",
+                  flexDirection: "column",
+                }}
+              >
                 <Box
-                  style={{
+                  sx={{
                     display: "flex",
                     alignItems: "center",
-                    margin: "7.5px 0 0 0",
+                    margin: "10px 0 10px 0",
                   }}
                 >
                   <Typography
                     sx={{
-                      color: "#9e9e9e",
-                      fontWeight: 600,
+                      color: "#4f4f4f",
+                      fontWeight: 700,
                       fontSize: "16px",
                     }}
                   >
@@ -107,12 +102,12 @@ const Venture = (venture: any) => {
                 </Box>
 
                 <Box
-                  style={{
-                    color: "#9e9e9e",
+                  sx={{
+                    color: "#4f4f4f",
                     fontWeight: 500,
                     fontSize: "16px",
                     margin: "5px 0 0 0",
-                    lineHeight: "30px",
+                    lineHeight: "28px",
                     textAlign: "justify !important",
                   }}
                 >
@@ -125,14 +120,10 @@ const Venture = (venture: any) => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    color: "#9e9e9e",
+                    color: "#000",
                     fontWeight: 600,
                     fontSize: "16px",
-                    margin: "12.5px 0 0 0",
-
-                    "&:hover": {
-                      color: "#757575",
-                    },
+                    margin: "18px 0 0 0",
                   }}
                   onClick={() => handleClick(venture)}
                 >
@@ -144,7 +135,7 @@ const Venture = (venture: any) => {
           </a>
         </Link>
       ) : null}
-    </Fragment>
+    </Box>
   );
 };
 
