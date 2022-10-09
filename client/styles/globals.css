@@ -78,6 +78,8 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Swiper Slide Arrows */
+
 /* Prev Arrow */
 
 .swiper-button-prev,
@@ -92,4 +94,38 @@ a {
 .swiper-rtl .swiper-button-next {
   color: #fff !important;
   right: 60px !important;
+}
+
+@media (max-width: 600px) {
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    display: none !important;
+  }
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-next {
+    display: none !important;
+  }
+}
+
+/* Swiper Bullets */
+
+.swiper-pagination {
+  padding-bottom: 25px !important ;
+}
+
+.swiper-pagination-bullet {
+  background-color: #9e9e9e !important;
+  height: 17.5px !important;
+  width: 17.5px !important;
+  margin-right: 10px !important;
+  opacity: 0.5 !important;
+  cursor: pointer !important;
+  border-radius: 100% !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff !important;
+  opacity: 1 !important;
+  width: 17.5px !important;
+  height: 17.5px !important;
 }

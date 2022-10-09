@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper";
+import { Navigation, Thumbs, Pagination } from "swiper";
 import { Box, Typography } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import useWindowDimensions from "../../../../hooks/ScreenSize";
 
 // import required modules
@@ -24,8 +25,9 @@ export const CarouselB = ({ items }) => {
       navigation={true}
       freeMode={true}
       loop={true}
-      modules={[Navigation, Thumbs]}
+      modules={[Navigation,  Pagination]}
       style={{ width: "100%" }}
+      pagination={{ clickable: true }}
     >
       {items?.map((element) => {
         return (
@@ -45,7 +47,7 @@ export const CarouselB = ({ items }) => {
               <Typography
                 sx={{
                   position: "absolute",
-                  padding: { xs: "0 25%", md: "0 10%" },
+                  padding: { xs: "0 50px", md: "0 10%" },
                   fontSize: { xs: "24px", md: "38px" },
                   fontWeight: "500",
                   color: "#fff",
@@ -100,6 +102,7 @@ export const CarouselB = ({ items }) => {
           </SwiperSlide>
         );
       })}
+      <Box className="pagination" />
     </Swiper>
   );
 };
