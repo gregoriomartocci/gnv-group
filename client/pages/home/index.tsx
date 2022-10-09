@@ -268,7 +268,7 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "50px", md: "50px 12.5%" }}
+            p={{ xs: "60px", md: "50px 12.5%" }}
             titleFontSize={{ xs: "30px", md: "40px" }}
             fontWeight={600}
             titlePadding="25px"
@@ -388,7 +388,13 @@ const Home = () => {
               <GoogleMap
                 center={tab === 1 ? argentinaLocation : uruguayLocation}
                 zoom={15}
-                options={{ styles: ligthTheme }}
+                options={{
+                  styles: ligthTheme,
+                  zoomControl: false,
+                  streetViewControl: false,
+                  mapTypeControl: false,
+                  fullscreenControl: false,
+                }}
                 mapContainerStyle={{ width: "100%", height: "100%" }}
               >
                 {mapItems.map(({ id, coordinates }) => {
