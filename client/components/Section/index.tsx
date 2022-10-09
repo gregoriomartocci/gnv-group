@@ -87,9 +87,10 @@ const Section = ({
                 <Box
                   sx={{
                     width: "100%",
+                    color: "#000",
                     padding: {
                       xs: "25px 20px",
-                      md: "30px",
+                      md: "25px 100px",
                     },
                   }}
                 >
@@ -97,7 +98,7 @@ const Section = ({
                     sx={{
                       fontWeight: 500,
                       color: "#212121",
-                      textAlign: "center",
+                      textAlign: "left",
                       width: "100%",
                       fontSize: {
                         xs: "20px",

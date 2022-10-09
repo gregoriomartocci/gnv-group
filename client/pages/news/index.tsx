@@ -33,7 +33,7 @@ const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: "500px",
+    minHeight: { xs: "360px", ms: "500px" },
   },
 };
 
@@ -49,12 +49,6 @@ export type TArticle = {
 };
 
 const CardHeader: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-  fontFamily: "'Poppins', sans-serif",
-};
-
-const CardBody: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
   fontFamily: "'Poppins', sans-serif",
@@ -104,12 +98,19 @@ const ArticleCard = (article: TArticle) => {
                   </span>
                 </Box>
 
-                <Box sx={CardBody}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                >
                   <Box
-                    style={{
-                      color: "#9e9e9e",
+                    sx={{
+                      color: "#4f4f4f",
                       fontWeight: 500,
-                      fontSize: "18px",
+                      fontSize: { xs: "16px", md: "18px" },
+                      lineHeight: "22px",
                       margin: "15px 0 0 0",
                     }}
                   >

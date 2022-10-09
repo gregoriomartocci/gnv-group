@@ -304,7 +304,7 @@ const Home = () => {
           alignItems: { xs: "flex-start", md: "center" },
           minHeight: { xs: "", md: "100vh" },
           width: "100%",
-          padding: { xs: "20% 5%", md: "50px 5%" },
+          padding: { xs: "20% 5%", md: "50px 10%" },
         }}
       >
         <Section

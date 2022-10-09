@@ -47,7 +47,14 @@ const Licence = ({ img, description, width, height }: TDemo) => {
           {img &&
             img?.map((element) => {
               return (
-                <Box sx={{ width: "100%", margin: "0 0 25px -15px" }}>
+                <Box
+                  sx={{
+                    dislpay: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "0 0 25px -15px",
+                  }}
+                >
                   <Svg width={width} height={height}>
                     {element}
                   </Svg>
@@ -60,7 +67,6 @@ const Licence = ({ img, description, width, height }: TDemo) => {
           style={{
             display: "flex",
             alignItems: "center",
-
             fontSize: "18px",
             margin: "5px 0",
           }}
@@ -70,7 +76,7 @@ const Licence = ({ img, description, width, height }: TDemo) => {
               fontSize: "18px",
               fontWeight: 400,
               fontFamily: "'Poppins', sans-serif",
-              textAlign: "left",
+              textAlign: "center",
             }}
           >
             {description}
