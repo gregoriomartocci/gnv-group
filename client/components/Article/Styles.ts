@@ -12,12 +12,12 @@ export const ProjectContainer: SxProps<Theme> = {
   maxHeight: { xs: "100%", lg: "600px" },
   height: { xs: "100%", lg: "500px" },
   margin: { xs: "50px 10%", md: "50px 15%" },
-  borderRadius: "0 15px 15px 0",
+  borderRadius: { xs: "0 0 15px 15px", md: "0 15px 15px 0" },
 
   img: {
     height: "100%",
     width: "100%",
-    borderRadius: "15px 0 0 15px",
+    borderRadius: { xs: "15px 15px 0 0", md: "15px 0 0 15px" },
     maxWidth: "100%",
     minHeight: { xs: "270px", sm: "" },
     objectFit: "cover",

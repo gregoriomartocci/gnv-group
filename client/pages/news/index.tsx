@@ -8,7 +8,6 @@ import Cards from "../../components/Cards";
 import UseButton from "../../components/Button";
 import Article from "../../components/Article";
 import { SwiperSlide } from "swiper/react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { errorType } from "../profile/news";
 import api from "../../hooks/Api";
@@ -33,7 +32,7 @@ const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: { xs: "360px", ms: "500px" },
+    minHeight: { xs: "360px", md: "500px" },
   },
 };
 
@@ -112,7 +111,7 @@ const ArticleCard = (article: TArticle) => {
                       fontSize: { xs: "16px", md: "18px" },
                       lineHeight: "22px",
                       margin: "15px 0 0 0",
-                      
+
                     }}
                   >
                     {santize(sliceText(article?.description, 125) ?? "")}

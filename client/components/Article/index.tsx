@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { StaticImageData } from "next/image";
-import { ProjectBody, ProjectContainer } from "./Styles";
+import { ProjectContainer } from "./Styles";
 import { IArticle } from "../../redux/slices/articles";
 import Link from "next/link";
 import parse from "html-react-parser";
