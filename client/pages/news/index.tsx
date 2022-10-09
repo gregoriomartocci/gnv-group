@@ -91,7 +91,7 @@ const ArticleCard = (article: TArticle) => {
                       color: "#212121",
                       fontWeight: 600,
                       fontSize: "22px",
-                      margin: "15px 0 0 0",
+                      margin: "25px 0 0 0",
                     }}
                   >
                     {article?.title}
@@ -112,6 +112,7 @@ const ArticleCard = (article: TArticle) => {
                       fontSize: { xs: "16px", md: "18px" },
                       lineHeight: "22px",
                       margin: "15px 0 0 0",
+                      
                     }}
                   >
                     {santize(sliceText(article?.description, 125) ?? "")}
@@ -151,7 +152,7 @@ const News = () => {
         <HeaderTitle
           titleFontSize="38px"
           fontWeight={600}
-          p={{ xs: "150px 0 00", md: "150px 0 20px 0" }}
+          p={{ xs: "150px 0 00", md: "150px 0 100px 0" }}
           title="Noticias destacadas"
         />
       </Box>
@@ -178,11 +179,11 @@ const News = () => {
       <HeaderTitle
         titleFontSize="38px"
         fontWeight={600}
-        p={{ xs: "25px 0 60px 0", md: "150px 0 20px 0" }}
+        p={{ xs: "25px 0 60px 0", md: "100px  20px" }}
         title="Todas la noticias"
       />
 
-      <Box sx={{ padding: "0 7.5%" }}>
+      <Box sx={{ padding: "0 10%" }}>
         <Grid container rowSpacing={5} columnSpacing={5}>
           {news_mock
             ? news_mock?.map((item, i) => (

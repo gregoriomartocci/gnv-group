@@ -30,16 +30,16 @@ const SearchBar = ({
         justifyContent: "flex-start",
         alignItems: "center",
         padding: "25px 5px",
-        borderBottom: "3px solid #eeeeee",
+        borderBottom: "1px solid #bcbcbc",
         width: "100%",
       }}
     >
       <Search
-        sx={{ margin: "0  20px 0 5px", fontSize: "28px", color: "#bdbdbd" }}
+        sx={{ margin: "0  20px 0 5px", fontSize: "28px", color: "#bcbcbc" }}
       />
       <InputBase
         sx={SearchInput}
-        placeholder="búsqueda por nombre"
+        placeholder="Búsqueda por nombre"
         value={value.search}
         onChange={onChangeHandler}
       />

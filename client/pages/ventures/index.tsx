@@ -156,7 +156,7 @@ const VenturesLayout = () => {
           <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
             <Dropdown
               items={status}
-              placeholder="estado"
+              placeholder="Estado"
               width={{ xs: "100%", sm: "250px" }}
               action={filterVenturesStatus}
             />
@@ -164,7 +164,7 @@ const VenturesLayout = () => {
           <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
             <Dropdown
               items={type}
-              placeholder="tipo"
+              placeholder="Tipo"
               width={{ xs: "100%", sm: "250px" }}
               action={filterVenturesTypes}
             />
@@ -174,7 +174,7 @@ const VenturesLayout = () => {
 
       {/* FILTER VENTURES */}
 
-      <Box sx={{ padding: "10px 7.5% 0 7.55%" }}>
+      <Box sx={{ padding: "10px 10% 0 10%" }}>
         <Ventures
           items={projectsFiltered ?? []}
           loading={loading}

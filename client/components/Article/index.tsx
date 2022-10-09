@@ -43,9 +43,9 @@ const Article = ({
               height: "100%",
               width: "100%",
               flexDirection: "column",
-              justifyContent: "flex-start",
+              justifyContent: "center",
               fontFamily: "'Poppins', sans-serif",
-              padding: "25px",
+              padding: { xs: "25px", md: "75px" },
               maxWidth: { xs: "100%", lg: "50%" },
             }}
           >

@@ -62,7 +62,7 @@ const Venture = () => {
             <Typography
               sx={{
                 fontSize: "20px",
-                textAlign: "justify",
+                textAlign: "left",
               }}
             >
               {(project?.description && sanitize(project?.description)) ?? ""}
