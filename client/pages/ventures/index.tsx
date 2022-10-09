@@ -106,6 +106,7 @@ const VenturesLayout = () => {
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png"
         imageOnly
+        height="40vh"
       />
 
       {/* HEADER TITLE */}

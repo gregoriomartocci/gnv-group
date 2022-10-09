@@ -48,6 +48,7 @@ export interface ISlidesProps {
   flip?: boolean;
   fontColor?: string;
   textFontSize?: string;
+  height?: string;
 }
 
 const Main = ({
@@ -62,6 +63,7 @@ const Main = ({
   phrase,
   textFontSize,
   fontColor,
+  height,
 }: ISlidesProps) => {
   const [current, setCurrent] = useState<number>(0);
   const lenght = slides?.length;
@@ -101,7 +103,14 @@ const Main = ({
   };
 
   return (
-    <Box sx={MainSection}>
+    <Box
+      sx={{
+        height: height ? height : "100vh",
+        width: "100%",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
       <Box sx={MainContainer}>
         <Box sx={SliderButtons}>
           {mode === "slider" &&
