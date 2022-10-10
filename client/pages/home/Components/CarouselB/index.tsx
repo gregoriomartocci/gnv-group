@@ -10,7 +10,7 @@ import useWindowDimensions from "../../../../hooks/ScreenSize";
 
 // import required modules
 
-export const CarouselB = ({ items }) => {
+const CarouselB = ({ items }) => {
   const { width, height } = useWindowDimensions();
 
   const xs = width && width < 600;
@@ -111,3 +111,5 @@ export const CarouselB = ({ items }) => {
     </Swiper>
   );
 };
+
+export default CarouselB;

@@ -31,7 +31,7 @@ import { ReadProject } from "../../api/ventures";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
-import { CarouselB } from "./Components/CarouselB";
+import CarouselB from "./Components/CarouselB";
 
 export type TDemo = {
   img: string;

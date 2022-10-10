@@ -20,7 +20,7 @@ import useWindowDimensions from "../../hooks/ScreenSize";
 import AuthImage from "../../assets/images/Image-1.jpg";
 import ginevraRealty from "../../assets/logo/GinevraRealtyPNG.png";
 import Image from "next/image";
-import { CarouselB } from "./components/Carousel";
+import CarouselB from "./components/Carousel";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
