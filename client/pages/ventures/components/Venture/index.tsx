@@ -55,7 +55,7 @@ const Venture = (venture: any) => {
                   objectFit: "cover",
                   width: "100%",
                   objectPosition: "70% 0",
-                  minHeight: "400px",
+                  minHeight: { xs: "360px", md: "400px" },
                 },
               }}
             >
@@ -68,7 +68,7 @@ const Venture = (venture: any) => {
                   sx={{
                     color: "#212121",
                     fontWeight: 700,
-                    fontSize: "30px",
+                    fontSize: { xs: "26px", md: "30px" },
                     margin: "15px 0 0 0",
                   }}
                 >
@@ -107,12 +107,12 @@ const Venture = (venture: any) => {
                     fontWeight: 500,
                     fontSize: "16px",
                     margin: "5px 0 0 0",
-                    lineHeight: "28px",
+                    lineHeight: { xs: "25px", md: "28px" },
                     textAlign: "justify !important",
                   }}
                 >
                   {venture?.description
-                    ? santize(sliceText(venture?.description, 200))
+                    ? santize(sliceText(venture?.description, 150))
                     : ""}
                 </Box>
 

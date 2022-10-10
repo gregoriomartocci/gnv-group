@@ -51,9 +51,9 @@ export const CarouselB = ({ items }) => {
               <Typography
                 sx={{
                   position: "absolute",
-                  padding: { xs: "0 65px", md: "0 10%" },
-                  fontSize: { xs: "25px", md: "38px" },
-                  lineHeight: { xs: "40px", md: "55px" },
+                  padding: { xs: "0 50px", md: "0 10%" },
+                  fontSize: { xs: "21px", md: "38px" },
+                  lineHeight: { xs: "35px", md: "55px" },
                   fontWeight: "500",
                   color: "#fff",
                   zIndex: 20,

@@ -32,7 +32,7 @@ const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: { xs: "360px", md: "500px" },
+    minHeight: { xs: "280px", md: "500px" },
   },
 };
 
@@ -111,7 +111,6 @@ const ArticleCard = (article: TArticle) => {
                       fontSize: { xs: "16px", md: "18px" },
                       lineHeight: "22px",
                       margin: "15px 0 0 0",
-
                     }}
                   >
                     {santize(sliceText(article?.description, 125) ?? "")}
@@ -149,7 +148,7 @@ const News = () => {
       <Menu onScroll color="#212121" />
       <Box>
         <HeaderTitle
-          titleFontSize="38px"
+          titleFontSize={{ xs: "30px", md: "38px" }}
           fontWeight={600}
           p={{ xs: "150px 0 00", md: "150px 0 100px 0" }}
           title="Noticias destacadas"
@@ -176,7 +175,7 @@ const News = () => {
       </Box>
 
       <HeaderTitle
-        titleFontSize="38px"
+        titleFontSize={{ xs: "30px", md: "38px" }}
         fontWeight={600}
         p={{ xs: "25px 0 60px 0", md: "100px  20px" }}
         title="Todas la noticias"
@@ -197,7 +196,7 @@ const News = () => {
       <Box
         sx={{
           display: "flex",
-          padding: "5% 0",
+          padding: "50px 0 0 0",
           justifyContent: "center",
           alignItems: "center",
         }}

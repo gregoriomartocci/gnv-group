@@ -40,7 +40,7 @@ const Article = ({
           <Box
             sx={{
               display: "flex",
-              height: "100%",
+              height: "80%",
               width: "100%",
               flexDirection: "column",
               justifyContent: "center",
@@ -74,7 +74,7 @@ const Article = ({
                   lineHeight: "22px",
                 }}
               >
-                {sanitize(sliceText(description, 250))}
+                {sanitize(sliceText(description, 150))}
               </Typography>
             </Box>
 
