@@ -189,7 +189,8 @@ function Carousel({ items, year }: ICarousel) {
                         height: "100%",
                         minHeight: md ? "350px" : "250px",
                         borderRadius: "10px",
-                        maxHeight: "400px",
+                        maxHeight: xs ? "300px" : "400px",
+                        objectPosition:"center 0%"
                       }}
                       src={img}
                       alt="title"

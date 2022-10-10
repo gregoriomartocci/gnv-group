@@ -28,10 +28,10 @@ export const CarouselB = ({ items }) => {
       modules={[Navigation, Pagination, Autoplay]}
       style={{ width: "100%" }}
       pagination={{ clickable: true }}
-      autoplay={{
-        delay: 6000,
-        disableOnInteraction: false,
-      }}
+      // autoplay={{
+      //   delay: 6000,
+      //   disableOnInteraction: false,
+      // }}
     >
       {items?.map((element) => {
         return (
