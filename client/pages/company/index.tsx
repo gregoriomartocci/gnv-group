@@ -379,7 +379,7 @@ const Company = () => {
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true }}
           variants={FadeFromBottom}
           style={{ width: "100%", height: "100%" }}
         >
@@ -433,8 +433,9 @@ const Company = () => {
           <HeaderTitle
             p="20px 25px 200px 25px"
             fontWeight={600}
-            titleFontSize={{ xs: "28px", md: "35px" }}
-            title="<p> La trayectoria de una gran empresa </br> con el trato de una gran familia</p>"
+            titleWidth={{ xs: "300px", md: "500px" }}
+            titleFontSize={{ xs: "22px", md: "35px" }}
+            title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
             color="#fff"
           />
         </Box>
