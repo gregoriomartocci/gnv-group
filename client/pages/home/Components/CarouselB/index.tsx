@@ -39,8 +39,8 @@ export const CarouselB = ({ items }) => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+                justifyContent: "center",
+                alignItems: "center",
                 width: "100vw",
                 height: "80vh",
               }}
