@@ -20,6 +20,7 @@ import useWindowDimensions from "../../hooks/ScreenSize";
 import AuthImage from "../../assets/images/Image-1.jpg";
 import ginevraRealty from "../../assets/logo/GinevraRealtyPNG.png";
 import Image from "next/image";
+import { CarouselB } from "./components/Carousel";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -144,26 +145,23 @@ const Company = () => {
   const { height, width } = useWindowDimensions();
   const xs = width && width < 900;
 
-  useEffect(() => {
-    const getPictures = async () => {
-      try {
-        setLoading(true);
-        const data = await api({
-          method: "get",
-          path: "https://api.unsplash.com/photos?client_id=8FBBMc7N0M0n2zNPFDnKZ47ifr2D0fU-O08tF-uhkjQ",
-        });
-        setGallery(data);
-        setLoading(false);
-      } catch (err) {
-        setError("Something went wrong");
-        setLoading(false);
-      }
-    };
-
-    getPictures();
-
-    return () => {};
-  }, []);
+  const carouselItems = [
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg",
+      phrase: "La trayectoria de una gran empresa",
+      objectPosition: "0%",
+    },
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg",
+      phrase: "Con el trato ",
+      objectPosition: "48%",
+    },
+    {
+      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg",
+      phrase: "de una gran familia",
+      objectPosition: "97%",
+    },
+  ];
 
   return (
     <Box sx={{ overflowX: "hidden" }}>
@@ -421,39 +419,59 @@ const Company = () => {
           width: "100vw",
         }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50px",
-            width: "100%",
-            height: "100%",
-            zIndex: 100,
-          }}
-        >
-          <HeaderTitle
-            p={{ xs: "0", md: "20px 25px 200px 25px" }}
-            fontWeight={600}
-            titleWidth={{ xs: "300px", md: "600px" }}
-            titleFontSize={{ xs: "22px", md: "35px" }}
-            title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
-            color="#fff"
-          />
-        </Box>
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "",
-          }}
-        >
-          <Main
-            mode="static"
-            imageOnly
-            img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
-          />
-        </Box>
+        {xs ? (
+          <Box
+            sx={{
+              display: "flex",
+              position: "relative",
+              width: "100vw",
+              minHeight: "80vh",
+            }}
+          >
+            <CarouselB items={carouselItems} />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50px",
+                width: "100%",
+                height: "100%",
+                zIndex: 100,
+              }}
+            >
+              <HeaderTitle
+                p={{ xs: "0", md: "20px 25px 200px 25px" }}
+                fontWeight={600}
+                titleWidth={{ xs: "300px", md: "600px" }}
+                titleFontSize={{ xs: "22px", md: "35px" }}
+                title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
+                color="#fff"
+              />
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "",
+              }}
+            >
+              <Main
+                mode="static"
+                imageOnly
+                img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
+              />
+            </Box>
+          </Box>
+        )}
       </Box>
 
       {/* GALLERY */}

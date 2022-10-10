@@ -39,8 +39,11 @@ export const CarouselB = ({ items }) => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "absolute",
+                top: 0,
+                left: 0,
                 width: "100vw",
                 height: "80vh",
               }}
@@ -48,8 +51,9 @@ export const CarouselB = ({ items }) => {
               <Typography
                 sx={{
                   position: "absolute",
+                  top: "45px",
                   padding: { xs: "0 50px", md: "0 10%" },
-                  fontSize: { xs: "23px", md: "38px" },
+                  fontSize: { xs: "24px", md: "38px" },
                   lineHeight: { xs: "35px", md: "55px" },
                   fontWeight: "500",
                   color: "#fff",
