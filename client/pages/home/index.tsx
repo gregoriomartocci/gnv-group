@@ -39,7 +39,7 @@ export type TDemo = {
   link: string;
   objectPosition: any;
 };
- 
+
 const Home = () => {
   const state = useSelector((state: IState) => state?.templates);
   const [value, setValue] = useState({});
