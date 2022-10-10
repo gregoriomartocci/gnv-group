@@ -96,7 +96,7 @@ a {
   right: 60px !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 769px) {
   .swiper-button-prev,
   .swiper-rtl .swiper-button-next {
     display: none !important;
