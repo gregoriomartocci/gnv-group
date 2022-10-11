@@ -11,10 +11,7 @@ const Licence = ({ img, description, width, height }: TDemo) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
         cursor: "pointer",
-        fontFamily: "'Poppins', sans-serif",
-        width: { xs: "100%", lg: "50%" },
         height: "100%",
         overflow: "hidden",
       }}
@@ -63,25 +60,27 @@ const Licence = ({ img, description, width, height }: TDemo) => {
             })}
         </Box>
 
-        <Box
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontSize: "18px",
-            margin: "5px 0",
-          }}
-        >
-          <Typography
-            sx={{
+        {description && (
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
               fontSize: "18px",
-              fontWeight: 400,
-              fontFamily: "'Poppins', sans-serif",
-              textAlign: "center",
+              margin: "5px 0",
             }}
           >
-            {description}
-          </Typography>
-        </Box>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                fontWeight: 400,
+                fontFamily: "'Poppins', sans-serif",
+                textAlign: "center",
+              }}
+            >
+              {description}
+            </Typography>
+          </Box>
+        )}
       </Box>
     </Box>
   );

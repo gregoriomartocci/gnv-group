@@ -64,8 +64,6 @@ const licences = [
         <path d="m1582.65 57.84 2.38 4.43h-1.88c-.1 0-.21-.17-.27-.28-.6-1.15-1.2-2.29-1.78-3.44a.48.48 0 0 0-.5-.3h-1.66v4h-1.82V52.19c0-.27.05-.37.35-.37 1.35 0 2.7 0 4 .06a3.39 3.39 0 0 1 1.91.64 3.13 3.13 0 0 1-.54 5.21Zm-3.71-1.1h2.37a1.55 1.55 0 0 0 1.42-1.46 1.6 1.6 0 0 0-1.08-1.85 11.16 11.16 0 0 0-2.71-.14Z" />
       </svg>,
     ],
-    description:
-      "Desarrollado por GNV y diseñado por el estudio de arquitectura Gómez Platero. el proyecto incluirá 80 elegantes habitaciones de hotel de última generación y 150 residencias, en dos torres estilo SLS que contarán con diseño de vanguardia, arte contemporáneo y detalles de lujo.",
     width: "100%",
     height: "75px",
   },
@@ -100,8 +98,6 @@ const licences = [
         </text>
       </svg>,
     ],
-    description:
-      "El gigante Marriott Internacional firmó un acuerdo con GNV Group, para desarrollar por primera vez en la Argentina un proyecto hotelero/ residencia bajo la disrruptiva marca W.",
     width: "100%",
   },
   {
@@ -122,8 +118,6 @@ const licences = [
         <path d="M325.47 85.42V50.49c.09-4 .95-4.63 4.66-3.45 4.64 1.47 5.33 2.33 5.38 7.53.06 6.87 0 13.74 0 20.62v42c0 5.07-1.88 7.07-6.81 7.62-1.66.19-2.69-.37-3-2a19.35 19.35 0 0 1-.26-3.13q.02-17.15.03-34.26ZM358.14 56.79c6.77.77 8.41 2.54 8.44 8.91 0 4.68.06 9.36 0 14-.11 6-2.9 5.82-7.33 5.59a1.66 1.66 0 0 1-1-1.23c-.13-9.03-.11-18.13-.11-27.27Z" />
       </svg>,
     ],
-    description:
-      "WTC Buenos Aires está compuesto por 4 torres AAA dentro del complejo Madero Harbour. Más de 70 empresas multinacionales y dos embajadas desarrollan allí sus actividades económicas y comerciales.",
     width: "300px",
     height: "75px",
   },
@@ -143,25 +137,8 @@ const Company = () => {
   const [loading, setLoading] = useState(false);
   const [render, setRender] = useState<any>(typeof window !== "undefined");
   const { height, width } = useWindowDimensions();
-  const xs = width && width < 900;
 
-  const carouselItems = [
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg",
-      phrase: "La trayectoria de una gran empresa",
-      objectPosition: "0%",
-    },
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg",
-      phrase: "Con el trato ",
-      objectPosition: "48%",
-    },
-    {
-      src: "https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg",
-      phrase: "de una gran familia",
-      objectPosition: "97%",
-    },
-  ];
+  const xs = width && width < 900;
 
   return (
     <Box sx={{ overflowX: "hidden" }}>
@@ -328,9 +305,8 @@ const Company = () => {
           flexDirection: "column",
           justifyContent: "center",
           height: "100%",
-          minHeight: "100vh",
           width: "100vw",
-          padding: "5% 7.5%",
+          padding: "10px 7.5%",
           backgroundColor: "#f5f5f5",
         }}
       >
@@ -465,6 +441,7 @@ const Company = () => {
                 mode="static"
                 imageOnly
                 img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
+                height="80vh"
               />
             </Box>
           </Box>
