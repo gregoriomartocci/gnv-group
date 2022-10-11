@@ -49,7 +49,6 @@ const Licence = ({ img, description, width, height }: TDemo) => {
                     dislpay: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    margin: "0 0 25px -15px",
                   }}
                 >
                   <Svg width={width} height={height}>
