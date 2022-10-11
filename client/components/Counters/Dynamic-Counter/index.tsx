@@ -7,6 +7,7 @@ type IDynamicCounter = {
   to: number;
   duration: number;
   counterRef: boolean;
+  counterFontSize?: string;
 };
 
 export default function DynamicCounter({
@@ -14,6 +15,7 @@ export default function DynamicCounter({
   to,
   duration,
   counterRef,
+  counterFontSize,
 }: IDynamicCounter) {
   const [increase, setIncrease] = useState(to);
 
@@ -33,11 +35,11 @@ export default function DynamicCounter({
       });
     }
     return () => {};
-  }, []);  // observer
-  
+  }, []); // observer
+
   return (
     <Box>
-      <Typography sx={{ fontWeight: 600, fontSize: "35px" }}>
+      <Typography sx={{ fontSize: counterFontSize }}>
         {numberWithCommas(increase)}
       </Typography>
     </Box>

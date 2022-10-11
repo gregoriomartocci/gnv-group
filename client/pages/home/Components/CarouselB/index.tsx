@@ -45,7 +45,7 @@ const CarouselB = ({ items }) => {
                 height: "80vh",
               }}
             >
-              <Typography
+              {/* <Typography
                 sx={{
                   position: "absolute",
                   padding: { xs: "0 50px", md: "0 10%" },
@@ -58,23 +58,8 @@ const CarouselB = ({ items }) => {
                 }}
               >
                 {element?.phrase}
-              </Typography>
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#212121",
-                  zIndex: 15,
-                  pointerEvents: "none",
-                  opacity: "0.40",
-                }}
-              />
+              </Typography> */}
+
 
               {getFormat(element?.src) === "MP4" ? (
                 <video

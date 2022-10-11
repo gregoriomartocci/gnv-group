@@ -3,7 +3,6 @@ import React from "react";
 import Main from "../../components/Main";
 import Menu, { IState } from "../../components/Menu";
 import Box from "@mui/material/Box";
-
 import Section from "../../components/Section";
 import Footer from "../../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
@@ -98,7 +97,7 @@ const Home = () => {
 
   const items = [
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664622622/alyz6lern9epriiupccf.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664799049/xts6othfkuu2psbv3vh0.jpg",
       title: "WTC Buenos Aires I, II, III IV",
       link: "/venture/633ad14b79c62c036db870ba",
       objectPosition: { xs: "center center", md: "" },
@@ -107,7 +106,7 @@ const Home = () => {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664740315/irdlqnpade7qxflqicc6.jpg",
       title: "Osten Tower",
       link: "/venture/62ca5fdb20e916ae0afc3882",
-      objectPosition: { xs: "80% center", md: "" },
+      objectPosition: { xs: "80% top", md: "" },
     },
     {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657426798/jefizhrvbp3zxcpgbbay.jpg",
@@ -119,6 +118,7 @@ const Home = () => {
       img: "https://res.cloudinary.com/gregomartocci/image/upload/v1657430355/g7yz4ndlvgjjqvtidfa6.jpg",
       title: "The Shops",
       link: "/venture/62ca615520e916ae0afc388e",
+      objectPosition: { xs: "", md: "" },
     },
   ];
 
@@ -197,10 +197,10 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "5% 0" }}
-              titleFontSize={{ xs: "28px", md: "38px" }}
+              titleFontSize={{ xs: "28px", md: "32px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "19px", sm: "20px", md: "28px" }}
+              descriptionFontSize={{ xs: "19px", md: "22px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -218,7 +218,6 @@ const Home = () => {
               justifyContent: { xs: "none", md: "center" },
               width: "100%",
               height: "100%",
-              padding: "50px 0",
             }}
             ref={CountersRef}
           >
@@ -232,7 +231,7 @@ const Home = () => {
             >
               <Counters
                 data={data}
-                counterSize={35}
+                counterSize="30px"
                 countersRef={countersVisible}
               />
             </motion.div>
@@ -260,7 +259,7 @@ const Home = () => {
 
       {/* Trayectory */}
 
-      <Box sx={{ width: "100%", minHeight: "100vh", padding: "5% 0" }}>
+      <Box sx={{ width: "100%", padding: "5% 0" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
@@ -269,10 +268,10 @@ const Home = () => {
         >
           <HeaderTitle
             p={{ xs: "60px", md: "50px 12.5%" }}
-            titleFontSize={{ xs: "30px", md: "40px" }}
+            titleFontSize={{ xs: "30px", md: "28px" }}
             fontWeight={600}
             titlePadding="25px"
-            descriptionFontSize={{ xs: "18px", md: "25px" }}
+            descriptionFontSize={{ xs: "18px", md: "20px" }}
             title="Trayectoria"
             descriptionTextAlign="center"
             description="La compañía está viviendo una etapa de expansión fenomenal.
