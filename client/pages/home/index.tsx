@@ -267,11 +267,11 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "60px", md: "50px 12.5%" }}
+            p={{ xs: "60px", md: "0 20% 50px 20%"  }}
             titleFontSize={{ xs: "30px", md: "28px" }}
-            fontWeight={600}
+  
             titlePadding="25px"
-            descriptionFontSize={{ xs: "18px", md: "20px" }}
+            descriptionFontSize={{ xs: "1px", md: "18px" }}
             title="Trayectoria"
             descriptionTextAlign="center"
             description="La compañía está viviendo una etapa de expansión fenomenal.
@@ -289,7 +289,7 @@ const Home = () => {
           display: "flex",
           position: "relative",
           width: "100vw",
-          minHeight: "80vh",
+          minHeight: "60vh",
         }}
       >
         <CarouselB items={slides} />

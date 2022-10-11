@@ -282,7 +282,7 @@ const Timeline = () => {
                         padding: "30px 25px",
                         width: {
                           xs: "100%",
-                          md: "125px",
+                          md: "100px",
                         },
                         height: "100%",
                         justifyContent: "space-between",
@@ -320,7 +320,7 @@ const Timeline = () => {
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
                             fontWeight: 700,
-                            fontSize: { xs: "22px", md: "22px" },
+                            fontSize: { xs: "18px", md: "18px" },
                             color: "#bdbdbd",
                             transform: {
                               xs: "",

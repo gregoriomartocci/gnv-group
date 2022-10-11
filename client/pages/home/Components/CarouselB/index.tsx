@@ -42,7 +42,7 @@ const CarouselB = ({ items }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100vw",
-                height: "80vh",
+                height: "60vh",
               }}
             >
               {/* <Typography

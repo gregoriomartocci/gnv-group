@@ -26,7 +26,7 @@ function Carousel({ items, year }: ICarousel) {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: xs ? "225px" : sm ? "250px" : "375px",
+    width: xs ? "225px" : sm ? "250px" : "275px",
     backgroundColor: "#fff",
     borderRadius: "15px",
     cursor: "pointer",
@@ -34,7 +34,7 @@ function Carousel({ items, year }: ICarousel) {
     fontSize: "20px",
     boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
     padding: "10px",
-    margin: sm ? "-75px" : "-95px",
+    margin: sm ? "-75px" : "-80px",
   };
 
   const slides = [0, 2, 3, 4];
@@ -87,12 +87,12 @@ function Carousel({ items, year }: ICarousel) {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: { xs: "50px 0 0 0", md: "" },
+
         }}
       >
         <Typography
           sx={{
-            fontSize: { xs: "28px", md: "35px" },
+            fontSize: { xs: "24px", md: "26px" },
             color: "#bdbdbd",
             fontWeight: 700,
           }}
@@ -107,9 +107,9 @@ function Carousel({ items, year }: ICarousel) {
           justifyContent: "space-between",
           alignItems: "center",
           height: "100%",
-          width: { xs: "", md: "900px" },
-          minHeight: { xs: "550px", md: "700px" },
-          minWidth: { xs: "100%", md: "800px" },
+          width: { xs: "", md: "" },
+          minHeight: { xs: "550px", md: "450px" },
+          minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
         }}
@@ -187,10 +187,10 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
-                        minHeight: md ? "350px" : "250px",
+                        minHeight: md ? "200px" : "100px",
+                        maxHeight: xs ? "250px" : "150px",
                         borderRadius: "10px",
-                        maxHeight: xs ? "300px" : "400px",
-                        objectPosition:"center 0%"
+                        objectPosition:"center center"
                       }}
                       src={img}
                       alt="title"
@@ -219,7 +219,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "20px", md: "24px" },
+                          fontSize: { xs: "20px", md: "20px" },
                           fontWeight: 600,
                         }}
                       >
@@ -239,7 +239,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "16px", md: "18px" },
+                          fontSize: { xs: "15px", md: "17px" },
                         }}
                       >
                         {description}
