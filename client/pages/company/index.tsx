@@ -66,7 +66,7 @@ const licences = [
     ],
     width: "500px",
     maxWidth: "100%",
-    height: "75px",
+    height: "100px",
   },
   {
     img: [
@@ -100,6 +100,7 @@ const licences = [
       </svg>,
     ],
     width: "100%",
+    height: "100px",
   },
   {
     img: [
@@ -112,7 +113,7 @@ const licences = [
       </svg>,
     ],
     width: "300px",
-    height: "150px",
+    height: "100px",
   },
   {
     img: [
@@ -126,7 +127,7 @@ const licences = [
       </svg>,
     ],
     width: "300px",
-    height: "150px",
+    height: "100px",
   },
 ];
 
@@ -330,7 +331,7 @@ const Company = () => {
           <HeaderTitle
             title="Licencias"
             p="0 15px"
-            titleFontSize="34px"
+            titleFontSize="30px"
             fontWeight={600}
             titlePadding="10px 0"
             descriptionFontSize="20px"
@@ -372,7 +373,7 @@ const Company = () => {
           style={{ width: "100%", height: "100%" }}
         >
           <HeaderTitle
-            p="40px 0"
+            p="50px 0 100px 0"
             titleFontSize={{ xs: "28px", md: "30px" }}
             fontWeight={600}
             title="Compañia"
@@ -445,11 +446,12 @@ const Company = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
+          padding: "5% 0",
         }}
       >
         <HeaderTitle
-          p="125px 50px 50px 50px"
-          titleFontSize={{ xs: "35px", md: "38px" }}
+          p="100px 50px 100px 50px"
+          titleFontSize={{ xs: "35px", md: "30px" }}
           fontWeight={600}
           title="Galería de arte GNV"
         />

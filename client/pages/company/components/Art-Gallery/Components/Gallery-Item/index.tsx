@@ -78,22 +78,23 @@ const GalleryItem = ({
         <img src={image} alt={title}></img>
       </Box>
       <Box sx={CardBody}>
-        {title && (
+        {artist && (
           <Box sx={{ display: "flex" }}>
             <Typography
               sx={{
                 fontFamily: "'Poppins', sans-serif",
-                margin: "6px 0 0 0",
-                fontSize: "26px",
-                fontWeight: "700",
+                margin: "2.5px 0 0 0",
+                fontSize: "25px",
+                fontWeight: 600,
                 color: "#000",
               }}
             >
-              {title}
+              {artist}
             </Typography>
           </Box>
         )}
-        {gallery && (
+
+        {/* {gallery && (
           <Typography
             sx={{
               fontFamily: "'Poppins', sans-serif",
@@ -126,7 +127,6 @@ const GalleryItem = ({
             </span>
           </Typography>
         )}
-
         {technique && (
           <Box sx={{ display: "flex" }}>
             <Typography
@@ -186,7 +186,8 @@ const GalleryItem = ({
               </span>
             </Typography>
           </Box>
-        )}
+        )} */}
+
       </Box>
     </Box>
   );
