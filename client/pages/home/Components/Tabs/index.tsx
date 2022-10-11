@@ -36,7 +36,7 @@ const UseTabs = ({ items, tab, setTab }: IUseTabs) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: { xs: "15px 0", md: "20px 30px" },
+            padding: { xs: "15px 0", md: "20px 28px" },
             width: { xs: "min-content", md: "max-content" },
             height: "120px",
             margin: { xs: "25px", md: "0 10px" },

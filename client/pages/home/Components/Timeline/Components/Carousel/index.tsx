@@ -87,14 +87,14 @@ function Carousel({ items, year }: ICarousel) {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-
+          padding: "30px 0",
         }}
       >
         <Typography
           sx={{
-            fontSize: { xs: "20px", md: "24px" },
+            fontSize: { xs: "20px", md: "26px" },
             color: "#bdbdbd",
-            fontWeight: 600,
+            fontWeight: 700,
           }}
         >
           {year}
@@ -190,7 +190,7 @@ function Carousel({ items, year }: ICarousel) {
                         minHeight: md ? "200px" : "100px",
                         maxHeight: xs ? "225px" : "225px",
                         borderRadius: "10px",
-                        objectPosition:"center center"
+                        objectPosition: "center center",
                       }}
                       src={img}
                       alt="title"

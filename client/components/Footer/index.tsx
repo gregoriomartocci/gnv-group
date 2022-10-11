@@ -13,7 +13,6 @@ const Footer = () => {
         fontFamily: "'Poppins', sans-serif",
         padding: "20px",
         backgroundColor: "#fafafa",
-        marginTop: "50px",
       }}
     >
       <Box
