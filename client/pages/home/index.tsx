@@ -142,12 +142,12 @@ const Home = () => {
 
   const mapItems = [
     {
-      title: "GNV Argentina",
+      title: "Argentina",
       id: 1,
       coordinates: { lat: -34.6191721, lng: -58.3606006 },
     },
     {
-      title: "GNV Uruguay",
+      title: "Uruguay",
       id: 2,
       coordinates: { lat: -34.9451061, lng: -54.935135 },
     },
@@ -164,7 +164,7 @@ const Home = () => {
         headerTitle="Proyectos distintivos con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
-        textFontSize={{ xs: "34px", md: "45px" }}
+        textFontSize={{ xs: "30px", md: "40px" }}
       />
 
       {/* SECTION 1 */}
@@ -267,15 +267,11 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "60px", md: "0 20% 50px 20%" }}
+            p={{ xs: "60px", md: "" }}
             titleFontSize={{ xs: "25px", md: "28px" }}
             titlePadding="25px"
-            descriptionFontSize={{ xs: "14px", md: "18px" }}
+            fontWeight={600}
             title="Trayectoria"
-            descriptionTextAlign="center"
-            description="La compañía está viviendo una etapa de expansión fenomenal.
-            Fortaleciendo alianzas con marcas internacionales de la importancia de World Trade Center, la cadena hotelera Marriot Internacional y Grupo Ennismore bajo la marca SLS Hotel & Residences.
-            Lo que demuestra la fuerte convicción y los valores a la hora de desarrollar un proyecto. Se trate de una torre o de su propia empresa. "
           />
           <Timeline />
         </motion.div>
@@ -300,12 +296,13 @@ const Home = () => {
         sx={{
           display: "flex",
           alignItems: { xs: "flex-start", md: "center" },
-          minHeight: { xs: "", md: "100vh" },
+          minHeight: { xs: "", md: "80vh" },
           width: "100%",
           padding: { xs: "20% 5%", md: "50px 10%" },
         }}
       >
         <Section
+          imageMaxWidth="700px"
           quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
@@ -326,7 +323,7 @@ const Home = () => {
           flexDirection: "column",
           alignItems: "center",
           margin: "auto",
-          minHeight: { sx: "", md: "100vh" },
+          minHeight: { sx: "", md: "80vh" },
           maxWidth: "1200px",
           padding: { xs: "0 15px", md: "0 10%" },
         }}

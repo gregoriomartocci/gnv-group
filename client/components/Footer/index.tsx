@@ -32,26 +32,13 @@ const Footer = () => {
           sx={{
             display: "flex",
             width: "100%",
-            padding: {
-              xs: "",
-              sm: "",
-              md: "0 20% 0 0 ",
-              lg: "0 20% 0 0 ",
-              xl: "0 20% 0 0 ",
-            },
             justifyContent: {
               xs: "column",
-              sm: "column",
               md: "space-around",
-              lg: "space-around",
-              xl: "space-between",
             },
             flexDirection: {
               xs: "column",
-              sm: "column",
               md: "row",
-              lg: "row",
-              xl: "row",
             },
           }}
         >
@@ -60,7 +47,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  fontSize: "22px",
                   fontWeight: "600",
                 }}
               >
@@ -74,7 +61,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  fontSize: "22px",
                   fontWeight: "600",
                 }}
               >
@@ -88,7 +75,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  fontSize: "22px",
                   fontWeight: "600",
                 }}
               >
@@ -102,7 +89,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  fontSize: "22px",
                   fontWeight: "600",
                 }}
               >
@@ -162,7 +149,6 @@ const Footer = () => {
         sx={{
           display: {
             xs: "column",
-            sm: "column",
             md: "none",
           },
           padding: "2.5% 10%",
@@ -177,7 +163,14 @@ const Footer = () => {
       </Box>
 
       {/* ADDRESS */}
-      <Box sx={{ padding: "2.5% 10%", lineHeight: "25px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2.5% 10%",
+          lineHeight: "25px",
+        }}
+      >
         Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
         Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 C. +598 94 785
         878 |

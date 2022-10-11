@@ -14,6 +14,7 @@ export interface ISectionProps {
   reverse?: boolean;
   paddingColumnLeft?: string;
   bodyTextPadding?: string;
+  imageMaxWidth?: string;
 }
 
 const duration = 1.75;
@@ -42,6 +43,7 @@ const Section = ({
   paragraph,
   paddingColumnLeft,
   bodyTextPadding,
+  imageMaxWidth,
   author,
   image,
   reverse,
@@ -90,7 +92,7 @@ const Section = ({
                     color: "#000",
                     padding: {
                       xs: "25px 20px",
-                      md: "25px 100px",
+                      md: "25px 0px",
                     },
                   }}
                 >
@@ -102,7 +104,7 @@ const Section = ({
                       width: "100%",
                       fontSize: {
                         xs: "20px",
-                        md: "30px",
+                        md: "26px",
                       },
                       height: "100%",
                       lineHeight: {
@@ -175,7 +177,7 @@ const Section = ({
             variants={reverse ? FadeFromLeft : FadeFromRight}
           >
             <Box sx={ColumRight}>
-              <img src={image} alt="home" />
+              <img style={{ maxWidth: imageMaxWidth }} src={image} alt="home" />
             </Box>
           </motion.div>
         </Box>
