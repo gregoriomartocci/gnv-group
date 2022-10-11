@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { string } from "yup";
 
 type Type = {
   value: string;
@@ -7,6 +8,9 @@ type Type = {
   name: string;
   description: string;
   onChangeHandler: any;
+  height?: string;
+  width?: string;
+  fontSize?: string;
 };
 
 const TextArea = ({
@@ -15,6 +19,9 @@ const TextArea = ({
   label,
   description,
   onChangeHandler,
+  height,
+  width,
+  fontSize,
 }: Type) => {
   return (
     <Box>
@@ -32,10 +39,10 @@ const TextArea = ({
         style={{
           display: "flex",
           padding: "15px",
-          width: "100%",
-          height: "200px",
+          width,
+          height,
           borderRadius: "5px",
-          fontSize: "18px",
+          fontSize,
           border: "1px solid #e0e0e0",
         }}
         value={value}

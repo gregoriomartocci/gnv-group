@@ -54,9 +54,7 @@ const Form = ({ value, setValue }: any) => {
       {value && (
         <Box
           sx={{
-
             width: "100%",
-       
           }}
         >
           <form ref={form} onSubmit={sendEmail}>
@@ -76,6 +74,10 @@ const Form = ({ value, setValue }: any) => {
                   value={value ? value?.name : ""}
                   onChangeHandler={onChangeHandler}
                   description="Ingrese su nombre"
+                  height="100%"
+                  width="100%"
+                  inputFontSize="16px"
+                  labelFontSize="18px"
                 />
               </Box>
               <Box
@@ -88,6 +90,10 @@ const Form = ({ value, setValue }: any) => {
                   value={value ? value?.email : ""}
                   onChangeHandler={onChangeHandler}
                   description="Ingrese su email"
+                  height="100%"
+                  width="100%"
+                  inputFontSize="18px"
+                  labelFontSize="18px"
                 />
               </Box>
             </Box>
@@ -98,6 +104,10 @@ const Form = ({ value, setValue }: any) => {
               value={value ? value?.phone : ""}
               onChangeHandler={onChangeHandler}
               description="Ingrese su numero de telefono"
+              height="100%"
+              width="100%"
+              inputFontSize="18px"
+              labelFontSize="18px"
             />
             <TextArea
               label="Mensaje"
@@ -105,6 +115,10 @@ const Form = ({ value, setValue }: any) => {
               value={value ? value?.message : ""}
               onChangeHandler={onChangeHandler}
               description="Deje su mensaje"
+              height="125px"
+              width="100%"
+              fontSize="18px"
+     
             />
             <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
               {loading ? (

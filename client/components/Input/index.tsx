@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import { Fragment } from "react";
 import { InputContainer } from "./Styles";
 
@@ -10,6 +10,10 @@ export interface InputProps {
   value: any;
   onChangeHandler: any;
   children?: React.ReactNode;
+  width?: string;
+  height?: string;
+  inputFontSize?: string;
+  labelFontSize?: string;
 }
 
 const InputGroup = ({
@@ -20,19 +24,26 @@ const InputGroup = ({
   value,
   children,
   onChangeHandler,
+  inputFontSize,
+  labelFontSize,
 }: InputProps) => {
   return (
     <Box sx={InputContainer}>
       <Fragment>
         {children ? (
           <Fragment>
-            <span>{label}</span>
+            <Typography sx={{ fontSize: labelFontSize, fontWeight: 600 }}>
+              {label}
+            </Typography>
             {children}
           </Fragment>
         ) : (
           <Box>
-            <span>{label}</span>
+            <Typography sx={{ fontSize: labelFontSize, fontWeight: 600 }}>
+              {label}
+            </Typography>
             <input
+              style={{ fontSize: inputFontSize }}
               name={name}
               placeholder={description}
               type={type}

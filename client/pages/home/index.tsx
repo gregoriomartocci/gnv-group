@@ -333,9 +333,9 @@ const Home = () => {
       >
         <HeaderTitle
           p="20px 0"
-          titleFontSize={{ xs: "35px", md: "38px" }}
-          fontWeight={600}
+          titleFontSize={{ xs: "35px", md: "30px" }}
           title="Contacto"
+          fontWeight={600}
           description="Envianos tu consulta"
           descriptionFontSize="20px"
         />

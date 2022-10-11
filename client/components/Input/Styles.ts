@@ -3,7 +3,7 @@ import { SxProps, Theme } from "@mui/material";
 
 export const InputContainer: SxProps<Theme> = {
   width: "100%",
-  margin: "20px 0",
+  margin: "10px 0",
 
   span: {
     fontSize: "20px",
