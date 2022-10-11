@@ -259,7 +259,7 @@ const Home = () => {
 
       {/* Trayectory */}
 
-      <Box sx={{ width: "100%", padding: "5% 0" }}>
+      <Box sx={{ width: "100%", padding: "5% 0", minHeight: "100vh" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
@@ -267,11 +267,10 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "60px", md: "0 20% 50px 20%"  }}
-            titleFontSize={{ xs: "30px", md: "28px" }}
-  
+            p={{ xs: "60px", md: "0 20% 50px 20%" }}
+            titleFontSize={{ xs: "25px", md: "28px" }}
             titlePadding="25px"
-            descriptionFontSize={{ xs: "1px", md: "18px" }}
+            descriptionFontSize={{ xs: "14px", md: "18px" }}
             title="Trayectoria"
             descriptionTextAlign="center"
             description="La compañía está viviendo una etapa de expansión fenomenal.
@@ -380,7 +379,7 @@ const Home = () => {
             sx={{
               display: "flex",
               width: "100%",
-              height: "700px",
+              height: { xs: "400px", md: "550px" },
             }}
           >
             {isLoaded && (

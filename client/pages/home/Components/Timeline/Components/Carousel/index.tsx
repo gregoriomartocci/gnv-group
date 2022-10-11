@@ -92,9 +92,9 @@ function Carousel({ items, year }: ICarousel) {
       >
         <Typography
           sx={{
-            fontSize: { xs: "24px", md: "26px" },
+            fontSize: { xs: "20px", md: "24px" },
             color: "#bdbdbd",
-            fontWeight: 700,
+            fontWeight: 600,
           }}
         >
           {year}
