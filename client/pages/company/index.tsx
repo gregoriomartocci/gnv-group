@@ -242,7 +242,12 @@ const Company = () => {
           >
             <Section
               title={
-                <Box sx={{ width: { xs: "160px", md: "300px" } }}>
+                <Box
+                  sx={{
+                    width: { xs: "160px", md: "235px" },
+                    padding: "0 0 20px 0",
+                  }}
+                >
                   <Image
                     src={ginevraRealty}
                     alt="ginevraRoyalty"
