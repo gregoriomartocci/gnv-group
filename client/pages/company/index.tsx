@@ -191,7 +191,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "7.5% 0",
+              padding: "5% 0",
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -224,18 +224,19 @@ const Company = () => {
                   </svg>
                 </Svg>
               }
-              paddingColumnLeft={{ sx: "0", md: "100px 0 100px 100px" }}
+              paddingColumnLeft={{ sx: "0", md: "0" }}
               reverse
               bodyTextpadding={{ sx: "10px 0", md: "5px 0" }}
               paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
+              imageMaxWidth="700px"
             />
           </Box>
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "7.5% 0",
+              padding: "5% 0",
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -249,17 +250,18 @@ const Company = () => {
                   />
                 </Box>
               }
-              paddingColumnLeft={{ sx: "45px 0", md: "100px 100px 100px 0" }}
+              paddingColumnLeft={{ sx: "45px 0", md: "0 100px 0 0" }}
               bodyTextpadding={{ sx: "25px 0", md: "150px 0 0 0" }}
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
+              imageMaxWidth="700px"
             />
           </Box>
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "7.5% 0",
+              padding: "5% 0",
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -303,10 +305,11 @@ const Company = () => {
                 </Svg>
               }
               bodyTextpadding={{ sx: "10px 0", md: "0" }}
-              paddingColumnLeft={{ sx: "0", md: "100px" }}
+              paddingColumnLeft={{ sx: "0", md: "0" }}
               reverse
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664804808/xkqyxa7gg7bnlj0gwy0o.jpg"
+              imageMaxWidth="700px"
             />
           </Box>
         </motion.div>
@@ -383,7 +386,7 @@ const Company = () => {
         >
           <HeaderTitle
             p="40px 0"
-            titleFontSize={{ xs: "35px", md: "38px" }}
+            titleFontSize={{ xs: "28px", md: "30px" }}
             fontWeight={600}
             title="Compañia"
             color="#000"
@@ -408,29 +411,18 @@ const Company = () => {
 
       {/* TEAM */}
 
-      <Box
-        sx={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
-        {xs ? (
-          <Box
-            sx={{
-              display: "flex",
-              position: "relative",
-              width: "100vw",
-              minHeight: "80vh",
-            }}
-          >
-            <CarouselB items={carouselItems} />
-          </Box>
-        ) : (
+      {!xs && (
+        <Box
+          sx={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+          }}
+        >
           <Box
             sx={{
               width: "100%",
@@ -471,8 +463,8 @@ const Company = () => {
               />
             </Box>
           </Box>
-        )}
-      </Box>
+        </Box>
+      )}
 
       {/* GALLERY */}
 
