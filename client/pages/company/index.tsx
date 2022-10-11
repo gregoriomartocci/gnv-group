@@ -406,51 +406,33 @@ const Company = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
-            width: "100vw",
+            height: "100%",
+            width: "100%",
           }}
         >
           <Box
             sx={{
+              position: "absolute",
+              top: "50px",
               width: "100%",
-              height: "100%",
+              zIndex: 100,
             }}
           >
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50px",
-                width: "100%",
-                height: "100%",
-                zIndex: 100,
-              }}
-            >
-              <HeaderTitle
-                p={{ xs: "0", md: "20px 25px 200px 25px" }}
-                fontWeight={600}
-                titleWidth={{ xs: "300px", md: "600px" }}
-                titleFontSize={{ xs: "22px", md: "35px" }}
-                title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
-                color="#fff"
-              />
-            </Box>
-            <Box
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "",
-              }}
-            >
-              <Main
-                mode="static"
-                imageOnly
-                img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
-                height="80vh"
-              />
-            </Box>
+            <HeaderTitle
+              p={{ xs: "0", md: "20px 25px 200px 25px" }}
+              fontWeight={600}
+              titleWidth={{ xs: "300px", md: "max-content" }}
+              titleFontSize={{ xs: "22px", md: "30px" }}
+              title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
+              color="#fff"
+            />
           </Box>
+          <Main
+            mode="static"
+            imageOnly
+            img="https://res.cloudinary.com/gregomartocci/image/upload/v1662070261/mknqdasujsg9glwxztue.jpg"
+            height="80vh"
+          />
         </Box>
       )}
 
