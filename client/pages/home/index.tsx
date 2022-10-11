@@ -103,7 +103,7 @@ const Home = () => {
       objectPosition: { xs: "center center", md: "" },
     },
     {
-      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664740315/irdlqnpade7qxflqicc6.jpg",
+      img: "https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png",
       title: "Osten Tower",
       link: "/venture/62ca5fdb20e916ae0afc3882",
       objectPosition: { xs: "80% top", md: "" },
