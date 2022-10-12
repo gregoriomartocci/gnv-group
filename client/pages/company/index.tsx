@@ -162,7 +162,13 @@ const Company = () => {
 
       {/* SECTION */}
 
-      <Box sx={{ width: "100vw", padding: "5%", height: "100%" }}>
+      <Box
+        sx={{
+          width: "100vw",
+          padding: { xs: "40px 25px", md: "5%" },
+          height: "100%",
+        }}
+      >
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
@@ -175,7 +181,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "50px 0",
+              padding: { xs: "20px 0", md: "50px 0" },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -183,11 +189,10 @@ const Company = () => {
               title={
                 <Box
                   sx={{
-                    height: { xs: "100px", md: "150px" },
+                    height: { xs: "65px", md: "150px" },
                     width: { xs: "200px", md: "280px" },
                   }}
                 >
-                  ,
                   <Svg color="#212121">
                     <svg height="100%" viewBox="0 0 212.7 41.76">
                       <g>
@@ -221,7 +226,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "50px 0",
+              padding: { xs: "20px 0", md: "50px 0" },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -229,8 +234,8 @@ const Company = () => {
               title={
                 <Box
                   sx={{
-                    width: { xs: "160px", md: "200px" },
-                    padding: "0 0 20px 0",
+                    width: { xs: "130px", md: "200px" },
+                    padding: { xs: "10px 0 20px 0", md: "0 0 20px 0" },
                     maxHeight: "200px",
                   }}
                 >
@@ -253,7 +258,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "50px 0",
+              padding: { xs: "20px 0 0 0 ", md: "25px 0 0 0 " },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -261,8 +266,8 @@ const Company = () => {
               title={
                 <Box
                   sx={{
-                    height: { xs: "100px", md: "140px" },
-                    width: { xs: "100%", md: "280px" },
+                    height: { xs: "75px", md: "140px" },
+                    width: { xs: "200px", md: "280px" },
                   }}
                 >
                   <Svg>
@@ -379,7 +384,7 @@ const Company = () => {
           style={{ width: "100%", height: "100%" }}
         >
           <HeaderTitle
-            p="50px 0 100px 0"
+            p={{ xs: "40px 0 50px 0", md: "50px 0 100px 0" }}
             titleFontSize={{ xs: "28px", md: "30px" }}
             fontWeight={600}
             title="Compañia"
@@ -453,12 +458,12 @@ const Company = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          padding: "50px 0 150px 0",
+          padding: { xs: "10px 0 80px 0", md: "40px 0 150px 0" },
         }}
       >
         <HeaderTitle
-          p="60px 50px 60px 50px"
-          titleFontSize={{ xs: "35px", md: "30px" }}
+          p={{ xs: "40px 0 50px 0", md: "50px 0 100px 0" }}
+          titleFontSize={{ xs: "28px", md: "30px" }}
           fontWeight={600}
           title="Galería de arte"
         />

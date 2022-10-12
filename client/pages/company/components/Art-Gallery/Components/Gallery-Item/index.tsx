@@ -11,7 +11,7 @@ const ImageContainer: SxProps<Theme> = {
 
   fontSize: "20px",
   height: { xs: "350px", md: "400px" },
-  width: { xs: "350px", md: "100%" },
+  width: { xs: "100%", md: "100%" },
 
   img: {
     position: "absolute",

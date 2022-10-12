@@ -68,7 +68,7 @@ const MessageSection = ({
         <Typography
           sx={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: "28px",
+            fontSize: { xs: "24px", md: "28px" },
             fontWeight: "600",
             lineHeight: "36px",
             margin: "0 0 25px  0",
@@ -78,7 +78,7 @@ const MessageSection = ({
         </Typography>
 
         <Typography
-          sx={{ fontFamily: "'Poppins', sans-serif", fontSize: "18px" }}
+          sx={{ fontFamily: "'Poppins', sans-serif",  fontSize: { xs: "17px", md: "25px" }, }}
         >
           {render && description ? description : ""}
         </Typography>

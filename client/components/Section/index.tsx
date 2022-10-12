@@ -75,7 +75,7 @@ const Section = ({
                   sx={{
                     width: "100%",
                     padding: {
-                      xs: "30px 0 0 0",
+                      xs: "15px 0 0 0",
                       md: "0",
                     },
                   }}
@@ -156,7 +156,7 @@ const Section = ({
                       fontWeight: 400,
                       maxWidth: "650px",
                       color: "4F4F4F",
-                      fontSize: { xs: "18px", md: "20px" },
+                      fontSize: { xs: "17px", md: "20px" },
                       textAlign: "left",
                       textAlignLast: "left",
                       height: "100%",
