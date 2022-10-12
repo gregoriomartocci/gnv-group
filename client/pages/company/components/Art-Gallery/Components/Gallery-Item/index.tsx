@@ -10,7 +10,7 @@ const ImageContainer: SxProps<Theme> = {
   textAlign: "center",
 
   fontSize: "20px",
-  height: { xs: "350px", md: "400px" },
+  height: { xs: "350px", md: "475px" },
   width: "100%",
 
   img: {
@@ -82,9 +82,8 @@ const GalleryItem = ({
           <Box sx={{ display: "flex" }}>
             <Typography
               sx={{
-                fontFamily: "'Poppins', sans-serif",
                 margin: "2.5px 0 0 0",
-                fontSize: "25px",
+                fontSize: "20px",
                 fontWeight: 600,
                 color: "#000",
               }}

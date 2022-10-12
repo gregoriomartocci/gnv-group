@@ -49,6 +49,7 @@ export interface ISlidesProps {
   fontColor?: string;
   textFontSize?: string;
   height?: string;
+  objectPosition?: string;
 }
 
 const Main = ({
@@ -62,6 +63,7 @@ const Main = ({
   flip,
   phrase,
   textFontSize,
+  objectPosition,
   fontColor,
   height,
 }: ISlidesProps) => {
@@ -189,11 +191,11 @@ const Main = ({
                     src={img ?? ""}
                     alt=""
                     loading="lazy"
-                    style={
-                      flip
-                        ? { position: "absolute", transform: "scaleX(-1)" }
-                        : { position: "absolute" }
-                    }
+                    style={{
+                      position: "absolute",
+                      transform: flip && "scaleX(-1)",
+                      objectPosition,
+                    }}
                   />
                 )}
                 {!imageOnly ? (
