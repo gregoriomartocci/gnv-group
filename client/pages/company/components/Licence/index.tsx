@@ -12,7 +12,7 @@ const Licence = ({ img, description, width, height }: TDemo) => {
       sx={{
         display: "flex",
         cursor: "pointer",
-        height: "100%",
+        height:  { xs: "200px", md: "80px" },
         overflow: "hidden",
       }}
     >
