@@ -10,8 +10,8 @@ const ImageContainer: SxProps<Theme> = {
   textAlign: "center",
 
   fontSize: "20px",
-  height: { xs: "350px", md: "450px" },
-  width: "100%",
+  height: { xs: "350px", md: "400px" },
+  width: { xs: "350px", md: "100%" },
 
   img: {
     position: "absolute",
@@ -186,7 +186,6 @@ const GalleryItem = ({
             </Typography>
           </Box>
         )} */}
-
       </Box>
     </Box>
   );

@@ -55,8 +55,8 @@ const Venture = (venture: any) => {
                   objectFit: "cover",
                   width: "100%",
                   objectPosition: "70% center",
-                  minHeight: { xs: "360px", md: "200px" },
-                  maxHeight: { xs: "360px", md: "400px" }
+                  minHeight: { xs: "360px", md: "250px" },
+                  maxHeight: { xs: "360px", md: "360px" }
                 },
               }}
             >

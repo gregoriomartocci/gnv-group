@@ -104,9 +104,11 @@ const VenturesLayout = () => {
 
       <Main
         mode="static"
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png"
-        imageOnly
-        height="40vh"
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1664797467/s887xt4eocicdqnfr9m7.jpg"
+        height="100vh"
+        headerTitle="Emprendimientos"
+        buttonLink="/home/#contact"
+        textFontSize={{ xs: "34px", md: "40px" }}
       />
 
       {/* HEADER TITLE */}
@@ -116,44 +118,27 @@ const VenturesLayout = () => {
         whileInView={"onscreen"}
         viewport={{ once: true, amount: 0.5 }}
         variants={FadeFromBottom}
-      >
-        <HeaderTitle
-          p={{ xs: "25% 10% 10% 10%", md: "10% 20% 5% 20%" }}
-          titleFontSize={{ xs: "35px", md: "40px" }}
-          fontWeight={600}
-          descriptionFontSize={{ xs: "18px", md: "25px" }}
-          title="Emprendimientos"
-          description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
-        />
-      </motion.div>
+      ></motion.div>
 
-      <Box sx={{ padding: "25px 12.5% 35px 12.5%" }}>
+      <Box sx={{ padding: "150px 15% 40px 15%" }}>
         <SearchBar
           onChange={onChangeHandler}
           value={input}
           setValue={setInput}
         />
-      </Box>
 
-      {/* FILTER VENTURES */}
+        {/* FILTER VENTURES */}
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-start",
-          width: "100%",
-          padding: { xs: "10px 10% 25px 10%", sm: "45px 10% 70px 10%" },
-        }}
-      >
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
             justifyContent: { xs: "space-between", sm: "flex-start" },
+            padding: "50px 0 20px 0",
             width: "100%",
           }}
         >
-          <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
+          <Box sx={{ margin: { xs: "7.5px 0", sm: "" } }}>
             <Dropdown
               items={status}
               placeholder="Estado"
