@@ -11,23 +11,11 @@ type ILogo = {
   maxWidth?: string;
 };
 
-const Svg = ({ color, margin, maxWidth, children }: ILogo) => {
-  const { width } = useWindowDimensions();
-
-  const xs = width && width < 700;
-  const md = width && width < 1200;
-
+const Svg = ({ color, margin, children }: ILogo) => {
   return (
-    <Box
-      sx={{
-        maxWidth: xs && "100%",
-        maxHeight: xs && "50px",
-      }}
-    >
-      <svg style={{ maxWidth, margin, width: "100%", height: "100%" }}>
-        <g fill={color ?? "#212121"}>{children}</g>
-      </svg>
-    </Box>
+    <svg style={{ margin, width: "100%", height: "100%" }}>
+      <g fill={color ?? "#212121"}>{children}</g>
+    </svg>
   );
 };
 

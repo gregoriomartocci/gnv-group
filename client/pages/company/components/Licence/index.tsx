@@ -12,7 +12,8 @@ const Licence = ({ img, description, width, height }: TDemo) => {
       sx={{
         display: "flex",
         cursor: "pointer",
-        height:  { xs: "200px", md: "80px" },
+        height,
+        width,
         overflow: "hidden",
       }}
     >
@@ -36,6 +37,7 @@ const Licence = ({ img, description, width, height }: TDemo) => {
             justifyContent: "center",
             fontSize: "18px",
             width: "100%",
+            height: "100%",
             flexDirection: { xs: "column", sm: "row" },
             margin: "5px 0",
             padding: "0 0 25 px 0",
@@ -49,11 +51,11 @@ const Licence = ({ img, description, width, height }: TDemo) => {
                     dislpay: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    width: "100%",
+                    height: "100%",
                   }}
                 >
-                  <Svg width={width} height={height}>
-                    {element}
-                  </Svg>
+                  <Svg>{element}</Svg>
                 </Box>
               );
             })}
