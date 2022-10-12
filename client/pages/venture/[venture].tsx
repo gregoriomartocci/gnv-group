@@ -43,11 +43,16 @@ const Venture = () => {
           sx={{
             width: "100vw",
             height: "100vh",
-            maxHeight: " 700px",
+            maxHeight: "700px",
           }}
         >
-          <Menu onScroll />
-          <Box sx={{ padding: "100px 0 0 0 ", width: "100%" }}>
+          <Menu onScroll color="#212121" />
+          <Box
+            sx={{
+              padding: { xs: "80px 0 0 0 ", md: "100px 0 0 0" },
+              width: "100%",
+            }}
+          >
             <HeaderTitle
               titleFontSize={{ xs: "28px", md: "30px" }}
               fontWeight={600}

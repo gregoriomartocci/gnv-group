@@ -457,7 +457,7 @@ const Company = () => {
         }}
       >
         <HeaderTitle
-          p="100px 50px 100px 50px"
+          p="60px 50px 60px 50px"
           titleFontSize={{ xs: "35px", md: "30px" }}
           fontWeight={600}
           title="Galería de arte"
