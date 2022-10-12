@@ -69,14 +69,14 @@ const Card = (
               userSelect: "none",
               flexDirection: "column",
               pointerEvents: "auto",
-              height: "120px",
+              height: { xs: "100px", md: "120px" },
               padding: "65px",
               color: "#fff",
               fontFamily: "'Poppins', sans-serif",
               background: "rgba(255,255,255,0)",
               backdropFilter: "blur(5px)",
               boxShadow: "0 8px 32px rgba(31,38,135, 0.37)",
-              bottom: `${sm ? 0 : hover ? 0 : "-130px"}`,
+              bottom: `${sm ? 0 : hover ? 0 : "-110px"}`,
               transition: "all 1.25s ease",
               transform: "scale(1.05)",
               textAlign: "center",
@@ -84,7 +84,7 @@ const Card = (
           >
             <Typography
               sx={{
-                fontSize: { xs: "30px", md: "26px" },
+                fontSize: { xs: "22px", md: "26px" },
                 fontWeight: 600,
                 fontFamily: "'Poppins', sans-serif !important",
               }}

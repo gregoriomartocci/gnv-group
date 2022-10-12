@@ -87,12 +87,12 @@ function Carousel({ items, year }: ICarousel) {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: "30px 0",
+          padding: "30px 0 0 0",
         }}
       >
         <Typography
           sx={{
-            fontSize: { xs: "20px", md: "26px" },
+            fontSize: { xs: "24px", md: "26px" },
             color: "#bdbdbd",
             fontWeight: 700,
           }}
@@ -108,7 +108,7 @@ function Carousel({ items, year }: ICarousel) {
           alignItems: "center",
           height: "100%",
           width: { xs: "", md: "" },
-          minHeight: { xs: "550px", md: "450px" },
+          minHeight: { xs: "475px", md: "450px" },
           minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
@@ -187,8 +187,8 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
-                        minHeight: md ? "250px" : "100px",
-                        maxHeight: xs ? "225px" : "225px",
+                        minHeight: md ? "250px" : "200px",
+                        maxHeight: xs ? "220px" : "250px",
                         borderRadius: "10px",
                         objectPosition: "center center",
                       }}
@@ -219,7 +219,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "20px", md: "20px" },
+                          fontSize: { xs: "18px", md: "20px" },
                           fontWeight: 600,
                         }}
                       >
@@ -233,13 +233,13 @@ function Carousel({ items, year }: ICarousel) {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
-                        padding: "20px 10px",
+                        padding: "15px 5px",
                       }}
                     >
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "15px", md: "17px" },
+                          fontSize: { xs: "13px", md: "17px" },
                         }}
                       >
                         {description}

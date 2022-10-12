@@ -120,13 +120,15 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       ></motion.div>
 
-      <Box sx={{ padding: "150px 15% 40px 15%" }}>
-        <SearchBar
+      <Box sx={{ padding: "100px 20% 20px 20%" }}>
+         <SearchBar
           onChange={onChangeHandler}
           value={input}
           setValue={setInput}
         />
+      </Box>
 
+      <Box sx={{ padding: "10px 15% 40px 15%" }}>
         {/* FILTER VENTURES */}
 
         <Box

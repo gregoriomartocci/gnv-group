@@ -76,8 +76,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su nombre"
                   height="100%"
                   width="100%"
-                  inputFontSize="16px"
-                  labelFontSize="16px"
+                  inputFontSize={{ xs: "14px", md: "18px" }}
+                  labelFontSize={{ xs: "14px", md: "18px" }}
                 />
               </Box>
               <Box
@@ -92,8 +92,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su email"
                   height="100%"
                   width="100%"
-                  inputFontSize="16px"
-                  labelFontSize="16px"
+                  inputFontSize={{ xs: "14px", md: "18px" }}
+                  labelFontSize={{ xs: "14px", md: "18px" }}
                 />
               </Box>
             </Box>
@@ -106,8 +106,8 @@ const Form = ({ value, setValue }: any) => {
               description="Ingrese su numero de telefono"
               height="100%"
               width="100%"
-              inputFontSize="16px"
-              labelFontSize="16px"
+              inputFontSize={{ xs: "14px", md: "18px" }}
+              labelFontSize={{ xs: "14px", md: "18px" }}
             />
             <TextArea
               label="Mensaje"
@@ -117,8 +117,8 @@ const Form = ({ value, setValue }: any) => {
               description="Deje su mensaje"
               height="125px"
               width="100%"
-              fontSize="16px"
-              labelFontSize="16px"
+              inputFontSize={{ xs: "14px", md: "18px" }}
+              labelFontSize={{ xs: "14px", md: "18px" }}
             />
             <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
               {loading ? (
@@ -132,7 +132,7 @@ const Form = ({ value, setValue }: any) => {
                     width: "100%",
                     justifyContent: "center",
                     alignItems: "center",
-                    fontSize: "17px",
+                    fontSize: "18px",
                     backgroundColor: "#212121",
                     borderRadius: "7.5px",
                     padding: "20px 50px",
@@ -148,7 +148,7 @@ const Form = ({ value, setValue }: any) => {
                     loading ? (
                       <CircularProgress style={{ color: "#fff" }} />
                     ) : (
-                      "ENVIAR"
+                      "enviar"
                     )
                   }
                 />

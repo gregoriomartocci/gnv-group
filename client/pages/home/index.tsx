@@ -197,10 +197,10 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "100px 0 20px 0" }}
-              titleFontSize={{ xs: "28px", md: "32px" }}
+              titleFontSize={{ xs: "24px", md: "30px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "19px", md: "22px" }}
+              descriptionFontSize={{ xs: "15px", md: "18px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -267,7 +267,7 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "60px", md: "" }}
+            p={{ xs: "40px 0 30px 0", md: "" }}
             titleFontSize={{ xs: "25px", md: "28px" }}
             titlePadding="25px"
             fontWeight={600}
@@ -330,11 +330,11 @@ const Home = () => {
       >
         <HeaderTitle
           p="20px 0"
-          titleFontSize={{ xs: "35px", md: "30px" }}
+          titleFontSize={{ xs: "24px", md: "30px" }}
+          descriptionFontSize={{ xs: "18px", md: "20px" }}
           title="Contacto"
           fontWeight={600}
           description="Envianos tu consulta"
-          descriptionFontSize="20px"
         />
 
         <Box sx={{ width: "100%", padding: { xs: "0 10%", md: "0 5%" } }}>
@@ -360,7 +360,7 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: { xs: "180px 10% 80px 10%", md: "180px 10% 100px 10%" },
+            padding: { xs: "50px 10% 80px 10%", md: "180px 10% 100px 10%" },
           }}
         >
           <UseTabs items={mapItems} tab={tab} setTab={setTab} />

@@ -30,7 +30,7 @@ const SearchBar = ({
         justifyContent: "flex-start",
         alignItems: "center",
         padding: "25px 5px",
-        borderBottom: "3px solid #e0e0e0",
+        borderBottom: "2.25px solid #e0e0e0",
         width: "100%",
       }}
     >
