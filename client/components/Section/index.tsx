@@ -178,7 +178,19 @@ const Section = ({
             viewport={{ once: false, amount: 0 }}
             variants={reverse ? FadeFromLeft : FadeFromRight}
           >
-            <Box sx={ColumRight}>
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                height: "100%",
+                justifyContent: !reverse && "flex-end",
+
+                img: {
+                  width: "100%",
+                  objectFit: "cover",
+                },
+              }}
+            >
               <img
                 style={{ maxWidth: imageMaxWidth, maxHeight: imageMaxHeight }}
                 src={image}
