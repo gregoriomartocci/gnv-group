@@ -86,6 +86,7 @@ a {
 .swiper-rtl .swiper-button-next {
   color: #fff !important;
   left: 40px !important;
+
 }
 
 /* Next Arrow */
@@ -94,17 +95,6 @@ a {
 .swiper-rtl .swiper-button-next {
   color: #fff !important;
   right: 60px !important;
-}
-
-@media (max-width: 769px) {
-  .swiper-button-prev,
-  .swiper-rtl .swiper-button-next {
-    display: none !important;
-  }
-  .swiper-button-next,
-  .swiper-rtl .swiper-button-next {
-    display: none !important;
-  }
 }
 
 /* Swiper Bullets */

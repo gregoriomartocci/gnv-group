@@ -32,7 +32,7 @@ const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: { xs: "280px", md: "500px" },
+    height: { xs: "250px", md: "300px" },
   },
 };
 
@@ -113,7 +113,7 @@ const ArticleCard = (article: TArticle) => {
                       margin: "15px 0 0 0",
                     }}
                   >
-                    {santize(sliceText(article?.description, 125) ?? "")}
+                    {santize(sliceText(article?.description, 150) ?? "")}
                   </Box>
 
                   <Box
@@ -148,9 +148,9 @@ const News = () => {
       <Menu onScroll color="#212121" />
       <Box>
         <HeaderTitle
-          titleFontSize={{ xs: "30px", md: "38px" }}
+          titleFontSize={{ xs: "30px", md: "30px" }}
           fontWeight={600}
-          p={{ xs: "150px 0 00", md: "150px 0 100px 0" }}
+          p={{ xs: "150px 0 00", md: "120px 0 50px 0" }}
           title="Noticias destacadas"
         />
       </Box>
@@ -175,13 +175,13 @@ const News = () => {
       </Box>
 
       <HeaderTitle
-        titleFontSize={{ xs: "30px", md: "38px" }}
+        titleFontSize={{ xs: "30px", md: "30px" }}
         fontWeight={600}
-        p={{ xs: "25px 0 60px 0", md: "100px  20px" }}
+        p={{ xs: "25px 0 60px 0", md: "70px 0 100px 0px" }}
         title="Todas la noticias"
       />
 
-      <Box sx={{ padding: "0 10%" }}>
+      <Box sx={{ padding: "0 10% 150px 10%" }}>
         <Grid container rowSpacing={5} columnSpacing={5}>
           {news_mock
             ? news_mock?.map((item, i) => (
@@ -193,7 +193,7 @@ const News = () => {
         </Grid>
       </Box>
 
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           padding: "50px 0 0 0",
@@ -202,7 +202,7 @@ const News = () => {
         }}
       >
         <UseButton type="Primary">Ver Mas</UseButton>
-      </Box>
+      </Box> */}
       <Footer />
     </Box>
   );

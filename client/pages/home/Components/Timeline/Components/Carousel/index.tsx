@@ -187,7 +187,7 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
-                        minHeight: md ? "200px" : "100px",
+                        minHeight: md ? "250px" : "100px",
                         maxHeight: xs ? "225px" : "225px",
                         borderRadius: "10px",
                         objectPosition: "center center",

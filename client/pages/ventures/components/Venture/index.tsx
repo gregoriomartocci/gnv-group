@@ -67,8 +67,8 @@ const Venture = (venture: any) => {
                 <Typography
                   sx={{
                     color: "#212121",
-                    fontWeight: 700,
-                    fontSize: { xs: "26px", md: "30px" },
+                    fontWeight: 600,
+                    fontSize: { xs: "24px", md: "26px" },
                     margin: "15px 0 0 0",
                   }}
                 >
@@ -107,12 +107,12 @@ const Venture = (venture: any) => {
                     fontWeight: 500,
                     fontSize: "16px",
                     margin: "5px 0 0 0",
-                    lineHeight: { xs: "25px", md: "28px" },
-                    textAlign: "justify !important",
+                    lineHeight: { xs: "25px", md: "22px" },
+                    textAlign: "left !important",
                   }}
                 >
                   {venture?.description
-                    ? santize(sliceText(venture?.description, 150))
+                    ? santize(sliceText(venture?.description, 200))
                     : ""}
                 </Box>
 
