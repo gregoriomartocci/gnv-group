@@ -427,7 +427,7 @@ const Company = () => {
           >
             <HeaderTitle
               p={{ xs: "0", md: "20px 25px 200px 25px" }}
-              fontWeight={500}
+              fontWeight={600}
               titleWidth={{ xs: "300px", md: "max-content" }}
               titleFontSize={{ xs: "22px", md: "26px" }}
               title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"

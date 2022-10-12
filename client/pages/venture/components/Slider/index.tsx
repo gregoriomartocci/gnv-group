@@ -32,9 +32,9 @@ const Slider = ({ items }: any) => {
         justifyContent: "space-between",
         alignItems: "center",
         overflowX: "hidden",
-        height: { xs: "300px", sm: "100%" },
+        height: { xs: "400px", md: "600px" },
         padding: { xs: "0", sm: "0 5%" },
-        margin: { xs: "10% 0", md: "5% 0" },
+        margin: { xs: "10% 0", md: "50px 0" },
         position: "relative",
       }}
     >

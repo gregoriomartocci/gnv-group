@@ -47,10 +47,10 @@ const Venture = () => {
           }}
         >
           <Menu onScroll />
-          <Box sx={{ padding: "150px 0 0 0 ", width: "100%" }}>
+          <Box sx={{ padding: "100px 0 0 0 ", width: "100%" }}>
             <HeaderTitle
-              titleFontSize={{ xs: "40px", md: "50px" }}
-              fontWeight={700}
+              titleFontSize={{ xs: "28px", md: "30px" }}
+              fontWeight={600}
               title={project?.name ?? ""}
               p="0 10%"
               titleLineHeight="50px"
