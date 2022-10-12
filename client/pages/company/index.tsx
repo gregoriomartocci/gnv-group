@@ -157,7 +157,7 @@ const Company = () => {
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
         flip
         fontColor="#212121"
-        textFontSize={{ xs: "34px", md: "40px" }}
+        textFontSize={{ xs: "30px", md: "40px" }}
       />
 
       {/* SECTION */}
