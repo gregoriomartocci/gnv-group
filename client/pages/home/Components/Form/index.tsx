@@ -43,7 +43,6 @@ const Form = ({ value, setValue }: any) => {
       );
       setLoading(false);
       setValue({ name: "", phone: "", email: "", message: "" });
-      console.log("que pasa che");
     } catch {
       setLoading(false);
     }

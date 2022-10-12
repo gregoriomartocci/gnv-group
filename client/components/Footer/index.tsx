@@ -46,7 +46,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "22px",
+                  fontSize: { xs: "18px", md: "22px" },
                   fontWeight: "600",
                 }}
               >
@@ -60,7 +60,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "22px",
+                  fontSize: { xs: "18px", md: "22px" },
                   fontWeight: "600",
                 }}
               >
@@ -74,7 +74,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "22px",
+                  fontSize: { xs: "18px", md: "22px" },
                   fontWeight: "600",
                 }}
               >
@@ -88,7 +88,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: "22px",
+                  fontSize: { xs: "18px", md: "22px" },
                   fontWeight: "600",
                 }}
               >

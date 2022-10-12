@@ -174,7 +174,7 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "flex-start",
+          justifyContent: { xs: "center", md: "flex-start" },
           width: "100vw",
           minHeight: "100vh",
           height: { xs: "60vh", sm: "80vh" },
@@ -186,7 +186,7 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: "5% 0",
+            padding: "50px 0",
           }}
         >
           <motion.div
@@ -298,7 +298,7 @@ const Home = () => {
           alignItems: { xs: "flex-start", md: "center" },
           minHeight: { xs: "", md: "80vh" },
           width: "100%",
-          padding: { xs: "20% 5%", md: "50px 10%" },
+          padding: { xs: "50px 25px 50px 25px", md: "50px 10%" },
         }}
       >
         <Section

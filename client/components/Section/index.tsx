@@ -104,7 +104,7 @@ const Section = ({
                       textAlign: "left",
                       width: "100%",
                       fontSize: {
-                        xs: "20px",
+                        xs: "18px",
                         md: "26px",
                       },
                       height: "100%",
