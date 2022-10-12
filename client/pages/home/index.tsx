@@ -174,7 +174,7 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           width: "100vw",
           minHeight: "100vh",
           height: { xs: "60vh", sm: "80vh" },
@@ -196,7 +196,7 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p={{ xs: "0 15px", md: "5% 0" }}
+              p={{ xs: "0 15px", md: "100px 0 20px 0" }}
               titleFontSize={{ xs: "28px", md: "32px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}

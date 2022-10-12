@@ -43,6 +43,7 @@ const CarouselB = ({ items }) => {
                 alignItems: "center",
                 width: "100vw",
                 height: "60vh",
+                cursor: "pointer",
               }}
             >
               {/* <Typography
@@ -59,7 +60,6 @@ const CarouselB = ({ items }) => {
               >
                 {element?.phrase}
               </Typography> */}
-
 
               {getFormat(element?.src) === "MP4" ? (
                 <video
