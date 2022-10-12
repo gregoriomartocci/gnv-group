@@ -54,8 +54,9 @@ const Venture = (venture: any) => {
                 img: {
                   objectFit: "cover",
                   width: "100%",
-                  objectPosition: "70% 0",
-                  minHeight: { xs: "360px", md: "400px" },
+                  objectPosition: "70% center",
+                  minHeight: { xs: "360px", md: "200px" },
+                  maxHeight: { xs: "360px", md: "400px" }
                 },
               }}
             >

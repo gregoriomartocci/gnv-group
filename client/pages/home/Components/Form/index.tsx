@@ -77,7 +77,7 @@ const Form = ({ value, setValue }: any) => {
                   height="100%"
                   width="100%"
                   inputFontSize="16px"
-                  labelFontSize="18px"
+                  labelFontSize="16px"
                 />
               </Box>
               <Box
@@ -92,8 +92,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su email"
                   height="100%"
                   width="100%"
-                  inputFontSize="18px"
-                  labelFontSize="18px"
+                  inputFontSize="16px"
+                  labelFontSize="16px"
                 />
               </Box>
             </Box>
@@ -106,8 +106,8 @@ const Form = ({ value, setValue }: any) => {
               description="Ingrese su numero de telefono"
               height="100%"
               width="100%"
-              inputFontSize="18px"
-              labelFontSize="18px"
+              inputFontSize="16px"
+              labelFontSize="16px"
             />
             <TextArea
               label="Mensaje"
@@ -117,8 +117,8 @@ const Form = ({ value, setValue }: any) => {
               description="Deje su mensaje"
               height="125px"
               width="100%"
-              fontSize="18px"
-     
+              fontSize="16px"
+              labelFontSize="16px"
             />
             <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
               {loading ? (

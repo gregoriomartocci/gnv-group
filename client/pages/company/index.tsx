@@ -176,7 +176,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "5% 0",
+              padding: "50px 0",
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -215,13 +215,14 @@ const Company = () => {
               paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
               imageMaxWidth="700px"
+              imageMaxHeight="400px"
             />
           </Box>
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "5% 0",
+              padding: "50px 0",
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -231,6 +232,7 @@ const Company = () => {
                   sx={{
                     width: { xs: "160px", md: "235px" },
                     padding: "0 0 20px 0",
+                    maxHeight: "400px",
                   }}
                 >
                   <Image
@@ -245,13 +247,14 @@ const Company = () => {
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
               imageMaxWidth="700px"
+              imageMaxHeight="400px"
             />
           </Box>
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: "5% 0",
+              padding: "50px 0",
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -300,6 +303,7 @@ const Company = () => {
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664804808/xkqyxa7gg7bnlj0gwy0o.jpg"
               imageMaxWidth="700px"
+              imageMaxHeight="400px"
             />
           </Box>
         </motion.div>
@@ -352,6 +356,7 @@ const Company = () => {
             height: "100%",
             alignItems: "center",
             justifyContent: "space-around",
+            flexWrap: "wrap",
           }}
         >
           {licences && licences?.length

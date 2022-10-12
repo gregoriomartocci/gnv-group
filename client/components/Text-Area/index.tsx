@@ -11,6 +11,7 @@ type Type = {
   height?: string;
   width?: string;
   fontSize?: string;
+  labelFontSize?: string;
 };
 
 const TextArea = ({
@@ -22,12 +23,13 @@ const TextArea = ({
   height,
   width,
   fontSize,
+  labelFontSize,
 }: Type) => {
   return (
     <Box>
       <Typography
         sx={{
-          fontSize: "20px",
+          fontSize: labelFontSize,
           color: "#212121",
           fontWeight: "600",
           margin: "5px 0",

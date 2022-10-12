@@ -44,6 +44,7 @@ const Section = ({
   paddingColumnLeft,
   bodyTextPadding,
   imageMaxWidth,
+  imageMaxHeight,
   author,
   image,
   reverse,
@@ -178,7 +179,11 @@ const Section = ({
             variants={reverse ? FadeFromLeft : FadeFromRight}
           >
             <Box sx={ColumRight}>
-              <img style={{ maxWidth: imageMaxWidth }} src={image} alt="home" />
+              <img
+                style={{ maxWidth: imageMaxWidth, maxHeight: imageMaxHeight }}
+                src={image}
+                alt="home"
+              />
             </Box>
           </motion.div>
         </Box>
