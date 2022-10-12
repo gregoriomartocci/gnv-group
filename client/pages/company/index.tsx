@@ -99,7 +99,7 @@ const licences = [
       </svg>,
     ],
     width: { xs: "100%", md: "200px" },
-    height: { xs: "150px", md: "100%" },
+    height: { xs: "140px", md: "100%" },
   },
   {
     img: [
@@ -112,7 +112,7 @@ const licences = [
       </svg>,
     ],
     width: { xs: "100%", md: "130px" },
-    height: { xs: "150px", md: "100%" },
+    height: { xs: "140px", md: "100%" },
   },
   {
     img: [
@@ -126,7 +126,7 @@ const licences = [
       </svg>,
     ],
     width: { xs: "100%", md: "250px" },
-    height: { xs: "150px", md: "100%" },
+    height: { xs: "130px", md: "100%" },
   },
 ];
 
@@ -324,7 +324,7 @@ const Company = () => {
           justifyContent: "space-center",
           height: "100%",
           width: "100vw",
-          padding: "10px 7.5%",
+          padding: "40px 7.5%",
           backgroundColor: "#f5f5f5",
         }}
       >
@@ -458,7 +458,7 @@ const Company = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          padding: { xs: "10px 0 80px 0", md: "40px 0 150px 0" },
+          padding: { xs: "0 0 80px 0", md: "40px 0 150px 0" },
         }}
       >
         <HeaderTitle
