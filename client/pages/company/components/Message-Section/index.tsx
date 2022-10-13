@@ -68,7 +68,7 @@ const MessageSection = ({
         <Typography
           sx={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: { xs: "24px", md: "28px" },
+            fontSize: { xs: "22px", md: "26px" },
             fontWeight: "600",
             lineHeight: "36px",
             margin: "0 0 25px  0",

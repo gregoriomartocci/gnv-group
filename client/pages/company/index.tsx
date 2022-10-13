@@ -235,7 +235,7 @@ const Company = () => {
                 <Box
                   sx={{
                     width: { xs: "130px", md: "200px" },
-                    padding: { xs: "10px 0 20px 0", md: "0 0 20px 0" },
+                    padding: { xs: "10px 0 10px 0", md: "0 0 20px 0" },
                     maxHeight: "200px",
                   }}
                 >

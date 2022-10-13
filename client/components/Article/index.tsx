@@ -53,7 +53,7 @@ const Article = ({
               sx={{
                 color: "#000",
                 fontWeight: 600,
-                fontSize: { xs: "24px", md: "30px" },
+                fontSize: { xs: "20px", md: "30px" },
                 margin: "10px 0",
               }}
             >

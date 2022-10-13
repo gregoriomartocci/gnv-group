@@ -82,7 +82,7 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
   };
 
   const changeBackground = () => {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 40) {
       setNavbar(true);
     } else {
       setNavbar(false);

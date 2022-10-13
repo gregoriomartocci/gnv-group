@@ -26,7 +26,7 @@ function Carousel({ items, year }: ICarousel) {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: xs ? "225px" : sm ? "250px" : "275px",
+    width: xs ? "190px" : sm ? "250px" : "275px",
     backgroundColor: "#fff",
     borderRadius: "15px",
     cursor: "pointer",
@@ -34,7 +34,7 @@ function Carousel({ items, year }: ICarousel) {
     fontSize: "20px",
     boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
     padding: "10px",
-    margin: sm ? "-75px" : "-80px",
+    margin: xs ? "-65px" : "-75px",
   };
 
   const slides = [0, 2, 3, 4];

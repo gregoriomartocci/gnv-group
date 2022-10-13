@@ -19,7 +19,7 @@ export const ProjectContainer: SxProps<Theme> = {
     width: "100%",
     borderRadius: { xs: "15px 15px 0 0", md: "15px 0 0 15px" },
     maxWidth: "100%",
-    minHeight: { xs: "270px", sm: "" },
+    minHeight: { xs: "200px", sm: "" },
     objectFit: "cover",
     objectPosition: "center center",
   },
