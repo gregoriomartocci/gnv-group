@@ -181,7 +181,7 @@ const News = () => {
         title="Todas la noticias"
       />
 
-      <Box sx={{ padding: "0 10% 150px 10%" }}>
+      <Box sx={{ padding: "0 10%" }}>
         <Grid container rowSpacing={5} columnSpacing={5}>
           {news_mock
             ? news_mock?.map((item, i) => (
