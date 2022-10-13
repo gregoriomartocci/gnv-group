@@ -39,7 +39,7 @@ const Dropdown = ({
           width,
           position: "relative",
           justifyContent: "space-between",
-          padding: { xs: "25px", sm: "15px 25px" },
+          padding: { xs: "12.5px 25px", sm: "15px 25px" },
           borderRadius: "5px",
           cursor: "pointer",
           // border: "2px solid #eeeeee",

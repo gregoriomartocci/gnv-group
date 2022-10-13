@@ -120,42 +120,42 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       ></motion.div>
 
-      <Box sx={{ padding: "100px 20% 20px 20%" }}>
-         <SearchBar
+      <Box
+        sx={{ padding: { xs: "35px 10% 20px 10%", md: "100px 20% 20px 20%" } }}
+      >
+        <SearchBar
           onChange={onChangeHandler}
           value={input}
           setValue={setInput}
         />
       </Box>
 
-      <Box sx={{ padding: "10px 15% 40px 15%" }}>
-        {/* FILTER VENTURES */}
+      {/* FILTER VENTURES */}
 
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
-            justifyContent: { xs: "space-between", sm: "flex-start" },
-            padding: "50px 0 20px 0",
-            width: "100%",
-          }}
-        >
-          <Box sx={{ margin: { xs: "7.5px 0", sm: "" } }}>
-            <Dropdown
-              items={status}
-              placeholder="Estado"
-              width={{ xs: "100%", sm: "250px" }}
-              action={filterVenturesStatus}
-            />
-          </Box>
-          <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
-            <Dropdown
-              items={type}
-              placeholder="Tipo"
-              width={{ xs: "100%", sm: "250px" }}
-              action={filterVenturesTypes}
-            />
-          </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          justifyContent: { xs: "space-between", sm: "flex-start" },
+          padding: { xs: "10px 10% 40px 10%", md: "" },
+          width: "100%",
+        }}
+      >
+        <Box sx={{ margin: { xs: "7.5px 0", sm: "" } }}>
+          <Dropdown
+            items={status}
+            placeholder="Estado"
+            width={{ xs: "100%", sm: "250px" }}
+            action={filterVenturesStatus}
+          />
+        </Box>
+        <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
+          <Dropdown
+            items={type}
+            placeholder="Tipo"
+            width={{ xs: "100%", sm: "250px" }}
+            action={filterVenturesTypes}
+          />
         </Box>
       </Box>
 
