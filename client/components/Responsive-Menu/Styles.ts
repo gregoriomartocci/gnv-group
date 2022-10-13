@@ -51,7 +51,7 @@ export const DropdownLink: SxProps<Theme> = {
   justifyContent: "flex-end",
   padding: "15px 50px",
   color: "#212121",
-  fontSize: { xs: "19px", md: "22px" },
+  fontSize: { xs: "16px", md: "22px" },
   width: "100%",
   textDecoration: "none",
   transition: "0.2s ease-in-out",

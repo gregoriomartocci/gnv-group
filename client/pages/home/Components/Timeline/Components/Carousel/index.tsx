@@ -26,7 +26,7 @@ function Carousel({ items, year }: ICarousel) {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: xs ? "190px" : sm ? "250px" : "275px",
+    width: xs ? "175px" : sm ? "250px" : "275px",
     backgroundColor: "#fff",
     borderRadius: "15px",
     cursor: "pointer",
@@ -34,7 +34,7 @@ function Carousel({ items, year }: ICarousel) {
     fontSize: "20px",
     boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
     padding: "10px",
-    margin: xs ? "-65px" : "-75px",
+    margin: xs ? "-60px" : "-75px",
   };
 
   const slides = [0, 2, 3, 4];
@@ -92,7 +92,7 @@ function Carousel({ items, year }: ICarousel) {
       >
         <Typography
           sx={{
-            fontSize: { xs: "24px", md: "26px" },
+            fontSize: { xs: "20px", md: "26px" },
             color: "#bdbdbd",
             fontWeight: 700,
           }}
@@ -108,7 +108,7 @@ function Carousel({ items, year }: ICarousel) {
           alignItems: "center",
           height: "100%",
           width: { xs: "", md: "" },
-          minHeight: { xs: "475px", md: "450px" },
+          minHeight: { xs: "425px", md: "450px" },
           minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
@@ -187,8 +187,8 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
-                        minHeight: md ? "250px" : "200px",
-                        maxHeight: xs ? "220px" : "250px",
+                        minHeight: md ? "250px" : "150px",
+                        maxHeight: xs ? "170px" : "250px",
                         borderRadius: "10px",
                         objectPosition: "center center",
                       }}
@@ -212,14 +212,14 @@ function Carousel({ items, year }: ICarousel) {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
-                        padding: "20px 0 0 0",
+                        padding: "15px 0 0 0",
                         fontSize: "12px",
                       }}
                     >
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "18px", md: "20px" },
+                          fontSize: { xs: "16px", md: "20px" },
                           fontWeight: 600,
                         }}
                       >
@@ -233,7 +233,7 @@ function Carousel({ items, year }: ICarousel) {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
-                        padding: "15px 5px",
+                        padding: "10px 5px 5px 5px",
                       }}
                     >
                       <Typography

@@ -51,7 +51,11 @@ const Dropdown = ({
         onClick={handleClick}
       >
         <Typography
-          sx={{ fontSize: "17px", fontWeight: 500, color: "#9e9e9e" }}
+          sx={{
+            fontSize: { xs: "15px", md: "17px" },
+            fontWeight: 500,
+            color: "#9e9e9e",
+          }}
         >
           {!selected ? placeholder : selected}
         </Typography>

@@ -137,7 +137,7 @@ const VenturesLayout = () => {
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: { xs: "space-between", sm: "flex-start" },
-          padding: { xs: "10px 10% 40px 10%", md: "" },
+          padding: { xs: "10px 10% 25px 10%", md: "" },
           width: "100%",
         }}
       >

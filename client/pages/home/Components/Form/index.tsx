@@ -75,8 +75,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su nombre"
                   height="100%"
                   width="100%"
-                  inputFontSize={{ xs: "14px", md: "18px" }}
-                  labelFontSize={{ xs: "14px", md: "18px" }}
+                  inputFontSize={{ xs: "13px", md: "18px" }}
+                  labelFontSize={{ xs: "13px", md: "18px" }}
                 />
               </Box>
               <Box
@@ -91,8 +91,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su email"
                   height="100%"
                   width="100%"
-                  inputFontSize={{ xs: "14px", md: "18px" }}
-                  labelFontSize={{ xs: "14px", md: "18px" }}
+                  inputFontSize={{ xs: "13px", md: "18px" }}
+                  labelFontSize={{ xs: "13px", md: "18px" }}
                 />
               </Box>
             </Box>
@@ -105,8 +105,8 @@ const Form = ({ value, setValue }: any) => {
               description="Ingrese su numero de telefono"
               height="100%"
               width="100%"
-              inputFontSize={{ xs: "14px", md: "18px" }}
-              labelFontSize={{ xs: "14px", md: "18px" }}
+              inputFontSize={{ xs: "13px", md: "18px" }}
+              labelFontSize={{ xs: "13px", md: "18px" }}
             />
             <TextArea
               label="Mensaje"
@@ -114,10 +114,10 @@ const Form = ({ value, setValue }: any) => {
               value={value ? value?.message : ""}
               onChangeHandler={onChangeHandler}
               description="Deje su mensaje"
-              height="125px"
+              height={{ xs: "80px", md: "125px" }}
               width="100%"
-              inputFontSize={{ xs: "14px", md: "18px" }}
-              labelFontSize={{ xs: "14px", md: "18px" }}
+              inputFontSize={{ xs: "13px", md: "18px" }}
+              labelFontSize={{ xs: "13px", md: "18px" }}
             />
             <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
               {loading ? (

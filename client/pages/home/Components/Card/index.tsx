@@ -70,7 +70,7 @@ const Card = (
               flexDirection: "column",
               pointerEvents: "auto",
               height: { xs: "100px", md: "120px" },
-              padding: "65px",
+              padding: { xs: "10px", md: "65px" },
               color: "#fff",
               fontFamily: "'Poppins', sans-serif",
               background: "rgba(255,255,255,0)",
@@ -84,7 +84,7 @@ const Card = (
           >
             <Typography
               sx={{
-                fontSize: { xs: "22px", md: "26px" },
+                fontSize: { xs: "18px", md: "26px" },
                 fontWeight: 600,
                 fontFamily: "'Poppins', sans-serif !important",
               }}

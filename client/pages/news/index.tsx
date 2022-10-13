@@ -148,7 +148,7 @@ const News = () => {
       <Menu onScroll color="#212121" />
       <Box>
         <HeaderTitle
-          titleFontSize={{ xs: "26px", md: "30px" }}
+          titleFontSize={{ xs: "20px", md: "30px" }}
           fontWeight={600}
           p={{ xs: "110px 0 00", md: "120px 0 50px 0" }}
           title="Noticias destacadas"
@@ -175,7 +175,7 @@ const News = () => {
       </Box>
 
       <HeaderTitle
-        titleFontSize={{ xs: "26px", md: "30px" }}
+        titleFontSize={{ xs: "20px", md: "30px" }}
         fontWeight={600}
         p={{ xs: "0 0 60px 0", md: "70px 0 100px 0px" }}
         title="Todas la noticias"

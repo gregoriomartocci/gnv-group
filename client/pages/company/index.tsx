@@ -341,7 +341,7 @@ const Company = () => {
           <HeaderTitle
             title="Licencias"
             p="0 15px"
-            titleFontSize="30px"
+            titleFontSize={{ xs: "24px", md: "28px" }}
             fontWeight={600}
             titlePadding="10px 0"
             descriptionFontSize="20px"
@@ -385,7 +385,7 @@ const Company = () => {
         >
           <HeaderTitle
             p={{ xs: "40px 0 50px 0", md: "50px 0 100px 0" }}
-            titleFontSize={{ xs: "28px", md: "30px" }}
+            titleFontSize={{ xs: "24px", md: "30px" }}
             fontWeight={600}
             title="Compañia"
             color="#000"
@@ -397,7 +397,7 @@ const Company = () => {
               description={
                 render
                   ? sanitize(
-                      "<p> Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay. </br> </br> Siempre atentos a la dinámica, necesidades y expectativas, nuestro esfuerzo está puesto en detectar y anticiparnos a las tendencias del mercado internacional, lo que nos ha permitido generar y fortalecer alianzas con marcas como World Trade Center y la cadena hotelera Marriott a través de su marca “W”, entre otras. </p> "
+                      "<p> Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay. </br> </p> "
                     )
                   : ""
               }
@@ -463,7 +463,7 @@ const Company = () => {
       >
         <HeaderTitle
           p={{ xs: "40px 0 50px 0", md: "50px 0 100px 0" }}
-          titleFontSize={{ xs: "28px", md: "30px" }}
+          titleFontSize={{ xs: "24px", md: "30px" }}
           fontWeight={600}
           title="Galería de arte"
         />

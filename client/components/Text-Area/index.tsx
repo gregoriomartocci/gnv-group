@@ -37,21 +37,23 @@ const TextArea = ({
       >
         {label}
       </Typography>
-      <textarea
-        style={{
-          display: "flex",
-          padding: "15px",
-          width,
-          height,
-          borderRadius: "5px",
-          fontSize,
-          border: "1px solid #e0e0e0",
-        }}
-        value={value}
-        name={name}
-        placeholder={description}
-        onChange={onChangeHandler}
-      />
+      <Box sx={{ height }}>
+        <textarea
+          style={{
+            display: "flex",
+            padding: "15px",
+            width: "100%",
+            height: "100%",
+            borderRadius: "5px",
+            fontSize,
+            border: "1px solid #e0e0e0",
+          }}
+          value={value}
+          name={name}
+          placeholder={description}
+          onChange={onChangeHandler}
+        />
+      </Box>
     </Box>
   );
 };

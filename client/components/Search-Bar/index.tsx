@@ -38,7 +38,14 @@ const SearchBar = ({
         sx={{ margin: "0  20px 0 5px", fontSize: "28px", color: "#bcbcbc" }}
       />
       <InputBase
-        sx={SearchInput}
+        sx={{
+          display: "flex",
+          width: "100%",
+          flexDirection: "column",
+          fontFamily: "'Poppins', sans-serif",
+          color: "#757575",
+          fontSize: {sx:"18px", md:"20px"} ,
+        }}
         placeholder="Búsqueda por nombre"
         value={value.search}
         onChange={onChangeHandler}

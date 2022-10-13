@@ -200,7 +200,7 @@ const Home = () => {
               titleFontSize={{ xs: "24px", md: "30px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "15px", md: "18px" }}
+              descriptionFontSize={{ xs: "15px", md: "22px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -268,8 +268,8 @@ const Home = () => {
         >
           <HeaderTitle
             p={{ xs: "40px 0 30px 0", md: "" }}
-            titleFontSize={{ xs: "25px", md: "28px" }}
-            titlePadding="25px"
+            titleFontSize={{ xs: "20px", md: "28px" }}
+            titlePadding="25px 0 0 0"
             fontWeight={600}
             title="Trayectoria"
           />
@@ -298,7 +298,7 @@ const Home = () => {
           alignItems: { xs: "flex-start", md: "center" },
           minHeight: { xs: "", md: "80vh" },
           width: "100%",
-          padding: { xs: "50px 25px 50px 25px", md: "50px 10%" },
+          padding: { xs: "85px 25px 80px 25px", md: "50px 10%" },
         }}
       >
         <Section
@@ -330,8 +330,8 @@ const Home = () => {
       >
         <HeaderTitle
           p="20px 0"
-          titleFontSize={{ xs: "24px", md: "30px" }}
-          descriptionFontSize={{ xs: "18px", md: "20px" }}
+          titleFontSize={{ xs: "20px", md: "30px" }}
+          descriptionFontSize={{ xs: "16px", md: "20px" }}
           title="Contacto"
           fontWeight={600}
           description="Envianos tu consulta"
@@ -360,7 +360,7 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: { xs: "50px 10% 80px 10%", md: "180px 10% 100px 10%" },
+            padding: { xs: "50px 10% 40px 10%", md: "180px 10% 100px 10%" },
           }}
         >
           <UseTabs items={mapItems} tab={tab} setTab={setTab} />

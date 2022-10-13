@@ -55,8 +55,8 @@ const Venture = (venture: any) => {
                   objectFit: "cover",
                   width: "100%",
                   objectPosition: "70% center",
-                  minHeight: { xs: "360px", md: "250px" },
-                  maxHeight: { xs: "360px", md: "360px" }
+                  minHeight: { xs: "200px", md: "250px" },
+                  maxHeight: { xs: "260px", md: "360px" },
                 },
               }}
             >
@@ -69,7 +69,7 @@ const Venture = (venture: any) => {
                   sx={{
                     color: "#212121",
                     fontWeight: 600,
-                    fontSize: { xs: "24px", md: "26px" },
+                    fontSize: { xs: "22px", md: "26px" },
                     margin: "15px 0 0 0",
                   }}
                 >
@@ -88,14 +88,14 @@ const Venture = (venture: any) => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    margin: "10px 0 10px 0",
+                    margin: "5px 0 0 0",
                   }}
                 >
                   <Typography
                     sx={{
                       color: "#4f4f4f",
                       fontWeight: 700,
-                      fontSize: "16px",
+                      fontSize: { xs: "14px", md: "16px" },
                     }}
                   >
                     {venture?.status ? venture?.status : ""}
@@ -106,7 +106,7 @@ const Venture = (venture: any) => {
                   sx={{
                     color: "#4f4f4f",
                     fontWeight: 500,
-                    fontSize: "16px",
+                    fontSize: { xs: "14px", md: "16px" },
                     margin: "5px 0 0 0",
                     lineHeight: { xs: "25px", md: "22px" },
                     textAlign: "left !important",
@@ -123,8 +123,8 @@ const Venture = (venture: any) => {
                     alignItems: "center",
                     color: "#000",
                     fontWeight: 600,
-                    fontSize: "16px",
-                    margin: "18px 0 0 0",
+                    fontSize: "14px",
+                    margin: "7.5px 0 0 0",
                   }}
                   onClick={() => handleClick(venture)}
                 >
