@@ -157,7 +157,7 @@ const Company = () => {
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
         flip
         fontColor="#212121"
-        textFontSize={{ xs: "30px", md: "40px" }}
+        textFontSize={{ xs: "25px", md: "40px" }}
       />
 
       {/* SECTION */}
@@ -181,7 +181,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: { xs: "20px 0", md: "50px 0" },
+              padding: { xs: "20px 0", md: "25px 0 0 0 " },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -226,7 +226,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: { xs: "20px 0", md: "50px 0" },
+              padding: { xs: "20px 0", md: "25px 0 0 0 " },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -258,7 +258,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: { xs: "20px 0 0 0 ", md: "25px 0 0 0 " },
+              padding: { xs: "20px 0", md: "25px 0 0 0 " },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -384,7 +384,7 @@ const Company = () => {
           style={{ width: "100%", height: "100%" }}
         >
           <HeaderTitle
-            p={{ xs: "40px 0 50px 0", md: "50px 0 100px 0" }}
+            p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
             titleFontSize={{ xs: "24px", md: "30px" }}
             fontWeight={600}
             title="Compañia"
@@ -462,7 +462,7 @@ const Company = () => {
         }}
       >
         <HeaderTitle
-          p={{ xs: "40px 0 50px 0", md: "50px 0 100px 0" }}
+          p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
           titleFontSize={{ xs: "24px", md: "30px" }}
           fontWeight={600}
           title="Galería de arte"

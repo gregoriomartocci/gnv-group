@@ -28,7 +28,7 @@ function Carousel({ items, year }: ICarousel) {
     flexDirection: "column",
     width: xs ? "175px" : sm ? "250px" : "275px",
     backgroundColor: "#fff",
-    borderRadius: "15px",
+    borderRadius: xs ? "7.5px" : "15px",
     cursor: "pointer",
     fontFamily: "'Poppins', sans-serif",
     fontSize: "20px",
@@ -108,7 +108,7 @@ function Carousel({ items, year }: ICarousel) {
           alignItems: "center",
           height: "100%",
           width: { xs: "", md: "" },
-          minHeight: { xs: "425px", md: "450px" },
+          minHeight: { xs: "375px", md: "450px" },
           minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
@@ -127,8 +127,14 @@ function Carousel({ items, year }: ICarousel) {
               borderRadius: "10px",
               textAlign: "center",
               zIndex: 1000,
-              width: "50px",
-              height: "50px",
+              width: {
+                xs: "40px",
+                md: "50px",
+              },
+              height: {
+                xs: "40px",
+                md: "50px",
+              },
               margin: {
                 xs: "0 10px",
                 sm: "0 15px",
@@ -189,7 +195,7 @@ function Carousel({ items, year }: ICarousel) {
                         height: "100%",
                         minHeight: md ? "250px" : "150px",
                         maxHeight: xs ? "170px" : "250px",
-                        borderRadius: "10px",
+                        borderRadius: xs ? "5px" : "10px",
                         objectPosition: "center center",
                       }}
                       src={img}
@@ -265,8 +271,14 @@ function Carousel({ items, year }: ICarousel) {
               borderRadius: "10px",
               textAlign: "center",
               zIndex: 1000,
-              width: "50px",
-              height: "50px",
+              width: {
+                xs: "40px",
+                md: "50px",
+              },
+              height: {
+                xs: "40px",
+                md: "50px",
+              },
               margin: {
                 xs: "0 10px",
                 sm: "0 15px",

@@ -70,15 +70,18 @@ const MessageSection = ({
             fontFamily: "'Poppins', sans-serif",
             fontSize: { xs: "18px", md: "26px" },
             fontWeight: "600",
-            lineHeight: "36px",
-            margin: "0 0 25px  0",
+            lineHeight: { xs: "30px", md: "" },
+            margin: { xs: "0 0 15px  0", md: "" },
           }}
         >
           {title}
         </Typography>
 
         <Typography
-          sx={{ fontFamily: "'Poppins', sans-serif",  fontSize: { xs: "16px", md: "25px" }, }}
+          sx={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: { xs: "16px", md: "25px" },
+          }}
         >
           {render && description ? description : ""}
         </Typography>

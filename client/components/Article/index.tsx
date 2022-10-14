@@ -45,7 +45,7 @@ const Article = ({
               flexDirection: "column",
               justifyContent: "center",
               fontFamily: "'Poppins', sans-serif",
-              padding: { xs: "25px", md: "75px" },
+              padding: { xs: "10px 25px", md: "75px" },
               maxWidth: { xs: "100%", lg: "50%" },
             }}
           >
@@ -53,8 +53,8 @@ const Article = ({
               sx={{
                 color: "#000",
                 fontWeight: 600,
-                fontSize: { xs: "20px", md: "30px" },
-                margin: "10px 0",
+                fontSize: { xs: "18px", md: "30px" },
+                margin: { xs: "5px 0 0 0", md: "" },
               }}
             >
               {title}
@@ -70,7 +70,7 @@ const Article = ({
                 sx={{
                   color: "#4f4f4f",
                   fontWeight: 600,
-                  fontSize: { xs: "16", md: "18px" },
+                  fontSize: { xs: "14px", md: "18px" },
                   lineHeight: "22px",
                 }}
               >
@@ -86,7 +86,7 @@ const Article = ({
               }}
             >
               <span
-                style={{ color: "#424242", fontWeight: 600, fontSize: "16px" }}
+                style={{ color: "#424242", fontWeight: 600, fontSize: "14px" }}
               >
                 {date}
               </span>

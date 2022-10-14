@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Menu, { IState } from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
 import Footer from "../../components/Footer";
@@ -47,12 +47,6 @@ export type TArticle = {
   link: string;
 };
 
-const CardHeader: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-  fontFamily: "'Poppins', sans-serif",
-};
-
 export const santize = (string: string) => {
   const reactElement = parse(string);
   return reactElement;
@@ -84,17 +78,23 @@ const ArticleCard = (article: TArticle) => {
                   src={article?.images ? article?.images[0] : ""}
                   alt={article?.title}
                 />
-                <Box sx={CardHeader}>
-                  <span
-                    style={{
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "'Poppins', sans-serif",
+                    margin: { xs: "15px 0 0 0", md: "25px 0 0 0" },
+                  }}
+                >
+                  <Typography
+                    sx={{
                       color: "#212121",
                       fontWeight: 600,
-                      fontSize: "22px",
-                      margin: "25px 0 0 0",
+                      fontSize: { xs: "18px", md: " 20px" },
                     }}
                   >
                     {article?.title}
-                  </span>
+                  </Typography>
                 </Box>
 
                 <Box
@@ -108,9 +108,9 @@ const ArticleCard = (article: TArticle) => {
                     sx={{
                       color: "#4f4f4f",
                       fontWeight: 500,
-                      fontSize: { xs: "16px", md: "18px" },
+                      fontSize: { xs: "14px", md: "18px" },
                       lineHeight: "22px",
-                      margin: "15px 0 0 0",
+                      margin: { xs: "10px 0 0 0", md: "15px 0 0 0" },
                     }}
                   >
                     {santize(sliceText(article?.description, 150) ?? "")}
@@ -122,7 +122,7 @@ const ArticleCard = (article: TArticle) => {
                       alignItems: "center",
                       color: "#424242",
                       fontWeight: 600,
-                      fontSize: "18px",
+                      fontSize: "14px",
                       margin: "15px 0 0 0",
                     }}
                   >

@@ -164,7 +164,7 @@ const Home = () => {
         headerTitle="Proyectos distintivos con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
-        textFontSize={{ xs: "30px", md: "40px" }}
+        textFontSize={{ xs: "25px", md: "40px" }}
       />
 
       {/* SECTION 1 */}
@@ -176,8 +176,8 @@ const Home = () => {
           alignItems: "center",
           justifyContent: { xs: "center", md: "flex-start" },
           width: "100vw",
-          minHeight: "100vh",
-          height: { xs: "60vh", sm: "80vh" },
+          minHeight: { xs: "none", md: "100vh" },
+          height: { xs: "80vh", sm: "80vh" },
           padding: "7.5%",
         }}
       >
@@ -197,10 +197,10 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "100px 0 20px 0" }}
-              titleFontSize={{ xs: "24px", md: "30px" }}
+              titleFontSize={{ xs: "22px", md: "30px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "15px", md: "22px" }}
+              descriptionFontSize={{ xs: "13px", md: "22px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -231,7 +231,7 @@ const Home = () => {
             >
               <Counters
                 data={data}
-                counterSize="30px"
+                counterSize={{ xs: "26px", md: "30px" }}
                 countersRef={countersVisible}
               />
             </motion.div>
@@ -267,7 +267,7 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "40px 0 30px 0", md: "" }}
+            p={{ xs: "40px 0 10px 0", md: "" }}
             titleFontSize={{ xs: "20px", md: "28px" }}
             titlePadding="25px 0 0 0"
             fontWeight={600}
@@ -298,7 +298,7 @@ const Home = () => {
           alignItems: { xs: "flex-start", md: "center" },
           minHeight: { xs: "", md: "80vh" },
           width: "100%",
-          padding: { xs: "85px 25px 80px 25px", md: "50px 10%" },
+          padding: { xs: "85px 25px 50px 25px", md: "50px 10%" },
         }}
       >
         <Section

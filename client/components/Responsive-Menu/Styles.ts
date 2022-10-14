@@ -10,7 +10,7 @@ export const DropdownContainer: SxProps<Theme> = {
   flexDirection: "column",
   justifyContent: "space-between",
   alignItems: "flex-end",
-  height: "100vh",
+  height: "90vh",
   pointerEvents: "auto",
   width: "70vw",
   backgroundColor: "#fff",

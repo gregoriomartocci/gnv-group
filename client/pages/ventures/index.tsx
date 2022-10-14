@@ -108,7 +108,7 @@ const VenturesLayout = () => {
         height="100vh"
         headerTitle="Emprendimientos"
         buttonLink="/home/#contact"
-        textFontSize={{ xs: "34px", md: "40px" }}
+        textFontSize={{ xs: "25px", md: "40px" }}
       />
 
       {/* HEADER TITLE */}
@@ -121,7 +121,7 @@ const VenturesLayout = () => {
       ></motion.div>
 
       <Box
-        sx={{ padding: { xs: "35px 10% 20px 10%", md: "100px 20% 20px 20%" } }}
+        sx={{ padding: { xs: "35px 15% 20px 15%", md: "100px 20% 20px 20%" } }}
       >
         <SearchBar
           onChange={onChangeHandler}
