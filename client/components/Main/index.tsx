@@ -164,7 +164,7 @@ const Main = ({
                           <UseButton type={"Primary"} padding="15px 30px">
                             <Typography
                               sx={{
-                                fontSize: { xs: "17px", md: "19px" },
+                                fontSize: { xs: "14px", md: "16px" },
                               }}
                             >
                               Contactanos
@@ -210,10 +210,13 @@ const Main = ({
                     <Link href={buttonLink ?? ""}>
                       <a>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"} padding="15px 30px">
+                          <UseButton
+                            type={"Primary"}
+                            padding={{ xs: "10px 30px", md: "12px 30px" }}
+                          >
                             <Typography
                               sx={{
-                                fontSize: { xs: "15px", md: "16px" },
+                                fontSize: { xs: "14px", md: "16px" },
                               }}
                             >
                               Contactanos
