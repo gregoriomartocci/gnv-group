@@ -69,7 +69,7 @@ const Venture = (venture: any) => {
                   sx={{
                     color: "#212121",
                     fontWeight: 600,
-                    fontSize: { xs: "22px", md: "26px" },
+                    fontSize: { xs: "22px", md: "24px" },
                     margin: "15px 0 0 0",
                   }}
                 >

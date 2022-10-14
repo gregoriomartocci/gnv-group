@@ -32,9 +32,10 @@ const Slider = ({ items }: any) => {
         justifyContent: "space-between",
         alignItems: "center",
         overflowX: "hidden",
-        height: { xs: "400px", md: "600px" },
+        height: { xs: "300px", md: "600px" },
         padding: { xs: "0", sm: "0 5%" },
-        margin: { xs: "10% 0", md: "50px 0" },
+        margin: { xs: "7.5% 25px", md: "50px 0" },
+
         position: "relative",
       }}
     >
@@ -44,19 +45,21 @@ const Slider = ({ items }: any) => {
           justifyContent: "center",
           alignItems: "center",
           padding: "12.5px",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 1000,
-          margin: "0 25px",
+          border: { xs: "", md: "1px solid #e0e0e0" },
+          backgroundColor: { xs: "", md: "#fff" },
+          margin: { xs: "", md: "0 25px" },
           transform: "rotate(180deg)",
+          color: { xs: "#fff", md: "#000" },
+          fontSize: { xs: "12px", md: "13px" },
         }}
         onClick={onLeft}
         component="span"
       >
-        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        <ArrowForwardIosIcon />
       </Box>
 
       <Box
@@ -126,18 +129,20 @@ const Slider = ({ items }: any) => {
           justifyContent: "center",
           alignItems: "center",
           padding: "12.5px",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 1000,
-          margin: "0 25px",
+          border: { xs: "", md: "1px solid #e0e0e0" },
+          backgroundColor: { xs: "", md: "#fff" },
+          margin: { xs: "", md: "0 25px" },
+          color: { xs: "#fff", md: "#000" },
+          fontSize: { xs: "12px", md: "18px" },
         }}
         onClick={onRight}
         component="span"
       >
-        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        <ArrowForwardIosIcon />
       </Box>
     </Box>
   );
