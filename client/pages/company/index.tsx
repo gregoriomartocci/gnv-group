@@ -178,7 +178,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: { xs: "20px 0", md: "25px 0 0 0 " },
+              padding: { xs: "20px 0", md: "40px 0" },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -223,7 +223,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: { xs: "20px 0", md: "25px 0 0 0 " },
+              padding: { xs: "20px 0", md: "40px 0" },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -255,7 +255,7 @@ const Company = () => {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
-              padding: { xs: "20px 0", md: "25px 0 0 0 " },
+              padding: { xs: "20px 0", md: "40px 0" },
               borderBottom: "1.5px solid #eeeeee",
             }}
           >
@@ -382,7 +382,7 @@ const Company = () => {
         >
           <HeaderTitle
             p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-            titleFontSize={{ xs: "24px", md: "30px" }}
+            titleFontSize={{ xs: "23px", md: "27px" }}
             fontWeight={600}
             title="Compañia"
             color="#000"
@@ -431,7 +431,7 @@ const Company = () => {
               p={{ xs: "0", md: "20px 25px 200px 25px" }}
               fontWeight={600}
               titleWidth={{ xs: "300px", md: "max-content" }}
-              titleFontSize={{ xs: "22px", md: "26px" }}
+              titleFontSize={{ xs: "22px", md: "24px" }}
               title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
               color="#fff"
             />
@@ -460,7 +460,7 @@ const Company = () => {
       >
         <HeaderTitle
           p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-          titleFontSize={{ xs: "24px", md: "30px" }}
+          titleFontSize={{ xs: "24px", md: "27px" }}
           fontWeight={600}
           title="Galería de arte"
         />

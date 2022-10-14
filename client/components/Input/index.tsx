@@ -1,5 +1,6 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { Fragment } from "react";
+import useWindowDimensions from "../../hooks/ScreenSize";
 import { InputContainer } from "./Styles";
 
 export interface InputProps {
@@ -27,8 +28,35 @@ const InputGroup = ({
   inputFontSize,
   labelFontSize,
 }: InputProps) => {
+  const { width, height } = useWindowDimensions();
+
+  const xs = width && width < 600;
+
   return (
-    <Box sx={InputContainer}>
+    <Box
+      sx={{
+        width: "100%",
+        margin: "10px 0",
+
+        span: {
+          fontSize: "20px",
+          color: "#212121",
+          fontWeight: "600",
+          margin: "10px 0",
+        },
+        input: {
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          width: "100%",
+          padding: "15px",
+          border: "1px solid #e0e0e0",
+          borderRadius: "5px",
+          fontFamily: "'Poppins', sans-serif",
+          margin: "7.5px 0 0 0",
+        },
+      }}
+    >
       <Fragment>
         {children ? (
           <Fragment>
@@ -43,7 +71,7 @@ const InputGroup = ({
               {label}
             </Typography>
             <input
-              style={{ fontSize: inputFontSize }}
+              style={{ fontSize: xs ? "11px" : "18px", padding:xs ? "10px 15px" : "15px" }}
               name={name}
               placeholder={description}
               type={type}

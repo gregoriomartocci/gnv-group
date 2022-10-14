@@ -36,11 +36,14 @@ const UseTabs = ({ items, tab, setTab }: IUseTabs) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: { xs: "15px 0 5px 0", md: "20px 28px" },
+            padding: { xs: "15px 0 5px 0", md: "20px 27px" },
             width: { xs: "min-content", md: "max-content" },
             height: { xs: "85px", md: "100px" },
             margin: { xs: "25px", md: "0 10px" },
-            borderBottom: tab === id ? "2px solid #212121" : "",
+            borderBottom:
+              tab === id
+                ? { xs: "2px solid #212121", md: "3px solid #212121" }
+                : "",
             color: tab === id ? "#212121" : "#bdbdbd",
             cursor: "pointer",
           }}
@@ -48,7 +51,7 @@ const UseTabs = ({ items, tab, setTab }: IUseTabs) => {
         >
           <Typography
             sx={{
-              fontSize: { xs: "20px", md: "30px" },
+              fontSize: { xs: "20px", md: "25px" },
               fontWeight: 600,
               textAlign: "center",
               width: "100%",

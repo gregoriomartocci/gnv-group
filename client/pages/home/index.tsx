@@ -73,7 +73,7 @@ const Home = () => {
   // ANIMATIONS
 
   const FadeFromBottom = {
-    offscreen: { y: 50, opacity: 0 },
+    offscreen: { y: 20, opacity: 0 },
     onscreen: {
       y: 0,
       opacity: 1,
@@ -196,10 +196,10 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "20px 0" }}
-              titleFontSize={{ xs: "22px", md: "30px" }}
+              titleFontSize={{ xs: "20px", md: "28px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "13px", md: "22px" }}
+              descriptionFontSize={{ xs: "13px", md: "20px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -230,7 +230,7 @@ const Home = () => {
             >
               <Counters
                 data={data}
-                counterSize={{ xs: "24px", md: "30px" }}
+                counterSize={{ xs: "22px", md: "27px" }}
                 countersRef={countersVisible}
               />
             </motion.div>
@@ -267,7 +267,7 @@ const Home = () => {
         >
           <HeaderTitle
             p={{ xs: "40px 0 10px 0", md: "" }}
-            titleFontSize={{ xs: "20px", md: "28px" }}
+            titleFontSize={{ xs: "20px", md: "25px" }}
             titlePadding="25px 0 0 0"
             fontWeight={600}
             title="Trayectoria"
@@ -329,7 +329,7 @@ const Home = () => {
       >
         <HeaderTitle
           p="20px 0"
-          titleFontSize={{ xs: "20px", md: "30px" }}
+          titleFontSize={{ xs: "20px", md: "27px" }}
           descriptionFontSize={{ xs: "16px", md: "20px" }}
           title="Contacto"
           fontWeight={600}
