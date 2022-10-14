@@ -382,7 +382,7 @@ const Company = () => {
         >
           <HeaderTitle
             p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-            titleFontSize={{ xs: "23px", md: "27px" }}
+            titleFontSize={{ xs: "22px", md: "27px" }}
             fontWeight={600}
             title="Compañia"
             color="#000"
@@ -460,7 +460,7 @@ const Company = () => {
       >
         <HeaderTitle
           p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-          titleFontSize={{ xs: "24px", md: "27px" }}
+          titleFontSize={{ xs: "22px", md: "27px" }}
           fontWeight={600}
           title="Galería de arte"
         />

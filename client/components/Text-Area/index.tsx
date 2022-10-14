@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { string } from "yup";
+import useWindowDimensions from "../../hooks/ScreenSize";
 
 type Type = {
   value: string;
@@ -20,11 +21,13 @@ const TextArea = ({
   label,
   description,
   onChangeHandler,
-  height,
-  width,
   fontSize,
   labelFontSize,
 }: Type) => {
+  const { width, height } = useWindowDimensions();
+
+  const xs = width && width < 600;
+
   return (
     <Box>
       <Typography
@@ -37,15 +40,15 @@ const TextArea = ({
       >
         {label}
       </Typography>
-      <Box sx={{ height }}>
+      <Box>
         <textarea
           style={{
             display: "flex",
-            padding: "15px",
+            padding: xs ? "10px 15px" : "25px",
             width: "100%",
-            height: "100%",
+            height: xs ? "80px" : "120px",
             borderRadius: "5px",
-            fontSize,
+            fontSize: xs ? "12px" : "14px",
             border: "1px solid #e0e0e0",
           }}
           value={value}

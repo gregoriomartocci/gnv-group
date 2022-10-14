@@ -1,9 +1,10 @@
 import React, { Fragment, useRef, useState } from "react";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import InputGroup from "../../../../components/Input";
 import TextArea from "../../../../components/Text-Area";
 import emailjs from "emailjs-com";
 import UseButton from "../../../../components/Button";
+import useWindowDimensions from "../../../../hooks/ScreenSize";
 
 type TValue = {
   name: string;
@@ -24,8 +25,11 @@ interface IProps {
 
 const Form = ({ value, setValue }: any) => {
   const email_api = process.env.NEXT_PUBLIC_EMAIL;
+  const { width, height } = useWindowDimensions();
   const form = useRef();
   const [loading, setLoading] = useState(false);
+
+  const xs = width && width < 600;
 
   const onChangeHandler = (e: any, value: any) => {
     setValue({ ...value, [e.target.name]: e.target.value });
@@ -131,15 +135,15 @@ const Form = ({ value, setValue }: any) => {
                     width: "100%",
                     justifyContent: "center",
                     alignItems: "center",
-                    fontSize: "18px",
+                    fontSize: xs ? "16px" : "20px",
                     backgroundColor: "#212121",
                     borderRadius: "7.5px",
-                    padding: "20px 50px",
+                    padding: xs ? "10px 50px" : "15px 50px",
                     whiteSpace: "nowrap",
                     color: "#fff",
                     textTransform: "unset",
                     cursor: "pointer",
-                    fontWeight: 600,
+                    fontWeight: 500,
                     fontFamily: "'Poppins', sans-serif",
                   }}
                   type="submit"
