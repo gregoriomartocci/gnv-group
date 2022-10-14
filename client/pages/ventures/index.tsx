@@ -108,7 +108,7 @@ const VenturesLayout = () => {
         height="100vh"
         headerTitle="Emprendimientos"
         buttonLink="/home/#contact"
-        textFontSize={{ xs: "25px", md: "40px" }}
+        textFontSize={{ xs: "25px", md: "32px" }}
       />
 
       {/* HEADER TITLE */}

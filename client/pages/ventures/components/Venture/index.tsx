@@ -69,7 +69,7 @@ const Venture = (venture: any) => {
                     color: "#212121",
                     fontWeight: 600,
                     fontSize: { xs: "17px", md: "20px" },
-                    margin: "15px 0 0 0",
+                    margin: "10px 0 0 0",
                   }}
                 >
                   {venture?.name ?? ""}

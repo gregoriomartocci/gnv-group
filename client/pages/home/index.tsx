@@ -258,7 +258,7 @@ const Home = () => {
 
       {/* Trayectory */}
 
-      <Box sx={{ width: "100%", padding: "5% 0 0 0", minHeight: "100vh" }}>
+      <Box sx={{ width: "100%", padding: "5% 0", minHeight: "100vh" }}>
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
@@ -266,7 +266,7 @@ const Home = () => {
           variants={FadeFromBottom}
         >
           <HeaderTitle
-            p={{ xs: "40px 0 10px 0", md: "" }}
+            p={{ xs: "10px 0", md: "" }}
             titleFontSize={{ xs: "20px", md: "24px" }}
             titlePadding="25px 0 0 0"
             fontWeight={600}
@@ -301,7 +301,7 @@ const Home = () => {
         }}
       >
         <Section
-          imageMaxWidth="700px"
+          imageMaxWidth="600px"
           quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
@@ -375,7 +375,7 @@ const Home = () => {
             sx={{
               display: "flex",
               width: "100%",
-              height: { xs: "400px", md: "550px" },
+              height: { xs: "300px", md: "400px" },
             }}
           >
             {isLoaded && (

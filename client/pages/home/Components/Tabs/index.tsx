@@ -51,7 +51,7 @@ const UseTabs = ({ items, tab, setTab }: IUseTabs) => {
         >
           <Typography
             sx={{
-              fontSize: { xs: "20px", md: "25px" },
+              fontSize: { xs: "18px", md: "23px" },
               fontWeight: 600,
               textAlign: "center",
               width: "100%",

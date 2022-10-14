@@ -93,7 +93,7 @@ const Section = ({
                     color: "#000",
                     padding: {
                       xs: "25px 20px",
-                      md: "25px 0px",
+                      md: "25px 0px 0px 45px",
                     },
                   }}
                 >
@@ -106,12 +106,12 @@ const Section = ({
                       fontSize: {
                         xs: "14px",
                         sm: "17px",
-                        md: "26px",
+                        md: "22px",
                       },
                       height: "100%",
                       lineHeight: {
                         xs: "28px",
-                        md: "45px",
+                        md: "40px",
                       },
                     }}
                   >

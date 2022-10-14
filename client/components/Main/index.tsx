@@ -164,7 +164,7 @@ const Main = ({
                           <UseButton type={"Primary"} padding="15px 30px">
                             <Typography
                               sx={{
-                                fontSize: { xs: "21px", md: "21px" },
+                                fontSize: { xs: "17px", md: "19px" },
                               }}
                             >
                               Contactanos
@@ -213,7 +213,7 @@ const Main = ({
                           <UseButton type={"Primary"} padding="15px 30px">
                             <Typography
                               sx={{
-                                fontSize: { xs: "17px", md: "21px" },
+                                fontSize: { xs: "15px", md: "16px" },
                               }}
                             >
                               Contactanos
