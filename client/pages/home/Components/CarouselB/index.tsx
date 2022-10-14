@@ -46,21 +46,6 @@ const CarouselB = ({ items }) => {
                 cursor: "pointer",
               }}
             >
-              {/* <Typography
-                sx={{
-                  position: "absolute",
-                  padding: { xs: "0 50px", md: "0 10%" },
-                  fontSize: { xs: "23px", md: "38px" },
-                  lineHeight: { xs: "35px", md: "55px" },
-                  fontWeight: "500",
-                  color: "#fff",
-                  zIndex: 20,
-                  textAlign: "center",
-                }}
-              >
-                {element?.phrase}
-              </Typography> */}
-
               {getFormat(element?.src) === "MP4" ? (
                 <video
                   style={{
