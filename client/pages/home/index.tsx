@@ -174,10 +174,9 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: { xs: "center", md: "flex-start" },
+          justifyContent: { xs: "center", md: "center" },
           width: "100vw",
-          minHeight: { xs: "none", md: "100vh" },
-          height: { xs: "80vh", sm: "80vh" },
+          height: { xs: "80vh", md: "80vh" },
           padding: "7.5%",
         }}
       >
@@ -196,7 +195,7 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p={{ xs: "0 15px", md: "100px 0 20px 0" }}
+              p={{ xs: "0 15px", md: "20px 0" }}
               titleFontSize={{ xs: "22px", md: "30px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
@@ -231,7 +230,7 @@ const Home = () => {
             >
               <Counters
                 data={data}
-                counterSize={{ xs: "26px", md: "30px" }}
+                counterSize={{ xs: "24px", md: "30px" }}
                 countersRef={countersVisible}
               />
             </motion.div>

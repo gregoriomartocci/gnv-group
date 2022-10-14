@@ -218,7 +218,7 @@ const Timeline = () => {
   const sm = width && width < 900;
 
   return (
-    <Box sx={{ padding: { sx: "0", md: "40px 5%" } }}>
+    <Box sx={{ padding: { sx: "0", md: "100px 5% 10px 5%" } }}>
       <Box
         sx={{
           display: { sx: "column", md: " flex" },

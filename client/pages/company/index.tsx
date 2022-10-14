@@ -65,7 +65,7 @@ const licences = [
       </svg>,
     ],
     width: { xs: "100%", md: "450px" },
-    height: { xs: "125px", md: "100%" },
+    height: { xs: "120px", md: "100%" },
   },
   {
     img: [
@@ -139,9 +139,6 @@ export const sanitize = (string: string) => {
 };
 
 const Company = () => {
-  const [gallery, setGallery] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [render, setRender] = useState<any>(typeof window !== "undefined");
   const { height, width } = useWindowDimensions();
 
