@@ -35,7 +35,11 @@ const SearchBar = ({
       }}
     >
       <Search
-        sx={{ margin: "0  20px 0 5px", fontSize: "28px", color: "#bcbcbc" }}
+        sx={{
+          margin: "0  20px 0 5px",
+          fontSize: { xs: "22px", md: "25px" },
+          color: "#bcbcbc",
+        }}
       />
       <InputBase
         sx={{
@@ -43,7 +47,7 @@ const SearchBar = ({
           width: "100%",
           flexDirection: "column",
           color: "#757575",
-          fontSize: { sx: "16px", md: "18px" },
+          fontSize: { sx: "14px", md: "17px" },
         }}
         placeholder="Búsqueda por nombre"
         value={value?.search}

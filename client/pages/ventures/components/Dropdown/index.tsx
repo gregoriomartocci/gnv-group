@@ -92,7 +92,7 @@ const Dropdown = ({
                     alignItems: "center",
                     textAlign: "left",
                     height: optionsHeight ?? "",
-                    padding: { xs: "8.5px 22.5px", md: "15px 22.5px" },
+                    padding: { xs: "8.5px 22.5px", md: "10px 22.5px" },
                     borderRadius: "5px",
                     "&:hover": {
                       backgroundColor: "#fafafa",
@@ -103,7 +103,7 @@ const Dropdown = ({
                 >
                   <Typography
                     sx={{
-                      fontSize: { xs: "13px", md: "16px" },
+                      fontSize: { xs: "13px", md: "14px" },
                       fontWeight: 500,
                       color: "#9e9e9e",
                     }}
