@@ -40,7 +40,7 @@ const UseTabs = ({ items, tab, setTab }: IUseTabs) => {
             width: { xs: "min-content", md: "max-content" },
             height: { xs: "85px", md: "100px" },
             margin: { xs: "25px", md: "0 10px" },
-            borderBottom: tab === id ? "3px solid #212121" : "",
+            borderBottom: tab === id ? "2px solid #212121" : "",
             color: tab === id ? "#212121" : "#bdbdbd",
             cursor: "pointer",
           }}

@@ -104,12 +104,13 @@ const Section = ({
                       textAlign: "left",
                       width: "100%",
                       fontSize: {
-                        xs: "18px",
+                        xs: "14px",
+                        sm: "17px",
                         md: "26px",
                       },
                       height: "100%",
                       lineHeight: {
-                        xs: "33px",
+                        xs: "28px",
                         md: "45px",
                       },
                     }}

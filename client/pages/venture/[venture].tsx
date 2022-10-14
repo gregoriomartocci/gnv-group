@@ -54,7 +54,7 @@ const Venture = () => {
             }}
           >
             <HeaderTitle
-              titleFontSize={{ xs: "27px", md: "30px" }}
+              titleFontSize={{ xs: "24px", md: "30px" }}
               fontWeight={600}
               title={project?.name ?? ""}
               p="0 10%"
