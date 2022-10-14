@@ -49,12 +49,12 @@ const Venture = () => {
           <Menu onScroll color="#212121" />
           <Box
             sx={{
-              padding: { xs: "80px 0 0 0 ", md: "100px 0 0 0" },
+              padding: { xs: "90px 0 0 0 ", md: "100px 0 0 0" },
               width: "100%",
             }}
           >
             <HeaderTitle
-              titleFontSize={{ xs: "28px", md: "30px" }}
+              titleFontSize={{ xs: "27px", md: "30px" }}
               fontWeight={600}
               title={project?.name ?? ""}
               p="0 10%"
@@ -66,7 +66,7 @@ const Venture = () => {
           <Box sx={{ display: "flex", padding: "0 10%" }}>
             <Typography
               sx={{
-                fontSize: "20px",
+                fontSize: { xs: "16px", md: "20px" },
                 textAlign: "left",
               }}
             >
