@@ -320,7 +320,7 @@ const Timeline = () => {
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
                             fontWeight: 700,
-                            fontSize: { xs: "18px", md: "18px" },
+                            fontSize: { xs: "14px", md: "16px" },
                             color: "#bdbdbd",
                             transform: {
                               xs: "",
@@ -338,7 +338,7 @@ const Timeline = () => {
                         }}
                       >
                         <FiberManualRecordIcon
-                          sx={{ fontSize: "16px", color: "#e0e0e0" }}
+                          sx={{ fontSize: "14px", color: "#e0e0e0" }}
                         />
                       </Box>
                     </Box>

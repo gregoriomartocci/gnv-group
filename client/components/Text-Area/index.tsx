@@ -48,7 +48,7 @@ const TextArea = ({
             width: "100%",
             height: xs ? "80px" : "120px",
             borderRadius: "5px",
-            fontSize: xs ? "12px" : "18px",
+            fontSize: xs ? "12px" : "15px",
             border: "1px solid #e0e0e0",
           }}
           value={value}

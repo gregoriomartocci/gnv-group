@@ -196,10 +196,10 @@ const Home = () => {
           >
             <HeaderTitle
               p={{ xs: "0 15px", md: "20px 0" }}
-              titleFontSize={{ xs: "20px", md: "28px" }}
+              titleFontSize={{ xs: "20px", md: "26px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "13px", md: "20px" }}
+              descriptionFontSize={{ xs: "13px", md: "18px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
               description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
             />
@@ -230,7 +230,7 @@ const Home = () => {
             >
               <Counters
                 data={data}
-                counterSize={{ xs: "22px", md: "27px" }}
+                counterSize={{ xs: "20px", md: "25px" }}
                 countersRef={countersVisible}
               />
             </motion.div>

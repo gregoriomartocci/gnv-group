@@ -71,7 +71,7 @@ const InputGroup = ({
               {label}
             </Typography>
             <input
-              style={{ fontSize: xs ? "11px" : "18px", padding:xs ? "10px 15px" : "15px" }}
+              style={{ fontSize: xs ? "11px" : "15px", padding:xs ? "10px 15px" : "15px" }}
               name={name}
               placeholder={description}
               type={type}

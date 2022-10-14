@@ -163,7 +163,7 @@ const News = () => {
           width: "100%",
         }}
       >
-        <Carousel slidesPerView={1} delay={3000}>
+        <Carousel slidesPerView={1} delay={5000}>
           {news_mock && news_mock?.length
             ? news_mock?.map((article: TArticle, index: number) => (
                 <SwiperSlide>

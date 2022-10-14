@@ -79,8 +79,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su nombre"
                   height="100%"
                   width="100%"
-                  inputFontSize={{ xs: "13px", md: "18px" }}
-                  labelFontSize={{ xs: "13px", md: "18px" }}
+                  inputFontSize={{ xs: "13px", md: "16px" }}
+                  labelFontSize={{ xs: "13px", md: "16px" }}
                 />
               </Box>
               <Box
@@ -95,8 +95,8 @@ const Form = ({ value, setValue }: any) => {
                   description="Ingrese su email"
                   height="100%"
                   width="100%"
-                  inputFontSize={{ xs: "13px", md: "18px" }}
-                  labelFontSize={{ xs: "13px", md: "18px" }}
+                  inputFontSize={{ xs: "12px", md: "16px" }}
+                  labelFontSize={{ xs: "12px", md: "16px" }}
                 />
               </Box>
             </Box>
@@ -109,8 +109,8 @@ const Form = ({ value, setValue }: any) => {
               description="Ingrese su numero de telefono"
               height="100%"
               width="100%"
-              inputFontSize={{ xs: "13px", md: "18px" }}
-              labelFontSize={{ xs: "13px", md: "18px" }}
+              inputFontSize={{ xs: "12px", md: "16px" }}
+              labelFontSize={{ xs: "12px", md: "16px" }}
             />
             <TextArea
               label="Mensaje"
@@ -120,8 +120,8 @@ const Form = ({ value, setValue }: any) => {
               description="Deje su mensaje"
               height={{ xs: "80px", md: "125px" }}
               width="100%"
-              inputFontSize={{ xs: "13px", md: "18px" }}
-              labelFontSize={{ xs: "13px", md: "18px" }}
+              inputFontSize={{ xs: "12px", md: "16px" }}
+              labelFontSize={{ xs: "12px", md: "16px" }}
             />
             <Box sx={{ width: "100%", margin: "20px 0 0 0 " }}>
               {loading ? (

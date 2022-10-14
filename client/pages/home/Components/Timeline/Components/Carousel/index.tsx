@@ -225,7 +225,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "16px", md: "20px" },
+                          fontSize: { xs: "15px", md: "18px" },
                           fontWeight: 600,
                         }}
                       >
@@ -245,7 +245,7 @@ function Carousel({ items, year }: ICarousel) {
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "13px", md: "17px" },
+                          fontSize: { xs: "12px", md: "14px" },
                         }}
                       >
                         {description}
