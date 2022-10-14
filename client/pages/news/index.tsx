@@ -83,14 +83,14 @@ const ArticleCard = (article: TArticle) => {
                     display: "flex",
                     flexDirection: "column",
                     fontFamily: "'Poppins', sans-serif",
-                    margin: { xs: "15px 0 0 0", md: "25px 0 0 0" },
+                    margin: { xs: "10px 0 0 0", md: "18px 0 0 0" },
                   }}
                 >
                   <Typography
                     sx={{
                       color: "#212121",
                       fontWeight: 600,
-                      fontSize: { xs: "18px", md: " 20px" },
+                      fontSize: { xs: "16px", md: " 18px" },
                     }}
                   >
                     {article?.title}
@@ -108,9 +108,9 @@ const ArticleCard = (article: TArticle) => {
                     sx={{
                       color: "#4f4f4f",
                       fontWeight: 500,
-                      fontSize: { xs: "14px", md: "18px" },
+                      fontSize: { xs: "12px", md: "14px" },
                       lineHeight: "22px",
-                      margin: { xs: "10px 0 0 0", md: "15px 0 0 0" },
+                      margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
                     }}
                   >
                     {santize(sliceText(article?.description, 150) ?? "")}
@@ -123,7 +123,7 @@ const ArticleCard = (article: TArticle) => {
                       color: "#424242",
                       fontWeight: 600,
                       fontSize: "14px",
-                      margin: "15px 0 0 0",
+                      margin: "7.5px 0 0 0",
                     }}
                   >
                     Ver Noticia
@@ -150,7 +150,7 @@ const News = () => {
         <HeaderTitle
           titleFontSize={{ xs: "20px", md: "24px" }}
           fontWeight={600}
-          p={{ xs: "110px 0 00", md: "120px 0 50px 0" }}
+          p={{ xs: "110px 0 00", md: "120px 0 10px 0" }}
           title="Noticias destacadas"
         />
       </Box>
@@ -175,9 +175,9 @@ const News = () => {
       </Box>
 
       <HeaderTitle
-        titleFontSize={{ xs: "20px", md: "324x" }}
+       titleFontSize={{ xs: "20px", md: "24px" }}
         fontWeight={600}
-        p={{ xs: "0 0 60px 0", md: "70px 0 100px 0px" }}
+        p={{ xs: "0 0 60px 0", md: "45px 0 80px 0px" }}
         title="Todas la noticias"
       />
 
