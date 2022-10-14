@@ -25,10 +25,8 @@ export const Container: SxProps<Theme> = {
     fontSize: "(clamp, 20px, 6vw, 30px)",
     fontWeight: 600,
   },
-
   p: {
     height: "100%",
-    marginBottom: "20px",
   },
 };
 
@@ -44,4 +42,3 @@ export const Reverse: SxProps<Theme> = {
   width: "100%",
   height: "100%",
 };
-

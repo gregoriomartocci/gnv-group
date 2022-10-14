@@ -36,26 +36,26 @@ const Content = (project: IProject) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const CellTable: SxProps<Theme> = {
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "center",
-
-    img: {
-      width: "100px",
-      height: "100px",
-      borderRadius: "5px",
-      objectFit: "cover",
-      margin: "0 20px 0 0",
-    },
-  };
-
   const match = project?.id === projectSelected?.id;
 
   return (
     <Fragment>
       <TableCell align="left">
-        <Box sx={CellTable}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+
+            img: {
+              width: "100px",
+              height: "100px",
+              borderRadius: "5px",
+              objectFit: "cover",
+              margin: "0 20px 0 0",
+            },
+          }}
+        >
           <img
             src={(project && project?.images && project?.images[0]?.src) ?? ""}
             alt=""

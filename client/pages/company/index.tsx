@@ -338,7 +338,7 @@ const Company = () => {
           <HeaderTitle
             title="Licencias"
             p="0 15px"
-            titleFontSize={{ xs: "24px", md: "28px" }}
+            titleFontSize={{ xs: "24px", md: "24px" }}
             fontWeight={600}
             titlePadding="10px 0"
             descriptionFontSize="20px"
@@ -382,7 +382,7 @@ const Company = () => {
         >
           <HeaderTitle
             p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-            titleFontSize={{ xs: "22px", md: "27px" }}
+            titleFontSize={{ xs: "22px", md: "24px" }}
             fontWeight={600}
             title="Compañia"
             color="#000"
@@ -428,10 +428,10 @@ const Company = () => {
             }}
           >
             <HeaderTitle
-              p={{ xs: "0", md: "20px 25px 200px 25px" }}
+              p={{ xs: "0", md: "5px 25px 200px 25px" }}
               fontWeight={600}
               titleWidth={{ xs: "300px", md: "max-content" }}
-              titleFontSize={{ xs: "22px", md: "24px" }}
+              titleFontSize={{ xs: "18px", md: "20px" }}
               title="<p> La trayectoria de una gran empresa con el trato de una gran familia</p>"
               color="#fff"
             />
@@ -460,7 +460,7 @@ const Company = () => {
       >
         <HeaderTitle
           p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-          titleFontSize={{ xs: "22px", md: "27px" }}
+          titleFontSize={{ xs: "22px", md: "24px" }}
           fontWeight={600}
           title="Galería de arte"
         />

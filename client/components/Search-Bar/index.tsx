@@ -42,12 +42,11 @@ const SearchBar = ({
           display: "flex",
           width: "100%",
           flexDirection: "column",
-          fontFamily: "'Poppins', sans-serif",
           color: "#757575",
-          fontSize: {sx:"18px", md:"20px"} ,
+          fontSize: { sx: "16px", md: "18px" },
         }}
         placeholder="Búsqueda por nombre"
-        value={value.search}
+        value={value?.search}
         onChange={onChangeHandler}
       />
     </Box>

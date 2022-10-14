@@ -55,8 +55,7 @@ const Venture = (venture: any) => {
                   objectFit: "cover",
                   width: "100%",
                   objectPosition: "70% center",
-                  minHeight: { xs: "200px", md: "250px" },
-                  maxHeight: { xs: "260px", md: "360px" },
+                  maxHeight: { xs: "200px", md: "300px" },
                 },
               }}
             >
@@ -69,7 +68,7 @@ const Venture = (venture: any) => {
                   sx={{
                     color: "#212121",
                     fontWeight: 600,
-                    fontSize: { xs: "22px", md: "24px" },
+                    fontSize: { xs: "17px", md: "20px" },
                     margin: "15px 0 0 0",
                   }}
                 >
@@ -95,7 +94,7 @@ const Venture = (venture: any) => {
                     sx={{
                       color: "#4f4f4f",
                       fontWeight: 700,
-                      fontSize: { xs: "14px", md: "16px" },
+                      fontSize: { xs: "12px", md: "14px" },
                     }}
                   >
                     {venture?.status ? venture?.status : ""}
@@ -106,7 +105,7 @@ const Venture = (venture: any) => {
                   sx={{
                     color: "#4f4f4f",
                     fontWeight: 500,
-                    fontSize: { xs: "14px", md: "16px" },
+                    fontSize: { xs: "12px", md: "14px" },
                     margin: "5px 0 0 0",
                     lineHeight: { xs: "25px", md: "22px" },
                     textAlign: "left !important",
@@ -123,7 +122,7 @@ const Venture = (venture: any) => {
                     alignItems: "center",
                     color: "#000",
                     fontWeight: 600,
-                    fontSize: "14px",
+                    fontSize: { xs: "12px", md: "14px" },
                     margin: "7.5px 0 0 0",
                   }}
                   onClick={() => handleClick(venture)}

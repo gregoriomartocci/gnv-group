@@ -267,7 +267,7 @@ const Home = () => {
         >
           <HeaderTitle
             p={{ xs: "40px 0 10px 0", md: "" }}
-            titleFontSize={{ xs: "20px", md: "25px" }}
+            titleFontSize={{ xs: "20px", md: "24px" }}
             titlePadding="25px 0 0 0"
             fontWeight={600}
             title="Trayectoria"
@@ -329,7 +329,7 @@ const Home = () => {
       >
         <HeaderTitle
           p="20px 0"
-          titleFontSize={{ xs: "20px", md: "27px" }}
+          titleFontSize={{ xs: "20px", md: "24px" }}
           descriptionFontSize={{ xs: "16px", md: "20px" }}
           title="Contacto"
           fontWeight={600}
