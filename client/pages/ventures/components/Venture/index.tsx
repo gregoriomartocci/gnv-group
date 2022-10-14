@@ -123,7 +123,7 @@ const Venture = (venture: any) => {
                     color: "#000",
                     fontWeight: 600,
                     fontSize: { xs: "12px", md: "14px" },
-                    margin: "7.5px 0 0 0",
+                    margin: "5px 0 0 0",
                   }}
                   onClick={() => handleClick(venture)}
                 >

@@ -22,7 +22,7 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
-          padding: "5% 10%",
+          padding: "70px 10% 40px 10%",
           fontWeight: 500,
         }}
       >
@@ -47,7 +47,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: { xs: "16px", md: "18px" },
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -61,7 +61,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: { xs: "16px", md: "18px" },
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -75,7 +75,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: { xs: "16px", md: "18px" },
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -89,7 +89,7 @@ const Footer = () => {
               <Typography
                 sx={{
                   margin: "0 15px 0  0",
-                  fontSize: { xs: "16px", md: "18px" },
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -169,7 +169,7 @@ const Footer = () => {
           justifyContent: "center",
           padding: "2.5% 10%",
           lineHeight: "25px",
-          fontSize: { xs: "14px", md: "18px" },
+          fontSize: { xs: "14px", md: "16px" },
         }}
       >
         Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del

@@ -94,7 +94,7 @@ function Carousel({ items, year }: ICarousel) {
           sx={{
             fontSize: { xs: "20px", md: "22px" },
             color: "#bdbdbd",
-            fontWeight: 700,
+            fontWeight: 600,
           }}
         >
           {year}
