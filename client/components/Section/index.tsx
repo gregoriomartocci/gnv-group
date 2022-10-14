@@ -99,7 +99,6 @@ const Section = ({
                 >
                   <Typography
                     sx={{
-                      fontWeight: 500,
                       color: "#212121",
                       textAlign: "left",
                       width: "100%",

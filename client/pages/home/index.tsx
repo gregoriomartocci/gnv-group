@@ -301,7 +301,7 @@ const Home = () => {
         }}
       >
         <Section
-          imageMaxWidth="600px"
+          imageMaxWidth="500px"
           quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
