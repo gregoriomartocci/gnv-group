@@ -66,7 +66,7 @@ const Venture = () => {
           <Box sx={{ display: "flex", padding: "0 10%" }}>
             <Typography
               sx={{
-                fontSize: { xs: "16px", md: "20px" },
+                fontSize: { xs: "16px", md: "18px" },
                 textAlign: "left",
               }}
             >

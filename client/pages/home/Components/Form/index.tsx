@@ -135,7 +135,7 @@ const Form = ({ value, setValue }: any) => {
                     width: "100%",
                     justifyContent: "center",
                     alignItems: "center",
-                    fontSize: xs ? "16px" : "20px",
+                    fontSize: xs ? "16px" : "18px",
                     backgroundColor: "#212121",
                     borderRadius: "7.5px",
                     padding: xs ? "10px 50px" : "15px 50px",
