@@ -56,7 +56,7 @@ const Home = () => {
   const { height, width } = useWindowDimensions();
 
   const sm = width && width < 1200;
-  const xs = width && width < 900;
+  const xs = width && width < 700;
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
