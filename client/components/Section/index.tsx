@@ -15,6 +15,7 @@ export interface ISectionProps {
   paddingColumnLeft?: string;
   bodyTextPadding?: string;
   imageMaxWidth?: string;
+  imageMaxHeight?: string;
 }
 
 const duration = 1.75;
@@ -93,7 +94,7 @@ const Section = ({
                     color: "#000",
                     padding: {
                       xs: "25px 20px",
-                      md: "25px 0px 0px 45px",
+                      md: "25px 0px 0px 120px",
                     },
                   }}
                 >
@@ -170,7 +171,7 @@ const Section = ({
             </Box>
           </motion.div>
         </Box>
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", maxWidth: imageMaxWidth }}>
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
