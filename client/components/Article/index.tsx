@@ -53,7 +53,7 @@ const Article = ({
               borderRadius: { xs: "10px 10px 0 0", md: "12px 0 0 12px" },
               maxWidth: "100%",
               minHeight: "100%",
-              maxHeight: { xs: "200px", sm: "" },
+              maxHeight: { xs: "160px", sm: "" },
               objectFit: "cover",
               objectPosition: "center center",
             },
@@ -79,7 +79,7 @@ const Article = ({
               sx={{
                 color: "#000",
                 fontWeight: 600,
-                fontSize: { xs: "18px", md: "24px" },
+                fontSize: { xs: "16px", md: "24px" },
                 margin: { xs: "5px 0 0 0", md: "" },
               }}
             >
@@ -96,7 +96,7 @@ const Article = ({
                 sx={{
                   color: "#4f4f4f",
                   fontWeight: 600,
-                  fontSize: { xs: "14px", md: "14px" },
+                  fontSize: { xs: "12px", md: "14px" },
                   lineHeight: { xs: "18px", md: "22px" },
                 }}
               >

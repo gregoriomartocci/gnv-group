@@ -91,6 +91,7 @@ const ArticleCard = (article: TArticle) => {
                       color: "#212121",
                       fontWeight: 600,
                       fontSize: { xs: "16px", md: " 18px" },
+                      lineHeight: { xs: "20px", md: " 22px" },
                     }}
                   >
                     {article?.title}
@@ -117,17 +118,21 @@ const ArticleCard = (article: TArticle) => {
                   </Box>
 
                   <Box
-                    style={{
+                    sx={{
                       display: "flex",
                       alignItems: "center",
                       color: "#424242",
                       fontWeight: 600,
-                      fontSize: "14px",
+                      fontSize: { xs: "13px", md: "14px" },
                       margin: "7.5px 0 0 0",
                     }}
                   >
                     Ver Noticia
-                    <KeyboardArrowRightIcon />
+                    <KeyboardArrowRightIcon
+                      sx={{
+                        fontSize: { xs: "15px", md: "16px" },
+                      }}
+                    />
                   </Box>
                 </Box>
               </Box>
@@ -175,7 +180,7 @@ const News = () => {
       </Box>
 
       <HeaderTitle
-       titleFontSize={{ xs: "20px", md: "24px" }}
+        titleFontSize={{ xs: "20px", md: "24px" }}
         fontWeight={600}
         p={{ xs: "0 0 60px 0", md: "45px 0 80px 0px" }}
         title="Todas la noticias"

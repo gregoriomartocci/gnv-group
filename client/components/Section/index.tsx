@@ -109,7 +109,7 @@ const Section = ({
                       },
                       height: "100%",
                       lineHeight: {
-                        xs: "28px",
+                        xs: "25px",
                         md: "40px",
                       },
                     }}
