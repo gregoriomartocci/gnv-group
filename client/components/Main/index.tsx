@@ -161,7 +161,10 @@ const Main = ({
                           {phrase}
                         </Typography>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"} padding="15px 30px">
+                          <UseButton
+                            type={"Primary"}
+                            padding={{ xs: "15px 30px", md: "10px 20px" }}
+                          >
                             <Typography
                               sx={{
                                 fontSize: { xs: "14px", md: "16px" },
@@ -212,7 +215,7 @@ const Main = ({
                         <Box style={{ width: "150px" }}>
                           <UseButton
                             type={"Primary"}
-                            padding={{ xs: "10px 30px", md: "12px 30px" }}
+                            padding={{ xs: "10px 20px", md: "12px 30px" }}
                           >
                             <Typography
                               sx={{
