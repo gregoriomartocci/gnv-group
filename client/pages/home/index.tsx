@@ -15,7 +15,7 @@ import api from "../../hooks/Api";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
-import UseCarousel from "./Components/Carousel";
+import Slider from "./Components/Slider";
 import Logo from "../../components/Logo";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import dynamic from "next/dynamic";
@@ -30,7 +30,7 @@ import { ReadProject } from "../../api/ventures";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
-import CarouselB from "./Components/CarouselB";
+import CarouselB from "./Components/Carousel";
 
 export type TDemo = {
   img: string;
@@ -63,11 +63,11 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setCountersVisible(entry.isIntersecting);
-    });
-    observer.observe(CountersRef?.current);
+    // const observer = new IntersectionObserver((entries) => {
+    //   const entry = entries[0];
+    //   setCountersVisible(entry.isIntersecting);
+    // });
+    // observer.observe(CountersRef?.current);
   }, []);
 
   // ANIMATIONS
@@ -185,7 +185,6 @@ const Home = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: "50px 0",
           }}
         >
           <motion.div
@@ -205,37 +204,51 @@ const Home = () => {
             />
           </motion.div>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            width: { xs: "200px", md: "200px", lg: "200px" },
-          }}
-        >
+
+        {xs ? (
           <Box
             sx={{
               display: "flex",
-              justifyContent: { xs: "none", md: "center" },
+              position: "relative",
               width: "100%",
-              height: "100%",
+              height: "120px",
             }}
-            ref={CountersRef}
           >
-            <motion.div
-              dragConstraints={CountersRef}
-              initial={"offscreen"}
-              whileInView={"onscreen"}
-              viewport={{ once: false, amount: 0 }}
-              drag={sm ? "x" : false}
-              animate={{ x: !sm && 0 }}
-            >
-              <Counters
-                data={data}
-                counterSize={{ xs: "20px", md: "25px" }}
-                countersRef={countersVisible}
-              />
-            </motion.div>
+            <Slider items={data} />
           </Box>
-        </Box>
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              width: { xs: "200px", md: "200px", lg: "200px" },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "none", md: "center" },
+                width: "100%",
+                height: "100%",
+              }}
+              ref={CountersRef}
+            >
+              <motion.div
+                dragConstraints={CountersRef}
+                initial={"offscreen"}
+                whileInView={"onscreen"}
+                viewport={{ once: false, amount: 0 }}
+                drag={sm ? "x" : false}
+                animate={{ x: !sm && 0 }}
+              >
+                <Counters
+                  data={data}
+                  counterSize={{ xs: "20px", md: "25px" }}
+                  countersRef={countersVisible}
+                />
+              </motion.div>
+            </Box>
+          </Box>
+        )}
       </Box>
 
       {/* CARDS */}

@@ -6,7 +6,7 @@ type IDynamicCounter = {
   from: number;
   to: number;
   duration: number;
-  counterRef: boolean;
+  counterRef?: boolean;
   counterFontSize?: string;
 };
 
