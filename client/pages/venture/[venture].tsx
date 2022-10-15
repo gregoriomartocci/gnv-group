@@ -68,7 +68,6 @@ const Venture = () => {
               sx={{
                 fontSize: { xs: "16px", md: "18px" },
                 textAlign: "left",
-                lineHeight: { xs: "18px", md: "22px" },
               }}
             >
               {(project?.description && sanitize(project?.description)) ?? ""}

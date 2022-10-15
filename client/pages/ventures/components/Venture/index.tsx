@@ -107,7 +107,7 @@ const Venture = (venture: any) => {
                     fontWeight: 500,
                     fontSize: { xs: "12px", md: "14px" },
                     margin: "5px 0 0 0",
-                    lineHeight: { xs: "25px", md: "22px" },
+                    lineHeight: { xs: "18px", md: "20px" },
                     textAlign: "left !important",
                   }}
                 >

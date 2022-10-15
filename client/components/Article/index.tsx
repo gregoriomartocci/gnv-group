@@ -97,7 +97,7 @@ const Article = ({
                   color: "#4f4f4f",
                   fontWeight: 600,
                   fontSize: { xs: "14px", md: "14px" },
-                  lineHeight: "22px",
+                  lineHeight: { xs: "18px", md: "22px" },
                 }}
               >
                 {sanitize(sliceText(description, 150))}

@@ -156,9 +156,8 @@ const Section = ({
                       fontWeight: 400,
                       maxWidth: "650px",
                       color: "4F4F4F",
-                      fontSize: { xs: "17px", md: "20px" },
+                      fontSize: { xs: "14px", md: "17px" },
                       textAlign: "left",
-                      textAlignLast: "left",
                       height: "100%",
                     }}
                   >

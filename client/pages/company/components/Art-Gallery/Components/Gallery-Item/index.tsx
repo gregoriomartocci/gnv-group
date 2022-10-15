@@ -83,7 +83,7 @@ const GalleryItem = ({
             <Typography
               sx={{
                 margin: "0",
-                fontSize: { xs: "18px", md: "18px" },
+                fontSize: { xs: "15px", md: "18px" },
                 fontWeight: 600,
                 color: "#000",
               }}

@@ -29,7 +29,7 @@ const SearchBar = ({
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        padding: "25px 5px",
+        padding: { sx: "35px 5px 0 5px", md: "25px 5px" },
         width: "100%",
       }}
     >

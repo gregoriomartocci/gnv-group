@@ -109,7 +109,7 @@ const ArticleCard = (article: TArticle) => {
                       color: "#4f4f4f",
                       fontWeight: 500,
                       fontSize: { xs: "12px", md: "14px" },
-                      lineHeight: "22px",
+                      lineHeight: { xs: "18px", md: "20px" },
                       margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
                     }}
                   >
