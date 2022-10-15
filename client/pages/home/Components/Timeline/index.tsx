@@ -131,11 +131,6 @@ const data = [
         description: "Edificio Corporativo Puerto Madero, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663020724/m3sarfqm4cgpvnei7yam.jpg",
       },
-      {
-        title: "World Trade Center",
-        description: "Santa Cruz de La Sierra, Bolivia",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664816490/ivnmuwecxqrwtbrux0sf.jpg",
-      },
     ],
   },
   {
@@ -246,7 +241,6 @@ const Timeline = () => {
               alignItems: "center",
               width: "100%",
               height: "100%",
-   
             }}
           >
             {ventures?.map(({ year, highlights }, index) => {

@@ -26,7 +26,7 @@ function Carousel({ items, year }: ICarousel) {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: xs ? "175px" : sm ? "250px" : "275px",
+    width: xs ? "175px" : sm ? "200px" : "250px",
     backgroundColor: "#fff",
     borderRadius: xs ? "7.5px" : "15px",
     cursor: "pointer",

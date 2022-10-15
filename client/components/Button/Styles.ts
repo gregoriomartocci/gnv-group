@@ -16,7 +16,7 @@ export const Primary: SxProps<Theme> = {
   fontSize: "17px",
   backgroundColor: black,
   borderRadius: "7.5px",
-  padding: { xs: "10px 20px", md: "12px 50px" },
+  padding: { xs: "10px 20px", md: "12px 35px" },
   whiteSpace: "nowrap",
   color: "#fff",
   textTransform: "unset",
