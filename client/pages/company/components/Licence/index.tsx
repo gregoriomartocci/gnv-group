@@ -16,7 +16,20 @@ const Licence = ({ img, description, width, height }: TDemo) => {
         height: "100%",
         width,
         overflow: "hidden",
-        padding: "45px 7.5% 25px 7.5%",
+        padding: {
+          xs: "45px 7.5% 25px 7.5%",
+          sm: "45px 7.5% 25px 7.5%",
+          md: "45px 5% 25px 5%",
+          lg: "45px 5% 25px 5%",
+          xl: "45px 5% 25px 5%",
+        },
+        margin: {
+          xs: "0 40px",
+          sm: "unset",
+          md: "unset",
+          lg: "unset",
+          xl: "unset",
+        },
       }}
     >
       <Image
