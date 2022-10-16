@@ -31,6 +31,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
 import CarouselB from "./Components/Carousel";
+import Parallax from "../../components/Parallax";
 
 export type TDemo = {
   img: string;
@@ -194,7 +195,7 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p={{ xs: "0 15px", md: "20px 0" }}
+              p={{ xs: "0 15px", md: "35px 0" }}
               titleFontSize={{ xs: "20px", md: "26px" }}
               fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
@@ -314,7 +315,7 @@ const Home = () => {
         }}
       >
         <Section
-          imageMaxWidth="500px"
+          imageMaxWidth="600px"
           quote={`"Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia"`}
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
@@ -323,6 +324,10 @@ const Home = () => {
           bodyTextPadding={{ xs: "25px 0", md: "0" }}
         />
       </Box>
+
+      <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png">
+        <Box sx={{ width: "100%", height: "60vh" }}></Box>
+      </Parallax>
 
       {/* Contact */}
 
@@ -337,7 +342,7 @@ const Home = () => {
           margin: "auto",
           minHeight: { sx: "", md: "80vh" },
           maxWidth: "1200px",
-          padding: { xs: "0 15px", md: "0 10%" },
+          padding: { xs: "0 15px", md: "75px 10%" },
         }}
       >
         <HeaderTitle
@@ -349,10 +354,14 @@ const Home = () => {
           description="Envianos tu consulta"
         />
 
-        <Box sx={{ width: "100%", padding: { xs: "0 10%", md: "0 5%" } }}>
+        <Box sx={{ width: "100%", padding: { xs: "50px 10%", md: "0 10%" } }}>
           <Form value={value} setValue={setValue} />
         </Box>
       </Box>
+
+      <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg">
+        <Box sx={{ width: "100%", height: "500px" }}></Box>
+      </Parallax>
 
       {/* Maps */}
 
@@ -364,6 +373,7 @@ const Home = () => {
           flexDirection: "column",
           height: "100%",
           width: "100%",
+          marginBottom: "-50px",
         }}
       >
         <Box
@@ -372,7 +382,7 @@ const Home = () => {
             justifyContent: "center",
             height: "100%",
             width: "100%",
-            padding: { xs: "50px 10% 40px 10%", md: "180px 10% 100px 10%" },
+            padding: { xs: "50px 10% 40px 10%", md: "100px 10% 100px 10%" },
           }}
         >
           <UseTabs items={mapItems} tab={tab} setTab={setTab} />

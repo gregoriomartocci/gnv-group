@@ -56,7 +56,7 @@ const Create = ({ title, content, create, loading }: ICreateProps) => {
       <Box sx={Login}>
         <span
           style={{
-            fontSize: "20px",
+            fontSize: { xs: "18px", md: "20px" },
             fontWeight: 600,
             margin: "0 0 15px 0",
             color: "#424242",

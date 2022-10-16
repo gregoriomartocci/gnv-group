@@ -192,7 +192,7 @@ const Section = ({
               }}
             >
               <img
-                style={{ maxWidth: imageMaxWidth, maxHeight: imageMaxHeight }}
+                style={{ maxHeight: imageMaxHeight }}
                 src={image}
                 alt="home"
               />

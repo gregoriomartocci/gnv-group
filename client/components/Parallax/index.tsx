@@ -1,8 +1,28 @@
 import { Box } from "@mui/system";
 import React from "react";
 
-const Parallax = ({ url = "/assessts" }) => {
-return <Box sx={{backgroundImage:  }}></Box>;
+export type Props = {
+  url: string;
+  padding?: string;
+  children?: any;
+};
+
+const Parallax = ({ url, children, padding }: Props) => {
+  return (
+    <Box
+      sx={{
+        backgroundImage: `url(${url})`,
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        padding,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        display: "block",
+      }}
+    >
+      {children}
+    </Box>
+  );
 };
 
 export default Parallax;

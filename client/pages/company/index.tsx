@@ -21,6 +21,7 @@ import AuthImage from "../../assets/images/Image-1.jpg";
 import ginevraRealty from "../../assets/logo/GinevraRealtyPNG.png";
 import Image from "next/image";
 import CarouselB from "./components/Carousel";
+import Parallax from "../../components/Parallax";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -338,10 +339,9 @@ const Company = () => {
           <HeaderTitle
             title="Licencias"
             p="0 15px"
-            titleFontSize={{ xs: "24px", md: "24px" }}
+            titleFontSize={{ xs: "20px", md: "22px" }}
             fontWeight={600}
             titlePadding="10px 0"
-            descriptionFontSize="20px"
           />
           <Box
             sx={{
@@ -382,7 +382,7 @@ const Company = () => {
         >
           <HeaderTitle
             p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-            titleFontSize={{ xs: "22px", md: "24px" }}
+            titleFontSize={{ xs: "20px", md: "22px" }}
             fontWeight={600}
             title="Compañia"
             color="#000"
@@ -460,7 +460,7 @@ const Company = () => {
       >
         <HeaderTitle
           p={{ xs: "30px 0 30px 0", md: "50px 0 100px 0" }}
-          titleFontSize={{ xs: "22px", md: "24px" }}
+          titleFontSize={{ xs: "20px", md: "22px" }}
           fontWeight={600}
           title="Galería de arte"
         />
