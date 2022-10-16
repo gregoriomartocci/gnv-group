@@ -342,7 +342,7 @@ const Home = () => {
           margin: "auto",
           minHeight: { sx: "", md: "80vh" },
           maxWidth: "1200px",
-          padding: { xs: "0 15px", md: "75px 10%" },
+          padding: { xs: "50px 10%", md: "75px 10%" },
         }}
       >
         <HeaderTitle
