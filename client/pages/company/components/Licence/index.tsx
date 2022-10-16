@@ -5,6 +5,7 @@ import { TDemo } from "../..";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Svg from "./components/SVG";
 import { Height } from "@mui/icons-material";
+import Image from "next/image";
 
 const Licence = ({ img, description, width, height }: TDemo) => {
   return (
@@ -15,73 +16,20 @@ const Licence = ({ img, description, width, height }: TDemo) => {
         height,
         width,
         overflow: "hidden",
+        padding: "35px 7.5%",
       }}
     >
       <Box
         sx={{
-          display: "flex",
+          dislpay: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           width: "100%",
           height: "100%",
-          userSelect: "none",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "35px 7.5%",
-          color: "#212121",
-          fontFamily: "'Poppins', sans-serif",
+          padding: "0 0 25 px 0",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "18px",
-            width: "100%",
-            height: "100%",
-            flexDirection: { xs: "column", sm: "row" },
-            margin: "5px 0",
-            padding: "0 0 25 px 0",
-          }}
-        >
-          {img &&
-            img?.map((element) => {
-              return (
-                <Box
-                  sx={{
-                    dislpay: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <Svg>{element}</Svg>
-                </Box>
-              );
-            })}
-        </Box>
-
-        {description && (
-          <Box
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontSize: "18px",
-              margin: "5px 0",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "18px",
-                fontWeight: 400,
-                fontFamily: "'Poppins', sans-serif",
-                textAlign: "center",
-              }}
-            >
-              {description}
-            </Typography>
-          </Box>
-        )}
+        <Image src={img} alt="Licence" objectFit="cover" />
       </Box>
     </Box>
   );
