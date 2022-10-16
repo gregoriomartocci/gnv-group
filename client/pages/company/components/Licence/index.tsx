@@ -13,24 +13,18 @@ const Licence = ({ img, description, width, height }: TDemo) => {
       sx={{
         display: "flex",
         cursor: "pointer",
-        height,
+        height: "100%",
         width,
         overflow: "hidden",
-        padding: "35px 7.5%",
+        padding: "45px 7.5% 25px 7.5%",
       }}
     >
-      <Box
-        sx={{
-          dislpay: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-          padding: "0 0 25 px 0",
-        }}
-      >
-        <Image src={img} alt="Licence" objectFit="cover" />
-      </Box>
+      <Image
+        style={{ maxWidth: width }}
+        src={img}
+        alt="Licence"
+        objectFit="cover"
+      />
     </Box>
   );
 };

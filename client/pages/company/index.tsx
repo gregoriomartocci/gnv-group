@@ -44,22 +44,22 @@ const FadeFromBottom = {
 const licences = [
   {
     img: wtcLogo,
-    width: { xs: "200px", md: "400px" },
+    width: { xs: "225px", md: "300px", xl: "400px" },
     height: "100%",
   },
   {
     img: marriotLogo,
-    width: { xs: "200px", md: "400px" },
+    width: { xs: "225px", md: "300px", xl: "400px" },
     height: "100%",
   },
   {
     img: accordLogo,
-    width: { xs: "200px", md: "400px" },
+    width: { xs: "225px", md: "300px", xl: "400px" },
     height: "100%",
   },
   {
     img: ennismoreLogo,
-    width: { xs: "200px", md: "400px" },
+    width: { xs: "250px", md: "325px", xl: "425px" },
     height: "100%",
   },
 ];
