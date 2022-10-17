@@ -74,7 +74,7 @@ export const sanitize = (string: string) => {
 
 const Company = () => {
   const [render, setRender] = useState<any>(typeof window !== "undefined");
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const xs = width && width < 900;
 
