@@ -354,7 +354,7 @@ const Home = () => {
           description="Envianos tu consulta"
         />
 
-        <Box sx={{ width: "100%", padding: { xs: "50px 10%", md: "0 10%" } }}>
+        <Box sx={{ width: "100%", padding: { xs: "10px 10%", md: "0 10%" } }}>
           <Form value={value} setValue={setValue} />
         </Box>
       </Box>
