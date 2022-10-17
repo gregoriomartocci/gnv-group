@@ -325,9 +325,13 @@ const Home = () => {
         />
       </Box>
 
-      <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png">
-        <Box sx={{ width: "100%", height: "60vh" }}></Box>
-      </Parallax>
+      {/* Parrallax */}
+
+      {xs && (
+        <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png">
+          <Box sx={{ width: "100%", height: "60vh" }}></Box>
+        </Parallax>
+      )}
 
       {/* Contact */}
 
@@ -359,9 +363,13 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg">
-        <Box sx={{ width: "100%", height: "500px" }}></Box>
-      </Parallax>
+      {/* Parrallax */}
+
+      {xs && (
+        <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg">
+          <Box sx={{ width: "100%", height: "500px" }}></Box>
+        </Parallax>
+      )}
 
       {/* Maps */}
 
