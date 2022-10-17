@@ -217,7 +217,7 @@ const Home = () => {
               height: "120px",
             }}
           >
-            <Slider items={data}/>
+            <Slider items={data} />
           </Box>
         ) : (
           <Box
@@ -348,7 +348,7 @@ const Home = () => {
           margin: "auto",
           minHeight: { sx: "", md: "80vh" },
           maxWidth: "1200px",
-          padding: { xs: "50px 10%", md: "75px 10%" },
+          padding: { xs: "0", md: "75px 10%" },
         }}
       >
         <HeaderTitle
