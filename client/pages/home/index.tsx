@@ -64,11 +64,11 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // const observer = new IntersectionObserver((entries) => {
-    //   const entry = entries[0];
-    //   setCountersVisible(entry.isIntersecting);
-    // });
-    // observer.observe(CountersRef?.current);
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setCountersVisible(entry.isIntersecting);
+    });
+    observer.observe(CountersRef?.current);
   }, []);
 
   // ANIMATIONS
@@ -327,7 +327,7 @@ const Home = () => {
 
       {/* Parrallax */}
 
-      {xs && (
+      {!xs && (
         <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png">
           <Box sx={{ width: "100%", height: "60vh" }}></Box>
         </Parallax>
@@ -365,7 +365,7 @@ const Home = () => {
 
       {/* Parrallax */}
 
-      {xs && (
+      {!xs && (
         <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg">
           <Box sx={{ width: "100%", height: "500px" }}></Box>
         </Parallax>
