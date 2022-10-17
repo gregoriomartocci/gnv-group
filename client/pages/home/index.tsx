@@ -68,7 +68,7 @@ const Home = () => {
       const entry = entries[0];
       setCountersVisible(entry.isIntersecting);
     });
-    observer.observe(CountersRef?.current);
+    observer?.observe(CountersRef?.current);
   }, []);
 
   // ANIMATIONS
