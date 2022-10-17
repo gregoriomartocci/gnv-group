@@ -35,7 +35,7 @@ export default function DynamicCounter({
       });
     }
     return () => {};
-  }, []); // observer ==> counterRef
+  }, [counterRef]); // observer ==> counterRef
 
   return (
     <Box>

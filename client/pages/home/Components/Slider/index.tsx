@@ -19,6 +19,7 @@ type TUseCarousel = {
   items: any[];
   slideTime?: number;
   typographyText?: string;
+  ref?: any;
 };
 
 const Slider = ({ items }: TUseCarousel) => {

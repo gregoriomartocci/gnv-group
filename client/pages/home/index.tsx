@@ -64,12 +64,14 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setCountersVisible(entry.isIntersecting);
-    });
-    observer?.observe(CountersRef?.current);
-  }, []);
+    if (!xs) {
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        setCountersVisible(entry?.isIntersecting);
+      });
+      observer?.observe(CountersRef?.current);
+    }
+  }, [xs]);
 
   // ANIMATIONS
 
@@ -215,7 +217,7 @@ const Home = () => {
               height: "120px",
             }}
           >
-            <Slider items={data} />
+            <Slider items={data}/>
           </Box>
         ) : (
           <Box
