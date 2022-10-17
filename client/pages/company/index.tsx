@@ -44,22 +44,22 @@ const FadeFromBottom = {
 const licences = [
   {
     img: wtcLogo,
-    width: { xs: "175px", sm: "200px", md: "250px", xl: "300px" },
+    width: { xs: "175px", sm: "200px", md: "250px", xl: "275px" },
     height: "100%",
   },
   {
     img: marriotLogo,
-    width: { xs: "175px", sm: "200px", md: "250px", xl: "300px" },
+    width: { xs: "175px", sm: "200px", md: "250px", xl: "275px" },
     height: "100%",
   },
   {
     img: accordLogo,
-    width: { xs: "175px", sm: "200px", md: "250px", xl: "300px" },
+    width: { xs: "175px", sm: "200px", md: "250px", xl: "275px" },
     height: "100%",
   },
   {
     img: ennismoreLogo,
-    width: { xs: "200px", sm: "225px", md: "275px", xl: "325px" },
+    width: { xs: "200px", sm: "225px", md: "275px", xl: "300px" },
     height: "100%",
   },
 ];
@@ -292,7 +292,7 @@ const Company = () => {
             height: "100%",
             alignItems: "center",
             justifyContent: "space-around",
-            flexWrap: "wrap",
+            flexWrap: { xs: "wrap", md: "none" },
           }}
         >
           {licences && licences?.length
