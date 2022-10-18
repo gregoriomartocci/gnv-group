@@ -34,7 +34,7 @@ function Carousel({ items, year }: ICarousel) {
     fontSize: "20px",
     boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
     padding: "10px",
-    margin: xs ? "-60px" : "-75px",
+    margin: xs ? "-55px" : "-75px",
   };
 
   const slides = [0, 2, 3, 4];
