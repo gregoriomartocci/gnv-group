@@ -42,26 +42,28 @@ const FadeFromBottom = {
 };
 
 const licences = [
-  {
-    img: wtcLogo,
-    width: { xs: "175px", sm: "200px", md: "250px", xl: "275px" },
-    height: "100%",
-  },
-  {
-    img: marriotLogo,
-    width: { xs: "175px", sm: "200px", md: "250px", xl: "275px" },
-    height: "100%",
-  },
-  {
-    img: accordLogo,
-    width: { xs: "175px", sm: "200px", md: "250px", xl: "275px" },
-    height: "100%",
-  },
-  {
-    img: ennismoreLogo,
-    width: { xs: "200px", sm: "225px", md: "275px", xl: "300px" },
-    height: "100%",
-  },
+  [
+    {
+      img: wtcLogo,
+      width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
+    },
+  ],
+  [
+    {
+      img: marriotLogo,
+      width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
+    },
+  ],
+  [
+    {
+      img: accordLogo,
+      width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
+    },
+    {
+      img: ennismoreLogo,
+      width: { xs: "125px", sm: "120px", md: "140px", xl: "175px" },
+    },
+  ],
 ];
 
 export const sanitize = (string: string) => {
@@ -292,14 +294,12 @@ const Company = () => {
             height: "100%",
             alignItems: "center",
             justifyContent: "space-around",
-            flexWrap: { xs: "wrap", md: "none" },
+            flexWrap: "wrap",
           }}
         >
-          {licences && licences?.length
-            ? licences?.map((item, key) => {
-                return <Licence {...item} />;
-              })
-            : []}
+          {licences?.map((item, key) => {
+            return <Licence item={item} key={key} />;
+          })}
         </Box>
       </Box>
 
