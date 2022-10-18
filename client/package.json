@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "update": "sudo git pull && sudo npm run build && sudo pm2 start npm -- start",
+    "production": "sudo git pull && sudo npm run build && sudo pm2 start npm -- start",
     "export": "next export",
     "start": "next start",
     "lint": "next lint"
