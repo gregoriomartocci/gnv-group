@@ -115,14 +115,14 @@ const Company = () => {
               display: "flex",
               justifyContent: "flex-start",
               padding: { xs: "20px 0", md: "40px 0" },
-              borderBottom: "1.5px solid #eeeeee",
+              borderBottom: { xs: "", md: "1.5px solid #eeeeee" },
             }}
           >
             <Section
               title={
                 <Box
                   sx={{
-                    height: { xs: "65px", md: "150px" },
+                    height: { xs: "65px", md: "85px" },
                     width: { xs: "200px", md: "280px" },
                   }}
                 >
@@ -146,13 +146,13 @@ const Company = () => {
                   </Svg>
                 </Box>
               }
-              paddingColumnLeft={{ sx: "45px 0", md: "0 0 0 150px" }}
+              paddingColumnLeft={{ sx: "45px 0", md: "0px  0px 0px 150px" }}
               reverse
               bodyTextpadding={{ sx: "10px 0", md: "5px 0" }}
               paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
               imageMaxWidth="750px"
-              imageMaxHeight="400px"
+              imageMaxHeight="350px"
             />
           </Box>
           <Box
@@ -160,7 +160,7 @@ const Company = () => {
               display: "flex",
               justifyContent: "flex-start",
               padding: { xs: "20px 0", md: "40px 0" },
-              borderBottom: "1.5px solid #eeeeee",
+              borderBottom: { xs: "", md: "1.5px solid #eeeeee" },
             }}
           >
             <Section
@@ -179,12 +179,12 @@ const Company = () => {
                   />
                 </Box>
               }
-              paddingColumnLeft={{ sx: "45px 0", md: "0 100px 0 0" }}
+              paddingColumnLeft={{ sx: "45px 0", md: "0px  150px 0px 0px" }}
               bodyTextpadding={{ sx: "25px 0", md: "150px 0 0 0" }}
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
               imageMaxWidth="750px"
-              imageMaxHeight="400px"
+              imageMaxHeight="350px"
             />
           </Box>
           <Box
@@ -192,14 +192,14 @@ const Company = () => {
               display: "flex",
               justifyContent: "flex-start",
               padding: { xs: "20px 0", md: "40px 0" },
-              borderBottom: "1.5px solid #eeeeee",
+              borderBottom: { xs: "", md: "1.5px solid #eeeeee" },
             }}
           >
             <Section
               title={
                 <Box
                   sx={{
-                    height: { xs: "75px", md: "140px" },
+                    height: { xs: "75px", md: "110px" },
                     width: { xs: "200px", md: "280px" },
                   }}
                 >
@@ -237,12 +237,12 @@ const Company = () => {
                 </Box>
               }
               bodyTextpadding={{ sx: "10px 0", md: "0" }}
-              paddingColumnLeft={{ sx: "45px 0", md: "0 0 0 150px" }}
+              paddingColumnLeft={{ sx: "45px 0", md: "0px  0px 0px 150px" }}
               reverse
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664804808/xkqyxa7gg7bnlj0gwy0o.jpg"
               imageMaxWidth="750px"
-              imageMaxHeight="400px"
+              imageMaxHeight="350px"
             />
           </Box>
         </motion.div>
