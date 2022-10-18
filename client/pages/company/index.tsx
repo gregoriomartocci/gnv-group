@@ -254,7 +254,7 @@ const Company = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-center",
+          justifyContent: "center",
           height: "100%",
           width: "100vw",
           padding: "40px 7.5%",
@@ -293,7 +293,7 @@ const Company = () => {
             width: "100%",
             height: "100%",
             alignItems: "center",
-            justifyContent: "space-around",
+            justifyContent: "space-evenly",
             flexWrap: "wrap",
           }}
         >
