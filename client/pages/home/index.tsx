@@ -274,7 +274,13 @@ const Home = () => {
 
       {/* Trayectory */}
 
-      <Box sx={{ width: "100%", padding: "5% 0", minHeight: "100vh" }}>
+      <Box
+        sx={{
+          width: "100%",
+          padding: { xs: "5% 0 0 0", md: "5% 0" },
+          minHeight: "100vh",
+        }}
+      >
         <motion.div
           initial={"offscreen"}
           whileInView={"onscreen"}
