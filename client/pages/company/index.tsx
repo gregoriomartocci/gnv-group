@@ -23,10 +23,14 @@ import CarouselB from "./components/Carousel";
 import Parallax from "../../components/Parallax";
 import ginevraRealty from "../../assets/logo/GinevraRealty.png";
 
-import wtcLogo from "../../assets/licences/wtc.png";
+import wtcLogo from "../../assets/licences/wtcBuenosAires.png";
 import marriotLogo from "../../assets/licences/marriot.png";
 import accordLogo from "../../assets/licences/accord.png";
 import ennismoreLogo from "../../assets/licences/ennismore.png";
+
+import wtcCordoba from "../../assets/licences/wtcCordoba.png";
+import wtcRosario from "../../assets/licences/wtcRosario.jpg";
+import slsPuntaDelEste from "../../assets/licences/slsPuntaDelEste.png"
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -149,7 +153,7 @@ const Company = () => {
               paddingColumnLeft={{ sx: "45px 0", md: "0px  0px 0px 150px" }}
               reverse
               bodyTextpadding={{ sx: "10px 0", md: "5px 0" }}
-              paragraph="Empresa familiar encabezada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
+              paragraph="Empresa liderada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1660970514/uwlrly2kqrnolnqbvb2e.jpg"
               imageMaxWidth="750px"
               imageMaxHeight="350px"
@@ -182,7 +186,7 @@ const Company = () => {
               paddingColumnLeft={{ sx: "45px 0", md: "0px  150px 0px 0px" }}
               bodyTextpadding={{ sx: "25px 0", md: "150px 0 0 0" }}
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
-              image="https://res.cloudinary.com/gregomartocci/image/upload/v1664803584/lp4phva43mfgpvpgpjs1.jpg"
+              image="https://res.cloudinary.com/gregomartocci/image/upload/v1666135684/kvodyjx73j038mhmvvnz.png"
               imageMaxWidth="750px"
               imageMaxHeight="350px"
             />
@@ -240,7 +244,7 @@ const Company = () => {
               paddingColumnLeft={{ sx: "45px 0", md: "0px  0px 0px 150px" }}
               reverse
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
-              image="https://res.cloudinary.com/gregomartocci/image/upload/v1664804808/xkqyxa7gg7bnlj0gwy0o.jpg"
+              image="https://res.cloudinary.com/gregomartocci/image/upload/v1664797870/gm6dkbs9ix9oerdtbhxq.jpg"
               imageMaxWidth="750px"
               imageMaxHeight="350px"
             />

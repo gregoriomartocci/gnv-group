@@ -88,12 +88,12 @@ const Home = () => {
 
   const data = [
     { number: 771190, unity: "m²", description: "desarrollados" },
-    { number: 107000, unity: "m²", description: "de inversión" },
-    { number: 21, unity: "ha", description: "urbanizados" },
+    { number: 107000, unity: "m²", description: "en construcción" },
+    { number: 21, unity: "ha", description: "urbanizadas" },
     {
       number: 40000,
       unity: "m²",
-      description: "corporativos World Trade Center",
+      description: "World Trade Center",
     },
     { number: 17, description: "centros comerciales desarrollados" },
   ];
@@ -197,9 +197,8 @@ const Home = () => {
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p={{ xs: "0 15px", md: "35px 0" }}
+              p={{ xs: "0 15px", md: "45px 0" }}
               titleFontSize={{ xs: "20px", md: "26px" }}
-              fontWeight={600}
               width={{ xs: "100%", md: "1120px" }}
               descriptionFontSize={{ xs: "13px", md: "18px" }}
               title="Participamos en todos los segmentos del mercado inmobiliario."
@@ -324,7 +323,7 @@ const Home = () => {
       >
         <Section
           imageMaxWidth="600px"
-          quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra rica historia."
+          quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra historia."
           image={
             "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
           }

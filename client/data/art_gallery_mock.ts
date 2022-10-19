@@ -170,7 +170,7 @@ const art_gallery_mock = [
   {
     id: 14,
     gallery: "Maman Fine Arts",
-    artist: "Cinthia Cohen",
+    artist: "Cynthia Cohen",
     title: "Sin Título (Florero)",
     image:
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663272212/bqqirjmxqoaq8jzeceuk.jpg",
@@ -182,7 +182,7 @@ const art_gallery_mock = [
   {
     id: 15,
     gallery: "Maman Fine Arts",
-    artist: "Cinthia Cohen",
+    artist: "Cynthia Cohen",
     title: "Sin Título (Florero)",
     image:
       "https://res.cloudinary.com/gregomartocci/image/upload/v1663272211/h8fpbqr1jzcaknzopr91.jpg",

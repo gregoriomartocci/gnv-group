@@ -100,7 +100,7 @@ const Venture = (venture: any) => {
                     {venture?.status ? venture?.status : ""}
                   </Typography>
                 </Box>
-
+                {/* 
                 <Box
                   sx={{
                     color: "#4f4f4f",
@@ -114,7 +114,7 @@ const Venture = (venture: any) => {
                   {venture?.description
                     ? santize(sliceText(venture?.description, 200))
                     : ""}
-                </Box>
+                </Box> */}
 
                 <Box
                   sx={{
@@ -128,7 +128,9 @@ const Venture = (venture: any) => {
                   onClick={() => handleClick(venture)}
                 >
                   Ver Proyecto
-                  <KeyboardArrowRightIcon sx={{ color: "#9e9e9e" }} />
+                  <KeyboardArrowRightIcon
+                    sx={{ color: "#9e9e9e", fontSize: "16px" }}
+                  />
                 </Box>
               </Box>
             </Box>

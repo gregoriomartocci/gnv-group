@@ -42,7 +42,7 @@ const Carousel = ({ items }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100vw",
-                height: "60vh",
+                height: "75vh",
                 cursor: "pointer",
               }}
             >
