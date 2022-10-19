@@ -101,7 +101,7 @@ export default function UseTable({
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(100);
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {

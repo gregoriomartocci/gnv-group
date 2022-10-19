@@ -22,15 +22,11 @@ import Image from "next/image";
 import CarouselB from "./components/Carousel";
 import Parallax from "../../components/Parallax";
 import ginevraRealty from "../../assets/logo/GinevraRealty.png";
-
-import wtcLogo from "../../assets/licences/wtcBuenosAires.png";
+import wtcBuenosAires from "../../assets/licences/wtcBuenosAires.png";
 import marriotLogo from "../../assets/licences/marriot.png";
-import accordLogo from "../../assets/licences/accord.png";
-import ennismoreLogo from "../../assets/licences/ennismore.png";
-
 import wtcCordoba from "../../assets/licences/wtcCordoba.png";
-import wtcRosario from "../../assets/licences/wtcRosario.jpg";
-import slsPuntaDelEste from "../../assets/licences/slsPuntaDelEste.png"
+import wtcRosario from "../../assets/licences/wtcRosario.png";
+import slsPuntaDelEste from "../../assets/licences/slsPuntaDelEste.png";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -48,24 +44,32 @@ const FadeFromBottom = {
 const licences = [
   [
     {
-      img: wtcLogo,
-      width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
-    },
-  ],
-  [
-    {
       img: marriotLogo,
       width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
     },
   ],
   [
     {
-      img: accordLogo,
-      width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
+      img: wtcBuenosAires,
+      width: { xs: "240px", sm: "250px", md: "275px", xl: "320px" },
     },
+  ],
+  [
     {
-      img: ennismoreLogo,
-      width: { xs: "125px", sm: "120px", md: "140px", xl: "175px" },
+      img: wtcCordoba,
+      width: { xs: "240px", sm: "250px", md: "275px", xl: "320px" },
+    },
+  ],
+  [
+    {
+      img: wtcRosario,
+      width: { xs: "240px", sm: "250px", md: "275px", xl: "320px" },
+    },
+  ],
+  [
+    {
+      img: slsPuntaDelEste,
+      width: { xs: "150px", sm: "160px", md: "185px", xl: "200px" },
     },
   ],
 ];

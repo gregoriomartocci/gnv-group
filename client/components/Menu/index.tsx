@@ -113,7 +113,7 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
                 <Box sx={LogoStyle}>
                   <Logo
                     color={onScroll ? !navbar && color : color}
-                    width="125px"
+                    width="140px"
                   />
                 </Box>
               </a>
