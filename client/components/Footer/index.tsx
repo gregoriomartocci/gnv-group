@@ -166,15 +166,22 @@ const Footer = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
+          alignItems: "center",
           padding: "2.5% 10%",
           lineHeight: "25px",
           fontSize: { xs: "14px", md: "16px" },
         }}
       >
-        Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
-        Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 C. +598 94 785
-        878 |
+        <Typography>
+          Camila O´Gorman 412 - World Trade Center II - Of. 200 - Puerto Madero,
+          CABA, Argentina, CP 1107. | T.+5411 5354 8030
+        </Typography>
+        <Typography>
+          Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
+          Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 878
+        </Typography>
       </Box>
     </Box>
   );
