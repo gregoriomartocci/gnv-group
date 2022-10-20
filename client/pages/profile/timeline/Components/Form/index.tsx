@@ -62,7 +62,6 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
   ]);
 
   const [status, setStatus] = useState([
-    "Ejecutado",
     "En desarrollo",
     "Finalizado",
   ]);

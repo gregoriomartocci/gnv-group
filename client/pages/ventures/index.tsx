@@ -35,7 +35,6 @@ const VenturesLayout = () => {
 
   const [status, setStatus] = useState([
     "Todos",
-    "Ejecutado",
     "En desarrollo",
     "Finalizado",
   ]);
