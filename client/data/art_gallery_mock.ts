@@ -216,6 +216,45 @@ const art_gallery_mock = [
     date: "2018",
     published: true,
   },
+  {
+    id: 18,
+    gallery: "Madero Harbour / Maman Fine Arts",
+    artist: "Siquier",
+    title: "Vaca de San Antonio",
+    image:
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1666276955/encokljqgxkuj4roluqj.png",
+    technique: "",
+    measures:
+      "2,30 mts de largo x 72.5 cm de ancho x 1,42 mts de alto perímetro – 2 mts alrededor del estómago.",
+    date: "2018",
+    published: true,
+  },
+  {
+    id: 19,
+    gallery: "Madero Harbour / Maman Fine Arts",
+    artist: "Siquier",
+    title: "Vaca de San Antonio",
+    image:
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1666276955/hbhrqcs03ndy94jefpff.png",
+    technique: "",
+    measures:
+      "2,30 mts de largo x 72.5 cm de ancho x 1,42 mts de alto perímetro – 2 mts alrededor del estómago.",
+    date: "2018",
+    published: true,
+  },
+    {
+    id: 20,
+    gallery: "Madero Harbour / Maman Fine Arts",
+    artist: "Siquier",
+    title: "Vaca de San Antonio",
+    image:
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1666276955/x0lfofbuxilrh5a7o45v.png",
+    technique: "",
+    measures:
+      "2,30 mts de largo x 72.5 cm de ancho x 1,42 mts de alto perímetro – 2 mts alrededor del estómago.",
+    date: "2018",
+    published: true,
+  },
 ];
 
 export default art_gallery_mock;
