@@ -10,6 +10,7 @@ type Type = {
   width: string;
   name?: string;
   optionsHeight?: string;
+  border;
 };
 
 const Dropdown = ({
@@ -18,6 +19,7 @@ const Dropdown = ({
   action,
   width,
   optionsHeight,
+  border,
 }: Type) => {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("");
@@ -42,11 +44,7 @@ const Dropdown = ({
           padding: { xs: "12.5px 25px", sm: "15px 25px" },
           borderRadius: "5px",
           cursor: "pointer",
-          // border: "2px solid #eeeeee",
-
-          // "&:hover": {
-          //   border: "2px solid #eeeeee",
-          // },
+          border: border && "2px solid #eeeeee",
         }}
         onClick={handleClick}
       >

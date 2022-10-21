@@ -123,6 +123,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
               ["type"]: e,
             })
           }
+          border
           optionsHeight="40px"
         />
       </Box>
@@ -152,6 +153,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
               ["status"]: e,
             })
           }
+          border
           optionsHeight="40px"
         />
       </Box>
