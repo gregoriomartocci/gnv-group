@@ -5,6 +5,7 @@ export interface IProject {
   _id: string;
   name: string;
   description: string;
+  order: number;
   images: string[];
   link: string;
   published: boolean;

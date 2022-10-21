@@ -66,10 +66,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     "Gastronomía y Lifestyle",
   ]);
 
-  const [status, setStatus] = useState([
-    "En desarrollo",
-    "Finalizado",
-  ]);
+  const [status, setStatus] = useState(["En desarrollo", "Finalizado"]);
 
   console.log(input, "input");
 
@@ -84,13 +81,21 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
+        name="order"
+        description="Ingrese el orden del emprendimiento"
+        label="Orden"
+        type="number"
+        value={input ? input?.order : ""}
+        onChangeHandler={onChangeHandler}
+      />
+      {/* <InputGroup
         name="link"
         description="Ingrese el enlace del emprendimiento"
         label="Enlace"
         type="text"
         value={input ? input?.link : ""}
         onChangeHandler={onChangeHandler}
-      />
+      /> */}
 
       <Box
         sx={{

@@ -38,8 +38,13 @@ const Content = (project: IProject) => {
 
   const match = project?.id === projectSelected?.id;
 
+  console.log(project, "ok");
+
   return (
     <Fragment>
+      <TableCell align="center">
+        <Typography>{project?.order}</Typography>
+      </TableCell>
       <TableCell align="left">
         <Box
           sx={{

@@ -45,6 +45,7 @@ const Editor = dynamic(() => import("../../../components/Editor"), {
 });
 
 export interface Data {
+  order: number;
   id: number;
   name: string;
   description: string;
@@ -96,6 +97,12 @@ export const sliceText = (text: any, limit: number) => {
 };
 
 const headCells: readonly HeadCell[] = [
+  {
+    id: "order",
+    numeric: true,
+    disablePadding: false,
+    label: "Orden",
+  },
   {
     id: "name",
     numeric: true,
