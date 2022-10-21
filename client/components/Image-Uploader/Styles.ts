@@ -55,7 +55,7 @@ export const dropFileInputLabel: SxProps = {
 
 export const dropFilePreview: SxProps = {
   marginTop: "30px",
-  maxHeight: "150px",
+  maxHeight: "300px",
   overflowY: "scroll",
   p: {
     fontWeight: 500,
@@ -70,25 +70,7 @@ export const dropFilePreviewTitle: SxProps = {
   },
 };
 
-export const dropFilePreviewItem: SxProps = {
-  position: "relative",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "10px",
-  backgroundColor: paper,
-  padding: "15px",
-  borderRadius: "20px",
 
-  img: {
-    width: "50px",
-    marginRight: "20px",
-  },
-
-  "&:hover": {
-    opacity: "1",
-  },
-};
 
 export const dropFilePreviewTitleItemInfo: SxProps = {
   display: "flex",
@@ -124,10 +106,9 @@ export const imageContainer: SxProps = {
   justifyContent: "space-between",
   alignItems: "center",
   img: {
-    width: "100%",
-    maxHeight: "150px",
-    borderRadius: "15px",
+    width: "100px",
+    height: "100px",
+    borderRadius: "5px",
     objectFit: "cover",
   },
 };
-

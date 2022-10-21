@@ -13,7 +13,6 @@ import {
   dropFileInput,
   dropFileInputIcon,
   dropFilePreview,
-  dropFilePreviewItem,
   dropFilePreviewTitleItemInfo,
   imageContainer,
   InfoMessage,
@@ -106,14 +105,9 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         "El formato de la imagen no es válido",
         (value: IImagetoUpload) => {
           const format = value?.type.split("/")[1];
-          const isValid = [
-            "png",
-            "jpg",
-            "svg",
-            "jpeg",
-            "mp4",
-            "webp",
-          ].includes(format);
+          const isValid = ["png", "jpg", "svg", "jpeg", "mp4", "webp"].includes(
+            format
+          );
           return isValid;
         }
       )
@@ -151,9 +145,7 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
 
   // Remove Image
   const fileRemove = (number: number) => {
-    console.log(value, "ANTES");
     const update = value?.filter((_, index) => index !== number);
-    console.log(value, "DESPUES");
     removeImage(update);
   };
 
@@ -207,7 +199,25 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
       <Box sx={dropFilePreview}>
         {value?.map((file, index) => {
           return (
-            <Box key={index} sx={dropFilePreviewItem}>
+            <Box
+              key={index}
+              sx={{
+                position: "relative",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "10px",
+                backgroundColor: "#F5F8FF",
+                padding: "15px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                width: "98%",
+
+                "&:hover": {
+                  opacity: "1",
+                },
+              }}
+            >
               <Box sx={dropFilePreviewTitleItemInfo}>
                 <Box sx={imageContainer}>
                   <img src={file.src} alt="Imagen" />
