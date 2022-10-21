@@ -154,7 +154,7 @@ const Company = () => {
                   </Svg>
                 </Box>
               }
-              paddingColumnLeft={{ sx: "45px 0", md: "0px  0px 0px 150px" }}
+              paddingColumnLeft={{ sx: "65px 0", md: "0px  0px 0px 150px" }}
               reverse
               bodyTextpadding={{ sx: "10px 0", md: "5px 0" }}
               paragraph="Empresa liderada por Alejandro Ginevra, con presencia en Argentina y Uruguay. De GNV se desprenden sofisticados desarrollos y prestigiosas marcas relacionadas al real estate."
@@ -187,7 +187,7 @@ const Company = () => {
                   />
                 </Box>
               }
-              paddingColumnLeft={{ sx: "45px 0", md: "0px  150px 0px 0px" }}
+              paddingColumnLeft={{ sx: "65px 0", md: "0px  150px 0px 0px" }}
               bodyTextpadding={{ sx: "25px 0", md: "150px 0 0 0" }}
               paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1666135684/kvodyjx73j038mhmvvnz.png"
@@ -245,7 +245,7 @@ const Company = () => {
                 </Box>
               }
               bodyTextpadding={{ sx: "10px 0", md: "0" }}
-              paddingColumnLeft={{ sx: "45px 0", md: "0px  0px 0px 150px" }}
+              paddingColumnLeft={{ sx: "65px 0", md: "0px  0px 0px 150px" }}
               reverse
               paragraph="Unidad de negocios que opera en el mercado retail, manejando locales comerciales y desarrollando paseos gastronómicos y de compras."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1664797870/gm6dkbs9ix9oerdtbhxq.jpg"

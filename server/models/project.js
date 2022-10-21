@@ -26,6 +26,7 @@ const projectSchema = new Schema(
       type: String,
       required: true,
     },
+    order: { type: Number },
     link: {
       type: String,
     },

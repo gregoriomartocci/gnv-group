@@ -36,6 +36,7 @@ const gallerySchema = new Schema(
       type: Number,
       required: true,
     },
+    order: { type: Number },
     published: { type: Boolean, default: true },
   },
   { timestamps: true }
