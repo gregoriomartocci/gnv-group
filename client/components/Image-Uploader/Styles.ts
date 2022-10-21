@@ -5,10 +5,6 @@ const primary = "#94A3D1";
 const secondary = "#FAFCFF";
 const paper = "#F5F8FF";
 
-export const grid: SxProps = {
-  display: "grid",
-  overflow: "scroll",
-};
 
 export const dropFileInput: SxProps = {
   display: "flex",
@@ -53,62 +49,10 @@ export const dropFileInputLabel: SxProps = {
   },
 };
 
-export const dropFilePreview: SxProps = {
-  marginTop: "30px",
-  maxHeight: "300px",
-  overflowY: "scroll",
-  p: {
-    fontWeight: 500,
-  },
-};
-
 export const dropFilePreviewTitle: SxProps = {
   marginBottom: "20px",
 
   p: {
     fontWeight: 500,
-  },
-};
-
-
-
-export const dropFilePreviewTitleItemInfo: SxProps = {
-  display: "flex",
-  justifyContent: "space-between",
-  span: {
-    backgroundColor: "#e0e0e0",
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    right: "10px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    boxShadow: "#e0e0e0",
-    cursor: "pointer",
-    opacity: 0,
-    transition: "opacity 0.3s ease",
-  },
-};
-
-export const InfoMessage: SxProps = {
-  margin: "2.5px 0",
-  fontSize: "12px",
-  fontFamily: "Poppins",
-  fontWeight: "500",
-};
-
-export const imageContainer: SxProps = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  img: {
-    width: "100px",
-    height: "100px",
-    borderRadius: "5px",
-    objectFit: "cover",
   },
 };

@@ -289,6 +289,9 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setSelectedProject({ ...selectedProject, images: array });
       }}
+      reOrderImages={(images) =>
+        setSelectedProject({ ...selectedProject, images: images })
+      }
     />,
     <Editor
       value={selectedProject}

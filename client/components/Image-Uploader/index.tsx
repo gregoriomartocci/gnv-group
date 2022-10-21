@@ -9,16 +9,10 @@ import { Box } from "@mui/system";
 import { Fragment, useEffect, useRef, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  dropFileInput,
-  dropFileInputIcon,
-  dropFilePreview,
-  dropFilePreviewTitleItemInfo,
-  imageContainer,
-  InfoMessage,
-} from "./Styles";
+import { dropFileInput, dropFileInputIcon } from "./Styles";
 import * as yup from "yup";
 import FileResizer from "react-image-file-resizer";
+import { Reorder, useMotionValue } from "framer-motion";
 
 export interface IImagetoUpload {
   lastModified?: number;
@@ -83,11 +77,18 @@ interface IImageUploader {
   value: any;
   addImage: any;
   removeImage: any;
+  reOrderImages?: any;
 }
 
-const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
+const ImageUploader = ({
+  value,
+  addImage,
+  removeImage,
+  reOrderImages,
+}: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
+  const y = useMotionValue(0);
 
   const schema = yup.object().shape({
     attachment: yup
@@ -119,10 +120,6 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         }
       ),
   });
-
-  const onDragEnter = () => wrapperRef.current.classList.add("dragover");
-  const onDragLeave = () => wrapperRef.current.classList.remove("dragover");
-  const onDrop = () => wrapperRef.current.classList.remove("dragover");
 
   // Upload Function
   const onFileDrop = async (e: any) => {
@@ -162,14 +159,7 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
   return (
     <Fragment>
       <Fragment>
-        <Box
-          sx={dropFileInput}
-          ref={wrapperRef}
-          component="span"
-          onDragEnter={onDragEnter}
-          onDragLeave={onDragLeave}
-          onDrop={onDrop}
-        >
+        <Box sx={dropFileInput} ref={wrapperRef} component="span">
           <Box>
             <CloudUploadIcon sx={dropFileInputIcon} />
           </Box>
@@ -196,13 +186,18 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         </Box>
       </Fragment>
 
-      <Box sx={dropFilePreview}>
-        {value?.map((file, index) => {
-          return (
+      <Reorder.Group
+        axis="y"
+        values={value}
+        onReorder={reOrderImages}
+        style={{ height: 350, overflowY: "auto", marginTop: "15px" }}
+        layoutScroll
+      >
+        {value?.map((file, index) => (
+          <Reorder.Item value={file} id={file} key={file?.name}>
             <Box
               key={index}
               sx={{
-                position: "relative",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -212,15 +207,28 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
                 borderRadius: "5px",
                 cursor: "pointer",
                 width: "98%",
-
-                "&:hover": {
-                  opacity: "1",
-                },
               }}
             >
-              <Box sx={dropFilePreviewTitleItemInfo}>
-                <Box sx={imageContainer}>
-                  <img src={file.src} alt="Imagen" />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    img: {
+                      width: "75px",
+                      height: "75px",
+                      borderRadius: "5px",
+                      objectFit: "cover",
+                    },
+                  }}
+                >
+                  <img src={file?.src} alt="Imagen" />
                 </Box>
                 <Box
                   sx={{
@@ -243,9 +251,9 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
                 <CloseIcon />
               </IconButton>
             </Box>
-          );
-        }) ?? null}
-      </Box>
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
     </Fragment>
   );
 };
