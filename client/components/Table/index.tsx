@@ -263,7 +263,7 @@ export default function UseTable({
         width: "100%",
         // position: "relative",
         borderRadius: "10px",
-        height: "85%",
+        height: "100%",
         overflowY: "auto",
         padding: "15px",
         boxShadow: "unset",
@@ -291,7 +291,7 @@ export default function UseTable({
           </TableBody>
         </Table>
       </TableContainer>
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           display: "flex",
@@ -313,7 +313,7 @@ export default function UseTable({
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Box>
+      </Box> */}
     </Paper>
   );
 }
