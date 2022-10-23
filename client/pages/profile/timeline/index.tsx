@@ -97,7 +97,7 @@ const headCells: readonly HeadCell[] = [
     label: "Año",
   },
   {
-    id: "highligths",
+    id: "highlights",
     numeric: true,
     disablePadding: false,
     label: "Emprendimientos",

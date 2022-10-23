@@ -43,7 +43,6 @@ export interface ICreateProps {
 }
 
 const ProyectForm = ({ input, setInput }: ICreateProps) => {
-  
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -61,100 +60,22 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     "Gastronomía y Lifestyle",
   ]);
 
-  const [status, setStatus] = useState([
-    "En desarrollo",
-    "Finalizado",
-  ]);
+  const [status, setStatus] = useState(["En desarrollo", "Finalizado"]);
 
   console.log(input, "input");
 
   return (
     <Box>
       <InputGroup
-        name="name"
-        description="Ingrese el nombre del emprendimiento"
-        label="Nombre"
-        type="text"
-        value={input?.name ? input?.name : ""}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="link"
-        description="Ingrese el enlace del emprendimiento"
-        label="Enlace"
-        type="text"
-        value={input ? input?.link : ""}
+        name="Año"
+        description="Ingrese el año"
+        label="Año"
+        type="number"
+        value={input?.year ? input?.year : ""}
         onChangeHandler={onChangeHandler}
       />
 
-      <Box
-        sx={{
-          margin: "20px 0",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Tipo
-        </Typography>
-
-        <Dropdown
-          items={type}
-          placeholder={input?.type}
-          width="100%"
-          action={(e) =>
-            setInput({
-              ...input,
-              ["type"]: e,
-            })
-          }
-          optionsHeight="40px"
-        />
-      </Box>
-
-      <Box
-        sx={{
-          margin: "20px 0",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Estado
-        </Typography>
-        <Dropdown
-          items={status}
-          width="100%"
-          placeholder={input?.status}
-          action={(e) =>
-            setInput({
-              ...input,
-              ["status"]: e,
-            })
-          }
-          optionsHeight="40px"
-        />
-      </Box>
-
-      {/* <BasicSelect
-        options={status}
-        width="100%"
-        value={input ? input : {}}
-        setValue={setInput}
-        name="status"
-        placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
-        label="Estado"
-      /> */}
+      
     </Box>
   );
 };
