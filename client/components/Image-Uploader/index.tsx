@@ -190,7 +190,7 @@ const ImageUploader = ({
         axis="y"
         values={value}
         onReorder={reOrderImages}
-        style={{ height: 350, overflowY: "auto", marginTop: "15px" }}
+        style={{ height: 375, overflowY: "auto", marginTop: "20px" }}
         layoutScroll
       >
         {value?.map((file, index) => (
@@ -221,8 +221,8 @@ const ImageUploader = ({
                     justifyContent: "space-between",
                     alignItems: "center",
                     img: {
-                      width: "75px",
-                      height: "75px",
+                      width: "85px",
+                      height: "85px",
                       borderRadius: "5px",
                       objectFit: "cover",
                     },
