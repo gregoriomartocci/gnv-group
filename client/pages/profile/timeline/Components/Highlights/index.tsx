@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { Box, Typography } from "@mui/material";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { SxProps, Theme } from "@mui/material";
+import UseModal from "../../../../../components/Modal";
 
 const ImageContainer: SxProps<Theme> = {
   margin: "0 10px",
-
   img: {
     width: "200px",
     height: "200px",
@@ -14,29 +14,12 @@ const ImageContainer: SxProps<Theme> = {
   },
 };
 
-const AddImage: SxProps<Theme> = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  margin: "0 10px",
-  width: "200px",
-  height: "200px",
-  backgroundColor: "#fafafa",
-  border: "3px dashed #e0e0e0",
-  borderRadius: "7.5px",
-
-  "&:hover": {
-    backgroundColor: "#f5f5f5",
-    cursor: "pointer",
-  },
-};
-
-type IImageSelector = {
+type Props = {
   items: any[];
-  uploadImage: any;
+  onClick: any;
 };
 
-const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
+const Highlights = ({ items, onClick }: Props) => {
   return (
     <Fragment>
       <Box
@@ -44,14 +27,13 @@ const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
           display: "flex",
           flexWrap: "wrap",
           width: "100%",
-          margin: "10px",
         }}
       >
         {items?.length
-          ? items?.map(({ src, name, size }) => {
+          ? items?.map(({ name, description, img }) => {
               return (
                 <Box sx={ImageContainer}>
-                  <img src={src} alt={name} />
+                  <img src={img[0]} alt={name} />
                   <Box sx={{ padding: "0 5px" }}>
                     <Typography
                       sx={{
@@ -73,20 +55,38 @@ const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
                         fontWeight: 500,
                       }}
                     >
-                      {size}
+                      {description}
                     </Typography>
                   </Box>
                 </Box>
               );
             })
           : null}
-        <Box sx={AddImage} component="span" onClick={uploadImage}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "150px",
+            height: "150px",
+            backgroundColor: "#fafafa",
+            border: "3px dashed #e0e0e0",
+            borderRadius: "7.5px",
+
+            "&:hover": {
+              backgroundColor: "#f5f5f5",
+              cursor: "pointer",
+            },
+          }}
+          component="span"
+          onClick={onClick}
+        >
           {/* <img src={img} alt={name} /> */}
-          <FileUploadIcon sx={{ fontSize: "40px", color: "#e0e0e0" }} />
+          <AddCircleOutlineIcon sx={{ fontSize: "40px", color: "#e0e0e0" }} />
         </Box>
       </Box>
     </Fragment>
   );
 };
 
-export default ImageSelector;
+export default Highlights;

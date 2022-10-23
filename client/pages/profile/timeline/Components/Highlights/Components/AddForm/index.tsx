@@ -11,16 +11,11 @@ import {
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-
 import ImageUploader, {
   IImagetoUpload,
-} from "../../../../../components/Image-Uploader";
-
-import InputGroup from "../../../../../components/Input";
-import Dropdown from "../../../../ventures/components/Dropdown";
-import Highlights from "../Highlights";
-import UseModal from "../../../../../components/Modal";
-import AddForm from "../Highlights/Components/AddForm";
+} from "../../../../../../../components/Image-Uploader";
+import InputGroup from "../../../../../../../components/Input";
+import UseButton from "../../../../../../../components/Button";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -45,9 +40,7 @@ export interface ICreateProps {
   setInput: any;
 }
 
-const Form = ({ input, setInput }: ICreateProps) => {
-  const [open, setOpen] = useState(false);
-
+const AddForm = ({ input, setInput }: ICreateProps) => {
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -56,20 +49,24 @@ const Form = ({ input, setInput }: ICreateProps) => {
   };
 
   return (
-    <Box>
+    <Box sx={{ padding: "25px", width: "40vw" }}>
       <InputGroup
-        name="Año"
-        description="Ingrese el año"
-        label="Año"
-        type="number"
-        value={input?.year ? input?.year : ""}
+        name="name"
+        description="Ingrese el nombre del emprendimiento"
+        label="Nombre"
+        type="text"
+        value={input?.name ? input?.name : ""}
         onChangeHandler={onChangeHandler}
       />
 
-      {/* span: {
-
-        }, */}
-
+      <InputGroup
+        name="description"
+        description="Ingrese la descripción del emprendimiento"
+        label="Descripción"
+        type="number"
+        value={input?.description ? input?.description : ""}
+        onChangeHandler={onChangeHandler}
+      />
       <Typography
         sx={{
           fontSize: "16px",
@@ -78,16 +75,19 @@ const Form = ({ input, setInput }: ICreateProps) => {
           margin: "10px 0",
         }}
       >
-        Emprendimientos
+        Imágenes
       </Typography>
+      <ImageUploader
+        value={input?.highlights}
+        addImage={(value) => console.log(value)}
+        removeImage={(value) => console.log(value)}
+      />
 
-      <Highlights items={input?.highlights} onClick={() => setOpen(true)} />
-
-      <UseModal open={open} handleClose={() => setOpen(false)}>
-        <AddForm input={input} setInput={setInput}/>
-      </UseModal>
+      <UseButton type="Primary" width="100%">
+        {true ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
+      </UseButton>
     </Box>
   );
 };
 
-export default Form;
+export default AddForm;

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type THighlight = {
-  title: string;
+  name: string;
   description: string;
   images: string;
 };

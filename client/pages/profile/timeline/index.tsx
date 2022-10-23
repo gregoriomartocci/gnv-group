@@ -3,18 +3,15 @@ import { Theme } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "../../../components/Dashboard";
-import { IState } from "../../../components/Menu";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import api from "../../../hooks/Api";
 import {
   closeAlert,
   initialState,
-  IProject,
+  ITimeline,
   setAlert,
   setModal,
-  setProjects,
+  setTimelineItems,
   setSelected,
-} from "../../../redux/slices/projects";
+} from "../../../redux/slices/timeline";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -32,13 +29,14 @@ import dynamic from "next/dynamic";
 import form from "./Components/Form";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
-  CreateProject,
-  DeleteProject,
-  ReadProjects,
-  UpdateProject,
-} from "../../../api/ventures";
+  CreateTimelineItem,
+  DeleteTimelineItem,
+  ReadTimeline,
+  UpdateTimelineItem,
+} from "../../../api/timeline";
 import Content from "./Components/Content";
 import { THighlight } from "../../../redux/slices/timeline";
+import Form from "./Components/Form";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -66,7 +64,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: IProject;
+  project: ITimeline;
 }
 
 interface ISanitize {
@@ -135,36 +133,34 @@ export type TProject = {
 
 const Ventures = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state?.projects);
-  const projectSelected = state?.projectSelected;
-  const [selectedProject, setSelectedProject] = useState(projectSelected);
+  const state = useSelector((state) => state?.timeline);
+  const timelineItemSelected = state?.timelineItemSelected;
+  const [selectedTimelineItem, setSelectedTimelineItem] =
+    useState(timelineItemSelected);
 
   const { alert, modal } = state;
 
   const [input, setInput] = useState({
-    name: "",
-    link: "",
-    type: "",
-    status: "",
-    images: [],
-    description: "",
+    year: "",
+    highlights: [],
+    published: "",
   });
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setSelectedProject(projectSelected);
-  }, [projectSelected]);
+    setSelectedTimelineItem(timelineItemSelected);
+  }, [selectedTimelineItem]);
 
   const {
     isFetching: loading,
     isError,
     error,
-    data: allProjects,
-  } = useQuery("timeline", ReadProjects);
+    data: allTimelineItems,
+  } = useQuery("timeline", ReadTimeline);
 
-  const { mutateAsync: createProjectMutation, isLoading: createLoading } =
-    useMutation(CreateProject, {
+  const { mutateAsync: createTimelineItemMutation, isLoading: createLoading } =
+    useMutation(CreateTimelineItem, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("timeline");
         console.log(data, "ok");
@@ -186,8 +182,8 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
-    useMutation(UpdateProject, {
+  const { mutateAsync: updateTimelineItemMutation, isLoading: updateLoading } =
+    useMutation(UpdateTimelineItem, {
       onSuccess: () => {
         queryClient.invalidateQueries("timeline");
         dispatch(
@@ -207,8 +203,8 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
-    useMutation(DeleteProject, {
+  const { mutateAsync: deleteTimelineItemMutation, isLoading: deleteLoading } =
+    useMutation(DeleteTimelineItem, {
       onSuccess: () => {
         queryClient.invalidateQueries("timeline");
         dispatch(
@@ -228,43 +224,10 @@ const Ventures = () => {
       },
     });
 
-  const createContent = [
-    <ProjectForm input={input} setInput={setInput} />,
-    <ImageUploader
-      value={input?.images}
-      addImage={(file: any) => {
-        setInput({ ...input, images: [...input.images, file] });
-      }}
-      removeImage={(array: any) => {
-        setInput({ ...input, images: array });
-      }}
-    />,
-    <Editor
-      value={input}
-      setValue={(string) => setInput({ ...input, description: string })}
-    />,
-  ];
+  const createContent = [<Form input={input} setInput={setInput} />];
 
   const updateContent = [
-    <ProjectForm input={selectedProject} setInput={setSelectedProject} />,
-    <ImageUploader
-      value={selectedProject?.id ? selectedProject?.images : []}
-      addImage={(file: any) => {
-        setSelectedProject({
-          ...selectedProject,
-          images: [...selectedProject?.images, file],
-        });
-      }}
-      removeImage={(array: any) => {
-        setSelectedProject({ ...selectedProject, images: array });
-      }}
-    />,
-    <Editor
-      value={selectedProject}
-      setValue={(string) =>
-        setSelectedProject({ ...selectedProject, description: string })
-      }
-    />,
+    <Form input={selectedTimelineItem} setInput={setSelectedTimelineItem} />,
   ];
 
   return (
@@ -284,10 +247,10 @@ const Ventures = () => {
 
       <UseTable
         title="Linea del Tiempo"
-        name="projects"
+        name="timeline"
         headCells={headCells}
-        rows={allProjects?.length ? allProjects : []}
-        content={(project: IProject) => <Content {...project} />}
+        rows={allTimelineItems?.length ? allTimelineItems : []}
+        content={(timeline: ITimeline) => <Content {...timeline} />}
         openCreateModal={() =>
           dispatch(
             setModal({
@@ -305,19 +268,21 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Año"
-          create={() => createProjectMutation({ ...input })}
+          create={() => createTimelineItemMutation({ ...input })}
           loading={createLoading}
         />
       </UseModal>
       <UseModal
-        open={modal.update}
+        open={modal?.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id && (
+        {selectedTimelineItem?.id && (
           <Update
             title="Año"
             content={updateContent}
-            update={() => updateProjectMutation({ ...selectedProject })}
+            update={() =>
+              updateTimelineItemMutation({ ...selectedTimelineItem })
+            }
             loading={updateLoading}
           />
         )}
@@ -335,7 +300,9 @@ const Ventures = () => {
       >
         <Delete
           title="Año"
-          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
+          deleteElement={() =>
+            deleteTimelineItemMutation(selectedTimelineItem?._id)
+          }
           onClose={() => {
             dispatch(
               setModal({

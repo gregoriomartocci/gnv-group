@@ -13,7 +13,7 @@ export const dropFileInput: SxProps = {
   flexDirection: "column",
   position: "relative",
   width: "100%",
-  height: "200px",
+  height: "150px",
   border: `2px dashed ${primary}`,
   borderRadius: "20px",
   backgroundColor: secondary,

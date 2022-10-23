@@ -146,16 +146,6 @@ const ImageUploader = ({
     removeImage(update);
   };
 
-  // Convert KB Format
-  function formatBytes(bytes: number, decimals = 2) {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
-  }
-
   return (
     <Fragment>
       <Fragment>
@@ -190,7 +180,7 @@ const ImageUploader = ({
         axis="y"
         values={value}
         onReorder={reOrderImages}
-        style={{ height: 375, overflowY: "auto", marginTop: "20px" }}
+        style={{ maxHeight: 375, overflowY: "auto", marginTop: "20px" }}
         layoutScroll
       >
         {value?.map((file, index) => (
@@ -242,8 +232,8 @@ const ImageUploader = ({
                   <Typography sx={{ fontFamily: "'Poppins' sans-serif" }}>
                     {file?.name}
                   </Typography>
-                  <Typography style={{ fontSize: "14px", fontWeight: 500 }}>
-                    {formatBytes(file?.size, 2)}
+                  <Typography sx={{ fontFamily: "'Poppins' sans-serif" }}>
+                    {file?.description}
                   </Typography>
                 </Box>
               </Box>
