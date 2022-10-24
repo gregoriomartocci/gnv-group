@@ -36,17 +36,20 @@ export type errorType = {
 };
 
 export interface ICreateProps {
-  input: any;
-  setInput: any;
+  highlight: any;
+  setHighlight: any;
+  action: any;
 }
 
-const AddForm = ({ input, setInput }: ICreateProps) => {
+const AddForm = ({ highlight, setHighlight, action }: ICreateProps) => {
   const onChangeHandler = (e: any) => {
-    setInput({
-      ...input,
+    setHighlight({
+      ...highlight,
       [e.target.name]: e.target.value,
     });
   };
+
+  console.log(highlight, "okkk");
 
   return (
     <Box sx={{ padding: "25px", width: "40vw" }}>
@@ -55,7 +58,7 @@ const AddForm = ({ input, setInput }: ICreateProps) => {
         description="Ingrese el nombre del emprendimiento"
         label="Nombre"
         type="text"
-        value={input?.name ? input?.name : ""}
+        value={highlight?.name ? highlight?.name : ""}
         onChangeHandler={onChangeHandler}
       />
 
@@ -63,8 +66,8 @@ const AddForm = ({ input, setInput }: ICreateProps) => {
         name="description"
         description="Ingrese la descripción del emprendimiento"
         label="Descripción"
-        type="number"
-        value={input?.description ? input?.description : ""}
+        type="text"
+        value={highlight?.description ? highlight?.description : ""}
         onChangeHandler={onChangeHandler}
       />
       <Typography
@@ -77,14 +80,27 @@ const AddForm = ({ input, setInput }: ICreateProps) => {
       >
         Imágenes
       </Typography>
+
       <ImageUploader
-        value={input?.highlights}
-        addImage={(value) => console.log(value)}
-        removeImage={(value) => console.log(value)}
+        value={highlight?.img}
+        addImage={(file: any) => {
+          setHighlight({
+            ...highlight,
+            img: [...highlight?.img, file],
+          });
+        }}
+        removeImage={(array: any) => {
+          setHighlight({ ...highlight, img: array });
+        }}
+        reOrderImages={(images) => setHighlight({ ...highlight, img: images })}
       />
 
-      <UseButton type="Primary" width="100%">
-        {true ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
+      <UseButton
+        type="Primary"
+        width="100%"
+        onClickHandler={() => action(highlight)}
+      >
+        Guardar
       </UseButton>
     </Box>
   );

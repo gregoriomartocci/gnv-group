@@ -33,7 +33,7 @@ const Highlights = ({ items, onClick }: Props) => {
           ? items?.map(({ name, description, img }) => {
               return (
                 <Box sx={ImageContainer}>
-                  <img src={img[0]} alt={name} />
+                  <img src={img[0]?.src} alt={name} />
                   <Box sx={{ padding: "0 5px" }}>
                     <Typography
                       sx={{

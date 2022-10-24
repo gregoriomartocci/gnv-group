@@ -47,6 +47,11 @@ export interface ICreateProps {
 
 const Form = ({ input, setInput }: ICreateProps) => {
   const [open, setOpen] = useState(false);
+  const [highlight, setHighlight] = useState({
+    name: "",
+    description: "",
+    img: [],
+  });
 
   const onChangeHandler = (e: any) => {
     setInput({
@@ -58,7 +63,7 @@ const Form = ({ input, setInput }: ICreateProps) => {
   return (
     <Box>
       <InputGroup
-        name="Año"
+        name="year"
         description="Ingrese el año"
         label="Año"
         type="number"
@@ -84,7 +89,13 @@ const Form = ({ input, setInput }: ICreateProps) => {
       <Highlights items={input?.highlights} onClick={() => setOpen(true)} />
 
       <UseModal open={open} handleClose={() => setOpen(false)}>
-        <AddForm input={input} setInput={setInput}/>
+        <AddForm
+          highlight={highlight}
+          setHighlight={setHighlight}
+          action={(value) =>
+            setInput({ ...input, highlights: [...input?.highlights, value] })
+          }
+        />
       </UseModal>
     </Box>
   );
