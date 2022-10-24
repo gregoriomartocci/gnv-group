@@ -92,7 +92,7 @@ const Company = () => {
     <Box sx={{ overflowX: "hidden" }}>
       <Menu onScroll color="#212121" />
       <Main
-        headerTitle="<p>Por más de 50 años </br> sinónimo de real estate en Argentina</p>"
+        headerTitle="<p>Por más de 50 años </br> sinónimo de real estate</p>"
         mode="static"
         buttonLink="/home/#contact"
         img="https://res.cloudinary.com/gregomartocci/image/upload/v1660020899/uhebjkyho2wp9x5qus81.jpg"
@@ -189,7 +189,7 @@ const Company = () => {
               }
               paddingColumnLeft={{ sx: "65px 0", md: "0px  150px 0px 0px" }}
               bodyTextpadding={{ sx: "25px 0", md: "150px 0 0 0" }}
-              paragraph="Unidad destinada al corretaje inmobiliario de las propiedades residenciales y oficinas más exclusivas del mercado."
+              paragraph="Unidad de negocios que brinda servicios inmobiliarios de los emprendimientos, las propiedades residenciales y oficinas más exclusivas del mercado."
               image="https://res.cloudinary.com/gregomartocci/image/upload/v1666135684/kvodyjx73j038mhmvvnz.png"
               imageMaxWidth="750px"
               imageMaxHeight="350px"
@@ -335,7 +335,7 @@ const Company = () => {
               description={
                 render
                   ? sanitize(
-                      "<p> Somos una empresa familiar dedicada hace más de 50 años a redefinir el desarrollo, gerenciamiento y comercialización de proyectos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay. </br> </p> "
+                      "<p> Nos dedicamos hace más de 50 años a desarrollar, gerenciar y comercializar emprendimientos inmobiliarios y hoteleros de categoría internacional en Argentina y Uruguay. </p> "
                     )
                   : ""
               }

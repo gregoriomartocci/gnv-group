@@ -53,6 +53,12 @@ const Form = ({ input, setInput }: ICreateProps) => {
     img: [],
   });
 
+  const [highlightSelected, setHighlightSelected] = useState({
+    name: "",
+    description: "",
+    img: [],
+  });
+
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -71,10 +77,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
         onChangeHandler={onChangeHandler}
       />
 
-      {/* span: {
-
-        }, */}
-
       <Typography
         sx={{
           fontSize: "16px",
@@ -86,7 +88,22 @@ const Form = ({ input, setInput }: ICreateProps) => {
         Emprendimientos
       </Typography>
 
-      <Highlights items={input?.highlights} onClick={() => setOpen(true)} />
+      <Highlights
+        items={input?.highlights}
+        onClick={(value) => {
+          setOpen(true), setHighlightSelected(value);
+        }}
+      />
+
+      <UseModal open={open} handleClose={() => setOpen(false)}>
+        <AddForm
+          highlight={highlightSelected}
+          setHighlight={setHighlightSelected}
+          action={(value) =>
+            setHighlightSelected({ ...input, highlights: [...input?.highlights, value] })
+          }
+        />
+      </UseModal>
 
       <UseModal open={open} handleClose={() => setOpen(false)}>
         <AddForm

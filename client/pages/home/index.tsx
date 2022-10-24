@@ -95,7 +95,7 @@ const Home = () => {
       unity: "m²",
       description: "World Trade Center",
     },
-    { number: 17, description: "centros comerciales desarrollados" },
+    { number: 17, description: "centros comerciales" },
   ];
 
   const items = [
@@ -164,7 +164,7 @@ const Home = () => {
       <Main
         slides={slides}
         buttonLink="/home/#contact"
-        headerTitle="Proyectos distintivos con visión de futuro"
+        headerTitle="Proyectos únicos con visión de futuro"
         mode="static"
         img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
         textFontSize={{ xs: "25px", md: "32px" }}

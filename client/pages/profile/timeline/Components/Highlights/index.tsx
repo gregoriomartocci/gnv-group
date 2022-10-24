@@ -4,16 +4,6 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { SxProps, Theme } from "@mui/material";
 import UseModal from "../../../../../components/Modal";
 
-const ImageContainer: SxProps<Theme> = {
-  margin: "0 10px",
-  img: {
-    width: "200px",
-    height: "200px",
-    objectFit: "cover",
-    borderRadius: "7.5px",
-  },
-};
-
 type Props = {
   items: any[];
   onClick: any;
@@ -25,14 +15,26 @@ const Highlights = ({ items, onClick }: Props) => {
       <Box
         sx={{
           display: "flex",
-          flexWrap: "wrap",
-          width: "100%",
+          overflowX: "auto",
+          padding: "5px 0 15px 0",
+          cursor: "pointer",
         }}
+        onClick={onClick}
       >
         {items?.length
           ? items?.map(({ name, description, img }) => {
               return (
-                <Box sx={ImageContainer}>
+                <Box
+                  sx={{
+                    margin: "0 10px 0",
+                    img: {
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "cover",
+                      borderRadius: "7.5px",
+                    },
+                  }}
+                >
                   <img src={img[0]?.src} alt={name} />
                   <Box sx={{ padding: "0 5px" }}>
                     <Typography
