@@ -110,7 +110,7 @@ export const editProject = async (req, res) => {
 
 export const getProjects = async (req, res) => {
   try {
-    const all = await Project.find().populate("order").sort({ order: 1 });
+    const all = await Project.find().sort({ order: 1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
