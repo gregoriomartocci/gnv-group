@@ -117,6 +117,10 @@ const Form = ({ input, setInput }: ICreateProps) => {
           setModal("update"), setHighlightSelected(value);
         }}
         deleteSelected={(id) => deleteSelected(id)}
+        reOrderItems={(items) => {
+          setInput({ input, highlights: items }),
+            console.log(items, "que pasa acaaa");
+        }}
       />
 
       <UseModal open={modal === "update"} handleClose={() => setModal("")}>
@@ -131,9 +135,11 @@ const Form = ({ input, setInput }: ICreateProps) => {
         <AddForm
           highlight={highlight}
           setHighlight={setHighlight}
-          action={(value) =>
-            setInput({ ...input, highlights: [...input?.highlights, value] })
-          }
+          action={(value) => {
+            setInput({ ...input, highlights: [...input?.highlights, value] }),
+              setHighlight({ name: "", description: "", img: [] }),
+              setModal("");
+          }}
         />
       </UseModal>
     </Box>

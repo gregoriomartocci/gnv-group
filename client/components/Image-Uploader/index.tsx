@@ -88,6 +88,7 @@ const ImageUploader = ({
 }: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
+
   const y = useMotionValue(0);
 
   const schema = yup.object().shape({
