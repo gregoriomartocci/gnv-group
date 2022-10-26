@@ -35,8 +35,6 @@ const Highlights = ({
           onReorder={reOrderItems}
           style={{
             display: "flex",
-            maxWidth: "100%",
-            maxHeight: "220px",
             listStyle: "none",
             overflowX: "auto",
           }}
