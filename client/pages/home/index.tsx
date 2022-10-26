@@ -419,7 +419,7 @@ const Home = () => {
             {isLoaded && (
               <GoogleMap
                 center={tab === 1 ? argentinaLocation : uruguayLocation}
-                zoom={15}
+                zoom={xs ? 7 : 8}
                 options={{
                   styles: ligthTheme,
                   zoomControl: false,
