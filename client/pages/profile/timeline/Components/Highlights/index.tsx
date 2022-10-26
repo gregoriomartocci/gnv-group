@@ -3,13 +3,22 @@ import { Box, Typography } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { SxProps, Theme } from "@mui/material";
 import UseModal from "../../../../../components/Modal";
+import Image from "next/image";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 type Props = {
   items: any[];
-  onClick: any;
+  create: any;
+  updateSelected: any;
+  deleteSelected: any;
 };
 
-const Highlights = ({ items, onClick }: Props) => {
+const Highlights = ({
+  items,
+  create,
+  updateSelected,
+  deleteSelected,
+}: Props) => {
   return (
     <Fragment>
       <Box
@@ -17,25 +26,53 @@ const Highlights = ({ items, onClick }: Props) => {
           display: "flex",
           overflowX: "auto",
           padding: "5px 0 15px 0",
-          cursor: "pointer",
         }}
-        onClick={onClick}
       >
         {items?.length
-          ? items?.map(({ name, description, img }) => {
+          ? items?.map(({ name, description, img }, index) => {
               return (
                 <Box
+                  key={index}
+                  component="span"
                   sx={{
+                    position: "relative",
                     margin: "0 10px 0",
                     img: {
-                      width: "150px",
-                      height: "150px",
-                      objectFit: "cover",
                       borderRadius: "7.5px",
                     },
+                    cursor: "pointer",
                   }}
                 >
-                  <img src={img[0]?.src} alt={name} />
+                  <Box
+                    component="span"
+                    sx={{
+                      position: "absolute",
+                      top: "10px",
+                      right: "10px",
+                      color: "#fff",
+                      fontSize: "25px",
+                      zIndex: 50,
+                      cursor: "pointer",
+
+                      "&:hover": {
+                        color: "red",
+                      },
+                    }}
+                    onClick={() => deleteSelected(index)}
+                  >
+                    <RiCloseCircleLine />
+                  </Box>
+
+                  <Image
+                    src={img[0]?.src ?? ""}
+                    alt={name}
+                    width={150}
+                    height={150}
+                    objectFit="cover"
+                    onClick={() =>
+                      updateSelected({ name, description, img, id: index })
+                    }
+                  />
                   <Box sx={{ padding: "0 5px" }}>
                     <Typography
                       sx={{
@@ -81,7 +118,7 @@ const Highlights = ({ items, onClick }: Props) => {
             },
           }}
           component="span"
-          onClick={onClick}
+          onClick={create}
         >
           {/* <img src={img} alt={name} /> */}
           <AddCircleOutlineIcon sx={{ fontSize: "40px", color: "#e0e0e0" }} />

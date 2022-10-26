@@ -146,35 +146,35 @@ const ImageUploader = ({
     removeImage(update);
   };
 
+  console.log(value, "que onda hermanoooo");
+
   return (
-    <Fragment>
-      <Fragment>
-        <Box sx={dropFileInput} ref={wrapperRef} component="span">
-          <Box>
-            <CloudUploadIcon sx={dropFileInputIcon} />
-          </Box>
-          <Box>
-            <Typography sx={{ fontFamily: "Poppins" }}>
-              Arrastre o seleccione su imágenes aquí
-            </Typography>
-            <Box>
-              <input
-                type="file"
-                value=""
-                accept="image/png, image/svg, image/png, image/jpeg, image/jpg, image/webpb"
-                onChange={onFileDrop}
-              />
-            </Box>
-          </Box>
+    <Box>
+      <Box sx={dropFileInput} ref={wrapperRef} component="span">
+        <Box>
+          <CloudUploadIcon sx={dropFileInputIcon} />
         </Box>
         <Box>
-          {errors?.length >= 1 && (
-            <Alert variant="filled" severity="error">
-              {errors[0]}
-            </Alert>
-          )}
+          <Typography sx={{ fontFamily: "Poppins" }}>
+            Arrastre o seleccione su imágenes aquí
+          </Typography>
+          <Box>
+            <input
+              type="file"
+              value=""
+              accept="image/png, image/svg, image/png, image/jpeg, image/jpg, image/webpb"
+              onChange={onFileDrop}
+            />
+          </Box>
         </Box>
-      </Fragment>
+      </Box>
+      <Box>
+        {errors?.length >= 1 && (
+          <Alert variant="filled" severity="error">
+            {errors[0]}
+          </Alert>
+        )}
+      </Box>
 
       <Reorder.Group
         axis="y"
@@ -244,7 +244,7 @@ const ImageUploader = ({
           </Reorder.Item>
         ))}
       </Reorder.Group>
-    </Fragment>
+    </Box>
   );
 };
 

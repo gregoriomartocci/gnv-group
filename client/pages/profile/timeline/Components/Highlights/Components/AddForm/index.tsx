@@ -42,14 +42,13 @@ export interface ICreateProps {
 }
 
 const AddForm = ({ highlight, setHighlight, action }: ICreateProps) => {
+
   const onChangeHandler = (e: any) => {
     setHighlight({
       ...highlight,
       [e.target.name]: e.target.value,
     });
   };
-
-  console.log(highlight, "okkk");
 
   return (
     <Box sx={{ padding: "25px", width: "40vw" }}>
@@ -61,7 +60,6 @@ const AddForm = ({ highlight, setHighlight, action }: ICreateProps) => {
         value={highlight?.name ? highlight?.name : ""}
         onChangeHandler={onChangeHandler}
       />
-
       <InputGroup
         name="description"
         description="Ingrese la descripción del emprendimiento"

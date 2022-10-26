@@ -46,7 +46,8 @@ export interface ICreateProps {
 }
 
 const Form = ({ input, setInput }: ICreateProps) => {
-  const [open, setOpen] = useState(false);
+  const [modal, setModal] = useState<string>("");
+
   const [highlight, setHighlight] = useState({
     name: "",
     description: "",
@@ -57,13 +58,32 @@ const Form = ({ input, setInput }: ICreateProps) => {
     name: "",
     description: "",
     img: [],
+    id: 0,
   });
+
+  console.log(highlightSelected, "BOCA CAMPEON");
 
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
+  };
+
+  console.log(modal, "que ondaa");
+
+  const deleteSelected = (id) => {
+    const updateHighlight = input?.highlights.filter(
+      (element, index) => index !== id
+    );
+    setInput({ ...input, highlights: updateHighlight });
+  };
+
+  const updateSelected = () => {
+    const updateHighlight = input?.highlights.map((element, index) =>
+      index === highlightSelected?.id ? highlightSelected : element
+    );
+    setInput({ ...input, highlights: updateHighlight });
   };
 
   return (
@@ -90,22 +110,24 @@ const Form = ({ input, setInput }: ICreateProps) => {
 
       <Highlights
         items={input?.highlights}
-        onClick={(value) => {
-          setOpen(true), setHighlightSelected(value);
+        create={(value) => {
+          setModal("create");
         }}
+        updateSelected={(value) => {
+          setModal("update"), setHighlightSelected(value);
+        }}
+        deleteSelected={(id) => deleteSelected(id)}
       />
 
-      <UseModal open={open} handleClose={() => setOpen(false)}>
+      <UseModal open={modal === "update"} handleClose={() => setModal("")}>
         <AddForm
           highlight={highlightSelected}
           setHighlight={setHighlightSelected}
-          action={(value) =>
-            setHighlightSelected({ ...input, highlights: [...input?.highlights, value] })
-          }
+          action={(id) => updateSelected(id)}
         />
       </UseModal>
 
-      <UseModal open={open} handleClose={() => setOpen(false)}>
+      <UseModal open={modal === "create"} handleClose={() => setModal("")}>
         <AddForm
           highlight={highlight}
           setHighlight={setHighlight}
