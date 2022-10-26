@@ -173,12 +173,20 @@ const Footer = () => {
           lineHeight: "22px",
         }}
       >
-        <Typography sx={{ fontSize: { xs: "13px", md: "17px" } }}>
+        <Typography
+          sx={{
+            fontSize: { xs: "13px", md: "15px" },
+            marginTop: { xs: "10px", md: "5px" },
+          }}
+        >
           Camila O´Gorman 412 - World Trade Center II - Of. 200 - Puerto Madero,
           CABA, Argentina, CP 1107. | T.+5411 5354 8030
         </Typography>
         <Typography
-          sx={{ fontSize: { xs: "13px", md: "17px" }, marginTop: "10px" }}
+          sx={{
+            fontSize: { xs: "13px", md: "15px" },
+            marginTop: { xs: "10px", md: "5px" },
+          }}
         >
           Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
           Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 878
