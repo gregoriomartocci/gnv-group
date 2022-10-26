@@ -43,12 +43,16 @@ const Highlights = ({
           layoutScroll
         >
           {items?.map((item, index) => (
-            <Reorder.Item value={item} id={item} key={item?.name}>
+            <Reorder.Item
+              value={item}
+              id={item}
+              key={item?.img[0]?.name + index}
+            >
               <Box
                 key={index}
                 sx={{
-                  position: "relative",
                   margin: "0 10px 0",
+                  position: "relative",
                   img: {
                     borderRadius: "7.5px",
                   },
