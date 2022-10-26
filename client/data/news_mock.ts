@@ -19,7 +19,7 @@ const news_mock = [
     description:
       "La iniciativa del Gobierno busca recaudar dólares para el mercado de la construcción y el trabajo. El antecedente de la Harbour Tower en Puerto Madero. El Gobierno promulgó la ley de incentivo a la inversión, construcción y producción argentina, norma que prolonga por un año el régimen de blanqueo con la intención -principalmente- de incentivar la reincorporación tanto de pesos como de dólares al sistema formal.",
     images: [
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1663089953/brc4lgnyphpcg3kpvmev.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1666629420/ewpf9xhzkoq6zgoj4twl.jpg",
     ],
     link: "https://www.clarin.com/economia/blanqueo-construccion-edificios-puede-invertir_0_kDr6zICQng.html",
     published: true,
@@ -58,7 +58,7 @@ const news_mock = [
     title: "El mercado inmobiliario y el ladrillo pospandemia",
     description: `Las postales se replicaron en muchos puntos del planeta. Imágenes de familias que dejaban las grandes ciudades para instalarse en casas ubicadas en zonas alejadas, con espacios verdes y comodidades para otro tipo de vida. También ocurrió en Argentina, con fuerte demanda de propiedades en countries, más población estable en lugares veraniegos y contracción de la actividad en zonas como el microcentro porteño. “La demanda se trasladó hacia casas con jardín, para compra y alquiler. En la Ciudad, se pedían departamentos con mucha luz, balcón y terrazas”, indica Horacio Benvenuto, gerente general de Izrastzoff.`,
     images: [
-      "https://res.cloudinary.com/gregomartocci/image/upload/v1664814339/olzc7zucvznz7ncyfdxm.jpg",
+      "https://res.cloudinary.com/gregomartocci/image/upload/v1666629588/n5dctmuepdcxfaesvfob.jpg",
     ],
     link: "https://noticias.perfil.com/noticias/amp/empresas/ladrillo-pospandemia.phtml",
     published: true,
