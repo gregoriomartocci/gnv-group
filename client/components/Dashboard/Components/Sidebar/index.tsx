@@ -27,7 +27,7 @@ const Sidebar = () => {
           <a>
             {/* <Box sx={Logo}>GNV</Box> */}
 
-            <Logo color="#fff" width="125px" />
+            <Logo color="#fff" width="130px" />
           </a>
         </Link>
       </Box>
