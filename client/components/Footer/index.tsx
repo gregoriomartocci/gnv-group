@@ -22,7 +22,7 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
-          padding: "70px 10% 40px 10%",
+          padding: "30px 10% 10px 10%",
           fontWeight: 500,
         }}
       >
@@ -46,7 +46,7 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
+                  margin: "5px 20px 0  0",
                   fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
@@ -60,7 +60,7 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
+                  margin: "5px 20px 0  0",
                   fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
@@ -74,7 +74,7 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
+                  margin: "5px 20px 0  0",
                   fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
@@ -88,7 +88,7 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
+                  margin: "5px 20px 0  0",
                   fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
@@ -170,15 +170,16 @@ const Footer = () => {
           justifyContent: "center",
           alignItems: "center",
           padding: "2.5% 10%",
-          lineHeight: "25px",
-          fontSize: { xs: "14px", md: "16px" },
+          lineHeight: "22px",
         }}
       >
-        <Typography>
+        <Typography sx={{ fontSize: { xs: "13px", md: "17px" } }}>
           Camila O´Gorman 412 - World Trade Center II - Of. 200 - Puerto Madero,
           CABA, Argentina, CP 1107. | T.+5411 5354 8030
         </Typography>
-        <Typography>
+        <Typography
+          sx={{ fontSize: { xs: "13px", md: "17px" }, marginTop: "10px" }}
+        >
           Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
           Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 878
         </Typography>
