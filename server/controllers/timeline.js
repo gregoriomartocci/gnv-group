@@ -1,9 +1,10 @@
 import { uploadImage, validateBase64 } from "../helpers/project";
 import Timeline from "../models/timeline";
 
+// CreateTimelineItem
 export const createTimelineItem = async (req, res) => {
   try {
-    const { year, highlights } = req.body;
+    const { year, highlights, published } = req.body;
 
     if (!year) return res.json({ error: "Por favor ingrese un año" });
 
@@ -16,17 +17,37 @@ export const createTimelineItem = async (req, res) => {
 
     if (alreadyExist) return res.json({ error: "el año ingresado ya existe." });
 
-    const uploadImages = images.map(async (i) => ({
-      ...i,
-      src: await uploadImage(i.src),
-    }));
+    // 1. recorrer los highlights
+    // 2. por cada imagen que tiene el highlight
 
-    const updatedImages = await Promise.all(uploadImages);
+    let imagesToUpdate = [];
+
+    const aux = highlights.map(async (item) => {
+      const images = item.img.map(async (i) => ({
+        ...i,
+        src: await uploadImage(i.src),
+      }));
+
+      const updatedImages = await Promise.all(images);
+      console.log(updatedImages, "riquelme");
+      return { ...item, img: updatedImages };
+    });
+
+    const updatedHighLights = await Promise.all(aux);
+
+    // const uploadImages = images.map(async (i) => ({
+    //   ...i,
+    //   src: await uploadImage(i.src),
+    // }));
+
+    // const updatedTimelineItem = await Promise.all(uploadImages);
+
+    // console.log(updatedTimelineItem, "holuuuu");
 
     const timeline = await new Timeline({
       year,
-      highlights,
-      images: await updatedImages,
+      highlights: updatedHighLights,
+      published,
     }).save();
 
     console.log("Que se guarda aca?", timeline);
@@ -38,9 +59,10 @@ export const createTimelineItem = async (req, res) => {
   }
 };
 
-export const removeTimelineItem = async (req, res) => {
+// DeleteTimelineItem
+export const deleteTimelineItem = async (req, res) => {
   const { id } = req.params;
-  
+
   try {
     const timeline = await Timeline.findByIdAndDelete(id);
     return res.json(timeline);
@@ -50,7 +72,8 @@ export const removeTimelineItem = async (req, res) => {
   }
 };
 
-export const editTimelineItem = async (req, res) => {
+// UpdateTimelineItem
+export const updateTimelineItem = async (req, res) => {
   const { images } = req.body;
 
   const isFromCloudinary = (str) => {
@@ -88,9 +111,10 @@ export const editTimelineItem = async (req, res) => {
   }
 };
 
-export const getTimeline = async (req, res) => {
+// ReadTimeline
+export const readTimeline = async (req, res) => {
   try {
-    const all = await Timeline.find().populate("name").sort({ createdAt: -1 });
+    const all = await Timeline.find().populate("year").sort({ year: -1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
@@ -98,7 +122,8 @@ export const getTimeline = async (req, res) => {
   }
 };
 
-export const getTimelineItem = async (req, res) => {
+// ReadTimelineItem
+export const readTimelineItem = async (req, res) => {
   const { id } = req.params;
   try {
     const project = await Timeline.findById(id);

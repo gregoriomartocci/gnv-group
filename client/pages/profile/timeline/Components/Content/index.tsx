@@ -60,10 +60,10 @@ const Content = (timelineItem: ITimeline) => {
         </Box>
       </TableCell>
       <TableCell align="left">
-        {timelineItem?.highlights?.map(({ name, description, images }) => {
+        {timelineItem?.highlights?.map(({ name, description, img }, index) => {
           return (
-            <Box sx={CellTable}>
-              <img src={images} alt="" />
+            <Box sx={CellTable} key={index}>
+              <img src={img && img[0]?.src ?? ""} alt="" />
               <Typography>{name}</Typography>
               <Typography>{description}</Typography>
             </Box>

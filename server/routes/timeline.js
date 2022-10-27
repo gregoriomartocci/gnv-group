@@ -4,17 +4,17 @@ const router = express.Router();
 
 // controllers
 const {
-  CreateTimelineItem,
-  ReadTimelineItem,
-  ReadTimeline,
-  UpdateTimelineItem,
-  DeleteTimelineItem,
+  createTimelineItem,
+  readTimelineItem,
+  readTimeline,
+  updateTimelineItem,
+  deleteTimelineItem,
 } = require("../controllers/timeline");
 
-router.post("/timeline", CreateTimelineItem);
-router.get("/timeline/:id", ReadTimelineItem);
-router.get("/timeline", ReadTimeline);
-router.post("/edit-timeline/:id", UpdateTimelineItem);
-router.delete("/timeline/:id", DeleteTimelineItem);
+router.post("/timeline", createTimelineItem);
+router.get("/timeline/:id", readTimelineItem);
+router.get("/timeline", readTimeline);
+router.post("/edit-timeline/:id", updateTimelineItem);
+router.delete("/timeline/:id", deleteTimelineItem);
 
 export default router;
