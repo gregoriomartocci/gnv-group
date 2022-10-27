@@ -22,7 +22,6 @@ const Content = (timelineItem: ITimeline) => {
 
   const { modal, timelineItems, timelineItemSelected } = state;
 
-
   const handleCloseActionsMenu = () => {
     dispatch(setModal({ name: "actions", value: false }));
     setAnchorEl(null);
@@ -55,7 +54,7 @@ const Content = (timelineItem: ITimeline) => {
   return (
     <Fragment>
       <TableCell align="left">
-        <Box sx={{ maxWidth: "50px" }}>
+        <Box>
           <Typography>{timelineItem?.year}</Typography>
         </Box>
       </TableCell>
@@ -71,11 +70,18 @@ const Content = (timelineItem: ITimeline) => {
                 >
                   <img src={(img && img[0]?.src) ?? ""} alt="" />
                   <Typography
-                    sx={{ fontSize: "14px", fontWeight: 600, marginTop: "5px" }}
+                    sx={{
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      marginTop: "5px",
+                      maxWidth: "90px",
+                    }}
                   >
                     {name}
                   </Typography>
-                  <Typography sx={{ fontSize: "11px", fontWeight: 500 }}>
+                  <Typography
+                    sx={{ fontSize: "10px", fontWeight: 500, maxWidth: "90px" }}
+                  >
                     {description}
                   </Typography>
                 </Box>

@@ -30,7 +30,6 @@ const data = [
         description: "San Luis",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661430969/es9zoiz4qvicj6yw4lgr.jpg",
       },
-
       {
         title: "Boulevard Shopping",
         description: "Bs. As.",

@@ -89,7 +89,7 @@ const Form = ({ input, setInput }: ICreateProps) => {
         name="year"
         description="Ingrese el año"
         label="Año"
-        type="number"
+        type="text"
         value={input?.year ? input?.year : ""}
         onChangeHandler={onChangeHandler}
       />
