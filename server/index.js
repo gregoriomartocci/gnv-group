@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth";
 import projectRoutes from "./routes/project";
 import articleRoutes from "./routes/articles";
 import templateRoutes from "./routes/template";
+import timelineRoutes from "./routes/timeline";
 
 const morgan = require("morgan");
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api", authRoutes);
 app.use("/api", projectRoutes);
 app.use("/api", articleRoutes);
 app.use("/api", templateRoutes);
+app.use("/api", timelineRoutes);
 
 const port = process.env.SERVER || 8000;
 
