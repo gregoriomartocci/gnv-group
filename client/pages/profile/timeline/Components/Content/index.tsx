@@ -39,6 +39,8 @@ const Content = (timelineItem: ITimeline) => {
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
+    maringRight: "25px",
+    width: "120px",
 
     img: {
       width: "85px",
@@ -74,13 +76,17 @@ const Content = (timelineItem: ITimeline) => {
                       fontSize: "12px",
                       fontWeight: 600,
                       marginTop: "5px",
-                      maxWidth: "90px",
+                      maxWidth: "120px",
                     }}
                   >
                     {name}
                   </Typography>
                   <Typography
-                    sx={{ fontSize: "10px", fontWeight: 500, maxWidth: "90px" }}
+                    sx={{
+                      fontSize: "10px",
+                      fontWeight: 500,
+                      maxWidth: "120px",
+                    }}
                   >
                     {description}
                   </Typography>
