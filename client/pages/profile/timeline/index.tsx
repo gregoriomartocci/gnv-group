@@ -135,6 +135,7 @@ const Ventures = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.timeline);
   const timelineItemSelected = state?.timelineItemSelected;
+
   const [selectedTimelineItem, setSelectedTimelineItem] =
     useState(timelineItemSelected);
 
@@ -151,6 +152,8 @@ const Ventures = () => {
   useEffect(() => {
     setSelectedTimelineItem(timelineItemSelected);
   }, [selectedTimelineItem]);
+
+  console.log(timelineItemSelected, "JUAN ROMAN RIQUELME")
 
   const {
     isFetching: loading,
@@ -245,6 +248,68 @@ const Ventures = () => {
         })}
       </Box>
 
+      {/* Create */}
+
+      <UseModal
+        open={modal.create}
+        handleClose={() => dispatch(setModal({ name: "create", value: false }))}
+      >
+        <Create
+          content={createContent}
+          title="Año"
+          create={() => createTimelineItemMutation({ ...input })}
+          loading={createLoading}
+        />
+      </UseModal>
+
+      {/* Update */}
+
+      <UseModal
+        open={modal?.update}
+        handleClose={() => dispatch(setModal({ name: "update", value: false }))}
+      >
+        {timelineItemSelected?.id && (
+          <Update
+            title="Año"
+            content={updateContent}
+            update={() =>
+              updateTimelineItemMutation({ ...selectedTimelineItem })
+            }
+            loading={updateLoading}
+          />
+        )}
+      </UseModal>
+
+      {/* Delete */}
+
+      <UseModal
+        open={modal?.delete}
+        handleClose={() => {
+          dispatch(
+            setModal({
+              name: "delete",
+              value: false,
+            })
+          );
+        }}
+      >
+        <Delete
+          title="Año"
+          deleteElement={() =>
+            deleteTimelineItemMutation(timelineItemSelected?._id)
+          }
+          onClose={() => {
+            dispatch(
+              setModal({
+                name: "delete",
+                value: false,
+              })
+            );
+          }}
+          loading={deleteLoading}
+        />
+      </UseModal>
+
       <UseTable
         title="Linea del Tiempo"
         name="timeline"
@@ -260,60 +325,6 @@ const Ventures = () => {
           )
         }
       />
-
-      <UseModal
-        open={modal.create}
-        handleClose={() => dispatch(setModal({ name: "create", value: false }))}
-      >
-        <Create
-          content={createContent}
-          title="Año"
-          create={() => createTimelineItemMutation({ ...input })}
-          loading={createLoading}
-        />
-      </UseModal>
-      <UseModal
-        open={modal?.update}
-        handleClose={() => dispatch(setModal({ name: "update", value: false }))}
-      >
-        {selectedTimelineItem?.id && (
-          <Update
-            title="Año"
-            content={updateContent}
-            update={() =>
-              updateTimelineItemMutation({ ...selectedTimelineItem })
-            }
-            loading={updateLoading}
-          />
-        )}
-      </UseModal>
-      <UseModal
-        open={modal?.delete}
-        handleClose={() => {
-          dispatch(
-            setModal({
-              name: "delete",
-              value: false,
-            })
-          );
-        }}
-      >
-        <Delete
-          title="Año"
-          deleteElement={() =>
-            deleteTimelineItemMutation(selectedTimelineItem?._id)
-          }
-          onClose={() => {
-            dispatch(
-              setModal({
-                name: "delete",
-                value: false,
-              })
-            );
-          }}
-          loading={deleteLoading}
-        />
-      </UseModal>
     </Dashboard>
   );
 };

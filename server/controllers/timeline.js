@@ -61,6 +61,9 @@ export const createTimelineItem = async (req, res) => {
 
 // DeleteTimelineItem
 export const deleteTimelineItem = async (req, res) => {
+
+
+  console.log(req.params, "Riquelme")
   const { id } = req.params;
 
   try {
