@@ -143,7 +143,7 @@ const Ventures = () => {
   const [input, setInput] = useState({
     year: "",
     highlights: [],
-    published: "",
+    published: true,
   });
 
   const queryClient = useQueryClient();
