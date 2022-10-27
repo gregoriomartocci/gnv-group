@@ -134,12 +134,9 @@ export type TProject = {
 const Ventures = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.timeline);
-  const timelineItemSelected = state?.timelineItemSelected;
-
+  const { alert, modal, timelineItemSelected } = state;
   const [selectedTimelineItem, setSelectedTimelineItem] =
     useState(timelineItemSelected);
-
-  const { alert, modal } = state;
 
   const [input, setInput] = useState({
     year: "",
@@ -151,9 +148,9 @@ const Ventures = () => {
 
   useEffect(() => {
     setSelectedTimelineItem(timelineItemSelected);
-  }, [selectedTimelineItem]);
+  }, [timelineItemSelected]);
 
-  console.log(timelineItemSelected, "JUAN ROMAN RIQUELME")
+  console.log(selectedTimelineItem, "JUAN ROMAN RIQUELME");
 
   const {
     isFetching: loading,
@@ -227,10 +224,14 @@ const Ventures = () => {
       },
     });
 
-  const createContent = [<Form input={input} setInput={setInput} />];
+  const createContent = [<Form key={0} input={input} setInput={setInput} />];
 
   const updateContent = [
-    <Form input={selectedTimelineItem} setInput={setSelectedTimelineItem} />,
+    <Form
+      key={0}
+      input={selectedTimelineItem}
+      setInput={setSelectedTimelineItem}
+    />,
   ];
 
   return (
@@ -263,6 +264,8 @@ const Ventures = () => {
       </UseModal>
 
       {/* Update */}
+
+      {console.log(timelineItemSelected, "aver cheee")}
 
       <UseModal
         open={modal?.update}

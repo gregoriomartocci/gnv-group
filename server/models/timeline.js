@@ -16,6 +16,10 @@ const timelineSchema = new Schema(
       required: true,
     },
     highlights: [],
+    published: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );

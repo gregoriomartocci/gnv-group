@@ -71,11 +71,11 @@ const Content = (timelineItem: ITimeline) => {
                 >
                   <img src={(img && img[0]?.src) ?? ""} alt="" />
                   <Typography
-                    sx={{ fontSize: "14px", fontWeight: 700, marginTop: "5px" }}
+                    sx={{ fontSize: "14px", fontWeight: 600, marginTop: "5px" }}
                   >
                     {name}
                   </Typography>
-                  <Typography sx={{ fontSize: "12px", fontWeight: 500 }}>
+                  <Typography sx={{ fontSize: "11px", fontWeight: 500 }}>
                     {description}
                   </Typography>
                 </Box>

@@ -58,7 +58,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
     name: "",
     description: "",
     img: [],
-    id: 0,
   });
 
   const onChangeHandler = (e: any) => {
