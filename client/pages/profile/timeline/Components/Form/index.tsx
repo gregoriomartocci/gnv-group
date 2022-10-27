@@ -61,8 +61,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
     id: 0,
   });
 
-  console.log(highlightSelected, "BOCA CAMPEON");
-
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -70,7 +68,7 @@ const Form = ({ input, setInput }: ICreateProps) => {
     });
   };
 
-  console.log(modal, "que ondaa");
+  console.log(input, "ok");
 
   const deleteSelected = (id) => {
     const updateHighlight = input?.highlights.filter(
@@ -118,7 +116,7 @@ const Form = ({ input, setInput }: ICreateProps) => {
         }}
         deleteSelected={(id) => deleteSelected(id)}
         reOrderItems={(items) => {
-          setInput({ input, highlights: items }),
+          setInput({ ...input, highlights: items }),
             console.log(items, "que pasa acaaa");
         }}
       />
@@ -127,7 +125,9 @@ const Form = ({ input, setInput }: ICreateProps) => {
         <AddForm
           highlight={highlightSelected}
           setHighlight={setHighlightSelected}
-          action={(id) => updateSelected(id)}
+          action={(id) => {
+            updateSelected(id), setModal("");
+          }}
         />
       </UseModal>
 
