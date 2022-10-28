@@ -95,8 +95,6 @@ export const updateTimelineItem = async (req, res) => {
     const updatedHighLights = await Promise.all(aux);
     const updatedTimeline = { ...req.body, highlights: updatedHighLights };
 
-    console.log(updatedTimeline, "pucha");
-
     const timeline = await Timeline.findByIdAndUpdate(id, updatedTimeline, {
       new: true,
     });

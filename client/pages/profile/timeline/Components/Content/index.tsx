@@ -39,8 +39,8 @@ const Content = (timelineItem: ITimeline) => {
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
-    maringRight: "25px",
-    width: "120px",
+    marginLeft: "25px",
+    width: "125px",
 
     img: {
       width: "85px",
@@ -55,9 +55,11 @@ const Content = (timelineItem: ITimeline) => {
 
   return (
     <Fragment>
-      <TableCell align="left">
+      <TableCell sx={{ maxWidth: "max-content" }} align="center">
         <Box>
-          <Typography>{timelineItem?.year}</Typography>
+          <Typography sx={{ fontSize: "15px", fontWeight: "500" }}>
+            {timelineItem?.year}
+          </Typography>
         </Box>
       </TableCell>
       <TableCell align="left">
