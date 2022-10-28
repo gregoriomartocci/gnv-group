@@ -17,11 +17,6 @@ export const createTimelineItem = async (req, res) => {
 
     if (alreadyExist) return res.json({ error: "el año ingresado ya existe." });
 
-    // 1. recorrer los highlights
-    // 2. por cada imagen que tiene el highlight
-
-    let imagesToUpdate = [];
-
     const aux = highlights.map(async (item) => {
       const images = item.img.map(async (i) => ({
         ...i,
@@ -35,20 +30,12 @@ export const createTimelineItem = async (req, res) => {
 
     const updatedHighLights = await Promise.all(aux);
 
-    // const uploadImages = images.map(async (i) => ({
-    //   ...i,
-    //   src: await uploadImage(i.src),
-    // }));
-
-    // const updatedTimelineItem = await Promise.all(uploadImages);
-
-    // console.log(updatedTimelineItem, "holuuuu");
-
-    const timeline = await new Timeline({
-      year,
+    const createdTimelineItem = {
+      ...req.body,
       highlights: updatedHighLights,
-      published,
-    }).save();
+    };
+
+    const timeline = await new Timeline(createdTimelineItem).save();
 
     console.log("Que se guarda aca?", timeline);
 
@@ -61,9 +48,7 @@ export const createTimelineItem = async (req, res) => {
 
 // DeleteTimelineItem
 export const deleteTimelineItem = async (req, res) => {
-
-
-  console.log(req.params, "Riquelme")
+  console.log(req.params, "Riquelme");
   const { id } = req.params;
 
   try {
@@ -77,7 +62,15 @@ export const deleteTimelineItem = async (req, res) => {
 
 // UpdateTimelineItem
 export const updateTimelineItem = async (req, res) => {
-  const { images } = req.body;
+
+  const { highlights, year } = req.body;
+
+  if (!year) return res.json({ error: "Por favor ingrese un año" });
+
+  if (!highlights.length)
+    return res.json({
+      error: "Por favor ingrese almenos un emprendimiento",
+    });
 
   const isFromCloudinary = (str) => {
     const validate =
@@ -88,20 +81,21 @@ export const updateTimelineItem = async (req, res) => {
   try {
     const { id } = req.params;
 
-    let updatedImages;
-    let updatedTimeline;
-    let imagesAux;
-
-    if (images) {
-      imagesAux = images.map(async (i) => ({
+    const aux = highlights.map(async (item) => {
+      const images = item.img.map(async (i) => ({
         ...i,
         src: !isFromCloudinary(i.src) ? await uploadImage(i.src) : i.src,
       }));
-      updatedImages = await Promise.all(imagesAux);
-      updatedTimeline = { ...req.body, images: updatedImages };
-    } else {
-      updatedTimeline = { ...req.body };
-    }
+
+      const updatedImages = await Promise.all(images);
+      console.log(updatedImages, "riquelme");
+      return { ...item, img: updatedImages };
+    });
+
+    const updatedHighLights = await Promise.all(aux);
+    const updatedTimeline = { ...req.body, highlights: updatedHighLights };
+
+    console.log(updatedTimeline, "pucha");
 
     const timeline = await Timeline.findByIdAndUpdate(id, updatedTimeline, {
       new: true,

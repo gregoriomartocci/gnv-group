@@ -44,7 +44,7 @@ const Highlights = ({
             <Reorder.Item
               value={item}
               id={item}
-              key={item?.img[0]?.name + index}
+              key={item?.img?.length ? item?.img[0]?.name + index : index}
             >
               <Box
                 key={index}
@@ -76,15 +76,17 @@ const Highlights = ({
                 >
                   <RiCloseCircleLine />
                 </Box>
-
-                <Image
-                  src={item?.img[0]?.src ?? ""}
-                  alt={item?.name}
-                  width={150}
-                  height={150}
-                  objectFit="cover"
-                  onClick={() => updateSelected({ ...item, id: index })}
-                />
+                
+                {item?.img?.length && (
+                  <Image
+                    src={item?.img?.length && (item?.img[0]?.src ?? "")}
+                    alt={item?.name}
+                    width={150}
+                    height={150}
+                    objectFit="cover"
+                    onClick={() => updateSelected({ ...item, id: index })}
+                  />
+                )}
 
                 <Box sx={{ padding: "0 5px" }}>
                   <Typography
