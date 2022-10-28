@@ -12,9 +12,10 @@ const Licence = ({ item }: any) => {
         width: { xs: "100%", sm: "auto" },
       }}
     >
-      {item?.map(({ img, width }) => {
+      {item?.map(({ img, width }, index) => {
         return (
           <Box
+            key={index}
             sx={{
               width,
               margin: "30px 10px",

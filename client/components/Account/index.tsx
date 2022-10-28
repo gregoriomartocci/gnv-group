@@ -44,7 +44,7 @@ const Account = ({ handleClose }: IAccount) => {
     <Box sx={AccountContainer}>
       <Box>
         {menuItems?.mid?.map(({ icon, text, route }, index) => (
-          <Box sx={{ padding: "5px 0" }}>
+          <Box sx={{ padding: "5px 0" }} key={index}>
             <AccountMenuItem
               key={index}
               icon={icon}
@@ -57,7 +57,7 @@ const Account = ({ handleClose }: IAccount) => {
       <Divider sx={{ my: 0.5 }} />
       <Box sx={AccountBottom}>
         {menuItems?.logout?.map(({ icon, text, route }, index) => (
-          <Box sx={{ padding: "5px 0" }}>
+          <Box sx={{ padding: "5px 0" }} key={index}>
             <AccountMenuItem
               key={index}
               icon={icon}

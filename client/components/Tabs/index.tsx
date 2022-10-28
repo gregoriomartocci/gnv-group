@@ -69,6 +69,7 @@ export default function UseTabs({
                   fontWeight: `${fontWeight ? fontWeight : ""}`,
                   p: `${p ? p : ""}`,
                 }}
+                key={key}
                 label={item}
               />
             );

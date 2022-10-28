@@ -33,9 +33,9 @@ const Carousel = ({ items }) => {
       //   disableOnInteraction: false,
       // }}
     >
-      {items?.map((element) => {
+      {items?.map((element, index) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <Box
               sx={{
                 display: "flex",

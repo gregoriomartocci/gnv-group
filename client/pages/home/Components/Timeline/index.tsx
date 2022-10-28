@@ -253,6 +253,7 @@ const Timeline = () => {
                     height: "100%",
                     cursor: "grab",
                   }}
+                  key={index}
                 >
                   {selected === index ? (
                     <Box

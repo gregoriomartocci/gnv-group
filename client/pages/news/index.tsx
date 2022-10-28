@@ -171,7 +171,7 @@ const News = () => {
         <Carousel slidesPerView={1} delay={5000}>
           {news_mock && news_mock?.length
             ? news_mock?.map((article: TArticle, index: number) => (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <Article {...article} />
                 </SwiperSlide>
               ))
@@ -190,7 +190,7 @@ const News = () => {
         <Grid container rowSpacing={5} columnSpacing={5}>
           {news_mock
             ? news_mock?.map((item, i) => (
-                <Grid item xs={12} md={6} xl={4}>
+                <Grid item xs={12} md={6} xl={4} key={i}>
                   <ArticleCard {...item} />
                 </Grid>
               ))

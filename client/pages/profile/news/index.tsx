@@ -253,7 +253,7 @@ const News = () => {
     });
 
   const createContent = [
-    <Form input={input} setInput={setInput} />,
+    <Form input={input} setInput={setInput} key={0}/>,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -262,15 +262,17 @@ const News = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      key={1}
     />,
     <Editor
       value={input}
       setValue={(string) => setInput({ ...input, description: string })}
+      key={2}
     />,
   ];
 
   const updateContent = [
-    <Form input={selectedArticle} setInput={setSelectedArticle} />,
+    <Form input={selectedArticle} setInput={setSelectedArticle} key={0}/>,
     <ImageUploader
       value={selectedArticle?.id ? selectedArticle?.images : []}
       addImage={(file: any) => {
@@ -282,12 +284,14 @@ const News = () => {
       removeImage={(array: any) => {
         setSelectedArticle({ ...selectedArticle, images: array });
       }}
+      key={1}
     />,
     <Editor
       value={selectedArticle}
       setValue={(string) =>
         setSelectedArticle({ ...selectedArticle, description: string })
       }
+      key={2}
     />,
   ];
 

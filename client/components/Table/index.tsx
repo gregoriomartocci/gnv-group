@@ -286,7 +286,7 @@ export default function UseTable({
             {stableSort(rows, getComparator(order, orderBy))
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               ?.map((row, index) => {
-                return <TableRow>{content(row)}</TableRow>;
+                return <TableRow key={index}>{content(row)}</TableRow>;
               })}
           </TableBody>
         </Table>

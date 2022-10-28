@@ -75,7 +75,7 @@ const Slider = ({ items }: any) => {
         {items &&
           items?.map(({ src, name }: any, key: number) => {
             return (
-              <Box onClick={() => setPosition(key)}>
+              <Box onClick={() => setPosition(key)} key={key}>
                 <motion.div
                   style={{
                     display: "flex",

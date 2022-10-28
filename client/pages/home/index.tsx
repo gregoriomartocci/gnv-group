@@ -32,6 +32,7 @@ import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
 import CarouselB from "./Components/Carousel";
 import Parallax from "../../components/Parallax";
+import { ReadTimeline } from "../../api/timeline";
 
 export type TDemo = {
   img: string;
@@ -155,6 +156,15 @@ const Home = () => {
       coordinates: { lat: -34.9451061, lng: -54.935135 },
     },
   ];
+
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: allTimelineItems,
+  } = useQuery("timeline", ReadTimeline);
+
+  console.log(allTimelineItems, "Juan Roman Riquelme");
 
   return (
     <Box sx={{ overflow: "hidden" }}>
