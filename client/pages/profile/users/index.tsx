@@ -234,7 +234,7 @@ const Ventures = () => {
     });
 
   const createContent = [
-    <ProjectForm input={input} setInput={setInput} />,
+    <ProjectForm input={input} setInput={setInput} key={0} />,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -243,15 +243,21 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      key={1}
     />,
     <Editor
       value={input}
       setValue={(string) => setInput({ ...input, description: string })}
+      key={2}
     />,
   ];
 
   const updateContent = [
-    <ProjectForm input={selectedProject} setInput={setSelectedProject} key={0} />,
+    <ProjectForm
+      input={selectedProject}
+      setInput={setSelectedProject}
+      key={0}
+    />,
     <ImageUploader
       value={selectedProject?.id ? selectedProject?.images : []}
       addImage={(file: any) => {
@@ -263,14 +269,14 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setSelectedProject({ ...selectedProject, images: array });
       }}
-      key={1} 
+      key={1}
     />,
     <Editor
       value={selectedProject}
       setValue={(string) =>
         setSelectedProject({ ...selectedProject, description: string })
       }
-      key={2} 
+      key={2}
     />,
   ];
 
