@@ -109,7 +109,7 @@ export const updateTimelineItem = async (req, res) => {
 // ReadTimeline
 export const readTimeline = async (req, res) => {
   try {
-    const all = await Timeline.find().populate("year").sort({ year: -1 });
+    const all = await Timeline.find().populate("year").sort({ year: 1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

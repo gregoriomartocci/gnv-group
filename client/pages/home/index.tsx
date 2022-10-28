@@ -46,10 +46,11 @@ const Home = () => {
   const [value, setValue] = useState({});
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
-  const [tab, setTab] = useState<number>(1);
+  const [tab, setTab] = useState<number>(0);
 
   const google_api = process.env.NEXT_PUBLIC_MAPS;
 
+  const defaultLocation = { lat: -34.8388567, lng: -57.1487484 };
   const argentinaLocation = { lat: -34.6191721, lng: -58.3606006 };
   const uruguayLocation = { lat: -34.9451061, lng: -54.935135 };
 
@@ -156,15 +157,6 @@ const Home = () => {
       coordinates: { lat: -34.9451061, lng: -54.935135 },
     },
   ];
-
-  const {
-    isFetching: loading,
-    isError,
-    error,
-    data: allTimelineItems,
-  } = useQuery("timeline", ReadTimeline);
-
-  console.log(allTimelineItems, "Juan Roman Riquelme");
 
   return (
     <Box sx={{ overflow: "hidden" }}>
@@ -428,7 +420,13 @@ const Home = () => {
           >
             {isLoaded && (
               <GoogleMap
-                center={tab === 1 ? argentinaLocation : uruguayLocation}
+                center={
+                  tab === 1
+                    ? argentinaLocation
+                    : tab === 2
+                    ? uruguayLocation
+                    : defaultLocation
+                }
                 zoom={xs ? 7 : 8}
                 options={{
                   styles: ligthTheme,

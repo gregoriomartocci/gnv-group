@@ -5,6 +5,8 @@ import { HighQuality } from "@mui/icons-material";
 import Carousel from "./Components/Carousel";
 import { motion } from "framer-motion";
 import useWindowDimensions from "../../../../hooks/ScreenSize";
+import { useQuery } from "react-query";
+import { ReadTimeline } from "../../../../api/timeline";
 
 const data = [
   {
@@ -204,6 +206,12 @@ const Timeline = () => {
   const [ventures, setVentures] = useState(data);
   const { height, width } = useWindowDimensions();
 
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: timelineItems,
+  } = useQuery("timeline", ReadTimeline);
   const carouselRef = useRef(null);
   const handleClick = (index: number) => {
     setSelected(index);
@@ -242,7 +250,7 @@ const Timeline = () => {
               height: "100%",
             }}
           >
-            {ventures?.map(({ year, highlights }, index) => {
+            {timelineItems?.map(({ year, highlights }, index) => {
               return (
                 <Box
                   style={{

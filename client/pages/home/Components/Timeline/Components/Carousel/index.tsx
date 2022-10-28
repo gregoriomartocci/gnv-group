@@ -164,7 +164,7 @@ function Carousel({ items, year }: ICarousel) {
             layout
             variants={venturesVariants}
           >
-            {items?.map(({ title, description, img, date }, index) => {
+            {items?.map(({ name, description, img, date }, index) => {
               return difference(position, index) > 1 ? null : (
                 <motion.div
                   layout
@@ -198,7 +198,7 @@ function Carousel({ items, year }: ICarousel) {
                         borderRadius: xs ? "5px" : "10px",
                         objectPosition: "center center",
                       }}
-                      src={img}
+                      src={img[0]?.src}
                       alt="title"
                     />
                   ) : null}
@@ -229,7 +229,7 @@ function Carousel({ items, year }: ICarousel) {
                           fontWeight: 600,
                         }}
                       >
-                        {title}
+                        {name}
                       </Typography>
                     </Box>
                     <Box
