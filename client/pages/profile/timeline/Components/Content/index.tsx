@@ -39,7 +39,7 @@ const Content = (timelineItem: ITimeline) => {
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
-    marginLeft: "25px",
+    marginLeft: "10px",
     width: "125px",
 
     img: {
