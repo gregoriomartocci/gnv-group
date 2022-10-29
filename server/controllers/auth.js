@@ -24,7 +24,8 @@ export const signup = async (req, res) => {
     }
     if (!password || password.length < 6) {
       return res.json({
-        error: "La contraseña es requerida y necesita tener al menos 6 caracteres",
+        error:
+          "La contraseña es requerida y necesita tener al menos 6 caracteres",
       });
     }
     const exist = await User.findOne({ email });
@@ -48,6 +49,7 @@ export const signup = async (req, res) => {
         expiresIn: "7d",
       });
       const { password, ...rest } = user._doc;
+
       return res.json({
         token,
         user: rest,
@@ -91,7 +93,9 @@ export const signin = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).send("Algo salió mal, por favor intente de nuevo más tarde.");
+    return res
+      .status(400)
+      .send("Algo salió mal, por favor intente de nuevo más tarde.");
   }
 };
 
@@ -101,7 +105,9 @@ export const forgotPassword = async (req, res) => {
   const user = await User.findOne({ email });
   console.log("USER ===> ", user);
   if (!user) {
-    return res.json({ error: "No se encontró un usuario con el mail ingresado." });
+    return res.json({
+      error: "No se encontró un usuario con el mail ingresado.",
+    });
   }
   // generate code
   const resetCode = nanoid(5).toUpperCase();
