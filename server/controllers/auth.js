@@ -64,6 +64,13 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
   // console.log(req.body);
+
+
+
+  // 1 chequear que existe y papapa
+  // 2 crear un token y mandarlo por cookie con HttpOnly
+  // 3 almacenarlo en 
+
   try {
     const { email, password } = req.body;
     // check if our db has user with that email
