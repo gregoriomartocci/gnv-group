@@ -41,6 +41,7 @@ import {
 import Content from "./Components/Content";
 import { verify } from "jsonwebtoken";
 import { useRouter } from "next/router";
+import useValidateToken from "../../../hooks/validateToken/Index";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -171,31 +172,10 @@ const Ventures = () => {
   const state = useSelector((state) => state?.projects);
   const projectSelected = state?.projectSelected;
   const [selectedProject, setSelectedProject] = useState(projectSelected);
-  const secret =
-    typeof window !== "undefined" ? process.env.NEXT_PUBLIC_SECRET : "";
-  const [useVerify, setUseVerify] = useState(false);
-  const router = useRouter()
-
-  console.log(secret);
+  const router = useRouter();
+  const { validate } = useValidateToken();
 
   const { alert, modal } = state;
-
-  useEffect(() => {
-    const auth = localStorage.getItem("auth");
-    if (auth) {
-      const parse = JSON.parse(auth);
-      const { token } = parse;
-      if (secret) {
-        const ok = verify(token, secret);
-        console.log(ok, "Juan Roman Riquelme");
-        if (ok?._id) {
-          setUseVerify(true);
-        }
-      }
-    } else {
-      router.push("/login");
-    }
-  }, []);
 
   const [input, setInput] = useState({
     name: "",
@@ -223,7 +203,6 @@ const Ventures = () => {
     useMutation(CreateProject, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("projects");
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "El emprendimiento se creó con éxito.",
@@ -232,7 +211,6 @@ const Ventures = () => {
         );
       },
       onError: (data) => {
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "Algo salió mal.",
@@ -336,7 +314,7 @@ const Ventures = () => {
 
   return (
     <Fragment>
-      {useVerify && (
+      {validate && (
         <Dashboard>
           <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
             {alert?.map(({ message, status }, index) => {
