@@ -1,6 +1,6 @@
-import { verify } from "jsonwebtoken";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { verify } from "jsonwebtoken";
 
 const useValidateToken = () => {
   const [validate, setValidate] = useState(false);
@@ -15,16 +15,17 @@ const useValidateToken = () => {
       const parse = JSON.parse(auth);
       const { token } = parse;
       if (secret) {
-        const validatedToken = verify(token, secret);
-        console.log(validatedToken, "Juan Roman Riquelme");
-        if (validatedToken?._id) {
-          setValidate(true);
-        }
+        verify(token, secret, (err, decoded) => {
+          if (err || !decoded) {
+            setValidate(false);
+            router.push("/login");
+          } else if (decoded) {
+            setValidate(true);
+          }
+        });
       }
-    } else {
-      router.push("/login");
     }
-  }, [auth, router, secret]);
+  }, []);
 
   return { validate };
 };
