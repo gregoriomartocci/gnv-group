@@ -24,7 +24,6 @@ const Venture = () => {
     useMutation(ReadProject, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("projects");
-        console.log(data, "el emprendimiento");
         dispatch(setProject(data));
       },
       onError: (data) => {
