@@ -60,7 +60,7 @@ const SignIn = ({ img }: IAuthProps) => {
         setError({ ...error, auth: "success" });
         localStorage.setItem("auth", JSON.stringify(data));
         dispatch(setAuth(data));
-        router.push("/profile");
+        router.push("/profile/ventures");
       }
     } catch (err) {
       setError({ auth: "failed", message: "Something went wrong" });

@@ -33,7 +33,8 @@ const Sidebar = () => {
       </Box>
       <Box sx={{ padding: "15px", height: "calc(100% - 80px)" }}>
         <Box sx={MenuItems}>
-          <Link href={"/profile/layout"}>
+          
+          {/* <Link href={"/profile/layout"}>
             <a>
               <Box sx={MenuItem}>
                 <AutoAwesomeMosaicIcon
@@ -42,7 +43,7 @@ const Sidebar = () => {
                 <span>Personalizar</span>
               </Box>
             </a>
-          </Link>
+          </Link> */}
 
           <Link href={"/profile/ventures"}>
             <a>
