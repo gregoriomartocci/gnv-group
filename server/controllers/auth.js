@@ -160,3 +160,13 @@ export const resetPassword = async (req, res) => {
     console.log(err);
   }
 };
+
+export const getUsers = async (req, res) => {
+  try {
+    const all = await User.find().sort({ createdAt: 1 });
+    return res.json(all);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+  }
+};

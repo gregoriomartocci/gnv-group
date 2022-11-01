@@ -32,11 +32,11 @@ import dynamic from "next/dynamic";
 import form from "./Components/Form";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
-  CreateProject,
-  DeleteProject,
-  ReadProjects,
-  UpdateProject,
-} from "../../../api/ventures";
+  CreateUser,
+  ReadUsers,
+  DeleteUser,
+  UpdateUser,
+} from "../../../api/users";
 import Content from "./Components/Content";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
@@ -166,10 +166,10 @@ const Ventures = () => {
     isError,
     error,
     data: allProjects,
-  } = useQuery("users", ReadProjects);
+  } = useQuery("users");
 
-  const { mutateAsync: createProjectMutation, isLoading: createLoading } =
-    useMutation(CreateProject, {
+  const { mutateAsync: createUserMutation, isLoading: createLoading } =
+    useMutation(CreateUser, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("users");
         console.log(data, "ok");
@@ -191,8 +191,8 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
-    useMutation(UpdateProject, {
+  const { mutateAsync: updateUserMutation, isLoading: updateLoading } =
+    useMutation(UpdateUser, {
       onSuccess: () => {
         queryClient.invalidateQueries("users");
         dispatch(
@@ -212,8 +212,8 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
-    useMutation(DeleteProject, {
+  const { mutateAsync: deleteUserMutation, isLoading: deleteLoading } =
+    useMutation(DeleteUser, {
       onSuccess: () => {
         queryClient.invalidateQueries("projects");
         dispatch(
@@ -318,7 +318,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Usuario"
-          create={() => createProjectMutation({ ...input })}
+          create={() => createUserMutation({ ...input })}
           loading={createLoading}
         />
       </UseModal>
@@ -330,7 +330,7 @@ const Ventures = () => {
           <Update
             title="usuario"
             content={updateContent}
-            update={() => updateProjectMutation({ ...selectedProject })}
+            update={() => updateUserMutation({ ...selectedProject })}
             loading={updateLoading}
           />
         )}
@@ -348,7 +348,7 @@ const Ventures = () => {
       >
         <Delete
           title="usuario"
-          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
+          deleteElement={() => deleteUserMutation(selectedProject?._id)}
           onClose={() => {
             dispatch(
               setModal({
