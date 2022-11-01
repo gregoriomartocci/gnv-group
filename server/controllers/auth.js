@@ -170,3 +170,55 @@ export const getUsers = async (req, res) => {
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByIdAndDelete(id);
+    return res.json(user);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  const { images } = req.body;
+
+  const isFromCloudinary = (str) => {
+    const validate =
+      typeof str === "string" && str.split(".")[1] === "cloudinary";
+    return validate;
+  };
+
+  try {
+    const { id } = req.params;
+
+    let updatedImages;
+    let updatedProject;
+    let imagesAux;
+
+    if (images) {
+      imagesAux = images.map(async (i) => ({
+        ...i,
+        src: !isFromCloudinary(i.src) ? await uploadImage(i.src) : i.src,
+      }));
+      updatedImages = await Promise.all(imagesAux);
+      updatedProject = { ...req.body, images: updatedImages };
+    } else {
+      updatedProject = { ...req.body };
+    }
+
+    const project = await Project.findByIdAndUpdate(id, updatedProject, {
+      new: true,
+    });
+
+    console.log(project, "sale esto para alla!");
+
+    return res.json(project);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+  }
+};
