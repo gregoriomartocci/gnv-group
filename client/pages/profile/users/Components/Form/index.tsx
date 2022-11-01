@@ -56,99 +56,32 @@ const Form = ({ input, setInput }: ICreateProps) => {
     });
   };
 
-  const [type, setType] = useState([
-    "Usos mixtos",
-    "Residencial",
-    "Corporativo",
-    "Hoteleria",
-    "Retail",
-    "Urbanización",
-    "Gastronomía y Lifestyle",
-  ]);
-
-  const [status, setStatus] = useState(["En desarrollo", "Finalizado"]);
-
-  console.log(input, "input");
-
   return (
     <Box>
       <InputGroup
         name="name"
-        description="Ingrese el nombre del emprendimiento"
+        description="Ingrese su nombre"
         label="Nombre"
         type="text"
-        value={input?.name ? input?.name : ""}
+        value={input ? input?.name : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="link"
-        description="Ingrese el enlace del emprendimiento"
-        label="Enlace"
+        name="email"
+        description="Ingrese el email"
+        label="Email"
         type="text"
-        value={input ? input?.link : ""}
+        value={input ? input?.email : ""}
         onChangeHandler={onChangeHandler}
       />
-
-      <Box
-        sx={{
-          margin: "20px 0",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Tipo
-        </Typography>
-
-        <Dropdown
-          items={type}
-          placeholder={input?.type}
-          width="100%"
-          action={(e) =>
-            setInput({
-              ...input,
-              ["type"]: e,
-            })
-          }
-          border
-          optionsHeight="40px"
-        />
-      </Box>
-
-      <Box
-        sx={{
-          margin: "20px 0",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Estado
-        </Typography>
-        <Dropdown
-          items={status}
-          width="100%"
-          placeholder={input?.status}
-          action={(e) =>
-            setInput({
-              ...input,
-              ["status"]: e,
-            })
-          }
-          border
-          optionsHeight="40px"
-        />
-      </Box>
+      <InputGroup
+        name="password"
+        description="Ingrese su contraseña"
+        label="Contraseña"
+        type="password"
+        value={input ? input?.password : ""}
+        onChangeHandler={onChangeHandler}
+      />
 
       {/* <BasicSelect
         options={status}
@@ -159,7 +92,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
         placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
         label="Estado"
       /> */}
-      
     </Box>
   );
 };

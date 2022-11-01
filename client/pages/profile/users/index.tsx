@@ -313,7 +313,7 @@ const Users = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedUser?.id && (
+        {selectedUser?._id && (
           <Update
             title="usuario"
             content={updateContent}
