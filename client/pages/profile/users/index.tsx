@@ -50,11 +50,6 @@ export interface Data {
   role: string;
 }
 
-// id: string;
-// name: string;
-// email: string;
-// role: string;
-
 export type resetParams = {
   delete: "delete";
   update: "update";
@@ -140,7 +135,7 @@ const Ventures = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.users);
   const userSelected = state?.userSelected;
-  const [selectedProject, setSelectedProject] = useState(userSelected);
+  const [selectedUser, setSelectedUser] = useState(userSelected);
 
   console.log(state, "que onduuu");
 
@@ -158,15 +153,15 @@ const Ventures = () => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setSelectedProject(userSelected);
+    setSelectedUser(userSelected);
   }, [userSelected]);
 
   const {
     isFetching: loading,
     isError,
     error,
-    data: allProjects,
-  } = useQuery("users");
+    data: allUsers,
+  } = useQuery("users", ReadUsers);
 
   const { mutateAsync: createUserMutation, isLoading: createLoading } =
     useMutation(CreateUser, {
@@ -254,27 +249,27 @@ const Ventures = () => {
 
   const updateContent = [
     <ProjectForm
-      input={selectedProject}
-      setInput={setSelectedProject}
+      input={selectedUser}
+      setInput={setSelectedUser}
       key={0}
     />,
     <ImageUploader
-      value={selectedProject?.id ? selectedProject?.images : []}
+      value={selectedUser?.id ? selectedUser?.images : []}
       addImage={(file: any) => {
-        setSelectedProject({
-          ...selectedProject,
-          images: [...selectedProject?.images, file],
+        setSelectedUser({
+          ...selectedUser,
+          images: [...selectedUser?.images, file],
         });
       }}
       removeImage={(array: any) => {
-        setSelectedProject({ ...selectedProject, images: array });
+        setSelectedUser({ ...selectedUser, images: array });
       }}
       key={1}
     />,
     <Editor
-      value={selectedProject}
+      value={selectedUser}
       setValue={(string) =>
-        setSelectedProject({ ...selectedProject, description: string })
+        setSelectedUser({ ...selectedUser, description: string })
       }
       key={2}
     />,
@@ -299,7 +294,7 @@ const Ventures = () => {
         title="Usuarios"
         name="users"
         headCells={headCells}
-        rows={allProjects?.length ? allProjects : []}
+        rows={allUsers?.length ? allUsers : []}
         content={(project: IProject) => <Content {...project} />}
         openCreateModal={() =>
           dispatch(
@@ -326,11 +321,11 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id && (
+        {selectedUser?.id && (
           <Update
             title="usuario"
             content={updateContent}
-            update={() => updateUserMutation({ ...selectedProject })}
+            update={() => updateUserMutation({ ...selectedUser })}
             loading={updateLoading}
           />
         )}
@@ -348,7 +343,7 @@ const Ventures = () => {
       >
         <Delete
           title="usuario"
-          deleteElement={() => deleteUserMutation(selectedProject?._id)}
+          deleteElement={() => deleteUserMutation(selectedUser?._id)}
           onClose={() => {
             dispatch(
               setModal({
