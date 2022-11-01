@@ -41,7 +41,7 @@ import {
 import Content from "./Components/Content";
 import { verify } from "jsonwebtoken";
 import { useRouter } from "next/router";
-import useValidateToken from "../../../hooks/validateToken/Index";
+import useValidateToken from "../../../hooks/validateToken";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
