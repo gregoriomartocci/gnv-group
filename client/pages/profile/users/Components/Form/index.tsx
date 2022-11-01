@@ -56,6 +56,8 @@ const Form = ({ input, setInput }: ICreateProps) => {
     });
   };
 
+  const roles = ["Admin", "Suscriptor"];
+
   return (
     <Box>
       <InputGroup
@@ -83,15 +85,31 @@ const Form = ({ input, setInput }: ICreateProps) => {
         onChangeHandler={onChangeHandler}
       />
 
-      {/* <BasicSelect
-        options={status}
-        width="100%"
-        value={input ? input : {}}
-        setValue={setInput}
-        name="status"
-        placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
-        label="Estado"
-      /> */}
+      <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
+        <Typography
+          sx={{
+            fontSize: "15px",
+            color: "#212121",
+            fontWeight: "600",
+            margin: "10px 0",
+          }}
+        >
+          Rol
+        </Typography>
+        <Dropdown
+          items={roles}
+          placeholder={input?.role}
+          width="100%"
+          action={(e) =>
+            setInput({
+              ...input,
+              ["role"]: e,
+            })
+          }
+          border
+          optionsHeight="40px"
+        />
+      </Box>
     </Box>
   );
 };
