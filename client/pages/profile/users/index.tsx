@@ -89,12 +89,6 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "id",
-    numeric: true,
-    disablePadding: false,
-    label: "id",
-  },
-  {
     id: "name",
     numeric: true,
     disablePadding: false,
@@ -105,6 +99,12 @@ const headCells: readonly HeadCell[] = [
     numeric: true,
     disablePadding: false,
     label: "Email",
+  },
+  {
+    id: "role",
+    numeric: true,
+    disablePadding: false,
+    label: "Rol",
   },
   {
     id: "actions",
@@ -137,8 +137,6 @@ const Ventures = () => {
   const userSelected = state?.userSelected;
   const [selectedUser, setSelectedUser] = useState(userSelected);
 
-  console.log(state, "que onduuu");
-
   const { alert, modal } = state;
 
   const [input, setInput] = useState({
@@ -167,7 +165,6 @@ const Ventures = () => {
     useMutation(CreateUser, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("users");
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "El usuario se creó con éxito.",
@@ -176,7 +173,6 @@ const Ventures = () => {
         );
       },
       onError: (data) => {
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "Algo salió mal.",
@@ -248,11 +244,7 @@ const Ventures = () => {
   ];
 
   const updateContent = [
-    <ProjectForm
-      input={selectedUser}
-      setInput={setSelectedUser}
-      key={0}
-    />,
+    <ProjectForm input={selectedUser} setInput={setSelectedUser} key={0} />,
     <ImageUploader
       value={selectedUser?.id ? selectedUser?.images : []}
       addImage={(file: any) => {
