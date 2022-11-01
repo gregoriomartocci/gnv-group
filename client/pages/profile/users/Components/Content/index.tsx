@@ -41,7 +41,6 @@ const Content = (user: IUser) => {
 
   return (
     <Fragment>
-
       <TableCell align="left">
         <Typography>{user?.name}</Typography>
       </TableCell>
