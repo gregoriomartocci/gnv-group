@@ -10,7 +10,7 @@ type Type = {
   width: string;
   name?: string;
   optionsHeight?: string;
-  border;
+  border?: boolean;
 };
 
 const Dropdown = ({

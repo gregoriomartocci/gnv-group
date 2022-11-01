@@ -9,12 +9,12 @@ import api from "../../../hooks/Api";
 import {
   closeAlert,
   initialState,
-  IProject,
+  IUser,
   setAlert,
   setModal,
-  setProjects,
+  setUsers,
   setSelected,
-} from "../../../redux/slices/projects";
+} from "../../../redux/slices/users";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -26,10 +26,9 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-import ProjectForm from "./Components/Form";
 import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
-import form from "./Components/Form";
+
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
   CreateUser,
@@ -38,6 +37,7 @@ import {
   UpdateUser,
 } from "../../../api/users";
 import Content from "./Components/Content";
+import Form from "./Components/Form";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -64,7 +64,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: IProject;
+  user: IUser;
 }
 
 interface ISanitize {
@@ -131,7 +131,7 @@ export type TProject = {
   date: string;
 };
 
-const Ventures = () => {
+const Users = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.users);
   const userSelected = state?.userSelected;
@@ -206,10 +206,10 @@ const Ventures = () => {
   const { mutateAsync: deleteUserMutation, isLoading: deleteLoading } =
     useMutation(DeleteUser, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("users");
         dispatch(
           setAlert({
-            message: "El emprendimiento se eliminó con éxito.",
+            message: "El usuario se eliminó con éxito.",
             status: "success",
           })
         );
@@ -225,7 +225,7 @@ const Ventures = () => {
     });
 
   const createContent = [
-    <ProjectForm input={input} setInput={setInput} key={0} />,
+    <Form input={input} setInput={setInput} key={0} />,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -244,7 +244,7 @@ const Ventures = () => {
   ];
 
   const updateContent = [
-    <ProjectForm input={selectedUser} setInput={setSelectedUser} key={0} />,
+    <Form input={selectedUser} setInput={setSelectedUser} key={0} />,
     <ImageUploader
       value={selectedUser?.id ? selectedUser?.images : []}
       addImage={(file: any) => {
@@ -287,7 +287,7 @@ const Ventures = () => {
         name="users"
         headCells={headCells}
         rows={allUsers?.length ? allUsers : []}
-        content={(project: IProject) => <Content {...project} />}
+        content={(project: IUser) => <Content {...project} />}
         openCreateModal={() =>
           dispatch(
             setModal({
@@ -351,4 +351,4 @@ const Ventures = () => {
   );
 };
 
-export default Ventures;
+export default Users;

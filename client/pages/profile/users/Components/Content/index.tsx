@@ -37,7 +37,7 @@ const Content = (user: IUser) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const match = user?.id === userSelected?.id;
+  const match = user?._id === userSelected?._id;
 
   return (
     <Fragment>

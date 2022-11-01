@@ -48,7 +48,7 @@ export interface ICreateProps {
   setInput: any;
 }
 
-const ProyectForm = ({ input, setInput }: ICreateProps) => {
+const Form = ({ input, setInput }: ICreateProps) => {
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -66,11 +66,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     "Gastronomía y Lifestyle",
   ]);
 
-  const [status, setStatus] = useState([
-
-    "En desarrollo",
-    "Finalizado",
-  ]);
+  const [status, setStatus] = useState(["En desarrollo", "Finalizado"]);
 
   console.log(input, "input");
 
@@ -119,6 +115,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
               ["type"]: e,
             })
           }
+          border
           optionsHeight="40px"
         />
       </Box>
@@ -148,6 +145,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
               ["status"]: e,
             })
           }
+          border
           optionsHeight="40px"
         />
       </Box>
@@ -161,8 +159,9 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
         label="Estado"
       /> */}
+      
     </Box>
   );
 };
 
-export default ProyectForm;
+export default Form;
