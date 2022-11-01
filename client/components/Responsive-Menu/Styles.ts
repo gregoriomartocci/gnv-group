@@ -47,12 +47,12 @@ export const DropdownMenu: SxProps<Theme> = {
 
 export const DropdownLink: SxProps<Theme> = {
   display: "flex",
+  width:"100%",
   alignItems: "flex-start",
   justifyContent: "flex-end",
   padding: "15px 50px",
   color: "#212121",
   fontSize: { xs: "16px", md: "22px" },
-  width: "100%",
   textDecoration: "none",
   transition: "0.2s ease-in-out",
   cursor: "pointer",

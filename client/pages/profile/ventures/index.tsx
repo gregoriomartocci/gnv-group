@@ -312,23 +312,27 @@ const Ventures = () => {
     />,
   ];
 
+  const redirect = () => {
+    router.push("/login");
+  };
+
   return (
     <Fragment>
-      {validate && (
-        <Dashboard>
-          <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
-            {alert?.map(({ message, status }, index) => {
-              return (
-                <Toast
-                  key={index}
-                  message={message}
-                  type={status}
-                  action={() => dispatch(closeAlert(index))}
-                />
-              );
-            })}
-          </Box>
+      <Dashboard>
+        <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
+          {alert?.map(({ message, status }, index) => {
+            return (
+              <Toast
+                key={index}
+                message={message}
+                type={status}
+                action={() => dispatch(closeAlert(index))}
+              />
+            );
+          })}
+        </Box>
 
+        {validate && (
           <UseTable
             title="Emprendimientos"
             name="projects"
@@ -344,38 +348,51 @@ const Ventures = () => {
               )
             }
           />
+        )}
 
-          <UseModal
-            open={modal.create}
-            handleClose={() =>
-              dispatch(setModal({ name: "create", value: false }))
-            }
-          >
-            <Create
-              content={createContent}
-              title="Emprendimiento"
-              create={() => createProjectMutation({ ...input })}
-              loading={createLoading}
+        <UseModal
+          open={modal.create}
+          handleClose={() =>
+            dispatch(setModal({ name: "create", value: false }))
+          }
+        >
+          <Create
+            content={createContent}
+            title="Emprendimiento"
+            create={() => createProjectMutation({ ...input })}
+            loading={createLoading}
+          />
+        </UseModal>
+        <UseModal
+          open={modal.update}
+          handleClose={() =>
+            dispatch(setModal({ name: "update", value: false }))
+          }
+        >
+          {selectedProject?.id && (
+            <Update
+              title="emprendimiento"
+              content={updateContent}
+              update={() => updateProjectMutation({ ...selectedProject })}
+              loading={updateLoading}
             />
-          </UseModal>
-          <UseModal
-            open={modal.update}
-            handleClose={() =>
-              dispatch(setModal({ name: "update", value: false }))
-            }
-          >
-            {selectedProject?.id && (
-              <Update
-                title="emprendimiento"
-                content={updateContent}
-                update={() => updateProjectMutation({ ...selectedProject })}
-                loading={updateLoading}
-              />
-            )}
-          </UseModal>
-          <UseModal
-            open={modal?.delete}
-            handleClose={() => {
+          )}
+        </UseModal>
+        <UseModal
+          open={modal?.delete}
+          handleClose={() => {
+            dispatch(
+              setModal({
+                name: "delete",
+                value: false,
+              })
+            );
+          }}
+        >
+          <Delete
+            title="emprendimiento"
+            deleteElement={() => deleteProjectMutation(selectedProject?._id)}
+            onClose={() => {
               dispatch(
                 setModal({
                   name: "delete",
@@ -383,23 +400,10 @@ const Ventures = () => {
                 })
               );
             }}
-          >
-            <Delete
-              title="emprendimiento"
-              deleteElement={() => deleteProjectMutation(selectedProject?._id)}
-              onClose={() => {
-                dispatch(
-                  setModal({
-                    name: "delete",
-                    value: false,
-                  })
-                );
-              }}
-              loading={deleteLoading}
-            />
-          </UseModal>
-        </Dashboard>
-      )}
+            loading={deleteLoading}
+          />
+        </UseModal>
+      </Dashboard>
     </Fragment>
   );
 };

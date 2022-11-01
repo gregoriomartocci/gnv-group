@@ -79,11 +79,11 @@ const ResponsiveMenu = ({ Open, Toggle }: IDropdownProps) => {
               <Box sx={DropdownMenu}>
                 {menuData?.map((item: ImenuData, index: number): any => {
                   return (
-                    <Box sx={DropdownLink} key={index}>
-                      <Link href={item?.link}>
-                        <a>{item?.title}</a>
-                      </Link>
-                    </Box>
+                    <Link href={item?.link} key={index}>
+                      <a style={{ width: "100%" }}>
+                        <Box sx={DropdownLink}>{item?.title}</Box>
+                      </a>
+                    </Link>
                   );
                 })}
               </Box>
