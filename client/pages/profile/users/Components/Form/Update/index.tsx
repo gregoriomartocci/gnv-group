@@ -12,18 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-
-import ImageUploader, {
-  IImagetoUpload,
-} from "../../../../../components/Image-Uploader";
-
-import InputGroup from "../../../../../components/Input";
-import UseTabs from "../../../../../components/Tabs";
-import UseButton from "../../../../../components/Button";
-import { IProject } from "../../../../../redux/slices/projects";
-import { IArticle } from "../../../../../redux/slices/articles";
-import BasicSelect from "../../../../../components/Select";
-import Dropdown from "../../../../ventures/components/Dropdown";
+import { IImagetoUpload } from "../../../../../../components/Image-Uploader";
+import InputGroup from "../../../../../../components/Input";
+import Dropdown from "../../../../../ventures/components/Dropdown";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -48,7 +39,7 @@ export interface ICreateProps {
   setInput: any;
 }
 
-const Form = ({ input, setInput }: ICreateProps) => {
+const UpdateForm = ({ input, setInput }: ICreateProps) => {
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -76,15 +67,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
         value={input ? input?.email : ""}
         onChangeHandler={onChangeHandler}
       />
-      <InputGroup
-        name="password"
-        description="Ingrese su contraseña"
-        label="Contraseña"
-        type="password"
-        value={input ? input?.password : ""}
-        onChangeHandler={onChangeHandler}
-      />
-
       <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
         <Typography
           sx={{
@@ -114,4 +96,4 @@ const Form = ({ input, setInput }: ICreateProps) => {
   );
 };
 
-export default Form;
+export default UpdateForm;

@@ -38,6 +38,8 @@ import {
 } from "../../../api/users";
 import Content from "./Components/Content";
 import Form from "./Components/Form";
+import CreateForm from "./Components/Form/Create";
+import UpdateForm from "./Components/Form/Update";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -139,14 +141,15 @@ const Users = () => {
 
   const { alert, modal } = state;
 
-  const [input, setInput] = useState({
+  const [createUser, setCreateUser] = useState({
     name: "",
-    link: "",
-    type: "",
-    status: "",
-    images: [],
-    description: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    role: "",
   });
+
+  const [updateUser, setUpdateUser] = useState(selectedUser);
 
   const queryClient = useQueryClient();
 
@@ -225,46 +228,11 @@ const Users = () => {
     });
 
   const createContent = [
-    <Form input={input} setInput={setInput} key={0} />,
-    <ImageUploader
-      value={input?.images}
-      addImage={(file: any) => {
-        setInput({ ...input, images: [...input.images, file] });
-      }}
-      removeImage={(array: any) => {
-        setInput({ ...input, images: array });
-      }}
-      key={1}
-    />,
-    <Editor
-      value={input}
-      setValue={(string) => setInput({ ...input, description: string })}
-      key={2}
-    />,
+    <CreateForm input={createUser} setInput={setCreateUser} key={0} />,
   ];
 
   const updateContent = [
-    <Form input={selectedUser} setInput={setSelectedUser} key={0} />,
-    <ImageUploader
-      value={selectedUser?.id ? selectedUser?.images : []}
-      addImage={(file: any) => {
-        setSelectedUser({
-          ...selectedUser,
-          images: [...selectedUser?.images, file],
-        });
-      }}
-      removeImage={(array: any) => {
-        setSelectedUser({ ...selectedUser, images: array });
-      }}
-      key={1}
-    />,
-    <Editor
-      value={selectedUser}
-      setValue={(string) =>
-        setSelectedUser({ ...selectedUser, description: string })
-      }
-      key={2}
-    />,
+    <UpdateForm input={updateUser} setInput={setUpdateUser} key={0} />,
   ];
 
   return (
@@ -305,7 +273,7 @@ const Users = () => {
         <Create
           content={createContent}
           title="Usuario"
-          create={() => createUserMutation({ ...input })}
+          create={() => createUserMutation({ ...createUser })}
           loading={createLoading}
         />
       </UseModal>
