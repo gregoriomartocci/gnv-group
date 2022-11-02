@@ -361,6 +361,7 @@ const Ventures = () => {
             title="Emprendimiento"
             create={() => createProjectMutation({ ...input })}
             loading={createLoading}
+            tabOptions={["Información Básica", "Imágenes", "Descripción"]}
           />
         </UseModal>
         <UseModal
@@ -375,6 +376,7 @@ const Ventures = () => {
               content={updateContent}
               update={() => updateProjectMutation({ ...selectedProject })}
               loading={updateLoading}
+              tabOptions={["Información Básica", "Imágenes", "Descripción"]}
             />
           )}
         </UseModal>

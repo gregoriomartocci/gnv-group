@@ -334,6 +334,7 @@ const News = () => {
           title="Noticia"
           create={() => createArticleMutation({ ...input })}
           loading={createLoading}
+          tabOptions={["Información Básica", "Imágenes", "Descripción"]}
         />
       </UseModal>
       <UseModal
@@ -346,6 +347,7 @@ const News = () => {
             content={updateContent}
             update={() => updateArticleMutation({ ...selectedArticle })}
             loading={updateLoading}
+            tabOptions={["Información Básica", "Imágenes", "Descripción"]}
           />
         )}
       </UseModal>
