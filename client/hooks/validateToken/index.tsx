@@ -24,6 +24,8 @@ const useValidateToken = () => {
           }
         });
       }
+    } else {
+      router.push("/login");
     }
   }, []);
 
