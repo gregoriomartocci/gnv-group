@@ -3,7 +3,7 @@ import api from "../hooks/Api";
 export const CreateUser = async (item: any) => {
   const result = await api({
     method: "post",
-    path: `/user`,
+    path: `/signup`,
     payload: item,
   });
   return result;

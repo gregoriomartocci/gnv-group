@@ -9,25 +9,43 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
 export const signup = async (req, res) => {
+  console.log(req.body);
+
   try {
     // validation
-    const { name, email, password } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
     if (!name) {
-      return res.json({
-        error: "el nombre es requerido",
-      });
+      return res
+        .json({
+          error: "el nombre es requerido",
+        })
+        .status(400);
     }
     if (!email) {
-      return res.json({
-        error: "el email es requerido",
-      });
+      return res
+        .json({
+          error: "el email es requerido",
+        })
+        .status(400);
     }
     if (!password || password.length < 6) {
-      return res.json({
-        error:
-          "La contraseña es requerida y necesita tener al menos 6 caracteres",
-      });
+      return res
+        .json({
+          error:
+            "La contraseña es requerida y necesita tener al menos 6 caracteres",
+        })
+        .status(400);
     }
+    if (password !== confirmPassword) {
+      return res
+        .json({
+          error: "Las contraseñas ingresadas son distintas.",
+        })
+        .status(400);
+    }
+
+    console.log("Juan Roman Riquelma");
+
     const exist = await User.findOne({ email });
     if (exist) {
       return res.json({
@@ -46,16 +64,18 @@ export const signup = async (req, res) => {
 
       // create signed token
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "7d",
+        expiresIn: "2h",
       });
       const { password, ...rest } = user._doc;
+
+      console.log(user, "ok");
 
       return res.json({
         token,
         user: rest,
       });
     } catch (err) {
-      console.log(err);
+      console.log("algo salio mal", err);
     }
   } catch (err) {
     console.log(err);
@@ -85,7 +105,7 @@ export const signin = async (req, res) => {
     }
     // create signed token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "30m",
+      expiresIn: "2h",
     });
 
     user.password = undefined;
@@ -184,39 +204,18 @@ export const deleteUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const { images } = req.body;
-
-  const isFromCloudinary = (str) => {
-    const validate =
-      typeof str === "string" && str.split(".")[1] === "cloudinary";
-    return validate;
-  };
+  const { name, email, role } = req.body;
+  const updatedUser = { name, email, role };
 
   try {
     const { id } = req.params;
 
-    let updatedImages;
-    let updatedProject;
-    let imagesAux;
-
-    if (images) {
-      imagesAux = images.map(async (i) => ({
-        ...i,
-        src: !isFromCloudinary(i.src) ? await uploadImage(i.src) : i.src,
-      }));
-      updatedImages = await Promise.all(imagesAux);
-      updatedProject = { ...req.body, images: updatedImages };
-    } else {
-      updatedProject = { ...req.body };
-    }
-
-    const project = await Project.findByIdAndUpdate(id, updatedProject, {
+    const user = await User.findByIdAndUpdate(id, updatedUser, {
       new: true,
     });
 
-    console.log(project, "sale esto para alla!");
-
-    return res.json(project);
+    console.log(user, "sale esto para alla!");
+    return res.json(user);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: "Algo salió mal, por favor intente nuevamente" });

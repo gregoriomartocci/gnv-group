@@ -31,11 +31,7 @@ const Menu = () => {
         </IconButton>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <Avatar
-          style={{ margin: "0 10px" }}
-          alt={data?.user?.name}
-          src="/static/images/avatar/1.jpg"
-        />
+        <Avatar style={{ margin: "0 10px" }} alt={data?.user?.name} />
 
         <IconButton aria-label="delete" onClick={handleClickBasicMenu}>
           <KeyboardArrowDownIcon />

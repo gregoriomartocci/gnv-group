@@ -86,7 +86,7 @@ const CreateForm = ({ input, setInput }: ICreateProps) => {
       </Box>
       <InputGroup
         name="password"
-        description="Ingrese su contraseña"
+        description="Ingrese la contraseña de la cuenta a crear"
         label="Contraseña"
         type="password"
         value={input ? input?.password : ""}
@@ -94,7 +94,7 @@ const CreateForm = ({ input, setInput }: ICreateProps) => {
       />
       <InputGroup
         name="confirmPassword"
-        description="Ingrese nuevamente su contraseña"
+        description="Ingrese nuevamente la contraseña"
         label="Confirmar Contraseña"
         type="password"
         value={input ? input?.confirmPassword : ""}

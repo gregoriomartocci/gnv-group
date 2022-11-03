@@ -150,7 +150,7 @@ const Users = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    role: "",
+    role: "Admin",
   });
 
   // console.log()
@@ -172,20 +172,21 @@ const Users = () => {
     useMutation(CreateUser, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("users");
-        dispatch(
-          setAlert({
-            message: "El usuario se creó con éxito.",
-            status: "success",
-          })
-        );
-      },
-      onError: (data) => {
-        dispatch(
-          setAlert({
-            message: "Algo salió mal.",
-            status: "error",
-          })
-        );
+        const { error } = data;
+        console.log(data, "que onduu");
+        error
+          ? dispatch(
+              setAlert({
+                message: error,
+                status: "error",
+              })
+            )
+          : dispatch(
+              setAlert({
+                message: "El usuario se creó con éxito.",
+                status: error,
+              })
+            );
       },
     });
 
