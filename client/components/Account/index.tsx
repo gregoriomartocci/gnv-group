@@ -9,20 +9,13 @@ import { AccountBottom, AccountContainer, AccountTop } from "./Styles";
 import AccountMenuItem from "./Components/AccountMenuItems";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/slices/auth";
+import { useRouter } from "next/router";
 
 const menuItems = {
-  mid: [
-    {
-      icon: <AccountCircleIcon />,
-      text: "Perfil",
-      route: "/profile",
-    },
-  ],
   logout: [
     {
       icon: <LogoutIcon />,
       text: "Cerrar Sesión",
-      route: "",
     },
   ],
 };
@@ -33,11 +26,13 @@ interface IAccount {
 
 const Account = ({ handleClose }: IAccount) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const SignOut = () => {
+    handleClose();
     localStorage.removeItem("auth");
     dispatch(setAuth({ user: "", token: "" }));
-    handleClose();
+    router.push("/profile");
   };
 
   return (
