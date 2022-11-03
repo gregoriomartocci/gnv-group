@@ -27,6 +27,7 @@ export type errorType = {
 };
 
 const SignIn = ({ img }: IAuthProps) => {
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<errorType>({ auth: "", message: "" });
   const [input, setInput] = useState<inputType>({
