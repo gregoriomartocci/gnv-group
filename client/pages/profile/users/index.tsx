@@ -137,7 +137,11 @@ const Users = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.users);
   const userSelected = state?.userSelected;
-  const [selectedUser, setSelectedUser] = useState(userSelected);
+  const [selectedUser, setSelectedUser] = useState({
+    name: "",
+    email: "",
+    role: "",
+  });
 
   const { alert, modal } = state;
 
@@ -149,7 +153,7 @@ const Users = () => {
     role: "",
   });
 
-  const [updateUser, setUpdateUser] = useState(selectedUser);
+  // console.log()
 
   const queryClient = useQueryClient();
 
@@ -230,9 +234,8 @@ const Users = () => {
   const createContent = [
     <CreateForm input={createUser} setInput={setCreateUser} key={0} />,
   ];
-
   const updateContent = [
-    <UpdateForm input={updateUser} setInput={setUpdateUser} key={0} />,
+    <UpdateForm input={selectedUser} setInput={setSelectedUser} key={0} />,
   ];
 
   return (

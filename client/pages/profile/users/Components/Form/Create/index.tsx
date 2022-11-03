@@ -93,11 +93,11 @@ const CreateForm = ({ input, setInput }: ICreateProps) => {
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
-        name="password"
+        name="confirmPassword"
         description="Ingrese nuevamente su contraseña"
         label="Confirmar Contraseña"
         type="password"
-        value={""}
+        value={input ? input?.confirmPassword : ""}
         onChangeHandler={onChangeHandler}
       />
     </Box>
