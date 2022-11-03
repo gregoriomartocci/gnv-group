@@ -40,16 +40,28 @@ const SignIn = ({ img }: IAuthProps) => {
   const { mutateAsync: LoginAuthMutation, isLoading: authLoading } =
     useMutation(LoginAuth, {
       onSuccess: (data) => {
-        dispatch(
-          setAlert({
-            message: "Session iniciada con éxito",
-            status: "success",
-          })
-        );
+        const { error } = data;
 
-        localStorage.setItem("auth", JSON.stringify(data));
-        dispatch(setAuth(data));
-        router.push("/profile/ventures");
+        console.log(data, "ARTIGAS");
+        
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          dispatch(
+            setAlert({
+              message: "Session iniciada con éxito",
+              status: "success",
+            })
+          );
+          localStorage.setItem("auth", JSON.stringify(data));
+          dispatch(setAuth(data));
+          router.push("/profile/ventures");
+        }
       },
       onError: () => {
         dispatch(

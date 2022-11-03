@@ -83,7 +83,7 @@ export const signup = async (req, res) => {
 };
 
 export const signin = async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body, "JUAN ROMAN RIQUELME");
 
   try {
     const { email, password } = req.body;
@@ -95,9 +95,10 @@ export const signin = async (req, res) => {
       });
     }
     // check password
-    const match = comparePassword(password, user.password);
+    const match = await comparePassword(password, user.password);
 
     console.log(match, "que onduu");
+
     if (!match) {
       return res.json({
         error: "Contraseña incorrecta",

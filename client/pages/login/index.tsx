@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import { Box } from "@mui/material";
-import Main from "../../components/Main";
-
 import Menu from "../../components/Menu";
-import HeaderTitle from "../../components/Header-Title";
-import Footer from "../../components/Footer";
-import { ImageContainer } from "./Styles";
-import SignIn from "../../components/Auth/Components/Sign-In";
 import Auth from "../../components/Auth";
 
 export interface ILogin {
