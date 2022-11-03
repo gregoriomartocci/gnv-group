@@ -1,10 +1,10 @@
 import api from "../hooks/Api";
 
-export const Login = async (item: any) => {
+export const LoginAuth = async (user: any) => {
   const result = await api({
     method: "post",
     path: `/signin`,
-    payload: item,
+    payload: user,
   });
   return result;
 };

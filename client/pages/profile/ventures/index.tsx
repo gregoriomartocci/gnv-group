@@ -312,10 +312,6 @@ const Ventures = () => {
     />,
   ];
 
-  const redirect = () => {
-    router.push("/login");
-  };
-
   return (
     <Fragment>
       <Dashboard>
