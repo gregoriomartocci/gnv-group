@@ -7,6 +7,7 @@ import projectRoutes from "./routes/project";
 import articleRoutes from "./routes/articles";
 import templateRoutes from "./routes/template";
 import timelineRoutes from "./routes/timeline";
+import galleryRoutes from "./routes/gallery";
 
 const morgan = require("morgan");
 const app = express();
@@ -29,6 +30,7 @@ app.use("/api", projectRoutes);
 app.use("/api", articleRoutes);
 app.use("/api", templateRoutes);
 app.use("/api", timelineRoutes);
+app.use("/api", galleryRoutes);
 
 const port = process.env.SERVER || 8000;
 

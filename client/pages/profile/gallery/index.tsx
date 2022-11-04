@@ -72,7 +72,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: IProject;
+  gallery: IGallery;
 }
 
 interface ISanitize {
@@ -199,17 +199,25 @@ const Gallery = () => {
   const { mutateAsync: createGalleryItemMutation, isLoading: createLoading } =
     useMutation(CreateGalleryItem, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("gallery");
-        console.log(data, "ok");
-        dispatch(
-          setAlert({
-            message: "La obra de arte se creó con éxito.",
-            status: "success",
-          })
-        );
+        const { error } = data;
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          queryClient.invalidateQueries("gallery");
+          dispatch(
+            setAlert({
+              message: "La obra de arte se creó con éxito.",
+              status: "success",
+            })
+          );
+        }
       },
       onError: (data) => {
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "Algo salió mal.",

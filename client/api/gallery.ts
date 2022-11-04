@@ -3,7 +3,7 @@ import api from "../hooks/Api";
 export const CreateGalleryItem = async (item: any) => {
   const result = await api({
     method: "post",
-    path: `/gallery`,
+    path: `/gallery-item`,
     payload: item,
   });
   return result;
