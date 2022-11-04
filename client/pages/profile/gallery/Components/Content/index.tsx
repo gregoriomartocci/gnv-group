@@ -54,8 +54,8 @@ const Content = (galleryItem: IGallery) => {
     alignItems: "center",
 
     img: {
-      width: "100px",
-      height: "100px",
+      width: "80px",
+      height: "80px",
       borderRadius: "5px",
       objectFit: "cover",
       margin: "0 20px 0 0",
@@ -70,13 +70,12 @@ const Content = (galleryItem: IGallery) => {
         <Box sx={CellTable}>
           <img src={(galleryItem && galleryItem?.image) ?? ""} alt="" />
         </Box>
-        <Typography>{galleryItem?.gallery}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography>{galleryItem?.artist}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{galleryItem?.image}</Typography>
+        <Typography>{galleryItem?.gallery}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography>{galleryItem?.technique}</Typography>

@@ -102,16 +102,16 @@ const headCells: readonly HeadCell[] = [
     label: "Titulo",
   },
   {
-    id: "gallery",
-    numeric: true,
-    disablePadding: false,
-    label: "Galeria",
-  },
-  {
     id: "artist",
     numeric: false,
     disablePadding: false,
     label: "Artista",
+  },
+  {
+    id: "gallery",
+    numeric: true,
+    disablePadding: false,
+    label: "Galeria",
   },
   {
     id: "technique",
