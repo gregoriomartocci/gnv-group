@@ -45,10 +45,9 @@ const Editor = dynamic(() => import("../../../components/Editor"), {
 
 export interface Data {
   id: number;
+  title: string;
   gallery: string;
   artist: string;
-  title: string;
-  image: string;
   technique: string;
   measures: boolean;
   date: string;
@@ -110,7 +109,7 @@ const headCells: readonly HeadCell[] = [
   },
   {
     id: "artist",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Artista",
   },
@@ -149,18 +148,6 @@ const headCells: readonly HeadCell[] = [
 export type errorType = {
   projects: string;
   message: any;
-};
-
-export type TProject = {
-  id: number;
-  name: string;
-  description: string;
-  images: never[];
-  link: string;
-  published: boolean;
-  status: string;
-  type: string;
-  date: string;
 };
 
 const Gallery = () => {

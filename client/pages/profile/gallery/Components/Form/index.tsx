@@ -88,7 +88,7 @@ const GalleryForm = ({ input, setInput }: ICreateProps) => {
         description="Ingrese la técnica"
         label="Técnica"
         type="text"
-        value={input ? input?.measures : ""}
+        value={input ? input?.technique : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup

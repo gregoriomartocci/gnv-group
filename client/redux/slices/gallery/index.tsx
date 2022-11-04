@@ -3,15 +3,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface IGallery {
   id: number;
   _id: string;
-  name: string;
-  description: string;
-  images: string[];
-  link: string;
-  published: boolean;
-  status: string;
+  title: string;
+  technique: string;
+  images: [];
+  artist: string;
+  measures: string;
+  date: string;
   createdAt: string;
   updatedAt: string;
-  __v: number;
+  published: boolean;
 }
 
 export type TCreate = {

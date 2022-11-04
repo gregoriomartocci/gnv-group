@@ -65,7 +65,7 @@ const Content = (galleryItem: IGallery) => {
   const match = galleryItem?.id === galleryItemSelected?.id;
 
   return (
-    <Box>
+    <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
           <img src={(galleryItem && galleryItem?.image) ?? ""} alt="" />
@@ -138,7 +138,7 @@ const Content = (galleryItem: IGallery) => {
           </Dropdown>
         )}
       </TableCell>
-    </Box>
+    </Fragment>
   );
 };
 

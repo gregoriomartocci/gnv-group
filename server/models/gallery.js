@@ -7,13 +7,10 @@ const gallerySchema = new Schema(
   {
     id: {
       type: Number,
-      required: true,
-      default: 1,
     },
     gallery: {
       type: String,
       trim: true,
-      required: true,
     },
     artist: {
       type: String,
@@ -21,20 +18,16 @@ const gallerySchema = new Schema(
     },
     title: {
       type: String,
-      required: true,
     },
     image: {},
     technique: {
       type: String,
-      required: true,
     },
     measures: {
       type: String,
-      required: true,
     },
     date: {
-      type: Number,
-      required: true,
+      type: String,
     },
     order: { type: Number },
     published: { type: Boolean, default: true },
