@@ -15,7 +15,7 @@ import {
   setProjects,
   setSelected,
   setState,
-} from "../../../redux/slices/projects";
+} from "../../../redux/slices/gallery";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -54,6 +54,7 @@ export interface Data {
   technique: string;
   measures: boolean;
   date: string;
+  images: [];
   published: boolean;
   createdAt: string;
   updatedAt: string;
@@ -116,12 +117,6 @@ const headCells: readonly HeadCell[] = [
     label: "Artista",
   },
   {
-    id: "title",
-    numeric: true,
-    disablePadding: false,
-    label: "Titulo",
-  },
-  {
     id: "technique",
     numeric: true,
     disablePadding: false,
@@ -170,44 +165,47 @@ export type TProject = {
   date: string;
 };
 
-const Ventures = () => {
+const Gallery = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.gallery);
-  const projectSelected = state?.projectSelected;
-  const [selectedProject, setSelectedProject] = useState(projectSelected);
+  const galleryItemSelected = state?.galleryItemSelected;
+  const [selectedGalleryItem, setGalleryItemProject] =
+    useState(galleryItemSelected);
 
   const { alert, modal } = state;
 
   const [input, setInput] = useState({
-    name: "",
-    link: "",
-    type: "",
-    status: "",
+    title: "",
+    gallery: "",
+    artist: "",
+    technique: "",
+    measures: "",
     images: [],
-    description: "",
+    date: "",
+    published: true,
   });
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setSelectedProject(projectSelected);
-  }, [projectSelected]);
+    setGalleryItemProject(galleryItemSelected);
+  }, [galleryItemSelected]);
 
   const {
     isFetching: loading,
     isError,
     error,
-    data: allProjects,
-  } = useQuery("projects", ReadGalleryItems);
+    data: allGalleryItems,
+  } = useQuery("gallery", ReadGalleryItems);
 
-  const { mutateAsync: createProjectMutation, isLoading: createLoading } =
+  const { mutateAsync: createGalleryItemMutation, isLoading: createLoading } =
     useMutation(CreateGalleryItem, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("gallery");
         console.log(data, "ok");
         dispatch(
           setAlert({
-            message: "El emprendimiento se creó con éxito.",
+            message: "La obra de arte se creó con éxito.",
             status: "success",
           })
         );
@@ -223,13 +221,13 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
+  const { mutateAsync: updateGalleryItemMutation, isLoading: updateLoading } =
     useMutation(UpdateGalleryItem, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("gallery");
         dispatch(
           setAlert({
-            message: "El emprendimiento se actualizó con éxito.",
+            message: "La obra de arte se actualizó con éxito.",
             status: "success",
           })
         );
@@ -244,13 +242,13 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
+  const { mutateAsync: deleteGalleryItemMutation, isLoading: deleteLoading } =
     useMutation(DeleteGalleryItem, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("gallery");
         dispatch(
           setAlert({
-            message: "El emprendimiento se eliminó con éxito.",
+            message: "La obra de arte se eliminó con éxito",
             status: "success",
           })
         );
@@ -281,20 +279,20 @@ const Ventures = () => {
 
   const updateContent = [
     <ProjectForm
-      input={selectedProject}
-      setInput={setSelectedProject}
+      input={selectedGalleryItem}
+      setInput={setGalleryItemProject}
       key={0}
     />,
     <ImageUploader
-      value={selectedProject?.id ? selectedProject?.images : []}
+      value={selectedGalleryItem?.id ? selectedGalleryItem?.images : []}
       addImage={(file: any) => {
-        setSelectedProject({
-          ...selectedProject,
-          images: [...selectedProject?.images, file],
+        setGalleryItemProject({
+          ...selectedGalleryItem,
+          images: [...selectedGalleryItem?.images, file],
         });
       }}
       removeImage={(array: any) => {
-        setSelectedProject({ ...selectedProject, images: array });
+        setGalleryItemProject({ ...selectedGalleryItem, images: array });
       }}
       key={1}
     />,
@@ -317,10 +315,10 @@ const Ventures = () => {
 
       <UseTable
         title="Galería de Arte"
-        name="projects"
+        name="galley"
         headCells={headCells}
-        rows={allProjects?.length ? allProjects : []}
-        content={(project: IProject) => <Content {...project} />}
+        rows={allGalleryItems?.length ? allGalleryItems : []}
+        content={(gallery: IGallery) => <Content {...gallery} />}
         openCreateModal={() =>
           dispatch(
             setModal({
@@ -337,7 +335,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="obra"
-          create={() => createProjectMutation({ ...input })}
+          create={() => createGalleryItemMutation({ ...input })}
           loading={createLoading}
           tabOptions={["Información Básica", "Imágenes"]}
         />
@@ -346,11 +344,11 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id && (
+        {selectedGalleryItem?.id && (
           <Update
             title="obra"
             content={updateContent}
-            update={() => updateProjectMutation({ ...selectedProject })}
+            update={() => updateGalleryItemMutation({ ...selectedGalleryItem })}
             loading={updateLoading}
             tabOptions={["Información Básica", "Imágenes"]}
           />
@@ -369,7 +367,9 @@ const Ventures = () => {
       >
         <Delete
           title="obra"
-          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
+          deleteElement={() =>
+            deleteGalleryItemMutation(selectedGalleryItem?._id)
+          }
           onClose={() => {
             dispatch(
               setModal({
@@ -385,4 +385,4 @@ const Ventures = () => {
   );
 };
 
-export default Ventures;
+export default Gallery;

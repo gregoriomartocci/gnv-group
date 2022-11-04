@@ -97,8 +97,6 @@ export const signin = async (req, res) => {
     // check password
     const match = await comparePassword(password, user.password);
 
-    console.log(match, "que onduu");
-
     if (!match) {
       return res.json({
         error: "Contraseña incorrecta",

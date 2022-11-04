@@ -3,8 +3,17 @@ import Gallery from "../models/gallery";
 
 export const createGalleryItem = async (req, res) => {
   try {
-    const { name, link, description, published, status, images, type } =
-      req.body;
+    const {
+      title,
+      gallery,
+      artist,
+      published,
+      status,
+      images,
+      measures,
+      date,
+      technique,
+    } = req.body;
 
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
@@ -29,8 +38,8 @@ export const createGalleryItem = async (req, res) => {
 
     const updatedImages = await Promise.all(uploadImages);
 
-    const gallery = await new Gallery({
-      name,
+    const galleryItem = await new Gallery({
+      title,
       description,
       published,
       link,
@@ -41,7 +50,7 @@ export const createGalleryItem = async (req, res) => {
 
     console.log("Que se guarda aca?", gallery);
 
-    return res.json(gallery.images[0]);
+    return res.json(galleryItem);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: err.message });
@@ -52,7 +61,7 @@ export const removeGalleryItem = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const gallery = await Project.findByIdAndDelete(id);
+    const gallery = await Gallery.findByIdAndDelete(id);
     return res.json(gallery);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
@@ -102,7 +111,7 @@ export const editGalleryItem = async (req, res) => {
 
 export const getGallery = async (req, res) => {
   try {
-    const all = await Gallery.find().populate("name").sort({ createdAt: -1 });
+    const all = await Gallery.find().populate("name").sort({ createdAt: 1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
