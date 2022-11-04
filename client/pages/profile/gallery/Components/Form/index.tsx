@@ -1,30 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
-import {
-  Alert,
-  Autocomplete,
-  Box,
-  CircularProgress,
-  TextField,
-  Typography,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
 
-import { useDispatch, useSelector } from "react-redux";
 import { StaticImageData } from "next/image";
-import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 
 import ImageUploader, {
   IImagetoUpload,
 } from "../../../../../components/Image-Uploader";
 
 import InputGroup from "../../../../../components/Input";
-import UseTabs from "../../../../../components/Tabs";
-import UseButton from "../../../../../components/Button";
-import { IProject } from "../../../../../redux/slices/projects";
-import { IArticle } from "../../../../../redux/slices/articles";
-import BasicSelect from "../../../../../components/Select";
-import Dropdown from "../../../../ventures/components/Dropdown";
-
 export interface IAuthProps {
   img: StaticImageData;
 }
@@ -85,7 +68,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         description="Ingrese el titulo de la obra"
         label="Titulo"
         type="text"
-        value={input?.name ? input?.name : ""}
+        value={input ? input?.title : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -109,7 +92,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         description="Ingrese la fecha de la obra"
         label="Fecha"
         type="text"
-        value={input ? input?.gallery : ""}
+        value={input ? input?.date : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
@@ -117,7 +100,7 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
         description="Ingrese las medidas de la obra"
         label="Medidas"
         type="text"
-        value={input ? input?.gallery : ""}
+        value={input ? input?.measures : ""}
         onChangeHandler={onChangeHandler}
       />
     </Box>

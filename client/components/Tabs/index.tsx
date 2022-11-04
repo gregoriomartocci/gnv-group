@@ -54,6 +54,10 @@ export default function UseTabs({
             "&:focus": {
               outline: "none",
             },
+            "& .css-1253nat-MuiButtonBase-root-MuiTab-root.Mui-selected": {
+              color: "#424242",
+              fontWeight: 600,
+            },
           }}
           onChange={handleChange}
           aria-label="tabs"
