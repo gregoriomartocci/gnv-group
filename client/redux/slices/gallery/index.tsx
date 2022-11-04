@@ -56,37 +56,37 @@ export type TAlert = {
 };
 
 export interface initialState {
-  projects: IProject[];
-  project: IProject | {};
-  projectsFiltered: IProject[];
-  projectSelected: IProject | {};
+  galleryItems: IGallery[];
+  galleryItem: IGallery | {};
+  galleryItemsFiltered: IGallery[];
+  galleryItemSelected: IGallery | {};
   modal: TModal;
   alert: { message: string; status: string }[];
 }
 
 const initialState: initialState = {
-  projects: [],
-  project: {},
-  projectsFiltered: [],
-  projectSelected: {},
+  galleryItems: [],
+  galleryItem: {},
+  galleryItemsFiltered: [],
+  galleryItemSelected: {},
   modal: { actions: false, update: false, delete: false, create: false },
   alert: [],
   // alert: { message: "", status: "" },
 };
 
-export const projectsSlice = createSlice({
-  name: "projects",
+export const gallerySlice = createSlice({
+  name: "gallery",
   initialState,
   reducers: {
-    setProjects: (state, action: PayloadAction<IProject[]>) => {
-      state.projects = [...action.payload];
+    setGalleryItems: (state, action: PayloadAction<IGallery[]>) => {
+      state.galleryItems = [...action.payload];
     },
     setModal: (state, action: PayloadAction<TModalPayload>) => {
       const { name, value } = action?.payload;
       state.modal = { ...state.modal, [name]: value };
     },
-    setProject: (state, action: PayloadAction<TModalPayload>) => {
-      state.project = { ...action.payload };
+    setGalleryItem: (state, action: PayloadAction<TModalPayload>) => {
+      state.galleryItem = { ...action.payload };
     },
     setAlert: (state, action: PayloadAction<TAlert>) => {
       state.alert = [...state.alert, action?.payload];
@@ -94,23 +94,23 @@ export const projectsSlice = createSlice({
     closeAlert: (state, action: PayloadAction<number>) => {
       state.alert = [...state.alert].splice(action?.payload, 1);
     },
-    setSelected: (state, action: PayloadAction<IProject>) => {
-      state.projectSelected = { ...action.payload };
+    setSelected: (state, action: PayloadAction<IGallery>) => {
+      state.galleryItemSelected = { ...action.payload };
     },
-    setFilter: (state, action: PayloadAction<IProject[]>) => {
-      state.projectsFiltered = [...action.payload];
+    setFilter: (state, action: PayloadAction<IGallery[]>) => {
+      state.galleryItemsFiltered = [...action.payload];
     },
   },
 });
 
 export const {
-  setProjects,
+  setGalleryItems,
   setFilter,
   setSelected,
-  setProject,
+  setGalleryItem,
   setModal,
   setAlert,
   closeAlert,
-} = projectsSlice.actions;
+} = gallerySlice.actions;
 
-export default projectsSlice.reducer;
+export default gallerySlice.reducer;

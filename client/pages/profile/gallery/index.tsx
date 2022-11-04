@@ -9,17 +9,16 @@ import api from "../../../hooks/Api";
 import {
   closeAlert,
   initialState,
-  IProject,
+  IGallery,
   setAlert,
   setModal,
-  setProjects,
+  setGallery,
   setSelected,
   setState,
 } from "../../../redux/slices/gallery";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Dropdown from "../../../components/Dropdown";
+
 import UseModal from "../../../components/Modal";
 import Toast from "../../../components/Alert";
 import parse from "html-react-parser";
@@ -27,11 +26,10 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-import ProjectForm from "./Components/Form";
 import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
-import form from "./Components/Form";
 import { useQuery, useMutation, useQueryClient } from "react-query";
+import GalleryForm from "./Components/Form";
 
 import Content from "./Components/Content";
 import {
@@ -264,7 +262,7 @@ const Gallery = () => {
     });
 
   const createContent = [
-    <ProjectForm input={input} setInput={setInput} key={0} />,
+    <GalleryForm input={input} setInput={setInput} key={0} />,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -278,7 +276,7 @@ const Gallery = () => {
   ];
 
   const updateContent = [
-    <ProjectForm
+    <GalleryForm
       input={selectedGalleryItem}
       setInput={setGalleryItemProject}
       key={0}

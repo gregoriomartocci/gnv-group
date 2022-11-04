@@ -31,7 +31,7 @@ export interface ICreateProps {
   setInput: any;
 }
 
-const ProyectForm = ({ input, setInput }: ICreateProps) => {
+const GalleryForm = ({ input, setInput }: ICreateProps) => {
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -49,23 +49,11 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     "Gastronomía y Lifestyle",
   ]);
 
-  // id: number;
-  // gallery: string;
-  // artist: string;
-  // title: string;
-  // image: string;
-  // technique: string;
-  // measures: boolean;
-  // date: string;
-  // published: boolean;
-  // createdAt: string;
-  // updatedAt: string;
-
   return (
     <Box>
       <InputGroup
         name="title"
-        description="Ingrese el titulo de la obra"
+        description="Ingrese el título"
         label="Titulo"
         type="text"
         value={input ? input?.title : ""}
@@ -89,15 +77,23 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
       />
       <InputGroup
         name="date"
-        description="Ingrese la fecha de la obra"
+        description="Ingrese la fecha"
         label="Fecha"
         type="text"
         value={input ? input?.date : ""}
         onChangeHandler={onChangeHandler}
       />
       <InputGroup
+        name="technique"
+        description="Ingrese la técnica"
+        label="Técnica"
+        type="text"
+        value={input ? input?.measures : ""}
+        onChangeHandler={onChangeHandler}
+      />
+      <InputGroup
         name="measures"
-        description="Ingrese las medidas de la obra"
+        description="Ingrese las medidas"
         label="Medidas"
         type="text"
         value={input ? input?.measures : ""}
@@ -107,4 +103,4 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
   );
 };
 
-export default ProyectForm;
+export default GalleryForm;
