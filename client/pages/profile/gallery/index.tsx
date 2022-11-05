@@ -38,7 +38,6 @@ import {
   UpdateGalleryItem,
 } from "../../../api/gallery";
 
-
 export interface Data {
   id: number;
   title: string;
@@ -150,7 +149,7 @@ const Gallery = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.gallery);
   const galleryItemSelected = state?.galleryItemSelected;
-  const [selectedGalleryItem, setGalleryItemProject] =
+  const [selectedGalleryItem, setGalleryItem] =
     useState(galleryItemSelected);
 
   const { alert, modal } = state;
@@ -169,7 +168,7 @@ const Gallery = () => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setGalleryItemProject(galleryItemSelected);
+    setGalleryItem(galleryItemSelected);
   }, [galleryItemSelected]);
 
   const {
@@ -262,6 +261,7 @@ const Gallery = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      reOrderImages={(images) => setInput({ ...input, images: images })}
       key={1}
     />,
   ];
@@ -269,20 +269,21 @@ const Gallery = () => {
   const updateContent = [
     <GalleryForm
       input={selectedGalleryItem}
-      setInput={setGalleryItemProject}
+      setInput={setGalleryItem}
       key={0}
     />,
     <ImageUploader
       value={selectedGalleryItem?._id ? selectedGalleryItem?.images : []}
       addImage={(file: any) => {
-        setGalleryItemProject({
+        setGalleryItem({
           ...selectedGalleryItem,
           images: [...selectedGalleryItem?.images, file],
         });
       }}
       removeImage={(array: any) => {
-        setGalleryItemProject({ ...selectedGalleryItem, images: array });
+        setGalleryItem({ ...selectedGalleryItem, images: array });
       }}
+      reOrderImages={(images) => setGalleryItem({ ...selectedGalleryItem, images: images })}
       key={1}
     />,
   ];

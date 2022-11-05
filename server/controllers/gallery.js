@@ -17,6 +17,9 @@ export const createGalleryItem = async (req, res) => {
 
     if (!artist)
       return res.json({ error: "Por favor ingrese el nombre del artista" });
+
+    if (!images.length)
+      return res.json({ error: "Por favor ingrese al menos una imagen" });
     // if (!title) return res.json({ error: "Por favor ingrese un título" });
     // if (!gallery) return res.json({ error: "Por favor ingrese un título" });
     // if (!published)

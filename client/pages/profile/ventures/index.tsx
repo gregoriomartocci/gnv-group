@@ -272,6 +272,7 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      reOrderImages={(images) => setInput({ ...input, images: images })}
       key={1}
     />,
     <Editor

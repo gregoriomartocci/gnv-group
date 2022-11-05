@@ -262,6 +262,7 @@ const News = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      reOrderImages={(images) => setInput({ ...input, images: images })}
       key={1}
     />,
     <Editor
@@ -284,6 +285,7 @@ const News = () => {
       removeImage={(array: any) => {
         setSelectedArticle({ ...selectedArticle, images: array });
       }}
+      reOrderImages={(images) => setSelectedArticle({ ...selectedArticle, images: images })}
       key={1}
     />,
     <Editor

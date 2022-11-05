@@ -39,7 +39,7 @@ export const signup = async (req, res) => {
     if (password !== confirmPassword) {
       return res
         .json({
-          error: "Las contraseñas ingresadas son distintas.",
+          error: "Las contraseñas ingresadas no coinciden.",
         })
         .status(400);
     }

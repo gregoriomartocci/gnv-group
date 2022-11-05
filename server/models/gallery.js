@@ -19,7 +19,7 @@ const gallerySchema = new Schema(
     title: {
       type: String,
     },
-    image: {},
+    images: [{}],
     technique: {
       type: String,
     },
