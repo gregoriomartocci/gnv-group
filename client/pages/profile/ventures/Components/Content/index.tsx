@@ -36,7 +36,7 @@ const Content = (project: IProject) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const match = project?.id === projectSelected?.id;
+  const match = project?._id === projectSelected?._id;
 
   console.log(project, "ok");
 
@@ -53,8 +53,8 @@ const Content = (project: IProject) => {
             alignItems: "center",
 
             img: {
-              width: "100px",
-              height: "100px",
+              width: "85px",
+              height: "85px",
               borderRadius: "5px",
               objectFit: "cover",
               margin: "0 20px 0 0",

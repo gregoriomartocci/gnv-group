@@ -30,7 +30,6 @@ import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import GalleryForm from "./Components/Form";
-
 import Content from "./Components/Content";
 import {
   CreateGalleryItem,
@@ -39,9 +38,6 @@ import {
   UpdateGalleryItem,
 } from "../../../api/gallery";
 
-const Editor = dynamic(() => import("../../../components/Editor"), {
-  ssr: false,
-});
 
 export interface Data {
   id: number;
@@ -277,7 +273,7 @@ const Gallery = () => {
       key={0}
     />,
     <ImageUploader
-      value={selectedGalleryItem?.id ? selectedGalleryItem?.images : []}
+      value={selectedGalleryItem?._id ? selectedGalleryItem?.images : []}
       addImage={(file: any) => {
         setGalleryItemProject({
           ...selectedGalleryItem,
@@ -337,7 +333,7 @@ const Gallery = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedGalleryItem?.id && (
+        {selectedGalleryItem?._id && (
           <Update
             title="obra"
             content={updateContent}
