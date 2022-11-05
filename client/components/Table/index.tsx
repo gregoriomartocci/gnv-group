@@ -249,7 +249,7 @@ export default function UseTable({
         ) : (
           <React.Fragment>
             <UseButton type="Primary" onClickHandler={() => openCreateModal()}>
-              agregar
+              <Typography sx={{ fontSize: "13px" }}> Agregar </Typography>
             </UseButton>
           </React.Fragment>
         )}

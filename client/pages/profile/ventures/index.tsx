@@ -202,13 +202,23 @@ const Ventures = () => {
   const { mutateAsync: createProjectMutation, isLoading: createLoading } =
     useMutation(CreateProject, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
-        dispatch(
-          setAlert({
-            message: "El emprendimiento se creó con éxito.",
-            status: "success",
-          })
-        );
+        const { error } = data;
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          queryClient.invalidateQueries("projects");
+          dispatch(
+            setAlert({
+              message: "El emprendimiento se creó con éxito.",
+              status: "success",
+            })
+          );
+        }
       },
       onError: (data) => {
         dispatch(
