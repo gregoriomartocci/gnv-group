@@ -10,8 +10,14 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PaletteIcon from "@mui/icons-material/Palette";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import Logo from "../../../Logo";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
+  const router = useRouter();
+  const { pathname } = router;
+  
+  console.log(pathname, "Juan Roman Riquelme");
+  
   return (
     <Box sx={SidebarContainer}>
       <Box
@@ -33,7 +39,6 @@ const Sidebar = () => {
       </Box>
       <Box sx={{ padding: "15px", height: "calc(100% - 80px)" }}>
         <Box sx={MenuItems}>
-          
           {/* <Link href={"/profile/layout"}>
             <a>
               <Box sx={MenuItem}>

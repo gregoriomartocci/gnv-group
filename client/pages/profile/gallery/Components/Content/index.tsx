@@ -29,7 +29,7 @@ const Content = (galleryItem: IGallery) => {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    galleryItem: IProject
+    galleryItem: IGallery
   ) => {
     dispatch(setSelected(galleryItem));
     dispatch(setModal({ name: "actions", value: true }));
