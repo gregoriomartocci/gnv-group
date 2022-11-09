@@ -15,7 +15,7 @@ const ImageContainer: SxProps<Theme> = {
 
   img: {
     position: "absolute",
-    objectPosition:"center top",
+    objectPosition: "center top",
     borderRadius: "10px 10px 0 0",
     top: "0",
     left: "0",
@@ -55,7 +55,7 @@ type TGalleryItems = {
   gallery: string;
   artist: string;
   title: string;
-  image: string;
+  images: any;
   technique: string;
   measures: string;
   date: string;
@@ -67,7 +67,7 @@ const GalleryItem = ({
   gallery,
   artist,
   title,
-  image,
+  images,
   technique,
   measures,
   date,
@@ -76,7 +76,7 @@ const GalleryItem = ({
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
-        <img src={image} alt={title}></img>
+        <img src={images[0]?.src} alt={title}></img>
       </Box>
       <Box sx={CardBody}>
         {artist && (

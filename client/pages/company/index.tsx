@@ -27,6 +27,10 @@ import marriotLogo from "../../assets/licences/marriot.png";
 import wtcCordoba from "../../assets/licences/wtcCordoba.png";
 import wtcRosario from "../../assets/licences/wtcRosario.png";
 import slsPuntaDelEste from "../../assets/licences/slsPuntaDelEste.png";
+import { useQuery } from "react-query";
+import { useDispatch } from "react-redux";
+import { setGalleryItems } from "../../redux/slices/gallery";
+import { ReadGalleryItems } from "../../api/gallery";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -86,7 +90,21 @@ const Company = () => {
   const [render, setRender] = useState<any>(typeof window !== "undefined");
   const { width } = useWindowDimensions();
 
+  const dispatch = useDispatch();
+
   const xs = width && width < 900;
+
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: allGalleryItems,
+  } = useQuery("gallery", ReadGalleryItems, {
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      dispatch(setGalleryItems(data));
+    },
+  });
 
   return (
     <Box sx={{ overflowX: "hidden" }}>
@@ -407,7 +425,7 @@ const Company = () => {
         />
 
         <ArtGallery
-          gallery={art_gallery_mock?.length ? art_gallery_mock : [] ?? []}
+          gallery={allGalleryItems?.length ? allGalleryItems : [] ?? []}
         />
       </Box>
 

@@ -60,7 +60,7 @@ const Article = ({
           }}
         >
           <Box sx={{ width: "100%", height: "100%" }}>
-            <img src={images[0]} alt={title} />
+            <img src={images[0]?.src} alt={title} />
           </Box>
 
           <Box

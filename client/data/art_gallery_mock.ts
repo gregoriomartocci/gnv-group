@@ -220,7 +220,7 @@ const art_gallery_mock = [
     id: 18,
     gallery: "Madero Harbour / Maman Fine Arts",
     artist: "Siquier",
-    title: "Vaca de San Antonio",
+    title: "",
     image:
       "https://res.cloudinary.com/gregomartocci/image/upload/v1666276955/encokljqgxkuj4roluqj.png",
     technique: "",
@@ -233,7 +233,7 @@ const art_gallery_mock = [
     id: 19,
     gallery: "Madero Harbour / Maman Fine Arts",
     artist: "Siquier",
-    title: "Vaca de San Antonio",
+    title: "",
     image:
       "https://res.cloudinary.com/gregomartocci/image/upload/v1666276955/hbhrqcs03ndy94jefpff.png",
     technique: "",
@@ -246,7 +246,7 @@ const art_gallery_mock = [
     id: 20,
     gallery: "Madero Harbour / Maman Fine Arts",
     artist: "Siquier",
-    title: "Vaca de San Antonio",
+    title: "",
     image:
       "https://res.cloudinary.com/gregomartocci/image/upload/v1666276955/x0lfofbuxilrh5a7o45v.png",
     technique: "",

@@ -18,6 +18,8 @@ import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
 import UseMasonry from "../../components/Masonry";
 import news_mock from "../../data/news_mock";
+import { useQuery } from "react-query";
+import { ReadArticles } from "../../api/articles";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -75,7 +77,7 @@ const ArticleCard = (article: TArticle) => {
             <a target="_blank">
               <Box sx={CardContainer}>
                 <img
-                  src={article?.images ? article?.images[0] : ""}
+                  src={article?.images ? article?.images[0]?.src : ""}
                   alt={article?.title}
                 />
                 <Box
@@ -148,6 +150,18 @@ const News = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: IState) => state?.articles);
 
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: allArticles,
+  } = useQuery("articles", ReadArticles, {
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      dispatch(setArticles(data));
+    },
+  });
+
   return (
     <Box>
       <Menu onScroll color="#212121" />
@@ -169,8 +183,8 @@ const News = () => {
         }}
       >
         <Carousel slidesPerView={1} delay={3500}>
-          {news_mock && news_mock?.length
-            ? news_mock?.map((article: TArticle, index: number) => (
+          {allArticles && allArticles?.length
+            ? allArticles?.map((article: TArticle, index: number) => (
                 <SwiperSlide key={index}>
                   <Article {...article} />
                 </SwiperSlide>
@@ -188,8 +202,8 @@ const News = () => {
 
       <Box sx={{ padding: "0 10%" }}>
         <Grid container rowSpacing={5} columnSpacing={5}>
-          {news_mock
-            ? news_mock?.map((item, i) => (
+          {allArticles
+            ? allArticles?.map((item, i) => (
                 <Grid item xs={12} md={6} xl={4} key={i}>
                   <ArticleCard {...item} />
                 </Grid>
