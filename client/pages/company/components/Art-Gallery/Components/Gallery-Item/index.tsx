@@ -76,7 +76,7 @@ const GalleryItem = ({
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
-        <img src={images[0]?.src} alt={title}></img>
+        <img src={images?.length ? images[0]?.src : ""} alt={title}></img>
       </Box>
       <Box sx={CardBody}>
         {artist && (

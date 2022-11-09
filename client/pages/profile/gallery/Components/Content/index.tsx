@@ -56,7 +56,10 @@ const Content = (galleryItem: IGallery) => {
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={(galleryItem && galleryItem?.images[0]?.src) ?? ""} alt="" />
+          <img
+            src={galleryItem?.images?.length ? galleryItem?.images[0]?.src : ""}
+            alt=""
+          />
         </Box>
       </TableCell>
       <TableCell align="left">
