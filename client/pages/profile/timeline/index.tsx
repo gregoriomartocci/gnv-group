@@ -162,14 +162,23 @@ const Ventures = () => {
   const { mutateAsync: createTimelineItemMutation, isLoading: createLoading } =
     useMutation(CreateTimelineItem, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("timeline");
-        console.log(data, "ok");
-        dispatch(
-          setAlert({
-            message: "El emprendimiento se creó con éxito.",
-            status: "success",
-          })
-        );
+        const { error } = data;
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          queryClient.invalidateQueries("timeline");
+          dispatch(
+            setAlert({
+              message: "El año se creó con éxito.",
+              status: "success",
+            })
+          );
+        }
       },
       onError: (data) => {
         console.log(data, "ok");
@@ -184,14 +193,24 @@ const Ventures = () => {
 
   const { mutateAsync: updateTimelineItemMutation, isLoading: updateLoading } =
     useMutation(UpdateTimelineItem, {
-      onSuccess: () => {
-        queryClient.invalidateQueries("timeline");
-        dispatch(
-          setAlert({
-            message: "El emprendimiento se actualizó con éxito.",
-            status: "success",
-          })
-        );
+      onSuccess: (data) => {
+        const { error } = data;
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          queryClient.invalidateQueries("timeline");
+          dispatch(
+            setAlert({
+              message: "El año se actualizó con éxito.",
+              status: "success",
+            })
+          );
+        }
       },
       onError: () => {
         dispatch(
@@ -209,7 +228,7 @@ const Ventures = () => {
         queryClient.invalidateQueries("timeline");
         dispatch(
           setAlert({
-            message: "El emprendimiento se eliminó con éxito.",
+            message: "El año se eliminó con éxito.",
             status: "success",
           })
         );
@@ -264,8 +283,6 @@ const Ventures = () => {
       </UseModal>
 
       {/* Update */}
-
-      {console.log(timelineItemSelected, "aver cheee")}
 
       <UseModal
         open={modal?.update}
