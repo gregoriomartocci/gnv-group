@@ -37,10 +37,9 @@ export const createGalleryItem = async (req, res) => {
 
     console.log(req.body, "ok");
 
-    const alreadyExist = await Gallery.findOne({ title });
-
-    if (alreadyExist)
-      return res.json({ error: "Ya existe una obra de arte con ese nombre" });
+    // const alreadyExist = await Gallery.findOne({ title });
+    // if (alreadyExist)
+    //   return res.json({ error: "Ya existe una obra de arte con ese nombre" });
 
     const uploadImages = images.map(async (i) => ({
       ...i,
