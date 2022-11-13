@@ -26,6 +26,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import UseButton from "../Button";
 import Link from "next/link";
 import { sanitize } from "../Article";
+import LoadingScreen from "../LoadingScreen/Index";
 
 export interface ISlide {
   title: string;
@@ -137,7 +138,14 @@ const Main = ({
                   <Box sx={MainSlider}>
                     <Box sx={MainImage}>
                       {getFormat(src) === "MP4" ? (
-                        <video src={src} autoPlay playsInline loop muted />
+                        <video
+                          src={src}
+                          preload={"auto"}
+                          autoPlay
+                          playsInline
+                          loop
+                          muted
+                        />
                       ) : (
                         <img
                           src={src}

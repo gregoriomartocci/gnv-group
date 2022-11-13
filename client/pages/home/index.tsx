@@ -33,6 +33,7 @@ import { ligthTheme } from "../../assets/mapsStyles";
 import CarouselB from "./Components/Carousel";
 import Parallax from "../../components/Parallax";
 import { ReadTimeline } from "../../api/timeline";
+import { Loader } from "../../hooks/Loader";
 
 export type TDemo = {
   img: string;
@@ -56,10 +57,12 @@ const Home = () => {
 
   const CountersRef = useRef(null);
 
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const sm = width && width < 1200;
   const xs = width && width < 700;
+
+  const delay = 3000; //1s
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: google_api as string,
@@ -71,7 +74,10 @@ const Home = () => {
         const entry = entries[0];
         setCountersVisible(entry?.isIntersecting);
       });
-      observer?.observe(CountersRef?.current);
+
+      if (CountersRef?.current) {
+        observer?.observe(CountersRef?.current);
+      }
     }
   }, [xs]);
 
@@ -159,303 +165,305 @@ const Home = () => {
   ];
 
   return (
-    <Box sx={{ overflow: "hidden" }}>
-      <Menu onScroll color="#fff" />
+    <Loader delay={2000}>
+      <Box sx={{ overflow: "hidden" }}>
+        <Menu onScroll color="#fff" />
 
-      {/* MAIN SECTION */}
-      <Main
-        slides={slides}
-        buttonLink="/home/#contact"
-        headerTitle="Proyectos únicos con visión de futuro"
-        mode="static"
-        img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
-        textFontSize={{ xs: "25px", md: "32px" }}
-      />
+        {/* MAIN SECTION */}
+        <Main
+          slides={slides}
+          buttonLink="/home/#contact"
+          headerTitle="Proyectos únicos con visión de futuro"
+          mode="static"
+          img="https://res.cloudinary.com/gregomartocci/video/upload/v1661059464/xftkbgfkccyncmuq6rrv.mp4"
+          textFontSize={{ xs: "25px", md: "32px" }}
+        />
 
-      {/* SECTION 1 */}
+        {/* SECTION 1 */}
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: { xs: "center", md: "center" },
-          width: "100vw",
-          height: { xs: "80vh", md: "80vh" },
-          padding: "7.5%",
-        }}
-      >
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
             alignItems: "center",
+            justifyContent: { xs: "center", md: "center" },
+            width: "100vw",
+            height: { xs: "80vh", md: "80vh" },
+            padding: "7.5%",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <motion.div
+              initial={"offscreen"}
+              whileInView={"onscreen"}
+              viewport={{ once: false, amount: 0 }}
+              variants={FadeFromBottom}
+            >
+              <HeaderTitle
+                p={{ xs: "0 15px", md: "45px 0" }}
+                titleFontSize={{ xs: "20px", md: "26px" }}
+                width={{ xs: "100%", md: "1120px" }}
+                descriptionFontSize={{ xs: "13px", md: "18px" }}
+                title="Participamos en todos los segmentos del mercado inmobiliario."
+                description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
+              />
+            </motion.div>
+          </Box>
+
+          {xs ? (
+            <Box
+              sx={{
+                display: "flex",
+                position: "relative",
+                width: "100%",
+                height: "120px",
+              }}
+            >
+              <Slider items={data} />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                width: { xs: "200px", md: "200px", lg: "200px" },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "none", md: "center" },
+                  width: "100%",
+                  height: "100%",
+                }}
+                ref={CountersRef}
+              >
+                <motion.div
+                  dragConstraints={CountersRef}
+                  initial={"offscreen"}
+                  whileInView={"onscreen"}
+                  viewport={{ once: false, amount: 0 }}
+                  drag={sm ? "x" : false}
+                  animate={{ x: !sm && 0 }}
+                >
+                  <Counters
+                    data={data}
+                    counterSize={{ xs: "20px", md: "25px" }}
+                    countersRef={countersVisible}
+                  />
+                </motion.div>
+              </Box>
+            </Box>
+          )}
+        </Box>
+
+        {/* CARDS */}
+
+        <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>
+          <Cards
+            gap={""}
+            gridTemplateColumns={{
+              xs: `1fr`,
+              md: `repeat(2, auto)`,
+            }}
+            gridTemplateRows={{
+              xs: `1fr`,
+              md: `auto`,
+            }}
+            items={items}
+            component={(item: TDemo) => <Card {...item} sm={sm} />}
+          />
+        </Box>
+
+        {/* Trayectory */}
+
+        <Box
+          sx={{
+            width: "100%",
+            padding: { xs: "5% 0 0 0", md: "5% 0" },
+            minHeight: "100vh",
           }}
         >
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
-            viewport={{ once: false, amount: 0 }}
+            viewport={{ once: true }}
             variants={FadeFromBottom}
           >
             <HeaderTitle
-              p={{ xs: "0 15px", md: "45px 0" }}
-              titleFontSize={{ xs: "20px", md: "26px" }}
-              width={{ xs: "100%", md: "1120px" }}
-              descriptionFontSize={{ xs: "13px", md: "18px" }}
-              title="Participamos en todos los segmentos del mercado inmobiliario."
-              description="Urbanizamos, construimos, comercializamos y desarrollamos torres residenciales, edificios corporativos, centros comerciales y usos mixtos."
+              p={{ xs: "10px 0", md: "" }}
+              titleFontSize={{ xs: "20px", md: "24px" }}
+              titlePadding="25px 0 0 0"
+              fontWeight={600}
+              title="Trayectoria"
             />
+            <Timeline />
           </motion.div>
         </Box>
 
-        {xs ? (
+        {/* Carousel B */}
+
+        <Box
+          sx={{
+            display: "flex",
+            position: "relative",
+            width: "100vw",
+            minHeight: "60vh",
+          }}
+        >
+          <CarouselB items={slides} />
+        </Box>
+
+        {/* Quote Section */}
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: { xs: "flex-start", md: "center" },
+            minHeight: { xs: "", md: "80vh" },
+            width: "100%",
+            padding: { xs: "85px 25px 50px 25px", md: "50px 10%" },
+          }}
+        >
+          <Section
+            imageMaxWidth="600px"
+            quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra historia."
+            image={
+              "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
+            }
+            reverse
+            bodyTextPadding={{ xs: "25px 0", md: "0" }}
+          />
+        </Box>
+
+        {/* Parrallax */}
+
+        {!xs && (
+          <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png">
+            <Box sx={{ width: "100%", height: "60vh" }}></Box>
+          </Parallax>
+        )}
+
+        {/* Contact */}
+
+        <Box
+          id="contact"
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
+            margin: "auto",
+            minHeight: { sx: "", md: "80vh" },
+            maxWidth: "1200px",
+            padding: { xs: "0", md: "75px 10%" },
+          }}
+        >
+          <HeaderTitle
+            p="20px 0"
+            titleFontSize={{ xs: "20px", md: "24px" }}
+            descriptionFontSize={{ xs: "16px", md: "20px" }}
+            title="Contacto"
+            fontWeight={600}
+            description="Envianos tu consulta"
+          />
+
+          <Box sx={{ width: "100%", padding: { xs: "10px 10%", md: "0 10%" } }}>
+            <Form value={value} setValue={setValue} />
+          </Box>
+        </Box>
+
+        {/* Parrallax */}
+
+        {!xs && (
+          <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg">
+            <Box sx={{ width: "100%", height: "500px" }}></Box>
+          </Parallax>
+        )}
+
+        {/* Maps */}
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            height: "100%",
+            width: "100%",
+            marginBottom: "-50px",
+          }}
+        >
           <Box
             sx={{
               display: "flex",
-              position: "relative",
+              justifyContent: "center",
+              height: "100%",
               width: "100%",
-              height: "120px",
+              padding: { xs: "50px 10% 40px 10%", md: "100px 10% 100px 10%" },
             }}
           >
-            <Slider items={data} />
+            <UseTabs items={mapItems} tab={tab} setTab={setTab} />
           </Box>
-        ) : (
           <Box
             sx={{
               display: "flex",
-              width: { xs: "200px", md: "200px", lg: "200px" },
+              width: "100%",
+              height: "100%",
             }}
           >
             <Box
               sx={{
                 display: "flex",
-                justifyContent: { xs: "none", md: "center" },
                 width: "100%",
-                height: "100%",
+                height: { xs: "300px", md: "400px" },
               }}
-              ref={CountersRef}
             >
-              <motion.div
-                dragConstraints={CountersRef}
-                initial={"offscreen"}
-                whileInView={"onscreen"}
-                viewport={{ once: false, amount: 0 }}
-                drag={sm ? "x" : false}
-                animate={{ x: !sm && 0 }}
-              >
-                <Counters
-                  data={data}
-                  counterSize={{ xs: "20px", md: "25px" }}
-                  countersRef={countersVisible}
-                />
-              </motion.div>
+              {isLoaded && (
+                <GoogleMap
+                  center={
+                    tab === 1
+                      ? argentinaLocation
+                      : tab === 2
+                      ? uruguayLocation
+                      : defaultLocation
+                  }
+                  zoom={xs ? 7 : 8}
+                  options={{
+                    styles: ligthTheme,
+                    zoomControl: false,
+                    streetViewControl: false,
+                    mapTypeControl: false,
+                    fullscreenControl: false,
+                  }}
+                  mapContainerStyle={{ width: "100%", height: "100%" }}
+                >
+                  {mapItems.map(({ id, coordinates }) => {
+                    return (
+                      <Marker
+                        key={id}
+                        position={coordinates}
+                        icon={{
+                          url: "/markerLogoBlack.svg",
+                          scaledSize: new window.google.maps.Size(125, 125),
+                        }}
+                      />
+                    );
+                  })}
+                </GoogleMap>
+              )}
             </Box>
           </Box>
-        )}
-      </Box>
-
-      {/* CARDS */}
-
-      <Box sx={{ position: "relative", minHeight: "100vh", width: "100vw" }}>
-        <Cards
-          gap={""}
-          gridTemplateColumns={{
-            xs: `1fr`,
-            md: `repeat(2, auto)`,
-          }}
-          gridTemplateRows={{
-            xs: `1fr`,
-            md: `auto`,
-          }}
-          items={items}
-          component={(item: TDemo) => <Card {...item} sm={sm} />}
-        />
-      </Box>
-
-      {/* Trayectory */}
-
-      <Box
-        sx={{
-          width: "100%",
-          padding: { xs: "5% 0 0 0", md: "5% 0" },
-          minHeight: "100vh",
-        }}
-      >
-        <motion.div
-          initial={"offscreen"}
-          whileInView={"onscreen"}
-          viewport={{ once: true }}
-          variants={FadeFromBottom}
-        >
-          <HeaderTitle
-            p={{ xs: "10px 0", md: "" }}
-            titleFontSize={{ xs: "20px", md: "24px" }}
-            titlePadding="25px 0 0 0"
-            fontWeight={600}
-            title="Trayectoria"
-          />
-          <Timeline />
-        </motion.div>
-      </Box>
-
-      {/* Carousel B */}
-
-      <Box
-        sx={{
-          display: "flex",
-          position: "relative",
-          width: "100vw",
-          minHeight: "60vh",
-        }}
-      >
-        <CarouselB items={slides} />
-      </Box>
-
-      {/* Quote Section */}
-
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: { xs: "flex-start", md: "center" },
-          minHeight: { xs: "", md: "80vh" },
-          width: "100%",
-          padding: { xs: "85px 25px 50px 25px", md: "50px 10%" },
-        }}
-      >
-        <Section
-          imageMaxWidth="600px"
-          quote="Hagamos lo que hagamos, esta es nuestra filosofía: construir pensando en el futuro, sin olvidarnos de nuestra historia."
-          image={
-            "https://res.cloudinary.com/gregomartocci/image/upload/v1658965044/vlsdhy1hikzlz1g39zoz.jpg"
-          }
-          reverse
-          bodyTextPadding={{ xs: "25px 0", md: "0" }}
-        />
-      </Box>
-
-      {/* Parrallax */}
-
-      {!xs && (
-        <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png">
-          <Box sx={{ width: "100%", height: "60vh" }}></Box>
-        </Parallax>
-      )}
-
-      {/* Contact */}
-
-      <Box
-        id="contact"
-        sx={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-          margin: "auto",
-          minHeight: { sx: "", md: "80vh" },
-          maxWidth: "1200px",
-          padding: { xs: "0", md: "75px 10%" },
-        }}
-      >
-        <HeaderTitle
-          p="20px 0"
-          titleFontSize={{ xs: "20px", md: "24px" }}
-          descriptionFontSize={{ xs: "16px", md: "20px" }}
-          title="Contacto"
-          fontWeight={600}
-          description="Envianos tu consulta"
-        />
-
-        <Box sx={{ width: "100%", padding: { xs: "10px 10%", md: "0 10%" } }}>
-          <Form value={value} setValue={setValue} />
         </Box>
+        <Footer />
       </Box>
-
-      {/* Parrallax */}
-
-      {!xs && (
-        <Parallax url="https://res.cloudinary.com/gregomartocci/image/upload/v1659730299/jc3hwcipmpjbnfxtkjxa.jpg">
-          <Box sx={{ width: "100%", height: "500px" }}></Box>
-        </Parallax>
-      )}
-
-      {/* Maps */}
-
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          height: "100%",
-          width: "100%",
-          marginBottom: "-50px",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            height: "100%",
-            width: "100%",
-            padding: { xs: "50px 10% 40px 10%", md: "100px 10% 100px 10%" },
-          }}
-        >
-          <UseTabs items={mapItems} tab={tab} setTab={setTab} />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              width: "100%",
-              height: { xs: "300px", md: "400px" },
-            }}
-          >
-            {isLoaded && (
-              <GoogleMap
-                center={
-                  tab === 1
-                    ? argentinaLocation
-                    : tab === 2
-                    ? uruguayLocation
-                    : defaultLocation
-                }
-                zoom={xs ? 7 : 8}
-                options={{
-                  styles: ligthTheme,
-                  zoomControl: false,
-                  streetViewControl: false,
-                  mapTypeControl: false,
-                  fullscreenControl: false,
-                }}
-                mapContainerStyle={{ width: "100%", height: "100%" }}
-              >
-                {mapItems.map(({ id, coordinates }) => {
-                  return (
-                    <Marker
-                      key={id}
-                      position={coordinates}
-                      icon={{
-                        url: "/markerLogoBlack.svg",
-                        scaledSize: new window.google.maps.Size(125, 125),
-                      }}
-                    />
-                  );
-                })}
-              </GoogleMap>
-            )}
-          </Box>
-        </Box>
-      </Box>
-      <Footer />
-    </Box>
+    </Loader>
   );
 };
 
