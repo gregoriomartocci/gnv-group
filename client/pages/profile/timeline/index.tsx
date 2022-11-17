@@ -150,8 +150,6 @@ const Ventures = () => {
     setSelectedTimelineItem(timelineItemSelected);
   }, [timelineItemSelected]);
 
-  console.log(selectedTimelineItem, "JUAN ROMAN RIQUELME");
-
   const {
     isFetching: loading,
     isError,
@@ -181,7 +179,6 @@ const Ventures = () => {
         }
       },
       onError: (data) => {
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "Algo salió mal.",

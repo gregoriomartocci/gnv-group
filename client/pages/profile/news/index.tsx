@@ -192,7 +192,6 @@ const News = () => {
     useMutation(CreateArticle, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("articles");
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "La noticia se creó con éxito.",

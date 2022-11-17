@@ -1,23 +1,30 @@
 import { Box, CircularProgress } from "@mui/material";
 import React from "react";
+import { Bars } from "react-loader-spinner";
 import Logo from "../Logo";
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ loading }) => {
   return (
     <Box
       sx={{
         display: "flex",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 10000,
         justifyContent: "center",
         alignItems: "center",
         width: "100vw",
         height: "100vh",
+        backgroundColor: "#fff",
+        opacity: loading ? 1 : 0,
+        transition: "opacity 0.5s",
+        overflowY: "hidden",
+        pointerEvents: "none",
       }}
     >
-      <Box>
-        <Logo color="#212121" width="130px" />
-      </Box>
       <Box sx={{ padding: "20px" }}>
-        <CircularProgress style={{ color: "#fff" }} />
+        <Bars height="40" width="40" color="#21212" visible={true} />
       </Box>
     </Box>
   );

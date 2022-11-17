@@ -68,8 +68,6 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
 
   const [status, setStatus] = useState(["En desarrollo", "Finalizado"]);
 
-  console.log(input, "input");
-
   return (
     <Box>
       <InputGroup

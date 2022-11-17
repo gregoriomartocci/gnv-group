@@ -38,8 +38,6 @@ const Content = (project: IProject) => {
 
   const match = project?._id === projectSelected?._id;
 
-  console.log(project, "ok");
-
   return (
     <Fragment>
       <TableCell align="center">

@@ -37,8 +37,6 @@ export default function UseTabs({
     setValue(newValue);
   };
 
-  console.log(value, "imprimo el value del tab");
-
   return (
     <Box sx={{ width: `${width ? width : "100%"}` }}>
       <Box sx={`${border ? { borderBottom: 1, borderColor: "divider" } : {}}`}>

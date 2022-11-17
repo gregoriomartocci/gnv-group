@@ -26,9 +26,7 @@ const Venture = () => {
         queryClient.invalidateQueries("projects");
         dispatch(setProject(data));
       },
-      onError: (data) => {
-        console.log(data);
-      },
+      onError: (data) => {},
     });
 
   useEffect(() => {

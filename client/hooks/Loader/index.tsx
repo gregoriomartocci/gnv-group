@@ -1,7 +1,8 @@
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import LoadingScreen from "../../components/LoadingScreen/Index";
 
-export const Loader = ({ children, delay }) => {
+export const Loader = ({ delay }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,12 +14,7 @@ export const Loader = ({ children, delay }) => {
     setTimeoutInstance = setTimeout(() => {
       setLoading(false);
     }, delay);
-    
   }, [delay]);
 
-  if (loading) {
-    return <LoadingScreen />;
-  }
-
-  return children;
+  return <LoadingScreen loading={loading} />;
 };

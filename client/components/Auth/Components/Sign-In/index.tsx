@@ -41,9 +41,7 @@ const SignIn = ({ img }: IAuthProps) => {
     useMutation(LoginAuth, {
       onSuccess: (data) => {
         const { error } = data;
-
-        console.log(data, "ARTIGAS");
-        
+      
         if (error) {
           dispatch(
             setAlert({
@@ -154,7 +152,6 @@ export default SignIn;
 //       path: "/signin",
 //       payload: input,
 //     });
-//     console.log("Dateushh", data);
 //     setLoading(false);
 //     if (data?.error) {
 //       setError({ auth: "failed", message: data?.error });

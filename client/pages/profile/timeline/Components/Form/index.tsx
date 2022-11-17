@@ -67,8 +67,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
     });
   };
 
-  console.log(input, "ok");
-
   const deleteSelected = (id) => {
     const updateHighlight = input?.highlights.filter(
       (element, index) => index !== id
@@ -116,7 +114,6 @@ const Form = ({ input, setInput }: ICreateProps) => {
         deleteSelected={(id) => deleteSelected(id)}
         reOrderItems={(items) => {
           setInput({ ...input, highlights: items }),
-            console.log(items, "que pasa acaaa");
         }}
       />
 

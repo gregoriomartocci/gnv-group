@@ -153,8 +153,6 @@ const Users = () => {
     role: "Admin",
   });
 
-  // console.log()
-
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -173,7 +171,6 @@ const Users = () => {
       onSuccess: (data) => {
         queryClient.invalidateQueries("users");
         const { error } = data;
-        console.log(data, "que onduu");
         error
           ? dispatch(
               setAlert({

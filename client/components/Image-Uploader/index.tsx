@@ -147,8 +147,6 @@ const ImageUploader = ({
     removeImage(update);
   };
 
-  console.log(value, "que onda hermanoooo");
-
   return (
     <Box>
       <Box sx={dropFileInput} ref={wrapperRef} component="span">
