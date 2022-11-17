@@ -112,6 +112,7 @@ const Main = ({
         width: "100%",
         position: "relative",
         overflow: "hidden",
+        backgroundColor: "#000",
       }}
     >
       <Box sx={MainContainer}>

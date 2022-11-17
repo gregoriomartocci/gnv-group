@@ -17,6 +17,7 @@ import Dropdown from "./components/Dropdown";
 import OutsideAlerter from "../../hooks/ClickListener";
 import { useQuery } from "react-query";
 import { ReadProjects } from "../../api/ventures";
+import { Loader } from "../../hooks/Loader";
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -97,6 +98,7 @@ const VenturesLayout = () => {
 
   return (
     <Box>
+      <Loader delay={1500} />
       <Menu onScroll color="#fff" />
 
       {/* MAIN SECTION */}
@@ -119,7 +121,9 @@ const VenturesLayout = () => {
         variants={FadeFromBottom}
       ></motion.div>
 
-      <Box sx={{ padding: { xs: "50px 15% 10px 15%", md: "100px 20% 20px 20%" } }}>
+      <Box
+        sx={{ padding: { xs: "50px 15% 10px 15%", md: "100px 20% 20px 20%" } }}
+      >
         <SearchBar
           onChange={onChangeHandler}
           value={input}

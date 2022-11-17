@@ -10,6 +10,7 @@ import { ReadProject } from "../../api/ventures";
 import { setProject } from "../../redux/slices/projects";
 import { useRouter } from "next/router";
 import { sanitize } from "../company";
+import { Loader } from "../../hooks/Loader";
 
 const Venture = () => {
   const router = useRouter();
@@ -35,6 +36,7 @@ const Venture = () => {
 
   return (
     <Box>
+      <Loader delay={2500} />
       {ventureId ? (
         <Box
           sx={{

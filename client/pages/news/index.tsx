@@ -20,6 +20,7 @@ import UseMasonry from "../../components/Masonry";
 import news_mock from "../../data/news_mock";
 import { useQuery } from "react-query";
 import { ReadArticles } from "../../api/articles";
+import { Loader } from "../../hooks/Loader";
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -71,6 +72,7 @@ const breakpoints = {
 const ArticleCard = (article: TArticle) => {
   return (
     <Box>
+      <Loader delay={1500} />
       {article ? (
         <Box>
           <Link href={article?.link ? article?.link : ""}>

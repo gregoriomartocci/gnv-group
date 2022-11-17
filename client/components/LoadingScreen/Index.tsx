@@ -1,6 +1,6 @@
 import { Box, CircularProgress } from "@mui/material";
 import React from "react";
-import { Bars } from "react-loader-spinner";
+import { Bars, TailSpin } from "react-loader-spinner";
 import Logo from "../Logo";
 
 const LoadingScreen = ({ loading }) => {
@@ -23,8 +23,19 @@ const LoadingScreen = ({ loading }) => {
         pointerEvents: "none",
       }}
     >
-      <Box sx={{ padding: "20px" }}>
-        <Bars height="40" width="40" color="#21212" visible={true} />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "20px",
+        }}
+      >
+        <Logo color="#212121" width="130px" />
+        <Box sx={{ margin: "30px 0 0 0" }}>
+          <TailSpin height="40" width="40" color="#000" visible={true} />
+        </Box>
       </Box>
     </Box>
   );

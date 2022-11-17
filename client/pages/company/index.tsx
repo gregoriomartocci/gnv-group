@@ -31,6 +31,7 @@ import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { setGalleryItems } from "../../redux/slices/gallery";
 import { ReadGalleryItems } from "../../api/gallery";
+import { Loader } from "../../hooks/Loader";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
   ssr: false,
@@ -108,6 +109,7 @@ const Company = () => {
 
   return (
     <Box sx={{ overflowX: "hidden" }}>
+      <Loader delay={1500} />
       <Menu onScroll color="#212121" />
       <Main
         headerTitle="<p>Por más de 50 años </br> sinónimo de real estate</p>"
