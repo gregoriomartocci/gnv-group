@@ -113,7 +113,7 @@ const Form = ({ input, setInput }: ICreateProps) => {
         }}
         deleteSelected={(id) => deleteSelected(id)}
         reOrderItems={(items) => {
-          setInput({ ...input, highlights: items }),
+          setInput({ ...input, highlights: items });
         }}
       />
 

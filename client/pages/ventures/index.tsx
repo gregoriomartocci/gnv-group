@@ -98,7 +98,7 @@ const VenturesLayout = () => {
 
   return (
     <Box>
-      <Loader delay={1500} />
+      <Loader delay={2000} />
       <Menu onScroll color="#fff" />
 
       {/* MAIN SECTION */}
