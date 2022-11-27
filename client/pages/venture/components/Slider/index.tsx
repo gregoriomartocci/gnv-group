@@ -74,7 +74,15 @@ const Slider = ({ items }: any) => {
         {items &&
           items?.map(({ src, name }: any, key: number) => {
             return (
-              <Box onClick={() => setPosition(key)} key={key}>
+              <Box
+                sx={{
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onClick={() => setPosition(key)}
+                key={key}
+              >
                 <motion.div
                   style={{
                     display: "flex",
@@ -108,10 +116,11 @@ const Slider = ({ items }: any) => {
                   <img
                     style={{
                       display: "flex",
-                      width: "100%",
                       height: "100%",
+                      width: "70%",
                       objectFit: "cover",
                       objectPosition: "center center",
+                      margin: "0 -700px",
                     }}
                     src={src}
                     alt={name}

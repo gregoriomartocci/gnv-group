@@ -36,7 +36,7 @@ const Venture = () => {
 
   return (
     <Box>
-      <Loader delay={2500} />
+      <Loader delay={3000} />
       {ventureId ? (
         <Box
           sx={{

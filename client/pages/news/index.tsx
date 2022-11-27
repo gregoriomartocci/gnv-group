@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Menu, { IState } from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
@@ -71,80 +71,82 @@ const breakpoints = {
 
 const ArticleCard = (article: TArticle) => {
   return (
-    <Box>
+    <Fragment>
       <Loader delay={1500} />
-      {article ? (
-        <Box>
-          <Link href={article?.link ? article?.link : ""}>
-            <a target="_blank">
-              <Box sx={CardContainer}>
-                <img
-                  src={article?.images ? article?.images[0]?.src : ""}
-                  alt={article?.title}
-                />
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "'Poppins', sans-serif",
-                    margin: { xs: "10px 0 0 0", md: "18px 0 0 0" },
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: "#212121",
-                      fontWeight: 600,
-                      fontSize: { xs: "16px", md: " 18px" },
-                      lineHeight: { xs: "20px", md: " 22px" },
-                    }}
-                  >
-                    {article?.title}
-                  </Typography>
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "'Poppins', sans-serif",
-                  }}
-                >
+      <Box>
+        {article ? (
+          <Box>
+            <Link href={article?.link ? article?.link : ""}>
+              <a target="_blank">
+                <Box sx={CardContainer}>
+                  <img
+                    src={article?.images ? article?.images[0]?.src : ""}
+                    alt={article?.title}
+                  />
                   <Box
                     sx={{
-                      color: "#4f4f4f",
-                      fontWeight: 500,
-                      fontSize: { xs: "12px", md: "14px" },
-                      lineHeight: { xs: "18px", md: "20px" },
-                      margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
+                      display: "flex",
+                      flexDirection: "column",
+                      fontFamily: "'Poppins', sans-serif",
+                      margin: { xs: "10px 0 0 0", md: "18px 0 0 0" },
                     }}
                   >
-                    {santize(sliceText(article?.description, 150) ?? "")}
+                    <Typography
+                      sx={{
+                        color: "#212121",
+                        fontWeight: 600,
+                        fontSize: { xs: "16px", md: " 18px" },
+                        lineHeight: { xs: "20px", md: " 22px" },
+                      }}
+                    >
+                      {article?.title}
+                    </Typography>
                   </Box>
 
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center",
-                      color: "#424242",
-                      fontWeight: 600,
-                      fontSize: { xs: "13px", md: "14px" },
-                      margin: "7.5px 0 0 0",
+                      flexDirection: "column",
+                      fontFamily: "'Poppins', sans-serif",
                     }}
                   >
-                    Ver Noticia
-                    <KeyboardArrowRightIcon
+                    <Box
                       sx={{
-                        fontSize: { xs: "15px", md: "16px" },
+                        color: "#4f4f4f",
+                        fontWeight: 500,
+                        fontSize: { xs: "12px", md: "14px" },
+                        lineHeight: { xs: "18px", md: "20px" },
+                        margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
                       }}
-                    />
+                    >
+                      {santize(sliceText(article?.description, 150) ?? "")}
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#424242",
+                        fontWeight: 600,
+                        fontSize: { xs: "13px", md: "14px" },
+                        margin: "7.5px 0 0 0",
+                      }}
+                    >
+                      Ver Noticia
+                      <KeyboardArrowRightIcon
+                        sx={{
+                          fontSize: { xs: "15px", md: "16px" },
+                        }}
+                      />
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-            </a>
-          </Link>
-        </Box>
-      ) : null}
-    </Box>
+              </a>
+            </Link>
+          </Box>
+        ) : null}
+      </Box>
+    </Fragment>
   );
 };
 
