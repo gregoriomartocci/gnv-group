@@ -50,31 +50,31 @@ const licences = [
   [
     {
       img: marriotLogo,
-      width: { xs: "100px", sm: "100px", md: "120px", xl: "150px" },
+      width: { xs: "90px", sm: "110px", md: "110px", xl: "130px" },
     },
   ],
   [
     {
       img: wtcBuenosAires,
-      width: { xs: "240px", sm: "250px", md: "275px", xl: "320px" },
+      width: { xs: "140px", sm: "150px", md: "160px", xl: "170px" },
     },
   ],
   [
     {
       img: wtcCordoba,
-      width: { xs: "240px", sm: "250px", md: "275px", xl: "320px" },
+      width: { xs: "140px", sm: "150px", md: "160px", xl: "170px" },
     },
   ],
   [
     {
       img: wtcRosario,
-      width: { xs: "240px", sm: "250px", md: "275px", xl: "320px" },
+      width: { xs: "140px", sm: "150px", md: "160px", xl: "170px" },
     },
   ],
   [
     {
       img: slsPuntaDelEste,
-      width: { xs: "150px", sm: "160px", md: "185px", xl: "200px" },
+      width: { xs: "85px", sm: "90px", md: "110px", xl: "130px" },
     },
   ],
 ];
@@ -322,7 +322,7 @@ const Company = () => {
             height: "100%",
             alignItems: "center",
             justifyContent: "space-evenly",
-            flexWrap: "wrap",
+            flexWrap: { xs: "wrap", lg: "none" },
           }}
         >
           {licences?.map((item, key) => {
