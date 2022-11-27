@@ -119,7 +119,7 @@ const Slider = ({ items }: any) => {
                       height: "100%",
                       width: "70%",
                       objectFit: "cover",
-                      objectPosition: "top center",
+                      objectPosition: "top left",
                       margin: "0 -700px",
                     }}
                     src={src}
