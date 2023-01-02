@@ -44,7 +44,7 @@ export type TDemo = {
 
 const Home = () => {
   const state = useSelector((state: IState) => state?.templates);
-  const [value, setValue] = useState({});
+
   const dispatch = useDispatch();
   const [countersVisible, setCountersVisible] = useState(false);
   const [tab, setTab] = useState<number>(0);
@@ -164,9 +164,8 @@ const Home = () => {
 
   return (
     <Box sx={{ overflow: "hidden" }}>
-
       <Loader delay={2500} />
-      
+
       <Menu onScroll color="#fff" />
 
       {/* MAIN SECTION */}
@@ -375,7 +374,7 @@ const Home = () => {
         />
 
         <Box sx={{ width: "100%", padding: { xs: "10px 10%", md: "0 10%" } }}>
-          <Form value={value} setValue={setValue} />
+          <Form />
         </Box>
       </Box>
 
