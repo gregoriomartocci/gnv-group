@@ -29,7 +29,6 @@ const Form = () => {
   const [value, setValue] = useState();
   const xs = width && width < 600;
 
-  console.log(value, "okkk2");
   const validateForm = () => {
     let errors = {};
     if (!value?.name) {
