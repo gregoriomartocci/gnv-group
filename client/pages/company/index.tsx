@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
-import Main from "../../components/Main";
-import Menu from "../../components/Menu";
-import HeaderTitle from "../../components/Header-Title";
-import Footer from "../../components/Footer";
-import { motion, useAnimation } from "framer-motion";
-import ArtGallery from "./components/Art-Gallery";
-import api from "../../hooks/Api";
+import { motion } from "framer-motion";
 import parse from "html-react-parser";
-import Logo from "../../components/Logo";
 import dynamic from "next/dynamic";
-import Section from "../../components/Section";
-import Cards from "../../components/Cards";
-import Licence from "./components/Licence";
-import Svg from "./components/Licence/components/SVG";
-import art_gallery_mock from "../../data/art_gallery_mock";
-import ginevraLogo from "../../assets/logo/GinevraRealtyPNG.png";
 import useWindowDimensions from "../../hooks/ScreenSize";
-import AuthImage from "../../assets/images/Image-1.jpg";
 import Image from "next/image";
-import CarouselB from "./components/Carousel";
-import Parallax from "../../components/Parallax";
 import ginevraRealty from "../../assets/logo/GinevraRealty.png";
 import wtcBuenosAires from "../../assets/licences/wtcBuenosAires.png";
 import marriotLogo from "../../assets/licences/marriot.png";
@@ -34,6 +18,33 @@ import { ReadGalleryItems } from "../../api/gallery";
 import { Loader } from "../../hooks/Loader";
 
 const MessageSection = dynamic(() => import("./components/Message-Section"), {
+  ssr: false,
+});
+const Main = dynamic(() => import("../../components/Main"), {
+  ssr: false,
+});
+const Menu = dynamic(() => import("../../components/Menu"), {
+  ssr: false,
+});
+const HeaderTitle = dynamic(() => import("../../components/Header-Title"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../../components/Footer"), {
+  ssr: false,
+});
+const ArtGallery = dynamic(() => import("./components/Art-Gallery"), {
+  ssr: false,
+});
+
+const Section = dynamic(() => import("../../components/Section"), {
+  ssr: false,
+});
+
+const Licence = dynamic(() => import("./components/Licence"), {
+  ssr: false,
+});
+
+const Svg = dynamic(() => import("./components/Licence/components/SVG"), {
   ssr: false,
 });
 

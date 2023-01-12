@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import Main from "../../components/Main";
-import Ventures from "./components/Ventures";
-import Menu from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
-import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
 import SearchBar from "../../components/Search-Bar";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,11 +9,28 @@ import {
   setProject,
   setProjects,
 } from "../../redux/slices/projects";
-import Dropdown from "./components/Dropdown";
 import OutsideAlerter from "../../hooks/ClickListener";
 import { useQuery } from "react-query";
 import { ReadProjects } from "../../api/ventures";
 import { Loader } from "../../hooks/Loader";
+
+import dynamic from "next/dynamic";
+
+const Ventures = dynamic(() => import("./components/Ventures"), {
+  ssr: false,
+});
+const Main = dynamic(() => import("../../components/Main"), {
+  ssr: false,
+});
+const Menu = dynamic(() => import("../../components/Menu"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../../components/Footer"), {
+  ssr: false,
+});
+const Dropdown = dynamic(() => import("../../components/Dropdown"), {
+  ssr: false,
+});
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },

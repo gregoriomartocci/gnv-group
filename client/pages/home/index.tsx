@@ -1,39 +1,35 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import React from "react";
-import Main from "../../components/Main";
-import Menu, { IState } from "../../components/Menu";
+import { IState } from "../../components/Menu";
 import Box from "@mui/material/Box";
 import Section from "../../components/Section";
 import Footer from "../../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTitle from "../../components/Header-Title";
-import Card from "./Components/Card";
-import Cards from "../../components/Cards";
-import Quote from "../../components/Quote";
-import { setState, setTemplates } from "../../redux/slices/templates";
-import api from "../../hooks/Api";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import Counters from "../../components/Counters";
-import Slider from "./Components/Slider";
-import Logo from "../../components/Logo";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
-import dynamic from "next/dynamic";
-import InputGroup from "../../components/Input";
-import Form from "./Components/Form";
-import UseButton from "../../components/Button";
 import useWindowDimensions from "../../hooks/ScreenSize";
-import UseTabs from "./Components/Tabs";
-import MarkerLogo from "./marker-01.svg";
-import Timeline from "./Components/Timeline";
-import { ReadProject } from "../../api/ventures";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { setProject } from "../../redux/slices/projects";
 import { ligthTheme } from "../../assets/mapsStyles";
-import CarouselB from "./Components/Carousel";
-import Parallax from "../../components/Parallax";
 import { ReadTimeline } from "../../api/timeline";
 import { Loader } from "../../hooks/Loader";
+
+import dynamic from "next/dynamic";
+
+const Main = dynamic(() => import("../../components/Main"), { ssr: false });
+const Parallax = dynamic(() => import("../../components/Parallax"), {
+  ssr: false,
+});
+const Menu = dynamic(() => import("../../components/Menu"), { ssr: false });
+const Card = dynamic(() => import("./Components/Card"), { ssr: false });
+const Cards = dynamic(() => import("../../components/Cards"), { ssr: false });
+const Slider = dynamic(() => import("./Components/Slider"), { ssr: false });
+const Form = dynamic(() => import("./Components/Form"), { ssr: false });
+const UseTabs = dynamic(() => import("./Components/Tabs"), { ssr: false });
+const Timeline = dynamic(() => import("./Components/Timeline"), { ssr: false });
+const CarouselB = dynamic(() => import("./Components/Carousel"), {
+  ssr: false,
+});
 
 export type TDemo = {
   img: string;
@@ -164,7 +160,7 @@ const Home = () => {
 
   return (
     <Box sx={{ overflow: "hidden" }}>
-      <Loader delay={2500} />
+      <Loader delay={2000} />
 
       <Menu onScroll color="#fff" />
 

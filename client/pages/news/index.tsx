@@ -1,26 +1,30 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import Menu, { IState } from "../../components/Menu";
-import HeaderTitle from "../../components/Header-Title";
-import Footer from "../../components/Footer";
-import Carousel from "../../components/Carousel";
-import Cards from "../../components/Cards";
-import UseButton from "../../components/Button";
-import Article from "../../components/Article";
+import { IState } from "../../components/Menu";
 import { SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
-import { errorType } from "../profile/news";
-import api from "../../hooks/Api";
-import { IArticle, setArticles } from "../../redux/slices/articles";
+import { setArticles } from "../../redux/slices/articles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
-import UseMasonry from "../../components/Masonry";
-import news_mock from "../../data/news_mock";
 import { useQuery } from "react-query";
 import { ReadArticles } from "../../api/articles";
 import { Loader } from "../../hooks/Loader";
+
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import("../../components/Carousel"), {
+  ssr: false,
+});
+const Article = dynamic(() => import("../../components/Article"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../../components/Footer"), { ssr: false });
+const HeaderTitle = dynamic(() => import("../../components/Header-Title"), {
+  ssr: false,
+});
+const Menu = dynamic(() => import("../../components/Menu"), { ssr: false });
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -72,80 +76,77 @@ const breakpoints = {
 const ArticleCard = (article: TArticle) => {
   return (
     <Fragment>
-      <Loader delay={1500} />
-      <Box>
-        {article ? (
-          <Box>
-            <Link href={article?.link ? article?.link : ""}>
-              <a target="_blank">
-                <Box sx={CardContainer}>
-                  <img
-                    src={article?.images ? article?.images[0]?.src : ""}
-                    alt={article?.title}
-                  />
-                  <Box
+      {article ? (
+        <Box>
+          <Link href={article?.link ? article?.link : ""}>
+            <a target="_blank">
+              <Box sx={CardContainer}>
+                <img
+                  src={article?.images ? article?.images[0]?.src : ""}
+                  alt={article?.title}
+                />
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "'Poppins', sans-serif",
+                    margin: { xs: "10px 0 0 0", md: "18px 0 0 0" },
+                  }}
+                >
+                  <Typography
                     sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      fontFamily: "'Poppins', sans-serif",
-                      margin: { xs: "10px 0 0 0", md: "18px 0 0 0" },
+                      color: "#212121",
+                      fontWeight: 600,
+                      fontSize: { xs: "16px", md: " 18px" },
+                      lineHeight: { xs: "20px", md: " 22px" },
                     }}
                   >
-                    <Typography
-                      sx={{
-                        color: "#212121",
-                        fontWeight: 600,
-                        fontSize: { xs: "16px", md: " 18px" },
-                        lineHeight: { xs: "20px", md: " 22px" },
-                      }}
-                    >
-                      {article?.title}
-                    </Typography>
+                    {article?.title}
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      color: "#4f4f4f",
+                      fontWeight: 500,
+                      fontSize: { xs: "12px", md: "14px" },
+                      lineHeight: { xs: "18px", md: "20px" },
+                      margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
+                    }}
+                  >
+                    {santize(sliceText(article?.description, 150) ?? "")}
                   </Box>
 
                   <Box
                     sx={{
                       display: "flex",
-                      flexDirection: "column",
-                      fontFamily: "'Poppins', sans-serif",
+                      alignItems: "center",
+                      color: "#424242",
+                      fontWeight: 600,
+                      fontSize: { xs: "13px", md: "14px" },
+                      margin: "7.5px 0 0 0",
                     }}
                   >
-                    <Box
+                    Ver Noticia
+                    <KeyboardArrowRightIcon
                       sx={{
-                        color: "#4f4f4f",
-                        fontWeight: 500,
-                        fontSize: { xs: "12px", md: "14px" },
-                        lineHeight: { xs: "18px", md: "20px" },
-                        margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
+                        fontSize: { xs: "15px", md: "16px" },
                       }}
-                    >
-                      {santize(sliceText(article?.description, 150) ?? "")}
-                    </Box>
-
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        color: "#424242",
-                        fontWeight: 600,
-                        fontSize: { xs: "13px", md: "14px" },
-                        margin: "7.5px 0 0 0",
-                      }}
-                    >
-                      Ver Noticia
-                      <KeyboardArrowRightIcon
-                        sx={{
-                          fontSize: { xs: "15px", md: "16px" },
-                        }}
-                      />
-                    </Box>
+                    />
                   </Box>
                 </Box>
-              </a>
-            </Link>
-          </Box>
-        ) : null}
-      </Box>
+              </Box>
+            </a>
+          </Link>
+        </Box>
+      ) : null}
     </Fragment>
   );
 };
@@ -168,6 +169,7 @@ const News = () => {
 
   return (
     <Box>
+      <Loader delay={1500} />
       <Menu onScroll color="#212121" />
       <Box>
         <HeaderTitle
@@ -216,16 +218,6 @@ const News = () => {
         </Grid>
       </Box>
 
-      {/* <Box
-        sx={{
-          display: "flex",
-          padding: "50px 0 0 0",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <UseButton type="Primary">Ver Mas</UseButton>
-      </Box> */}
       <Footer />
     </Box>
   );
