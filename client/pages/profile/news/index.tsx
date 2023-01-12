@@ -192,7 +192,6 @@ const News = () => {
     useMutation(CreateArticle, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("articles");
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "La noticia se creó con éxito.",
@@ -253,7 +252,7 @@ const News = () => {
     });
 
   const createContent = [
-    <Form input={input} setInput={setInput} />,
+    <Form input={input} setInput={setInput} key={0}/>,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -262,15 +261,18 @@ const News = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      reOrderImages={(images) => setInput({ ...input, images: images })}
+      key={1}
     />,
     <Editor
       value={input}
       setValue={(string) => setInput({ ...input, description: string })}
+      key={2}
     />,
   ];
 
   const updateContent = [
-    <Form input={selectedArticle} setInput={setSelectedArticle} />,
+    <Form input={selectedArticle} setInput={setSelectedArticle} key={0}/>,
     <ImageUploader
       value={selectedArticle?.id ? selectedArticle?.images : []}
       addImage={(file: any) => {
@@ -282,12 +284,15 @@ const News = () => {
       removeImage={(array: any) => {
         setSelectedArticle({ ...selectedArticle, images: array });
       }}
+      reOrderImages={(images) => setSelectedArticle({ ...selectedArticle, images: images })}
+      key={1}
     />,
     <Editor
       value={selectedArticle}
       setValue={(string) =>
         setSelectedArticle({ ...selectedArticle, description: string })
       }
+      key={2}
     />,
   ];
 
@@ -330,6 +335,7 @@ const News = () => {
           title="Noticia"
           create={() => createArticleMutation({ ...input })}
           loading={createLoading}
+          tabOptions={["Información Básica", "Imágenes", "Descripción"]}
         />
       </UseModal>
       <UseModal
@@ -342,6 +348,7 @@ const News = () => {
             content={updateContent}
             update={() => updateArticleMutation({ ...selectedArticle })}
             loading={updateLoading}
+            tabOptions={["Información Básica", "Imágenes", "Descripción"]}
           />
         )}
       </UseModal>

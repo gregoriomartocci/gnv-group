@@ -9,12 +9,12 @@ import api from "../../../hooks/Api";
 import {
   closeAlert,
   initialState,
-  IProject,
+  IUser,
   setAlert,
   setModal,
-  setProjects,
+  setUsers,
   setSelected,
-} from "../../../redux/slices/projects";
+} from "../../../redux/slices/users";
 import UseTable from "../../../components/Table";
 import Box from "@mui/material/Box";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -26,18 +26,20 @@ import Actions from "../../../components/Table/Components/Actions";
 import Delete from "../../../components/Table/Components/Delete";
 import Update from "../../../components/Table/Components/Update";
 import Create from "../../../components/Table/Components/Create";
-import ProjectForm from "./Components/Form";
 import ImageUploader from "../../../components/Image-Uploader";
 import dynamic from "next/dynamic";
-import form from "./Components/Form";
+
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
-  CreateProject,
-  DeleteProject,
-  ReadProjects,
-  UpdateProject,
-} from "../../../api/ventures";
+  CreateUser,
+  ReadUsers,
+  DeleteUser,
+  UpdateUser,
+} from "../../../api/users";
 import Content from "./Components/Content";
+import Form from "./Components/Form";
+import CreateForm from "./Components/Form/Create";
+import UpdateForm from "./Components/Form/Update";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
@@ -49,11 +51,6 @@ export interface Data {
   email: string;
   role: string;
 }
-
-// id: string;
-// name: string;
-// email: string;
-// role: string;
 
 export type resetParams = {
   delete: "delete";
@@ -69,7 +66,7 @@ interface HeadCell {
 }
 
 interface ITableContent {
-  project: IProject;
+  user: IUser;
 }
 
 interface ISanitize {
@@ -94,12 +91,6 @@ export const sliceText = (text: any, limit: number) => {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: "id",
-    numeric: true,
-    disablePadding: false,
-    label: "id",
-  },
-  {
     id: "name",
     numeric: true,
     disablePadding: false,
@@ -110,6 +101,12 @@ const headCells: readonly HeadCell[] = [
     numeric: true,
     disablePadding: false,
     label: "Email",
+  },
+  {
+    id: "role",
+    numeric: true,
+    disablePadding: false,
+    label: "Rol",
   },
   {
     id: "actions",
@@ -136,63 +133,62 @@ export type TProject = {
   date: string;
 };
 
-const Ventures = () => {
+const Users = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state?.users);
   const userSelected = state?.userSelected;
-  const [selectedProject, setSelectedProject] = useState(userSelected);
-
-  console.log(state, "que onduuu");
+  const [selectedUser, setSelectedUser] = useState({
+    name: "",
+    email: "",
+    role: "",
+  });
 
   const { alert, modal } = state;
 
-  const [input, setInput] = useState({
+  const [createUser, setCreateUser] = useState({
     name: "",
-    link: "",
-    type: "",
-    status: "",
-    images: [],
-    description: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    role: "Admin",
   });
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    setSelectedProject(userSelected);
+    setSelectedUser(userSelected);
   }, [userSelected]);
 
   const {
     isFetching: loading,
     isError,
     error,
-    data: allProjects,
-  } = useQuery("users", ReadProjects);
+    data: allUsers,
+  } = useQuery("users", ReadUsers);
 
-  const { mutateAsync: createProjectMutation, isLoading: createLoading } =
-    useMutation(CreateProject, {
+  const { mutateAsync: createUserMutation, isLoading: createLoading } =
+    useMutation(CreateUser, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("users");
-        console.log(data, "ok");
-        dispatch(
-          setAlert({
-            message: "El usuario se creó con éxito.",
-            status: "success",
-          })
-        );
-      },
-      onError: (data) => {
-        console.log(data, "ok");
-        dispatch(
-          setAlert({
-            message: "Algo salió mal.",
-            status: "error",
-          })
-        );
+        const { error } = data;
+        error
+          ? dispatch(
+              setAlert({
+                message: error,
+                status: "error",
+              })
+            )
+          : dispatch(
+              setAlert({
+                message: "El usuario se creó con éxito.",
+                status: error,
+              })
+            );
       },
     });
 
-  const { mutateAsync: updateProjectMutation, isLoading: updateLoading } =
-    useMutation(UpdateProject, {
+  const { mutateAsync: updateUserMutation, isLoading: updateLoading } =
+    useMutation(UpdateUser, {
       onSuccess: () => {
         queryClient.invalidateQueries("users");
         dispatch(
@@ -212,13 +208,13 @@ const Ventures = () => {
       },
     });
 
-  const { mutateAsync: deleteProjectMutation, isLoading: deleteLoading } =
-    useMutation(DeleteProject, {
+  const { mutateAsync: deleteUserMutation, isLoading: deleteLoading } =
+    useMutation(DeleteUser, {
       onSuccess: () => {
-        queryClient.invalidateQueries("projects");
+        queryClient.invalidateQueries("users");
         dispatch(
           setAlert({
-            message: "El emprendimiento se eliminó con éxito.",
+            message: "El usuario se eliminó con éxito.",
             status: "success",
           })
         );
@@ -234,42 +230,10 @@ const Ventures = () => {
     });
 
   const createContent = [
-    <ProjectForm input={input} setInput={setInput} />,
-    <ImageUploader
-      value={input?.images}
-      addImage={(file: any) => {
-        setInput({ ...input, images: [...input.images, file] });
-      }}
-      removeImage={(array: any) => {
-        setInput({ ...input, images: array });
-      }}
-    />,
-    <Editor
-      value={input}
-      setValue={(string) => setInput({ ...input, description: string })}
-    />,
+    <CreateForm input={createUser} setInput={setCreateUser} key={0} />,
   ];
-
   const updateContent = [
-    <ProjectForm input={selectedProject} setInput={setSelectedProject} />,
-    <ImageUploader
-      value={selectedProject?.id ? selectedProject?.images : []}
-      addImage={(file: any) => {
-        setSelectedProject({
-          ...selectedProject,
-          images: [...selectedProject?.images, file],
-        });
-      }}
-      removeImage={(array: any) => {
-        setSelectedProject({ ...selectedProject, images: array });
-      }}
-    />,
-    <Editor
-      value={selectedProject}
-      setValue={(string) =>
-        setSelectedProject({ ...selectedProject, description: string })
-      }
-    />,
+    <UpdateForm input={selectedUser} setInput={setSelectedUser} key={0} />,
   ];
 
   return (
@@ -291,8 +255,8 @@ const Ventures = () => {
         title="Usuarios"
         name="users"
         headCells={headCells}
-        rows={allProjects?.length ? allProjects : []}
-        content={(project: IProject) => <Content {...project} />}
+        rows={allUsers?.length ? allUsers : []}
+        content={(project: IUser) => <Content {...project} />}
         openCreateModal={() =>
           dispatch(
             setModal({
@@ -310,7 +274,7 @@ const Ventures = () => {
         <Create
           content={createContent}
           title="Usuario"
-          create={() => createProjectMutation({ ...input })}
+          create={() => createUserMutation({ ...createUser })}
           loading={createLoading}
         />
       </UseModal>
@@ -318,11 +282,11 @@ const Ventures = () => {
         open={modal.update}
         handleClose={() => dispatch(setModal({ name: "update", value: false }))}
       >
-        {selectedProject?.id && (
+        {selectedUser?._id && (
           <Update
             title="usuario"
             content={updateContent}
-            update={() => updateProjectMutation({ ...selectedProject })}
+            update={() => updateUserMutation({ ...selectedUser })}
             loading={updateLoading}
           />
         )}
@@ -340,7 +304,7 @@ const Ventures = () => {
       >
         <Delete
           title="usuario"
-          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
+          deleteElement={() => deleteUserMutation(selectedUser?._id)}
           onClose={() => {
             dispatch(
               setModal({
@@ -356,4 +320,4 @@ const Ventures = () => {
   );
 };
 
-export default Ventures;
+export default Users;

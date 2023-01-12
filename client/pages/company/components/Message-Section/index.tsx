@@ -6,8 +6,7 @@ export const imageContainer: SxProps<Theme> = {
   display: "flex",
   flexDirection: "column",
   position: { lg: "relative" },
-  width: { xs: "auto", sm: "auto", md: "100%", lg: "100%", xl: "60vw" },
-  height: { xs: "auto", sm: "auto", md: "", lg: "70vh" },
+  width: { xs: "auto", md: "100%" },
   right: { xs: 0, sm: 0, md: "50px" },
   top: 0,
   backgroundColor: "#fff",
@@ -69,17 +68,20 @@ const MessageSection = ({
         <Typography
           sx={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: "28px",
+            fontSize: { xs: "18px", md: "20px" },
             fontWeight: "600",
-            lineHeight: "36px",
-            margin: "0 0 25px  0",
+            lineHeight: { xs: "30px", md: "" },
+            margin: { xs: "0 0 15px  0", md: "" },
           }}
         >
           {title}
         </Typography>
 
         <Typography
-          sx={{ fontFamily: "'Poppins', sans-serif", fontSize: "18px" }}
+          sx={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: { xs: "16px", md: "18px" },
+          }}
         >
           {render && description ? description : ""}
         </Typography>

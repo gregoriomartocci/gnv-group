@@ -10,6 +10,7 @@ import Account from "../../../Account";
 
 const Menu = () => {
   const { data } = useSelector((state: IState) => state?.auth);
+  const { email } = useSelector((state) => state?.auth);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openBasicMenu = Boolean(anchorEl);
@@ -30,16 +31,12 @@ const Menu = () => {
         </IconButton>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <Avatar
-          style={{ margin: "0 10px" }}
-          alt="Remy Sharp"
-          src="/static/images/avatar/1.jpg"
-        />
+        <Avatar style={{ margin: "0 10px" }} alt={data?.user?.name} />
 
         <IconButton aria-label="delete" onClick={handleClickBasicMenu}>
           <KeyboardArrowDownIcon />
         </IconButton>
-        
+
         <Dropdown
           open={data?.user !== "" && openBasicMenu}
           handleClose={handleCloseBasicMenu}

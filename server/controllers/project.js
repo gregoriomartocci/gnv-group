@@ -3,8 +3,10 @@ import Project from "../models/project";
 
 export const createProject = async (req, res) => {
   try {
-    const { name, link, description, published, status, images, type } =
+    const { name, link, description, published, status, images, type, order } =
       req.body;
+
+    if (!order) return res.json({ error: "Por favor ingrese un orden" });
 
     if (!name) return res.json({ error: "Por favor ingrese un nombre" });
 
@@ -41,6 +43,7 @@ export const createProject = async (req, res) => {
       link,
       type,
       status,
+      order,
       images: await updatedImages,
     }).save();
 
@@ -107,7 +110,7 @@ export const editProject = async (req, res) => {
 
 export const getProjects = async (req, res) => {
   try {
-    const all = await Project.find().populate("name").sort({ createdAt: -1 });
+    const all = await Project.find().sort({ order: 1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

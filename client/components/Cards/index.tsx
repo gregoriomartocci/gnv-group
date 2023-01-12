@@ -30,7 +30,7 @@ const Cards = ({
   return (
     <Grid container>
       {items?.map((item, index: number) => (
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} key={index}>
           {component(item)}
         </Grid>
       ))}

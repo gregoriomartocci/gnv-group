@@ -38,16 +38,17 @@ export interface ICreateProps {
   content: any;
   update: any;
   loading: boolean;
+  tabOptions?: string[];
 }
 
-const Update = ({ title, content, update, loading }: ICreateProps) => {
+const Update = ({
+  title,
+  content,
+  update,
+  loading,
+  tabOptions,
+}: ICreateProps) => {
   const [tab, setTab] = useState<number>(0);
-
-  const handlePublish = () => {
-    update();
-  };
-
-  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -63,15 +64,17 @@ const Update = ({ title, content, update, loading }: ICreateProps) => {
           Editar {title}
         </span>
 
-        <UseTabs value={tab} setValue={setTab} options={tab_options} />
+        {tabOptions?.length && (
+          <UseTabs
+            value={tab}
+            setValue={setTab}
+            options={tabOptions ? tabOptions : []}
+          />
+        )}
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{content[tab]}</Box>
 
-        <UseButton
-          type="Primary"
-          width="100%"
-          onClickHandler={() => handlePublish()}
-        >
+        <UseButton type="Primary" width="100%" onClickHandler={update}>
           {loading ? <CircularProgress style={{ color: "#fff" }} /> : "Guardar"}
         </UseButton>
       </Box>

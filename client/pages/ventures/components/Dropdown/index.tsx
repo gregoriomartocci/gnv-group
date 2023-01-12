@@ -10,6 +10,7 @@ type Type = {
   width: string;
   name?: string;
   optionsHeight?: string;
+  border?: boolean;
 };
 
 const Dropdown = ({
@@ -18,6 +19,7 @@ const Dropdown = ({
   action,
   width,
   optionsHeight,
+  border,
 }: Type) => {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("");
@@ -39,19 +41,19 @@ const Dropdown = ({
           width,
           position: "relative",
           justifyContent: "space-between",
-          padding: { xs: "25px", sm: "15px 25px" },
+          padding: { xs: "12.5px 25px", sm: "15px 25px" },
           borderRadius: "5px",
           cursor: "pointer",
-          // border: "2px solid #eeeeee",
-
-          // "&:hover": {
-          //   border: "2px solid #eeeeee",
-          // },
+          border: border && "2px solid #eeeeee",
         }}
         onClick={handleClick}
       >
         <Typography
-          sx={{ fontSize: "17px", fontWeight: 500, color: "#9e9e9e" }}
+          sx={{
+            fontSize: { xs: "14px", md: "16px" },
+            fontWeight: 500,
+            color: "#9e9e9e",
+          }}
         >
           {!selected ? placeholder : selected}
         </Typography>
@@ -88,7 +90,7 @@ const Dropdown = ({
                     alignItems: "center",
                     textAlign: "left",
                     height: optionsHeight ?? "",
-                    padding: "15px 22.5px",
+                    padding: { xs: "8.5px 22.5px", md: "10px 22.5px" },
                     borderRadius: "5px",
                     "&:hover": {
                       backgroundColor: "#fafafa",
@@ -99,7 +101,7 @@ const Dropdown = ({
                 >
                   <Typography
                     sx={{
-                      fontSize: "16px",
+                      fontSize: { xs: "13px", md: "14px" },
                       fontWeight: 500,
                       color: "#9e9e9e",
                     }}

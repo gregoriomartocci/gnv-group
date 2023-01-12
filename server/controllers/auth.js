@@ -9,24 +9,43 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
 export const signup = async (req, res) => {
+  console.log(req.body);
+
   try {
     // validation
-    const { name, email, password } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
     if (!name) {
-      return res.json({
-        error: "el nombre es requerido",
-      });
+      return res
+        .json({
+          error: "el nombre es requerido",
+        })
+        .status(400);
     }
     if (!email) {
-      return res.json({
-        error: "el email es requerido",
-      });
+      return res
+        .json({
+          error: "el email es requerido",
+        })
+        .status(400);
     }
     if (!password || password.length < 6) {
-      return res.json({
-        error: "La contraseña es requerida y necesita tener al menos 6 caracteres",
-      });
+      return res
+        .json({
+          error:
+            "La contraseña es requerida y necesita tener al menos 6 caracteres",
+        })
+        .status(400);
     }
+    if (password !== confirmPassword) {
+      return res
+        .json({
+          error: "Las contraseñas ingresadas no coinciden.",
+        })
+        .status(400);
+    }
+
+    console.log("Juan Roman Riquelma");
+
     const exist = await User.findOne({ email });
     if (exist) {
       return res.json({
@@ -45,15 +64,18 @@ export const signup = async (req, res) => {
 
       // create signed token
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "7d",
+        expiresIn: "2h",
       });
       const { password, ...rest } = user._doc;
+
+      console.log(user, "ok");
+
       return res.json({
         token,
         user: rest,
       });
     } catch (err) {
-      console.log(err);
+      console.log("algo salio mal", err);
     }
   } catch (err) {
     console.log(err);
@@ -61,7 +83,8 @@ export const signup = async (req, res) => {
 };
 
 export const signin = async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body, "JUAN ROMAN RIQUELME");
+
   try {
     const { email, password } = req.body;
     // check if our db has user with that email
@@ -73,6 +96,7 @@ export const signin = async (req, res) => {
     }
     // check password
     const match = await comparePassword(password, user.password);
+
     if (!match) {
       return res.json({
         error: "Contraseña incorrecta",
@@ -80,7 +104,7 @@ export const signin = async (req, res) => {
     }
     // create signed token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "2h",
     });
 
     user.password = undefined;
@@ -91,7 +115,9 @@ export const signin = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).send("Algo salió mal, por favor intente de nuevo más tarde.");
+    return res
+      .status(400)
+      .send("Algo salió mal, por favor intente de nuevo más tarde.");
   }
 };
 
@@ -101,7 +127,9 @@ export const forgotPassword = async (req, res) => {
   const user = await User.findOne({ email });
   console.log("USER ===> ", user);
   if (!user) {
-    return res.json({ error: "No se encontró un usuario con el mail ingresado." });
+    return res.json({
+      error: "No se encontró un usuario con el mail ingresado.",
+    });
   }
   // generate code
   const resetCode = nanoid(5).toUpperCase();
@@ -149,5 +177,46 @@ export const resetPassword = async (req, res) => {
     return res.json({ ok: true });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getUsers = async (req, res) => {
+  try {
+    const all = await User.find().sort({ createdAt: 1 });
+    return res.json(all);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByIdAndDelete(id);
+    return res.json(user);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  const { name, email, role } = req.body;
+  const updatedUser = { name, email, role };
+
+  try {
+    const { id } = req.params;
+
+    const user = await User.findByIdAndUpdate(id, updatedUser, {
+      new: true,
+    });
+
+    console.log(user, "sale esto para alla!");
+    return res.json(user);
+  } catch (err) {
+    console.log(err.message, "Algo salió mal");
+    return res.json({ error: "Algo salió mal, por favor intente nuevamente" });
   }
 };

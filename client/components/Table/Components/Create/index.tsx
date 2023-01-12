@@ -44,19 +44,24 @@ export interface ICreateProps {
   content: any[];
   create: any;
   loading: boolean;
+  tabOptions?: string[];
 }
 
-const Create = ({ title, content, create, loading }: ICreateProps) => {
+const Create = ({
+  title,
+  content,
+  create,
+  loading,
+  tabOptions,
+}: ICreateProps) => {
   const [tab, setTab] = useState<number>(0);
-
-  const tab_options = ["Información Básica", "Multimedia", "Descripción"];
 
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={Login}>
         <span
           style={{
-            fontSize: "20px",
+            fontSize: { xs: "18px", md: "20px" },
             fontWeight: 600,
             margin: "0 0 15px 0",
             color: "#424242",
@@ -65,7 +70,9 @@ const Create = ({ title, content, create, loading }: ICreateProps) => {
           Agregar {title}
         </span>
 
-        <UseTabs value={tab} setValue={setTab} options={tab_options} />
+        {tabOptions?.length && (
+          <UseTabs value={tab} setValue={setTab} options={tabOptions} />
+        )}
 
         <Box style={{ width: "100%", margin: "15px 0px" }}>{content[tab]}</Box>
 

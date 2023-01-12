@@ -14,6 +14,8 @@ export interface ISectionProps {
   reverse?: boolean;
   paddingColumnLeft?: string;
   bodyTextPadding?: string;
+  imageMaxWidth?: string;
+  imageMaxHeight?: string;
 }
 
 const duration = 1.75;
@@ -42,6 +44,8 @@ const Section = ({
   paragraph,
   paddingColumnLeft,
   bodyTextPadding,
+  imageMaxWidth,
+  imageMaxHeight,
   author,
   image,
   reverse,
@@ -72,7 +76,7 @@ const Section = ({
                   sx={{
                     width: "100%",
                     padding: {
-                      xs: "30px 0 0 0",
+                      xs: "15px 0 0 0",
                       md: "0",
                     },
                   }}
@@ -90,24 +94,24 @@ const Section = ({
                     color: "#000",
                     padding: {
                       xs: "25px 20px",
-                      md: "25px 100px",
+                      md: "25px 0px 0px 120px",
                     },
                   }}
                 >
                   <Typography
                     sx={{
-                      fontWeight: 500,
                       color: "#212121",
                       textAlign: "left",
                       width: "100%",
                       fontSize: {
-                        xs: "20px",
-                        md: "30px",
+                        xs: "14px",
+                        sm: "17px",
+                        md: "22px",
                       },
                       height: "100%",
                       lineHeight: {
-                        xs: "33px",
-                        md: "45px",
+                        xs: "25px",
+                        md: "40px",
                       },
                     }}
                   >
@@ -151,10 +155,10 @@ const Section = ({
                       padding: bodyTextPadding,
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 400,
+                      maxWidth: "650px",
                       color: "4F4F4F",
-                      fontSize: { xs: "18px", md: "24px" },
+                      fontSize: { xs: "14px", md: "17px" },
                       textAlign: "left",
-                      textAlignLast: "left",
                       height: "100%",
                     }}
                   >
@@ -167,15 +171,31 @@ const Section = ({
             </Box>
           </motion.div>
         </Box>
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", maxWidth: imageMaxWidth }}>
           <motion.div
             initial={"offscreen"}
             whileInView={"onscreen"}
             viewport={{ once: false, amount: 0 }}
             variants={reverse ? FadeFromLeft : FadeFromRight}
           >
-            <Box sx={ColumRight}>
-              <img src={image} alt="home" />
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                height: "100%",
+                justifyContent: !reverse && "flex-end",
+
+                img: {
+                  width: "100%",
+                  objectFit: "cover",
+                },
+              }}
+            >
+              <img
+                style={{ maxHeight: imageMaxHeight }}
+                src={image}
+                alt="home"
+              />
             </Box>
           </motion.div>
         </Box>

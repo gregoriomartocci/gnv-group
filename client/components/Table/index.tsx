@@ -101,7 +101,7 @@ export default function UseTable({
   const [orderBy, setOrderBy] = React.useState<any>("name");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(100);
 
   function EnhancedTableHead(props: EnhancedTableProps) {
     const {
@@ -249,7 +249,7 @@ export default function UseTable({
         ) : (
           <React.Fragment>
             <UseButton type="Primary" onClickHandler={() => openCreateModal()}>
-              agregar
+              <Typography sx={{ fontSize: "13px" }}> Agregar </Typography>
             </UseButton>
           </React.Fragment>
         )}
@@ -263,7 +263,7 @@ export default function UseTable({
         width: "100%",
         // position: "relative",
         borderRadius: "10px",
-        height: "85%",
+        height: "100%",
         overflowY: "auto",
         padding: "15px",
         boxShadow: "unset",
@@ -286,12 +286,12 @@ export default function UseTable({
             {stableSort(rows, getComparator(order, orderBy))
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               ?.map((row, index) => {
-                return <TableRow>{content(row)}</TableRow>;
+                return <TableRow key={index}>{content(row)}</TableRow>;
               })}
           </TableBody>
         </Table>
       </TableContainer>
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           display: "flex",
@@ -313,7 +313,7 @@ export default function UseTable({
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Box>
+      </Box> */}
     </Paper>
   );
 }

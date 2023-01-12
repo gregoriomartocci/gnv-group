@@ -3,24 +3,41 @@ import Gallery from "../models/gallery";
 
 export const createGalleryItem = async (req, res) => {
   try {
-    const { name, link, description, published, status, images, type } =
-      req.body;
+    const {
+      _id,
+      title,
+      gallery,
+      artist,
+      images,
+      measures,
+      date,
+      published,
+      technique,
+    } = req.body;
 
-    if (!name) return res.json({ error: "Por favor ingrese un nombre" });
+    if (!artist)
+      return res.json({ error: "Por favor ingrese el nombre del artista" });
 
-    if (!status)
-      return res.json({
-        error: "Por favor indique en que estado se encuentra el emprendimiento",
-      });
+    if (!images.length)
+      return res.json({ error: "Por favor ingrese al menos una imagen" });
+    // if (!title) return res.json({ error: "Por favor ingrese un título" });
+    // if (!gallery) return res.json({ error: "Por favor ingrese un título" });
+    // if (!published)
+    //   return res.json({
+    //     error: "Por favor ingrese el estado de la publicación",
+    //   });
+    // if (!measures)
+    //   return res.json({ error: "Por favor ingrese el nombre del artista" });
+    // if (!date)
+    //   return res.json({ error: "Por favor ingrese el nombre del artista" });
+    // if (!technique)
+    //   return res.json({ error: "Por favor ingrese el nombre del artista" });
+    // if (!images)
+    //   return res.json({ error: "Por favor incluya al menos una imagen" });
 
-    if (!images) return res.json({ error: "Por favor incluya imágenes" });
-
-    if (!type) return res.json({ error: "Por favor ingrese un tipo" });
-
-    const alreadyExist = await Project.findOne({ name });
-
-    if (alreadyExist)
-      return res.json({ error: "Ya existe un emprendimiento con ese nombre." });
+    // const alreadyExist = await Gallery.findOne({ title });
+    // if (alreadyExist)
+    //   return res.json({ error: "Ya existe una obra de arte con ese nombre" });
 
     const uploadImages = images.map(async (i) => ({
       ...i,
@@ -29,19 +46,14 @@ export const createGalleryItem = async (req, res) => {
 
     const updatedImages = await Promise.all(uploadImages);
 
-    const gallery = await new Gallery({
-      name,
-      description,
-      published,
-      link,
-      type,
-      status,
+    const galleryItem = await new Gallery({
+      ...req.body,
       images: await updatedImages,
     }).save();
 
-    console.log("Que se guarda aca?", gallery);
+    console.log("Que se guarda aca?", galleryItem);
 
-    return res.json(gallery.images[0]);
+    return res.json(galleryItem);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
     return res.json({ error: err.message });
@@ -52,7 +64,7 @@ export const removeGalleryItem = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const gallery = await Project.findByIdAndDelete(id);
+    const gallery = await Gallery.findByIdAndDelete(id);
     return res.json(gallery);
   } catch (err) {
     console.log(err.message, "Algo salió mal");
@@ -73,7 +85,7 @@ export const editGalleryItem = async (req, res) => {
     const { id } = req.params;
 
     let updatedImages;
-    let updatedProject;
+    let updatedGalleryItem;
     let imagesAux;
 
     if (images) {
@@ -82,16 +94,14 @@ export const editGalleryItem = async (req, res) => {
         src: !isFromCloudinary(i.src) ? await uploadImage(i.src) : i.src,
       }));
       updatedImages = await Promise.all(imagesAux);
-      updatedProject = { ...req.body, images: updatedImages };
+      updatedGalleryItem = { ...req.body, images: updatedImages };
     } else {
-      updatedProject = { ...req.body };
+      updatedGalleryItem = { ...req.body };
     }
 
-    const gallery = await Gallery.findByIdAndUpdate(id, updatedProject, {
+    const gallery = await Gallery.findByIdAndUpdate(id, updatedGalleryItem, {
       new: true,
     });
-
-    console.log(gallery, "sale esto para alla!");
 
     return res.json(gallery);
   } catch (err) {
@@ -102,7 +112,7 @@ export const editGalleryItem = async (req, res) => {
 
 export const getGallery = async (req, res) => {
   try {
-    const all = await Gallery.find().populate("name").sort({ createdAt: -1 });
+    const all = await Gallery.find().sort({ createdAt: 1 });
     return res.json(all);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

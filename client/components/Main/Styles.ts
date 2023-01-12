@@ -106,8 +106,6 @@ export const MainImage: SxProps<Theme> = {
   },
 };
 
-
-
 export const MainContent: SxProps<Theme> = {
   position: "relative",
   zIndex: 10,

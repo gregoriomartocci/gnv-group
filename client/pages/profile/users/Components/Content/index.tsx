@@ -37,32 +37,18 @@ const Content = (user: IUser) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // const CellTable: SxProps<Theme> = {
-  //   display: "flex",
-  //   justifyContent: "flex-start",
-  //   alignItems: "center",
-
-  //   img: {
-  //     width: "80px",
-  //     height: "80px",
-  //     borderRadius: "5px",
-  //     objectFit: "cover",
-  //     margin: "0 20px 0 0",
-  //   },
-  // };
-
-  const match = user?.id === userSelected?.id;
+  const match = user?._id === userSelected?._id;
 
   return (
     <Fragment>
-      <TableCell align="left">
-        <Typography>{user?.id}</Typography>
-      </TableCell>
       <TableCell align="left">
         <Typography>{user?.name}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography>{user?.email}</Typography>
+      </TableCell>
+      <TableCell align="left">
+        <Typography>{user?.role}</Typography>
       </TableCell>
       <TableCell align="left">
         <IconButton onClick={(e) => handleClickActionsMenu(e, user)}>

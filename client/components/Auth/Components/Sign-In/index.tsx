@@ -1,16 +1,16 @@
 import React, { Fragment, useState } from "react";
 import { Alert, Box, CircularProgress } from "@mui/material";
 import { StaticImageData } from "next/image";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import InputGroup from "../../../Input";
 import Toast from "../../../Alert";
 import { AuthContainer, AuthImage, Login } from "../../Styles";
-import { setAuth } from "../../../../redux/slices/auth";
-import api from "../../../../hooks/Api";
 import { useRouter } from "next/router";
 import UseButton from "../../../Button";
+import { useMutation, useQuery } from "react-query";
+import { setAlert, setAuth } from "../../../../redux/slices/auth";
+import { LoginAuth } from "../../../../api/auth";
+import { closeAlert } from "../../../../redux/slices/auth";
 
 export interface IAuthProps {
   img: StaticImageData | string;
@@ -27,14 +27,49 @@ export type errorType = {
 };
 
 const SignIn = ({ img }: IAuthProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<errorType>({ auth: "", message: "" });
   const [input, setInput] = useState<inputType>({
     email: "",
     password: "",
   });
+  const state = useSelector((state) => state?.auth);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const { alert } = state;
+
+  const { mutateAsync: LoginAuthMutation, isLoading: authLoading } =
+    useMutation(LoginAuth, {
+      onSuccess: (data) => {
+        const { error } = data;
+      
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          dispatch(
+            setAlert({
+              message: "Session iniciada con éxito",
+              status: "success",
+            })
+          );
+          localStorage.setItem("auth", JSON.stringify(data));
+          dispatch(setAuth(data));
+          router.push("/profile/ventures");
+        }
+      },
+      onError: () => {
+        dispatch(
+          setAlert({
+            message: "Algo salió mal. Intente nuevamente más tarde",
+            status: "error",
+          })
+        );
+      },
+    });
 
   const onChangeHandler = (e: any) => {
     setInput({
@@ -43,39 +78,18 @@ const SignIn = ({ img }: IAuthProps) => {
     });
   };
 
-  const onSubmitHandler = async () => {
-    setError({ auth: "", message: "" });
-    setLoading(true);
-    try {
-      const data = await api({
-        method: "post",
-        path: "/signin",
-        payload: input,
-      });
-      console.log("Dateushh", data);
-      setLoading(false);
-      if (data?.error) {
-        setError({ auth: "failed", message: data?.error });
-      } else {
-        setError({ ...error, auth: "success" });
-        localStorage.setItem("auth", JSON.stringify(data));
-        dispatch(setAuth(data));
-        router.push("/profile");
-      }
-    } catch (err) {
-      setError({ auth: "failed", message: "Something went wrong" });
-      setLoading(false);
-    }
-  };
-
   return (
     <Fragment>
-      {error?.auth === "success" && (
-        <Toast message="Successfully signed in" type="success" />
-      )}
-      {error?.auth === "failed" && (
-        <Toast message={error.message} type="error" />
-      )}
+      {alert?.map(({ message, status }, index) => {
+        return (
+          <Toast
+            key={index}
+            message={message}
+            type={status}
+            action={() => dispatch(closeAlert(index))}
+          />
+        );
+      })}
 
       <Box sx={Login}>
         <Fragment>
@@ -111,9 +125,9 @@ const SignIn = ({ img }: IAuthProps) => {
               type="Primary"
               width="100%"
               height="50px"
-              onClickHandler={onSubmitHandler}
+              onClickHandler={() => LoginAuthMutation({ ...input })}
             >
-              {loading ? (
+              {authLoading ? (
                 <CircularProgress style={{ color: "#fff" }} />
               ) : (
                 "Siguiente"
@@ -128,3 +142,27 @@ const SignIn = ({ img }: IAuthProps) => {
 };
 
 export default SignIn;
+
+// const onSubmitHandler = async () => {
+//   setError({ auth: "", message: "" });
+//   setLoading(true);
+//   try {
+//     const data = await api({
+//       method: "post",
+//       path: "/signin",
+//       payload: input,
+//     });
+//     setLoading(false);
+//     if (data?.error) {
+//       setError({ auth: "failed", message: data?.error });
+//     } else {
+//       setError({ ...error, auth: "success" });
+//       localStorage.setItem("auth", JSON.stringify(data));
+//       dispatch(setAuth(data));
+//       router.push("/profile/ventures");
+//     }
+//   } catch (err) {
+//     setError({ auth: "failed", message: "Something went wrong" });
+//     setLoading(false);
+//   }
+// };

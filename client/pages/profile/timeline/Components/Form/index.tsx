@@ -18,6 +18,9 @@ import ImageUploader, {
 
 import InputGroup from "../../../../../components/Input";
 import Dropdown from "../../../../ventures/components/Dropdown";
+import Highlights from "../Highlights";
+import UseModal from "../../../../../components/Modal";
+import AddForm from "../Highlights/Components/AddForm";
 
 export interface IAuthProps {
   img: StaticImageData;
@@ -42,8 +45,21 @@ export interface ICreateProps {
   setInput: any;
 }
 
-const ProyectForm = ({ input, setInput }: ICreateProps) => {
-  
+const Form = ({ input, setInput }: ICreateProps) => {
+  const [modal, setModal] = useState<string>("");
+
+  const [highlight, setHighlight] = useState({
+    name: "",
+    description: "",
+    img: [],
+  });
+
+  const [highlightSelected, setHighlightSelected] = useState({
+    name: "",
+    description: "",
+    img: [],
+  });
+
   const onChangeHandler = (e: any) => {
     setInput({
       ...input,
@@ -51,113 +67,79 @@ const ProyectForm = ({ input, setInput }: ICreateProps) => {
     });
   };
 
-  const [type, setType] = useState([
-    "Usos mixtos",
-    "Residencial",
-    "Corporativo",
-    "Hoteleria",
-    "Retail",
-    "Urbanización",
-    "Gastronomía y Lifestyle",
-  ]);
+  const deleteSelected = (id) => {
+    const updateHighlight = input?.highlights.filter(
+      (element, index) => index !== id
+    );
+    setInput({ ...input, highlights: updateHighlight });
+  };
 
-  const [status, setStatus] = useState([
-    "Ejecutado",
-    "En desarrollo",
-    "Finalizado",
-  ]);
-
-  console.log(input, "input");
+  const updateSelected = () => {
+    const updateHighlight = input?.highlights.map((element, index) =>
+      index === highlightSelected?.id ? highlightSelected : element
+    );
+    setInput({ ...input, highlights: updateHighlight });
+  };
 
   return (
     <Box>
       <InputGroup
-        name="name"
-        description="Ingrese el nombre del emprendimiento"
-        label="Nombre"
+        name="year"
+        description="Ingrese el año"
+        label="Año"
         type="text"
-        value={input?.name ? input?.name : ""}
-        onChangeHandler={onChangeHandler}
-      />
-      <InputGroup
-        name="link"
-        description="Ingrese el enlace del emprendimiento"
-        label="Enlace"
-        type="text"
-        value={input ? input?.link : ""}
+        value={input?.year ? input?.year : ""}
         onChangeHandler={onChangeHandler}
       />
 
-      <Box
+      <Typography
         sx={{
-          margin: "20px 0",
+          fontSize: "16px",
+          color: "#212121",
+          fontWeight: "600",
+          margin: "10px 0",
         }}
       >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Tipo
-        </Typography>
+        Emprendimientos
+      </Typography>
 
-        <Dropdown
-          items={type}
-          placeholder={input?.type}
-          width="100%"
-          action={(e) =>
-            setInput({
-              ...input,
-              ["type"]: e,
-            })
-          }
-          optionsHeight="40px"
-        />
-      </Box>
-
-      <Box
-        sx={{
-          margin: "20px 0",
+      <Highlights
+        items={input?.highlights}
+        create={(value) => {
+          setModal("create");
         }}
-      >
-        <Typography
-          sx={{
-            fontSize: "15px",
-            color: "#212121",
-            fontWeight: "600",
-            margin: "10px 0",
-          }}
-        >
-          Estado
-        </Typography>
-        <Dropdown
-          items={status}
-          width="100%"
-          placeholder={input?.status}
-          action={(e) =>
-            setInput({
-              ...input,
-              ["status"]: e,
-            })
-          }
-          optionsHeight="40px"
-        />
-      </Box>
+        updateSelected={(value) => {
+          setModal("update"), setHighlightSelected(value);
+        }}
+        deleteSelected={(id) => deleteSelected(id)}
+        reOrderItems={(items) => {
+          setInput({ ...input, highlights: items });
+        }}
+      />
 
-      {/* <BasicSelect
-        options={status}
-        width="100%"
-        value={input ? input : {}}
-        setValue={setInput}
-        name="status"
-        placeholder="Seleccione el estado en el que se encuentra el emprendimiento"
-        label="Estado"
-      /> */}
+      <UseModal open={modal === "update"} handleClose={() => setModal("")}>
+        <AddForm
+          highlight={highlightSelected}
+          setHighlight={setHighlightSelected}
+          action={(id) => {
+            updateSelected(id), setModal("");
+          }}
+        />
+      </UseModal>
+
+      <UseModal open={modal === "create"} handleClose={() => setModal("")}>
+        <AddForm
+          highlight={highlight}
+          setHighlight={setHighlight}
+          action={(value) => {
+            setInput({ ...input, highlights: [...input?.highlights, value] }),
+              setHighlight({ name: "", description: "", img: [] }),
+              setModal("");
+          }}
+        />
+      </UseModal>
     </Box>
   );
 };
 
-export default ProyectForm;
+export default Form;

@@ -26,15 +26,15 @@ function Carousel({ items, year }: ICarousel) {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: xs ? "225px" : sm ? "250px" : "375px",
+    width: xs ? "175px" : sm ? "200px" : "250px",
     backgroundColor: "#fff",
-    borderRadius: "15px",
+    borderRadius: xs ? "7.5px" : "15px",
     cursor: "pointer",
     fontFamily: "'Poppins', sans-serif",
     fontSize: "20px",
     boxShadow: "rgba(0, 0, 0, 0.15) 0px 3px 8px",
     padding: "10px",
-    margin: sm ? "-75px" : "-95px",
+    margin: xs ? "-55px" : "-75px",
   };
 
   const slides = [0, 2, 3, 4];
@@ -68,7 +68,6 @@ function Carousel({ items, year }: ICarousel) {
 
   const difference = (num1: number, num2: number): number => {
     const result = Math.abs(num1 - num2);
-    console.log(result);
     return result;
   };
 
@@ -87,14 +86,14 @@ function Carousel({ items, year }: ICarousel) {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          padding: { xs: "50px 0 0 0", md: "" },
+          padding: "30px 0 0 0",
         }}
       >
         <Typography
           sx={{
-            fontSize: { xs: "28px", md: "35px" },
+            fontSize: { xs: "20px", md: "22px" },
             color: "#bdbdbd",
-            fontWeight: 700,
+            fontWeight: 600,
           }}
         >
           {year}
@@ -107,9 +106,9 @@ function Carousel({ items, year }: ICarousel) {
           justifyContent: "space-between",
           alignItems: "center",
           height: "100%",
-          width: { xs: "", md: "900px" },
-          minHeight: { xs: "550px", md: "700px" },
-          minWidth: { xs: "100%", md: "800px" },
+          width: { xs: "", md: "" },
+          minHeight: { xs: "375px", md: "480px" },
+          minWidth: { xs: "100%", md: "700px" },
           cursor: "pointer",
           backgroundColor: "#ffffff",
         }}
@@ -121,14 +120,20 @@ function Carousel({ items, year }: ICarousel) {
               justifyContent: "center",
               alignItems: "center",
               padding: "12.5px",
-              border: "1px solid #e0e0e0",
+              border: { xs: "", md: "1px solid #e0e0e0" },
               backgroundColor: "#ffffff",
               cursor: "pointer",
               borderRadius: "10px",
               textAlign: "center",
               zIndex: 1000,
-              width: "50px",
-              height: "50px",
+              width: {
+                xs: "40px",
+                md: "50px",
+              },
+              height: {
+                xs: "40px",
+                md: "50px",
+              },
               margin: {
                 xs: "0 10px",
                 sm: "0 15px",
@@ -158,7 +163,7 @@ function Carousel({ items, year }: ICarousel) {
             layout
             variants={venturesVariants}
           >
-            {items?.map(({ title, description, img, date }, index) => {
+            {items?.map(({ name, description, img, date }, index) => {
               return difference(position, index) > 1 ? null : (
                 <motion.div
                   layout
@@ -187,12 +192,12 @@ function Carousel({ items, year }: ICarousel) {
                         objectFit: "cover",
                         width: "100%",
                         height: "100%",
-                        minHeight: md ? "350px" : "250px",
-                        borderRadius: "10px",
-                        maxHeight: xs ? "300px" : "400px",
-                        objectPosition:"center 0%"
+                        minHeight: md ? "180px" : "150px",
+                        maxHeight: xs ? "170px" : "225px",
+                        borderRadius: xs ? "5px" : "10px",
+                        objectPosition: "center center",
                       }}
-                      src={img}
+                      src={img[0]?.src}
                       alt="title"
                     />
                   ) : null}
@@ -212,18 +217,18 @@ function Carousel({ items, year }: ICarousel) {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
-                        padding: "20px 0 0 0",
+                        padding: "15px 0 0 0",
                         fontSize: "12px",
                       }}
                     >
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "20px", md: "24px" },
+                          fontSize: { xs: "15px", md: "18px" },
                           fontWeight: 600,
                         }}
                       >
-                        {title}
+                        {name}
                       </Typography>
                     </Box>
                     <Box
@@ -233,13 +238,13 @@ function Carousel({ items, year }: ICarousel) {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
-                        padding: "20px 10px",
+                        padding: "10px 5px 5px 5px",
                       }}
                     >
                       <Typography
                         sx={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: { xs: "16px", md: "18px" },
+                          fontSize: { xs: "12px", md: "14px" },
                         }}
                       >
                         {description}
@@ -259,14 +264,20 @@ function Carousel({ items, year }: ICarousel) {
               justifyContent: "center",
               alignItems: "center",
               padding: "12.5px",
-              border: "1px solid #e0e0e0",
+              border: { xs: "", md: "1px solid #e0e0e0" },
               backgroundColor: "#ffffff",
               cursor: "pointer",
               borderRadius: "10px",
               textAlign: "center",
               zIndex: 1000,
-              width: "50px",
-              height: "50px",
+              width: {
+                xs: "40px",
+                md: "50px",
+              },
+              height: {
+                xs: "40px",
+                md: "50px",
+              },
               margin: {
                 xs: "0 10px",
                 sm: "0 15px",

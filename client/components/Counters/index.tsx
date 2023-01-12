@@ -28,7 +28,7 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
         display: "flex",
         width: "100%",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
       }}
     >
       {data?.map((element, index) => {
@@ -52,22 +52,22 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
               <Typography
                 sx={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: `${counterSize}px`,
+                  fontSize: counterSize,
                   width: "max-content",
                 }}
               >
                 <DynamicCounter
                   from={0}
                   to={element?.number}
-                  duration={5}
+                  duration={2}
+                  counterFontSize={counterSize}
                   counterRef={countersRef}
                 />
               </Typography>
               <Typography
                 sx={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: `${counterSize}px`,
-                  fontWeight: 600,
+                  fontSize: counterSize,
                   margin: "0 0 0 5px",
                 }}
               >
@@ -75,7 +75,11 @@ const Counters = ({ data, counterSize, countersRef }: ICounter) => {
               </Typography>
             </Box>
             <Typography
-              sx={{ fontFamily: "'Poppins', sans-serif", fontSize: "18px" }}
+              sx={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: "18px",
+                minWidth: "200px",
+              }}
             >
               {element.description}
             </Typography>

@@ -12,8 +12,8 @@ const Footer = () => {
         flexDirection: "column",
         fontFamily: "'Poppins', sans-serif",
         padding: "20px",
+        margin: "50px 0 0 0",
         backgroundColor: "#fafafa",
-        marginTop: "50px",
       }}
     >
       <Box
@@ -22,7 +22,7 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
-          padding: "5% 10%",
+          padding: "30px 10% 10px 10%",
           fontWeight: 500,
         }}
       >
@@ -32,26 +32,13 @@ const Footer = () => {
           sx={{
             display: "flex",
             width: "100%",
-            padding: {
-              xs: "",
-              sm: "",
-              md: "0 20% 0 0 ",
-              lg: "0 20% 0 0 ",
-              xl: "0 20% 0 0 ",
-            },
             justifyContent: {
               xs: "column",
-              sm: "column",
               md: "space-around",
-              lg: "space-around",
-              xl: "space-between",
             },
             flexDirection: {
               xs: "column",
-              sm: "column",
               md: "row",
-              lg: "row",
-              xl: "row",
             },
           }}
         >
@@ -59,8 +46,8 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  margin: "5px 20px 0  0",
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -73,8 +60,8 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  margin: "5px 20px 0  0",
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -87,8 +74,8 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  margin: "5px 20px 0  0",
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -101,8 +88,8 @@ const Footer = () => {
             <a>
               <Typography
                 sx={{
-                  margin: "0 15px 0  0",
-                  fontSize: "20px",
+                  margin: "5px 20px 0  0",
+                  fontSize: { xs: "14px", md: "16px" },
                   fontWeight: "600",
                 }}
               >
@@ -162,7 +149,6 @@ const Footer = () => {
         sx={{
           display: {
             xs: "column",
-            sm: "column",
             md: "none",
           },
           padding: "2.5% 10%",
@@ -177,10 +163,34 @@ const Footer = () => {
       </Box>
 
       {/* ADDRESS */}
-      <Box sx={{ padding: "2.5% 10%", lineHeight: "25px" }}>
-        Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
-        Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 C. +598 94 785
-        878 |
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "2.5% 10%",
+          lineHeight: "22px",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: { xs: "13px", md: "15px" },
+            marginTop: { xs: "10px", md: "5px" },
+          }}
+        >
+          Camila O´Gorman 412 - World Trade Center II - Of. 200 - Puerto Madero,
+          CABA, Argentina, CP 1107. | T.+5411 5354 8030
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: { xs: "13px", md: "15px" },
+            marginTop: { xs: "10px", md: "5px" },
+          }}
+        >
+          Av. Italia y Parada 4 - Edificio Office Punta - Of. 206 - Punta del
+          Este, Maldonado, Uruguay, CP 20100. | T.+598 4249.4800 878
+        </Typography>
       </Box>
     </Box>
   );

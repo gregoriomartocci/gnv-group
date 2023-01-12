@@ -10,11 +10,12 @@ const ImageContainer: SxProps<Theme> = {
   textAlign: "center",
 
   fontSize: "20px",
-  height: { xs: "350px", md: "400px" },
-  width: "100%",
+  height: { xs: "280px", md: "450px" },
+  width: { xs: "100%", md: "100%" },
 
   img: {
     position: "absolute",
+    objectPosition: "center top",
     borderRadius: "10px 10px 0 0",
     top: "0",
     left: "0",
@@ -54,7 +55,7 @@ type TGalleryItems = {
   gallery: string;
   artist: string;
   title: string;
-  image: string;
+  images: any;
   technique: string;
   measures: string;
   date: string;
@@ -66,7 +67,7 @@ const GalleryItem = ({
   gallery,
   artist,
   title,
-  image,
+  images,
   technique,
   measures,
   date,
@@ -75,25 +76,25 @@ const GalleryItem = ({
   return (
     <Box sx={CardContainer}>
       <Box sx={ImageContainer}>
-        <img src={image} alt={title}></img>
+        <img src={images?.length ? images[0]?.src : ""} alt={title}></img>
       </Box>
       <Box sx={CardBody}>
-        {title && (
+        {artist && (
           <Box sx={{ display: "flex" }}>
             <Typography
               sx={{
-                fontFamily: "'Poppins', sans-serif",
-                margin: "6px 0 0 0",
-                fontSize: "26px",
-                fontWeight: "700",
+                margin: "0",
+                fontSize: { xs: "15px", md: "17px" },
+                fontWeight: 600,
                 color: "#000",
               }}
             >
-              {title}
+              {artist}
             </Typography>
           </Box>
         )}
-        {gallery && (
+
+        {/* {gallery && (
           <Typography
             sx={{
               fontFamily: "'Poppins', sans-serif",
@@ -126,7 +127,6 @@ const GalleryItem = ({
             </span>
           </Typography>
         )}
-
         {technique && (
           <Box sx={{ display: "flex" }}>
             <Typography
@@ -186,7 +186,7 @@ const GalleryItem = ({
               </span>
             </Typography>
           </Box>
-        )}
+        )} */}
       </Box>
     </Box>
   );

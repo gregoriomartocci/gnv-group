@@ -1,6 +1,15 @@
 export const ligthTheme = [
   {
-    featureType: "landscape",
+    featureType: "all",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "simplified",
+      },
+    ],
+  },
+  {
+    featureType: "all",
     elementType: "labels",
     stylers: [
       {
@@ -9,8 +18,8 @@ export const ligthTheme = [
     ],
   },
   {
-    featureType: "transit",
-    elementType: "labels",
+    featureType: "all",
+    elementType: "labels.text",
     stylers: [
       {
         visibility: "off",
@@ -18,8 +27,8 @@ export const ligthTheme = [
     ],
   },
   {
-    featureType: "poi",
-    elementType: "labels",
+    featureType: "all",
+    elementType: "labels.text.fill",
     stylers: [
       {
         visibility: "off",
@@ -27,8 +36,8 @@ export const ligthTheme = [
     ],
   },
   {
-    featureType: "water",
-    elementType: "labels",
+    featureType: "all",
+    elementType: "labels.text.stroke",
     stylers: [
       {
         visibility: "off",
@@ -36,7 +45,7 @@ export const ligthTheme = [
     ],
   },
   {
-    featureType: "road",
+    featureType: "all",
     elementType: "labels.icon",
     stylers: [
       {
@@ -44,6 +53,7 @@ export const ligthTheme = [
       },
     ],
   },
+
   {
     stylers: [
       {

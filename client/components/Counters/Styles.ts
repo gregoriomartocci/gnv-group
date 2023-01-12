@@ -5,7 +5,7 @@ export const CounterBlock: SxProps<Theme> = {
   flexDirection: "column",
   width: "250px",
   fontFamily: "'Poppins', sans-serif",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   alignItems: "center",
   textAlign: "center",
   padding: "20px 45px",

@@ -27,6 +27,7 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
+    order: { type: Number },
     images: [{}],
     published: { type: Boolean, default: true },
     link: {

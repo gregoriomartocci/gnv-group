@@ -10,6 +10,7 @@ import { ReadProject } from "../../api/ventures";
 import { setProject } from "../../redux/slices/projects";
 import { useRouter } from "next/router";
 import { sanitize } from "../company";
+import { Loader } from "../../hooks/Loader";
 
 const Venture = () => {
   const router = useRouter();
@@ -24,12 +25,9 @@ const Venture = () => {
     useMutation(ReadProject, {
       onSuccess: (data) => {
         queryClient.invalidateQueries("projects");
-        console.log(data, "el emprendimiento");
         dispatch(setProject(data));
       },
-      onError: (data) => {
-        console.log(data);
-      },
+      onError: (data) => {},
     });
 
   useEffect(() => {
@@ -38,19 +36,25 @@ const Venture = () => {
 
   return (
     <Box>
+      <Loader delay={3000} />
       {ventureId ? (
         <Box
           sx={{
             width: "100vw",
             height: "100vh",
-            maxHeight: " 700px",
+            maxHeight: "700px",
           }}
         >
-          <Menu onScroll />
-          <Box sx={{ padding: "150px 0 0 0 ", width: "100%" }}>
+          <Menu onScroll color="#212121" />
+          <Box
+            sx={{
+              padding: { xs: "90px 0 0 0 ", md: "100px 0 0 0" },
+              width: "100%",
+            }}
+          >
             <HeaderTitle
-              titleFontSize={{ xs: "40px", md: "50px" }}
-              fontWeight={700}
+              titleFontSize={{ xs: "24px", md: "26px" }}
+              fontWeight={600}
               title={project?.name ?? ""}
               p="0 10%"
               titleLineHeight="50px"
@@ -61,7 +65,7 @@ const Venture = () => {
           <Box sx={{ display: "flex", padding: "0 10%" }}>
             <Typography
               sx={{
-                fontSize: "20px",
+                fontSize: { xs: "16px", md: "18px" },
                 textAlign: "left",
               }}
             >

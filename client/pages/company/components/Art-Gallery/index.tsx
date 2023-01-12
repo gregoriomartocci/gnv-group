@@ -6,7 +6,6 @@ import { SwiperSlide } from "swiper/react";
 import Carousel from "../../../../components/Carousel";
 
 const ArtGallery = ({ gallery }) => {
-  console.log(gallery, "Gallery");
 
   const breakpoints = {
     0: {

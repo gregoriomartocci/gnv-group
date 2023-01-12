@@ -39,36 +39,64 @@ const Content = (timelineItem: ITimeline) => {
   const CellTable: SxProps<Theme> = {
     display: "flex",
     justifyContent: "flex-start",
-    alignItems: "center",
+    marginLeft: "10px",
+    width: "125px",
 
     img: {
-      width: "100px",
-      height: "100px",
+      width: "85px",
+      height: "85px",
       borderRadius: "5px",
       objectFit: "cover",
       margin: "0 20px 0 0",
     },
   };
 
-  const match = timelineItem?.id === timelineItemSelected?.id;
+  const match = timelineItem?._id === timelineItemSelected?._id;
 
   return (
     <Fragment>
-      <TableCell align="left">
-        <Box sx={CellTable}>
-          <Typography>{timelineItem?.year}</Typography>
+      <TableCell sx={{ maxWidth: "max-content" }} align="center">
+        <Box>
+          <Typography sx={{ fontSize: "15px", fontWeight: "500" }}>
+            {timelineItem?.year}
+          </Typography>
         </Box>
       </TableCell>
       <TableCell align="left">
-        {timelineItem?.highlights?.map(({ name, description, images }) => {
-          return (
-            <Box sx={CellTable}>
-              <img src={images} alt="" />
-              <Typography>{name}</Typography>
-              <Typography>{description}</Typography>
-            </Box>
-          );
-        })}
+        <Box sx={{ display: "flex" }}>
+          {timelineItem?.highlights?.map(
+            ({ name, description, img }, index) => {
+              return (
+                <Box
+                  sx={CellTable}
+                  style={{ flexDirection: "column", alignItems: "flex-start" }}
+                  key={index}
+                >
+                  <img src={(img && img[0]?.src) ?? ""} alt="" />
+                  <Typography
+                    sx={{
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      marginTop: "5px",
+                      maxWidth: "120px",
+                    }}
+                  >
+                    {name}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "10px",
+                      fontWeight: 500,
+                      maxWidth: "120px",
+                    }}
+                  >
+                    {description}
+                  </Typography>
+                </Box>
+              );
+            }
+          )}
+        </Box>
       </TableCell>
       <TableCell align="left">
         <Typography style={{ fontFamily: "Montserrat" }}>

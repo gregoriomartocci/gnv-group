@@ -48,9 +48,9 @@ const ImageSelector = ({ items, uploadImage }: IImageSelector) => {
         }}
       >
         {items?.length
-          ? items?.map(({ src, name, size }) => {
+          ? items?.map(({ src, name, size }, index) => {
               return (
-                <Box sx={ImageContainer}>
+                <Box sx={ImageContainer} key={index}>
                   <img src={src} alt={name} />
                   <Box sx={{ padding: "0 5px" }}>
                     <Typography

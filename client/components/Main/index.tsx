@@ -26,6 +26,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import UseButton from "../Button";
 import Link from "next/link";
 import { sanitize } from "../Article";
+import LoadingScreen from "../LoadingScreen/Index";
 
 export interface ISlide {
   title: string;
@@ -49,6 +50,7 @@ export interface ISlidesProps {
   fontColor?: string;
   textFontSize?: string;
   height?: string;
+  objectPosition?: string;
 }
 
 const Main = ({
@@ -62,6 +64,7 @@ const Main = ({
   flip,
   phrase,
   textFontSize,
+  objectPosition,
   fontColor,
   height,
 }: ISlidesProps) => {
@@ -109,6 +112,7 @@ const Main = ({
         width: "100%",
         position: "relative",
         overflow: "hidden",
+        backgroundColor: "#000",
       }}
     >
       <Box sx={MainContainer}>
@@ -135,7 +139,14 @@ const Main = ({
                   <Box sx={MainSlider}>
                     <Box sx={MainImage}>
                       {getFormat(src) === "MP4" ? (
-                        <video src={src} autoPlay playsInline loop muted />
+                        <video
+                          src={src}
+                          preload={"auto"}
+                          autoPlay
+                          playsInline
+                          loop
+                          muted
+                        />
                       ) : (
                         <img
                           src={src}
@@ -159,10 +170,13 @@ const Main = ({
                           {phrase}
                         </Typography>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"} padding="15px 30px">
+                          <UseButton
+                            type={"Primary"}
+                            padding={{ xs: "15px 30px", md: "10px 20px" }}
+                          >
                             <Typography
                               sx={{
-                                fontSize: { xs: "21px", md: "21px" },
+                                fontSize: { xs: "14px", md: "16px" },
                               }}
                             >
                               Contactanos
@@ -189,17 +203,17 @@ const Main = ({
                     src={img ?? ""}
                     alt=""
                     loading="lazy"
-                    style={
-                      flip
-                        ? { position: "absolute", transform: "scaleX(-1)" }
-                        : { position: "absolute" }
-                    }
+                    style={{
+                      position: "absolute",
+                      transform: flip && "scaleX(-1)",
+                      objectPosition,
+                    }}
                   />
                 )}
                 {!imageOnly ? (
                   <Box sx={MainContent}>
                     <Typography
-                      sx={{ margin: "15px 0", fontWeight: 500 }}
+                      sx={{ margin: "15px 0", fontWeight: 400 }}
                       style={{ color: fontColor ?? "" }}
                       fontSize={textFontSize}
                     >
@@ -208,10 +222,13 @@ const Main = ({
                     <Link href={buttonLink ?? ""}>
                       <a>
                         <Box style={{ width: "150px" }}>
-                          <UseButton type={"Primary"} padding="15px 30px">
+                          <UseButton
+                            type={"Primary"}
+                            padding={{ xs: "10px 20px", md: "12px 30px" }}
+                          >
                             <Typography
                               sx={{
-                                fontSize: { xs: "21px", md: "21px" },
+                                fontSize: { xs: "14px", md: "16px" },
                               }}
                             >
                               Contactanos

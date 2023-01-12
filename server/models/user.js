@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
@@ -23,7 +22,7 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      default: "Subscriber",
+      default: "Admin",
     },
     image: {
       public_id: "",

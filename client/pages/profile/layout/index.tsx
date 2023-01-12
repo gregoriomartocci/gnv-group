@@ -72,7 +72,6 @@ const Layout = () => {
       });
 
       const { error } = data;
-      console.log(error, "<== mensaje error");
 
       if (error) {
         stateHandler({

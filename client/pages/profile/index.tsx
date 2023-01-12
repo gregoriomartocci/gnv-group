@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import Dashboard from "../../components/Dashboard";
+import useValidateToken from "../../hooks/validateToken";
 import Layout from "./layout";
 
-const index = () => {
-  return <Layout />;
+const Index = () => {
+  const { validate } = useValidateToken();
+  return <Fragment> {validate && <Layout />} </Fragment>;
 };
 
-export default index;
+export default Index;

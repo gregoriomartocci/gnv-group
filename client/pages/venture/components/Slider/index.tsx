@@ -21,7 +21,6 @@ const Slider = ({ items }: any) => {
 
   const difference = (num1: number, num2: number): number => {
     const result = Math.abs(num1 - num2);
-    console.log(result);
     return result;
   };
 
@@ -32,9 +31,10 @@ const Slider = ({ items }: any) => {
         justifyContent: "space-between",
         alignItems: "center",
         overflowX: "hidden",
-        height: { xs: "300px", sm: "100%" },
+        height: { xs: "300px", md: "600px" },
         padding: { xs: "0", sm: "0 5%" },
-        margin: { xs: "10% 0", md: "5% 0" },
+        margin: { xs: "7.5% 25px", md: "50px 0" },
+
         position: "relative",
       }}
     >
@@ -44,19 +44,21 @@ const Slider = ({ items }: any) => {
           justifyContent: "center",
           alignItems: "center",
           padding: "12.5px",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 1000,
-          margin: "0 25px",
+          border: { xs: "", md: "1px solid #e0e0e0" },
+          backgroundColor: { xs: "", md: "#fff" },
+          margin: { xs: "", md: "0 25px" },
           transform: "rotate(180deg)",
+          color: { xs: "#fff", md: "#000" },
+          fontSize: { xs: "12px", md: "13px" },
         }}
         onClick={onLeft}
         component="span"
       >
-        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        <ArrowForwardIosIcon />
       </Box>
 
       <Box
@@ -72,7 +74,15 @@ const Slider = ({ items }: any) => {
         {items &&
           items?.map(({ src, name }: any, key: number) => {
             return (
-              <Box onClick={() => setPosition(key)}>
+              <Box
+                sx={{
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onClick={() => setPosition(key)}
+                key={key}
+              >
                 <motion.div
                   style={{
                     display: "flex",
@@ -106,10 +116,11 @@ const Slider = ({ items }: any) => {
                   <img
                     style={{
                       display: "flex",
-                      width: "100%",
                       height: "100%",
+                      width: "70%",
                       objectFit: "cover",
-                      objectPosition: "center center",
+                      objectPosition: "top left",
+                      margin: "0 -700px",
                     }}
                     src={src}
                     alt={name}
@@ -126,18 +137,20 @@ const Slider = ({ items }: any) => {
           justifyContent: "center",
           alignItems: "center",
           padding: "12.5px",
-          border: "1px solid #e0e0e0",
-          backgroundColor: "#ffffff",
           cursor: "pointer",
           borderRadius: "10px",
           textAlign: "center",
           zIndex: 1000,
-          margin: "0 25px",
+          border: { xs: "", md: "1px solid #e0e0e0" },
+          backgroundColor: { xs: "", md: "#fff" },
+          margin: { xs: "", md: "0 25px" },
+          color: { xs: "#fff", md: "#000" },
+          fontSize: { xs: "12px", md: "18px" },
         }}
         onClick={onRight}
         component="span"
       >
-        <ArrowForwardIosIcon sx={{ fontSize: "18px", color: "#212121" }} />
+        <ArrowForwardIosIcon />
       </Box>
     </Box>
   );

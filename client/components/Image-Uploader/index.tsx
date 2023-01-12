@@ -9,17 +9,10 @@ import { Box } from "@mui/system";
 import { Fragment, useEffect, useRef, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  dropFileInput,
-  dropFileInputIcon,
-  dropFilePreview,
-  dropFilePreviewItem,
-  dropFilePreviewTitleItemInfo,
-  imageContainer,
-  InfoMessage,
-} from "./Styles";
+import { dropFileInput, dropFileInputIcon } from "./Styles";
 import * as yup from "yup";
 import FileResizer from "react-image-file-resizer";
+import { Reorder, useMotionValue } from "framer-motion";
 
 export interface IImagetoUpload {
   lastModified?: number;
@@ -84,11 +77,19 @@ interface IImageUploader {
   value: any;
   addImage: any;
   removeImage: any;
+  reOrderImages?: any;
 }
 
-const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
+const ImageUploader = ({
+  value,
+  addImage,
+  removeImage,
+  reOrderImages,
+}: IImageUploader) => {
   const wrapperRef = useRef<any>(null);
   const [errors, setErrors] = useState<string[] | []>([]);
+
+  const y = useMotionValue(0);
 
   const schema = yup.object().shape({
     attachment: yup
@@ -106,14 +107,9 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         "El formato de la imagen no es válido",
         (value: IImagetoUpload) => {
           const format = value?.type.split("/")[1];
-          const isValid = [
-            "png",
-            "jpg",
-            "svg",
-            "jpeg",
-            "mp4",
-            "webp",
-          ].includes(format);
+          const isValid = ["png", "jpg", "svg", "jpeg", "mp4", "webp"].includes(
+            format
+          );
           return isValid;
         }
       )
@@ -125,10 +121,6 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
         }
       ),
   });
-
-  const onDragEnter = () => wrapperRef.current.classList.add("dragover");
-  const onDragLeave = () => wrapperRef.current.classList.remove("dragover");
-  const onDrop = () => wrapperRef.current.classList.remove("dragover");
 
   // Upload Function
   const onFileDrop = async (e: any) => {
@@ -151,66 +143,81 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
 
   // Remove Image
   const fileRemove = (number: number) => {
-    console.log(value, "ANTES");
     const update = value?.filter((_, index) => index !== number);
-    console.log(value, "DESPUES");
     removeImage(update);
   };
 
-  // Convert KB Format
-  function formatBytes(bytes: number, decimals = 2) {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
-  }
-
   return (
-    <Fragment>
-      <Fragment>
-        <Box
-          sx={dropFileInput}
-          ref={wrapperRef}
-          component="span"
-          onDragEnter={onDragEnter}
-          onDragLeave={onDragLeave}
-          onDrop={onDrop}
-        >
-          <Box>
-            <CloudUploadIcon sx={dropFileInputIcon} />
-          </Box>
-          <Box>
-            <Typography sx={{ fontFamily: "Poppins" }}>
-              Arrastre o seleccione su imágenes aquí
-            </Typography>
-            <Box>
-              <input
-                type="file"
-                value=""
-                accept="image/png, image/svg, image/png, image/jpeg, image/jpg, image/webpb"
-                onChange={onFileDrop}
-              />
-            </Box>
-          </Box>
+    <Box>
+      <Box sx={dropFileInput} ref={wrapperRef} component="span">
+        <Box>
+          <CloudUploadIcon sx={dropFileInputIcon} />
         </Box>
         <Box>
-          {errors?.length >= 1 && (
-            <Alert variant="filled" severity="error">
-              {errors[0]}
-            </Alert>
-          )}
+          <Typography sx={{ fontFamily: "Poppins" }}>
+            Arrastre o seleccione su imágenes aquí
+          </Typography>
+          <Box>
+            <input
+              type="file"
+              value=""
+              accept="image/png, image/svg, image/png, image/jpeg, image/jpg, image/webpb"
+              onChange={onFileDrop}
+            />
+          </Box>
         </Box>
-      </Fragment>
+      </Box>
+      <Box>
+        {errors?.length >= 1 && (
+          <Alert variant="filled" severity="error">
+            {errors[0]}
+          </Alert>
+        )}
+      </Box>
 
-      <Box sx={dropFilePreview}>
-        {value?.map((file, index) => {
-          return (
-            <Box key={index} sx={dropFilePreviewItem}>
-              <Box sx={dropFilePreviewTitleItemInfo}>
-                <Box sx={imageContainer}>
-                  <img src={file.src} alt="Imagen" />
+      <Reorder.Group
+        axis="y"
+        values={value}
+        onReorder={reOrderImages}
+        style={{ maxHeight: 375, overflowY: "auto", marginTop: "20px" }}
+        layoutScroll
+      >
+        {value?.map((file, index) => (
+          <Reorder.Item value={file} id={file} key={file?.name}>
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "10px",
+                backgroundColor: "#F5F8FF",
+                padding: "15px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                width: "98%",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    img: {
+                      width: "85px",
+                      height: "85px",
+                      borderRadius: "5px",
+                      objectFit: "cover",
+                    },
+                  }}
+                >
+                  <img src={file?.src} alt="Imagen" />
                 </Box>
                 <Box
                   sx={{
@@ -224,8 +231,8 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
                   <Typography sx={{ fontFamily: "'Poppins' sans-serif" }}>
                     {file?.name}
                   </Typography>
-                  <Typography style={{ fontSize: "14px", fontWeight: 500 }}>
-                    {formatBytes(file?.size, 2)}
+                  <Typography sx={{ fontFamily: "'Poppins' sans-serif" }}>
+                    {file?.description}
                   </Typography>
                 </Box>
               </Box>
@@ -233,10 +240,10 @@ const ImageUploader = ({ value, addImage, removeImage }: IImageUploader) => {
                 <CloseIcon />
               </IconButton>
             </Box>
-          );
-        }) ?? null}
-      </Box>
-    </Fragment>
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
+    </Box>
   );
 };
 

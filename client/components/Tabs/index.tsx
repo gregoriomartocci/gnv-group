@@ -37,8 +37,6 @@ export default function UseTabs({
     setValue(newValue);
   };
 
-  console.log(value, "imprimo el value del tab");
-
   return (
     <Box sx={{ width: `${width ? width : "100%"}` }}>
       <Box sx={`${border ? { borderBottom: 1, borderColor: "divider" } : {}}`}>
@@ -53,6 +51,10 @@ export default function UseTabs({
             },
             "&:focus": {
               outline: "none",
+            },
+            "& .css-1253nat-MuiButtonBase-root-MuiTab-root.Mui-selected": {
+              color: "#424242",
+              fontWeight: 600,
             },
           }}
           onChange={handleChange}
@@ -69,6 +71,7 @@ export default function UseTabs({
                   fontWeight: `${fontWeight ? fontWeight : ""}`,
                   p: `${p ? p : ""}`,
                 }}
+                key={key}
                 label={item}
               />
             );

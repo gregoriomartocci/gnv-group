@@ -9,12 +9,11 @@ import { IState } from "../../../../../components/Menu";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import {
-  IProject,
   setModal,
   setSelected,
-} from "../../../../../redux/slices/projects";
+  IGallery,
+} from "../../../../../redux/slices/gallery";
 import Actions from "../../../../../components/Table/Components/Actions";
-import { IGallery } from "../../../../../redux/slices/gallery";
 
 const Content = (galleryItem: IGallery) => {
   const dispatch = useDispatch();
@@ -23,17 +22,6 @@ const Content = (galleryItem: IGallery) => {
 
   const { modal, galleryItemSelected } = state;
 
-  // id: 1,
-  // gallery: "Galería Nora Fisch | Buenos Aires",
-  // artist: " Juan Becú",
-  // title: "B Bros",
-  // image:
-  //   "https://res.cloudinary.com/gregomartocci/image/upload/v1663022483/tsbljhahckdrg6rewpkb.jpg",
-  // technique: "Oleo sobre tela",
-  // measures: "265 x 195 cm",
-  // date: "2013",
-  // published: true,
-
   const handleCloseActionsMenu = () => {
     dispatch(setModal({ name: "actions", value: false }));
     setAnchorEl(null);
@@ -41,9 +29,9 @@ const Content = (galleryItem: IGallery) => {
 
   const handleClickActionsMenu = (
     event: React.MouseEvent<HTMLButtonElement>,
-    project: IProject
+    galleryItem: IGallery
   ) => {
-    dispatch(setSelected(project));
+    dispatch(setSelected(galleryItem));
     dispatch(setModal({ name: "actions", value: true }));
     setAnchorEl(event.currentTarget);
   };
@@ -54,32 +42,31 @@ const Content = (galleryItem: IGallery) => {
     alignItems: "center",
 
     img: {
-      width: "100px",
-      height: "100px",
+      width: "80px",
+      height: "80px",
       borderRadius: "5px",
       objectFit: "cover",
       margin: "0 20px 0 0",
     },
   };
 
-  const match = galleryItem?.id === galleryItemSelected?.id;
+  const match = galleryItem?._id === galleryItemSelected?._id;
 
   return (
     <Fragment>
       <TableCell align="left">
         <Box sx={CellTable}>
-          <img src={(galleryItem && galleryItem?.image) ?? ""} alt="" />
+          <img
+            src={galleryItem?.images?.length ? galleryItem?.images[0]?.src : ""}
+            alt=""
+          />
         </Box>
-        <Typography>{galleryItem?.gallery}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography>{galleryItem?.artist}</Typography>
       </TableCell>
       <TableCell align="left">
-        <Typography>{galleryItem?.title}</Typography>
-      </TableCell>
-      <TableCell align="left">
-        <Typography>{galleryItem?.image}</Typography>
+        <Typography>{galleryItem?.gallery}</Typography>
       </TableCell>
       <TableCell align="left">
         <Typography>{galleryItem?.technique}</Typography>

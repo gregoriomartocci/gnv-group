@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import Main from "../../components/Main";
-import Ventures from "./components/Ventures";
-import Menu from "../../components/Menu";
 import HeaderTitle from "../../components/Header-Title";
-import Footer from "../../components/Footer";
 import { motion, useAnimation } from "framer-motion";
 import SearchBar from "../../components/Search-Bar";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +9,28 @@ import {
   setProject,
   setProjects,
 } from "../../redux/slices/projects";
-import Dropdown from "./components/Dropdown";
 import OutsideAlerter from "../../hooks/ClickListener";
 import { useQuery } from "react-query";
 import { ReadProjects } from "../../api/ventures";
+import { Loader } from "../../hooks/Loader";
+
+import dynamic from "next/dynamic";
+
+const Ventures = dynamic(() => import("./components/Ventures"), {
+  ssr: false,
+});
+const Main = dynamic(() => import("../../components/Main"), {
+  ssr: false,
+});
+const Menu = dynamic(() => import("../../components/Menu"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../../components/Footer"), {
+  ssr: false,
+});
+const Dropdown = dynamic(() => import("../../components/Dropdown"), {
+  ssr: false,
+});
 
 const FadeFromBottom = {
   offscreen: { y: 50, opacity: 0 },
@@ -35,7 +49,6 @@ const VenturesLayout = () => {
 
   const [status, setStatus] = useState([
     "Todos",
-    "Ejecutado",
     "En desarrollo",
     "Finalizado",
   ]);
@@ -98,15 +111,18 @@ const VenturesLayout = () => {
 
   return (
     <Box>
+      <Loader delay={2000} />
       <Menu onScroll color="#fff" />
 
       {/* MAIN SECTION */}
 
       <Main
         mode="static"
-        img="https://res.cloudinary.com/gregomartocci/image/upload/v1660741258/pacagjb8rm2kk6mex1em.png"
-        imageOnly
-        height="40vh"
+        img="https://res.cloudinary.com/gregomartocci/image/upload/v1664797467/s887xt4eocicdqnfr9m7.jpg"
+        height="100vh"
+        headerTitle="Emprendimientos"
+        buttonLink="/home/#contact"
+        textFontSize={{ xs: "25px", md: "32px" }}
       />
 
       {/* HEADER TITLE */}
@@ -116,18 +132,11 @@ const VenturesLayout = () => {
         whileInView={"onscreen"}
         viewport={{ once: true, amount: 0.5 }}
         variants={FadeFromBottom}
-      >
-        <HeaderTitle
-          p={{ xs: "25% 10% 10% 10%", md: "10% 20% 5% 20%" }}
-          titleFontSize={{ xs: "35px", md: "40px" }}
-          fontWeight={600}
-          descriptionFontSize={{ xs: "18px", md: "25px" }}
-          title="Emprendimientos"
-          description="Tres generaciones dedicadas al desarrollo de proyectos emblemáticos, que redefinen los entornos urbanos y desafían la arquitectura y el diseño, con altos estándares de sustentabilidad y confort."
-        />
-      </motion.div>
+      ></motion.div>
 
-      <Box sx={{ padding: "25px 12.5% 35px 12.5%" }}>
+      <Box
+        sx={{ padding: { xs: "50px 15% 10px 15%", md: "100px 20% 20px 20%" } }}
+      >
         <SearchBar
           onChange={onChangeHandler}
           value={input}
@@ -140,35 +149,27 @@ const VenturesLayout = () => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "flex-start",
+          flexDirection: { xs: "column", sm: "row" },
+          justifyContent: { xs: "space-between", sm: "flex-start" },
+          padding: { xs: "10px 10% 25px 10%", md: "" },
           width: "100%",
-          padding: { xs: "10px 10% 25px 10%", sm: "45px 10% 70px 10%" },
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
-            justifyContent: { xs: "space-between", sm: "flex-start" },
-            width: "100%",
-          }}
-        >
-          <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
-            <Dropdown
-              items={status}
-              placeholder="Estado"
-              width={{ xs: "100%", sm: "250px" }}
-              action={filterVenturesStatus}
-            />
-          </Box>
-          <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
-            <Dropdown
-              items={type}
-              placeholder="Tipo"
-              width={{ xs: "100%", sm: "250px" }}
-              action={filterVenturesTypes}
-            />
-          </Box>
+        <Box sx={{ margin: { xs: "7.5px 0", sm: "" } }}>
+          <Dropdown
+            items={status}
+            placeholder="Estado"
+            width={{ xs: "100%", sm: "250px" }}
+            action={filterVenturesStatus}
+          />
+        </Box>
+        <Box sx={{ margin: { xs: "7.5px 0", sm: "0 20px 0 0" } }}>
+          <Dropdown
+            items={type}
+            placeholder="Tipo"
+            width={{ xs: "100%", sm: "250px" }}
+            action={filterVenturesTypes}
+          />
         </Box>
       </Box>
 

@@ -9,7 +9,7 @@ export interface ButtonOptions {
   Paper: string;
   Delete: string;
 }
-
+ 
 export interface ButtonProps {
   type: keyof ButtonOptions;
   children: any;

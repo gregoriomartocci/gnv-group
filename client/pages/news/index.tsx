@@ -1,23 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
-import Menu, { IState } from "../../components/Menu";
-import HeaderTitle from "../../components/Header-Title";
-import Footer from "../../components/Footer";
-import Carousel from "../../components/Carousel";
-import Cards from "../../components/Cards";
-import UseButton from "../../components/Button";
-import Article from "../../components/Article";
+import React, { Fragment, useEffect, useState } from "react";
+import { Box, Grid, Typography } from "@mui/material";
+import { IState } from "../../components/Menu";
 import { SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
-import { errorType } from "../profile/news";
-import api from "../../hooks/Api";
-import { IArticle, setArticles } from "../../redux/slices/articles";
+import { setArticles } from "../../redux/slices/articles";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import parse from "html-react-parser";
 import Link from "next/link";
 import { SxProps, Theme } from "@mui/material";
-import UseMasonry from "../../components/Masonry";
-import news_mock from "../../data/news_mock";
+import { useQuery } from "react-query";
+import { ReadArticles } from "../../api/articles";
+import { Loader } from "../../hooks/Loader";
+
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import("../../components/Carousel"), {
+  ssr: false,
+});
+const Article = dynamic(() => import("../../components/Article"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../../components/Footer"), { ssr: false });
+const HeaderTitle = dynamic(() => import("../../components/Header-Title"), {
+  ssr: false,
+});
+const Menu = dynamic(() => import("../../components/Menu"), { ssr: false });
 
 const CardContainer: SxProps<Theme> = {
   display: "flex",
@@ -32,7 +39,7 @@ const CardContainer: SxProps<Theme> = {
   img: {
     objectFit: "cover",
     width: "100%",
-    minHeight: { xs: "280px", md: "500px" },
+    height: { xs: "250px", md: "300px" },
   },
 };
 
@@ -45,12 +52,6 @@ export type TArticle = {
   description: string;
   published?: boolean;
   link: string;
-};
-
-const CardHeader: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
-  fontFamily: "'Poppins', sans-serif",
 };
 
 export const santize = (string: string) => {
@@ -74,27 +75,34 @@ const breakpoints = {
 
 const ArticleCard = (article: TArticle) => {
   return (
-    <Box>
+    <Fragment>
       {article ? (
         <Box>
           <Link href={article?.link ? article?.link : ""}>
             <a target="_blank">
               <Box sx={CardContainer}>
                 <img
-                  src={article?.images ? article?.images[0] : ""}
+                  src={article?.images ? article?.images[0]?.src : ""}
                   alt={article?.title}
                 />
-                <Box sx={CardHeader}>
-                  <span
-                    style={{
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "'Poppins', sans-serif",
+                    margin: { xs: "10px 0 0 0", md: "18px 0 0 0" },
+                  }}
+                >
+                  <Typography
+                    sx={{
                       color: "#212121",
                       fontWeight: 600,
-                      fontSize: "22px",
-                      margin: "25px 0 0 0",
+                      fontSize: { xs: "16px", md: " 18px" },
+                      lineHeight: { xs: "20px", md: " 22px" },
                     }}
                   >
                     {article?.title}
-                  </span>
+                  </Typography>
                 </Box>
 
                 <Box
@@ -108,26 +116,30 @@ const ArticleCard = (article: TArticle) => {
                     sx={{
                       color: "#4f4f4f",
                       fontWeight: 500,
-                      fontSize: { xs: "16px", md: "18px" },
-                      lineHeight: "22px",
-                      margin: "15px 0 0 0",
+                      fontSize: { xs: "12px", md: "14px" },
+                      lineHeight: { xs: "18px", md: "20px" },
+                      margin: { xs: "8px 0 0 0", md: "10px 0 0 0" },
                     }}
                   >
-                    {santize(sliceText(article?.description, 125) ?? "")}
+                    {santize(sliceText(article?.description, 150) ?? "")}
                   </Box>
 
                   <Box
-                    style={{
+                    sx={{
                       display: "flex",
                       alignItems: "center",
                       color: "#424242",
                       fontWeight: 600,
-                      fontSize: "18px",
-                      margin: "15px 0 0 0",
+                      fontSize: { xs: "13px", md: "14px" },
+                      margin: "7.5px 0 0 0",
                     }}
                   >
                     Ver Noticia
-                    <KeyboardArrowRightIcon />
+                    <KeyboardArrowRightIcon
+                      sx={{
+                        fontSize: { xs: "15px", md: "16px" },
+                      }}
+                    />
                   </Box>
                 </Box>
               </Box>
@@ -135,7 +147,7 @@ const ArticleCard = (article: TArticle) => {
           </Link>
         </Box>
       ) : null}
-    </Box>
+    </Fragment>
   );
 };
 
@@ -143,14 +155,27 @@ const News = () => {
   const dispatch = useDispatch();
   const state = useSelector((state: IState) => state?.articles);
 
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: allArticles,
+  } = useQuery("articles", ReadArticles, {
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      dispatch(setArticles(data));
+    },
+  });
+
   return (
     <Box>
+      <Loader delay={1500} />
       <Menu onScroll color="#212121" />
       <Box>
         <HeaderTitle
-          titleFontSize={{ xs: "30px", md: "38px" }}
+          titleFontSize={{ xs: "20px", md: "24px" }}
           fontWeight={600}
-          p={{ xs: "150px 0 00", md: "150px 0 100px 0" }}
+          p={{ xs: "110px 0 00", md: "120px 0 10px 0" }}
           title="Noticias destacadas"
         />
       </Box>
@@ -163,10 +188,10 @@ const News = () => {
           width: "100%",
         }}
       >
-        <Carousel slidesPerView={1} delay={3000}>
-          {news_mock && news_mock?.length
-            ? news_mock?.map((article: TArticle, index: number) => (
-                <SwiperSlide>
+        <Carousel slidesPerView={1} delay={3500}>
+          {allArticles && allArticles?.length
+            ? allArticles?.map((article: TArticle, index: number) => (
+                <SwiperSlide key={index}>
                   <Article {...article} />
                 </SwiperSlide>
               ))
@@ -175,17 +200,17 @@ const News = () => {
       </Box>
 
       <HeaderTitle
-        titleFontSize={{ xs: "30px", md: "38px" }}
+        titleFontSize={{ xs: "20px", md: "24px" }}
         fontWeight={600}
-        p={{ xs: "25px 0 60px 0", md: "100px  20px" }}
+        p={{ xs: "0 0 60px 0", md: "45px 0 80px 0px" }}
         title="Todas la noticias"
       />
 
       <Box sx={{ padding: "0 10%" }}>
         <Grid container rowSpacing={5} columnSpacing={5}>
-          {news_mock
-            ? news_mock?.map((item, i) => (
-                <Grid item xs={12} md={6} xl={4}>
+          {allArticles
+            ? allArticles?.map((item, i) => (
+                <Grid item xs={12} md={6} xl={4} key={i}>
                   <ArticleCard {...item} />
                 </Grid>
               ))
@@ -193,16 +218,6 @@ const News = () => {
         </Grid>
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          padding: "50px 0 0 0",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <UseButton type="Primary">Ver Mas</UseButton>
-      </Box>
       <Footer />
     </Box>
   );

@@ -87,7 +87,6 @@ export const editArticle = async (req, res) => {
       new: true,
     });
 
-    console.log(article, "Article");
     return res.json(article);
   } catch (err) {
     console.log(err.message, "Algo salió mal");

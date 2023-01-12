@@ -32,9 +32,35 @@ const Article = ({
   return (
     <Link href={link}>
       <a target="_blank">
-        <Box sx={ProjectContainer}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            alignItems: "center",
+            backgroundColor: "#fff",
+            cursor: "pointer",
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "20px",
+            boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+            maxHeight: { xs: "100%", lg: "600px" },
+            height: { xs: "100%", lg: "375px" },
+            margin: { xs: "50px 10%", md: "50px 15%" },
+            borderRadius: { xs: "0 0 10px 10px", md: "0 12px 12px 0" },
+
+            img: {
+              height: "100%",
+              width: "100%",
+              borderRadius: { xs: "10px 10px 0 0", md: "12px 0 0 12px" },
+              maxWidth: "100%",
+              minHeight: "100%",
+              maxHeight: { xs: "160px", sm: "" },
+              objectFit: "cover",
+              objectPosition: "center center",
+            },
+          }}
+        >
           <Box sx={{ width: "100%", height: "100%" }}>
-            <img src={images[0]} alt={title} />
+            <img src={images[0]?.src} alt={title} />
           </Box>
 
           <Box
@@ -45,7 +71,7 @@ const Article = ({
               flexDirection: "column",
               justifyContent: "center",
               fontFamily: "'Poppins', sans-serif",
-              padding: { xs: "25px", md: "75px" },
+              padding: { xs: "10px 25px", md: "75px" },
               maxWidth: { xs: "100%", lg: "50%" },
             }}
           >
@@ -53,8 +79,8 @@ const Article = ({
               sx={{
                 color: "#000",
                 fontWeight: 600,
-                fontSize: { xs: "24px", md: "30px" },
-                margin: "10px 0",
+                fontSize: { xs: "16px", md: "24px" },
+                margin: { xs: "5px 0 0 0", md: "" },
               }}
             >
               {title}
@@ -70,8 +96,8 @@ const Article = ({
                 sx={{
                   color: "#4f4f4f",
                   fontWeight: 600,
-                  fontSize: { xs: "16", md: "18px" },
-                  lineHeight: "22px",
+                  fontSize: { xs: "12px", md: "14px" },
+                  lineHeight: { xs: "18px", md: "22px" },
                 }}
               >
                 {sanitize(sliceText(description, 150))}
@@ -86,7 +112,7 @@ const Article = ({
               }}
             >
               <span
-                style={{ color: "#424242", fontWeight: 600, fontSize: "16px" }}
+                style={{ color: "#424242", fontWeight: 600, fontSize: "14px" }}
               >
                 {date}
               </span>

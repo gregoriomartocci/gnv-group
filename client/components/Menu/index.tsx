@@ -82,7 +82,7 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
   };
 
   const changeBackground = () => {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 40) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -113,7 +113,7 @@ const Menu = ({ onScroll, color, backgroundColor, relative }: IMenu) => {
                 <Box sx={LogoStyle}>
                   <Logo
                     color={onScroll ? !navbar && color : color}
-                    width="125px"
+                    width="130px"
                   />
                 </Box>
               </a>

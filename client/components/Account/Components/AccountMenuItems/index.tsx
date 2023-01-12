@@ -16,16 +16,12 @@ export interface IAccountMenuItem {
 
 const AccountMenuItem = ({ icon, text, route, action }: IAccountMenuItem) => {
   return (
-    <Link href={route ? route : ""}>
-      <a>
-        <MenuItem sx={{ width: "100%" }} onClick={action}>
-          <Box sx={AccountMenuItemContainer}>
-            <Box sx={AccountMenuItemIcon}>{icon}</Box>
-            <Box sx={AccountMenuItemText}>{text}</Box>
-          </Box>
-        </MenuItem>
-      </a>
-    </Link>
+    <MenuItem sx={{ width: "100%" }} onClick={action}>
+      <Box sx={AccountMenuItemContainer}>
+        <Box sx={AccountMenuItemIcon}>{icon}</Box>
+        <Box sx={AccountMenuItemText}>{text}</Box>
+      </Box>
+    </MenuItem>
   );
 };
 

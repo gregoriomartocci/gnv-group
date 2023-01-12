@@ -5,6 +5,8 @@ import { HighQuality } from "@mui/icons-material";
 import Carousel from "./Components/Carousel";
 import { motion } from "framer-motion";
 import useWindowDimensions from "../../../../hooks/ScreenSize";
+import { useQuery } from "react-query";
+import { ReadTimeline } from "../../../../api/timeline";
 
 const data = [
   {
@@ -30,7 +32,6 @@ const data = [
         description: "San Luis",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1661430969/es9zoiz4qvicj6yw4lgr.jpg",
       },
-
       {
         title: "Boulevard Shopping",
         description: "Bs. As.",
@@ -131,11 +132,6 @@ const data = [
         description: "Edificio Corporativo Puerto Madero, Bs. As.",
         img: "https://res.cloudinary.com/gregomartocci/image/upload/v1663020724/m3sarfqm4cgpvnei7yam.jpg",
       },
-      {
-        title: "World Trade Center",
-        description: "Santa Cruz de La Sierra, Bolivia",
-        img: "https://res.cloudinary.com/gregomartocci/image/upload/v1664816490/ivnmuwecxqrwtbrux0sf.jpg",
-      },
     ],
   },
   {
@@ -210,6 +206,12 @@ const Timeline = () => {
   const [ventures, setVentures] = useState(data);
   const { height, width } = useWindowDimensions();
 
+  const {
+    isFetching: loading,
+    isError,
+    error,
+    data: timelineItems,
+  } = useQuery("timeline", ReadTimeline);
   const carouselRef = useRef(null);
   const handleClick = (index: number) => {
     setSelected(index);
@@ -218,7 +220,7 @@ const Timeline = () => {
   const sm = width && width < 900;
 
   return (
-    <Box sx={{ padding: { sx: "0", md: "40px 5%" } }}>
+    <Box sx={{ padding: { sx: "0", md: "80px 5% 10px 5%" } }}>
       <Box
         sx={{
           display: { sx: "column", md: " flex" },
@@ -246,10 +248,9 @@ const Timeline = () => {
               alignItems: "center",
               width: "100%",
               height: "100%",
-              minHeight: "700px",
             }}
           >
-            {ventures?.map(({ year, highlights }, index) => {
+            {timelineItems?.map(({ year, highlights }, index) => {
               return (
                 <Box
                   style={{
@@ -260,6 +261,7 @@ const Timeline = () => {
                     height: "100%",
                     cursor: "grab",
                   }}
+                  key={index}
                 >
                   {selected === index ? (
                     <Box
@@ -282,7 +284,7 @@ const Timeline = () => {
                         padding: "30px 25px",
                         width: {
                           xs: "100%",
-                          md: "125px",
+                          md: "100px",
                         },
                         height: "100%",
                         justifyContent: "space-between",
@@ -320,7 +322,7 @@ const Timeline = () => {
                           sx={{
                             fontFamily: "'Poppins', sans-serif",
                             fontWeight: 700,
-                            fontSize: { xs: "22px", md: "22px" },
+                            fontSize: { xs: "14px", md: "16px" },
                             color: "#bdbdbd",
                             transform: {
                               xs: "",
@@ -338,7 +340,7 @@ const Timeline = () => {
                         }}
                       >
                         <FiberManualRecordIcon
-                          sx={{ fontSize: "16px", color: "#e0e0e0" }}
+                          sx={{ fontSize: "14px", color: "#e0e0e0" }}
                         />
                       </Box>
                     </Box>

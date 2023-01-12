@@ -39,12 +39,16 @@ import {
   UpdateProject,
 } from "../../../api/ventures";
 import Content from "./Components/Content";
+import { verify } from "jsonwebtoken";
+import { useRouter } from "next/router";
+import useValidateToken from "../../../hooks/validateToken";
 
 const Editor = dynamic(() => import("../../../components/Editor"), {
   ssr: false,
 });
 
 export interface Data {
+  order: number;
   id: number;
   name: string;
   description: string;
@@ -96,6 +100,12 @@ export const sliceText = (text: any, limit: number) => {
 };
 
 const headCells: readonly HeadCell[] = [
+  {
+    id: "order",
+    numeric: true,
+    disablePadding: false,
+    label: "Orden",
+  },
   {
     id: "name",
     numeric: true,
@@ -162,6 +172,8 @@ const Ventures = () => {
   const state = useSelector((state) => state?.projects);
   const projectSelected = state?.projectSelected;
   const [selectedProject, setSelectedProject] = useState(projectSelected);
+  const router = useRouter();
+  const { validate } = useValidateToken();
 
   const { alert, modal } = state;
 
@@ -190,17 +202,25 @@ const Ventures = () => {
   const { mutateAsync: createProjectMutation, isLoading: createLoading } =
     useMutation(CreateProject, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries("projects");
-        console.log(data, "ok");
-        dispatch(
-          setAlert({
-            message: "El emprendimiento se creó con éxito.",
-            status: "success",
-          })
-        );
+        const { error } = data;
+        if (error) {
+          dispatch(
+            setAlert({
+              message: error,
+              status: "error",
+            })
+          );
+        } else {
+          queryClient.invalidateQueries("projects");
+          dispatch(
+            setAlert({
+              message: "El emprendimiento se creó con éxito.",
+              status: "success",
+            })
+          );
+        }
       },
       onError: (data) => {
-        console.log(data, "ok");
         dispatch(
           setAlert({
             message: "Algo salió mal.",
@@ -253,7 +273,7 @@ const Ventures = () => {
     });
 
   const createContent = [
-    <ProjectForm input={input} setInput={setInput} />,
+    <ProjectForm input={input} setInput={setInput} key={0} />,
     <ImageUploader
       value={input?.images}
       addImage={(file: any) => {
@@ -262,15 +282,22 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setInput({ ...input, images: array });
       }}
+      reOrderImages={(images) => setInput({ ...input, images: images })}
+      key={1}
     />,
     <Editor
       value={input}
       setValue={(string) => setInput({ ...input, description: string })}
+      key={2}
     />,
   ];
 
   const updateContent = [
-    <ProjectForm input={selectedProject} setInput={setSelectedProject} />,
+    <ProjectForm
+      input={selectedProject}
+      setInput={setSelectedProject}
+      key={0}
+    />,
     <ImageUploader
       value={selectedProject?.id ? selectedProject?.images : []}
       addImage={(file: any) => {
@@ -282,85 +309,87 @@ const Ventures = () => {
       removeImage={(array: any) => {
         setSelectedProject({ ...selectedProject, images: array });
       }}
+      reOrderImages={(images) =>
+        setSelectedProject({ ...selectedProject, images: images })
+      }
+      key={1}
     />,
     <Editor
       value={selectedProject}
       setValue={(string) =>
         setSelectedProject({ ...selectedProject, description: string })
       }
+      key={2}
     />,
   ];
 
   return (
-    <Dashboard>
-      <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
-        {alert?.map(({ message, status }, index) => {
-          return (
-            <Toast
-              key={index}
-              message={message}
-              type={status}
-              action={() => dispatch(closeAlert(index))}
-            />
-          );
-        })}
-      </Box>
+    <Fragment>
+      <Dashboard>
+        <Box sx={{ display: "flex", position: "relative", flexWrap: "wrap" }}>
+          {alert?.map(({ message, status }, index) => {
+            return (
+              <Toast
+                key={index}
+                message={message}
+                type={status}
+                action={() => dispatch(closeAlert(index))}
+              />
+            );
+          })}
+        </Box>
 
-      <UseTable
-        title="Emprendimientos"
-        name="projects"
-        headCells={headCells}
-        rows={allProjects?.length ? allProjects : []}
-        content={(project: IProject) => <Content {...project} />}
-        openCreateModal={() =>
-          dispatch(
-            setModal({
-              name: "create",
-              value: true,
-            })
-          )
-        }
-      />
-
-      <UseModal
-        open={modal.create}
-        handleClose={() => dispatch(setModal({ name: "create", value: false }))}
-      >
-        <Create
-          content={createContent}
-          title="Emprendimiento"
-          create={() => createProjectMutation({ ...input })}
-          loading={createLoading}
-        />
-      </UseModal>
-      <UseModal
-        open={modal.update}
-        handleClose={() => dispatch(setModal({ name: "update", value: false }))}
-      >
-        {selectedProject?.id && (
-          <Update
-            title="emprendimiento"
-            content={updateContent}
-            update={() => updateProjectMutation({ ...selectedProject })}
-            loading={updateLoading}
+        {validate && (
+          <UseTable
+            title="Emprendimientos"
+            name="projects"
+            headCells={headCells}
+            rows={allProjects?.length ? allProjects : []}
+            content={(project: IProject) => <Content {...project} />}
+            openCreateModal={() =>
+              dispatch(
+                setModal({
+                  name: "create",
+                  value: true,
+                })
+              )
+            }
           />
         )}
-      </UseModal>
-      <UseModal
-        open={modal?.delete}
-        handleClose={() => {
-          dispatch(
-            setModal({
-              name: "delete",
-              value: false,
-            })
-          );
-        }}
-      >
-        <Delete
-          title="emprendimiento"
-          deleteElement={() => deleteProjectMutation(selectedProject?._id)}
-          onClose={() => {
+
+        <UseModal
+          open={modal.create}
+          handleClose={() =>
+            dispatch(setModal({ name: "create", value: false }))
+          }
+        >
+          <Create
+            content={createContent}
+            title="Emprendimiento"
+            create={() => createProjectMutation({ ...input })}
+            loading={createLoading}
+            tabOptions={["Información Básica", "Imágenes", "Descripción"]}
+          />
+        </UseModal>
+        <UseModal
+          open={modal.update}
+          handleClose={() =>
+            dispatch(setModal({ name: "update", value: false }))
+          }
+        >
+          {selectedProject?.id && (
+            <Update
+              title="emprendimiento"
+              content={updateContent}
+              update={() => updateProjectMutation({ ...selectedProject })}
+              loading={updateLoading}
+              tabOptions={["Información Básica", "Imágenes", "Descripción"]}
+            />
+          )}
+        </UseModal>
+        <UseModal
+          open={modal?.delete}
+          handleClose={() => {
             dispatch(
               setModal({
                 name: "delete",
@@ -368,10 +397,23 @@ const Ventures = () => {
               })
             );
           }}
-          loading={deleteLoading}
-        />
-      </UseModal>
-    </Dashboard>
+        >
+          <Delete
+            title="emprendimiento"
+            deleteElement={() => deleteProjectMutation(selectedProject?._id)}
+            onClose={() => {
+              dispatch(
+                setModal({
+                  name: "delete",
+                  value: false,
+                })
+              );
+            }}
+            loading={deleteLoading}
+          />
+        </UseModal>
+      </Dashboard>
+    </Fragment>
   );
 };
 
